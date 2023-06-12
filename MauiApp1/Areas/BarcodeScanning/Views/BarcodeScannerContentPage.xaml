@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:barcodescanner="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.MAUI.Controls"
+             x:Class="MauiApp1.Areas.BarcodeScanning.Views.BarcodeScannerContentPage"
+             Title="BarcodeScannerContentPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
+    <ContentPage.Content>
+        <Grid>
+            
+            <!-- navigation bar-->
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"></RowDefinition>
+                <RowDefinition Height=".9*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--<ImageButton Grid.Column="0" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="32" HeightRequest="24" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="4"/>-->
+                <ImageButton Grid.Column="0" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+                <Label Grid.Column="1" Text="Barcode Scanner"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+
+
+                <Label Grid.Column="3" Text="Enter Manually"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+                <ImageButton Grid.Column="4" Rotation="180" Source="backicon_20x10.png" WidthRequest="32" HeightRequest="24" Clicked="ForwardButton_Clicked" BackgroundColor="Transparent" Margin="0,0,16,0"  BorderColor="Transparent" Padding="4"/>
+
+            </Grid>
+
+            
+            <!-- barcode scanner -->
+            <Grid Grid.Row="1">
+                <barcodescanner:CameraBarcodeReaderView  x:Name="barcodeReader" BarcodesDetected="CameraBarcodeReaderView_BarcodesDetected" ZIndex="-1"/>
+                <AbsoluteLayout  HorizontalOptions="Center" VerticalOptions="Center"  ZIndex="2" Margin="0, 0, 0, 450">
+                    <Border Stroke="#80404040" BackgroundColor="#80404040" StrokeShape="RoundRectangle 15, 15, 15, 15" ZIndex="0">
+                        <Label Text="Place the barcode on the vial within the frame" TextColor="black" Padding="10, 5, 10, 5" ZIndex="2"></Label>
+                    </Border>
+                </AbsoluteLayout>
+                <AbsoluteLayout  HorizontalOptions="Center" VerticalOptions="Center"  ZIndex="1">
+                    <Border Stroke="#80404040" StrokeThickness="20" Padding="0" HorizontalOptions="Center" VerticalOptions="Center" BackgroundColor="Transparent" StrokeShape="RoundRectangle 10,10,10,10" >
+                        <BoxView CornerRadius="10" IsVisible="false" BackgroundColor="#00FFFFFF" WidthRequest="300" HeightRequest="300"></BoxView>
+                    </Border>
+                </AbsoluteLayout>
+                <AbsoluteLayout  HorizontalOptions="Center" VerticalOptions="Center" ZIndex="2" Margin="0, 450, 150, 0">
+                    <ImageButton x:Name="flashButton" WidthRequest="60" HeightRequest="60" Clicked="FlashButton_Clicked" BackgroundColor="#80404040" BorderColor="#80404040"  CornerRadius="20" Padding="10"></ImageButton>
+                </AbsoluteLayout>
+                <AbsoluteLayout HorizontalOptions="Center" VerticalOptions="Center" ZIndex="2" Margin="0, 450, 0, 0">
+                    <Button x:Name="scanButton" FontFamily="Montserrat"  Text="Stop" CornerRadius="18" BorderWidth="5" BorderColor="#80404040" BackgroundColor="#80404040" Clicked="ScanButton_Clicked"></Button>
+                </AbsoluteLayout>
+            </Grid>
+
+            <!--<barcodescanner:BarcodeGeneratorView Grid.Row="1" Format="QrCode" Value="Test"/>-->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

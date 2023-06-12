@@ -1,0 +1,302 @@
+﻿@model NutritionDailyPlanViewModel
+@{
+    string dt_format = "yyyy-MM-dd";
+    string start_datetime_val = Model.Day.ToString(dt_format);
+    string end_datetime_val = Model.EndDay.HasValue ? Model.EndDay.Value.ToString(dt_format) : String.Empty;
+}
+
+<h4>Nutrition Daily Plan</h4>
+<p>You can browse nutritional daily plans here. Use the date field below to check the nutritional daily plans for that day.</p>
+
+<div class="border p-3 mb-3 bg-light">
+    <form method="get" id="plan_search_form" asp-action="DailyPlan">
+        <input type="hidden" name="userid" value="@Model.CurrentUser.Id" />
+        <p>
+            <span class="me-2">Viewing Nutritional Plans for this User:</span>
+            <span><a asp-action="Details" asp-controller="User" asp-route-id="@Model.CurrentUser.Id">@Model.CurrentUser.FirstName @Model.CurrentUser.LastName (ID: @Model.CurrentUser.Id)</a></span>
+            @if (Model.LatestDayWithPlan.HasValue)
+            {
+                <div>
+                    <span>Latest plan available for this User is on <b>@Model.LatestDayWithPlan.GetValueOrDefault().ToLongDateString()</b></span>
+                </div>
+            }        
+        </p>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="start">Start Day</label>
+                <input type="date" class="form-control" id="start" name="start" value="@start_datetime_val" required />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="end">End Day</label>
+                <input type="date" class="form-control" id="end" name="end" value="@end_datetime_val" />
+                <span class="form-text text-muted">If End Day is specified, this will show all plans between Start Day and End Day inclusive.</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">View Plans</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (Model.DailyPlans == null || Model.DailyPlans.Count == 0)
+{
+    <h5>Search Results</h5>
+    <p>Search returned no results</p>
+    <div class="d-flex justify-content-center py-3">
+        <span class="">No nutritional daily plan for @Model.Day.ToLongDateString(). You can add a daily plan by clicking the button below.</span>      
+    </div>
+    <div class="d-flex justify-content-center py-3">
+        <a class="btn btn-primary" asp-action="EditPlan" asp-route-userid="@Model.CurrentUser.Id" asp-route-start="@Model.Day.ToString(dt_format)">
+            <i data-feather="plus"></i><span class="ms-2">Add Daily Plan</span>
+        </a>
+    </div>
+}
+else
+{
+    <h5>Search Results</h5>
+    <p>Search returned @Model.DailyPlans.Count results.</p>
+    <div class="row" id="planList">
+        @foreach (var dailyPlan in Model.DailyPlans) 
+        {
+            var dayTotal = Model.TotalValues.FirstOrDefault(r => r.DayId == dailyPlan.Id) ?? new DayActualNutritionValueCalculationModel();
+            var calClass = dayTotal.TotalCalories > dailyPlan.DayCalorieTargetMax ? "text-danger" : dayTotal.TotalCalories > dailyPlan.DayCalorieTarget ? "text-warning" : "";
+
+            <div class="col-md-12 mb-3">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="d-flex justify-content-between">
+                            <span class="fs-5">
+                                @dailyPlan.Date.ToLongDateString()
+                                <span class="text-muted">(Plan ID: @dailyPlan.Id)</span>
+                            </span>
+                            <a class="link-primary" href="#" data-bs-toggle="collapse" data-bs-target="#moreinfo_@dailyPlan.Id">See More</a>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <span class="fs-3 fw-bold @calClass">@dayTotal.TotalCalories.ToString("N2")</span>
+                                <span class="text-muted fs-6">kcal</span>
+                                <span class="fs-3 text-muted">/</span>
+                                <span class="fs-3">@dailyPlan.DayCalorieTarget.ToString("N2")</span>
+                                <span class="text-muted fs-6">kcal</span>
+                                <span class="text-muted">
+                                    (@dailyPlan.DayCalorieTargetMin.ToString("N2") - @dailyPlan.DayCalorieTargetMax.ToString("N2"))
+                                </span>
+                            </div>
+                        </div>
+                        <div class="collapse hide" id="moreinfo_@dailyPlan.Id">
+                            <h6 class="border-bottom py-2 mb-3 fw-bold">Nutritional Breakdown</h6>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <p>This consolidates all nutritional values for all meals taken this day. Untranscribed dishes are NOT included.</p>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            <tr>
+                                                <td>Protein (g)</td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalProtein > dailyPlan.ProteinGramsTarget ? "text-danger" : "")">@dayTotal.TotalProtein.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.ProteinGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Carbohydrates (g)</td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalCarbs > dailyPlan.CrabsGramsTarget ? "text-danger" : "")">@dayTotal.TotalCarbs.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.CrabsGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i data-feather="chevron-right"></i><span class="ms-2">Sugars (g)</span></td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalSugars > dailyPlan.SugarGramsTarget ? "text-danger" : "")">@dayTotal.TotalSugars.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.SugarGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fat (g)</td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalFat > dailyPlan.FatGramsTarget ? "text-danger" : "")">@dayTotal.TotalFat.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.FatGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i data-feather="chevron-right"></i><span class="ms-2">Saturated Fat (g)</span></td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalSaturatedFat > dailyPlan.SaturatedFatGramsTarget ? "text-danger" : "")">@dayTotal.TotalSaturatedFat.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.SaturatedFatGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td><i data-feather="chevron-right"></i><span class="ms-2">Unsaturated Fat (g)</span></td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalUnsaturatedFat > dailyPlan.UnsaturatedFatGramsTarget ? "text-danger" : "")">@dayTotal.TotalUnsaturatedFat.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.UnsaturatedFatGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Fiber (g)</td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalFiber > dailyPlan.FiberGramsTarget ? "text-danger" : "")">@dayTotal.TotalFiber.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.FiberGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Alcohol (g)</td>
+                                                <td class="text-end fw-bold @(dayTotal.TotalAlcohol > dailyPlan.AlcoholGramsTarget ? "text-danger" : "")">@dayTotal.TotalAlcohol.ToString("N2")</td>
+                                                <td class="text-end">@dailyPlan.AlcoholGramsTarget.ToString("N2")</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <h6 class="border-bottom py-2 mb-3 fw-bold">Per Meal Breakdown</h6>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <p>Consolidates all nutritional Values split per meal basis. Untranscribed dishes are NOT included.</p>
+                                    <table class="table table-striped">
+                                        <tbody>
+                                            @foreach (var meal in dailyPlan.FnsNutritionActualMeal)
+                                            {
+                                                var mealTotal = dayTotal.MealTotals.FirstOrDefault(r => r.MealId == meal.Id) ?? new MealActualNutritionalValueCalculationModel();
+
+                                                <tr>
+                                                    <td class="fw-bold align-middle">
+                                                        @meal.MealType.Name
+                                                        @if (meal.IsComplete)
+                                                        {
+                                                            <div class="badge bg-success">Complete</div>
+                                                        }
+                                                        @if (meal.IsSkipped)
+                                                        {
+                                                            <div class="badge bg-warning">Skipped</div>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <table class="table table-striped">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Calories (kcal)</td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalCalories > meal.MealCalorieMax ? "text-danger" : "")">@mealTotal.TotalCalories.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.MealCalorieTarget.ToString("N2") (@meal.MealCalorieMin.ToString("N2") - @meal.MealCalorieMax.ToString("N2"))</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Protein (g)</td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalProtein > meal.ProteinGramsTarget ? "text-danger" : "")">@mealTotal.TotalProtein.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.ProteinGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Carbohydrates (g)</td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalCarbs > meal.CrabsGramsTarget ? "text-danger" : "")">@mealTotal.TotalCarbs.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.CrabsGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><i data-feather="chevron-right"></i><span class="ms-2">Sugars (g)</span></td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalSugars > meal.SugarGramsTarget ? "text-danger" : "")">@mealTotal.TotalSugars.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.SugarGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Fat (g)</td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalFat > meal.FatGramsTarget ? "text-danger" : "")">@mealTotal.TotalFat.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.FatGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><i data-feather="chevron-right"></i><span class="ms-2">Saturated Fat (g)</span></td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalSaturatedFat > meal.SaturatedFatGramsTarget ? "text-danger" : "")">@mealTotal.TotalSaturatedFat.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.SaturatedFatGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><i data-feather="chevron-right"></i><span class="ms-2">Unsaturated Fat (g)</span></td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalUnsaturatedFat > meal.UnsaturatedFatGramsTarget ? "text-danger" : "")">@mealTotal.TotalUnsaturatedFat.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.UnsaturatedFatGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Fiber (g)</td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalFiber > meal.FiberGramsTarget ? "text-danger" : "")">@mealTotal.TotalFiber.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.FiberGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Alcohol (g)</td>
+                                                                    <td class="text-end fw-bold @(mealTotal.TotalAlcohol > meal.AlcoholGramsTarget ? "text-danger" : "")">@mealTotal.TotalAlcohol.ToString("N2")</td>
+                                                                    <td class="text-end">@meal.AlcoholGramsTarget.ToString("N2")</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <h6 class="border-bottom py-2 mb-3 fw-bold">Dishes List</h6>
+                            @{
+                                var dishList = dailyPlan.FnsNutritionActualMeal.SelectMany(r => r.FnsNutritionActualDish).Where(r => r.IsComplete).ToList();
+                                var dishTotals = Model.TotalValues.SelectMany(r => r.MealTotals).SelectMany(r => r.DishTotal).ToList();
+                            }
+                            <p>These are the dishes that are eaten on this day. Untranscribed dishes are NOT included. Note that nutritional values are calculated based on dish share and serving count.</p>
+                            <div class="row row-cols-1 row-cols-md-3 g-4">
+                                @foreach (var dish in dishList)
+                                {
+                                    var dishTotal = dishTotals.First(r => r.DishId == dish.Id);
+                                    <div class="col">
+                                        <div class="card">
+                                            <img src="@dish.UploadPhotoReference" class="card-img-top" alt="@dish.Name" />
+                                            <div class="card-body">
+                                                <h5 class="card-title">@dish.Name</h5>
+                                                <table class="table table-striped">
+                                                    <tr>
+                                                        <th>Meal</th>
+                                                        <td>@dish.FkNutritionActualMeal.MealType.Name</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Calories (kcal)</th>
+                                                        <td>@dishTotal.TotalCalories.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Protein (g)</th>
+                                                        <td>@dishTotal.TotalProtein.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Carbohydrates (g)</th>
+                                                        <td>@dishTotal.TotalCarbs.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Sugars (g)</th>
+                                                        <td>@dishTotal.TotalSugars.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fat (g)</th>
+                                                        <td>@dishTotal.TotalFat.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Saturated Fat (g)</th>
+                                                        <td>@dishTotal.TotalSaturatedFat.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Unsaturated Fat (g)</th>
+                                                        <td>@dishTotal.TotalUnsaturatedFat.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Fiber (g)</th>
+                                                        <td>@dishTotal.TotalFiber.ToString("N2")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>Alcohol (kcal)</th>
+                                                        <td>@dishTotal.TotalAlcohol.ToString("N2")</td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                            <div class="card-footer d-flex justify-content-center">
+                                                <a class="btn btn-primary" asp-action="DishEditor" asp-route-id="@dish.Id">Edit</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-end">
+                            <a class="btn btn-secondary me-2 visually-hidden" asp-action="EditPlan" asp-route-id="@dailyPlan.Id" asp-route-copy="true" asp-route-userid="@Model.CurrentUser.Id">
+                                <i data-feather="copy"></i><span class="ms-2">Copy</span></a>
+                            <a class="btn btn-primary" asp-action="EditPlan" asp-route-id="@dailyPlan.Id" asp-route-userid="@Model.CurrentUser.Id">
+                                <i data-feather="edit"></i><span class="ms-2">Edit</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>    
+}
+
+

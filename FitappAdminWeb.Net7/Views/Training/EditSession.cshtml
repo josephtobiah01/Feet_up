@@ -1,0 +1,276 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model FitappAdminWeb.Net7.Models.TrainingSessionEditViewModel
+@{
+    bool isCopyMode = Model.IsCopy;
+    bool IsEditMode = Model.Data.TrainingSessionId > 0 && !Model.IsCopy;
+    bool isAddMode = !Model.IsCopy && Model.Data.TrainingSessionId == 0;
+    bool isTemplateCopy = isCopyMode && Model.Data.IsTemplate;
+    bool isTemplateEdit = IsEditMode && Model.Data.IsTemplate;
+    bool isTemplateAdd = isAddMode && Model.Data.IsTemplate;
+}
+
+@if (isTemplateCopy)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            You are now creating from a template (ID: @Model.Data.TrainingSessionId). This session will be saved as a new session and will not edit the template.
+        </div>
+    </div>
+}
+else if (isTemplateAdd)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            You are now in <span class="fw-bold">TEMPLATE ADD</span> mode. This will add a new training session template.
+        </div>
+    </div>
+}
+else if (isTemplateEdit)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            You are now in <span class="fw-bold">TEMPLATE EDIT</span> mode. Changes here will update the template. It will not update any sessions created with this template previously.
+        </div>
+    </div>
+}
+else if (isCopyMode)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">You are in <span class="fw-bold">COPY</span> mode. This session will be saved as a new session and will not edit the original session (ID: @Model.Data.TrainingSessionId)</div>
+    </div>
+}
+else if (IsEditMode)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">You are in <span class="fw-bold">EDIT</span> mode. Changes in this session will be saved on this session (ID: @Model.Data.TrainingSessionId)</div>
+    </div>
+}
+else if (isAddMode)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">You are in <span class="fw-bold">ADD</span> mode. This session will be saved as a new session.</div>
+    </div>
+}
+
+<form id="exEditor">
+    <div class="form-group">
+        <input type="hidden" id="editmode" value="@(IsEditMode)" data-bind="value: EditMode" />
+        <input type="hidden" asp-for="Data.UserId" data-bind="value: UserId" />
+        <input type="hidden" asp-for="Data.TrainingSessionId" data-bind="value: TrainingSessionId" />
+        <fieldset>
+            <legend>
+                @if (isTemplateAdd || isTemplateCopy)
+                {
+                    <span>Add Template</span>
+                }
+                else if (isTemplateEdit)
+                {
+                    <span>Edit Template <span class="text-muted">(ID: @Model.Data.TrainingSessionId)</span></span>
+                }
+                else if (IsEditMode)
+                {
+                    <span>Edit Training Session <span class="text-muted">(ID: @Model.Data.TrainingSessionId)</span></span>               
+                }
+                else
+                {
+                    <span>Add Training Session</span>
+                }              
+            </legend>
+            @if (isTemplateCopy || isTemplateAdd || isAddMode || isCopyMode)
+            {
+                <div class="row mb-3 pb-3 border-bottom">
+                    <div class="col">
+                        <div class="input-group">
+                            <label class="input-group-text" for="templateid">Load a Template</label>
+                            <select class="form-select" data-bind="value: TemplateId" id="templateid" asp-items="Model.Select_Template">
+                                <option value="-1">No Template</option>
+                            </select>
+                            <button class="btn btn-outline-primary" type="button" data-bind="click: LoadTemplate, enable: TemplateId() > 0">Load</button>
+                        </div>
+                        <span class="form-text text-muted">Note: Loading a template will discard all current changes in this form.</span>
+                    </div>                    
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="Data_IsTemplate" name="Data.IsTemplate" checked="@Model.Data.IsTemplate" data-bind="checked: IsTemplate" />
+                            <label class="form-check-label" for="Data_IsTemplate">Create As Template<span class="text-muted ms-1">(Template Sessions are not added to a plan and can only be used to create new sessions)</span></label>
+                        </div>
+                    </div>
+                </div>                
+                <div class="row mb-3" data-bind="hidden: IsTemplate">
+                    <div class="col">
+                        <label for="currentuser">User:</label>
+                        <span class="form-text">@($"{Model.CurrentUser.FirstName} {Model.CurrentUser.LastName} (User ID: {Model.CurrentUser.Id})")</span>
+                    </div>
+                </div>
+                <div class="row mb-3" data-bind="hidden: IsTemplate">
+                    <div class="col">
+                        <label asp-for="Data.Eds12WeekProgramId">12-week plan</label>
+                        <select class="form-select" asp-for="Data.Eds12WeekProgramId" asp-items="Model.Select_Program" data-bind="value: Eds12WeekPlanId"></select>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <input type="hidden" asp-for="Data.Eds12WeekProgramId" data-bind="value: Eds12WeekPlanId" />
+                <input type="hidden" id="Data_IsTemplate" name="Data.IsTemplate" value="@Model.Data.IsTemplate.ToString().ToLower()" data-bind="value: IsTemplate" />
+            }
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Data.Name">Name</label>
+                    <input type="text" class="form-control" asp-for="Data.Name" data-bind="value: Name" required />
+                </div>              
+            </div>           
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Data.Description">Description</label>
+                    <input type="text" class="form-control" asp-for="Data.Description" data-bind="value:Description" />
+                </div>               
+            </div>
+            <div class="row mb-3" data-bind="hidden: IsTemplate">
+                <div class="col-md-6">
+                    <label asp-for="Data.StartDateTime">Start Date</label>
+                    <input type="date" class="form-control" asp-for="Data.StartDateTime" data-bind="value: StartDateTime" required />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Data.StartDateTime_TimeSpan">Start Time</label>
+                    <input asp-for="Data.StartDateTime_TimeSpan" type="time" class="form-control" data-bind="value: StartDateTime_TimeSpan" required />
+                </div>
+            </div>
+            <div class="row mb-3" data-bind="hidden: IsTemplate">
+                <div class="col-md-6">
+                    <label asp-for="Data.EndDateTime">End Date</label>
+                    <input type="date" class="form-control" asp-for="Data.EndDateTime" data-bind="value: EndDateTime" required />
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="Data.EndDateTime_TimeSpan">End Time</label>
+                    <input asp-for="Data.EndDateTime_TimeSpan" type="time" class="form-control" data-bind="value: EndDateTime_TimeSpan" required />
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-group mb-3">
+        <fieldset>
+            <legend>
+                <span>Exercises</span>
+                <button type="button" class="btn btn-outline-primary" data-bind="click: AddExercise">
+                    <i data-feather="plus"></i>
+                    <span>Add New Exercise</span>
+                </button>
+            </legend>
+            <div id="exercise_list" class="list-group" data-bind="foreach: Exercises">
+                <div class="list-group-item list-group-item bg-light">
+                    <div class="row mb-3 g-3">                        
+                        <label class="col-auto col-form-label" data-bind="attr: { for: 'exercise' + $index() }">Exercise Type</label>
+                        <div class="col">
+                            <input type="hidden" data-bind="value: ExerciseTypeId, event: {change: OnExerciseChange}" />
+                            <select class="form-select exertype-select" asp-items="Model.Select_ExerciseTypes" data-bind="value: ExerciseTypeId, attr: { id: 'exercise' + $index }, enable: Editable, event: {change: OnExerciseChange}">
+                                <option>Select..</option>
+                            </select>
+                            @*<input type="text" class="exertype-select form-control" data-bind="attr: {id: 'exercise' + $index }, enable: Editable" />*@
+                            <span data-bind="if: IsComplete"><span class="badge bg-success">Done</span></span>
+                            <span data-bind="if: IsSkipped"><span class="badge bg-warning">Skipped</span></span>
+                            <span data-bind="ifnot: Editable" class="fw-normal text-danger">This exercise cannot be edited as it is already done/skipped and have metrics data.</span>
+                        </div>
+                        <div class="col d-flex justify-content-end">
+                            <span class="text-muted mt-2 me-3" data-bind="text: Sets().length + ' Set/s'"></span>
+                            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="collapse" data-bind="attr: {'data-bs-target': '#exertable' + $index()}"><i data-feather="chevron-down"></i></button>
+                            <button type="button" class="btn btn-outline-danger" data-bind="click: $parent.RemoveExercise, visible: Editable"><i data-feather="x"></i></button>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary" data-bind="click: AddSet, enable: Editable, visible: Editable">
+                                <i data-feather="plus"></i>Add Set
+                            </button>
+                            <button type="button" class="btn btn-secondary" data-bind="click: UseSetDefault, visible: ShowHasSetDefaults">
+                                <i data-feather="refresh-cw"></i><span class="ms-2">Use Set Defaults</span>
+                            </button>
+                        </div>                      
+                    </div>
+                    <div class="row mb-3 collapse show" data-bind="if: Editable, visible: Editable, attr: {id : 'exertable' + $index()}">
+                        <div class="col">
+                            <div class="list-group" data-bind="foreach: Sets">
+                                <div class="list-group-item">
+                                    <div class="row">
+                                        <input type="hidden" data-bind="value: SetId" />
+                                        <div class="col-auto col-form-label fw-bold">
+                                            Set # <span data-bind="text: $index"></span> <span class="text-muted">(ID: <span data-bind="text: SetId"></span>)</span>
+                                            <span data-bind="if: IsComplete"><span class="badge bg-success">Done</span></span>
+                                            <span data-bind="if: IsSkipped"><span class="badge bg-warning">Skipped</span></span>
+                                            <span data-bind="ifnot: Editable" class="fw-normal text-danger">This set cannot be edited as it is already done/skipped and have metrics data.</span>
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="button" class="btn btn-link" data-bind="click: AddMetric, enable: Editable, visible: Editable">Add Metric..</button>
+                                        </div>
+                                        <div class="col d-flex justify-content-end">
+                                            <button type="button" class="btn btn-outline-danger" data-bind="click: $parent.RemoveSet, visible: Editable"><i data-feather="x"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3" data-bind="if: Editable, visible: Editable">
+                                        <div class="list-group list-group-flush" data-bind="foreach: SetMetrics">
+                                            <div class="list-group-item">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <input type="hidden" data-bind="value: SetMetricId" />
+                                                        <input type="text" class="form-control" placeholder="Target Metric" data-bind="value: TargetCustomMetric, enable: Editable" />
+                                                    </div>
+                                                    <div class="col">
+                                                        <select class="form-select" asp-items="Model.Select_MetricTypes" data-bind="value: SetMetricTypeId, enable: Editable">
+                                                        </select>
+                                                    </div>
+                                                    <div class="col">
+                                                        <button type="button" class="btn btn-outline-danger" data-bind="click: $parent.RemoveMetric, visible: Editable"><i data-feather="x"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-group d-flex flex-row-reverse">
+        <button type="button" class="btn btn-primary" data-bind="click: SubmitModel, enable: EnableSubmit">Save</button>
+        <button type="button" class="btn btn-link">Cancel</button>
+    </div>
+</form>
+<div id="toast_tmpl" class="toast visually-hidden" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+        <i data-feather="bell" class="me-2"></i>
+        <strong class="me-auto" id="toast_header"></strong>
+        <small id="toast_time"></small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body" id="toast_body"></div>
+</div>
+<div id="toastcontainer" aria-live="polite" class="toast-container position-fixed bottom-0 end-0 p-3"></div>
+
+@section Scripts {
+    <script asp-src-include="lib/knockout/knockout-latest.debug.js"></script>
+    <script asp-src-include="lib/choices.js/choices.min.js"></script>
+    <script src="~/lib/managed/training_edit.js"></script>
+    <script>
+        window.fitapp.TrainingEdit.Initialize({
+            UserId: @(Model.CurrentUser != null ? Model.CurrentUser.Id : 0),
+            SessionId: @(Model.Data != null ? Model.Data.TrainingSessionId : 0),
+            IsCopy: @(Model.IsCopy.ToString().ToLower()),
+            UseDummyData: false
+        });
+        feather.replace();
+    </script>
+}

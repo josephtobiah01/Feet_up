@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FitappAdminWeb.Net7</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FitappAdminWeb.Net7.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/bootstrap-toaster/css/bootstrap-toaster.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/choices.js//choices.min.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    @await RenderSectionAsync("Styles", required: false)
+</head>
+<body>
+    <header class="p-3 mb-3 border-bottom bg-light">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                    <img class="me-2" src="/img/air_logo.png" width="40" height="32" aria-label="Age In Reverse" />
+                </a>
+
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a asp-controller="Home" asp-action="Index" class="nav-link px-2 link-dark">User List</a></li>
+                    <li><a asp-controller="Lookup" asp-action="Index" class="nav-link px-2 link-dark">Lookups</a></li>
+                    <li>
+                        <a asp-controller="Chat" asp-action="RoomsWithConcerns" class="nav-link px-2 link-dark">
+                            Chat
+                            <span class="badge bg-danger">@ViewBag.RoomWithConcernsCount</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Nutrition" asp-action="MealQueue" class="nav-link px-2 link-dark">
+                            Meal Queue
+                        </a>
+                    </li>
+                    <li>
+                        <a asp-controller="Home" asp-action="Promotion" class="nav-link px-2 link-dark">Promotion</a>
+                    </li>
+                </ul>
+
+                @if (User.Identity != null && User.Identity.IsAuthenticated)
+                {
+                    <div class="dropdown text-end">
+                        <span class="me-3">@User.Identity.Name</span>
+                        <a href="#" class="link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i data-feather="user"></i>
+                        </a>
+                        <ul class="dropdown-menu text-small shadow">
+                            <li><a class="dropdown-item" asp-area="MicrosoftIdentity" asp-controller="Account" asp-action="SignOut">Sign Out</a></li>
+                        </ul>
+                    </div>
+                }        
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>       
+    </div>  
+    <footer class="py-3 my-4 bg-light">
+        <p class="text-center text-muted">© @DateTime.UtcNow.Year FitApp Inc</p>
+    </footer>
+    @await RenderSectionAsync("Modals", required: false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script asp-src-include="~/lib/jquery-validation/dist/jquery.validate.js,~/lib/managed/custom_validators.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/bootstrap-toaster/js/bootstrap-toaster.min.js"></script>
+    <script src="~/lib/feather-icons/feather.min.js"></script>
+    <script src="~/lib/managed/utilities.js"></script>
+    <script src="~/lib/chartJS/chart.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

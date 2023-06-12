@@ -1,0 +1,104 @@
+﻿@model UserEditModel
+
+<div class="alert alert-warning d-flex align-items-center" role="alert">
+    <i data-feather="alert-circle"></i>
+    <div class="ms-2">
+        You are now editing USER ID @Model.Id
+    </div>
+</div>
+
+<h4>User Information Edit</h4>
+<form asp-action="UserEdit" method="post" id="user_form">
+    <input type="hidden" asp-for="Id" />
+
+    <h5 class="border-bottom mb-3 pb-2">Personal Information</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="FirstName" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="LastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName" required />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="Gender" class="form-label">Gender</label>
+            <select class="form-select" asp-for="Gender" required>
+                <option value="">Please select..</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Dob" class="form-label">Date Of Birth</label>
+            <input type="date" class="form-control" asp-for="Dob" required />
+        </div>
+    </div>
+    <h5 class="border-bottom mb-3 pb-2">Body Information</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="Height" class="form-label">Height</label>
+            <div class="input-group">
+                <input type="number" class="form-control" asp-for="Height" />
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Weight" class="form-label">Weight</label>
+            <div class="input-group">
+                <input type="number" class="form-control" asp-for="Weight" />
+                <span class="input-group-text">kg</span>
+            </div>
+        </div>
+    </div>
+    <h5 class="border-bottom mb-3 pb-2">Contact Information</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" asp-for="Email" required />
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Mobile" class="form-label">Mobile</label>
+            <input type="text" class="form-control" asp-for="Mobile" required />
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col">
+            <label asp-for="Country" class="form-label">Country</label>
+            <select class="form-select" asp-for="Country" asp-items="Model.CountryList">
+                <option>Please select..</option>
+            </select>
+        </div>
+    </div>
+    <h5 class="border-bottom mb-3 pb-2">Muhdo Registration Data</h5>
+    <div class="row mb-3">
+        <div class="col">
+            <label asp-for="BarcodeString" class="form-label">Muhdo Kit ID</label>
+            @if (Model.IsNewBarcode.HasValue && Model.IsNewBarcode.Value == false)
+            {
+                <input type="hidden" asp-for="BarcodeString" />
+                <span class="form-text text-muted">@Model.BarcodeString</span>
+            }
+            else
+            {
+                <input type="text" class="form-control" asp-for="BarcodeString"/>
+            }
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Update Information</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $("#user_form").validate({
+            errorClass: "is-invalid",
+            validClass: "is-valid",
+        })
+    </script>
+}

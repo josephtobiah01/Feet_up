@@ -1,0 +1,25 @@
+﻿
+@{
+    string start_dt_val = Model.StartDate.ToString("yyyy-MM-dd");
+    string end_dt_val = Model.EndDate.ToString("yyyy-MM-dd");
+}
+
+<h4>Daily Nutrition Plan</h4>
+<p>You can view weekly customer daily nutrition plans here. Use the search criteria below to refine the view</p>
+
+<div class="border bg-light py-3 mb-3">
+    <form asp-action="Index" method="get" id="search-form">
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="startdate">Start Date</label>
+                <input type="date" id="startdate" name="startdate" class="form-control" value="@start_dt_val" />
+            </div>
+            <div class="col-md-6 mb-3">
+                <label class="form-label" for="enddate">End Date</label>
+                <input type="date" id="enddate" name="enddate" class="form-control" value="@end_dt_val" />
+            </div>
+        </div>
+    </form>
+</div>
+
+

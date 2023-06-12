@@ -1,0 +1,12 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\bin\Debug\net7.0\Imaging.Net7.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\bin\Debug\net7.0\Imaging.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\bin\Debug\net7.0\Imaging.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\refint\Imaging.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\Imaging.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Imaging.Net7\obj\Debug\net7.0\ref\Imaging.Net7.dll

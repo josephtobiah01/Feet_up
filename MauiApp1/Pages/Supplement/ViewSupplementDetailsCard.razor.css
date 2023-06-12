@@ -1,0 +1,371 @@
+﻿.content-div {
+    min-height: 124px;
+    /*min-width: 345px;*/
+    border: 2px solid #EEF0F2;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-left: 16px;
+    margin-right: 16px;
+    padding-bottom: 16px;
+}
+
+    .content-div > .header-div {
+        display: inline-grid;
+        grid: 'title title title title blank checkbox' 'icon time dot button blank checkbox';
+        grid-template-columns: max-content max-content max-content max-content auto max-content;
+        gap: 0px;
+        margin-left: 16px;
+        margin-top: 16px;
+        width: 100%;
+    }
+
+    .content-div > .header-dash-border-div {
+        border-top: 1px dashed #E8E8E8;
+        margin-top: 14px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+.title-label {
+    grid-area: title;
+}
+
+.daysbutton-content-group-div {
+    display: inline-flex;
+    margin-right: 16px;
+    margin-left: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 8px;
+}
+
+.monday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.monday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.tuesday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.tuesday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.wednesday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.wednesday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.thursday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.thursday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.friday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.friday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.saturday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.saturday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.sunday-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    border: 1px solid black;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.sunday-disable-button {
+    width: 32px;
+    height: 32px;
+    background: #FFFFFF;
+    color: #CED3D7;
+    border: 1px solid #EEF0F2;
+    border-radius: 60px;
+    margin-left: 12px;
+    text-align: center;
+    padding-top: 4px;
+}
+
+.image-container-div {
+    grid-area: icon;
+    min-height: 20px;
+    width: 20px;
+    height: 20px;
+    justify-content: center;
+    text-align: center;
+    margin-top: 3px;
+}
+
+    .image-container-div > .icon-image {
+        width: 12px;
+        height: 12px;
+    }
+
+.time-elapsed-label {
+    grid-area: time;
+    min-height: 20px;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    color: #4D4D4D;
+    text-align: center;
+    margin-top: 8px;
+}
+
+.dot {
+    grid-area: dot;
+    width: 3px;
+    height: 3px;
+    background-color: #D9D9D9;
+    border-radius: 50%;
+    display: inline-block;
+    margin-top: 16px;
+    margin-left: 8px;
+}
+
+.snooze-button {
+    grid-area: button;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #006272;
+    min-width: 54px;
+    min-height: 20px;
+    border-color: transparent;
+    background-color: transparent;
+    margin-top: 4px;
+}
+
+.block-div {
+    grid-area: blank;
+    width: 100%;
+}
+
+.go-to-div {
+    grid-area: checkbox;
+    width: 24px;
+    height: 24px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-right: 32px;
+    justify-self: end;
+}
+
+.tablet-description-container-div {
+    /* display: inline-grid;
+    grid: 'icon tablet dot meal';
+    grid-template-columns: max-content max-content max-content max-content;*/
+    display: inline-block;
+    gap: 0px;
+    margin-left: 16px;
+    /*margin-top: 16px;*/
+    margin-right: 16px;
+    /*width: 100%;*/
+    padding: 0px;
+}
+
+    .tablet-description-container-div > .tablet-description-image-container-div {
+        display: inherit;
+        grid-area: icon;
+        min-height: 20px;
+        width: 20px;
+        height: 20px;
+        justify-content: center;
+        text-align: center;
+        margin-top: 2px;
+    }
+
+        .tablet-description-container-div > .tablet-description-image-container-div > .tablet-description-icon-image {
+            width: 12px;
+            height: 12px;
+        }
+
+    .tablet-description-container-div > .tablet-description-label {
+        grid-area: tablet;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        /*margin-left: 8px;*/
+    }
+
+    .tablet-description-container-div > .tablet-description-dot {
+        grid-area: dot;
+        width: 3px;
+        height: 3px;
+        background-color: #D9D9D9;
+        border-radius: 50%;
+        display: inline-block;
+        /*margin-top: 8px;*/
+        margin-left: 8px;
+        margin-right: 4px;
+        margin-bottom: 2px;
+    }
+
+    .tablet-description-container-div > .tablet-before-meal-description-label {
+        grid-area: meal;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        padding-top: 2px;
+    }
+
+.avoid-description-div {
+    display: grid;
+    grid: 'icon description';
+    grid-template-columns: max-content auto;
+    gap: 0px;
+    margin-left: 16px;
+    margin-top: 16px;
+    margin-right: 16px;
+    width: fit-content;
+    padding: 0px;
+    padding-right: 8px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    background: linear-gradient(270deg, #EEF0F2 0%, rgba(238, 240, 242, 0) 100%);
+    border-radius: 30px;
+}
+
+    .avoid-description-div > .avoid-description-image-container-div {
+        display: inherit;
+        grid-area: icon;
+        min-height: 20px;
+        width: 20px;
+        height: 20px;
+        justify-content: center;
+        text-align: center;
+        margin-top: 0px;
+    }
+
+        .avoid-description-div > .avoid-description-image-container-div > .avoid-description-icon-image {
+            width: 12px;
+            height: 12px;
+            margin-top:2px;
+        }
+
+    .avoid-description-div > .avoid-description-label {
+        grid-area: description;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 16px;
+        word-wrap: break-word;
+    }

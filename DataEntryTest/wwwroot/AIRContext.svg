@@ -1,0 +1,851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg stroke-linecap="round" font-size="12" font-family="Segoe UI" width="2518.33" height="2676.2800000000016" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs />
+  <rect width="2518.33" height="2676.2800000000016" fill="#1E1E1E" />
+  <g transform="translate(20,20)">
+    <g id="IModel">
+      <rect rx="5" ry="5" width="2478.33" height="2636.2800000000016" fill="#FFFFFF" stroke="#A5A6A9" stroke-width="1" />
+      <text x="1193" y="17.950000000000003" fill="#000000">testfitappContext</text>
+      <rect x="5" y="27.96" width="2468.33" height="2603.3200000000015" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+      <g id="Eds12weekPlan-&gt;User">
+        <path d="M 233.88,2316.48 L 233.88,2353.44" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 233.88,2362.44 L 237.88,2352.44 C 235.213333333333,2353.44 232.546666666667,2353.44 229.88,2352.44 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="219.80666666666639" y="2344.4300000000012" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsAvaiableSetMetrics-&gt;EdsExerciseType">
+        <path d="M 1282.23593178484,593.64 C 1275.33197726161,643.261039697346 1271.88,710.21437303068 1271.88,794.5 C 1271.88,865.817135439445 1274.59254730963,929.785076034662 1280.0176419289,986.40382178565" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1280.90469987107,995.360000000001 L 1283.89960358614,985.014442898643 C 1281.34448314584,986.272405794216 1278.69080071195,986.535237777083 1275.9385562845,985.802938847244 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1257.8066666666664" y="799.47000000000048" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsAvaiableSetMetrics-&gt;EdsSetMetricTypes">
+        <path d="M 1391.87103056928,593.64 L 1415.71957067044,631.95899252135" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1420.47509427055,639.6 L 1418.58718248316,628.996425645895 C 1416.85157177838,631.254470506519 1414.58756956249,632.663514536182 1411.79517583547,633.223557734883 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1392.0997290865826" y="621.59000000000037" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsDailyPlan-&gt;EdsWeeklyPlan">
+        <path d="M 233.88,1716.88 L 233.88,1753.84" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 233.88,1762.84 L 237.88,1752.84 C 235.213333333333,1753.84 232.546666666667,1753.84 229.88,1752.84 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="219.80666666666639" y="1744.8300000000011" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExercise-&gt;EdsExerciseType">
+        <path d="M 1042.26229864957,921.420000000001 L 1107.31167026404,988.881277786178" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1113.55876226562,995.360000000001 L 1109.49698102557,985.384934428387 C 1108.27148096239,987.955782674833 1106.3518595657,989.806772897522 1103.7381168355,990.937905096452 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1091.4003536383948" y="977.35000000000059" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExercise-&gt;EdsTrainingSession">
+        <path d="M 854.218968230836,921.420000000001 L 791.151697725113,1043.32636907332" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 787.016257650831,1051.32 L 795.163915923003,1044.27616122559 C 792.335939343881,1043.9390268621 789.967456106345,1042.71371128454 788.058466210396,1040.60021449289 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="827.85522588166737" y="977.35000000000059" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsEquipment">
+        <path d="M 1034.44387137124,1417.08 L 923.541835881958,1499.87678423863" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 916.33,1505.26096692607 L 926.736121063259,1502.48380210979 C 924.339492576393,1500.94520436929 922.744179187523,1498.80836410797 921.950180896648,1496.07328132583 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1003.6633428884138" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsExerciseClass">
+        <path d="M 984.878333333333,1370.51716409696 C 880.974047296923,1420.0344641442 808.070923084614,1450.29207611188 766.168960696408,1461.29 L 745.947447287355,1466.5975 C 718.330420454348,1473.846085551 692.017241757883,1484.88220266811 667.007911197961,1499.70585135134" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 659.33,1504.40155999181 L 669.947994060168,1502.59651092371 C 667.703571737291,1500.84331967696 666.312250658632,1498.56838302571 665.774030824191,1495.77170096997 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="847.05501433262111" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsForce">
+        <path d="M 1599.31612862876,1417.08 L 1710.21816411804,1499.87678423863" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1717.43,1505.26096692607 L 1711.80981910335,1496.07328132583 C 1711.01582081248,1498.80836410797 1709.42050742361,1500.94520436929 1707.02387893674,1502.48380210979 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1616.0233237782527" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsLevel">
+        <path d="M 1316.88,1417.08 L 1316.88,1482.02" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1316.88,1491.02 L 1320.88,1481.02 C 1318.21333333333,1482.02 1315.54666666667,1482.02 1312.88,1481.02 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1302.8066666666664" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsMainMuscleWorked">
+        <path d="M 1458.09806431438,1417.08 L 1502.60935857204,1483.54211695889" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1507.61747850107,1491.02 L 1505.37640437598,1480.48540998587 C 1503.71719309665,1482.8001732657 1501.50152404743,1484.28406065208 1498.72939722832,1484.937072145 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1459.4149952224595" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsMechanicsType">
+        <path d="M 1175.66193568562,1417.08 L 1131.15064142796,1483.54211695889" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1126.14252149893,1491.02 L 1135.03060277168,1484.937072145 C 1132.25847595257,1484.28406065208 1130.04280690335,1482.8001732657 1128.38359562402,1480.48540998587 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1160.2716714442067" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsOtherMuscleWorked">
+        <path d="M 1648.88166666667,1309.56098669591 L 1982.62790482159,1413.445 C 2106.80824251379,1452.0981753114 2187.11117419996,1480.83717465926 2223.53669988011,1499.66199804356" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 2231.43,1503.98586358463 L 2224.5813845517,1495.67343515238 C 2224.17727255286,1498.49262024802 2222.89612720735,1500.8313758391 2220.7379485152,1502.68970192562 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1968.1027572670762" y="1426.6091586083812" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsExerciseType-&gt;EdsSport">
+        <path d="M 1648.88166666667,1351.45825635902 L 1711.62818308738,1378.9075 C 1832.98714020111,1431.99748446217 1918.00233349676,1472.61879673278 1966.67376297432,1500.77143681184" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1974.43,1505.33660791504 L 1967.84092379511,1496.81697912229 C 1967.35008461924,1499.62236465989 1965.9974413294,1501.92050896379 1963.7829939256,1503.71141203401 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1779.8873852963347" y="1429.0364463839067" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsSet-&gt;EdsExercise">
+        <path d="M 919.88,593.64 L 919.88,658.58" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 919.88,667.58 L 923.88,657.58 C 921.213333333333,658.58 918.546666666667,658.58 915.88,657.58 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="905.80666666666639" y="621.59000000000037" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsSetDefaults-&gt;EdsExerciseType">
+        <path d="M 1813.17469644518,893.440000000001 C 1771.48860570345,925.411604863136 1719.25391257879,961.463371163716 1656.47061707118,1001.59529890174" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1648.88166666667,1006.43346299133 L 1659.46412893372,1004.43059196046 C 1657.18738212149,1002.71958785055 1655.75385202087,1000.47100995292 1655.16353863186,997.684858267555 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1660.6886817825371" y="986.21950861185474" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsSetMetrics-&gt;EdsSetMetricTypes">
+        <path d="M 1516.88,293.840000000001 L 1516.88,630.6" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1516.88,639.6 L 1520.88,629.6 C 1518.21333333333,630.6 1515.54666666667,630.6 1512.88,629.6 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1502.8066666666664" y="471.69000000000023" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsSetMetrics-&gt;EdsSet">
+        <path d="M 1352.57166666667,249.402734768275 C 1261.90692170757,294.573436796318 1205.48139641033,319.240387049254 1183.29509077496,323.403585527082 C 1171.93988555967,325.534358168758 1154.37201183722,332.518890983367 1130.59146960761,344.357183970909" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1122.56,348.418648724181 L 1133.28895056546,347.47545215726 C 1131.19316808957,345.547031320185 1129.98977112564,343.167336621634 1129.67875967367,340.336368061609 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1218.3799999999997" y="321.79000000000013" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsSetMetricsDefault-&gt;EdsSetDefaults">
+        <path d="M 1805.74313991092,593.64 L 1867.36423013375,688.023929688046" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1872.28435658063,695.56 L 1870.16691400052,684.999865676994 C 1868.48068499478,687.295022066286 1866.24777527272,688.752837309806 1863.46818483434,689.373311407553 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1806.6729184208918" y="621.59000000000037" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsSetMetricsDefault-&gt;EdsSetMetricTypes">
+        <path d="M 1643.11454756239,593.64 L 1619.01904347652,631.97992392848" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 1614.23005186405,639.6 L 1622.93785413191,633.261689526072 C 1620.14794363526,632.689404167363 1617.89014331777,631.270443689596 1616.16445317945,629.004808092772 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="1628.6722997132219" y="621.59000000000037" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsTrainingSession-&gt;EdsDailyPlan">
+        <path d="M 515.949422004482,1361.12 L 397.311442898851,1457.36976342917" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 390.322278626153,1463.04 L 400.608121849522,1459.84603237583 C 398.151477946382,1458.40519517327 396.47140785132,1456.33433168506 395.567911564335,1453.63344191121 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="418.64755094595307" y="1445.0300000000009" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="EdsWeeklyPlan-&gt;Eds12weekPlan">
+        <path d="M 233.88,2016.68 L 233.88,2053.64" fill="none" stroke="#A0A0A0" stroke-width="1" />
+        <path d="M 233.88,2062.64 L 237.88,2052.64 C 235.213333333333,2053.64 232.546666666667,2053.64 229.88,2052.64 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        <text x="219.80666666666639" y="2044.6300000000012" fill="#A0A0A0">1:*</text>
+      </g>
+      <g id="Eds12weekPlan">
+        <rect x="20" y="2062.6400000000012" rx="5" ry="5" width="427.76000000000005" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="193" y="2080.5900000000011" fill="#000000">Eds12weekPlan</text>
+        <rect x="25" y="2090.6000000000013" width="417.76000000000005" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="Eds12weekPlan.EdsWeeklyPlan">
+          <rect x="313.50666666666672" y="2158.6000000000013" rx="3" ry="3" width="114.25333333333333" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="323.50666666666672" y="2176.5500000000011" fill="#FFFFFF">EdsWeeklyPlan (*)</text>
+        </g>
+        <g id="Eds12weekPlan.FkCustomer">
+          <rect x="256.90000000000003" y="2102.6400000000012" rx="3" ry="3" width="100.01666666666665" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="266.90000000000003" y="2120.5900000000011" fill="#FFFFFF">FkCustomer (1)</text>
+        </g>
+        <g id="Eds12weekPlan.Id">
+          <rect x="40" y="2102.6400000000012" rx="3" ry="3" width="64.580000000000013" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="50" y="2120.5900000000011" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="Eds12weekPlan.DurationWeeks">
+          <rect x="205.84" y="2270.5200000000013" rx="3" ry="3" width="138.30666666666664" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="215.84" y="2288.4700000000012" fill="#FFFFFF">DurationWeeks (short)</text>
+        </g>
+        <g id="Eds12weekPlan.EndDate">
+          <rect x="40" y="2214.5600000000013" rx="3" ry="3" width="131.36666666666667" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="50" y="2232.5100000000011" fill="#FFFFFF">EndDate (DateTime?)</text>
+        </g>
+        <g id="Eds12weekPlan.FkCustomerId">
+          <rect x="201.36666666666667" y="2214.5600000000013" rx="3" ry="3" width="132.98000000000002" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="211.36666666666667" y="2232.5100000000011" fill="#000000">FkCustomerId (long?)</text>
+        </g>
+        <g id="Eds12weekPlan.IsCurrent">
+          <rect x="40.000000000000007" y="2158.6000000000013" rx="3" ry="3" width="102.53333333333336" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="50.000000000000007" y="2176.5500000000011" fill="#FFFFFF">IsCurrent (bool)</text>
+        </g>
+        <g id="Eds12weekPlan.IsTemplate">
+          <rect x="172.53333333333336" y="2158.6000000000013" rx="3" ry="3" width="110.97333333333336" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="182.53333333333336" y="2176.5500000000011" fill="#FFFFFF">IsTemplate (bool)</text>
+        </g>
+        <g id="Eds12weekPlan.Name">
+          <rect x="134.58" y="2102.6400000000012" rx="3" ry="3" width="92.320000000000022" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="144.58" y="2120.5900000000011" fill="#FFFFFF">Name (string)</text>
+        </g>
+        <g id="Eds12weekPlan.StartDate">
+          <rect x="40" y="2270.5200000000013" rx="3" ry="3" width="135.84" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="50" y="2288.4700000000012" fill="#FFFFFF">StartDate (DateTime?)</text>
+        </g>
+      </g>
+      <g id="EdsAvaiableSetMetrics">
+        <rect x="1153.05" y="339.80000000000018" rx="5" ry="5" width="319.66000000000008" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1253.05" y="357.75000000000017" fill="#000000">EdsAvaiableSetMetrics</text>
+        <rect x="1158.05" y="367.76000000000016" width="309.66000000000008" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsAvaiableSetMetrics.FkExerciseType">
+          <rect x="1173.05" y="435.76000000000022" rx="3" ry="3" width="115.43000000000006" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1183.05" y="453.71000000000021" fill="#FFFFFF">FkExerciseType (1)</text>
+        </g>
+        <g id="EdsAvaiableSetMetrics.FkSetMetricsTypes">
+          <rect x="1318.4799999999998" y="435.76000000000022" rx="3" ry="3" width="134.22999999999979" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1328.4799999999998" y="453.71000000000021" fill="#FFFFFF">FkSetMetricsTypes (1)</text>
+        </g>
+        <g id="EdsAvaiableSetMetrics.Id">
+          <rect x="1173.05" y="379.80000000000018" rx="3" ry="3" width="64.579999999999927" height="25.95999999999998" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1183.05" y="397.75000000000017" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsAvaiableSetMetrics.FkExerciseTypeId">
+          <rect x="1173.05" y="491.72000000000025" rx="3" ry="3" width="148.39333333333343" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1183.05" y="509.67000000000024" fill="#000000">FkExerciseTypeId (long?)</text>
+        </g>
+        <g id="EdsAvaiableSetMetrics.FkSetMetricsTypesId">
+          <rect x="1173.05" y="547.68000000000029" rx="3" ry="3" width="167.19333333333338" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1183.05" y="565.63000000000034" fill="#000000">FkSetMetricsTypesId (long?)</text>
+        </g>
+        <g id="EdsAvaiableSetMetrics.IsDeleted">
+          <rect x="1267.6299999999999" y="379.80000000000018" rx="3" ry="3" width="104.11666666666679" height="25.95999999999998" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1277.6299999999999" y="397.75000000000017" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+      </g>
+      <g id="EdsDailyPlan">
+        <rect x="65.575000000000273" y="1463.0400000000011" rx="5" ry="5" width="336.60999999999996" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="199.57500000000027" y="1480.9900000000011" fill="#000000">EdsDailyPlan</text>
+        <rect x="70.575000000000273" y="1491.0000000000011" width="326.60999999999996" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsDailyPlan.EdsTrainingSession">
+          <rect x="246.87833333333356" y="1614.9600000000012" rx="3" ry="3" width="135.30666666666662" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="256.87833333333356" y="1632.9100000000012" fill="#FFFFFF">EdsTrainingSession (*)</text>
+        </g>
+        <g id="EdsDailyPlan.FkEdsWeeklyPlan">
+          <rect x="242.40500000000031" y="1559.0000000000011" rx="3" ry="3" width="127.54333333333329" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="252.40500000000031" y="1576.9500000000012" fill="#FFFFFF">FkEdsWeeklyPlan (1)</text>
+        </g>
+        <g id="EdsDailyPlan.Id">
+          <rect x="85.575000000000287" y="1503.0400000000011" rx="3" ry="3" width="64.580000000000027" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.575000000000287" y="1520.9900000000011" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsDailyPlan.EndDay">
+          <rect x="85.575000000000287" y="1559.0000000000011" rx="3" ry="3" width="126.83000000000003" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.575000000000287" y="1576.9500000000012" fill="#FFFFFF">EndDay (DateTime?)</text>
+        </g>
+        <g id="EdsDailyPlan.FkEdsWeeklyPlanId">
+          <rect x="85.575000000000273" y="1670.9200000000012" rx="3" ry="3" width="155.12666666666667" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.575000000000273" y="1688.8700000000013" fill="#000000">FkEdsWeeklyPlanId (long)</text>
+        </g>
+        <g id="EdsDailyPlan.IsComplete">
+          <rect x="180.15500000000026" y="1503.0400000000011" rx="3" ry="3" width="114.21000000000004" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="190.15500000000026" y="1520.9900000000011" fill="#FFFFFF">IsComplete (bool)</text>
+        </g>
+        <g id="EdsDailyPlan.StartDay">
+          <rect x="85.575000000000273" y="1614.9600000000012" rx="3" ry="3" width="131.30333333333334" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.575000000000273" y="1632.9100000000012" fill="#FFFFFF">StartDay (DateTime?)</text>
+        </g>
+      </g>
+      <g id="EdsEquipment">
+        <rect x="689.42999999999984" y="1491.0200000000011" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="764.42999999999984" y="1508.9700000000012" fill="#000000">EdsEquipment</text>
+        <rect x="694.42999999999984" y="1518.9800000000012" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsEquipment.EdsExerciseType">
+          <rect x="709.42999999999984" y="1642.9400000000012" rx="3" ry="3" width="120.37" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="719.42999999999984" y="1660.8900000000012" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsEquipment.Id">
+          <rect x="709.42999999999984" y="1531.0200000000011" rx="3" ry="3" width="64.580000000000041" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="719.42999999999984" y="1548.9700000000012" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsEquipment.IsDeleted">
+          <rect x="709.42999999999984" y="1586.9800000000012" rx="3" ry="3" width="104.11666666666667" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="719.42999999999984" y="1604.9300000000012" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsEquipment.Name">
+          <rect x="804.00999999999988" y="1531.0200000000011" rx="3" ry="3" width="92.32000000000005" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="814.00999999999988" y="1548.9700000000012" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsExercise">
+        <rect x="702.29666666666662" y="667.58000000000038" rx="5" ry="5" width="435.16666666666652" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="889.29666666666662" y="685.53000000000043" fill="#000000">EdsExercise</text>
+        <rect x="707.29666666666662" y="695.54000000000042" width="425.16666666666652" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsExercise.EdsSet">
+          <rect x="816.87666666666667" y="707.58000000000038" rx="3" ry="3" width="70.476666666666574" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="826.87666666666667" y="725.53000000000043" fill="#FFFFFF">EdsSet (*)</text>
+        </g>
+        <g id="EdsExercise.FkExerciseType">
+          <rect x="1002.0333333333334" y="763.54000000000042" rx="3" ry="3" width="115.42999999999995" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1012.0333333333334" y="781.49000000000046" fill="#FFFFFF">FkExerciseType (1)</text>
+        </g>
+        <g id="EdsExercise.FkTraining">
+          <rect x="917.35333333333324" y="707.58000000000038" rx="3" ry="3" width="90.8033333333334" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="927.35333333333324" y="725.53000000000043" fill="#FFFFFF">FkTraining (1)</text>
+        </g>
+        <g id="EdsExercise.Id">
+          <rect x="722.29666666666662" y="707.58000000000038" rx="3" ry="3" width="64.580000000000041" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="732.29666666666662" y="725.53000000000043" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsExercise.EndTimeStamp">
+          <rect x="722.29666666666662" y="875.46000000000049" rx="3" ry="3" width="165.86" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="732.29666666666662" y="893.41000000000054" fill="#FFFFFF">EndTimeStamp (DateTime?)</text>
+        </g>
+        <g id="EdsExercise.FkExerciseTypeId">
+          <rect x="870.68333333333328" y="819.50000000000045" rx="3" ry="3" width="143.01333333333343" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="880.68333333333328" y="837.4500000000005" fill="#000000">FkExerciseTypeId (long)</text>
+        </g>
+        <g id="EdsExercise.FkTrainingId">
+          <rect x="722.29666666666662" y="819.50000000000045" rx="3" ry="3" width="118.38666666666666" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="732.29666666666662" y="837.4500000000005" fill="#000000">FkTrainingId (long)</text>
+        </g>
+        <g id="EdsExercise.IsComplete">
+          <rect x="857.82333333333327" y="763.54000000000042" rx="3" ry="3" width="114.21000000000004" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="867.82333333333327" y="781.49000000000046" fill="#FFFFFF">IsComplete (bool)</text>
+        </g>
+        <g id="EdsExercise.IsCustomerAddedExercise">
+          <rect x="918.15666666666675" y="875.46000000000049" rx="3" ry="3" width="191.09333333333325" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="928.15666666666675" y="893.41000000000054" fill="#FFFFFF">IsCustomerAddedExercise (bool)</text>
+        </g>
+        <g id="EdsExercise.IsSkipped">
+          <rect x="722.29666666666662" y="763.54000000000042" rx="3" ry="3" width="105.52666666666664" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="732.29666666666662" y="781.49000000000046" fill="#FFFFFF">IsSkipped (bool)</text>
+        </g>
+      </g>
+      <g id="EdsExerciseClass">
+        <rect x="432.42999999999984" y="1491.0200000000011" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="502.42999999999984" y="1508.9700000000012" fill="#000000">EdsExerciseClass</text>
+        <rect x="437.42999999999984" y="1518.9800000000012" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsExerciseClass.EdsExerciseType">
+          <rect x="452.42999999999978" y="1642.9400000000012" rx="3" ry="3" width="120.36999999999995" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="462.42999999999978" y="1660.8900000000012" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsExerciseClass.Id">
+          <rect x="452.42999999999984" y="1531.0200000000011" rx="3" ry="3" width="64.580000000000041" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="462.42999999999984" y="1548.9700000000012" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsExerciseClass.IsDeleted">
+          <rect x="452.42999999999989" y="1586.9800000000012" rx="3" ry="3" width="104.11666666666673" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="462.42999999999989" y="1604.9300000000012" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsExerciseClass.Name">
+          <rect x="547.00999999999988" y="1531.0200000000011" rx="3" ry="3" width="92.32000000000005" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="557.00999999999988" y="1548.9700000000012" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsExerciseType">
+        <rect x="984.8783333333331" y="995.36000000000058" rx="5" ry="5" width="664.00333333333356" height="421.72000000000025" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1273.8783333333331" y="1013.3100000000006" fill="#000000">EdsExerciseType</text>
+        <rect x="989.8783333333331" y="1023.3200000000006" width="654.00333333333356" height="388.76000000000028" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsExerciseType.EdsAvaiableSetMetrics">
+          <rect x="1358.938333333333" y="1259.2000000000007" rx="3" ry="3" width="153.9233333333334" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1368.938333333333" y="1277.1500000000008" fill="#FFFFFF">EdsAvaiableSetMetrics (*)</text>
+        </g>
+        <g id="EdsExerciseType.EdsExercise">
+          <rect x="1004.8783333333331" y="1091.3200000000006" rx="3" ry="3" width="95.60666666666657" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.8783333333331" y="1109.2700000000007" fill="#FFFFFF">EdsExercise (*)</text>
+        </g>
+        <g id="EdsExerciseType.EdsSetDefaults">
+          <rect x="1276.3416666666665" y="1147.2800000000007" rx="3" ry="3" width="113.88666666666654" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1286.3416666666665" y="1165.2300000000007" fill="#FFFFFF">EdsSetDefaults (*)</text>
+        </g>
+        <g id="EdsExerciseType.FkEquipment">
+          <rect x="1140.1649999999997" y="1147.2800000000007" rx="3" ry="3" width="106.17666666666673" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1150.1649999999997" y="1165.2300000000007" fill="#FFFFFF">FkEquipment (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkExerciseClass">
+          <rect x="1420.228333333333" y="1147.2800000000007" rx="3" ry="3" width="117.29666666666662" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1430.228333333333" y="1165.2300000000007" fill="#FFFFFF">FkExerciseClass (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkForce">
+          <rect x="1312.6516666666664" y="1035.3600000000006" rx="3" ry="3" width="77.703333333333376" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1322.6516666666664" y="1053.3100000000006" fill="#FFFFFF">FkForce (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkLevel">
+          <rect x="1099.458333333333" y="1035.3600000000006" rx="3" ry="3" width="75.676666666666733" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1109.458333333333" y="1053.3100000000006" fill="#FFFFFF">FkLevel (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkMainMuscleWorked">
+          <rect x="1004.8783333333332" y="1315.1600000000008" rx="3" ry="3" width="154.03666666666675" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.8783333333332" y="1333.1100000000008" fill="#FFFFFF">FkMainMuscleWorked (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkMechanicsType">
+          <rect x="1004.878333333333" y="1203.2400000000007" rx="3" ry="3" width="129.40999999999997" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.878333333333" y="1221.1900000000007" fill="#FFFFFF">FkMechanicsType (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkOtherMuscleWorked">
+          <rect x="1375.9083333333328" y="1315.1600000000008" rx="3" ry="3" width="157.81000000000017" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1385.9083333333328" y="1333.1100000000008" fill="#FFFFFF">FkOtherMuscleWorked (1)</text>
+        </g>
+        <g id="EdsExerciseType.FkSport">
+          <rect x="1205.1349999999998" y="1035.3600000000006" rx="3" ry="3" width="77.516666666666879" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1215.1349999999998" y="1053.3100000000006" fill="#FFFFFF">FkSport (1)</text>
+        </g>
+        <g id="EdsExerciseType.Id">
+          <rect x="1004.8783333333331" y="1035.3600000000006" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.8783333333331" y="1053.3100000000006" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsExerciseType.ExplainerTextFr">
+          <rect x="1489.4683333333332" y="1203.2400000000007" rx="3" ry="3" width="139.41333333333341" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1499.4683333333332" y="1221.1900000000007" fill="#FFFFFF">ExplainerTextFr (string)</text>
+        </g>
+        <g id="EdsExerciseType.ExplainerVideoFr">
+          <rect x="1179.7583333333334" y="1259.2000000000007" rx="3" ry="3" width="149.18000000000006" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1189.7583333333334" y="1277.1500000000008" fill="#FFFFFF">ExplainerVideoFr (string)</text>
+        </g>
+        <g id="EdsExerciseType.FkEquipmentId">
+          <rect x="1325.708333333333" y="1203.2400000000007" rx="3" ry="3" width="133.76000000000022" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1335.708333333333" y="1221.1900000000007" fill="#000000">FkEquipmentId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkExerciseClassId">
+          <rect x="1004.8783333333331" y="1259.2000000000007" rx="3" ry="3" width="144.88000000000011" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.8783333333331" y="1277.1500000000008" fill="#000000">FkExerciseClassId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkForceId">
+          <rect x="1004.8783333333332" y="1147.2800000000007" rx="3" ry="3" width="105.28666666666675" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.8783333333332" y="1165.2300000000007" fill="#000000">FkForceId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkLevelId">
+          <rect x="1130.4849999999997" y="1091.3200000000006" rx="3" ry="3" width="103.26000000000022" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1140.4849999999997" y="1109.2700000000007" fill="#000000">FkLevelId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkMainMuscleWorkedId">
+          <rect x="1212.3183333333332" y="1371.1200000000008" rx="3" ry="3" width="181.61999999999989" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1222.3183333333332" y="1389.0700000000008" fill="#000000">FkMainMuscleWorkedId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkMechanicsTypeId">
+          <rect x="1188.9149999999997" y="1315.1600000000008" rx="3" ry="3" width="156.99333333333334" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1198.9149999999997" y="1333.1100000000008" fill="#000000">FkMechanicsTypeId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkOtherMuscleWorkedId">
+          <rect x="1423.9383333333333" y="1371.1200000000008" rx="3" ry="3" width="185.39333333333343" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1433.9383333333333" y="1389.0700000000008" fill="#000000">FkOtherMuscleWorkedId (long)</text>
+        </g>
+        <g id="EdsExerciseType.FkSportId">
+          <rect x="1397.8616666666665" y="1091.3200000000006" rx="3" ry="3" width="105.10000000000014" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1407.8616666666665" y="1109.2700000000007" fill="#000000">FkSportId (long)</text>
+        </g>
+        <g id="EdsExerciseType.HasSetDefaultTemplate">
+          <rect x="1004.8783333333331" y="1371.1200000000008" rx="3" ry="3" width="177.44000000000005" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1014.8783333333331" y="1389.0700000000008" fill="#FFFFFF">HasSetDefaultTemplate (bool)</text>
+        </g>
+        <g id="EdsExerciseType.IsDeleted">
+          <rect x="1263.745" y="1091.3200000000006" rx="3" ry="3" width="104.11666666666656" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1273.745" y="1109.2700000000007" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsExerciseType.IsSetCollapsed">
+          <rect x="1164.2883333333332" y="1203.2400000000007" rx="3" ry="3" width="131.42000000000007" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1174.2883333333332" y="1221.1900000000007" fill="#FFFFFF">IsSetCollapsed (bool)</text>
+        </g>
+        <g id="EdsExerciseType.Name">
+          <rect x="1420.3549999999998" y="1035.3600000000006" rx="3" ry="3" width="92.319999999999936" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1430.3549999999998" y="1053.3100000000006" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsForce">
+        <rect x="1717.4299999999998" y="1491.0200000000009" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1806.4299999999998" y="1508.9700000000009" fill="#000000">EdsForce</text>
+        <rect x="1722.4299999999998" y="1518.9800000000009" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsForce.EdsExerciseType">
+          <rect x="1737.4299999999998" y="1642.940000000001" rx="3" ry="3" width="120.36999999999989" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1747.4299999999998" y="1660.890000000001" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsForce.Id">
+          <rect x="1737.4299999999998" y="1531.0200000000009" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1747.4299999999998" y="1548.9700000000009" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsForce.IsDeleted">
+          <rect x="1737.4299999999998" y="1586.9800000000009" rx="3" ry="3" width="104.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1747.4299999999998" y="1604.930000000001" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsForce.Name">
+          <rect x="1832.0099999999998" y="1531.0200000000009" rx="3" ry="3" width="92.320000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1842.0099999999998" y="1548.9700000000009" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsLevel">
+        <rect x="1203.4299999999998" y="1491.0200000000009" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1293.4299999999998" y="1508.9700000000009" fill="#000000">EdsLevel</text>
+        <rect x="1208.4299999999998" y="1518.9800000000009" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsLevel.EdsExerciseType">
+          <rect x="1223.4299999999998" y="1642.940000000001" rx="3" ry="3" width="120.36999999999989" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1233.4299999999998" y="1660.890000000001" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsLevel.Id">
+          <rect x="1223.4299999999998" y="1531.0200000000009" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1233.4299999999998" y="1548.9700000000009" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsLevel.IsDeleted">
+          <rect x="1223.4299999999998" y="1586.9800000000009" rx="3" ry="3" width="104.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1233.4299999999998" y="1604.930000000001" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsLevel.Name">
+          <rect x="1318.0099999999998" y="1531.0200000000009" rx="3" ry="3" width="92.320000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1328.0099999999998" y="1548.9700000000009" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsMainMuscleWorked">
+        <rect x="1460.4299999999998" y="1491.0200000000009" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1511.4299999999998" y="1508.9700000000009" fill="#000000">EdsMainMuscleWorked</text>
+        <rect x="1465.4299999999998" y="1518.9800000000009" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsMainMuscleWorked.EdsExerciseType">
+          <rect x="1480.4299999999998" y="1642.940000000001" rx="3" ry="3" width="120.36999999999989" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1490.4299999999998" y="1660.890000000001" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsMainMuscleWorked.Id">
+          <rect x="1480.4299999999998" y="1531.0200000000009" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1490.4299999999998" y="1548.9700000000009" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsMainMuscleWorked.IsDeleted">
+          <rect x="1480.4299999999998" y="1586.9800000000009" rx="3" ry="3" width="104.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1490.4299999999998" y="1604.930000000001" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsMainMuscleWorked.Name">
+          <rect x="1575.0099999999998" y="1531.0200000000009" rx="3" ry="3" width="92.320000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1585.0099999999998" y="1548.9700000000009" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsMechanicsType">
+        <rect x="946.42999999999984" y="1491.0200000000011" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1010.4299999999998" y="1508.9700000000012" fill="#000000">EdsMechanicsType</text>
+        <rect x="951.42999999999984" y="1518.9800000000012" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsMechanicsType.EdsExerciseType">
+          <rect x="966.42999999999984" y="1642.9400000000012" rx="3" ry="3" width="120.36999999999989" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="976.42999999999984" y="1660.8900000000012" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsMechanicsType.Id">
+          <rect x="966.42999999999984" y="1531.0200000000011" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="976.42999999999984" y="1548.9700000000012" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsMechanicsType.IsDeleted">
+          <rect x="966.42999999999984" y="1586.9800000000012" rx="3" ry="3" width="104.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="976.42999999999984" y="1604.9300000000012" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsMechanicsType.Name">
+          <rect x="1061.0099999999998" y="1531.0200000000011" rx="3" ry="3" width="92.320000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1071.0099999999998" y="1548.9700000000012" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsOtherMuscleWorked">
+        <rect x="2231.43" y="1491.0200000000009" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="2280.43" y="1508.9700000000009" fill="#000000">EdsOtherMuscleWorked</text>
+        <rect x="2236.43" y="1518.9800000000009" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsOtherMuscleWorked.EdsExerciseType">
+          <rect x="2251.43" y="1642.940000000001" rx="3" ry="3" width="120.36999999999989" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2261.43" y="1660.890000000001" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsOtherMuscleWorked.Id">
+          <rect x="2251.43" y="1531.0200000000009" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2261.43" y="1548.9700000000009" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsOtherMuscleWorked.IsDeleted">
+          <rect x="2251.43" y="1586.9800000000009" rx="3" ry="3" width="104.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2261.43" y="1604.930000000001" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsOtherMuscleWorked.Name">
+          <rect x="2346.01" y="1531.0200000000009" rx="3" ry="3" width="92.320000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2356.01" y="1548.9700000000009" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsSet">
+        <rect x="717.19999999999982" y="339.80000000000018" rx="5" ry="5" width="405.36000000000013" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="902.19999999999982" y="357.75000000000017" fill="#000000">EdsSet</text>
+        <rect x="722.19999999999982" y="367.76000000000016" width="395.36000000000013" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsSet.EdsSetMetrics">
+          <rect x="737.19999999999982" y="435.76000000000022" rx="3" ry="3" width="109.31333333333328" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="747.19999999999982" y="453.71000000000021" fill="#FFFFFF">EdsSetMetrics (*)</text>
+        </g>
+        <g id="EdsSet.FkExercise">
+          <rect x="831.77999999999986" y="379.80000000000018" rx="3" ry="3" width="90.666666666666629" height="25.95999999999998" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="841.77999999999986" y="397.75000000000017" fill="#FFFFFF">FkExercise (1)</text>
+        </g>
+        <g id="EdsSet.Id">
+          <rect x="737.19999999999982" y="379.80000000000018" rx="3" ry="3" width="64.580000000000041" height="25.95999999999998" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="747.19999999999982" y="397.75000000000017" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsSet.EndTimeStamp">
+          <rect x="890.82999999999981" y="491.72000000000025" rx="3" ry="3" width="165.86" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="900.82999999999981" y="509.67000000000024" fill="#FFFFFF">EndTimeStamp (DateTime?)</text>
+        </g>
+        <g id="EdsSet.FkExerciseId">
+          <rect x="737.19999999999982" y="491.72000000000025" rx="3" ry="3" width="123.63" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="747.19999999999982" y="509.67000000000024" fill="#000000">FkExerciseId (long?)</text>
+        </g>
+        <g id="EdsSet.IsComplete">
+          <rect x="876.51333333333309" y="435.76000000000022" rx="3" ry="3" width="114.21000000000004" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="886.51333333333309" y="453.71000000000021" fill="#FFFFFF">IsComplete (bool)</text>
+        </g>
+        <g id="EdsSet.IsCustomerAddedSet">
+          <rect x="737.19999999999982" y="547.68000000000029" rx="3" ry="3" width="165.96333333333337" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="747.19999999999982" y="565.63000000000034" fill="#FFFFFF">IsCustomerAddedSet (bool)</text>
+        </g>
+        <g id="EdsSet.IsSkipped">
+          <rect x="952.44666666666649" y="379.80000000000018" rx="3" ry="3" width="105.52666666666664" height="25.95999999999998" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="962.44666666666649" y="397.75000000000017" fill="#FFFFFF">IsSkipped (bool)</text>
+        </g>
+        <g id="EdsSet.SetSequenceNumber">
+          <rect x="933.1633333333333" y="547.68000000000029" rx="3" ry="3" width="169.39666666666665" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="943.1633333333333" y="565.63000000000034" fill="#FFFFFF">SetSequenceNumber (short)</text>
+        </g>
+      </g>
+      <g id="EdsSetDefaults">
+        <rect x="1753.8683333333333" y="695.5600000000004" rx="5" ry="5" width="366.02333333333308" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1896.8683333333333" y="713.51000000000045" fill="#000000">EdsSetDefaults</text>
+        <rect x="1758.8683333333333" y="723.52000000000044" width="356.02333333333308" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsSetDefaults.EdsSetMetricsDefault">
+          <rect x="1773.8683333333333" y="791.52000000000044" rx="3" ry="3" width="147.63000000000011" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1783.8683333333333" y="809.47000000000048" fill="#FFFFFF">EdsSetMetricsDefault (*)</text>
+        </g>
+        <g id="EdsSetDefaults.FkExerciseType">
+          <rect x="1868.4483333333333" y="735.5600000000004" rx="3" ry="3" width="115.43000000000006" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1878.4483333333333" y="753.51000000000045" fill="#FFFFFF">FkExerciseType (1)</text>
+        </g>
+        <g id="EdsSetDefaults.Id">
+          <rect x="1773.8683333333333" y="735.5600000000004" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1783.8683333333333" y="753.51000000000045" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsSetDefaults.FkExerciseTypeId">
+          <rect x="1951.4983333333332" y="791.52000000000044" rx="3" ry="3" width="148.3933333333332" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1961.4983333333332" y="809.47000000000048" fill="#000000">FkExerciseTypeId (long?)</text>
+        </g>
+        <g id="EdsSetDefaults.SetSequenceNumber">
+          <rect x="1773.8683333333333" y="847.48000000000047" rx="3" ry="3" width="169.39666666666676" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1783.8683333333333" y="865.43000000000052" fill="#FFFFFF">SetSequenceNumber (short)</text>
+        </g>
+      </g>
+      <g id="EdsSetMetricTypes">
+        <rect x="1310.4666666666665" y="639.60000000000036" rx="5" ry="5" width="412.8266666666666" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1467.4666666666665" y="657.55000000000041" fill="#000000">EdsSetMetricTypes</text>
+        <rect x="1315.4666666666665" y="667.5600000000004" width="402.8266666666666" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsSetMetricTypes.EdsAvaiableSetMetrics">
+          <rect x="1330.4666666666665" y="903.44000000000051" rx="3" ry="3" width="153.9233333333334" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1340.4666666666665" y="921.39000000000055" fill="#FFFFFF">EdsAvaiableSetMetrics (*)</text>
+        </g>
+        <g id="EdsSetMetricTypes.EdsSetMetrics">
+          <rect x="1330.4666666666665" y="791.52000000000044" rx="3" ry="3" width="109.31333333333328" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1340.4666666666665" y="809.47000000000048" fill="#FFFFFF">EdsSetMetrics (*)</text>
+        </g>
+        <g id="EdsSetMetricTypes.EdsSetMetricsDefault">
+          <rect x="1478.2799999999997" y="847.48000000000047" rx="3" ry="3" width="147.63000000000011" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1488.2799999999997" y="865.43000000000052" fill="#FFFFFF">EdsSetMetricsDefault (*)</text>
+        </g>
+        <g id="EdsSetMetricTypes.Id">
+          <rect x="1330.4666666666665" y="679.60000000000036" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1340.4666666666665" y="697.55000000000041" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsSetMetricTypes.IsDeleted">
+          <rect x="1461.1466666666668" y="735.5600000000004" rx="3" ry="3" width="104.11666666666656" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1471.1466666666668" y="753.51000000000045" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsSetMetricTypes.IsDistance">
+          <rect x="1595.2633333333331" y="735.5600000000004" rx="3" ry="3" width="108.02999999999997" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1605.2633333333331" y="753.51000000000045" fill="#FFFFFF">IsDistance (bool)</text>
+        </g>
+        <g id="EdsSetMetricTypes.IsRepetition">
+          <rect x="1469.7799999999997" y="791.52000000000044" rx="3" ry="3" width="117.03333333333353" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1479.7799999999997" y="809.47000000000048" fill="#FFFFFF">IsRepetition (bool)</text>
+        </g>
+        <g id="EdsSetMetricTypes.IsResistance">
+          <rect x="1330.4666666666665" y="847.48000000000047" rx="3" ry="3" width="117.81333333333328" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1340.4666666666665" y="865.43000000000052" fill="#FFFFFF">IsResistance (bool)</text>
+        </g>
+        <g id="EdsSetMetricTypes.IsTime">
+          <rect x="1425.0466666666664" y="679.60000000000036" rx="3" ry="3" width="88.6400000000001" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1435.0466666666664" y="697.55000000000041" fill="#FFFFFF">IsTime (bool)</text>
+        </g>
+        <g id="EdsSetMetricTypes.IsWeight">
+          <rect x="1330.4666666666665" y="735.5600000000004" rx="3" ry="3" width="100.68000000000006" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1340.4666666666665" y="753.51000000000045" fill="#FFFFFF">IsWeight (bool)</text>
+        </g>
+        <g id="EdsSetMetricTypes.Name">
+          <rect x="1543.6866666666665" y="679.60000000000036" rx="3" ry="3" width="92.320000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1553.6866666666665" y="697.55000000000041" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsSetMetrics">
+        <rect x="1352.5716666666663" y="40" rx="5" ry="5" width="328.61666666666679" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1479.5716666666663" y="57.95" fill="#000000">EdsSetMetrics</text>
+        <rect x="1357.5716666666663" y="67.960000000000008" width="318.61666666666679" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsSetMetrics.FkMetricsType">
+          <rect x="1372.5716666666663" y="135.96000000000004" rx="3" ry="3" width="112.42000000000007" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1382.5716666666663" y="153.91000000000003" fill="#FFFFFF">FkMetricsType (1)</text>
+        </g>
+        <g id="EdsSetMetrics.FkSet">
+          <rect x="1467.1516666666662" y="80" rx="3" ry="3" width="65.536666666666861" height="25.960000000000008" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1477.1516666666662" y="97.95" fill="#FFFFFF">FkSet (1)</text>
+        </g>
+        <g id="EdsSetMetrics.Id">
+          <rect x="1372.5716666666663" y="80" rx="3" ry="3" width="64.579999999999927" height="25.960000000000008" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1382.5716666666663" y="97.95" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsSetMetrics.ActualCustomMetric">
+          <rect x="1372.5716666666663" y="247.88000000000011" rx="3" ry="3" width="180.6733333333334" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1382.5716666666663" y="265.8300000000001" fill="#FFFFFF">ActualCustomMetric (double?)</text>
+        </g>
+        <g id="EdsSetMetrics.FkMetricsTypeId">
+          <rect x="1514.9916666666663" y="135.96000000000004" rx="3" ry="3" width="145.38333333333321" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1524.9916666666663" y="153.91000000000003" fill="#000000">FkMetricsTypeId (long?)</text>
+        </g>
+        <g id="EdsSetMetrics.FkSetId">
+          <rect x="1562.688333333333" y="80" rx="3" ry="3" width="98.5" height="25.960000000000008" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1572.688333333333" y="97.95" fill="#000000">FkSetId (long?)</text>
+        </g>
+        <g id="EdsSetMetrics.TargetCustomMetric">
+          <rect x="1372.5716666666663" y="191.92000000000007" rx="3" ry="3" width="180.15000000000009" height="25.95999999999998" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1382.5716666666663" y="209.87000000000006" fill="#FFFFFF">TargetCustomMetric (double?)</text>
+        </g>
+      </g>
+      <g id="EdsSetMetricsDefault">
+        <rect x="1554.9033333333332" y="339.80000000000018" rx="5" ry="5" width="335.95333333333338" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1665.9033333333332" y="357.75000000000017" fill="#000000">EdsSetMetricsDefault</text>
+        <rect x="1559.9033333333332" y="367.76000000000016" width="325.95333333333338" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsSetMetricsDefault.FkSetDefaults">
+          <rect x="1669.4833333333331" y="379.80000000000018" rx="3" ry="3" width="108.94666666666672" height="25.95999999999998" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1679.4833333333331" y="397.75000000000017" fill="#FFFFFF">FkSetDefaults (1)</text>
+        </g>
+        <g id="EdsSetMetricsDefault.FkSetMetricType">
+          <rect x="1574.9033333333332" y="435.76000000000022" rx="3" ry="3" width="124.04333333333329" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1584.9033333333332" y="453.71000000000021" fill="#FFFFFF">FkSetMetricType (1)</text>
+        </g>
+        <g id="EdsSetMetricsDefault.Id">
+          <rect x="1574.9033333333332" y="379.80000000000018" rx="3" ry="3" width="64.579999999999927" height="25.95999999999998" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1584.9033333333332" y="397.75000000000017" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsSetMetricsDefault.DefaultCustomMetric">
+          <rect x="1574.9033333333332" y="547.68000000000029" rx="3" ry="3" width="172.50666666666666" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1584.9033333333332" y="565.63000000000034" fill="#FFFFFF">DefaultCustomMetric (long?)</text>
+        </g>
+        <g id="EdsSetMetricsDefault.FkSetDefaultsId">
+          <rect x="1728.9466666666665" y="435.76000000000022" rx="3" ry="3" width="141.91000000000008" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1738.9466666666665" y="453.71000000000021" fill="#000000">FkSetDefaultsId (long?)</text>
+        </g>
+        <g id="EdsSetMetricsDefault.FkSetMetricTypeId">
+          <rect x="1574.9033333333332" y="491.72000000000025" rx="3" ry="3" width="157.00666666666666" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1584.9033333333332" y="509.67000000000024" fill="#000000">FkSetMetricTypeId (long?)</text>
+        </g>
+      </g>
+      <g id="EdsSport">
+        <rect x="1974.4299999999998" y="1491.0200000000009" rx="5" ry="5" width="226.90000000000009" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="2063.43" y="1508.9700000000009" fill="#000000">EdsSport</text>
+        <rect x="1979.4299999999998" y="1518.9800000000009" width="216.90000000000009" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsSport.EdsExerciseType">
+          <rect x="1994.4299999999998" y="1642.940000000001" rx="3" ry="3" width="120.36999999999989" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2004.4299999999998" y="1660.890000000001" fill="#FFFFFF">EdsExerciseType (*)</text>
+        </g>
+        <g id="EdsSport.Id">
+          <rect x="1994.4299999999998" y="1531.0200000000009" rx="3" ry="3" width="64.579999999999927" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2004.4299999999998" y="1548.9700000000009" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsSport.IsDeleted">
+          <rect x="1994.4299999999998" y="1586.9800000000009" rx="3" ry="3" width="104.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2004.4299999999998" y="1604.930000000001" fill="#FFFFFF">IsDeleted (bool)</text>
+        </g>
+        <g id="EdsSport.Name">
+          <rect x="2089.01" y="1531.0200000000009" rx="3" ry="3" width="92.319999999999709" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2099.01" y="1548.9700000000009" fill="#FFFFFF">Name (string)</text>
+        </g>
+      </g>
+      <g id="EdsTrainingSession">
+        <rect x="459.01166666666677" y="1051.3200000000006" rx="5" ry="5" width="495.73666666666691" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="656.01166666666677" y="1069.2700000000007" fill="#000000">EdsTrainingSession</text>
+        <rect x="464.01166666666677" y="1079.2800000000007" width="485.73666666666691" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsTrainingSession.EdsExercise">
+          <rect x="695.91166666666686" y="1091.3200000000006" rx="3" ry="3" width="95.60666666666657" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="705.91166666666686" y="1109.2700000000007" fill="#FFFFFF">EdsExercise (*)</text>
+        </g>
+        <g id="EdsTrainingSession.FkEdsDailyPlanNavigation">
+          <rect x="674.8716666666669" y="1259.2000000000007" rx="3" ry="3" width="173.41666666666674" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="684.8716666666669" y="1277.1500000000008" fill="#FFFFFF">FkEdsDailyPlanNavigation (1)</text>
+        </g>
+        <g id="EdsTrainingSession.Id">
+          <rect x="479.01166666666671" y="1091.3200000000006" rx="3" ry="3" width="64.579999999999984" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="489.01166666666671" y="1109.2700000000007" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsTrainingSession.EndDateTime">
+          <rect x="777.57500000000016" y="1147.2800000000007" rx="3" ry="3" width="157.17333333333329" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="787.57500000000016" y="1165.2300000000007" fill="#FFFFFF">EndDateTime (DateTime?)</text>
+        </g>
+        <g id="EdsTrainingSession.EndTimeStamp">
+          <rect x="479.01166666666683" y="1259.2000000000007" rx="3" ry="3" width="165.86000000000007" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="489.01166666666683" y="1277.1500000000008" fill="#FFFFFF">EndTimeStamp (DateTime?)</text>
+        </g>
+        <g id="EdsTrainingSession.FkEdsDailyPlan">
+          <rect x="614.53833333333341" y="1147.2800000000007" rx="3" ry="3" width="133.03666666666675" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="624.53833333333341" y="1165.2300000000007" fill="#000000">FkEdsDailyPlan (long)</text>
+        </g>
+        <g id="EdsTrainingSession.IsCustomerAddedTrainingSession">
+          <rect x="683.74500000000023" y="1315.1600000000008" rx="3" ry="3" width="230.79333333333329" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="693.74500000000023" y="1333.1100000000008" fill="#FFFFFF">IsCustomerAddedTrainingSession (bool)</text>
+        </g>
+        <g id="EdsTrainingSession.IsMoved">
+          <rect x="821.51833333333343" y="1091.3200000000006" rx="3" ry="3" width="99.730000000000018" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="831.51833333333343" y="1109.2700000000007" fill="#FFFFFF">IsMoved (bool)</text>
+        </g>
+        <g id="EdsTrainingSession.IsSkipped">
+          <rect x="479.01166666666677" y="1147.2800000000007" rx="3" ry="3" width="105.52666666666664" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="489.01166666666677" y="1165.2300000000007" fill="#FFFFFF">IsSkipped (bool)</text>
+        </g>
+        <g id="EdsTrainingSession.Name">
+          <rect x="573.59166666666681" y="1091.3200000000006" rx="3" ry="3" width="92.32000000000005" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="583.59166666666681" y="1109.2700000000007" fill="#FFFFFF">Name (string)</text>
+        </g>
+        <g id="EdsTrainingSession.ReadonForSkipping">
+          <rect x="670.65833333333353" y="1203.2400000000007" rx="3" ry="3" width="162.97333333333336" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="680.65833333333353" y="1221.1900000000007" fill="#FFFFFF">ReadonForSkipping (long?)</text>
+        </g>
+        <g id="EdsTrainingSession.ReasonForReschedule">
+          <rect x="479.01166666666677" y="1315.1600000000008" rx="3" ry="3" width="174.73333333333335" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="489.01166666666677" y="1333.1100000000008" fill="#FFFFFF">ReasonForReschedule (long?)</text>
+        </g>
+        <g id="EdsTrainingSession.StartDateTime">
+          <rect x="479.01166666666683" y="1203.2400000000007" rx="3" ry="3" width="161.6466666666667" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="489.01166666666683" y="1221.1900000000007" fill="#FFFFFF">StartDateTime (DateTime?)</text>
+        </g>
+      </g>
+      <g id="EdsWeeklyPlan">
+        <rect x="65.276666666666642" y="1762.8400000000013" rx="5" ry="5" width="337.20666666666671" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="194.27666666666664" y="1780.7900000000013" fill="#000000">EdsWeeklyPlan</text>
+        <rect x="70.276666666666642" y="1790.8000000000013" width="327.20666666666671" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="EdsWeeklyPlan.EdsDailyPlan">
+          <rect x="179.85666666666665" y="1802.8400000000013" rx="3" ry="3" width="102.42333333333332" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="189.85666666666665" y="1820.7900000000013" fill="#FFFFFF">EdsDailyPlan (*)</text>
+        </g>
+        <g id="EdsWeeklyPlan.FkEds12weekPlanNavigation">
+          <rect x="85.276666666666628" y="1970.7200000000014" rx="3" ry="3" width="187.40666666666664" height="25.960000000000036" fill="#990000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.276666666666628" y="1988.6700000000014" fill="#FFFFFF">FkEds12weekPlanNavigation (1)</text>
+        </g>
+        <g id="EdsWeeklyPlan.Id">
+          <rect x="85.276666666666657" y="1802.8400000000013" rx="3" ry="3" width="64.580000000000027" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.276666666666657" y="1820.7900000000013" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="EdsWeeklyPlan.EndDate">
+          <rect x="85.276666666666642" y="1858.8000000000013" rx="3" ry="3" width="131.36666666666667" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.276666666666642" y="1876.7500000000014" fill="#FFFFFF">EndDate (DateTime?)</text>
+        </g>
+        <g id="EdsWeeklyPlan.FkEds12weekPlan">
+          <rect x="85.276666666666628" y="1914.7600000000014" rx="3" ry="3" width="147.02666666666664" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+          <text x="95.276666666666628" y="1932.7100000000014" fill="#000000">FkEds12weekPlan (long)</text>
+        </g>
+        <g id="EdsWeeklyPlan.StartDate">
+          <rect x="246.64333333333332" y="1858.8000000000013" rx="3" ry="3" width="135.83999999999992" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="256.64333333333332" y="1876.7500000000014" fill="#FFFFFF">StartDate (DateTime?)</text>
+        </g>
+      </g>
+      <g id="User">
+        <rect x="59.648333333333539" y="2362.4400000000014" rx="5" ry="5" width="348.46333333333337" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+        <text x="221.64833333333354" y="2380.3900000000012" fill="#000000">User</text>
+        <rect x="64.648333333333539" y="2390.4000000000015" width="338.46333333333337" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="User.Eds12weekPlan">
+          <rect x="224.06833333333353" y="2514.3600000000015" rx="3" ry="3" width="116.41333333333338" height="25.960000000000036" fill="#FF3232" stroke="#A5A6A9" stroke-width="1" />
+          <text x="234.06833333333353" y="2532.3100000000013" fill="#FFFFFF">Eds12weekPlan (*)</text>
+        </g>
+        <g id="User.Id">
+          <rect x="79.648333333333539" y="2402.4400000000014" rx="3" ry="3" width="64.580000000000013" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="89.648333333333539" y="2420.3900000000012" fill="#FFFFFF">Id (long)</text>
+        </g>
+        <g id="User.Email">
+          <rect x="174.22833333333355" y="2402.4400000000014" rx="3" ry="3" width="88.950000000000017" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="184.22833333333355" y="2420.3900000000012" fill="#FFFFFF">Email (string)</text>
+        </g>
+        <g id="User.FirstName">
+          <rect x="79.648333333333539" y="2514.3600000000015" rx="3" ry="3" width="114.42000000000002" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="89.648333333333539" y="2532.3100000000013" fill="#FFFFFF">FirstName (string)</text>
+        </g>
+        <g id="User.FkFederatedUser">
+          <rect x="79.648333333333539" y="2570.3200000000015" rx="3" ry="3" width="148.48000000000002" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="89.648333333333539" y="2588.2700000000013" fill="#FFFFFF">FkFederatedUser (long?)</text>
+        </g>
+        <g id="User.LastName">
+          <rect x="207.22166666666686" y="2458.4000000000015" rx="3" ry="3" width="113.23666666666668" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="217.22166666666686" y="2476.3500000000013" fill="#FFFFFF">LastName (string)</text>
+        </g>
+        <g id="User.Mobile">
+          <rect x="79.648333333333539" y="2458.4000000000015" rx="3" ry="3" width="97.573333333333323" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+          <text x="89.648333333333539" y="2476.3500000000013" fill="#FFFFFF">Mobile (string)</text>
+        </g>
+        <g id="User.UserLevel">
+          <rect x="293.17833333333351" y="2402.4400000000014" rx="3" ry="3" width="94.9333333333334" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+          <text x="303.17833333333351" y="2420.3900000000012" fill="#FFFFFF">UserLevel (int)</text>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,2237 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\obj\\Debug\\net7.0-ios\\iossimulator-x64\\scopedcss\\bundle\\MauiApp1.styles.css",
+      "PackagePath": "staticwebassets\\MauiApp1.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\addExercisePage.html",
+      "PackagePath": "staticwebassets\\addExercisePage.html"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\chatContentPage.html",
+      "PackagePath": "staticwebassets\\chatContentPage.html"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\FONT-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\ICON-LICENSE",
+      "PackagePath": "staticwebassets\\css\\open-iconic"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\README.md",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\montserrat-italic-variablefont_wght.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\montserrat-italic-variablefont_wght.ttf"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\montserrat-regular.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\montserrat-regular.ttf"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\montserrat-variablefont_wght.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\montserrat-variablefont_wght.ttf"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "PackagePath": "staticwebassets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\AUTHORS.txt",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\AUTHORS.txt"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\external\\jquery\\jquery-3.6.4.min.js",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\external\\jquery\\jquery-3.6.4.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\external\\jquery\\jquery.js",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\external\\jquery\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\images\\ui-icons_444444_256x240.png",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\images\\ui-icons_444444_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\images\\ui-icons_555555_256x240.png",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\images\\ui-icons_555555_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\images\\ui-icons_777620_256x240.png",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\images\\ui-icons_777620_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\images\\ui-icons_777777_256x240.png",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\images\\ui-icons_777777_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\images\\ui-icons_cc0000_256x240.png",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\images\\ui-icons_cc0000_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\images\\ui-icons_ffffff_256x240.png",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\images\\ui-icons_ffffff_256x240.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\jquery-ui.min.css",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\jquery-ui.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\jquery-ui\\jquery-ui.min.js",
+      "PackagePath": "staticwebassets\\external\\jquery-ui\\jquery-ui.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\external\\scripts\\swipedEvents.js",
+      "PackagePath": "staticwebassets\\external\\scripts\\swipedEvents.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\Rectangle346.png",
+      "PackagePath": "staticwebassets\\resources\\Rectangle346.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\SampleMeditation.jpg",
+      "PackagePath": "staticwebassets\\resources\\SampleMeditation.jpg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\SampleNutrient.png",
+      "PackagePath": "staticwebassets\\resources\\SampleNutrient.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\mipmap\\images.png",
+      "PackagePath": "staticwebassets\\resources\\mipmap\\images.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\mipmap\\tmpicon.svg",
+      "PackagePath": "staticwebassets\\resources\\mipmap\\tmpicon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\logo\\16full.svg",
+      "PackagePath": "staticwebassets\\resources\\private\\icons\\logo\\16full.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\logo\\16icon.svg",
+      "PackagePath": "staticwebassets\\resources\\private\\icons\\logo\\16icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\logo\\24full.svg",
+      "PackagePath": "staticwebassets\\resources\\private\\icons\\logo\\24full.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\logo\\24icon.svg",
+      "PackagePath": "staticwebassets\\resources\\private\\icons\\logo\\24icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\logo\\32full.svg",
+      "PackagePath": "staticwebassets\\resources\\private\\icons\\logo\\32full.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\logo\\32icon.svg",
+      "PackagePath": "staticwebassets\\resources\\private\\icons\\logo\\32icon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\images\\coffee_cup.png",
+      "PackagePath": "staticwebassets\\resources\\private\\images\\coffee_cup.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\images\\dart_board_front_2.png",
+      "PackagePath": "staticwebassets\\resources\\private\\images\\dart_board_front_2.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\Vector-3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\Vector-3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\Vector-4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\Vector-4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\Vector-5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\Vector-5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\Vector-6.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\Vector-6.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\Vector-7.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\Vector-7.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\arrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\arrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\arrow2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\arrow2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\arrow3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\arrow3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\arrow5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\arrow5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\bottomalignment.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\bottomalignment.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\bottomalignment2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\bottomalignment2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\bottomleftarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\bottomleftarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\bottomrightarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\bottomrightarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\caret.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\caret.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\compress.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\compress.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\connection.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\connection.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\connection1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\connection1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\doubledownarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\doubledownarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\doubleleftarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\doubleleftarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\doublerightarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\doublerightarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\doubleuparrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\doubleuparrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\downarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\downarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\downarrow1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\downarrow1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\downarrow2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\downarrow2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\download.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\download.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\download1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\download1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\downwardgrowth.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\downwardgrowth.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\enter.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\enter.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\expand.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\expand.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\expand1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\expand1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\expand2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\expand2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\expand3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\expand3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\forward.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\forward.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\horizontalmaximize.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\horizontalmaximize.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\horizontalmaximize2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\horizontalmaximize2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\horizontaloutwardarrows.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\horizontaloutwardarrows.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\horizontalshrink.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\horizontalshrink.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\horizontalshrink1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\horizontalshrink1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\leftalignment.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\leftalignment.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\leftalignment2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\leftalignment2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\leftarrow-narrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\leftarrow-narrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\leftarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\leftarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\leftarrow1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\leftarrow1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\leftarrow3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\leftarrow3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\reply.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\reply.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resize.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resize.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resize1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resize1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resize6.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resize6.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizehorizontal.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizehorizontal.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizehorizontal1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizehorizontal1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizehorizontal2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizehorizontal2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizehorizontal3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizehorizontal3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizevertical.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizevertical.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizevertical1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizevertical1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizevertical2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizevertical2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizevertical3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizevertical3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizevertical4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizevertical4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizevertical5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizevertical5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizewindow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizewindow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizewindow1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizewindow1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizewindow2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizewindow2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizewindow3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizewindow3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizewindow4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizewindow4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\resizewindow5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\resizewindow5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\righarrow3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\righarrow3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\rightalignment.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\rightalignment.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\rightalignment2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\rightalignment2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\rightarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\rightarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\rightarrow1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\rightarrow1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\rightarrow2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\rightarrow2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\scrollup.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\scrollup.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\shrink.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\shrink.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\shuffle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\shuffle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\shuffle2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\shuffle2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\subdirectoryarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\subdirectoryarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\topalignment.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\topalignment.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\topleftarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\topleftarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\topleftarrow2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\topleftarrow2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\toprightarrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\toprightarrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\toprightarrow1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\toprightarrow1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\turn left.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\turn left.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\turn right.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\turn right.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\turndownleft.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\turndownleft.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\turndownright.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\turndownright.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\turnleftdown.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\turnleftdown.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\turnrightdown.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\turnrightdown.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\uparrow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\uparrow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\uparrow1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\uparrow1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\uparrow2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\uparrow2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\uparrow3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\uparrow3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\upgrowth.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\upgrowth.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\upload.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\upload.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\upload1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\upload1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\upload2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\upload2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\verticalinwardarrows.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\verticalinwardarrows.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\verticalresize.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\verticalresize.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\verticalresize2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\verticalresize2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\arrows\\verticalshrink.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\arrows\\verticalshrink.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\aim.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\aim.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bank.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bank.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph6.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph6.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bargraph7.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bargraph7.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bill.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bill.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bill1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bill1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bitcoin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bitcoin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\bitcoincoin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\bitcoincoin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\calculation.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\calculation.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\calendar.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\calendar.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\calendar1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\calendar1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\cash.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\cash.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\cashbundle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\cashbundle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\creditcard.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\creditcard.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\dollar.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\dollar.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\dollar1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\dollar1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\dollar2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\dollar2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\dollar3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\dollar3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\dollarcoin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\dollarcoin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\euro.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\euro.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\eurocoin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\eurocoin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\explodedpiechart.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\explodedpiechart.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\focus.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\focus.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\goal.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\goal.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\growthchart.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\growthchart.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\growthgraph.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\growthgraph.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\growthpresentation.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\growthpresentation.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\increasemoney.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\increasemoney.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\invoice.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\invoice.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\invoice1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\invoice1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\lightbulb.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\lightbulb.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\lightbulb1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\lightbulb1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\money.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\money.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\money1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\money1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\money2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\money2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag6.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag6.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\officebag7.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\officebag7.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\percentage.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\percentage.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\piechart.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\piechart.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\pound.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\pound.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\poundcoin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\poundcoin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\puzzle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\puzzle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\sitemap.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\sitemap.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\target.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\target.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\withdrawal.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\withdrawal.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\withdrawal1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\withdrawal1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\yen.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\yen.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\business\\yencoin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\business\\yencoin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\call.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\call.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\call1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\call1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\call2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\call2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\call3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\call3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\callbounce.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\callbounce.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\callcancel.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\callcancel.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\callforward.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\callforward.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\callincoming.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\callincoming.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\callnone.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\callnone.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\calloutgoing.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\calloutgoing.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\callpause.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\callpause.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\computer.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\computer.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\envelope.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\envelope.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\laptop.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\laptop.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\laptopconnection.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\laptopconnection.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mail.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mail.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mail1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mail1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailadd.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailadd.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailalert.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailalert.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailapprove.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailapprove.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailblock.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailblock.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailbookmark.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailbookmark.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailbookmark1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailbookmark1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailbox.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailbox.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailcancel.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailcancel.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailedit.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailedit.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailfast.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailfast.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailfast1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailfast1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailforward.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailforward.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailhelp.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailhelp.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailinformation.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailinformation.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\maillike.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\maillike.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\maillock.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\maillock.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailopen.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailopen.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailprotected.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailprotected.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailreceive.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailreceive.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailreceive1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailreceive1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailrefresh.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailrefresh.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailremove.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailremove.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailreply.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailreply.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mails.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mails.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailsearch.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailsearch.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailsend.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailsend.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailsend1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailsend1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\mailshare.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\mailshare.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\postbox.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\postbox.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\rss.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\rss.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\communication\\stamp.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\communication\\stamp.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\education\\bell.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\education\\bell.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\addbook.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\addbook.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\ambulance.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\ambulance.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\bandage.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\bandage.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\ear.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\ear.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\health.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\health.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\health1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\health1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\hearingaid.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\hearingaid.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\heartbeat.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\heartbeat.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\heartrate.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\heartrate.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medical.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medical.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medicalfile.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medicalfile.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medicalkit.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medicalkit.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medicalsignboard.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medicalsignboard.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medicine.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medicine.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medicine1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medicine1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\medicinebottle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\medicinebottle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\pulse.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\pulse.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\stretcher.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\stretcher.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\syringe.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\syringe.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\thermometer.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\thermometer.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\medical\\wheelchair.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\medical\\wheelchair.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\multimedia\\camera.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\multimedia\\camera.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\multimedia\\stop.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\multimedia\\stop.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\exposure.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\exposure.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\exposure1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\exposure1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\eye.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\eye.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\focus.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\focus.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\focus1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\focus1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\focus2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\focus2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\focus3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\focus3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\photography\\highbrightness.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\photography\\highbrightness.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\security\\warning.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\security\\warning.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\circle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\circle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\circle2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\circle2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\heart.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\heart.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\heart1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\heart1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\hexagon.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\hexagon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\pentagon.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\pentagon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\roundedsquare.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\roundedsquare.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\square.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\square.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\star.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\star.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\shapes\\triangle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\shapes\\triangle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\americanfootball.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\americanfootball.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\barbell.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\barbell.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\baseball.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\baseball.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\basketball.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\basketball.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\basketballhoop.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\basketballhoop.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\bowling.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\bowling.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\canoe.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\canoe.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\cardclub.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\cardclub.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\carddiamond.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\carddiamond.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\cardheart.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\cardheart.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\cardspade.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\cardspade.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\cup.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\cup.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\dice1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\dice1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\dice2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\dice2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\dice3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\dice3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\dice4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\dice4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\dice5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\dice5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\dice6.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\dice6.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\football.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\football.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\golf.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\golf.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\pingpong.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\pingpong.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\tennisball.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\tennisball.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\sports\\volleyballicon(missing).svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\sports\\volleyballicon(missing).svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock3.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock3.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock4.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock4.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock5.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock5.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock6.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock6.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\clock7.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\clock7.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\handwatch.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\handwatch.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\handwatch1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\handwatch1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\stopwatch.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\stopwatch.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\time\\stopwatchoff.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\time\\stopwatchoff.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\uniconsSolid\\approve_tick_green.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\uniconsSolid\\approve_tick_green.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\uniconsSolid\\check.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\uniconsSolid\\check.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\0+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\0+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\10+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\10+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\12+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\12+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\13+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\13+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\16+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\16+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\17+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\17+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\18+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\18+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\21+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\21+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\3+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\3+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\6+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\6+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\addnew.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\addnew.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\address(at).svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\address(at).svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\adjust.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\adjust.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\adjust1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\adjust1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\adjust2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\adjust2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\americanfootball.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\americanfootball.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\anchor.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\anchor.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\ankh.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\ankh.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\approve.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\approve.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\approvetick.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\approvetick.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\archery.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\archery.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\archive.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\archive.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\archway.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\archway.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\asterisk.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\asterisk.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\atmcard.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\atmcard.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\attach.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\attach.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\autoflash.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\autoflash.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\babycarriage.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\babycarriage.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\back.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\back.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\backspace.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\backspace.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\backup.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\backup.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\balance.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\balance.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\bathtub.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\bathtub.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\battery.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\battery.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\batterycharging.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\batterycharging.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\bed.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\bed.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\bell.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\bell.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\bluetooth.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\bluetooth.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\box.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\box.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\brightnesslow.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\brightnesslow.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\brightnessmaximum.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\brightnessmaximum.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\brightnessmedium.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\brightnessmedium.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\brightnessmedium1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\brightnessmedium1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\brightnessplus.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\brightnessplus.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\brokenchain.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\brokenchain.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\building.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\building.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\cablecar.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\cablecar.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\calculation.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\calculation.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\cancel.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\cancel.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\chargingplug.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\chargingplug.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\check.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\check.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\chip.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\chip.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\close.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\close.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\close1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\close1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\close2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\close2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\coffee.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\coffee.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\colorpalette.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\colorpalette.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\contrast.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\contrast.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\cube.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\cube.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\dashboard.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\dashboard.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\dashboard1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\dashboard1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\date.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\date.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\dislike.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\dislike.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\doublebed.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\doublebed.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\edit.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\edit.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\exclamationmark.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\exclamationmark.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\exclamationmark1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\exclamationmark1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\exclamationmark2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\exclamationmark2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\externallink.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\externallink.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\favorite.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\favorite.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\feed.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\feed.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\filter.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\filter.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\fire.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\fire.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\flight.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\flight.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\flying.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\flying.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\forkandknife.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\forkandknife.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\forkandspoon.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\forkandspoon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\help.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\help.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\history.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\history.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\home.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\home.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\home1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\home1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\hourglass.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\hourglass.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\hyperlink.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\hyperlink.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\info.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\info.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\input.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\input.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\internet.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\internet.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\key.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\key.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\key1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\key1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\keyboard1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\keyboard1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\keyboarddown.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\keyboarddown.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\keyboardup.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\keyboardup.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\knifeandfork.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\knifeandfork.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\landing.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\landing.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\layer.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\layer.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\lifebuoy.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\lifebuoy.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\lightning.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\lightning.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\lightning1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\lightning1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\like.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\like.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\link.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\link.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\link1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\link1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\location_info.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\location_info.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\login.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\login.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\login1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\login1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\logout.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\logout.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\logout1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\logout1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\magnifier.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\magnifier.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\martini.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\martini.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\megaphone.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\megaphone.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\menu.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\menu.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\menu1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\menu1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\microphone.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\microphone.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\minus.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\minus.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\minus1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\minus1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\minus2.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\minus2.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\moctail.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\moctail.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\network.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\network.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\network1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\network1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\newspaper.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\newspaper.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nobell.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nobell.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nocamera.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nocamera.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nocaravoidtravelling.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nocaravoidtravelling.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nochatmessage.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nochatmessage.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nodisplay.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nodisplay.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nodisplay1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nodisplay1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nodocument.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nodocument.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nodocumentlandscape.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nodocumentlandscape.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nodrink.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nodrink.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nofilter.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nofilter.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nofolder.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nofolder.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nohandbag.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nohandbag.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\noimage.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\noimage.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nolayers.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nolayers.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nolayers1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nolayers1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nolocation.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nolocation.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nolock.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nolock.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nomessage.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nomessage.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nomobile.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nomobile.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nomoney.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nomoney.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nophoto.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nophoto.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nopreview.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nopreview.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\noprinter.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\noprinter.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\noschedule.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\noschedule.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nosync.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nosync.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\notv.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\notv.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\nowaterdrop.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\nowaterdrop.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\pagecollection.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\pagecollection.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\paperplane.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\paperplane.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\parcel.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\parcel.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\pen.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\pen.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\pencil.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\pencil.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\petrolpump.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\petrolpump.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\pizza.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\pizza.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\plane.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\plane.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\plus.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\plus.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\plussquare.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\plussquare.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\power.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\power.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\process.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\process.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\purse.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\purse.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\recycle.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\recycle.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\reducebrightness.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\reducebrightness.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\reload.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\reload.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\reload1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\reload1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\remove.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\remove.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\repair.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\repair.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\research.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\research.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\rotate.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\rotate.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\rssfeed.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\rssfeed.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\save.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\save.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\save1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\save1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\search.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\search.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\setting.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\setting.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\share.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\share.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\spacebar.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\spacebar.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\spoonandfork.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\spoonandfork.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\starbisected.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\starbisected.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\steeringwheel....svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\steeringwheel....svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\sun.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\sun.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\swimmer.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\swimmer.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\sync.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\sync.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\syncerror.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\syncerror.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\tablelamp.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\tablelamp.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\taxi.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\taxi.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\teaglass.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\teaglass.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\toggleoff.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\toggleoff.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\toggleon.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\toggleon.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\trafficsignal.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\trafficsignal.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\trash.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\trash.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\trash_red.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\trash_red.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\trees.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\trees.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\tv.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\tv.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\umbrella.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\umbrella.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\upload.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\upload.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\vibrate.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\vibrate.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\videocameraoff.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\videocameraoff.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\voicemail.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\voicemail.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\voicemail1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\voicemail1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\volumemaximum.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\volumemaximum.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\volumemedium.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\volumemedium.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\volumemedium1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\volumemedium1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\volumeminimum.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\volumeminimum.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\volumemute.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\volumemute.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\waterdrop.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\waterdrop.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\waterglass.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\waterglass.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\waterglass1.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\waterglass1.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\wifi.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\wifi.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\wifioff.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\wifioff.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\yinyang.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\yinyang.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\zoomin.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\zoomin.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\zoomout.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\userInterface\\zoomout.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\account.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\account.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\profile.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\profile.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\reader.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\reader.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\user+.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\user+.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\user.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\user.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\usercheck.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\usercheck.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\userexclamationmark.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\userexclamationmark.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\userlocation.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\userlocation.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\userminus.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\userminus.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\users.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\users.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\users\\userx.svg",
+      "PackagePath": "staticwebassets\\resources\\public\\icons\\users\\userx.svg"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\scripts\\pagescripts\\IndexScripts.js",
+      "PackagePath": "staticwebassets\\scripts\\pagescripts\\IndexScripts.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\scripts\\pagescripts\\SandboxScripts.js",
+      "PackagePath": "staticwebassets\\scripts\\pagescripts\\SandboxScripts.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\searchRecipes.html",
+      "PackagePath": "staticwebassets\\searchRecipes.html"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.MauiApp1.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.build.MauiApp1.props",
+      "PackagePath": "build\\MauiApp1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.buildMultiTargeting.MauiApp1.props",
+      "PackagePath": "buildMultiTargeting\\MauiApp1.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0-ios\\iossimulator-x64\\staticwebassets\\msbuild.buildTransitive.MauiApp1.props",
+      "PackagePath": "buildTransitive\\MauiApp1.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

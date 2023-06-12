@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Overview.Views.HomeContentPage"
+               NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="HomeContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
+    <Grid x:Name="GridRootLayout" Grid.Row="0" BackgroundColor="#006272" CompressedLayout.IsHeadless="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="24" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272" HeightRequest="56">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="16"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="24" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="24" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="16" />
+            </Grid.ColumnDefinitions>
+
+            <Image Grid.Column="1" Source="air_icon_white_68x24.png" WidthRequest="68" BackgroundColor="Transparent" />
+
+            <ImageButton Grid.Column="3" Source="add_new_white_24x24.png" WidthRequest="28"  BackgroundColor="Transparent" BorderColor="Transparent" Padding="4"/>
+
+            <ImageButton Grid.Column="5" Source="mail_white_20x20.png" WidthRequest="32"   BackgroundColor="Transparent" BorderColor="Transparent" Padding="4"/>
+
+            <ImageButton Grid.Column="7" Source="profile_white_24x24.png" WidthRequest="32"  BackgroundColor="Transparent" BorderColor="Transparent" Padding="4"/>
+            
+
+        </Grid>
+
+        <HorizontalStackLayout Grid.Row="2" RadioButtonGroup.GroupName="MenuCategories">
+
+            <RadioButton x:Name="FeedRadioButton" Content="{Binding .}" MinimumWidthRequest="0" Margin="16,0,0,0"  IsChecked="False" CheckedChanged="FeedRadioButton_CheckedChanged">
+                <RadioButton.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="2" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CheckedStates">
+                                        <VisualState x:Name="Checked">
+                                            <VisualState.Setters>
+                                                <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Unchecked">
+                                            <VisualState.Setters>                                       
+                                                <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                            <Label Text="Feed" Grid.Row="0" TextColor="White"/>
+                            <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.ControlTemplate>
+            </RadioButton>
+
+            <RadioButton x:Name="DashboardRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="True" CheckedChanged="DashboardRadioButton_CheckedChanged">
+                <RadioButton.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="2" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CheckedStates">
+                                        <VisualState x:Name="Checked">
+                                            <VisualState.Setters>
+                                                <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Unchecked">
+                                            <VisualState.Setters>
+                                                <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                            <Label Text="Dashboard" Grid.Row="0" TextColor="White"/>
+                            <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.ControlTemplate>
+            </RadioButton>
+
+            <RadioButton x:Name="BiodataRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="False" CheckedChanged="BiodataRadioButton_CheckedChanged">
+                <RadioButton.ControlTemplate>
+                    <ControlTemplate>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="24"/>
+                                <RowDefinition Height="2" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                            </Grid.ColumnDefinitions>
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroupList>
+                                    <VisualStateGroup x:Name="CheckedStates">
+                                        <VisualState x:Name="Checked">
+                                            <VisualState.Setters>
+                                                <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+
+                                        <VisualState x:Name="Unchecked">
+                                            <VisualState.Setters>
+                                                <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                            </VisualState.Setters>
+                                        </VisualState>
+                                    </VisualStateGroup>
+                                </VisualStateGroupList>
+                            </VisualStateManager.VisualStateGroups>
+                            <Label Text="Biodata" Grid.Row="0" TextColor="White"/>
+                            <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                        </Grid>
+                    </ControlTemplate>
+                </RadioButton.ControlTemplate>
+            </RadioButton>
+        </HorizontalStackLayout>
+
+        <Frame Grid.Row="4" BackgroundColor="White" CornerRadius="16" Padding="0">
+            <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
+                <StackLayout x:Name="DashboardContentStackLayout" IsVisible="true"/>
+
+                <StackLayout x:Name="BiodataContentStackLayout" IsVisible="false"/>
+            </StackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

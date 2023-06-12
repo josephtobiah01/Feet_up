@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "feather-icons@4.29.0",
+      "destination": "wwwroot/lib/feather-icons/"
+    },
+    {
+      "library": "mustache.js@4.2.0",
+      "destination": "wwwroot/lib/mustache.js/"
+    },
+    {
+      "library": "knockout@3.5.1",
+      "destination": "wwwroot/lib/knockout/"
+    },
+    {
+      "library": "bootstrap-toaster@5.1.0",
+      "destination": "wwwroot/lib/bootstrap-toaster/"
+    },
+    {
+      "library": "microsoft-signalr@7.0.4",
+      "destination": "wwwroot/lib/microsoft-signalr/"
+    },
+    {
+      "library": "choices.js@10.2.0",
+      "destination": "wwwroot/lib/choices.js/"
+    },
+    {
+      "provider": "cdnjs",
+      "library": "bootstrap-datepicker@1.10.0",
+      "destination": "wwwroot/lib/bootstrap-datepicker/"
+    }
+  ]
+}

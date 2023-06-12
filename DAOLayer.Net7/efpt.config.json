@@ -1,0 +1,73 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "NutritionContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": true,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Nutrition",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "DAOLayer.Net7",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fms_dish_type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fns_error_code]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fns_meal_type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fns_nutrition_actual_day]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fns_nutrition_actual_dish]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fns_nutrition_actual_meal]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[fns_transcription_type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "c88-sqlserver-sea-test.FitApp-test_dev",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": true,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

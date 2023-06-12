@@ -1,0 +1,329 @@
+﻿@model ProgramDetailViewModel
+
+@{
+    var user = Model.CurrentPlan.FkCustomer;
+    var plan = Model.CurrentPlan;
+
+    string dateformat = "yyyy-MM-dd";
+    string dailyPickerMin = Model.CurrentPlan.StartDate.HasValue ? Model.CurrentPlan.StartDate.Value.ToString(dateformat) : String.Empty;
+    string dailyPickerMax = Model.CurrentPlan.EndDate.HasValue ? Model.CurrentPlan.EndDate.Value.ToString(dateformat) : String.Empty;
+}
+
+<div class="d-flex mb-3 justify-content-between">
+    <span>
+        <span class="fs-3">@plan.Name</span>
+        <span class="text-muted">(ID: @plan.Id)</span>
+        @if (plan.IsCurrent)
+        {
+            <span class="badge bg-primary">Current</span>
+        }
+        @if (plan.IsTemplate)
+        {
+            <span class="badge bg-warning">Template</span>
+        }
+    </span>
+    <span>
+        <a class="btn btn-outline-primary" asp-action="EditProgram" asp-route-id="@plan.Id">
+            <i data-feather="edit"></i>&nbsp;Edit
+        </a>
+        <button class="btn btn-outline-danger">
+            <i data-feather="trash-2"></i>&nbsp;Delete
+        </button>
+    </span>
+</div>
+<ul class="nav nav-tabs" id="mainTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="overview_tab" data-bs-toggle="tab" data-bs-target="#overview" type="button"
+            role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+    </li>
+    <li class="nav-item" role="presentation">
+        <button class="nav-link" id="sessions_tab" data-bs-toggle="tab" data-bs-target="#sessions" type="button"
+                role="tab" aria-controls="sessions" aria-selected="false">
+            Training Schedule
+        </button>
+    </li>
+</ul>
+<div class="tab-content container p-3 border border-top-0" id="mainTabContent">
+    <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview_tab">
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <span class="fw-bold">User:</span>
+                <span><a href="#">@user.FirstName @user.LastName (ID: @user.Id)</a></span>
+            </div>
+            <div class="col-md-6">
+                <span class="fw-bold">Plan Effectivity:</span>
+                <span>@Model.CurrentPlan.StartDate.GetValueOrDefault().Date.ToShortDateString() - @Model.CurrentPlan.EndDate.GetValueOrDefault().Date.ToShortDateString()</span>
+            </div>          
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span class="fw-bold mb-3">Total Compliance Rate:</span>
+                <div class="progress">
+                    @{ float totalComplianceRate = (Model.SetComplianceRate + Model.ExerciseComplianceRate) / 2; }
+                    <div class="progress-bar" role="progressbar" style="width: @(totalComplianceRate)%" aria-valuenow="@(totalComplianceRate)" aria-valuemin="0" aria-valuemax="100">@(totalComplianceRate)%</div>
+                </div>
+            </div>           
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span class="fw-bold mb-3">Exercise Status:</span>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: @(Model.CompletedExercisesPercentage)%" aria-valuenow="@(Model.CompletedExercisesPercentage)" aria-valuemin="0" aria-valuemax="100">@Model.CompletedExercises done</div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: @(Model.SkippedExercisesPercentage)%" aria-valuenow="@(Model.SkippedExercisesPercentage)" aria-valuemin="0" aria-valuemax="100">@Model.SkippedExercises skipped</div>
+                    <div class="progress-bar bg-secondary" role="progressbar" style="width: @(Model.PendingExercisesPercentage)%" aria-valuenow="@(Model.PendingExercisesPercentage)" aria-valuemin="0" aria-valuemax="100">@Model.PendingExercises pending</div>
+                </div>
+                <span class="fw-bold mb-3">
+                    Exercise Compliance Rate:
+                    <span class="fw-normal text-muted">Computed by getting the ratio of Completed Exercises against Completed plus Skipped Exercises</span>
+                </span>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: @(Model.ExerciseComplianceRate)%" aria-valuenow="@(Model.ExerciseComplianceRate)" aria-valuemin="0" aria-valuemax="100">@(Model.ExerciseComplianceRate)%</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span class="fw-bold mb-3">Set Status:</span>
+                <div class="progress mb-3">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: @(Model.CompletedSetPercentage)%" aria-valuenow="@(Model.CompletedSetPercentage)" aria-valuemin="0" aria-valuemax="100">@Model.CompletedSets done</div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: @(Model.SkippedSetPercentage)%" aria-valuenow="@(Model.SkippedSetPercentage)" aria-valuemin="0" aria-valuemax="100">@Model.SkippedSets skipped</div>
+                    <div class="progress-bar bg-secondary" role="progressbar" style="width: @(Model.PendingSetPercentage)%" aria-valuenow="@(Model.PendingSetPercentage)" aria-valuemin="0" aria-valuemax="100">@Model.PendingSets pending</div>
+                </div>
+                <span class="fw-bold mb-3">
+                    Set Compliance Rate:
+                    <span class="fw-normal text-muted">Computed by getting the ratio of Completed Sets against Completed plus Skipped Sets</span>
+                </span>
+                <div class="progress mb-3">
+                    <div class="progress-bar" role="progressbar" style="width: @(Model.SetComplianceRate)%" aria-valuenow="@(Model.SetComplianceRate)" aria-valuemin="0" aria-valuemax="100">@(Model.SetComplianceRate)%</div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <span class="fw-bold">Most Completed Exercise:</span>
+                <span>@Model.MostCompletedExercise</span>
+            </div>
+            <div class="col">
+                <span class="fw-bold">Most Skipped Exercise:</span>
+                <span>@Model.MostSkippedExercise</span>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="sessions" role="tabpanel" aria-labelledby="sessions_tab">
+        <div class="list-group altrow-color">
+            @{ int weekIndex = 1; }
+            @foreach (var weekly in plan.EdsWeeklyPlan.OrderBy(r => r.StartDate))
+            {               
+                <div class="list-group-item">
+                    <div class="d-flex mb-3 justify-content-between">
+                        <span>
+                            <span class="fs-4">Week @(weekIndex++)</span>
+                            <span class="">@weekly.StartDate.GetValueOrDefault().ToLongDateString() - @weekly.EndDate.GetValueOrDefault().ToLongDateString()</span>
+                        </span>
+                        <span>
+                            <button class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#copyweek_modal" data-bs-weekid="@weekly.Id">
+                                <i data-feather="copy"></i><span class="ms-2">Copy this Week</span>
+                            </button>
+                            <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#week_tbl_@weekly.Id">
+                                <i data-feather="list"></i>&nbsp;@weekly.EdsDailyPlan.Count Days
+                            </button>
+                        </span>
+                    </div>
+                    <div id="week_tbl_@weekly.Id" class="collapse list-group altrow-color">
+                        @{ int dayIndex = 1; }
+                        @foreach (var daily in weekly.EdsDailyPlan.OrderBy(r => r.StartDay))
+                        {
+                            <div class="list-group-item">
+                                <div class="d-flex mb-3 justify-content-between">
+                                    <div class="d-inline-block">
+                                        <span class="fs-5">Day @(dayIndex++)</span>
+                                        <span>@daily.StartDay.GetValueOrDefault().ToLongDateString()</span>
+                                    </div>
+                                    <span>
+                                        <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#daily_tbl_@daily.Id">
+                                            <i data-feather="list"></i>&nbsp;@daily.EdsTrainingSession.Count Sessions
+                                        </button>
+                                    </span>
+                                </div>                              
+                                <div id="daily_tbl_@daily.Id" class="collapse list-group altrow-color">
+                                    @foreach (var session in daily.EdsTrainingSession)
+                                    {
+                                    <div class="list-group-item">
+                                        <div class="d-flex mb-3 justify-content-between">
+                                            <div class="d-inline-block">
+                                                <a asp-action="EditSession" asp-route-id="@session.Id" target="_blank" class="fs-5 fw-bold">@session.Name</a>
+                                                <span>@session.StartDateTime.GetValueOrDefault().TimeOfDay.ToString("g") - @session.EndDateTime.GetValueOrDefault().TimeOfDay.ToString("g")</span>
+                                                <span class="text-muted">ID: @session.Id</span>
+                                                @if (session.IsCustomerAddedTrainingSession)
+                                                {
+                                                    <span class="badge bg-secondary">User Added</span>
+                                                }
+                                                @if (session.IsSkipped)
+                                                {
+                                                    <span class="badge bg-warning">Skipped</span>
+                                                }
+                                                @if (session.IsMoved)
+                                                {
+                                                    <span class="badge bg-secondary">Moved</span>
+                                                }
+                                                @if (!String.IsNullOrEmpty(session.CustomerFedback))
+                                                {
+                                                    <div>
+                                                        <span class="fw-bold">Customer Feedback:</span>
+                                                        <span class="text-muted">@session.CustomerFedback</span>
+                                                    </div>
+                                                }
+                                                @if (session.ReadonForSkipping.HasValue)
+                                                {
+                                                    <div>
+                                                        <span class="fw-bold">Reason For Skipping:</span>
+                                                        <span class="text-muted">@session.ReadonForSkippingNavigation.Name</span>
+                                                    </div>
+                                                }
+                                                @if (session.ReasonForReschedule.HasValue)
+                                                {
+                                                    <div>
+                                                        <span class="fw-bold">Reason For Reschedule:</span>
+                                                        <span class="text-muted">@session.ReasonForRescheduleNavigation.Name</span>
+                                                    </div>
+                                                }
+                                                <span class="d-block mt-3">
+                                                    @{
+                                                        int completed = session.EdsExercise.Count(r => r.IsComplete);
+                                                        int skipped = session.EdsExercise.Count(r => r.IsSkipped);
+                                                        int pending = session.EdsExercise.Count() - (completed + skipped);
+                                                    }
+                                                    <span>Exercises:</span>
+                                                    <span class="text-success">@completed Complete</span>
+                                                    <span class="text-danger">@skipped Skipped</span>
+                                                    <span class="text-secondary">@pending Pending</span>
+                                                </span>
+                                            </div>                                           
+                                            <span>
+                                                <button class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#sess_tbl_@session.Id">
+                                                    <i data-feather="list"></i>&nbsp;@session.EdsExercise.Count Exercises
+                                                </button>
+                                            </span>
+                                        </div>
+                                        <div id="sess_tbl_@session.Id" class="collapse list-group">
+                                            @foreach (var exercise in session.EdsExercise)
+                                            {
+                                                float s_maxSet = exercise.EdsSet.Count();
+                                                float s_doneSet = exercise.EdsSet.Count(r => r.IsComplete);
+                                                float s_skipSet = exercise.EdsSet.Count(r => r.IsSkipped);
+                                                float s_notDoneSet = exercise.EdsSet.Count(r => !r.IsComplete && !r.IsSkipped);
+
+                                                <div class="list-group-item">
+                                                    <div class="row justify-content-between mb-3">
+                                                        <span class="col-md-6 fw-bold">@exercise.FkExerciseType.Name</span>
+                                                        <div class="col-md-6 text-md-end">
+                                                            <span class="text-success">
+                                                                <span class="fw-bold">@s_doneSet</span> Sets Done
+                                                            </span>
+                                                            <span class="text-danger">
+                                                                <span class="fw-bold">@s_skipSet</span> Sets Skipped
+                                                            </span>
+                                                            <span class="text-muted">
+                                                                <span class="fw-bold">@s_notDoneSet</span> Sets Pending
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col">
+                                                            <div>
+                                                                <table class="table table-striped">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th>Set Number</th>
+                                                                            <th>Target</th>
+                                                                            <th>Actual</th>
+                                                                            <th></th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                        @foreach (var set in exercise.EdsSet)
+                                                                        {
+                                                                            string target_metricText = String.Empty;
+                                                                            string actual_metricText = String.Empty;
+                                                                            string tableClass = set.IsComplete ? "table-success" : set.IsSkipped ? "table-danger" : "";
+                                                                            @foreach (var metric in set.EdsSetMetrics)
+                                                                            {
+                                                                                target_metricText += $" {metric.TargetCustomMetric} {metric.FkMetricsType.Name} x";
+                                                                                if (metric.ActualCustomMetric.HasValue)
+                                                                                {
+                                                                                    actual_metricText += $" {metric.TargetCustomMetric} {metric.FkMetricsType.Name} x";
+                                                                                }
+                                                                            }
+                                                                            <tr class="@tableClass">
+                                                                                <td>@set.SetSequenceNumber</td>
+                                                                                <td>
+                                                                                    @if (target_metricText != String.Empty)
+                                                                                    {
+                                                                                        <span>@target_metricText.Substring(0, target_metricText.Length - 1)</span>
+                                                                                    }
+                                                                                </td>
+                                                                                <td>
+                                                                                    @if (actual_metricText != String.Empty)
+                                                                                    {
+                                                                                        <span>@actual_metricText.Substring(0, actual_metricText.Length - 1)</span>
+                                                                                    }
+                                                                                </td>
+                                                                                <td>
+                                                                                    @if (set.IsCustomerAddedSet)
+                                                                                    {
+                                                                                        <span class="badge bg-secondary">User-added</span>
+                                                                                    }
+                                                                                </td>
+                                                                            </tr>
+                                                                        }
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                    }
+                                </div>
+                            </div>
+
+                            
+                        }
+                    </div>                   
+                </div>
+            }
+        </div>     
+    </div>
+</div>
+
+<div id="copyweek_modal" class="modal" tabindex="-1">
+    <form id="copyweek_form" asp-action="CopyWeek" method="post">
+        <input type="hidden" asp-for="CopyWeekModel.WeekId" />
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Copy Week Wizard</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="alert_container"></div>
+                    <p>Copying this week will add this week to the plan and also copy the training sessions in it, mimicking the schedules based on the new start date. This will be added to the current plan.</p>
+                    <div class="form-group">
+                        <label class="form-label" asp-for="CopyWeekModel.StartDay">New Start Day for Copied Week</label>
+                        <input class="form-control" type="date" asp-for="CopyWeekModel.StartDay" min="@dailyPickerMin" max="@dailyPickerMax" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button id="copyweek_submit" type="button" class="btn btn-primary">Proceed with Copy</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/lib/managed/copyweek_modal.js"></script>
+}

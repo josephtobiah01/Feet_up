@@ -1,0 +1,43 @@
+﻿@model DataEntryTest.Models.EdsSetMetrics
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>EdsSetMetrics</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TargetCustomMetric)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TargetCustomMetric)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ActualCustomMetric)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ActualCustomMetric)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkMetricsType)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkMetricsType.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FkSet)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FkSet.Id)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

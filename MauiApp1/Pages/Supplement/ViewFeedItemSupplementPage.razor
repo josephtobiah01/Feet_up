@@ -1,0 +1,89 @@
+﻿@page "/ViewFeedItemSupplementPage"
+@using FeedApi.Net7.Models;
+@using MauiApp1.Areas.Supplement.ViewModels;
+@using ParentMiddleWare.Models;
+@using MauiApp1.Pages.Supplement;
+
+<div class="content-div">
+
+    <div class="header-div">
+
+        <div class="image-container-div">
+            <img class="icon-image white-icon" src="resources/public/icons/medical/medicine1.svg" />
+        </div>
+
+        <label class="elapsed-label">@GetFormattedTimeElapsed(_feedItem.Date, _feedItem.Status)</label>
+        <label class="title-label">@_feedItem.Title</label>
+        
+    </div>
+
+    <hr class="header-dash-border-div">
+
+    <div class="tab-group-container-div">
+        <div class="tab-item-container-div tab-item-container-supplement-to-take-div">
+            <label for="tab-item-container-supplement-to-take-input">Supplements to take</label>
+            <input id="tab-item-container-supplement-to-take-input" name="tabs-two" type="radio" checked="@_supplementFeedItemViewModel.IsSupplementToTake" @onclick="SupplementToTakeTabItem_Click">
+
+
+        </div>
+        <div class="tab-item-container-div tab-item-container-all-supplements-div">
+            <label for="tab-item-container-all-supplements-input">see all supplements</label>
+            <input id="tab-item-container-all-supplements-input" name="tabs-two" type="radio" checked="@_supplementFeedItemViewModel.IsAllSupplement" @onclick="AllSupplementTabItem_Click" />
+
+        </div>
+    </div>
+
+
+    <div class="list-content-group-div" hidden="@_isSupplementsToTakeTabDiv">
+        
+        <div class="action-button-grid-container">
+            <button align="center" type="button" class="action-grid-item-button action-snooze-all-button" @onclick="SnoozeAllButton_Click">Snooze all</button>
+            <button type="button" class="action-grid-item-button action-mark-all-button" @onclick="MarkAllDoneButton_Click">
+                <img class="close-button-icon-image" src="resources/public/icons/uniconsSolid/approve_tick_green.svg" />
+                @_markAllDoneText
+                </button>
+        </div>
+
+
+        @foreach (SupplementPageViewModel supplementPageViewModel in _supplementFeedItemViewModel.supplements)
+        {
+            <MauiApp1.Pages.Supplement.ListUpdateSupplementItem SupplementPageViewModel="supplementPageViewModel" OnCheckCallback="CheckboxEvent_CallBack" ViewSupplementOnClickCallback="()=>ViewSupplementItem_Click(supplementPageViewModel,false)" SnoozeButtonOnClickCallback="()=>SnoozeButton_Click(supplementPageViewModel)" />
+        }
+
+        @*<div class="content-group-scroll-support-div" />*@
+
+    </div>
+
+    <div class="list-content-all-supplements-group-div" hidden="@_isAllSupplementsTabDiv">
+
+        @foreach (SupplementPageViewModel supplementPageViewModel in _supplementFeedItemViewModel.allSupplements)
+        {
+            <MauiApp1.Pages.Supplement.ListSupplementItem SupplementPageViewModel="supplementPageViewModel" ViewSupplementOnClickCallback="()=>ViewSupplementItem_Click(supplementPageViewModel,true)" />
+        }
+
+        @*<div class="content-group-scroll-support-div" />*@
+
+    </div>
+
+
+</div>
+
+<div class="button-group-div" align="right">
+    @*<button type="button" class="content-back-to-feed-button" @onclick="AddSupplementButton_Click">Add</button>*@
+    <button type="button" class="content-back-to-feed-button" @onclick="BackToFeedButton_Click">Back to feed</button>
+</div>
+
+
+<div class="black-cover-div" hidden="@_isBlackCoverDivHidden" @onclick="BlackCoverDiv_Click"/>
+
+@if (_supplementPageViewModel != null)
+{
+    <MauiApp1.Pages.Supplement.ViewSupplementItem SupplementPageViewModel="_supplementPageViewModel" Hidden="_isViewSupplementItemHidden" OnCloseClickCallback="CloseSupplementDetailsButton_Click" SnoozeButtonHidden="_isSnoozeMenuHidden" SuccessEventCallback="SnoozeDialogIsSuccess_EventCallback" GetSupplementIdEventCallback="GetUpdatedSupplement_EventCallback"/>
+}
+
+@if (_supplementPageViewModel != null || _supplementPageViewModels != null)
+{
+    <MauiApp1.Pages.Supplement.ViewSnoozePage SupplementPageViewModel="_supplementPageViewModel" SupplementPageViewModels="_supplementPageViewModels" Hidden="_isSnoozeSupplementPageHidden" OnCloseClickCallback="CloseSnoozeContainerDiv_Click" SuccessEventCallback="SnoozeDialogIsSuccess_EventCallback" GetSupplementIdEventCallback="GetUpdatedSupplement_EventCallback" />
+
+}
+

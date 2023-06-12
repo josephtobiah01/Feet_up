@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:pages="clr-namespace:MauiApp1.Pages.Nutrient"
+             x:Class="MauiApp1.Areas.Nutrient.Views.OverviewPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="OverviewPage">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor ="#006272" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+
+    <ContentView  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:view="clr-namespace:MauiApp1.Pages.Nutrient">
+        <Grid BackgroundColor="#006272">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
+
+                <BlazorWebView x:Name="BlazorWebView" HostPage="wwwroot/searchRecipes.html" >
+                    <BlazorWebView.RootComponents>
+                        <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:Overview}" />
+                    </BlazorWebView.RootComponents>
+                </BlazorWebView>
+
+
+            </Grid>
+        </Grid>
+    </ContentView>
+</ContentPage>

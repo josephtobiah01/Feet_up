@@ -1,0 +1,44 @@
+﻿@using MauiApp1.Areas.Chat.Models;
+<div id="content-div" class="content-div">
+
+    <div id="list-content-group-div" class="list-content-group-div">
+
+        @foreach (IMessage message in _messageList)
+        {
+            @switch (message.IsUserMessage)
+            {
+                case true:
+
+                    @*<div class="user-sent-message-blank-div" />*@
+                    <div class="user-sent-message-div">
+                        <label class="time-stamp-label">@message.TimeStamp</label>
+                        <br />
+                        <label class="message-text-label">@message.MessageText</label>
+                    </div>
+
+                    break;
+
+                case false:
+
+                    <div class="server-sent-message-div">
+                        <label class="username-label">@message.UserName</label>
+                        <br/>
+                        <label class="time-stamp-label">@message.TimeStamp</label>
+                        <br />
+                        <label class="message-text-label">@message.MessageText</label>
+                    </div>
+                    @*<div class="server-sent-message-blank-div"/>*@
+
+                    break;
+            }
+        }
+
+    </div>
+
+    <div class="footer-content-group-div">
+        <input type="text" class="chat-input" placeholder="Send a Message" @onfocus="ChatInput_Focused" @bind-value=@_userMessageText />
+        <button class="send-button" @onclick=SendButton_Clicked>
+            <img class="white-icon" src="resources/public/icons/userInterface/paperplane.svg" />
+        </button>
+    </div>
+</div>

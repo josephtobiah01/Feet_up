@@ -1,0 +1,112 @@
+﻿@model MuhdoRegisterModel
+@{
+    //signUpRequest.Email = "ARTEST004@yopmail.com";
+    //signUpRequest.FirstName = "John";
+    //signUpRequest.LastName = "Four";
+    //signUpRequest.KitId = "ARTEST004";
+    //signUpRequest.Country = "GB";
+    //signUpRequest.Height = 164;
+    //signUpRequest.HeightUnit = "cm";
+    //signUpRequest.Weight = 64;
+    //signUpRequest.WeightUnit = "kg";
+    //signUpRequest.Gender = "male";
+    //signUpRequest.Phone = "+448989876767";
+    //signUpRequest.Birthday = "24-04-1994";
+}
+
+@if (ViewContext.ViewData.ModelState.ErrorCount > 0)
+{
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            Muhdo Registration Failed. Please try again later.
+        </div>
+    </div>
+}
+
+<h4>Register a User in Muhdo</h4>
+
+<form asp-action="MuhdoRegister" method="post" id="muhdo_form">
+    <input type="hidden" asp-for="Id" />
+    <h5 class="border-bottom my-3 pb-2">Muhdo Registration Data</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label" asp-for="KitId">Kit ID</label>
+            <input type="text" class="form-control" asp-for="KitId" required />
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" asp-for="Country">Country</label>
+            <select class="form-select" asp-for="Country" asp-items="Model.CountryList" required>
+                <option value="">Please select..</option>
+            </select>
+        </div>
+    </div>
+    <h5 class="border-bottom my-3 pb-2">Personal Information</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="FirstName" required/>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" asp-for="LastName">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName" required/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label class="form-label" asp-for="Gender">Gender</label>
+            <select class="form-select" asp-for="Gender" required>
+                <option value="">Please select..</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label" asp-for="Birthday">Birthday</label>
+            <input type="date" class="form-control" asp-for="Birthday" required/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <input type="hidden" asp-for="HeightUnit" />
+            <label class="form-label" asp-for="Height">Height</label>
+            <div class="input-group">
+                <input type="number" aria-label="Height" asp-for="Height" class="form-control" required/>
+                <span class="input-group-text">cm</span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <input type="hidden" asp-for="WeightUnit" />
+            <label class="form-label" asp-for="Weight">Weight</label>
+            <div class="input-group">              
+                <input type="number" aria-label="Weight" asp-for="Weight" class="form-control" required/>
+                <span class="input-group-text">kg</span>
+            </div>
+        </div>
+    </div>
+    <h5 class="border-bottom my-3 pb-2">Contact Information</h5>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" asp-for="Email" required/>
+        </div>
+        <div class="col-md-6">
+            <label asp-for="Phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" asp-for="Phone" required/>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $("#muhdo_form").validate({
+            errorClass: "is-invalid",
+            validClass: "is-valid",
+        })
+    </script>
+}

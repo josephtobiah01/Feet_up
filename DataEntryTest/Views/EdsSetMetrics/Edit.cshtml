@@ -1,0 +1,50 @@
+﻿@model DataEntryTest.Models.EdsSetMetrics
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>EdsSetMetrics</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FkSetId" class="control-label"></label>
+                <select asp-for="FkSetId" class="form-control" asp-items="ViewBag.FkSetId"></select>
+                <span asp-validation-for="FkSetId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkMetricsTypeId" class="control-label"></label>
+                <select asp-for="FkMetricsTypeId" class="form-control" asp-items="ViewBag.FkMetricsTypeId"></select>
+                <span asp-validation-for="FkMetricsTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TargetCustomMetric" class="control-label"></label>
+                <input asp-for="TargetCustomMetric" class="form-control" />
+                <span asp-validation-for="TargetCustomMetric" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActualCustomMetric" class="control-label"></label>
+                <input asp-for="ActualCustomMetric" class="form-control" />
+                <span asp-validation-for="ActualCustomMetric" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

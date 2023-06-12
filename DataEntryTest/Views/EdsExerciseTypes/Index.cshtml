@@ -1,0 +1,120 @@
+﻿@model IEnumerable<DataEntryTest.Models.EdsExerciseType>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+                        <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExplainerVideoFr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExplainerTextFr)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HasSetDefaultTemplate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsSetCollapsed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkEquipment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkExerciseClass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkForce)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkLevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkMainMuscleWorked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkMechanicsType)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkOtherMuscleWorked)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FkSport)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExplainerVideoFr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExplainerTextFr)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HasSetDefaultTemplate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsSetCollapsed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsDeleted)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkEquipment.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkExerciseClass.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkForce.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkLevel.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkMainMuscleWorked.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkMechanicsType.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkOtherMuscleWorked.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FkSport.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

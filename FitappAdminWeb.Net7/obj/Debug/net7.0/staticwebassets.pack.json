@@ -1,0 +1,853 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\obj\\Debug\\net7.0\\scopedcss\\projectbundle\\FitappAdminWeb.Net7.bundle.scp.css",
+      "PackagePath": "staticwebassets\\FitappAdminWeb.Net7.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\css\\imageViewerStyles.css",
+      "PackagePath": "staticwebassets\\css\\imageViewerStyles.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\img\\air_logo.png",
+      "PackagePath": "staticwebassets\\img\\air_logo.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\img\\sampleimg.png",
+      "PackagePath": "staticwebassets\\img\\sampleimg.png"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.standalone.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.standalone.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.standalone.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.standalone.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.standalone.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker.standalone.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.standalone.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.standalone.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.standalone.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.standalone.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.standalone.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\css\\bootstrap-datepicker3.standalone.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\js\\bootstrap-datepicker.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\js\\bootstrap-datepicker.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\js\\bootstrap-datepicker.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\js\\bootstrap-datepicker.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker-en-CA.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker-en-CA.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ar-DZ.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ar-DZ.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ar-tn.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ar-tn.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ar.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ar.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.az.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.az.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bg.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bg.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bn.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bn.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.br.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.br.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bs.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.bs.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ca.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ca.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.cs.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.cs.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.cy.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.cy.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.da.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.da.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.de.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.de.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.el.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.el.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-AU.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-AU.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-CA.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-CA.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-GB.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-GB.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-IE.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-IE.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-NZ.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-NZ.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-US.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-US.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-ZA.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.en-ZA.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.eo.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.eo.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.es.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.es.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.et.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.et.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.eu.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.eu.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fa.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fa.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fi.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fi.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fo.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fo.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fr-CH.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fr-CH.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fr.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.fr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.gl.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.gl.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.he.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.he.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hi.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hi.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hr.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hu.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hu.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hy.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.hy.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.id.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.id.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.is.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.is.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.it-CH.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.it-CH.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.it.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.it.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ja.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ja.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ka.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ka.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.kh.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.kh.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.kk.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.kk.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.km.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.km.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ko.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ko.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.kr.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.kr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.lt.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.lt.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.lv.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.lv.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.me.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.me.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.mk.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.mk.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.mn.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.mn.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.mr.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.mr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ms.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ms.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.nl-BE.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.nl-BE.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.nl.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.nl.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.no.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.no.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.oc.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.oc.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.pl.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.pl.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.pt-BR.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.pt-BR.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.pt.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.pt.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ro.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ro.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.rs-latin.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.rs-latin.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.rs.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.rs.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ru.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ru.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.si.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.si.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sk.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sk.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sl.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sl.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sq.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sq.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sr-latin.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sr-latin.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sr.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sv.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sv.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sw.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.sw.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ta.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.ta.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.tg.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.tg.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.th.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.th.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.tk.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.tk.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.tr.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.tr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.uk.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.uk.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.uz-cyrl.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.uz-cyrl.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.uz-latn.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.uz-latn.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.vi.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.vi.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.zh-CN.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.zh-CN.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.zh-TW.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-datepicker\\locales\\bootstrap-datepicker.zh-TW.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-toaster\\css\\bootstrap-toaster.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-toaster\\css\\bootstrap-toaster.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-toaster\\css\\bootstrap-toaster.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-toaster\\css\\bootstrap-toaster.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.d.ts",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.d.ts"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\chart.js",
+      "PackagePath": "staticwebassets\\lib\\chartJS\\chart.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\chart.min.js",
+      "PackagePath": "staticwebassets\\lib\\chartJS\\chart.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\base.css",
+      "PackagePath": "staticwebassets\\lib\\choices.js\\base.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\base.min.css",
+      "PackagePath": "staticwebassets\\lib\\choices.js\\base.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\choices.css",
+      "PackagePath": "staticwebassets\\lib\\choices.js\\choices.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\choices.js",
+      "PackagePath": "staticwebassets\\lib\\choices.js\\choices.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\choices.min.css",
+      "PackagePath": "staticwebassets\\lib\\choices.js\\choices.min.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\choices.min.js",
+      "PackagePath": "staticwebassets\\lib\\choices.js\\choices.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\feather-icons\\feather.js",
+      "PackagePath": "staticwebassets\\lib\\feather-icons\\feather.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\feather-icons\\feather.js.map",
+      "PackagePath": "staticwebassets\\lib\\feather-icons\\feather.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\feather-icons\\feather.min.js",
+      "PackagePath": "staticwebassets\\lib\\feather-icons\\feather.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\feather-icons\\feather.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\feather-icons\\feather.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\knockout\\knockout-latest.debug.js",
+      "PackagePath": "staticwebassets\\lib\\knockout\\knockout-latest.debug.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\knockout\\knockout-latest.debug.min.js",
+      "PackagePath": "staticwebassets\\lib\\knockout\\knockout-latest.debug.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\knockout\\knockout-latest.debug.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\knockout\\knockout-latest.debug.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\knockout\\knockout-latest.js",
+      "PackagePath": "staticwebassets\\lib\\knockout\\knockout-latest.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\knockout\\knockout-latest.min.js",
+      "PackagePath": "staticwebassets\\lib\\knockout\\knockout-latest.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\knockout\\knockout-latest.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\knockout\\knockout-latest.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\chatclient.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\chatclient.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\copyweek_modal.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\copyweek_modal.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\custom_validators.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\custom_validators.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\dish_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\dish_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\dishbrowser_modal.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\dishbrowser_modal.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\extype_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\extype_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\foodplan_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\foodplan_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\general_chat.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\general_chat.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\nutritionchart.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\nutritionchart.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\plan_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\plan_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\promotion.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\promotion.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supp_weekly_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\supp_weekly_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supp_weekly_list.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\supp_weekly_list.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supplement_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\supplement_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\training_edit.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\training_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\utilities.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\utilities.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\microsoft-signalr\\signalr.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft-signalr\\signalr.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\microsoft-signalr\\signalr.min.js",
+      "PackagePath": "staticwebassets\\lib\\microsoft-signalr\\signalr.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\mustache.js\\mustache.js",
+      "PackagePath": "staticwebassets\\lib\\mustache.js\\mustache.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\mustache.js\\mustache.min.js",
+      "PackagePath": "staticwebassets\\lib\\mustache.js\\mustache.min.js"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.FitappAdminWeb.Net7.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.FitappAdminWeb.Net7.props",
+      "PackagePath": "build\\FitappAdminWeb.Net7.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.FitappAdminWeb.Net7.props",
+      "PackagePath": "buildMultiTargeting\\FitappAdminWeb.Net7.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.FitappAdminWeb.Net7.props",
+      "PackagePath": "buildTransitive\\FitappAdminWeb.Net7.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,150 @@
+﻿@model NutritionDailyPlanGraphViewModel
+@{
+    string dt_format = "yyyy-MM-dd";
+    string start_dt_val = Model.Day.ToString(dt_format);
+    string end_dt_val = Model.EndDay.HasValue ? Model.EndDay.Value.ToString(dt_format) : String.Empty;
+}
+
+<h4>Nutrition Charts</h4>
+<p>You can view the customer nutrition plans here daily, weekly or monthly. Use the search criteria below to refine the view</p>
+
+<div class="border p-3 mb-3 bg-light">
+    <form asp-action="Overview" method="get" id="search-form">
+        <input type="hidden" name="userid" value="@Model.CurrentUser.Id" />
+        <div class="row">
+            <div class="col mb-3">
+                <span class="fw-bold">Current User: </span>
+                <span><a asp-action="Details" asp-controller="User" asp-route-id="@Model.CurrentUser.Id">
+                    @Model.CurrentUser.FirstName @Model.CurrentUser.LastName (ID: @Model.CurrentUser.Id)
+                </a></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label class="form-label" for="startdate">Start Date</label>
+                <input type="date" id="startdate" name="startdate" class="form-control" value="@start_dt_val" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label" for="enddate">End Date</label>
+                <input type="date" id="enddate" name="enddate" class="form-control" value="@end_dt_val" />
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="chartDisplay" class="form-label">Chart Display</label>
+                <select class="form-select" id="chartDisplay" name="chartDisplay" asp-items="Model.ChartDisplay" asp-for="ChartDisplayId">
+                    <option value="">Please select..</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Update Charts</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="row" id="graph_list">
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="CaloriesChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="ProteinChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="CarbohydratesChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="SugarsChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="FatChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="SaturatedFatChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="UnsaturatedFatChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="FiberChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 mb-3">
+        <div class="card bg-light">
+            <div class="card-body">
+                <canvas id="AlcoholChart" style="width:100%;max-width:720px"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="d-flex justify-content-center py-3">
+</div>
+
+
+@section Scripts {
+    <script asp-src-include="~/lib/managed/nutritionchart.js"></script>
+
+    <script>
+        var data = [];
+        @foreach (var item in Model.NutritionListChartDisplayData)
+        {
+            @:var target = [];
+            @:var actual = [];
+            @:var label = [];
+            @:var _data = { Name: "", Target: "", Actual: "", Label: "" };
+
+            @foreach (var t in item.GraphDataTarget)
+            {
+                @:target.push("@t");
+            }
+            @foreach (var a in item.GraphDataActual)
+            {
+                @:actual.push("@a");
+            }
+            @foreach (var l in item.GraphLabel)
+            {
+                @:label.push("@l");
+            }
+
+            @:_data.Name = "@item.Name";
+            @:_data.Target = target;
+            @:_data.Actual = actual;
+            @:_data.Label = label;
+
+            @:data.push(_data);
+        }
+
+        window["nutritioncharts_options"] = { data };
+
+    </script>
+}

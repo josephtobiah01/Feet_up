@@ -1,0 +1,55 @@
+﻿@{
+}
+
+<h4 class="mb-3">User Information</h4>
+
+@if (User != null && User.Identity != null)
+{
+    <h5 class="mb-3">Identity Properties</h5>
+    <div class="mb-3">
+        <div>
+            <span class="fw-bold">Authenticated:</span>
+            <span>@User.Identity.IsAuthenticated</span>
+        </div>
+        <div>
+            <span class="fw-bold">Identity Name:</span>
+            <span>@User.Identity.Name</span>
+        </div>
+        <div>
+            <span class="fw-bold">Authentication Type:</span>
+            <span>@User.Identity.AuthenticationType</span>
+        </div>
+        <div>
+            <span class="fw-bold">Claims Count:</span>
+            <span>@User.Claims.Count()</span>
+        </div>
+    </div>   
+    <h5 class="mb-3">Identity Claims</h5>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Type</th>
+                <th>Issuer</th>
+                <th>Value Type</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in User.Claims)
+            {
+                <tr>
+                    <td>@claim.Type</td>
+                    <td>@claim.Issuer</td>
+                    <td>@claim.ValueType</td>
+                    <td>@claim.Value</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <span>No User Identity filled up.</span>
+}
+
+

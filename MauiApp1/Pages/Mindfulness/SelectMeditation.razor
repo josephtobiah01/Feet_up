@@ -1,0 +1,76 @@
+﻿@page "/SelectMeditation"
+@using ParentMiddleWare.Models;
+
+<!-- navigation bar area-->
+<div class="navigation-bar-background">
+    <button class="navigation-bar-button" @onclick="ClosePage"><img class="navigation-bar-button-icon" src="resources/public/icons/arrows/leftarrow-narrow.svg" /></button>
+    <label class="navigation-bar-text">Select Meditation</label>
+</div>
+
+<!--search bar area and background stuff-->
+<div class="search-bar-background-wrapper">
+    <div class="search-bar-background-upper" />
+    <div class="search-bar-with-icon">
+        <img class="search-bar-icon" src="resources/public/icons/userInterface/research.svg" />
+        <input type="text" class="search-bar" placeholder="Search Meditations" />
+    </div>
+    <div class="search-bar-background-lower"/>
+</div>
+<!--filters-->
+<div class="filter-group">
+    <label class="filter-label">Genre</label>
+    <div class="filter">
+        <button class="filter-button" >Calm</button>
+        <button class="filter-button" >Focus</button>
+    </div>
+</div>
+<div class="filter-group">
+    <labe class="filter-label">Time</labe>
+    <div class="filter">
+        <button class="filter-button" >2 mins</button>
+        <button class="filter-button" >5 mins</button>
+    </div>
+</div>
+<!--contents-->
+<div class="content-wrapper">
+    <!--suggested meditations-->
+    <div>
+        <label class="header-label">Suggested</label>
+
+        <div class="meditation-wrapper">
+            <div class="meditation-item">
+                <img class="meditation-item-image" src="resources/SampleMeditation.jpg" />
+                <div class="meditation-item-name-text">testname</div>
+                <div class="meditation-subtext-wrapper">
+                    <div class="meditation-item-length-text">5 mins</div>
+                        <svg height="12" width="12">
+                            <ellipse cx="6" cy="6" rx="4" ry="4" style="fill:#D9D9D9" />
+                        </svg>
+                    <div class="meditation-item-type-text">Calm</div>
+                    </div>
+                <button class="meditation-item-right-button"> > </button>
+            </div>
+
+        </div>
+    </div>
+    <!--all meditations-->
+    <div>
+        <label class="header-label" >All</label>
+
+        <div class="meditation-wrapper">
+            <div class="meditation-item">
+                <img class="meditation-item-image" src="resources/SampleMeditation.jpg" />
+                <div class="meditation-item-name-text">test</div>
+                <div class="meditation-subtext-wrapper">
+                    <div class="meditation-item-length-text">3 mins</div>
+                        <svg height="12" width="12">
+                            <ellipse cx="6" cy="6" rx="4" ry="4" style="fill:#D9D9D9" />
+                        </svg>
+                    <div class="meditation-item-type-text">Calm</div>
+                    </div>
+                <button class="meditation-item-right-button"> > </button>
+            </div>
+        </div>
+    </div>
+</div>
+

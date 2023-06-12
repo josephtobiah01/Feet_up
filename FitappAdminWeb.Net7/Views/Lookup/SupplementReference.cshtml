@@ -1,0 +1,93 @@
+﻿@model FitappAdminWeb.Net7.Models.SupplementReferenceListViewModel
+
+<div class="mb-3">
+    <span class="d-flex justify-content-between">
+        <span class="fs-3">Supplement References</span>
+        <a class="btn btn-primary align-end" asp-action="EditSupplementReference" asp-route-new="true">
+            <i data-feather="plus"></i><span class="ms-2">Add New Reference</span>
+        </a>
+    </span>
+    <div>These are supplement references that can be used when editing supplement plans</div>
+</div>
+<div id="suppref_list">
+    <div class="list-group altrow-color">      
+        @foreach (var suppRef in Model.NdsSupplementReferences)
+        {
+            <div class="list-group-item">
+                <div class="row mb-3">
+                    <div class="col d-flex justify-content-between">
+                        <span>
+                            <a class="fw-bold fs-5" asp-action="EditSupplementReference" asp-route-id="@suppRef.Id">@suppRef.Name</a>
+                            <span class="text-muted">(ID: @suppRef.Id)</span>
+                        </span>
+                        <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#suppref_tbl_@suppRef.Id"
+                            aria-expanded="false" aria-controls="suppref_tbl_@suppRef.Id">
+                            <i data-feather="info"></i><span class="ms-2">Details</span>
+                        </button>
+                    </div>               
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <span class="fw-bold">Description: </span>
+                        <span class="text-muted">@suppRef.InstructionText</span>
+                    </div>
+                </div>
+                <div id="suppref_tbl_@suppRef.Id" class="collapse">
+                    <div class="row mb-3">
+                        <div class="col">
+                            <span class="fw-bold">Unit Metric: </span>
+                            <span>@suppRef.FkUnitMetricNavigation.Name</span>
+                            @if (suppRef.FkUnitMetricNavigation.IsCount)
+                            {
+                                <span class="badge bg-secondary">Count</span>
+                            }
+                            @if (suppRef.FkUnitMetricNavigation.IsVolume)
+                            {
+                                <span class="badge bg-secondary">Volume</span>
+                            }
+                            @if (suppRef.FkUnitMetricNavigation.IsWeight)
+                            {
+                                <span class="badge bg-secondary">Weight</span>
+                            }
+                        </div>                       
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <span class="fw-bold">Supplement Instructions: </span>
+                            <span>@suppRef.FkSupplementInstructionNavigation.Description</span>
+                            <div class="mb-3">
+                                @if (suppRef.FkSupplementInstructionNavigation.RequiresSourceOfFat)
+                                {
+                                    <span class="badge bg-primary">Requires Source of Fat</span>
+                                }
+                                @if (suppRef.FkSupplementInstructionNavigation.TakeAfterMeal)
+                                {
+                                    <span class="badge bg-primary">Take After Meal</span>
+                                }
+                                @if (suppRef.FkSupplementInstructionNavigation.TakeOnEmptyStomach)
+                                {
+                                    <span class="badge bg-primary">Take on Empty Stomach</span>
+                                }
+                                @if (suppRef.FkSupplementInstructionNavigation.TakeBeforeSleep)
+                                {
+                                    <span class="badge bg-primary">Take Before Sleep</span>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-primary me-2 d-none" asp-action="EditSupplementReference" asp-route-id="@suppRef.Id">
+                        <i data-feather="edit"></i><span class="ms-2">Edit</span>
+                    </a>
+                    <a class="btn btn-primary me-2 visually-hidden" asp-action="EditLegalStatus" asp-route-id="@suppRef.Id">
+                        <i data-feather="edit"></i><span class="ms-2">Legal Status</span>
+                    </a>
+                    <button class="btn btn-danger visually-hidden" action="delete" data-id="@suppRef.Id">
+                        <i data-feather="trash-2"></i><span class="ms-2">Delete</span>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>

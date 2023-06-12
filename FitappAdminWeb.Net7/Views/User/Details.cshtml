@@ -1,0 +1,141 @@
+﻿@model UserDetailViewModel
+@{
+    var user = Model.CurrentUser;
+    var username = Model.CurrentUser != null && !String.IsNullOrEmpty(Model.CurrentUser.FirstName) ?
+        $"{Model.CurrentUser.FirstName} {Model.CurrentUser.LastName}" :
+        Model.UserIdentity != null ? Model.UserIdentity.UserName : String.Empty;
+}
+
+<h4>Customer Details</h4>
+<p>You can check a customer's overall status here, as well as a launching point for various actions.</p>
+
+<div class="border p-3">
+    <div class="row">
+        <div class="col mb-3">
+            <div class="d-flex justify-content-between">
+                <h4 class="fw-bold">
+                    <span>@username</span>
+                    @if (Model.Room != null && Model.Room.HasConcern)
+                    {
+                        <span class="badge bg-danger fw-normal fs-6">Concern</span>
+                    }
+                </h4>
+                <div class="dropdown">
+                    <button type="button" class="btn btn-primary dropdown-toggle" id="actions_dd" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i data-feather="menu"></i><span class="ms-1">Actions</span>
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="actions_dd">
+                        <li><a class="dropdown-item" asp-action="UserEdit" asp-route-id="@user.Id">Edit User Information</a></li>
+                        <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#noteModal">Add Internal Note</a></li>
+                        <li><a class="dropdown-item @(Model.Room.HasConcern ? "bg-warning" : "")" asp-action="Room" asp-controller="Chat" asp-route-id="@Model.Room.Id">Message User</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a class="dropdown-item" asp-action="Index" asp-controller="Training" asp-route-id="@user.Id">Training</a></li>
+                        <li><a class="dropdown-item" asp-action="DailyPlan" asp-controller="Nutrition" asp-route-userid="@user.Id">Nutrition</a></li>
+                        <li><a class="dropdown-item" asp-action="Overview" asp-controller="Nutrition" asp-route-userid="@user.Id">Nutrition Charts</a></li>
+                        <li><a class="dropdown-item" asp-action="SupplementsWeekly" asp-controller="Supplement" asp-route-id="@user.Id">Supplements</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            @if (Model.UserIdentity != null)
+            {
+                <span class="d-block text-muted fs-6">User Name: @Model.UserIdentity.UserName</span>
+            }
+            <span class="d-block text-muted fs-6">User ID: @user.Id</span>
+            <span class="d-block text-muted fs-6">Login ID: @user.FkFederatedUser</span>
+            <span class="d-block text-muted fs-6">Email: @user.Email</span>           
+        </div>
+    </div>
+    <div class="border-bottom mb-3 d-flex justify-content-between">
+        <h5 id="basicinfo" data-bs-toggle="collapse" data-bs-target="#uinfo_section">User Information</h5>
+        <a class="btn btn-link" asp-action="UserEdit" asp-route-id="@user.Id">Edit</a>
+    </div>
+    <div class="row show mb-3" id="uinfo_section">
+        <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <span class="form-text">@(user.Email ?? "No Data")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Mobile</label>
+            <span class="form-text">@(user.Mobile ?? "No Data")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Gender</label>
+            <span class="form-text">@(user.Gender ?? "No Data")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Date Of Birth</label>
+            <span class="form-text">@(user.Dob.HasValue ? user.Dob.Value.ToLongDateString() : "No Data")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Height</label>
+            <span class="form-text">@(user.Height.HasValue ? user.Height.Value.ToString() + " cm" : "No Data")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Weight</label>
+            <span class="form-text">@(user.Weight.HasValue ? user.Weight.Value.ToString() + " kg" : "No Data")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Country</label>
+            <span class="form-text">@(user.Country ?? "No Data")</span>
+        </div>
+    </div>
+    <div class="border-bottom mb-3">
+        <h5 id="notes" class="fs-5">Notes</h5>
+    </div>
+    <div class="row" id="notes_section">
+        @if (Model.InternalNotes.Count > 0)
+        {
+            <div class="col overflow-scroll" style="max-height: 200px">
+
+                <ul class="list-group list-group-flush">
+                    @foreach (var note in Model.InternalNotes)
+                    {
+                        <li class="list-group-item">
+                            <div class="d-flex justify-content-between">
+                                <span class="text-start fw-bold">@note.ByUserNavigation.FirstName @note.ByUserNavigation.LastName (@note.ByUserNavigation.Email)</span>
+                                @if (note.Date.HasValue)
+                                {
+                                    <span class="text-muted fst-italic">@note.Date.Value.ToString("f")</span>
+                                }
+                            </div>                          
+                            <div class="text-start mb-3">@note.Note</div>                 
+                        </li>
+                    }
+                </ul>            
+            </div>
+        }
+        else
+        {
+            <div class="col">
+                No Notes
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Add Internal Notes Modal -->
+<div class="modal fade" id="noteModal" tabindex="-1" aria-labelledby="noteModalLabel" aria-hidden="true">
+    <form asp-action="AddInternalNote" method="post">
+        <input type="hidden" asp-for="AddNote.ForUserId" />
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="noteModalLabel">Add Internal Note</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>You can add a note that will be attached to this user.</p>
+                    <div>
+                        <label class="form-label" asp-for="AddNote.Note">Note</label>
+                        <textarea row="5" class="form-control" asp-for="AddNote.Note"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </form>   
+</div>

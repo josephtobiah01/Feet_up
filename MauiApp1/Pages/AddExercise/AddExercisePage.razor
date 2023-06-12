@@ -1,0 +1,121 @@
+﻿@page "/addExercise"
+@using ExerciseApi.Net7;
+@using ParentMiddleWare.Models;
+
+<!-- navigation bar area-->
+<div class="navigation-bar-background">
+    <button class="navigation-bar-button" @onclick="CloseAddExercisePage"><img class="navigation-bar-button-icon" src="resources/public/icons/arrows/leftarrow-narrow.svg" /></button>
+    <label class="navigation-bar-text">Add Exercise</label>
+</div>
+
+<!--search bar area and background stuff-->
+<div class="search-bar-background-wrapper">
+    <div class="search-bar-background-upper" />
+    <div class="search-bar-with-icon">
+        <img class="search-bar-icon" src="resources/public/icons/userInterface/research.svg" />
+        <input type="text" class="search-bar" placeholder="Search Exercises" @bind-value=@SearchTerm/>
+    </div>
+    <div class="search-bar-background-lower"/>
+</div>
+<!--filter are (filter by x y and z)-->
+<div class="filter">
+    <button class="filter-button" @onclick="ShowAddExerciseEquipmentFilterPopup"><img class="filter-button-icon" src="resources/public/icons/userInterface/addnew.svg" />Filter by Equipment</button>
+    <button class="filter-button" @onclick="ShowAddExerciseMuscleFilterPopup"><img class="filter-button-icon" src="resources/public/icons/userInterface/addnew.svg" />Filter by Muscle</button>
+</div>
+<!--contents-->
+<div class="content-wrapper">
+    <!--suggested exercises-->
+    <div>
+        <label class="header-label"> Suggested</label>
+        <div class="exercises-wrapper">
+            @foreach (EmExerciseType SuggestedExercise in SuggestedExerciseList)
+            {
+                <div class="exercise-item">
+                    <img class="exercise-item-icon" src="resources/public/icons/sports/barbell.svg" />
+                    <div class="exercise-item-name-text">@SuggestedExercise.Name</div>
+                    <div class="exercise-subtext-wrapper">
+                        <div class="exercise-item-muscle-text">@SuggestedExercise.EmMainMuscleWorked.Name</div>
+                        <svg height="12" width="12">
+                            <ellipse cx="6" cy="6" rx="4" ry="4" style="fill:#D9D9D9" />
+                        </svg>
+                        <div class="exercise-item-equipment-text">@SuggestedExercise.EmEquipment.Name</div>
+                    </div>
+                    <button class="exercise-item-right-button" @onclick="()=> AddExercisetoTrainingSession(SuggestedExercise.Id)"> > </button>
+                </div>
+            }
+        </div>
+    </div>
+    <!--all exercises-->
+    <div>
+        <label class="header-label" > All Exercises</label>
+        <div class="exercises-wrapper">
+            @foreach (EmExerciseType Exercise in FullExerciseList)
+            {
+                <div class="exercise-item">
+                    <img class="exercise-item-icon" src="resources/public/icons/sports/barbell.svg" />
+                    <div class="exercise-item-name-text">@Exercise.Name</div>
+                    <div class="exercise-subtext-wrapper">
+                        <div class="exercise-item-muscle-text">@Exercise.EmMainMuscleWorked.Name</div>
+                        <svg height="12" width="12">
+                            <ellipse cx="6" cy="6" rx="4" ry="4" style="fill:#D9D9D9" />
+                        </svg>
+                        <div class="exercise-item-equipment-text">@Exercise.EmEquipment.Name</div>
+                    </div>
+                    <button class="exercise-item-right-button" @onclick="()=> AddExercisetoTrainingSession(Exercise.Id)"> > </button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+<!--popup-->
+<!--dark background overlay-->
+<div class="filter-popup-wrapper" style="--display-popup-variable: @DisplayPopup">
+    <div class="filter-popup-background-dark-overlay"> </div>
+    <div class="filter-popup-background">
+        <div class="filter-popup-header">
+            <label class="filter-popup-header-title"> Filter by Equipment</label>
+            <button class="filter-popup-header-close-button" @onclick="CloseAddExerciseFilterPopup"> <img class="filter-popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
+        </div>
+        <div class="filter-popup-grid">
+
+            <!-- items list-->
+            @if (filterdisplaycategory == 1)
+            {
+                @foreach(EmEquipment Equipment in FullEquipmentList)
+                {
+                    <div>
+                        <button class="filter-popup-item" @onclick="()=> FilterByEquipment(Equipment)">
+                            <img class="filter-popup-item-image" src="resources/Rectangle346.png" />
+                            <div class="filter-popup-item-name">
+                                @Equipment.Name
+                            </div>
+                        </button>
+                    </div>
+                }
+            }
+            else if (filterdisplaycategory == 2)
+            {
+                @foreach (EmMainMuscleWorked MainMuscle in FullMainMuscleWorkedList)
+                {
+                    <div>
+                        <button class="filter-popup-item" @onclick="()=> FilterByMainMuscleWorked(MainMuscle)">
+                            <img class="filter-popup-item-image" src="resources/Rectangle346.png" />
+                            <div class="filter-popup-item-name">
+                                @MainMuscle.Name
+                            </div>
+                        </button>
+                    </div>
+                }
+            }
+            else
+            {
+                //should not be possible
+            }
+
+
+
+        </div>
+    </div>
+</div>

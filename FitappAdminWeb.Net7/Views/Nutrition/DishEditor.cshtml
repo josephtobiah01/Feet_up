@@ -1,0 +1,253 @@
+﻿@model MealEditDishModel
+
+<link rel="stylesheet" href="~/css/imageViewerStyles.css" asp-append-version="true" />
+
+<h4>Transcribe Meal Nutrition</h4>
+<p>You can update the nutritional information of the user-uploaded photo here. </p>
+<div class="row row-cols-1 row-cols-sm-2">
+    <div class="col">
+        <div class="border rounded bg-light">
+            <div class="d-flex justify-content-center">
+                <figure class="figure mx-auto p-2">
+                    <img id="imgView" src="@Model.NutritionActualDish.UploadPhotoReference" alt="Uploaded photo of the dish." style="width:100%; max-width:700px" />
+                    <figcaption class="figure-caption text-end ">To zoom and rotate select the photo. </figcaption>
+                </figure>
+            </div>
+        </div>
+    </div>
+    <div class="col">
+        <form asp-action="DishEditor" method="post" id="actualDIsh_form">
+            <input type="hidden" asp-for="Data.Id" />
+            <input type="hidden" asp-for="Data.FkDishTranscriptionTypeId" />
+            <h5 class="border-bottom mb-3 pb-2">Metadata Information</h5>
+            <div class="row mb-3">
+                <div class="col-md-12">
+                    <table class="table table-striped">
+                        <tbody>
+                            <tr>
+                                <td class="fw-bold">Submitted By</td>
+                                <td>
+                                    <a target="_blank" asp-action="Details" asp-controller="User" asp-route-id="@Model.SubmittedBy.Id">
+                                        @Model.SubmittedBy.FirstName @Model.SubmittedBy.LastName (ID: @Model.SubmittedBy.Id)
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Submitted On</td>
+                                <td>@Model.SubmittedOn.ToLongDateString() @Model.SubmittedOn.ToLongTimeString()</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Dish ID</td>
+                                <td>@Model.Data.Id</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Meal ID:</td>
+                                <td>@Model.MealId</td>
+                            </tr>
+                            <tr>
+                                <td class="fw-bold">Meal Type:</td>
+                                <td>@Model.MealType</td>
+                            </tr>
+                            @if (!String.IsNullOrEmpty(Model.UserRemarks))
+                            {
+                                <tr>
+                                    <td class="fw-bold">User Remarks</td>
+                                    <td>"@Model.UserRemarks"</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>               
+            </div>
+            <h5 class="border-bottom mb-3 pb-2">Actual Nutrition of Dish</h5>
+            <p>Please enter the nutritional values of a single serving of this dish. You can also browse for this user's previous dishes as a reference.</p>
+            <div class="row mb-3">
+                <div class="col-md-12 mb-3">
+                    <button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-backdrop="static" data-bs-target="#dishbrowser_modal">Check Past Dishes</button>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.CalorieActual" class="form-label">Calorie</label>
+                    <input type="number" class="form-control" asp-for="Data.CalorieActual" required step="0.01"/>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.ProteinActual" class="form-label">Protein</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.ProteinActual" required step="0.01"/>
+                        <span class="input-group-text">gm</span>
+                    </div>
+                    <div class="is-invalid error-txt"></div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.CrabsActual" class="form-label">Carbohydrates</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.CrabsActual" required step="0.01" />
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.SugarActual" class="form-label">Sugar</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.SugarActual" step="0.01" />
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.FatActual" class="form-label">Fat</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.FatActual" required step="0.01" />
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.UnsaturatedFatActual" class="form-label">Unsaturated Fat</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.UnsaturatedFatActual" step="0.01" />
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.FiberGramsActual" class="form-label">Fiber</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.FiberGramsActual" required step="0.01" />
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.SaturatedFatGramsActual" class="form-label">Saturated Fat</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.SaturatedFatGramsActual" required step="0.01"/>
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.AlcoholGramsActual" class="form-label">Alcohol</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.AlcoholGramsActual" required step="0.01" />
+                        <span class="input-group-text">gm</span>
+                    </div>
+                </div>
+            </div>
+            <h5 class="border-bottom mb-3 pb-2">Dish Type</h5>
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.Name" class="form-label">Dish Name</label>
+                    <input type="text" class="form-control" asp-for="Data.Name" required />
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.FkDishTypeId" class="form-label">Dish Type</label>
+                    <select class="form-select" asp-for="Data.FkDishTypeId" asp-items="Model.DishTypeList">
+                        <option value="">Please select..</option>
+                    </select>
+                </div>
+            </div>
+            <h5 class="border-bottom mb-3 pb-2">Dish Consumed</h5>
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.ShareOfDishConsumed_PP" class="form-label">Share of dish being consumed (0-100%)</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" asp-for="Data.ShareOfDishConsumed_PP" required step="10" min="0" max="100" />
+                        <span class="input-group-text">%</span>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label asp-for="Data.NumberOfServingsConsumed" class="form-label">Number of servings being consumed</label>
+                    <input type="number" class="form-control" asp-for="Data.NumberOfServingsConsumed" required step="0.01" />
+                </div>
+            </div>
+            <h5 class="border-bottom mb-3 pb-2">Dish Transcription Status</h5>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label asp-for="Data.IsError" class="form-label">Error</label>
+                    <select class="form-select" asp-for="Data.IsError" id="selectErrorId">
+                        <option value="">Please select..</option>
+                        <option value="true">True</option>
+                        <option value="false">False</option>
+                    </select>
+                </div>
+                <div class="col-md-6" id="errorCode">
+                    <label asp-for="Data.FkErrorCodeId" class="form-label">Error Code</label>
+                    <select class="form-select" asp-for="Data.FkErrorCodeId" asp-items="Model.ErrorCode">
+                        <option value="">Please select..</option>
+                    </select>
+                </div>
+            </div>          
+            <h5 class="border-bottom mb-3 pb-2">Transcriber Remarks</h5>
+            <div class="row mb-3">
+                <div>
+                    <textarea type="text" asp-for="Data.TranscriberRemarks" class="form-control" id="TranscriberRemarks" row="3"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary">Update Information</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Modals {
+    <!-- Image Viewer Modal -->
+    <div id="imageViewerModal" class="modal imgmodal">
+        <div id="img_container">
+            <input type="checkbox" id="zoomCheck" />
+            <label for="zoomCheck" class="d-flex justify-content-center">
+                <img class="modal-content" id="img_modal">
+            </label>
+        </div>
+        <div id="caption"></div>
+        <!-- CLOCKWISE GAPPED CIRCLE ARROW -->
+        <span class="rotateClockwise">&orarr;</span>
+        <!-- ANTICLOCKWISE GAPPED CIRCLE ARROW -->
+        <span class="rotateAntiClockwise">&olarr;</span>
+        <span class="close">&times;</span>
+    </div>
+
+    <partial name="~/Views/Nutrition/_DishBrowserModal.cshtml" />
+}
+
+@section Scripts {
+    <script asp-src-include="~/lib/knockout/knockout-latest.min.js,~/lib/managed/dishbrowser_modal.js,~/lib/managed/dish_edit.js"></script>
+    <script>
+        let rotation = 0;
+        const angle = 90;
+
+        $(document).ready(function () {
+            window["dish_edit"].Initialize({
+                UserId: @Model.SubmittedBy.Id
+            });
+
+            $("#errorCode").hide();
+            if ($("#selectErrorId").val() === "true") {
+                $("#errorCode").show();
+            }
+
+            $("#selectErrorId").change(function () {
+                $("#errorCode").hide();
+                if ($("#selectErrorId").val() === "true") {
+                    $("#errorCode").show();
+                }
+            });
+
+            $("#imgView").on('click', function () {
+                $("#imageViewerModal").css("display", "block");
+                $("#img_modal").attr("src", this.src);
+                $('#caption').html(this.alt);
+            });
+
+            $(".rotateClockwise").on('click', function () {
+                rotation = (rotation + angle) % 360;
+                $("#img_container").css({ transform: `rotate(${rotation}deg)` });
+            });
+
+            $(".rotateAntiClockwise").on('click', function () {
+                rotation = (rotation - angle) % 360;
+                $("#img_container").css({ transform: `rotate(${rotation}deg)` });
+            });
+
+            $(".close").on('click', function () {
+                $("#imageViewerModal").css("display", "none");
+            });
+        });
+    </script>
+} 

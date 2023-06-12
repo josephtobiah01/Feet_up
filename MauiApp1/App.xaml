@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
+             x:Class="MauiApp1.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--sometimes colors dont load -->
+            <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
+            <Color x:Key="PrimaryColor">#006272</Color>
+            <!-- primary color rgba(0,98,114,255) -->
+            <Color x:Key="SecondaryColor">#005867</Color>
+            <!-- secondary color rgba(0,88,103,255) -->
+            <Color x:Key="PrimaryTextColor">#000000</Color>
+
+            <Color x:Key="Popup">#FFFFFF</Color>
+
+            <Style TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+                <Setter Property="FontFamily" Value="Montserrat" />
+            </Style>
+
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
+                <Setter Property="FontFamily" Value="Montserrat" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource PrimaryColor}"/>
+                <Setter Property="Padding" Value="14,10" />
+            </Style>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

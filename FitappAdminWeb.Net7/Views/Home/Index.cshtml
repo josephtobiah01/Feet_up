@@ -1,0 +1,82 @@
+﻿@model FitappAdminWeb.Net7.Models.UserListViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h4>User List</h4>
+<p class="mb-3">Lists all customers in the system, as well as a jumping point for further actions.</p>
+<div class="row">
+    <form asp-action="Index" method="get" id="options_form">
+        <div class="col border bg-light p-3 mb-3">
+            <h5>User List Options</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="IsTest" />
+                <label class="form-check-label" asp-for="IsTest">Include Test Accounts</label>
+            </div>
+        </div>
+    </form> 
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">UserId</th>
+            <th scope="col">Name</th>
+            <th scope="col">Username</th>
+            <th scope="col">Email</th>
+            <th scope="col">Has Concern</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model.Users)
+        {
+            var idUser = Model.Id_Users.FirstOrDefault(r => r.Id == user.FkFederatedUser);
+            var room = Model.Rooms.FirstOrDefault(r => r.FkUserId == user.Id);
+            var username = idUser != null ? idUser.UserName : "N/A";
+            var email = idUser != null ? idUser.Email : user.Email;
+
+            <tr>
+                <td scope="row">@user.Id</td>
+                <td>@user.FirstName @user.LastName</td>
+                <td>@username</td>
+                <td>@email</td>
+                <td>
+                    @if (room != null && room.HasConcern)
+                    {
+                        <div class="badge bg-danger">Concern</div>
+                    }
+                </td>
+                <td>
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownmenu@(user.Id)" data-bs-toggle="dropdown" aria-expanded="false">
+                            Actions
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownmenu@(user.Id)">
+                            <li><a class="dropdown-item" asp-action="Details" asp-controller="User" asp-route-id="@user.Id">Details</a></li>
+                            <li><a class="dropdown-item" asp-action="UserEdit" asp-controller="User" asp-route-id="@user.Id">Edit</a></li>
+                            <li><a class="dropdown-item" asp-action="MuhdoRegister" asp-controller="Home" asp-route-id="@user.Id">Register Muhdo</a></li>
+                            <li><hr class="dropdown-divider"/></li>
+                            <li><a class="dropdown-item" asp-action="Index" asp-controller="Training" asp-route-id="@user.Id">Training</a></li>                            
+                            <li><a class="dropdown-item" asp-action="SupplementsWeekly" asp-controller="Supplement" asp-route-id="@user.Id">Supplements</a></li>
+                            <li><a class="dropdown-item" asp-action="DailyPlan" asp-controller="Nutrition" asp-route-userid="@user.Id">Nutrition</a></li>
+                            @if (room != null && room.HasConcern)
+                            {
+                                <li><hr class="dropdown-divider" /></li>
+                                <li><a class="dropdown-item bg-warning" asp-action="Room" asp-controller="Chat" asp-route-id="@room.Id">Answer Concern</a></li>
+                            }                          
+                        </ul>
+                    </div>                                   
+                </td>
+            </tr>    
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $("#IsTest").on("change", function () { $("#options_form").submit(); })
+        });
+    </script>
+    
+}

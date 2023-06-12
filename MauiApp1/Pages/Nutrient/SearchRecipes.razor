@@ -1,0 +1,184 @@
+﻿@page "/searchRecipes";
+@using ParentMiddleWare.Models;
+
+<!-- navigation bar area-->
+<div class="navigation-bar-background">
+    <button @onclick="ClosePage" class="navigation-bar-button"><img class="navigation-bar-button-icon" src="resources/public/icons/arrows/leftarrow-narrow.svg" /></button>
+    <label class="navigation-bar-text">@HeaderText</label>
+</div>
+
+<!--search bar area and background stuff-->
+<div class="search-bar-background-wrapper" style="--display-search-bar-variable: @DisplaySearchBar">
+    <div class="search-bar-background-upper" />
+    <div class="search-bar-with-icon">
+        <img class="search-bar-icon" src="resources/public/icons/userInterface/research.svg" />
+        <input type="text" class="search-bar" placeholder="Search Recipes" @bind-value=@SearchTerm />
+    </div>
+    <div class="search-bar-background-lower"/>
+</div>
+<!--contents-->
+<!--
+            //if status==1, display search;
+        //if status ==2, display favorites;
+        //if status ==2, display history;
+-->
+@if (status == 1)
+{
+    <div class="content-wrapper">
+        <!--suggested recipes-->
+        <div>
+            <label class="header-label">Suggested</label>
+            <div class="recipes-wrapper">
+                <div class="recipe-item">
+                    <div class="recipe-item-name-text">Empty!</div>
+                </div>
+            </div>
+        </div>
+        <!--all recipes-->
+        <div>
+            <label class="header-label" >All</label>
+            <div class="recipes-wrapper">
+                @if (NutrientPopupRecipesDisplayed.Count == 0)
+                {
+                    <div class="recipe-item">
+                        <div class="recipe-item-name-text">Empty!</div>
+                    </div>
+                }
+                @foreach (NutrientRecipeModel recipe in NutrientPopupRecipesDisplayed)
+                {
+
+                    <div @onclick="async ()=> await OpenAddDishPopup(null,recipe)" class="recipe-item">
+                        <img class="recipe-item-icon" src="@recipe.DisplayImageUrl" />
+                        <div class="recipe-item-name-text">@recipe.RecipeName</div>
+                        <button class="recipe-item-right-button"> > </button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+}
+else if (status == 2)
+{
+    <div class="content-wrapper">
+        <!--suggested recipes-->
+        <div>
+            <label class="header-label">Favourites</label>
+            <div class="recipes-wrapper">
+                @if (NutrientPopupRecipesDisplayed.Count == 0)
+                {
+                    <div class="recipe-item">
+                        <div class="recipe-item-name-text">Empty!</div>
+                    </div>
+                }
+                @foreach (NutrientRecipeModel recipe in NutrientPopupRecipesDisplayed)
+                {
+
+                    <div class="recipe-item" @onclick="async ()=> await OpenAddDishPopup(null,recipe)">
+                        <img class="recipe-item-icon" src="@recipe.DisplayImageUrl" />
+                        <div class="recipe-item-name-text">@recipe.RecipeName</div>
+                        <button class="recipe-item-right-button"> > </button>
+                </div>
+
+                }
+            </div>
+        </div>
+    </div>
+}
+else if (status == 3)
+{
+    <div class="content-wrapper">
+        <!--suggested recipes-->
+        <div>
+            <label class="header-label">History</label>
+            <div class="recipes-wrapper">
+                @if (NutrientPopupRecipesDisplayed.Count == 0)
+                {
+                    <div class="recipe-item">
+                        <div class="recipe-item-name-text">Empty!</div>
+                    </div>
+                }
+                @foreach (NutrientRecipeModel recipe in NutrientPopupRecipesDisplayed)
+                {
+
+                    <div @onclick="async ()=> await OpenAddDishPopup(null,recipe)" class="recipe-item">
+                        <img class="recipe-item-icon" src="@recipe.DisplayImageUrl" />
+                        <div class="recipe-item-name-text">@recipe.RecipeName</div>
+                        <button class="recipe-item-right-button"> > </button>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <!-- should not happen-->
+}
+
+<!--popup-->
+<!--dark background overlay-->
+<div class="filter-popup-wrapper" style="--display-popup-variable: @DisplayPopup">
+    <div class="filter-popup-background-dark-overlay"> </div>
+    <div class="filter-popup-background">
+        <div class="filter-popup-body">
+        <div>
+            <label class="filter-popup-header-title">Add Nutrient</label>
+        </div>
+                <div class="filter-popup-exercise-item ">
+                <label class="filter-popup-exercise-item-name-label">@NutrientDishName</label>
+                @if (NutrientIsFavorite)
+                {
+                    <img class="add-dish-popup-favorite-icon red-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                }
+                else
+                {
+                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                }
+        </div>
+        <hr class="filter-popup-line-spacer" />
+        <div class="filter-popup-number-of-servings-card">
+            <label id="filter-popup-number-of-servings-label">Number of servings</label>
+            <div class="filter-popup-number-align-right">
+                    <button class="filter-popup-add-button" @onclick="SubtractServing"><img class="filter-popup-addorsubtract-button-icon" src="resources/public/icons/userInterface/remove.svg" /></button>
+                    <label id="filter-popup-number">@NutrientServings</label>
+                    <button class="filter-popup-subtract-button" @onclick="AddServing"><img class="filter-popup-addorsubtract-button-icon" src="resources/public/icons/userInterface/plus.svg" /></button>
+            </div>
+        </div>
+        <div class="filter-popup-how-much-you-ate-card">
+            <label id="filter-popup-how-much-you-ate-label">How much you ate</label>
+            <div class="radio">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" @onclick="TwentyPercentPortion" label="20%">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" @onclick="FourtyPercentPortion" label="40%">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" @onclick="SixtyPercentPortion" label="60%">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" @onclick="EightyPercentPortion" label="80%">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" id="NutrientDefaultRadioButton" @onclick="async ()=> await OneHundredPercentPortion()" label="100%">
+            </div>
+        </div>
+        <textarea placeholder="Any Notes" class="filter-popup-notes"> </textarea>
+        </div>
+        <div class="filter-popup-footer">
+            <button @onclick="async ()=> await CloseAddDishPopup()" class="filter-popup-footer-discard-button">Discard</button>
+            <button @onclick="async ()=> await AddDish(false ,NutrientRecipe)" class=" filter-popup-footer-add-button">Add</button>
+        </div>
+
+    </div>
+</div>
+
+<!--favorite notification popup-->
+<div class="recipe-favorite-popup-wrapper" style="--display-favorite-popup-variable: @DisplayFavoritePopup">
+    <div class="recipe-favorite-popup-background-dark-overlay">
+        <div class="recipe-favorite-popup-body">
+            <label class="recipe-favorite-popup-content-label"> This dish will be added to your favorites once our nutritionist has completed the food transcription. This process can take up to 24 hours.</label>
+
+            <div class="recipe-favorite-popup-show-again-toggle">
+                <input type="checkbox" id="showagain" name="showagain" @bind="ShowAgainCheckedValue" value="show">
+                <label for="showagain">never show this message again</label>
+            </div>
+            <div class="recipe-favorite-popup-okay-button-container">
+                <button class="recipe-favorite-popup-okay-button" @onclick="CloseFavoritePopup">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

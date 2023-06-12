@@ -1,0 +1,100 @@
+﻿@model DataEntryTest.Models.EdsExerciseType
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>EdsExerciseType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkExerciseClassId" class="control-label"></label>
+                <select asp-for="FkExerciseClassId" class="form-control" asp-items="ViewBag.FkExerciseClassId"></select>
+                <span asp-validation-for="FkExerciseClassId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkMainMuscleWorkedId" class="control-label"></label>
+                <select asp-for="FkMainMuscleWorkedId" class="form-control" asp-items="ViewBag.FkMainMuscleWorkedId"></select>
+                <span asp-validation-for="FkMainMuscleWorkedId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkOtherMuscleWorkedId" class="control-label"></label>
+                <select asp-for="FkOtherMuscleWorkedId" class="form-control" asp-items="ViewBag.FkOtherMuscleWorkedId"></select>
+                <span asp-validation-for="FkOtherMuscleWorkedId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkEquipmentId" class="control-label"></label>
+                <select asp-for="FkEquipmentId" class="form-control" asp-items="ViewBag.FkEquipmentId"></select>
+                <span asp-validation-for="FkEquipmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkMechanicsTypeId" class="control-label"></label>
+                <select asp-for="FkMechanicsTypeId" class="form-control" asp-items="ViewBag.FkMechanicsTypeId"></select>
+                <span asp-validation-for="FkMechanicsTypeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkLevelId" class="control-label"></label>
+                <select asp-for="FkLevelId" class="form-control" asp-items="ViewBag.FkLevelId"></select>
+                <span asp-validation-for="FkLevelId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkSportId" class="control-label"></label>
+                <select asp-for="FkSportId" class="form-control" asp-items="ViewBag.FkSportId"></select>
+                <span asp-validation-for="FkSportId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FkForceId" class="control-label"></label>
+                <select asp-for="FkForceId" class="form-control" asp-items="ViewBag.FkForceId"></select>
+                <span asp-validation-for="FkForceId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExplainerVideoFr" class="control-label"></label>
+                <input asp-for="ExplainerVideoFr" class="form-control" />
+                <span asp-validation-for="ExplainerVideoFr" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExplainerTextFr" class="control-label"></label>
+                <input asp-for="ExplainerTextFr" class="form-control" />
+                <span asp-validation-for="ExplainerTextFr" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="HasSetDefaultTemplate" /> @Html.DisplayNameFor(model => model.HasSetDefaultTemplate)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsSetCollapsed" /> @Html.DisplayNameFor(model => model.IsSetCollapsed)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsDeleted" /> @Html.DisplayNameFor(model => model.IsDeleted)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

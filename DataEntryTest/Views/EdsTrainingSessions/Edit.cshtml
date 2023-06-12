@@ -1,0 +1,80 @@
+﻿@model DataEntryTest.Models.EdsTrainingSession
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>EdsTrainingSession</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="FkEdsDailyPlan" class="control-label"></label>
+                <select asp-for="FkEdsDailyPlan" class="form-control" asp-items="ViewBag.FkEdsDailyPlan"></select>
+                <span asp-validation-for="FkEdsDailyPlan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StartDateTime" class="control-label"></label>
+                <input asp-for="StartDateTime" class="form-control" />
+                <span asp-validation-for="StartDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndDateTime" class="control-label"></label>
+                <input asp-for="EndDateTime" class="form-control" />
+                <span asp-validation-for="EndDateTime" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsMoved" /> @Html.DisplayNameFor(model => model.IsMoved)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsSkipped" /> @Html.DisplayNameFor(model => model.IsSkipped)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="EndTimeStamp" class="control-label"></label>
+                <input asp-for="EndTimeStamp" class="form-control" />
+                <span asp-validation-for="EndTimeStamp" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsCustomerAddedTrainingSession" /> @Html.DisplayNameFor(model => model.IsCustomerAddedTrainingSession)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReasonForReschedule" class="control-label"></label>
+                <input asp-for="ReasonForReschedule" class="form-control" />
+                <span asp-validation-for="ReasonForReschedule" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReadonForSkipping" class="control-label"></label>
+                <input asp-for="ReadonForSkipping" class="form-control" />
+                <span asp-validation-for="ReadonForSkipping" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

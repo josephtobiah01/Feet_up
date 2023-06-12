@@ -1,0 +1,92 @@
+
+
+https://learn.microsoft.com/en-us/dotnet/maui/tutorials/notes-app/?view=net-maui-7.0
+
+https://learn.microsoft.com/en-us/aspnet/core/blazor/hybrid/tutorials/maui?view=aspnetcore-7.0
+
+https://thecodeblogger.com/2022/09/30/net-7-blazor-webassembly-standalone-app-make-api-calls/
+
+
+
+// COMPILE XAMLE AND BINDINGS
+https://learn.microsoft.com/en-us/xamarin/xamarin-forms/xaml/xamlc
+https://learn.microsoft.com/en-us/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+sample: https://devblogs.microsoft.com/xamarin/compiled-bindings-xamarin-forms/
+
+
+LISTVIEW PERFORMANCE
+https://learn.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/listview/performance#listview-performance-suggestions
+
+SWIPE VIEW:
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/swipeview?view=net-maui-7.0
+https://learn.microsoft.com/en-us/dotnet/maui/android/platform-specifics/swipeview-swipetransitionmode?source=recommendations&view=net-maui-7.0
+
+
+COLLECTIONVIEW:
+https://learn.microsoft.com/en-us/xamarin/xamarin-forms/user-interface/collectionview/introduction
+https://stackoverflow.com/questions/74941261/how-can-i-optimize-listview-data-binding-in-net-maui
+
+
+
+
+PLAY MEDIA
+https://devblogs.microsoft.com/dotnet/announcing-dotnet-maui-communitytoolkit-mediaelement/
+
+TABBED PAGE:
+https://learn.microsoft.com/en-us/dotnet/maui/android/platform-specifics/tabbedpage-toolbar-placement?view=net-maui-7.0
+
+// Useful guides exercises with code
+https://learn.microsoft.com/en-us/training/modules/build-blazor-hybrid/
+
+
+When to use Maui or maui blazor:https://www.telerik.com/blogs/blazor-dotnet-maui-what-how-when https://www.youtube.com/watch?v=WuWZH59AwEA&ab_channel=DanielHindrikes 
+Pros and cons of using Javascript interopt:https://www.syncfusion.com/blogs/post/pros-and-cons-of-using-javascript-interop-in-blazor.aspx 
+Blazor programming language :https://blog.logrocket.com/blazor-vs-react-minimize-javascript/#:~:text=Instead%20of%20JavaScript%2C%20Blazor%20uses,C%23%20as%20the%20programming%20language
+Blazor Support Javascript:https://learn.microsoft.com/en-us/aspnet/core/blazor/javascript-interoperability/?view=aspnetcore-7.0#load-a-script-from-an-external-javascript-file-js
+
+
+
+
+
+.net MAUI channel
+https://www.youtube.com/@dotnet/search?query=blazor
+
+other doc links
+https://learn.microsoft.com/en-us/aspnet/core/blazor/hybrid/?view=aspnetcore-7.0
+https://learn.microsoft.com/en-us/training/modules/build-blazor-hybrid/
+
+
+STORE ON PHONE
+
+SECURE
+
+https://learn.microsoft.com/en-us/dotnet/maui/platform-integration/storage/secure-storage?view=net-maui-7.0&tabs=android
+
+
+
+
+MAUI Dependency Injecton (singetons)
+-- viewmodel
+-- model
+https://www.youtube.com/watch?v=xx1mve2AQr4
+
+Samplecode for the video
+https://github.com/jamesmontemagno/MauiApp-DI?WT.mc_id=friends-0000-jamont
+
+
+More text tutorials about this with code
+https://www.syncfusion.com/blogs/post/learn-how-to-use-dependency-injection-in-net-maui.aspx
+
+
+.NET MAUI BARCODE SCANNING
+https://youtu.be/ostgj2xB_ok (ZXing)
+https://youtu.be/FuvFrIS9wm0 (Google ML)
+
+.NET MAUI Appicon Badge Number
+https://vladislavantonyuk.github.io/articles/AppIcon-Badge-with-.NET-MAUI/
+
+passing parameters from .NET MAUI to Blazor
+https://learn.microsoft.com/en-us/aspnet/core/blazor/hybrid/root-component-parameters?view=aspnetcore-7.0
+
+.NET MAUI Graphics View (for rendering shapes and graphics)
+https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/graphicsview

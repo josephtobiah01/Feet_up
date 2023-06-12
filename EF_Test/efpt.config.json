@@ -1,0 +1,121 @@
+﻿{
+   "CodeGenerationMode": 3,
+   "ContextClassName": "FitApp-testContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": null,
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "EF_Test",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[eds_12week_plan]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_avaiable_set_metrics]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_daily_plan]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_equipment]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_exercise]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_exercise_class]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_exercise_type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_force]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_level]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_main_muscle_worked]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_mechanics_type]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_other_muscle_worked]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_set]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_set_defaults]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_set_metric_types]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_set_metrics]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_set_metrics_default]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_sport]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_training_session]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[eds_weekly_plan]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[User]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "c88-sqlserver-sea-test.FitApp-test",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": false,
+   "UseDateOnlyTimeOnly": false,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

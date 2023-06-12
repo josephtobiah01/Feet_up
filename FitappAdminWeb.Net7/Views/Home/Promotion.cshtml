@@ -1,0 +1,65 @@
+﻿@model PromotionModel
+@{
+}
+
+@if ((string) ViewData["SubmitSuccess"] == "True")
+{
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">Promotion Chat Message sent successfully!</div>
+    </div>
+}
+
+@if (ViewContext.ModelState.ErrorCount > 0)
+{
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">Failed to send Promotion Chat. Please try again later.</div>
+    </div>
+}
+
+<h4>Promotion</h4>
+<p>Broadcast a notification message to all users</p>
+
+<form asp-action="Promotion" method="post" id="promotion_form" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label" asp-for="Icon">Icon</label>
+        <select class="form-select" asp-for="Icon">
+            <option value="Empty">No Icon</option>
+            <option value="Question">Question</option>
+            <option value="Alert">Alert</option>
+            <option value="Information">Information</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Title">Title</label>
+        <input type="text" class="form-control" asp-for="Title" required maxlength="100" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Url">Link Url</label>
+        <input type="text" class="form-control" asp-for="Url" />
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="Message">Primary Message</label>
+        <textarea class="form-control" asp-for="Message" rows="3" maxlength="250"></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-label" asp-for="UploadImageFile">Primary Image</label>
+        <input accept="image/*" class="form-control" type="file" asp-for="UploadImageFile" />
+        <span class="form-text text-muted">Uploaded image is recommended to be 343x140 pixels in size. If this is not the case, the images will be resized to fit.</span>
+    </div>
+    <div class="mb-3">      
+        <div class="border bg-light p-3" style="min-height: 300px" id="imgpreview">
+            <div class="d-flex justify-content-center align-content-center">
+                <img id="image_preview_img" src="#" alt="Image Preview" />
+            </div>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>
+
+@section Scripts {
+    <script asp-append-version="true" asp-src-include="~/lib/managed/promotion.js"></script>
+}

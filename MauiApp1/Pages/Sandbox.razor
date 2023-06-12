@@ -1,0 +1,122 @@
+﻿@page "/sandbox"
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @currentCount</p>
+
+<label id="value1">test</label>
+<label id="value2">test</label>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+
+
+
+
+<div class="skill">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+        <circle cx="80" cy="80" r="70" stroke-linecap="round" stroke-width="20" stroke-dasharray="472" stroke-dashoffset="69" class="circles" id="progressbar" />
+    </svg>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="160px" height="160px">
+        <circle cx="80" cy="80" r="70" stroke-linecap="round" stroke-width="20" stroke-dasharray="300" stroke-dashoffset="69" class="circles" id="progressbar2" />
+    </svg> 
+        <div class="progress">
+          <div class="barOverflow">
+            <div class="bar"></div>
+          </div>
+          <span id="spanner">30</span>%
+        </div>
+</div>
+<div id="slider"></div>
+<div class="slidecontainer">
+    <input type="range" min="1" max="5000" value="50" class="slider" id="myRange">
+</div>
+<div class="slidecontainer">
+    <input type="range" min="1" max="5000" value="50" class="slider" id="myRange2">
+</div>
+
+
+@code {
+    [Inject]
+    IJSRuntime JSRuntime { get; set; }
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+
+    /* this method is run after page is rendered */
+    /* more detail on this and onafterrenderasync at https://learn.microsoft.com/en-us/aspnet/core/blazor/components/lifecycle?view=aspnetcore-7.0#after-component-render-onafterrenderasync */
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            await JSRuntime.InvokeVoidAsync("rendertestcomponents");
+
+        }
+    }
+
+}
+<style>
+
+    .progress {
+        position: relative;
+        margin: 4px;
+        float: left;
+        text-align: center;
+        height:160px;
+    }
+
+    .barOverflow { /* Wraps the rotating .bar */
+        position: relative;
+        width: 180px;
+        height: 90px; /* Half circle (overflow) */
+        margin-bottom: -14px; /* bring the numbers up */
+        overflow: hidden;
+    }
+
+    .bar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 180px;
+        height: 180px; /* full circle! */
+        border-radius: 50%;
+        box-sizing: border-box;
+        border: 10px solid #ccc; /* half gray, */
+        border-bottom-color: #0bf; /* half azure */
+        border-right-color: #0bf;
+    }
+
+.skill{
+    position:relative;
+    height:160px;
+} 
+.circles{
+    position:fixed;
+    top:0;
+    fill:none;
+    stroke:aqua;
+    animation:ease  ;
+}
+svg{
+    display:inline;
+}
+
+    .slidecontainer {
+        width: 100%; /* Width of the outside container */
+    }
+
+    /* The slider itself */
+    .slider {
+        appearance: none;
+        width: 100%; /* Full-width */
+        height: 25px; /* Specified height */
+        background: #d3d3d3; /* Grey background */
+        outline: none; /* Remove outline */
+        opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+        transition: opacity .2s;
+    }
+</style>

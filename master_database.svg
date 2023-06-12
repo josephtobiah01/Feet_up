@@ -1,0 +1,1914 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<svg stroke-linecap="round" font-size="12" font-family="Segoe UI" width="5680.7616666666663" height="3320.1200000000013" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <defs />
+  <rect width="5680.7616666666663" height="3320.1200000000013" fill="#1E1E1E" />
+  <g transform="translate(1240.01616170173,1285.05987242033)">
+    <g id="Database">
+      <rect x="-1220.0161617017329" y="-1265.0598724203328" rx="5" ry="5" width="5506.5516666666663" height="3280.1200000000013" fill="#FFFFFF" stroke="#A5A6A9" stroke-width="1" />
+      <text x="1502.9838382982671" y="-1247.1098724203327" fill="#000000">FitApp-test</text>
+      <rect x="-1215.0161617017329" y="-1237.0998724203328" width="5496.5516666666663" height="3247.1600000000012" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+      <g id="dbo">
+        <rect x="-1200.0161617017327" y="-1225.0598724203328" rx="5" ry="5" width="5466.5516666666663" height="3220.1200000000013" fill="#7F9169" stroke="#A5A6A9" stroke-width="1" />
+        <text x="1521.9838382982673" y="-1207.1098724203327" fill="#FFFFFF">dbo</text>
+        <rect x="-1195.0161617017327" y="-1197.0998724203328" width="5456.5516666666663" height="3187.1600000000012" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+        <g id="AspNetRoleClaims-&gt;AspNetRoles">
+          <path d="M -1016.87116170173,1607.28012757967 L -939.079637857036,1713.94846636266" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -933.77653092383,1721.22012757967 L -936.437022530943,1710.78356759045 C -938.002354713775,1713.16282089107 -940.156921000297,1714.73411183424 -942.900721390508,1715.49744041997 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="AspNetUserClaims-&gt;AspNetUsers">
+          <path d="M -620.621161701733,1607.28012757967 L -596.729366754597,1657.14370903404" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -592.840440168475,1665.26012757967 L -593.554172577222,1654.51347293514 C -595.526934377467,1656.56757176203 -597.931799131726,1657.71984630606 -600.768766839999,1657.97029656725 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="AspNetUserLogins-&gt;AspNetUsers">
+          <path d="M -447.616017958779,1635.26012757967 L -455.910145428351,1656.85833988208" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -459.136592930594,1665.26012757967 L -451.817523395842,1657.35878458335 C -454.66543613982,1657.33633210464 -457.154854716882,1656.38034765953 -459.285779127028,1654.49083124802 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="AspNetUserRoles-&gt;AspNetRoles">
+          <path d="M -861.621161701733,1607.28012757967 L -861.621161701733,1712.22012757967" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -861.621161701733,1721.22012757967 L -857.621161701733,1711.22012757967 C -860.287828368399,1712.22012757967 -862.954495035066,1712.22012757967 -865.621161701733,1711.22012757967 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="AspNetUserRoles-&gt;AspNetUsers">
+          <path d="M -796.057828368399,1590.57521951358 L -712.740315847165,1659.5222829364" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -705.806547834766,1665.26012757967 L -710.960581340425,1655.80306997053 C -711.890264788904,1658.49505804568 -713.590366905426,1660.54950782713 -716.060887689993,1661.96641931489 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="AspNetUserTokens-&gt;AspNetUsers">
+          <path d="M -254.621161701733,1607.28012757967 L -319.518187137527,1659.61072899926" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -326.524205670166,1665.26012757967 L -316.228896820386,1662.09680406039 C -318.681239199689,1660.64865767076 -320.355135075366,1658.57280032776 -321.250584447417,1655.86923203137 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_12week_plan-&gt;User">
+          <path d="M 573.188838298267,1058.77855307336 C 533.008280562155,1075.95260398267 457.767074391761,1098.75146215144 347.465219787088,1127.17512757967 L -79.3742095546033,1237.16730472543" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -88.0894950350657,1239.41314510133 L -77.4076932230392,1240.79122711942 C -79.041492461877,1238.45845812994 -79.7069266473297,1235.87615132091 -79.4039957793974,1233.04430669234 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_avaiable_set_metrics-&gt;eds_set_metric_types">
+          <path d="M 2590.85173758425,-731.319872420333 L 2643.38620566861,-652.838907046304" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2648.39260567895,-645.359872420333 L 2646.15395439012,-655.894977564896 C 2644.49421079839,-653.580595936725 2642.27820053884,-652.097218155883 2639.50592361148,-651.444844222372 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_avaiable_set_metrics-&gt;eds_exercise_type">
+          <path d="M 2524.6221716316,-731.319872420333 L 2524.6221716316,-398.499872420333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2524.6221716316,-389.499872420333 L 2528.6221716316,-399.499872420333 C 2525.95550496493,-398.499872420333 2523.28883829827,-398.499872420333 2520.6221716316,-399.499872420333 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_daily_plan-&gt;eds_weekly_plan">
+          <path d="M 1399.99491322337,296.060127579667 L 1277.53812736448,521.987664293339" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 1273.24943003983,529.900127579667 L 1281.53129963893,523.014589405817 C 1278.71034414764,522.623026859955 1276.36591058132,521.352301726724 1274.49799893997,519.202414006122 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise-&gt;eds_exercise_type">
+          <path d="M 2356.21860547164,-419.499872420333 L 2377.48184851143,-396.15373000953" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2383.54206131154,-389.499872420333 L 2379.76576157328,-399.586475430603 C 2378.46760519131,-397.051539313251 2376.49609183155,-395.255920705809 2373.851221494,-394.199619608277 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise-&gt;eds_training_session">
+          <path d="M 2089.1521716316,-486.405418290727 L 1703.17767556515,-333.477124309228" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 1694.81050496493,-330.161938621095 L 1705.58077704879,-330.126735785589 C 1703.66881418562,-332.237543479566 1702.68653694469,-334.71670513889 1702.63394532601,-337.564220763563 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_force">
+          <path d="M 2668.85871383488,-79.6998724203323 L 2854.41391662424,119.573491132457" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2860.54712298896,126.160127579667 L 2856.65984322692,116.11577314289 C 2855.38971461642,118.664867967313 2853.43811863206,120.482114297601 2850.80505527384,121.567512133756 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_sport">
+          <path d="M 2766.18050496493,-111.793863317262 L 2870.89123955761,-58.5599001244781 C 3052.47220634632,33.7541738827632 3174.13236507942,97.9741420016707 3235.87171575692,134.100004232244" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3243.6221716316,138.674983328878 L 3237.04387803602,130.147026166094 C 3236.5494904379,132.951788547106 3235.19394107594,135.248219917382 3232.97722995012,137.036320276921 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_level">
+          <path d="M 2304.32058727137,-79.6998724203321 L 2002.9844270049,132.177728736408" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 1995.6221716316,137.354329534065 L 2006.10316684534,134.874664369246 C 2003.75133082678,133.268433236156 2002.21752318303,131.08702423666 2001.50174391409,128.330437370757 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_mechanics_type">
+          <path d="M 2596.74044273324,-79.6998724203323 L 2688.78596331354,118.001083524577" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2692.58464731028,126.160127579667 L 2691.99012911617,115.40621907546 C 2689.99471058096,117.43831552506 2687.57721604612,118.563851524094 2684.73764551164,118.782827072563 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_equipment">
+          <path d="M 2524.6221716316,-79.6998724203323 L 2524.6221716316,117.160127579667" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2524.6221716316,126.160127579667 L 2528.6221716316,116.160127579667 C 2525.95550496493,117.160127579667 2523.28883829827,117.160127579667 2520.6221716316,116.160127579667 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_other_muscle_worked">
+          <path d="M 2451.42750842397,-79.6998724203323 L 2357.99788773778,118.022852298484" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2354.15279333085,126.160127579668 L 2362.0416872413,118.8276414481 C 2359.20341000166,118.592495914326 2356.7923654739,117.453208682642 2354.80855365803,115.409779753048 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_main_muscle_worked">
+          <path d="M 2377.15645311034,-79.6998724203321 L 2187.38212696613,119.641665494457" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2181.17651240803,126.160127579668 L 2190.9687339549,121.675442844142 C 2188.34782505282,120.56101579936 2186.41642887943,118.722315189553 2185.17454543471,116.159341014723 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_exercise_type-&gt;eds_exercise_class">
+          <path d="M 2740.97698493652,-79.6998724203323 L 3035.30434750485,131.024852236381" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3042.6221716316,136.264074511674 L 3036.81979916867,127.190350149459 C 3036.08052858267,129.940730143529 3034.52816642703,132.108974329234 3032.16271270175,133.695082706572 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_set-&gt;eds_exercise">
+          <path d="M 2240.6221716316,-703.339872420333 L 2240.6221716316,-682.339872420333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2240.6221716316,-673.339872420333 L 2244.6221716316,-683.339872420333 C 2241.95550496493,-682.339872420333 2239.28883829827,-682.339872420333 2236.6221716316,-683.339872420333 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_set_defaults-&gt;eds_exercise_type">
+          <path d="M 2923.50714504604,-475.459872420333 C 2886.44168107912,-450.657840046552 2836.57150762825,-419.416829060326 2773.89662469343,-381.736839461652" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2766.18050496493,-377.104184031385 L 2776.81292929893,-378.822192407907 C 2774.58294401643,-380.593710612987 2773.21030537042,-382.879968310318 2772.69501336092,-385.6809654999 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_set_metrics-&gt;eds_set_metric_types">
+          <path d="M 2714.6221716316,-987.179872420333 L 2714.6221716316,-654.359872420333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2714.6221716316,-645.359872420333 L 2718.6221716316,-655.359872420333 C 2715.95550496493,-654.359872420333 2713.28883829827,-654.359872420333 2710.6221716316,-655.359872420333 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_set_metrics-&gt;eds_set">
+          <path d="M 2554.68383829827,-999.786914684749 L 2405.17535199893,-919.083873957854" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2397.25550496493,-914.8088274133 L 2407.95535568918,-916.038947114361 C 2405.80869222775,-917.91056328615 2404.54201177011,-920.257184629557 2404.15531431624,-923.07881114458 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_set_metrics_default-&gt;eds_set_metric_types">
+          <path d="M 2810.38140218402,-731.319872420333 L 2770.0018830434,-653.351690700097" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2765.86294107918,-645.359872420333 L 2774.01368471932,-652.400140747083 C 2771.18585612188,-652.738514112805 2768.81790996492,-653.96486728739 2766.90984624842,-656.079200270838 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_set_metrics_default-&gt;eds_set_defaults">
+          <path d="M 2918.44016768572,-731.319872420333 L 2979.39023038999,-625.184499426586" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 2983.8721716316,-617.379872420333 L 2982.36096003259,-628.043654090219 C 2980.54647142795,-625.848490721639 2978.23398935202,-624.520508131532 2975.42351380481,-624.059706319897 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_training_session-&gt;eds_reason_for_skipping">
+          <path d="M 1545.47429800981,-79.6998724203321 L 1662.95410538263,118.418808981997" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 1667.5445287149,126.160127579668 L 1665.88464438913,115.518474323474 C 1664.1009673971,117.738746266107 1661.80724336817,119.098871697888 1659.00347230231,119.598850618816 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_training_session-&gt;eds_reason_for_reschedule">
+          <path d="M 1359.6172610414,-79.6998724203321 L 1239.3553056302,118.4661252519" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 1234.68600930417,126.160127579668 L 1243.29367292321,119.686478915941 C 1240.49515782691,119.157872855757 1238.21545343349,117.774377648044 1236.45455974297,115.5359932928 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_training_session-&gt;eds_daily_plan">
+          <path d="M 1453.6221716316,-79.6998724203321 L 1453.6221716316,89.1801275796676" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 1453.6221716316,98.1801275796676 L 1457.6221716316,88.1801275796676 C 1454.95550496493,89.1801275796676 1452.28883829827,89.1801275796676 1449.6221716316,88.1801275796676 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="eds_weekly_plan-&gt;eds_12week_plan">
+          <path d="M 1125.3071716316,694.918966754925 L 883.211185758716,864.535906960299" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 875.84024108422,869.700127579667 L 886.325388775602,867.238080080146 C 883.976255480104,865.627898763928 882.446116037328,863.44391515667 881.734970447275,860.686129258371 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_day-&gt;User">
+          <path d="M -247.377828368399,1123.54012757967 L -247.377828368399,1144.54012757967" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -247.377828368399,1153.54012757967 L -243.377828368399,1143.54012757967 C -246.044495035066,1144.54012757967 -248.711161701733,1144.54012757967 -251.377828368399,1143.54012757967 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_dish-&gt;User">
+          <path d="M -825.377828368399,443.940127579668 L -825.377828368399,582.880127579668 C -825.377828368399,840.053460913001 -809.809524603392,982.9054895249 -778.67291707338,1011.43621341536 C -747.536309543367,1039.96693730583 -651.202976210034,1091.93693730583 -489.67291707338,1167.34621341536 L -414.821256901637,1202.29023274723" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -406.666161701733,1206.09738683926 L -414.035310105165,1198.24272887038 C -414.257234073187,1201.08207049539 -415.385279730087,1203.49839499906 -417.419447075864,1205.4917023814 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_dish-&gt;fns_error_code">
+          <path d="M -729.90173275087,443.940127579668 L -699.897234842412,521.506246364333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -696.650273471707,529.900127579668 L -696.527394454564,519.130498953427 C -698.653696884585,521.025215050154 -701.14077280024,521.987277678512 -703.988622201528,522.016686838498 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_dish-&gt;fns_transcription_type">
+          <path d="M -470.739495035066,312.42464517326 L -101.69618798985,432.412690712591 C -32.7741270014174,454.82150624906 6.85087299858264,472.809839582393 17.1788120101494,486.377690712591 L 66.155719701572,550.718832893082" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 71.6069451061828,557.880127579668 L 68.7328256284312,547.500366636967 C 67.2166522477329,549.91124394425 65.0947871554111,551.526421841913 62.3672303514659,552.345900329955 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_dish-&gt;fms_dish_type">
+          <path d="M -905.417669005849,443.940127579668 L -939.590385481197,549.319021556361" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -942.366617398326,557.880127579668 L -935.476979257824,549.601668405828 C -938.322073477745,549.730315173713 -940.85869748465,548.907727939008 -943.086851278542,547.133906701713 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_dish-&gt;fns_nutrition_actual_meal">
+          <path d="M -494.927629165212,443.940127579668 L -461.973352210874,468.554349805839" fill="none" stroke="#A0A0A0" stroke-width="1.5" />
+          <path d="M -454.762707456698,473.940127579668 L -460.380855950748,464.751199051335 C -461.175459207344,467.486106138553 -462.771245214404,469.622593473124 -465.168213971929,471.160661055047 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_meal-&gt;fns_meal_type">
+          <path d="M -459.0571487566,783.740127579667 C -497.120112429519,817.011705820309 -528.393256133081,850.301701141899 -552.876579867287,883.610113544438 L -557.888371760052,890.42842110154" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -563.218733206997,897.680127579668 L -554.073128720112,891.991725469279 C -556.814044874403,891.218104278865 -558.9626986457,889.638737924215 -560.519090034003,887.253626405328 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="fns_nutrition_actual_meal-&gt;fns_nutrition_actual_day">
+          <path d="M -247.377828368399,783.740127579668 L -247.377828368399,804.740127579668" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -247.377828368399,813.740127579668 L -243.377828368399,803.740127579668 C -246.044495035066,804.740127579668 -248.711161701733,804.740127579668 -251.377828368399,803.740127579668 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_customer_inventory-&gt;nds_supplement_reference">
+          <path d="M 3590.39050496493,-47.6798724203323 L 3590.39050496493,1.30012757966767" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3590.39050496493,10.3001275796677 L 3594.39050496493,0.300127579667674 C 3591.72383829827,1.30012757966767 3589.0571716316,1.30012757966767 3586.39050496493,0.300127579667674 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_customer_inventory-&gt;country">
+          <path d="M 3701.7589095612,-47.6798724203323 L 3791.78851635139,32.3026803343168" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3798.51682404568,38.2801275796677 L 3793.69756982774,28.6481605540376 C 3792.67406409144,31.3058940092367 3790.90296861134,33.2994666593968 3788.38428338743,34.6288785045179 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_legal_status-&gt;nds_supplement_legal_status_types">
+          <path d="M 4010.93126944551,-19.6998724203323 L 4059.79923981492,31.7542794262421" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 4065.99708668931,38.2801275796677 L 4062.01096711929,28.274586576131 C 4060.76603213395,30.8360798892949 4058.83244749589,32.6724789631893 4056.21021320513,33.7837837978142 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_legal_status-&gt;country">
+          <path d="M 3884.43787462021,-19.6998724203323 L 3882.1402173599,29.2900097982889" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3881.71857500324,38.2801275796677 L 3886.18267441348,28.4785044255427 C 3883.47208666085,29.3524753326098 3880.80834805896,29.227544263968 3878.19145860781,28.1037112196174 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_legal_status-&gt;nds_supplement_reference">
+          <path d="M 3742.03616812985,-20.0934036782534 L 3713.24701723281,4.45990348347451" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3706.39925975271,10.3001275796677 L 3716.6035343289,6.85443746394101 C 3714.11223561743,5.4743860731187 3712.38179884819,3.44542089383031 3711.41222402118,0.767541926075821 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_plan_daily-&gt;nds_supplement_plan_weekly">
+          <path d="M 888.163838298268,687.144785003089 L 781.362461215167,747.333437792584 C 683.653819176869,802.397817024326 606.760533679685,846.596663916656 550.682604723614,879.929978469574" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 542.950504964935,884.535913045947 L 553.588808952967,882.854696742723 C 551.364965401595,881.075474730119 550.000244045633,878.784482209029 549.49464488508,875.981719179453 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_plan_dose-&gt;nds_supplement_plan_supplement">
+          <path d="M 878.6221716316,-107.679872420332 L 878.622171631601,61.2001275796676" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 878.622171631601,70.2001275796675 L 882.622171631601,60.2001275796675 C 879.955504964934,61.2001275796676 877.288838298267,61.2001275796676 874.622171631601,60.2001275796675 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_plan_supplement-&gt;nds_supplement_plan_daily">
+          <path d="M 911.842684927255,324.040127579668 L 970.769914677189,549.173434018969" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 973.048837062899,557.880127579667 L 974.386342661309,547.193169229687 C 972.0597952047,548.835815887753 969.480034149678,549.511052150185 966.647059496244,549.218878016984 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_plan_weekly-&gt;User">
+          <path d="M 272.293838298267,1033.06467857203 L -79.9633422170475,1200.76060838621" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -88.0894950350657,1204.62915338119 L -77.3410830172749,1203.94239352811 C -79.3902244400129,1201.96448287777 -80.5364599940821,1199.55673389465 -80.7797896794825,1196.71914657876 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_reference-&gt;nds_supplement_instruction">
+          <path d="M 3719.34074193176,208.180127579668 L 3751.29990081984,232.70151858107" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3758.44026799811,238.180127579668 L 3752.94146402163,228.919287724218 C 3752.11154659741,231.643686406512 3750.48825504227,233.759350755628 3748.07158935621,235.266280771568 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_reference-&gt;nds_unit_metric">
+          <path d="M 3590.39050496493,208.180127579668 L 3590.39050496493,229.180127579668" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3590.39050496493,238.180127579668 L 3594.39050496493,228.180127579668 C 3591.72383829827,229.180127579668 3589.0571716316,229.180127579668 3586.39050496493,228.180127579668 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_schedule-&gt;nds_Supplement_schedule_per_date">
+          <path d="M 325.844773161913,755.760127579668 L 199.179383720256,891.108867618269" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 193.029705475038,897.680127579668 L 202.783241285902,893.111917953765 C 200.152903714537,892.019931062005 198.205863725974,890.197804174533 196.942121320214,887.645537291349 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_schedule_dose-&gt;nds_supplement_skip_reason">
+          <path d="M 558.360937498366,352.020127579668 L 704.191514258432,550.625731992461" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 709.518215363649,557.880127579667 L 706.82383439661,547.452265324897 C 705.26623953061,549.836591087985 703.116788986253,551.414872896938 700.375482763538,552.187110751757 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_supplement_schedule_dose-&gt;nds_supplement_schedule">
+          <path d="M 444.622171631601,352.020127579668 L 444.622171631601,492.920127579668" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 444.622171631601,501.920127579667 L 448.622171631601,491.920127579667 C 445.955504964934,492.920127579668 443.288838298267,492.920127579668 440.622171631601,491.920127579667 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_Supplement_schedule_per_date-&gt;User">
+          <path d="M 66.3178620385158,1039.60012757967 L 57.4395423980889,1050.04723436085 C 21.3250252580472,1092.54313811217 -24.7292856739257,1133.62798349364 -80.7233903978288,1173.30177050527" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M -88.0894950350664,1178.47289247959 L -77.6066578939949,1176.00102568023 C -79.9572982534854,1174.39304526634 -81.4894825421721,1172.2104957442 -82.203210760055,1169.45337711379 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_template_supplement_plan_daily-&gt;nds_template_supplement_plan_weekly">
+          <path d="M 3630.1021716316,-531.419872420333 L 3630.1021716316,-510.419872420333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3630.1021716316,-501.419872420333 L 3634.1021716316,-511.419872420333 C 3631.43550496494,-510.419872420333 3628.76883829827,-510.419872420333 3626.1021716316,-511.419872420333 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_template_supplement_plan_dose-&gt;nds_template_supplement_plan_supplement">
+          <path d="M 3630.1021716316,-987.179872420333 L 3630.1021716316,-966.179872420333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3630.1021716316,-957.179872420333 L 3634.1021716316,-967.179872420333 C 3631.43550496493,-966.179872420333 3628.76883829827,-966.179872420333 3626.1021716316,-967.179872420333 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="nds_template_supplement_plan_supplement-&gt;nds_template_supplement_plan_daily">
+          <path d="M 3630.1021716316,-703.339872420333 L 3630.1021716316,-682.339872420333" fill="none" stroke="#A0A0A0" stroke-width="1" />
+          <path d="M 3630.1021716316,-673.339872420333 L 3634.1021716316,-683.339872420333 C 3631.43550496494,-682.339872420333 3628.76883829827,-682.339872420333 3626.1021716316,-683.339872420333 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+        </g>
+        <g id="AspNetRoleClaims">
+          <rect x="-1180.0161617017327" y="1465.3601275796682" rx="5" ry="5" width="222.78999999999996" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-1118.0161617017327" y="1483.3101275796682" fill="#000000">AspNetRoleClaims</text>
+          <rect x="-1175.0161617017327" y="1493.3201275796682" width="212.78999999999996" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetRoleClaims_Id">
+            <rect x="-1160.0161617017327" y="1505.3601275796682" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1141.0161617017327" y="1523.3101275796682" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="AspNetRoleClaims_RoleId">
+            <rect x="-1080.0161617017327" y="1505.3601275796682" rx="3" ry="3" width="53.299999999999955" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1070.0161617017327" y="1523.3101275796682" fill="#000000">RoleId</text>
+          </g>
+          <g id="AspNetRoleClaims_ClaimType">
+            <rect x="-1160.0161617017327" y="1561.3201275796682" rx="3" ry="3" width="74.449999999999818" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017327" y="1579.2701275796683" fill="#FFFFFF">ClaimType</text>
+          </g>
+          <g id="AspNetRoleClaims_ClaimValue">
+            <rect x="-1055.5661617017329" y="1561.3201275796682" rx="3" ry="3" width="78.340000000000146" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1045.5661617017329" y="1579.2701275796683" fill="#FFFFFF">ClaimValue</text>
+          </g>
+        </g>
+        <g id="AspNetRoles">
+          <rect x="-947.46949503506619" y="1721.2201275796683" rx="5" ry="5" width="171.6966666666666" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-895.46949503506619" y="1739.1701275796684" fill="#000000">AspNetRoles</text>
+          <rect x="-942.46949503506619" y="1749.1801275796684" width="161.6966666666666" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetRoles_Id">
+            <rect x="-927.46949503506619" y="1761.2201275796683" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-908.46949503506619" y="1779.1701275796684" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="AspNetRoles_Name">
+            <rect x="-847.46949503506619" y="1761.2201275796683" rx="3" ry="3" width="51.696666666666715" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-837.46949503506619" y="1779.1701275796684" fill="#FFFFFF">Name</text>
+          </g>
+          <g id="AspNetRoles_NormalizedName">
+            <rect x="-927.46949503506619" y="1817.1801275796684" rx="3" ry="3" width="112.90333333333331" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-917.46949503506619" y="1835.1301275796684" fill="#FFFFFF">NormalizedName</text>
+          </g>
+          <g id="AspNetRoles_ConcurrencyStamp">
+            <rect x="-927.46949503506619" y="1873.1401275796684" rx="3" ry="3" width="119.89666666666665" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-917.46949503506619" y="1891.0901275796684" fill="#FFFFFF">ConcurrencyStamp</text>
+          </g>
+        </g>
+        <g id="AspNetUserClaims">
+          <rect x="-766.01616170173281" y="1465.3601275796682" rx="5" ry="5" width="222.79000000000008" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-704.01616170173281" y="1483.3101275796682" fill="#000000">AspNetUserClaims</text>
+          <rect x="-761.01616170173281" y="1493.3201275796682" width="212.79000000000008" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetUserClaims_Id">
+            <rect x="-746.01616170173281" y="1505.3601275796682" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-727.01616170173281" y="1523.3101275796682" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="AspNetUserClaims_UserId">
+            <rect x="-666.01616170173281" y="1505.3601275796682" rx="3" ry="3" width="54.046666666666738" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-656.01616170173281" y="1523.3101275796682" fill="#000000">UserId</text>
+          </g>
+          <g id="AspNetUserClaims_ClaimType">
+            <rect x="-746.01616170173281" y="1561.3201275796682" rx="3" ry="3" width="74.449999999999932" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-736.01616170173281" y="1579.2701275796683" fill="#FFFFFF">ClaimType</text>
+          </g>
+          <g id="AspNetUserClaims_ClaimValue">
+            <rect x="-641.56616170173288" y="1561.3201275796682" rx="3" ry="3" width="78.340000000000146" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-631.56616170173288" y="1579.2701275796683" fill="#FFFFFF">ClaimValue</text>
+          </g>
+        </g>
+        <g id="AspNetUserLogins">
+          <rect x="-513.13449503506615" y="1437.3801275796682" rx="5" ry="5" width="207.02666666666676" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-459.13449503506615" y="1455.3301275796682" fill="#000000">AspNetUserLogins</text>
+          <rect x="-508.13449503506615" y="1465.3401275796682" width="197.02666666666676" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetUserLogins_LoginProvider">
+            <rect x="-493.13449503506615" y="1533.3401275796682" rx="3" ry="3" width="93.536666666666747" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-483.13449503506615" y="1551.2901275796683" fill="#FFFFFF">LoginProvider</text>
+          </g>
+          <g id="AspNetUserLogins_ProviderKey">
+            <rect x="-409.08782836839941" y="1477.3801275796682" rx="3" ry="3" width="82.980000000000018" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-399.08782836839941" y="1495.3301275796682" fill="#FFFFFF">ProviderKey</text>
+          </g>
+          <g id="AspNetUserLogins_ProviderDisplayName">
+            <rect x="-493.13449503506615" y="1589.3001275796682" rx="3" ry="3" width="134.07666666666671" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-483.13449503506615" y="1607.2501275796683" fill="#FFFFFF">ProviderDisplayName</text>
+          </g>
+          <g id="AspNetUserLogins_UserId">
+            <rect x="-493.13449503506615" y="1477.3801275796682" rx="3" ry="3" width="54.046666666666738" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-483.13449503506615" y="1495.3301275796682" fill="#000000">UserId</text>
+          </g>
+        </g>
+        <g id="AspNetUserRoles">
+          <rect x="-927.184495035066" y="1465.3601275796682" rx="5" ry="5" width="131.12666666666667" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-908.184495035066" y="1483.3101275796682" fill="#000000">AspNetUserRoles</text>
+          <rect x="-922.184495035066" y="1493.3201275796682" width="121.12666666666667" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetUserRoles_UserId">
+            <rect x="-888.644495035066" y="1561.3201275796682" rx="3" ry="3" width="54.046666666666624" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-878.644495035066" y="1579.2701275796683" fill="#FFFFFF">UserId</text>
+          </g>
+          <g id="AspNetUserRoles_RoleId">
+            <rect x="-888.644495035066" y="1505.3601275796682" rx="3" ry="3" width="53.299999999999955" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-878.644495035066" y="1523.3101275796682" fill="#FFFFFF">RoleId</text>
+          </g>
+        </g>
+        <g id="AspNetUsers">
+          <rect x="-745.60949503506629" y="1665.2601275796683" rx="5" ry="5" width="453.97666666666669" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-553.60949503506629" y="1683.2101275796683" fill="#000000">AspNetUsers</text>
+          <rect x="-740.60949503506629" y="1693.2201275796683" width="443.97666666666669" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetUsers_Id">
+            <rect x="-725.60949503506629" y="1705.2601275796683" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-706.60949503506629" y="1723.2101275796683" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="AspNetUsers_UserName">
+            <rect x="-565.60949503506629" y="1705.2601275796683" rx="3" ry="3" width="75.483333333333348" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-555.60949503506629" y="1723.2101275796683" fill="#FFFFFF">UserName</text>
+          </g>
+          <g id="AspNetUsers_NormalizedUserName">
+            <rect x="-725.60949503506629" y="1929.1001275796684" rx="3" ry="3" width="136.68999999999994" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-715.60949503506629" y="1947.0501275796685" fill="#FFFFFF">NormalizedUserName</text>
+          </g>
+          <g id="AspNetUsers_Email">
+            <rect x="-645.60949503506629" y="1705.2601275796683" rx="3" ry="3" width="50" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-635.60949503506629" y="1723.2101275796683" fill="#FFFFFF">Email</text>
+          </g>
+          <g id="AspNetUsers_NormalizedEmail">
+            <rect x="-457.17282836839951" y="1817.1801275796684" rx="3" ry="3" width="109.53333333333342" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-447.17282836839951" y="1835.1301275796684" fill="#FFFFFF">NormalizedEmail</text>
+          </g>
+          <g id="AspNetUsers_EmailConfirmed">
+            <rect x="-725.6094950350664" y="1817.1801275796684" rx="3" ry="3" width="104.09333333333336" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-715.6094950350664" y="1835.1301275796684" fill="#FFFFFF">EmailConfirmed</text>
+          </g>
+          <g id="AspNetUsers_PasswordHash">
+            <rect x="-600.12282836839961" y="1761.2201275796683" rx="3" ry="3" width="96.056666666666729" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-590.12282836839961" y="1779.1701275796684" fill="#FFFFFF">PasswordHash</text>
+          </g>
+          <g id="AspNetUsers_SecurityStamp">
+            <rect x="-725.60949503506629" y="1761.2201275796683" rx="3" ry="3" width="95.486666666666679" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-715.60949503506629" y="1779.1701275796684" fill="#FFFFFF">SecurityStamp</text>
+          </g>
+          <g id="AspNetUsers_ConcurrencyStamp">
+            <rect x="-431.52949503506625" y="1873.1401275796684" rx="3" ry="3" width="119.89666666666653" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-421.52949503506625" y="1891.0901275796684" fill="#FFFFFF">ConcurrencyStamp</text>
+          </g>
+          <g id="AspNetUsers_PhoneNumber">
+            <rect x="-474.06616170173305" y="1761.2201275796683" rx="3" ry="3" width="97.213333333333367" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-464.06616170173305" y="1779.1701275796684" fill="#FFFFFF">PhoneNumber</text>
+          </g>
+          <g id="AspNetUsers_PhoneNumberConfirmed">
+            <rect x="-558.91949503506623" y="1929.1001275796684" rx="3" ry="3" width="152.98000000000002" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-548.91949503506623" y="1947.0501275796685" fill="#FFFFFF">PhoneNumberConfirmed</text>
+          </g>
+          <g id="AspNetUsers_TwoFactorEnabled">
+            <rect x="-725.60949503506629" y="1873.1401275796684" rx="3" ry="3" width="115.97000000000003" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-715.60949503506629" y="1891.0901275796684" fill="#FFFFFF">TwoFactorEnabled</text>
+          </g>
+          <g id="AspNetUsers_LockoutEnd">
+            <rect x="-460.12616170173294" y="1705.2601275796683" rx="3" ry="3" width="82" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-450.12616170173294" y="1723.2101275796683" fill="#FFFFFF">LockoutEnd</text>
+          </g>
+          <g id="AspNetUsers_LockoutEnabled">
+            <rect x="-591.51616170173293" y="1817.1801275796684" rx="3" ry="3" width="104.34333333333325" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-581.51616170173293" y="1835.1301275796684" fill="#FFFFFF">LockoutEnabled</text>
+          </g>
+          <g id="AspNetUsers_AccessFailedCount">
+            <rect x="-579.63949503506637" y="1873.1401275796684" rx="3" ry="3" width="118.11000000000013" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-569.63949503506637" y="1891.0901275796684" fill="#FFFFFF">AccessFailedCount</text>
+          </g>
+        </g>
+        <g id="AspNetUserTokens">
+          <rect x="-275.41282836839946" y="1465.3601275796682" rx="5" ry="5" width="217.58333333333326" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-216.41282836839946" y="1483.3101275796682" fill="#000000">AspNetUserTokens</text>
+          <rect x="-270.41282836839946" y="1493.3201275796682" width="207.58333333333326" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="AspNetUserTokens_UserId">
+            <rect x="-255.41282836839946" y="1561.3201275796682" rx="3" ry="3" width="54.046666666666624" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-245.41282836839946" y="1579.2701275796683" fill="#FFFFFF">UserId</text>
+          </g>
+          <g id="AspNetUserTokens_LoginProvider">
+            <rect x="-171.36616170173284" y="1561.3201275796682" rx="3" ry="3" width="93.536666666666619" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-161.36616170173284" y="1579.2701275796683" fill="#FFFFFF">LoginProvider</text>
+          </g>
+          <g id="AspNetUserTokens_Name">
+            <rect x="-175.41282836839946" y="1505.3601275796682" rx="3" ry="3" width="51.696666666666715" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-165.41282836839946" y="1523.3101275796682" fill="#FFFFFF">Name</text>
+          </g>
+          <g id="AspNetUserTokens_Value">
+            <rect x="-255.41282836839946" y="1505.3601275796682" rx="3" ry="3" width="50" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-245.41282836839946" y="1523.3101275796682" fill="#FFFFFF">Value</text>
+          </g>
+        </g>
+        <g id="country">
+          <rect x="3767.3371716316005" y="38.280127579667806" rx="5" ry="5" width="222.10666666666657" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3857.3371716316005" y="56.230127579667808" fill="#000000">country</text>
+          <rect x="3772.3371716316005" y="66.240127579667814" width="212.10666666666657" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="country_Id">
+            <rect x="3787.3371716316005" y="78.2801275796678" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3806.3371716316005" y="96.230127579667808" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="country_name">
+            <rect x="3867.3371716316005" y="78.2801275796678" rx="3" ry="3" width="50" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3877.3371716316005" y="96.230127579667808" fill="#FFFFFF">name</text>
+          </g>
+          <g id="country_area_code">
+            <rect x="3787.337171631601" y="134.24012757966784" rx="3" ry="3" width="73.5600000000004" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3797.337171631601" y="152.19012757966783" fill="#FFFFFF">area_code</text>
+          </g>
+          <g id="country_time_offset">
+            <rect x="3890.8971716316014" y="134.24012757966784" rx="3" ry="3" width="78.546666666666169" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3900.8971716316014" y="152.19012757966783" fill="#FFFFFF">time_offset</text>
+          </g>
+        </g>
+        <g id="eds_12week_plan">
+          <rect x="573.18883829826723" y="869.70012757966742" rx="5" ry="5" width="322.86666666666679" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="688.18883829826723" y="887.65012757966747" fill="#000000">eds_12week_plan</text>
+          <rect x="578.18883829826723" y="897.66012757966746" width="312.86666666666679" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_12week_plan_Id">
+            <rect x="593.18883829826723" y="909.70012757966742" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="612.18883829826723" y="927.65012757966747" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_12week_plan_name">
+            <rect x="673.18883829826723" y="909.70012757966742" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="683.18883829826723" y="927.65012757966747" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_12week_plan_is_template">
+            <rect x="795.98550496493385" y="965.66012757966746" rx="3" ry="3" width="80.070000000000164" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="805.98550496493385" y="983.61012757966751" fill="#FFFFFF">is_template</text>
+          </g>
+          <g id="eds_12week_plan_is_current">
+            <rect x="593.18883829826723" y="965.66012757966746" rx="3" ry="3" width="70.7933333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="603.18883829826723" y="983.61012757966751" fill="#FFFFFF">is_current</text>
+          </g>
+          <g id="eds_12week_plan_duration_weeks">
+            <rect x="722.15217163160059" y="1021.6201275796675" rx="3" ry="3" width="102.19333333333338" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="732.15217163160059" y="1039.5701275796675" fill="#FFFFFF">duration_weeks</text>
+          </g>
+          <g id="eds_12week_plan_start_date">
+            <rect x="693.98217163160052" y="965.66012757966746" rx="3" ry="3" width="72.00333333333333" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="703.98217163160052" y="983.61012757966751" fill="#FFFFFF">start_date</text>
+          </g>
+          <g id="eds_12week_plan_end_date">
+            <rect x="753.18883829826723" y="909.70012757966742" rx="3" ry="3" width="68.630000000000109" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="763.18883829826723" y="927.65012757966747" fill="#FFFFFF">end_date</text>
+          </g>
+          <g id="eds_12week_plan_fk_customer_id">
+            <rect x="593.18883829826723" y="1021.6201275796675" rx="3" ry="3" width="98.963333333333367" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="603.18883829826723" y="1039.5701275796675" fill="#000000">fk_customer_id</text>
+          </g>
+        </g>
+        <g id="eds_avaiable_set_metrics">
+          <rect x="2428.1638382982665" y="-929.19987242033267" rx="5" ry="5" width="192.91666666666652" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2459.1638382982665" y="-911.24987242033262" fill="#000000">eds_avaiable_set_metrics</text>
+          <rect x="2433.1638382982665" y="-901.23987242033263" width="182.91666666666652" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_avaiable_set_metrics_Id">
+            <rect x="2448.1638382982665" y="-889.19987242033267" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2467.1638382982665" y="-871.24987242033262" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_avaiable_set_metrics_fk_exercise_type_id">
+            <rect x="2448.1638382982669" y="-833.23987242033263" rx="3" ry="3" width="119.88999999999987" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2458.1638382982669" y="-815.28987242033259" fill="#000000">fk_exercise_type_id</text>
+          </g>
+          <g id="eds_avaiable_set_metrics_fk_set_metrics_types_id">
+            <rect x="2448.1638382982669" y="-777.27987242033259" rx="3" ry="3" width="141.74333333333334" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2458.1638382982669" y="-759.32987242033255" fill="#000000">fk_set_metrics_types_id</text>
+          </g>
+          <g id="eds_avaiable_set_metrics_is_deleted">
+            <rect x="2528.1638382982669" y="-889.19987242033267" rx="3" ry="3" width="72.916666666666515" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2538.1638382982669" y="-871.24987242033262" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="eds_daily_plan">
+          <rect x="1312.8421716316004" y="98.180127579667669" rx="5" ry="5" width="281.55999999999995" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1414.8421716316004" y="116.13012757966767" fill="#000000">eds_daily_plan</text>
+          <rect x="1317.8421716316004" y="126.14012757966768" width="271.55999999999995" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_daily_plan_Id">
+            <rect x="1332.8421716316004" y="138.18012757966767" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1351.8421716316004" y="156.13012757966766" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_daily_plan_fk_eds_weekly_plan_id">
+            <rect x="1332.8421716316004" y="250.10012757966774" rx="3" ry="3" width="136.80999999999995" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1342.8421716316004" y="268.05012757966773" fill="#000000">fk_eds_weekly_plan_id</text>
+          </g>
+          <g id="eds_daily_plan_start_day">
+            <rect x="1506.9355049649337" y="138.18012757966767" rx="3" ry="3" width="67.4666666666667" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1516.9355049649337" y="156.13012757966766" fill="#FFFFFF">start_day</text>
+          </g>
+          <g id="eds_daily_plan_end_day">
+            <rect x="1412.8421716316006" y="138.18012757966767" rx="3" ry="3" width="64.093333333333248" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1422.8421716316006" y="156.13012757966766" fill="#FFFFFF">end_day</text>
+          </g>
+          <g id="eds_daily_plan_is_complete">
+            <rect x="1332.8421716316004" y="194.14012757966771" rx="3" ry="3" width="82.4699999999998" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1342.8421716316004" y="212.09012757966769" fill="#FFFFFF">is_complete</text>
+          </g>
+        </g>
+        <g id="eds_equipment">
+          <rect x="2439.6221716316004" y="126.16012757966746" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2483.6221716316004" y="144.11012757966745" fill="#000000">eds_equipment</text>
+          <rect x="2444.6221716316004" y="154.12012757966747" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_equipment_Id">
+            <rect x="2459.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2478.6221716316004" y="184.11012757966745" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_equipment_name">
+            <rect x="2539.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2549.6221716316004" y="184.11012757966745" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_equipment_isDeleted">
+            <rect x="2459.6221716316008" y="222.1201275796675" rx="3" ry="3" width="69.2833333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2469.6221716316008" y="240.07012757966748" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_exercise">
+          <rect x="2089.1521716316" y="-673.33987242033254" rx="5" ry="5" width="302.94000000000005" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2207.1521716316" y="-655.38987242033249" fill="#000000">eds_exercise</text>
+          <rect x="2094.1521716316" y="-645.3798724203325" width="292.94000000000005" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_exercise_Id">
+            <rect x="2109.1521716316" y="-633.33987242033254" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2128.1521716316" y="-615.38987242033249" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_exercise_fk_training_id">
+            <rect x="2221.6221716316008" y="-577.3798724203325" rx="3" ry="3" width="90.460000000000036" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2231.6221716316008" y="-559.42987242033246" fill="#000000">fk_training_id</text>
+          </g>
+          <g id="eds_exercise_fk_exercise_type_id">
+            <rect x="2245.4888382982672" y="-521.41987242033247" rx="3" ry="3" width="119.88999999999987" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2255.4888382982672" y="-503.46987242033248" fill="#000000">fk_exercise_type_id</text>
+          </g>
+          <g id="eds_exercise_is_skipped">
+            <rect x="2189.1521716316" y="-633.33987242033254" rx="3" ry="3" width="74.39333333333343" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2199.1521716316" y="-615.38987242033249" fill="#FFFFFF">is_skipped</text>
+          </g>
+          <g id="eds_exercise_is_complete">
+            <rect x="2109.1521716316006" y="-577.3798724203325" rx="3" ry="3" width="82.470000000000255" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2119.1521716316006" y="-559.42987242033246" fill="#FFFFFF">is_complete</text>
+          </g>
+          <g id="eds_exercise_end_time_stamp">
+            <rect x="2109.1521716316006" y="-521.41987242033247" rx="3" ry="3" width="106.33666666666659" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2119.1521716316006" y="-503.46987242033248" fill="#FFFFFF">end_time_stamp</text>
+          </g>
+          <g id="eds_exercise_is_customer_added_Exercise">
+            <rect x="2109.1521716316" y="-465.45987242033243" rx="3" ry="3" width="167.68000000000029" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2119.1521716316" y="-447.50987242033244" fill="#FFFFFF">is_customer_added_Exercise</text>
+          </g>
+          <g id="eds_exercise_time_offset">
+            <rect x="2293.545504964934" y="-633.33987242033254" rx="3" ry="3" width="78.546666666666624" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2303.545504964934" y="-615.38987242033249" fill="#FFFFFF">time_offset</text>
+          </g>
+        </g>
+        <g id="eds_exercise_class">
+          <rect x="3042.6221716316004" y="126.16012757966746" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3079.6221716316004" y="144.11012757966745" fill="#000000">eds_exercise_class</text>
+          <rect x="3047.6221716316004" y="154.12012757966747" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_exercise_class_Id">
+            <rect x="3062.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3081.6221716316004" y="184.11012757966745" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_exercise_class_name">
+            <rect x="3142.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3152.6221716316004" y="184.11012757966745" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_exercise_class_isDeleted">
+            <rect x="3062.6221716316008" y="222.1201275796675" rx="3" ry="3" width="69.283333333333758" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3072.6221716316008" y="240.07012757966748" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_exercise_type">
+          <rect x="2283.063838298267" y="-389.49987242033239" rx="5" ry="5" width="483.11666666666679" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2477.063838298267" y="-371.54987242033241" fill="#000000">eds_exercise_type</text>
+          <rect x="2288.063838298267" y="-361.53987242033242" width="473.11666666666679" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_exercise_type_Id">
+            <rect x="2303.063838298267" y="-349.49987242033239" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2322.063838298267" y="-331.54987242033241" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_exercise_type_name">
+            <rect x="2383.063838298267" y="-349.49987242033239" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2393.063838298267" y="-331.54987242033241" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_exercise_type_fk_exercise_class_id">
+            <rect x="2585.1938382982671" y="-237.57987242033232" rx="3" ry="3" width="121.43000000000029" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2595.1938382982671" y="-219.62987242033233" fill="#000000">fk_exercise_class_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_main_muscle_worked_id">
+            <rect x="2303.063838298267" y="-125.65987242033226" rx="3" ry="3" width="161.88333333333321" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2313.063838298267" y="-107.70987242033226" fill="#000000">fk_main_muscle_worked_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_other_muscle_worked_id">
+            <rect x="2494.9471716316" y="-125.65987242033226" rx="3" ry="3" width="164.07999999999993" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2504.9471716316" y="-107.70987242033226" fill="#000000">fk_other_muscle_worked_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_equipment_id">
+            <rect x="2303.0638382982675" y="-237.57987242033232" rx="3" ry="3" width="107.2166666666667" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2313.0638382982675" y="-219.62987242033233" fill="#000000">fk_equipment_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_mechanics_type_id">
+            <rect x="2303.063838298267" y="-181.61987242033229" rx="3" ry="3" width="133.22333333333336" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2313.063838298267" y="-163.6698724203323" fill="#000000">fk_mechanics_type_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_level_id">
+            <rect x="2565.980504964934" y="-349.49987242033239" rx="3" ry="3" width="73.766666666666879" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2575.980504964934" y="-331.54987242033241" fill="#000000">fk_level_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_sport_id">
+            <rect x="2303.063838298267" y="-293.53987242033236" rx="3" ry="3" width="77.069999999999709" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2313.063838298267" y="-275.58987242033237" fill="#000000">fk_sport_id</text>
+          </g>
+          <g id="eds_exercise_type_fk_force_id">
+            <rect x="2669.7471716316008" y="-349.49987242033239" rx="3" ry="3" width="76.4333333333334" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2679.7471716316008" y="-331.54987242033241" fill="#000000">fk_force_id</text>
+          </g>
+          <g id="eds_exercise_type_explainer_video_fr">
+            <rect x="2440.2805049649342" y="-237.57987242033232" rx="3" ry="3" width="114.91333333333341" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2450.2805049649342" y="-219.62987242033233" fill="#FFFFFF">explainer_video_fr</text>
+          </g>
+          <g id="eds_exercise_type_explainer_text_fr">
+            <rect x="2543.5138382982668" y="-293.53987242033236" rx="3" ry="3" width="105.80333333333328" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2553.5138382982668" y="-275.58987242033237" fill="#FFFFFF">explainer_text_fr</text>
+          </g>
+          <g id="eds_exercise_type_has_set_default_template">
+            <rect x="2466.2871716316008" y="-181.61987242033229" rx="3" ry="3" width="152.42666666666673" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2476.2871716316008" y="-163.6698724203323" fill="#FFFFFF">has_set_default_template</text>
+          </g>
+          <g id="eds_exercise_type_is_set_collapsed">
+            <rect x="2410.1338382982672" y="-293.53987242033236" rx="3" ry="3" width="103.38000000000011" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2420.1338382982672" y="-275.58987242033237" fill="#FFFFFF">is_set_collapsed</text>
+          </g>
+          <g id="eds_exercise_type_is_deleted">
+            <rect x="2463.0638382982675" y="-349.49987242033239" rx="3" ry="3" width="72.916666666666515" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2473.0638382982675" y="-331.54987242033241" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="eds_force">
+          <rect x="2841.6221716316004" y="126.16012757966746" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2900.6221716316004" y="144.11012757966745" fill="#000000">eds_force</text>
+          <rect x="2846.6221716316004" y="154.12012757966747" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_force_Id">
+            <rect x="2861.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2880.6221716316004" y="184.11012757966745" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_force_name">
+            <rect x="2941.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2951.6221716316004" y="184.11012757966745" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_force_isDeleted">
+            <rect x="2861.6221716316008" y="222.1201275796675" rx="3" ry="3" width="69.283333333333758" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2871.6221716316008" y="240.07012757966748" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_level">
+          <rect x="1825.6221716316006" y="126.16012757966769" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1886.6221716316006" y="144.11012757966768" fill="#000000">eds_level</text>
+          <rect x="1830.6221716316006" y="154.1201275796677" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_level_Id">
+            <rect x="1845.6221716316008" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1864.6221716316008" y="184.11012757966768" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_level_name">
+            <rect x="1925.6221716316008" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1935.6221716316008" y="184.11012757966768" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_level_isDeleted">
+            <rect x="1845.6221716316008" y="222.12012757966772" rx="3" ry="3" width="69.2833333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1855.6221716316008" y="240.07012757966771" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_main_muscle_worked">
+          <rect x="2025.7988382982669" y="126.16012757966769" rx="5" ry="5" width="175.64666666666631" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2044.7988382982669" y="144.11012757966768" fill="#000000">eds_main_muscle_worked</text>
+          <rect x="2030.7988382982669" y="154.1201275796677" width="165.64666666666631" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_main_muscle_worked_Id">
+            <rect x="2048.6221716316004" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2067.6221716316004" y="184.11012757966768" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_main_muscle_worked_name">
+            <rect x="2128.6221716316004" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2138.6221716316004" y="184.11012757966768" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_main_muscle_worked_isDeleted">
+            <rect x="2048.6221716316008" y="222.12012757966772" rx="3" ry="3" width="69.2833333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2058.6221716316008" y="240.07012757966771" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_mechanics_type">
+          <rect x="2640.6221716316004" y="126.16012757966746" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2671.6221716316004" y="144.11012757966745" fill="#000000">eds_mechanics_type</text>
+          <rect x="2645.6221716316004" y="154.12012757966747" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_mechanics_type_Id">
+            <rect x="2660.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2679.6221716316004" y="184.11012757966745" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_mechanics_type_name">
+            <rect x="2740.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2750.6221716316004" y="184.11012757966745" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_mechanics_type_isDeleted">
+            <rect x="2660.6221716316008" y="222.1201275796675" rx="3" ry="3" width="69.2833333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2670.6221716316008" y="240.07012757966748" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_other_muscle_worked">
+          <rect x="2231.7005049649333" y="126.16012757966746" rx="5" ry="5" width="177.84333333333325" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2250.7005049649333" y="144.11012757966745" fill="#000000">eds_other_muscle_worked</text>
+          <rect x="2236.7005049649333" y="154.12012757966747" width="167.84333333333325" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_other_muscle_worked_Id">
+            <rect x="2255.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2274.6221716316004" y="184.11012757966745" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_other_muscle_worked_name">
+            <rect x="2335.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2345.6221716316004" y="184.11012757966745" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_other_muscle_worked_isDeleted">
+            <rect x="2255.6221716316008" y="222.1201275796675" rx="3" ry="3" width="69.2833333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2265.6221716316008" y="240.07012757966748" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_reason_for_reschedule">
+          <rect x="1101.1221716316006" y="126.16012757966769" rx="5" ry="5" width="181" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1121.1221716316006" y="144.11012757966768" fill="#000000">eds_reason_for_reschedule</text>
+          <rect x="1106.1221716316006" y="154.1201275796677" width="171" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_reason_for_reschedule_Id">
+            <rect x="1126.6221716316006" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1145.6221716316006" y="184.11012757966768" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_reason_for_reschedule_name">
+            <rect x="1206.6221716316006" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1216.6221716316006" y="184.11012757966768" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_reason_for_reschedule_is_deleted">
+            <rect x="1126.6221716316006" y="222.12012757966772" rx="3" ry="3" width="72.916666666666515" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1136.6221716316006" y="240.07012757966771" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="eds_reason_for_skipping">
+          <rect x="1624.6221716316006" y="126.16012757966769" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1644.6221716316006" y="144.11012757966768" fill="#000000">eds_reason_for_skipping</text>
+          <rect x="1629.6221716316006" y="154.1201275796677" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_reason_for_skipping_Id">
+            <rect x="1644.6221716316006" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1663.6221716316006" y="184.11012757966768" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_reason_for_skipping_name">
+            <rect x="1724.6221716316006" y="166.16012757966769" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1734.6221716316006" y="184.11012757966768" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_reason_for_skipping_is_deleted">
+            <rect x="1644.6221716316006" y="222.12012757966772" rx="3" ry="3" width="72.916666666666515" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1654.6221716316006" y="240.07012757966771" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="eds_set">
+          <rect x="2083.9888382982672" y="-957.17987242033269" rx="5" ry="5" width="313.26666666666642" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2220.9888382982672" y="-939.22987242033264" fill="#000000">eds_set</text>
+          <rect x="2088.9888382982672" y="-929.21987242033265" width="303.26666666666642" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_set_Id">
+            <rect x="2103.9888382982672" y="-917.17987242033269" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2122.9888382982672" y="-899.22987242033264" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_set_fk_exercise_id">
+            <rect x="2216.4588382982679" y="-861.21987242033265" rx="3" ry="3" width="91.706666666666479" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2226.4588382982679" y="-843.2698724203326" fill="#000000">fk_exercise_id</text>
+          </g>
+          <g id="eds_set_set_sequence_number">
+            <rect x="2240.3255049649342" y="-805.25987242033261" rx="3" ry="3" width="136.92999999999984" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2250.3255049649342" y="-787.30987242033257" fill="#FFFFFF">set_sequence_number</text>
+          </g>
+          <g id="eds_set_is_complete">
+            <rect x="2103.9888382982676" y="-861.21987242033265" rx="3" ry="3" width="82.470000000000255" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2113.9888382982676" y="-843.2698724203326" fill="#FFFFFF">is_complete</text>
+          </g>
+          <g id="eds_set_is_skipped">
+            <rect x="2183.9888382982672" y="-917.17987242033269" rx="3" ry="3" width="74.39333333333343" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2193.9888382982672" y="-899.22987242033264" fill="#FFFFFF">is_skipped</text>
+          </g>
+          <g id="eds_set_is_customer_added_set">
+            <rect x="2103.9888382982676" y="-749.29987242033258" rx="3" ry="3" width="141.26999999999998" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2113.9888382982676" y="-731.34987242033253" fill="#FFFFFF">is_customer_added_set</text>
+          </g>
+          <g id="eds_set_end_time_stamp">
+            <rect x="2103.9888382982676" y="-805.25987242033261" rx="3" ry="3" width="106.33666666666659" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2113.9888382982676" y="-787.30987242033257" fill="#FFFFFF">end_time_stamp</text>
+          </g>
+          <g id="eds_set_time_offset">
+            <rect x="2288.3821716316011" y="-917.17987242033269" rx="3" ry="3" width="78.546666666666624" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2298.3821716316011" y="-899.22987242033264" fill="#FFFFFF">time_offset</text>
+          </g>
+        </g>
+        <g id="eds_set_defaults">
+          <rect x="2904.6771716316" y="-617.3798724203325" rx="5" ry="5" width="239.89000000000033" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2980.6771716316" y="-599.42987242033246" fill="#000000">eds_set_defaults</text>
+          <rect x="2909.6771716316" y="-589.41987242033247" width="229.89000000000033" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_set_defaults_Id">
+            <rect x="2924.6771716316" y="-577.3798724203325" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2943.6771716316" y="-559.42987242033246" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_set_defaults_fk_exercise_type_id">
+            <rect x="3004.6771716316002" y="-577.3798724203325" rx="3" ry="3" width="119.89000000000033" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3014.6771716316002" y="-559.42987242033246" fill="#000000">fk_exercise_type_id</text>
+          </g>
+          <g id="eds_set_defaults_set_sequence_number">
+            <rect x="2924.6771716316" y="-521.41987242033247" rx="3" ry="3" width="136.93000000000029" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2934.6771716316" y="-503.46987242033248" fill="#FFFFFF">set_sequence_number</text>
+          </g>
+        </g>
+        <g id="eds_set_metric_types">
+          <rect x="2555.3688382982664" y="-645.35987242033252" rx="5" ry="5" width="318.50666666666712" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2659.3688382982664" y="-627.40987242033248" fill="#000000">eds_set_metric_types</text>
+          <rect x="2560.3688382982664" y="-617.39987242033249" width="308.50666666666712" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_set_metric_types_Id">
+            <rect x="2575.3688382982664" y="-605.35987242033252" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2594.3688382982664" y="-587.40987242033248" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_set_metric_types_name">
+            <rect x="2655.3688382982664" y="-605.35987242033252" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2665.3688382982664" y="-587.40987242033248" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_set_metric_types_is_deleted">
+            <rect x="2674.1288382982671" y="-549.39987242033249" rx="3" ry="3" width="72.91666666666697" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2684.1288382982671" y="-531.44987242033244" fill="#FFFFFF">is_deleted</text>
+          </g>
+          <g id="eds_set_metric_types_is_repetition">
+            <rect x="2575.3688382982664" y="-493.43987242033245" rx="3" ry="3" width="84.526666666666642" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2585.3688382982664" y="-475.48987242033246" fill="#FFFFFF">is_repetition</text>
+          </g>
+          <g id="eds_set_metric_types_is_weight">
+            <rect x="2575.3688382982664" y="-549.39987242033249" rx="3" ry="3" width="68.760000000000218" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2585.3688382982664" y="-531.44987242033244" fill="#FFFFFF">is_weight</text>
+          </g>
+          <g id="eds_set_metric_types_is_resistance">
+            <rect x="2689.8955049649335" y="-493.43987242033245" rx="3" ry="3" width="85.306666666666388" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2699.8955049649335" y="-475.48987242033246" fill="#FFFFFF">is_resistance</text>
+          </g>
+          <g id="eds_set_metric_types_is_distance">
+            <rect x="2777.0455049649336" y="-549.39987242033249" rx="3" ry="3" width="76.829999999999927" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2787.0455049649336" y="-531.44987242033244" fill="#FFFFFF">is_distance</text>
+          </g>
+          <g id="eds_set_metric_types_is_time">
+            <rect x="2735.3688382982668" y="-605.35987242033252" rx="3" ry="3" width="56.566666666666606" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2745.3688382982668" y="-587.40987242033248" fill="#FFFFFF">is_time</text>
+          </g>
+        </g>
+        <g id="eds_set_metrics">
+          <rect x="2554.6838382982669" y="-1185.0598724203328" rx="5" ry="5" width="319.876666666667" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2672.6838382982669" y="-1167.1098724203327" fill="#000000">eds_set_metrics</text>
+          <rect x="2559.6838382982669" y="-1157.0998724203328" width="309.876666666667" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_set_metrics_Id">
+            <rect x="2574.6838382982669" y="-1145.0598724203328" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2593.6838382982669" y="-1127.1098724203327" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_set_metrics_fk_set_id">
+            <rect x="2654.6838382982669" y="-1145.0598724203328" rx="3" ry="3" width="65.089999999999691" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2664.6838382982669" y="-1127.1098724203327" fill="#000000">fk_set_id</text>
+          </g>
+          <g id="eds_set_metrics_fk_metrics_type_id">
+            <rect x="2574.6838382982669" y="-1089.0998724203328" rx="3" ry="3" width="116.23333333333312" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2584.6838382982669" y="-1071.1498724203327" fill="#000000">fk_metrics_type_id</text>
+          </g>
+          <g id="eds_set_metrics_target_custom_metric">
+            <rect x="2574.6838382982664" y="-1033.1398724203327" rx="3" ry="3" width="133.88000000000011" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2584.6838382982664" y="-1015.1898724203327" fill="#FFFFFF">target_custom_metric</text>
+          </g>
+          <g id="eds_set_metrics_actual_custom_metric">
+            <rect x="2720.9171716316005" y="-1089.0998724203328" rx="3" ry="3" width="133.64333333333343" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2730.9171716316005" y="-1071.1498724203327" fill="#FFFFFF">actual_custom_metric</text>
+          </g>
+        </g>
+        <g id="eds_set_metrics_default">
+          <rect x="2745.5555049649338" y="-929.19987242033267" rx="5" ry="5" width="232.13333333333367" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="2798.5555049649338" y="-911.24987242033262" fill="#000000">eds_set_metrics_default</text>
+          <rect x="2750.5555049649338" y="-901.23987242033263" width="222.13333333333367" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_set_metrics_default_Id">
+            <rect x="2765.5555049649338" y="-889.19987242033267" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2784.5555049649338" y="-871.24987242033262" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_set_metrics_default_fk_set_defaults_id">
+            <rect x="2845.5555049649338" y="-889.19987242033267" rx="3" ry="3" width="112.13333333333321" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2855.5555049649338" y="-871.24987242033262" fill="#000000">fk_set_defaults_id</text>
+          </g>
+          <g id="eds_set_metrics_default_fk_set_metric_type_id">
+            <rect x="2765.5555049649338" y="-833.23987242033263" rx="3" ry="3" width="131.55666666666684" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2775.5555049649338" y="-815.28987242033259" fill="#000000">fk_set_metric_type_id</text>
+          </g>
+          <g id="eds_set_metrics_default_default_custom_metric">
+            <rect x="2765.5555049649338" y="-777.27987242033259" rx="3" ry="3" width="139.09333333333279" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="2775.5555049649338" y="-759.32987242033255" fill="#FFFFFF">default_custom_metric</text>
+          </g>
+        </g>
+        <g id="eds_sport">
+          <rect x="3243.6221716316004" y="126.16012757966746" rx="5" ry="5" width="170" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3302.6221716316004" y="144.11012757966745" fill="#000000">eds_sport</text>
+          <rect x="3248.6221716316004" y="154.12012757966747" width="160" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_sport_Id">
+            <rect x="3263.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3282.6221716316004" y="184.11012757966745" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_sport_name">
+            <rect x="3343.6221716316004" y="166.16012757966746" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3353.6221716316004" y="184.11012757966745" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_sport_isDeleted">
+            <rect x="3263.6221716316008" y="222.1201275796675" rx="3" ry="3" width="69.283333333333758" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3273.6221716316008" y="240.07012757966748" fill="#FFFFFF">isDeleted</text>
+          </g>
+        </g>
+        <g id="eds_training_session">
+          <rect x="1212.4338382982671" y="-389.49987242033234" rx="5" ry="5" width="482.37666666666655" height="309.80000000000013" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1399.4338382982671" y="-371.54987242033235" fill="#000000">eds_training_session</text>
+          <rect x="1217.4338382982671" y="-361.53987242033236" width="472.37666666666655" height="276.84000000000015" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_training_session_Id">
+            <rect x="1232.4338382982671" y="-349.49987242033239" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1251.4338382982671" y="-331.54987242033241" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_training_session_fk_eds_daily_plan">
+            <rect x="1503.5005049649337" y="-237.57987242033235" rx="3" ry="3" width="110.7466666666669" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1513.5005049649337" y="-219.62987242033236" fill="#000000">fk_eds_daily_plan</text>
+          </g>
+          <g id="eds_training_session_name">
+            <rect x="1312.4338382982671" y="-349.49987242033239" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1322.4338382982671" y="-331.54987242033241" fill="#FFFFFF">name</text>
+          </g>
+          <g id="eds_training_session_start_date_time">
+            <rect x="1468.5371716316006" y="-293.53987242033236" rx="3" ry="3" width="100.56999999999971" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1478.5371716316006" y="-275.58987242033237" fill="#FFFFFF">start_date_time</text>
+          </g>
+          <g id="eds_training_session_end_date_time">
+            <rect x="1341.3405049649339" y="-293.53987242033236" rx="3" ry="3" width="97.196666666666715" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1351.3405049649339" y="-275.58987242033237" fill="#FFFFFF">end_date_time</text>
+          </g>
+          <g id="eds_training_session_is_moved">
+            <rect x="1392.4338382982671" y="-349.49987242033239" rx="3" ry="3" width="69.4366666666665" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1402.4338382982671" y="-331.54987242033241" fill="#FFFFFF">is_moved</text>
+          </g>
+          <g id="eds_training_session_is_skipped">
+            <rect x="1491.8705049649336" y="-349.49987242033239" rx="3" ry="3" width="74.39333333333343" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1501.8705049649336" y="-331.54987242033241" fill="#FFFFFF">is_skipped</text>
+          </g>
+          <g id="eds_training_session_end_time_stamp">
+            <rect x="1367.1638382982671" y="-237.57987242033235" rx="3" ry="3" width="106.33666666666659" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1377.1638382982671" y="-219.62987242033236" fill="#FFFFFF">end_time_stamp</text>
+          </g>
+          <g id="eds_training_session_is_customer_added_training_session">
+            <rect x="1400.0171716316001" y="-125.65987242033225" rx="3" ry="3" width="209.90333333333365" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1410.0171716316001" y="-107.70987242033225" fill="#FFFFFF">is_customer_added_training_session</text>
+          </g>
+          <g id="eds_training_session_reason_for_reschedule">
+            <rect x="1232.4338382982671" y="-125.65987242033225" rx="3" ry="3" width="137.58333333333303" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1242.4338382982671" y="-107.70987242033225" fill="#000000">reason_for_reschedule</text>
+          </g>
+          <g id="eds_training_session_readon_for_skipping">
+            <rect x="1520.4538382982666" y="-181.61987242033226" rx="3" ry="3" width="127.19666666666672" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1530.4538382982666" y="-163.66987242033227" fill="#000000">readon_for_skipping</text>
+          </g>
+          <g id="eds_training_session_description">
+            <rect x="1232.4338382982671" y="-293.53987242033236" rx="3" ry="3" width="78.906666666666752" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1242.4338382982671" y="-275.58987242033237" fill="#FFFFFF">description</text>
+          </g>
+          <g id="eds_training_session_exercise_duration">
+            <rect x="1232.4338382982671" y="-181.61987242033231" rx="3" ry="3" width="111.96333333333314" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1242.4338382982671" y="-163.66987242033233" fill="#FFFFFF">exercise_duration</text>
+          </g>
+          <g id="eds_training_session_start_timestamp">
+            <rect x="1232.4338382982671" y="-237.57987242033235" rx="3" ry="3" width="104.73000000000002" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1242.4338382982671" y="-219.62987242033236" fill="#FFFFFF">start_timestamp</text>
+          </g>
+          <g id="eds_training_session_time_offset">
+            <rect x="1596.263838298267" y="-349.49987242033239" rx="3" ry="3" width="78.546666666666624" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1606.263838298267" y="-331.54987242033241" fill="#FFFFFF">time_offset</text>
+          </g>
+          <g id="eds_training_session_customer_fedback">
+            <rect x="1374.3971716316003" y="-181.61987242033226" rx="3" ry="3" width="116.05666666666639" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1384.3971716316003" y="-163.66987242033227" fill="#FFFFFF">customer_fedback</text>
+          </g>
+        </g>
+        <g id="eds_weekly_plan">
+          <rect x="1125.3071716316006" y="529.90012757966747" rx="5" ry="5" width="188.63000000000011" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="1175.3071716316006" y="547.85012757966751" fill="#000000">eds_weekly_plan</text>
+          <rect x="1130.3071716316006" y="557.86012757966751" width="178.63000000000011" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="eds_weekly_plan_Id">
+            <rect x="1145.3071716316006" y="569.90012757966747" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1164.3071716316006" y="587.85012757966751" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="eds_weekly_plan_start_date">
+            <rect x="1145.3071716316006" y="625.86012757966751" rx="3" ry="3" width="72.003333333333558" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1155.3071716316006" y="643.81012757966755" fill="#FFFFFF">start_date</text>
+          </g>
+          <g id="eds_weekly_plan_end_date">
+            <rect x="1225.3071716316006" y="569.90012757966747" rx="3" ry="3" width="68.630000000000109" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1235.3071716316006" y="587.85012757966751" fill="#FFFFFF">end_date</text>
+          </g>
+          <g id="eds_weekly_plan_fk_eds_12week_plan">
+            <rect x="1145.3071716316006" y="681.82012757966754" rx="3" ry="3" width="126.08333333333348" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="1155.3071716316006" y="699.77012757966759" fill="#000000">fk_eds_12week_plan</text>
+          </g>
+        </g>
+        <g id="fms_dish_type">
+          <rect x="-1074.1994950350663" y="557.88012757966771" rx="5" ry="5" width="217.64333333333389" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-1003.1994950350663" y="575.83012757966776" fill="#000000">fms_dish_type</text>
+          <rect x="-1069.1994950350663" y="585.84012757966775" width="207.64333333333389" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fms_dish_type_Id">
+            <rect x="-1054.1994950350659" y="597.88012757966771" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1035.1994950350659" y="615.83012757966776" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fms_dish_type_name">
+            <rect x="-974.19949503506587" y="597.88012757966771" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-964.19949503506587" y="615.83012757966776" fill="#FFFFFF">name</text>
+          </g>
+          <g id="fms_dish_type_has_target">
+            <rect x="-951.2828283683989" y="653.84012757966775" rx="3" ry="3" width="74.726666666666688" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-941.2828283683989" y="671.7901275796678" fill="#FFFFFF">has_target</text>
+          </g>
+          <g id="fms_dish_type_is_deleted">
+            <rect x="-1054.1994950350659" y="653.84012757966775" rx="3" ry="3" width="72.916666666666742" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1044.1994950350659" y="671.7901275796678" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="fns_error_code">
+          <rect x="-794.12949503506638" y="529.9001275796677" rx="5" ry="5" width="271.50333333333356" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-697.12949503506638" y="547.85012757966774" fill="#000000">fns_error_code</text>
+          <rect x="-789.12949503506638" y="557.86012757966773" width="261.50333333333356" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fns_error_code_Id">
+            <rect x="-774.12949503506638" y="569.9001275796677" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-755.12949503506638" y="587.85012757966774" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fns_error_code_name">
+            <rect x="-694.12949503506638" y="569.9001275796677" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-684.12949503506638" y="587.85012757966774" fill="#FFFFFF">name</text>
+          </g>
+          <g id="fns_error_code_short_id">
+            <rect x="-614.12949503506638" y="569.9001275796677" rx="3" ry="3" width="62.10666666666657" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-604.12949503506638" y="587.85012757966774" fill="#FFFFFF">short_id</text>
+          </g>
+          <g id="fns_error_code_default_error_message">
+            <rect x="-774.12949503506638" y="681.82012757966777" rx="3" ry="3" width="139.00666666666666" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-764.12949503506638" y="699.77012757966781" fill="#FFFFFF">default_error_message</text>
+          </g>
+          <g id="fns_error_code_default_error_headline">
+            <rect x="-680.50282836839938" y="625.86012757966773" rx="3" ry="3" width="137.87666666666655" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-670.50282836839938" y="643.81012757966778" fill="#FFFFFF">default_error_headline</text>
+          </g>
+          <g id="fns_error_code_is_active">
+            <rect x="-774.12949503506638" y="625.86012757966773" rx="3" ry="3" width="63.626666666666779" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-764.12949503506638" y="643.81012757966778" fill="#FFFFFF">is_active</text>
+          </g>
+        </g>
+        <g id="fns_meal_type">
+          <rect x="-724.19949503506609" y="897.6801275796679" rx="5" ry="5" width="217.64333333333343" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-653.19949503506609" y="915.63012757966794" fill="#000000">fns_meal_type</text>
+          <rect x="-719.19949503506609" y="925.64012757966793" width="207.64333333333343" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fns_meal_type_Id">
+            <rect x="-704.19949503506609" y="937.6801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-685.19949503506609" y="955.63012757966794" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fns_meal_type_name">
+            <rect x="-624.19949503506609" y="937.6801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-614.19949503506609" y="955.63012757966794" fill="#FFFFFF">name</text>
+          </g>
+          <g id="fns_meal_type_has_target">
+            <rect x="-601.28282836839912" y="993.64012757966793" rx="3" ry="3" width="74.726666666666688" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-591.28282836839912" y="1011.590127579668" fill="#FFFFFF">has_target</text>
+          </g>
+          <g id="fns_meal_type_is_deleted">
+            <rect x="-704.19949503506609" y="993.64012757966793" rx="3" ry="3" width="72.916666666666742" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-694.19949503506609" y="1011.590127579668" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="fns_nutrition_actual_day">
+          <rect x="-475.75949503506604" y="813.74012757966784" rx="5" ry="5" width="456.76333333333332" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-310.75949503506604" y="831.69012757966789" fill="#000000">fns_nutrition_actual_day</text>
+          <rect x="-470.75949503506604" y="841.70012757966788" width="446.76333333333332" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fns_nutrition_actual_day_Id">
+            <rect x="-455.75949503506604" y="853.74012757966784" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-436.75949503506604" y="871.69012757966789" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fns_nutrition_actual_day_fk_user_id">
+            <rect x="-295.75949503506604" y="853.74012757966784" rx="3" ry="3" width="71.986666666666679" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-285.75949503506604" y="871.69012757966789" fill="#000000">fk_user_id</text>
+          </g>
+          <g id="fns_nutrition_actual_day_date">
+            <rect x="-375.75949503506604" y="853.74012757966784" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-362.75949503506604" y="871.69012757966789" fill="#FFFFFF">date</text>
+          </g>
+          <g id="fns_nutrition_actual_day_day_calorie_target">
+            <rect x="-455.75949503506604" y="909.70012757966788" rx="3" ry="3" width="115.6400000000001" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-445.75949503506604" y="927.65012757966792" fill="#FFFFFF">day_calorie_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_day_calorie_target_min">
+            <rect x="-292.95282836839965" y="1021.620127579668" rx="3" ry="3" width="140.65333333333342" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-282.95282836839965" y="1039.570127579668" fill="#FFFFFF">day_calorie_target_min</text>
+          </g>
+          <g id="fns_nutrition_actual_day_day_calorie_target_max">
+            <rect x="-455.75949503506604" y="1077.580127579668" rx="3" ry="3" width="142.56999999999994" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-445.75949503506604" y="1095.530127579668" fill="#FFFFFF">day_calorie_target_max</text>
+          </g>
+          <g id="fns_nutrition_actual_day_protein_grams_target">
+            <rect x="-302.03616170173268" y="965.66012757966791" rx="3" ry="3" width="132.78999999999996" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-292.03616170173268" y="983.610127579668" fill="#FFFFFF">protein_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_crabs_grams_target">
+            <rect x="-161.45949503506586" y="909.70012757966788" rx="3" ry="3" width="122.46333333333314" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-151.45949503506586" y="927.65012757966792" fill="#FFFFFF">crabs_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_sugar_grams_target">
+            <rect x="-455.75949503506604" y="965.66012757966791" rx="3" ry="3" width="123.72333333333336" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-445.75949503506604" y="983.610127579668" fill="#FFFFFF">sugar_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_fat_grams_target">
+            <rect x="-193.77282836839953" y="853.74012757966784" rx="3" ry="3" width="108.42333333333329" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-183.77282836839953" y="871.69012757966789" fill="#FFFFFF">fat_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_unsaturated_fat_grams_target">
+            <rect x="-283.18949503506633" y="1077.580127579668" rx="3" ry="3" width="176.73000000000002" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-273.18949503506633" y="1095.530127579668" fill="#FFFFFF">unsaturated_fat_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_fiber_grams_target">
+            <rect x="-310.11949503506571" y="909.70012757966788" rx="3" ry="3" width="118.66000000000008" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-300.11949503506571" y="927.65012757966792" fill="#FFFFFF">fiber_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_day_alcohol_grams_target">
+            <rect x="-455.75949503506604" y="1021.620127579668" rx="3" ry="3" width="132.80666666666662" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-445.75949503506604" y="1039.570127579668" fill="#FFFFFF">alcohol_grams_target</text>
+          </g>
+        </g>
+        <g id="fns_nutrition_actual_dish">
+          <rect x="-1180.0161617017325" y="-49.699872420331758" rx="5" ry="5" width="709.27666666666619" height="493.63999999999942" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-891.01616170173247" y="-31.749872420331755" fill="#000000">fns_nutrition_actual_dish</text>
+          <rect x="-1175.0161617017325" y="-21.739872420331757" width="699.27666666666619" height="460.67999999999944" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fns_nutrition_actual_dish_fk_reuse_reference_id-&gt;fns_nutrition_actual_dish_Id">
+            <path d="M -878.282828368399,16.2601275796682 L -878.282828368399,53.2201275796674" fill="none" stroke="#A0A0A0" stroke-width="1" />
+            <path d="M -878.282828368399,62.2201275796674 L -874.282828368399,52.2201275796674 C -876.949495035066,53.2201275796674 -879.616161701732,53.2201275796674 -882.282828368399,52.2201275796674 z" fill="#A0A0A0" stroke="#A0A0A0" stroke-width="1" stroke-linejoin="round" />
+            <text x="-1160.0162505865769" y="44.210647867071046" fill="#A0A0A0">FK_fns_nutrition_actual_dish_fns_nutrition_actual_dish</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_Id">
+            <rect x="-903.28282836839935" y="62.220127579667391" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-884.28282836839935" y="80.1701275796674" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_nutrition_actual_meal_id">
+            <rect x="-1160.0161617017327" y="342.02012757966759" rx="3" ry="3" width="162.27999999999997" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017327" y="359.97012757966758" fill="#000000">fk_nutrition_actual_meal_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_dish_type_id">
+            <rect x="-1160.0161617017322" y="174.14012757966748" rx="3" ry="3" width="99.693333333333385" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017322" y="192.09012757966747" fill="#000000">fk_dish_type_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_dish_transcription_type_id">
+            <rect x="-774.82282836839954" y="342.02012757966759" rx="3" ry="3" width="171.37333333333322" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-764.82282836839954" y="359.97012757966758" fill="#000000">fk_dish_transcription_type_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_is_complete">
+            <rect x="-1160.0161617017327" y="118.18012757966744" rx="3" ry="3" width="82.470000000000027" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017327" y="136.13012757966743" fill="#FFFFFF">is_complete</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_is_error">
+            <rect x="-701.88949503506592" y="-9.6998724203317579" rx="3" ry="3" width="58.806666666666615" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-691.88949503506592" y="8.2501275796682432" fill="#FFFFFF">is_error</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_is_favorite">
+            <rect x="-681.4594950350654" y="46.260127579668264" rx="3" ry="3" width="73.0433333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-671.4594950350654" y="64.210127579668267" fill="#FFFFFF">is_favorite</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_is_frequent">
+            <rect x="-578.41616170173256" y="46.260127579668264" rx="3" ry="3" width="78.176666666666733" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-568.41616170173256" y="64.210127579668267" fill="#FFFFFF">is_frequent</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_creation_timestamp">
+            <rect x="-858.13282836839926" y="230.10012757966751" rx="3" ry="3" width="124.11666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-848.13282836839926" y="248.0501275796675" fill="#FFFFFF">creation_timestamp</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_error_timestamp">
+            <rect x="-757.93616170173254" y="174.14012757966748" rx="3" ry="3" width="107.04999999999995" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-747.93616170173254" y="192.09012757966747" fill="#FFFFFF">error_timestamp</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_error_code_id">
+            <rect x="-894.31282836839887" y="174.14012757966748" rx="3" ry="3" width="106.37666666666655" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-884.31282836839887" y="192.09012757966747" fill="#000000">fk_error_code_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_completion_timestamp">
+            <rect x="-991.279495035066" y="286.06012757966755" rx="3" ry="3" width="141.16333333333341" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-981.279495035066" y="304.01012757966754" fill="#FFFFFF">completion_timestamp</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_name">
+            <rect x="-781.88949503506547" y="-9.6998724203317579" rx="3" ry="3" width="50" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-771.88949503506547" y="8.2501275796682432" fill="#FFFFFF">name</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_remarks">
+            <rect x="-613.08282836839953" y="-9.6998724203317579" rx="3" ry="3" width="62.123333333333449" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-603.08282836839953" y="8.2501275796682432" fill="#FFFFFF">remarks</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_transcriber_remarks">
+            <rect x="-1011.5928283683998" y="230.10012757966751" rx="3" ry="3" width="123.46000000000004" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1001.5928283683998" y="248.0501275796675" fill="#FFFFFF">transcriber_remarks</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_share_of_dish_consumed">
+            <rect x="-641.6894950350661" y="286.06012757966755" rx="3" ry="3" width="150.94999999999982" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-631.6894950350661" y="304.01012757966754" fill="#FFFFFF">share_of_dish_consumed</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_number_of_servings_consumed">
+            <rect x="-1160.0161617017322" y="397.98012757966762" rx="3" ry="3" width="185.22000000000003" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017322" y="415.93012757966761" fill="#FFFFFF">number_of_servings_consumed</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_reuse_reference_id">
+            <rect x="-944.67616170173233" y="-9.6998724203317579" rx="3" ry="3" width="132.78666666666663" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-934.67616170173233" y="8.2501275796682432" fill="#000000">fk_reuse_reference_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_upload_photo_reference">
+            <rect x="-820.11616170173284" y="286.06012757966755" rx="3" ry="3" width="148.42666666666673" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-810.11616170173284" y="304.01012757966754" fill="#FFFFFF">upload_photo_reference</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_transcriber_id">
+            <rect x="-1030.3228283683991" y="174.14012757966748" rx="3" ry="3" width="106.00999999999999" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1020.3228283683991" y="192.09012757966747" fill="#000000">fk_transcriber_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fk_user_recipe_id">
+            <rect x="-620.88616170173191" y="174.14012757966748" rx="3" ry="3" width="109.19666666666672" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-610.88616170173191" y="192.09012757966747" fill="#FFFFFF">fk_user_recipe_id</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_calorie_actual">
+            <rect x="-817.3461617017324" y="118.18012757966744" rx="3" ry="3" width="91.443333333333385" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-807.3461617017324" y="136.13012757966743" fill="#FFFFFF">calorie_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_protein_actual">
+            <rect x="-695.90282836839856" y="118.18012757966744" rx="3" ry="3" width="94.796666666666852" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-685.90282836839856" y="136.13012757966743" fill="#FFFFFF">protein_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_crabs_actual">
+            <rect x="-1047.5461617017327" y="118.18012757966744" rx="3" ry="3" width="84.470000000000027" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1037.5461617017327" y="136.13012757966743" fill="#FFFFFF">crabs_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_sugar_actual">
+            <rect x="-933.07616170173219" y="118.18012757966744" rx="3" ry="3" width="85.730000000000018" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-923.07616170173219" y="136.13012757966743" fill="#FFFFFF">sugar_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fat_actual">
+            <rect x="-781.88949503506592" y="46.260127579668264" rx="3" ry="3" width="70.430000000000064" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-771.88949503506592" y="64.210127579668267" fill="#FFFFFF">fat_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_unsaturated_fat_actual">
+            <rect x="-1160.0161617017325" y="286.06012757966755" rx="3" ry="3" width="138.73666666666668" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017325" y="304.01012757966754" fill="#FFFFFF">unsaturated_fat_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_fiber_grams_actual">
+            <rect x="-1160.0161617017327" y="230.10012757966751" rx="3" ry="3" width="118.4233333333334" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-1150.0161617017327" y="248.0501275796675" fill="#FFFFFF">fiber_grams_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_saturated_fat_grams_actual">
+            <rect x="-967.736161701733" y="342.02012757966759" rx="3" ry="3" width="162.91333333333341" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-957.736161701733" y="359.97012757966758" fill="#FFFFFF">saturated_fat_grams_actual</text>
+          </g>
+          <g id="fns_nutrition_actual_dish_alcohol_grams_actual">
+            <rect x="-704.0161617017327" y="230.10012757966751" rx="3" ry="3" width="132.56999999999994" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-694.0161617017327" y="248.0501275796675" fill="#FFFFFF">alcohol_grams_actual</text>
+          </g>
+        </g>
+        <g id="fns_nutrition_actual_meal">
+          <rect x="-492.03782836839923" y="473.94012757966766" rx="5" ry="5" width="489.31999999999971" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-314.03782836839923" y="491.89012757966765" fill="#000000">fns_nutrition_actual_meal</text>
+          <rect x="-487.03782836839923" y="501.90012757966764" width="479.31999999999971" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fns_nutrition_actual_meal_Id">
+            <rect x="-472.03782836839923" y="513.94012757966766" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-453.03782836839923" y="531.89012757966771" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_fk_nutrition_actual_day_id">
+            <rect x="-472.03782836839923" y="737.78012757966781" rx="3" ry="3" width="155.63333333333344" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-462.03782836839923" y="755.73012757966785" fill="#000000">fk_nutrition_actual_day_id</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_meal_type_id">
+            <rect x="-184.3944950350658" y="513.94012757966766" rx="3" ry="3" width="88.763333333333321" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-174.3944950350658" y="531.89012757966771" fill="#000000">meal_type_id</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_has_target">
+            <rect x="-289.12116170173226" y="513.94012757966766" rx="3" ry="3" width="74.726666666666688" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-279.12116170173226" y="531.89012757966771" fill="#FFFFFF">has_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_meal_calorie_target">
+            <rect x="-323.37782836839938" y="625.86012757966773" rx="3" ry="3" width="122.28666666666663" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-313.37782836839938" y="643.81012757966778" fill="#FFFFFF">meal_calorie_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_meal_calorie_min">
+            <rect x="-333.61449503506606" y="569.9001275796677" rx="3" ry="3" width="110.56333333333328" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-323.61449503506606" y="587.85012757966774" fill="#FFFFFF">meal_calorie_min</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_meal_calorie_max">
+            <rect x="-193.05116170173255" y="569.9001275796677" rx="3" ry="3" width="112.48000000000002" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-183.05116170173255" y="587.85012757966774" fill="#FFFFFF">meal_calorie_max</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_protein_grams_target">
+            <rect x="-318.31449503506587" y="681.82012757966777" rx="3" ry="3" width="132.78999999999996" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-308.31449503506587" y="699.77012757966781" fill="#FFFFFF">protein_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_crabs_grams_target">
+            <rect x="-171.09116170173257" y="625.86012757966773" rx="3" ry="3" width="122.46333333333325" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-161.09116170173257" y="643.81012757966778" fill="#FFFFFF">crabs_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_sugar_grams_target">
+            <rect x="-472.03782836839923" y="681.82012757966777" rx="3" ry="3" width="123.72333333333336" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-462.03782836839923" y="699.77012757966781" fill="#FFFFFF">sugar_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_fat_grams_target">
+            <rect x="-472.03782836839923" y="569.9001275796677" rx="3" ry="3" width="108.4233333333334" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-462.03782836839923" y="587.85012757966774" fill="#FFFFFF">fat_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_unsaturated_fat_grams_target">
+            <rect x="-286.404495035066" y="737.78012757966781" rx="3" ry="3" width="176.73000000000002" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-276.404495035066" y="755.73012757966785" fill="#FFFFFF">unsaturated_fat_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_fiber_grams_target">
+            <rect x="-472.03782836839923" y="625.86012757966773" rx="3" ry="3" width="118.66000000000008" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-462.03782836839923" y="643.81012757966778" fill="#FFFFFF">fiber_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_alcohol_grams_target">
+            <rect x="-155.52449503506591" y="681.82012757966777" rx="3" ry="3" width="132.80666666666639" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-145.52449503506591" y="699.77012757966781" fill="#FFFFFF">alcohol_grams_target</text>
+          </g>
+          <g id="fns_nutrition_actual_meal_is_deleted">
+            <rect x="-392.03782836839923" y="513.94012757966766" rx="3" ry="3" width="72.916666666666742" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-382.03782836839923" y="531.89012757966771" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="fns_transcription_type">
+          <rect x="27.755504964933834" y="557.88012757966771" rx="5" ry="5" width="195.73333333333358" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="67.755504964933834" y="575.83012757966776" fill="#000000">fns_transcription_type</text>
+          <rect x="32.755504964933834" y="585.84012757966775" width="185.73333333333358" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="fns_transcription_type_Id">
+            <rect x="47.755504964933834" y="597.88012757966771" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="66.755504964933834" y="615.83012757966776" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="fns_transcription_type_name">
+            <rect x="127.75550496493383" y="597.88012757966771" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="137.75550496493383" y="615.83012757966776" fill="#FFFFFF">name</text>
+          </g>
+          <g id="fns_transcription_type_short_id">
+            <rect x="47.755504964933834" y="653.84012757966775" rx="3" ry="3" width="62.10666666666657" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="57.755504964933834" y="671.7901275796678" fill="#FFFFFF">short_id</text>
+          </g>
+          <g id="fns_transcription_type_is_active">
+            <rect x="139.8621716316004" y="653.84012757966775" rx="3" ry="3" width="63.626666666666779" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="149.8621716316004" y="671.7901275796678" fill="#FFFFFF">is_active</text>
+          </g>
+        </g>
+        <g id="nds_supplement_customer_inventory">
+          <rect x="3472.6755049649337" y="-245.55987242033234" rx="5" ry="5" width="235.43000000000029" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3492.6755049649337" y="-227.60987242033235" fill="#000000">nds_supplement_customer_inventory</text>
+          <rect x="3477.6755049649337" y="-217.59987242033233" width="225.43000000000029" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_customer_inventory_Id">
+            <rect x="3514.4571716316004" y="-205.55987242033234" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3533.4571716316004" y="-187.60987242033235" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_customer_inventory_fk_customer_id">
+            <rect x="3514.4571716316004" y="-149.5998724203323" rx="3" ry="3" width="98.963333333333139" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3524.4571716316004" y="-131.64987242033231" fill="#000000">fk_customer_id</text>
+          </g>
+          <g id="nds_supplement_customer_inventory_fk_supplement_reference">
+            <rect x="3514.4571716316004" y="-93.639872420332267" rx="3" ry="3" width="151.86666666666679" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3524.4571716316004" y="-75.689872420332264" fill="#000000">fk_supplement_reference</text>
+          </g>
+          <g id="nds_supplement_customer_inventory_units_left">
+            <rect x="3594.4571716316004" y="-205.55987242033234" rx="3" ry="3" width="67.633333333333212" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3604.4571716316004" y="-187.60987242033235" fill="#FFFFFF">units_left</text>
+          </g>
+        </g>
+        <g id="nds_supplement_instruction">
+          <rect x="3721.7471716316004" y="238.1801275796679" rx="5" ry="5" width="331.28666666666686" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3812.7471716316004" y="256.13012757966789" fill="#000000">nds_supplement_instruction</text>
+          <rect x="3726.7471716316004" y="266.14012757966788" width="321.28666666666686" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_instruction_Id">
+            <rect x="3741.7471716316004" y="278.1801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3760.7471716316004" y="296.13012757966789" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_instruction_description">
+            <rect x="3821.7471716316018" y="278.1801275796679" rx="3" ry="3" width="78.906666666666752" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3831.7471716316018" y="296.13012757966789" fill="#FFFFFF">description</text>
+          </g>
+          <g id="nds_supplement_instruction_requires_source_of_fat">
+            <rect x="3886.293838298267" y="334.14012757966793" rx="3" ry="3" width="137.32000000000062" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3896.293838298267" y="352.09012757966792" fill="#FFFFFF">requires_source_of_fat</text>
+          </g>
+          <g id="nds_supplement_instruction_take_after_meal">
+            <rect x="3930.6538382982685" y="278.1801275796679" rx="3" ry="3" width="102.38000000000011" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3940.6538382982685" y="296.13012757966789" fill="#FFFFFF">take_after_meal</text>
+          </g>
+          <g id="nds_supplement_instruction_take_before_sleep">
+            <rect x="3741.7471716316008" y="334.14012757966793" rx="3" ry="3" width="114.54666666666617" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3751.7471716316008" y="352.09012757966792" fill="#FFFFFF">take_before_sleep</text>
+          </g>
+          <g id="nds_supplement_instruction_take_on_empty_stomach">
+            <rect x="3741.7471716316004" y="390.10012757966797" rx="3" ry="3" width="149.68000000000029" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3751.7471716316004" y="408.05012757966796" fill="#FFFFFF">take_on_empty_stomach</text>
+          </g>
+        </g>
+        <g id="nds_supplement_legal_status">
+          <rect x="3738.980504964934" y="-273.53987242033236" rx="5" ry="5" width="302.82000000000062" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3812.980504964934" y="-255.58987242033237" fill="#000000">nds_supplement_legal_status</text>
+          <rect x="3743.980504964934" y="-245.57987242033235" width="292.82000000000062" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_legal_status_Id">
+            <rect x="3758.980504964934" y="-233.53987242033236" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3777.980504964934" y="-215.58987242033237" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_legal_status_fk_supplement_reference">
+            <rect x="3758.980504964934" y="-121.61987242033229" rx="3" ry="3" width="151.86666666666679" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3768.980504964934" y="-103.66987242033228" fill="#000000">fk_supplement_reference</text>
+          </g>
+          <g id="nds_supplement_legal_status_fk_country_id">
+            <rect x="3931.1038382982674" y="-233.53987242033236" rx="3" ry="3" width="89.853333333333467" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3941.1038382982674" y="-215.58987242033237" fill="#000000">fk_country_id</text>
+          </g>
+          <g id="nds_supplement_legal_status_fk_supplement_legal_status_types">
+            <rect x="3758.9805049649344" y="-65.659872420332249" rx="3" ry="3" width="197.0600000000004" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3768.9805049649344" y="-47.709872420332246" fill="#000000">fk_supplement_legal_status_types</text>
+          </g>
+          <g id="nds_supplement_legal_status_special_disclaimer">
+            <rect x="3758.9805049649335" y="-177.57987242033232" rx="3" ry="3" width="114.18333333333339" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3768.9805049649335" y="-159.62987242033233" fill="#FFFFFF">special_disclaimer</text>
+          </g>
+          <g id="nds_supplement_legal_status_remarks">
+            <rect x="3838.980504964934" y="-233.53987242033236" rx="3" ry="3" width="62.123333333332994" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3848.980504964934" y="-215.58987242033237" fill="#FFFFFF">remarks</text>
+          </g>
+          <g id="nds_supplement_legal_status_legal_reference_url">
+            <rect x="3903.1638382982674" y="-177.57987242033232" rx="3" ry="3" width="118.63666666666722" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3913.1638382982674" y="-159.62987242033233" fill="#FFFFFF">legal_reference_url</text>
+          </g>
+        </g>
+        <g id="nds_supplement_legal_status_types">
+          <rect x="4020.2455049649343" y="38.280127579667806" rx="5" ry="5" width="226.29000000000087" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="4040.2455049649343" y="56.230127579667808" fill="#000000">nds_supplement_legal_status_types</text>
+          <rect x="4025.2455049649343" y="66.240127579667814" width="216.29000000000087" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_legal_status_types_Id">
+            <rect x="4068.3905049649352" y="78.2801275796678" rx="3" ry="3" width="49.999999999999545" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="4087.3905049649352" y="96.230127579667808" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_legal_status_types_name">
+            <rect x="4148.3905049649347" y="78.2801275796678" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="4158.3905049649347" y="96.230127579667808" fill="#FFFFFF">name</text>
+          </g>
+          <g id="nds_supplement_legal_status_types_help_text">
+            <rect x="4068.3905049649347" y="134.24012757966784" rx="3" ry="3" width="67.923333333333176" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="4078.3905049649347" y="152.19012757966783" fill="#FFFFFF">help_text</text>
+          </g>
+        </g>
+        <g id="nds_supplement_plan_daily">
+          <rect x="888.16383829826759" y="557.88012757966749" rx="5" ry="5" width="206.91666666666606" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="919.16383829826759" y="575.83012757966753" fill="#000000">nds_supplement_plan_daily</text>
+          <rect x="893.16383829826759" y="585.84012757966752" width="196.91666666666606" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_plan_daily_Id">
+            <rect x="908.16383829826759" y="597.88012757966749" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="927.16383829826759" y="615.83012757966753" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_plan_daily_fk_supplement_plan_weekly">
+            <rect x="908.16383829826759" y="653.84012757966752" rx="3" ry="3" width="166.0633333333335" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="918.16383829826759" y="671.79012757966757" fill="#000000">fk_supplement_plan_weekly</text>
+          </g>
+          <g id="nds_supplement_plan_daily_day_of_week">
+            <rect x="988.16383829826759" y="597.88012757966749" rx="3" ry="3" width="86.916666666666515" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="998.16383829826759" y="615.83012757966753" fill="#FFFFFF">day_of_week</text>
+          </g>
+        </g>
+        <g id="nds_supplement_plan_dose">
+          <rect x="731.905504964933" y="-361.51987242033192" rx="5" ry="5" width="293.4333333333343" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="805.905504964933" y="-343.56987242033193" fill="#000000">nds_supplement_plan_dose</text>
+          <rect x="736.905504964933" y="-333.55987242033194" width="283.4333333333343" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_plan_dose_Id">
+            <rect x="751.905504964933" y="-321.51987242033192" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="770.905504964933" y="-303.56987242033193" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_plan_dose_fk_supplement_plan_supplement">
+            <rect x="751.905504964933" y="-153.63987242033181" rx="3" ry="3" width="192.80333333333328" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="761.905504964933" y="-135.68987242033182" fill="#000000">fk_supplement_plan_supplement</text>
+          </g>
+          <g id="nds_supplement_plan_dose_unit_count">
+            <rect x="918.93550496493367" y="-321.51987242033192" rx="3" ry="3" width="75.7533333333331" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="928.93550496493367" y="-303.56987242033193" fill="#FFFFFF">unit_count</text>
+          </g>
+          <g id="nds_supplement_plan_dose_scheduled_time">
+            <rect x="751.905504964933" y="-265.55987242033189" rx="3" ry="3" width="102.37666666666655" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="761.905504964933" y="-247.6098724203319" fill="#FFFFFF">scheduled_time</text>
+          </g>
+          <g id="nds_supplement_plan_dose_remark">
+            <rect x="831.90550496493279" y="-321.51987242033192" rx="3" ry="3" width="57.030000000000427" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="841.90550496493279" y="-303.56987242033193" fill="#FFFFFF">remark</text>
+          </g>
+          <g id="nds_supplement_plan_dose_dose_warning_limit">
+            <rect x="884.28217163159957" y="-265.55987242033189" rx="3" ry="3" width="121.0566666666673" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="894.28217163159957" y="-247.6098724203319" fill="#FFFFFF">dose_warning_limit</text>
+          </g>
+          <g id="nds_supplement_plan_dose_dose_hard_ceiling_limit">
+            <rect x="751.905504964933" y="-209.59987242033185" rx="3" ry="3" width="142.0633333333335" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="761.905504964933" y="-191.64987242033186" fill="#FFFFFF">dose_hard_ceiling_limit</text>
+          </g>
+        </g>
+        <g id="nds_supplement_plan_supplement">
+          <rect x="686.70883829826766" y="70.200127579667651" rx="5" ry="5" width="383.82666666666591" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="786.70883829826766" y="88.150127579667654" fill="#000000">nds_supplement_plan_supplement</text>
+          <rect x="691.70883829826766" y="98.160127579667659" width="373.82666666666591" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_plan_supplement_Id">
+            <rect x="706.70883829826766" y="110.20012757966764" rx="3" ry="3" width="50" height="25.960000000000051" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="725.70883829826766" y="128.15012757966764" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_fk_supplement_plan_daily">
+            <rect x="706.70883829826766" y="278.08012757966776" rx="3" ry="3" width="154.95333333333338" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="716.70883829826766" y="296.03012757966775" fill="#000000">fk_supplement_plan_daily</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_fk_supplement_reference">
+            <rect x="887.80217163160091" y="222.12012757966772" rx="3" ry="3" width="151.86666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="897.80217163160091" y="240.07012757966771" fill="#FFFFFF">fk_supplement_reference</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_is_customer_created_entry">
+            <rect x="891.66217163160059" y="278.08012757966776" rx="3" ry="3" width="158.873333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="901.66217163160059" y="296.03012757966775" fill="#FFFFFF">is_customer_created_entry</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_is_free_entry">
+            <rect x="873.73883829826832" y="110.20012757966764" rx="3" ry="3" width="85.5566666666673" height="25.960000000000051" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="883.73883829826832" y="128.15012757966764" fill="#FFFFFF">is_free_entry</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_free_entry_name">
+            <rect x="706.70883829826766" y="166.16012757966769" rx="3" ry="3" width="107.06666666666661" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="716.70883829826766" y="184.11012757966768" fill="#FFFFFF">free_entry_name</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_fk_free_entry_unit_metric">
+            <rect x="706.70883829826766" y="222.12012757966772" rx="3" ry="3" width="151.09333333333325" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="716.70883829826766" y="240.07012757966771" fill="#FFFFFF">fk_free_entry_unit_metric</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_remark">
+            <rect x="786.70883829826766" y="110.20012757966767" rx="3" ry="3" width="57.0300000000002" height="25.960000000000022" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="796.70883829826766" y="128.15012757966767" fill="#FFFFFF">remark</text>
+          </g>
+          <g id="nds_supplement_plan_supplement_fk_reference_to_trainer">
+            <rect x="843.775504964934" y="166.16012757966769" rx="3" ry="3" width="139.79333333333329" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="853.775504964934" y="184.11012757966768" fill="#FFFFFF">fk_reference_to_trainer</text>
+          </g>
+        </g>
+        <g id="nds_supplement_plan_weekly">
+          <rect x="272.29383829826679" y="869.70012757966788" rx="5" ry="5" width="270.65666666666766" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="329.29383829826679" y="887.65012757966792" fill="#000000">nds_supplement_plan_weekly</text>
+          <rect x="277.29383829826679" y="897.66012757966791" width="260.65666666666766" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_plan_weekly_Id">
+            <rect x="292.29383829826679" y="909.70012757966788" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="311.29383829826679" y="927.65012757966792" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_plan_weekly_fk_Customer_id">
+            <rect x="292.29383829826679" y="1021.620127579668" rx="3" ry="3" width="100.84999999999991" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="302.29383829826679" y="1039.570127579668" fill="#000000">fk_Customer_id</text>
+          </g>
+          <g id="nds_supplement_plan_weekly_active_since">
+            <rect x="292.29383829826679" y="965.66012757966791" rx="3" ry="3" width="82.236666666666679" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="302.29383829826679" y="983.610127579668" fill="#FFFFFF">active_since</text>
+          </g>
+          <g id="nds_supplement_plan_weekly_is_active">
+            <rect x="459.32383829826745" y="909.70012757966788" rx="3" ry="3" width="63.626666666666551" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="469.32383829826745" y="927.65012757966792" fill="#FFFFFF">is_active</text>
+          </g>
+          <g id="nds_supplement_plan_weekly_remark">
+            <rect x="372.29383829826679" y="909.70012757966788" rx="3" ry="3" width="57.0300000000002" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="382.29383829826679" y="927.65012757966792" fill="#FFFFFF">remark</text>
+          </g>
+          <g id="nds_supplement_plan_weekly_inactive_since">
+            <rect x="404.53050496493347" y="965.66012757966791" rx="3" ry="3" width="91.9333333333334" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="414.53050496493347" y="983.610127579668" fill="#FFFFFF">inactive_since</text>
+          </g>
+        </g>
+        <g id="nds_supplement_reference">
+          <rect x="3443.6221716316004" y="10.300127579667787" rx="5" ry="5" width="293.53666666666686" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3519.6221716316004" y="28.25012757966779" fill="#000000">nds_supplement_reference</text>
+          <rect x="3448.6221716316004" y="38.260127579667788" width="283.53666666666686" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_reference_Id">
+            <rect x="3463.6221716316004" y="50.300127579667787" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3482.6221716316004" y="68.25012757966779" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_reference_name">
+            <rect x="3543.6221716316004" y="50.300127579667787" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3553.6221716316004" y="68.25012757966779" fill="#FFFFFF">name</text>
+          </g>
+          <g id="nds_supplement_reference_fk_unit_metric">
+            <rect x="3623.6221716316004" y="50.300127579667787" rx="3" ry="3" width="93.536666666666861" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3633.6221716316004" y="68.25012757966779" fill="#000000">fk_unit_metric</text>
+          </g>
+          <g id="nds_supplement_reference_fk_supplement_instruction">
+            <rect x="3463.6221716316008" y="162.22012757966786" rx="3" ry="3" width="158.48000000000047" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3473.6221716316008" y="180.17012757966785" fill="#000000">fk_supplement_instruction</text>
+          </g>
+          <g id="nds_supplement_reference_instruction_text">
+            <rect x="3463.6221716316004" y="106.26012757966782" rx="3" ry="3" width="101.05333333333328" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3473.6221716316004" y="124.21012757966783" fill="#FFFFFF">instruction_text</text>
+          </g>
+        </g>
+        <g id="nds_supplement_schedule">
+          <rect x="254.25217163160073" y="501.92012757966768" rx="5" ry="5" width="380.73999999999978" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="375.25217163160073" y="519.87012757966772" fill="#000000">nds_supplement_schedule</text>
+          <rect x="259.25217163160073" y="529.88012757966771" width="370.73999999999978" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_schedule_Id">
+            <rect x="274.25217163160073" y="541.92012757966768" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="293.25217163160073" y="559.87012757966772" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_schedule_fk_supplement_schedule_per_date">
+            <rect x="274.25217163160073" y="709.80012757966779" rx="3" ry="3" width="200.04666666666662" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="284.25217163160073" y="727.75012757966783" fill="#000000">fk_supplement_schedule_per_date</text>
+          </g>
+          <g id="nds_supplement_schedule_fk_supplement_reference">
+            <rect x="274.25217163160073" y="653.84012757966775" rx="3" ry="3" width="151.86666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="284.25217163160073" y="671.7901275796678" fill="#FFFFFF">fk_supplement_reference</text>
+          </g>
+          <g id="nds_supplement_schedule_is_customer_created_entry">
+            <rect x="456.11883829826752" y="653.84012757966775" rx="3" ry="3" width="158.87333333333345" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="466.11883829826752" y="671.7901275796678" fill="#FFFFFF">is_customer_created_entry</text>
+          </g>
+          <g id="nds_supplement_schedule_is_free_entry">
+            <rect x="354.25217163160073" y="541.92012757966768" rx="3" ry="3" width="85.556666666666843" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="364.25217163160073" y="559.87012757966772" fill="#FFFFFF">is_free_entry</text>
+          </g>
+          <g id="nds_supplement_schedule_free_entry_name">
+            <rect x="469.80883829826803" y="541.92012757966768" rx="3" ry="3" width="107.06666666666661" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="479.80883829826803" y="559.87012757966772" fill="#FFFFFF">free_entry_name</text>
+          </g>
+          <g id="nds_supplement_schedule_fk_free_entry_unit_metric">
+            <rect x="443.05883829826803" y="597.88012757966771" rx="3" ry="3" width="151.09333333333325" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="453.05883829826803" y="615.83012757966776" fill="#FFFFFF">fk_free_entry_unit_metric</text>
+          </g>
+          <g id="nds_supplement_schedule_free_entry_instructions">
+            <rect x="274.25217163160073" y="597.88012757966771" rx="3" ry="3" width="138.80666666666684" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="284.25217163160073" y="615.83012757966776" fill="#FFFFFF">free_entry_instructions</text>
+          </g>
+        </g>
+        <g id="nds_supplement_schedule_dose">
+          <rect x="233.053838298267" y="42.22012757966786" rx="5" ry="5" width="423.13666666666722" height="309.80000000000018" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="360.053838298267" y="60.170127579667863" fill="#000000">nds_supplement_schedule_dose</text>
+          <rect x="238.053838298267" y="70.180127579667868" width="413.13666666666722" height="276.8400000000002" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_schedule_dose_Id">
+            <rect x="253.053838298267" y="82.22012757966786" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="272.053838298267" y="100.17012757966786" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_fk_supplement_schedule">
+            <rect x="253.053838298267" y="250.10012757966797" rx="3" ry="3" width="149.06666666666661" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="263.053838298267" y="268.05012757966796" fill="#000000">fk_supplement_schedule</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_unit_count_target">
+            <rect x="253.053838298267" y="194.14012757966793" rx="3" ry="3" width="112.48999999999978" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="263.053838298267" y="212.09012757966792" fill="#FFFFFF">unit_count_target</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_scheduled_time">
+            <rect x="253.053838298267" y="138.1801275796679" rx="3" ry="3" width="102.37666666666655" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="263.053838298267" y="156.13012757966789" fill="#FFFFFF">scheduled_time</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_unit_count_actual">
+            <rect x="523.93717163160022" y="138.1801275796679" rx="3" ry="3" width="112.25333333333356" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="533.93717163160022" y="156.13012757966789" fill="#FFFFFF">unit_count_actual</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_is_skipped">
+            <rect x="425.1771716316" y="82.22012757966786" rx="3" ry="3" width="74.39333333333343" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="435.1771716316" y="100.17012757966786" fill="#FFFFFF">is_skipped</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_is_complete">
+            <rect x="529.57050496493343" y="82.22012757966786" rx="3" ry="3" width="82.4699999999998" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="539.57050496493343" y="100.17012757966786" fill="#FFFFFF">is_complete</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_completion_time">
+            <rect x="385.430504964934" y="138.1801275796679" rx="3" ry="3" width="108.50666666666666" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="395.430504964934" y="156.13012757966789" fill="#FFFFFF">completion_time</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_completion_time_offset">
+            <rect x="395.54383829826679" y="194.14012757966793" rx="3" ry="3" width="143.4666666666667" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="405.54383829826679" y="212.09012757966792" fill="#FFFFFF">completion_time_offset</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_remarks">
+            <rect x="333.053838298267" y="82.22012757966786" rx="3" ry="3" width="62.123333333333449" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="343.053838298267" y="100.17012757966786" fill="#FFFFFF">remarks</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_supplement_skip_reason">
+            <rect x="432.12050496493362" y="250.10012757966797" rx="3" ry="3" width="149.09000000000015" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="442.12050496493362" y="268.05012757966796" fill="#000000">supplement_skip_reason</text>
+          </g>
+          <g id="nds_supplement_schedule_dose_supplement_skip_other_reason">
+            <rect x="253.053838298267" y="306.060127579668" rx="3" ry="3" width="182.40666666666675" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="263.053838298267" y="324.010127579668" fill="#FFFFFF">supplement_skip_other_reason</text>
+          </g>
+        </g>
+        <g id="nds_Supplement_schedule_per_date">
+          <rect x="11.343838298267201" y="897.6801275796679" rx="5" ry="5" width="230.55666666666684" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="31.3438382982672" y="915.63012757966794" fill="#000000">nds_Supplement_schedule_per_date</text>
+          <rect x="16.3438382982672" y="925.64012757966793" width="220.55666666666684" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_Supplement_schedule_per_date_Id">
+            <rect x="61.62217163160085" y="937.6801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="80.62217163160085" y="955.63012757966794" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_Supplement_schedule_per_date_customer_id">
+            <rect x="61.62217163160085" y="993.64012757966793" rx="3" ry="3" width="84.263333333333321" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="71.62217163160085" y="1011.590127579668" fill="#000000">customer_id</text>
+          </g>
+          <g id="nds_Supplement_schedule_per_date_date">
+            <rect x="141.62217163160085" y="937.6801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="154.62217163160085" y="955.63012757966794" fill="#FFFFFF">date</text>
+          </g>
+        </g>
+        <g id="nds_supplement_skip_reason">
+          <rect x="665.1121716316004" y="557.88012757966749" rx="5" ry="5" width="193.01999999999998" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="684.1121716316004" y="575.83012757966753" fill="#000000">nds_supplement_skip_reason</text>
+          <rect x="670.1121716316004" y="585.84012757966752" width="183.01999999999998" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_supplement_skip_reason_Id">
+            <rect x="736.62217163160039" y="597.88012757966749" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="755.62217163160039" y="615.83012757966753" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_supplement_skip_reason_name">
+            <rect x="736.62217163160039" y="653.84012757966752" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="746.62217163160039" y="671.79012757966757" fill="#FFFFFF">name</text>
+          </g>
+        </g>
+        <g id="nds_template_supplement_plan_daily">
+          <rect x="3493.5588382982678" y="-673.33987242033254" rx="5" ry="5" width="273.08666666666613" height="141.92000000000007" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3531.5588382982678" y="-655.38987242033249" fill="#000000">nds_template_supplement_plan_daily</text>
+          <rect x="3498.5588382982678" y="-645.3798724203325" width="263.08666666666613" height="108.96000000000006" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_template_supplement_plan_daily_Id">
+            <rect x="3513.5588382982678" y="-633.33987242033254" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3532.5588382982678" y="-615.38987242033249" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_template_supplement_plan_daily_day_of_week">
+            <rect x="3593.5588382982678" y="-633.33987242033254" rx="3" ry="3" width="86.91666666666606" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3603.5588382982678" y="-615.38987242033249" fill="#FFFFFF">day_of_week</text>
+          </g>
+          <g id="nds_template_supplement_plan_daily_fk_template_supplement_plan_weekly_id">
+            <rect x="3513.5588382982678" y="-577.3798724203325" rx="3" ry="3" width="233.08666666666613" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3523.5588382982678" y="-559.42987242033246" fill="#000000">fk_template_supplement_plan_weekly_id</text>
+          </g>
+        </g>
+        <g id="nds_template_supplement_plan_dose">
+          <rect x="3487.6655049649335" y="-1185.0598724203328" rx="5" ry="5" width="284.8733333333339" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3530.6655049649335" y="-1167.1098724203327" fill="#000000">nds_template_supplement_plan_dose</text>
+          <rect x="3492.6655049649335" y="-1157.0998724203328" width="274.8733333333339" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_template_supplement_plan_dose_Id">
+            <rect x="3507.6655049649335" y="-1145.0598724203328" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3526.6655049649335" y="-1127.1098724203327" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_template_supplement_plan_dose_fk_template_supplement_plan_supplement">
+            <rect x="3507.6655049649339" y="-1033.1398724203327" rx="3" ry="3" width="244.8733333333339" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3517.6655049649339" y="-1015.1898724203327" fill="#000000">fk_template_supplement_plan_supplement</text>
+          </g>
+          <g id="nds_template_supplement_plan_dose_unit_count">
+            <rect x="3587.665504964933" y="-1145.0598724203328" rx="3" ry="3" width="75.7533333333331" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3597.665504964933" y="-1127.1098724203327" fill="#FFFFFF">unit_count</text>
+          </g>
+          <g id="nds_template_supplement_plan_dose_sceduled_time">
+            <rect x="3507.6655049649339" y="-1089.0998724203328" rx="3" ry="3" width="95.586666666667043" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3517.6655049649339" y="-1071.1498724203327" fill="#FFFFFF">sceduled_time</text>
+          </g>
+        </g>
+        <g id="nds_template_supplement_plan_supplement">
+          <rect x="3443.6221716316013" y="-957.17987242033269" rx="5" ry="5" width="372.96000000000004" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3512.6221716316013" y="-939.22987242033264" fill="#000000">nds_template_supplement_plan_supplement</text>
+          <rect x="3448.6221716316013" y="-929.21987242033265" width="362.96000000000004" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_template_supplement_plan_supplement_Id">
+            <rect x="3463.6221716316013" y="-917.17987242033269" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3482.6221716316013" y="-899.22987242033264" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_template_supplement_plan_supplement_fk_template_supplement_plan_daily">
+            <rect x="3463.6221716316018" y="-749.29987242033258" rx="3" ry="3" width="207.02333333333354" height="25.960000000000036" fill="#8080FF" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3473.6221716316018" y="-731.34987242033253" fill="#000000">fk_template_supplement_plan_daily</text>
+          </g>
+          <g id="nds_template_supplement_plan_supplement_fk_supplement_reference">
+            <rect x="3644.7155049649346" y="-861.21987242033265" rx="3" ry="3" width="151.86666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3654.7155049649346" y="-843.2698724203326" fill="#FFFFFF">fk_supplement_reference</text>
+          </g>
+          <g id="nds_template_supplement_plan_supplement_is_customer_created_entry">
+            <rect x="3463.6221716316013" y="-805.25987242033261" rx="3" ry="3" width="158.873333333333" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3473.6221716316013" y="-787.30987242033257" fill="#FFFFFF">is_customer_created_entry</text>
+          </g>
+          <g id="nds_template_supplement_plan_supplement_is_free_entry">
+            <rect x="3543.6221716316013" y="-917.17987242033269" rx="3" ry="3" width="85.5566666666673" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3553.6221716316013" y="-899.22987242033264" fill="#FFFFFF">is_free_entry</text>
+          </g>
+          <g id="nds_template_supplement_plan_supplement_free_entry_name">
+            <rect x="3659.1788382982691" y="-917.17987242033269" rx="3" ry="3" width="107.06666666666661" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3669.1788382982691" y="-899.22987242033264" fill="#FFFFFF">free_entry_name</text>
+          </g>
+          <g id="nds_template_supplement_plan_supplement_fk_free_entry_unit_metric">
+            <rect x="3463.6221716316018" y="-861.21987242033265" rx="3" ry="3" width="151.09333333333325" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3473.6221716316018" y="-843.2698724203326" fill="#FFFFFF">fk_free_entry_unit_metric</text>
+          </g>
+        </g>
+        <g id="nds_template_supplement_plan_weekly">
+          <rect x="3506.4205049649336" y="-501.41987242033247" rx="5" ry="5" width="247.36333333333369" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3526.4205049649336" y="-483.46987242033248" fill="#000000">nds_template_supplement_plan_weekly</text>
+          <rect x="3511.4205049649336" y="-473.45987242033249" width="237.36333333333369" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_template_supplement_plan_weekly_Id">
+            <rect x="3537.525504964934" y="-461.41987242033247" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3556.525504964934" y="-443.46987242033248" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_template_supplement_plan_weekly_name">
+            <rect x="3617.525504964934" y="-461.41987242033247" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3627.525504964934" y="-443.46987242033248" fill="#FFFFFF">name</text>
+          </g>
+          <g id="nds_template_supplement_plan_weekly_active_since">
+            <rect x="3640.4421716315996" y="-405.45987242033243" rx="3" ry="3" width="82.236666666666679" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3650.4421716315996" y="-387.50987242033244" fill="#FFFFFF">active_since</text>
+          </g>
+          <g id="nds_template_supplement_plan_weekly_deleted_since">
+            <rect x="3537.525504964934" y="-349.49987242033239" rx="3" ry="3" width="91.526666666666642" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3547.525504964934" y="-331.54987242033241" fill="#FFFFFF">deleted_since</text>
+          </g>
+          <g id="nds_template_supplement_plan_weekly_is_deleted">
+            <rect x="3537.5255049649345" y="-405.45987242033243" rx="3" ry="3" width="72.91666666666697" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3547.5255049649345" y="-387.50987242033244" fill="#FFFFFF">is_deleted</text>
+          </g>
+        </g>
+        <g id="nds_unit_metric">
+          <rect x="3489.4105049649334" y="238.1801275796679" rx="5" ry="5" width="201.96000000000004" height="197.88000000000011" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="3548.4105049649334" y="256.13012757966789" fill="#000000">nds_unit_metric</text>
+          <rect x="3494.4105049649334" y="266.14012757966788" width="191.96000000000004" height="164.9200000000001" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="nds_unit_metric_Id">
+            <rect x="3509.4105049649334" y="278.1801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3528.4105049649334" y="296.13012757966789" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="nds_unit_metric_name">
+            <rect x="3589.4105049649334" y="278.1801275796679" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3599.4105049649334" y="296.13012757966789" fill="#FFFFFF">name</text>
+          </g>
+          <g id="nds_unit_metric_is_weight">
+            <rect x="3602.6105049649332" y="334.14012757966793" rx="3" ry="3" width="68.760000000000218" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3612.6105049649332" y="352.09012757966792" fill="#FFFFFF">is_weight</text>
+          </g>
+          <g id="nds_unit_metric_is_count">
+            <rect x="3509.4105049649338" y="334.14012757966793" rx="3" ry="3" width="63.199999999999818" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3519.4105049649338" y="352.09012757966792" fill="#FFFFFF">is_count</text>
+          </g>
+          <g id="nds_unit_metric_is_volume">
+            <rect x="3509.4105049649338" y="390.10012757966797" rx="3" ry="3" width="72.0666666666666" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="3519.4105049649338" y="408.05012757966796" fill="#FFFFFF">is_volume</text>
+          </g>
+        </g>
+        <g id="User">
+          <rect x="-406.66616170173256" y="1153.540127579668" rx="5" ry="5" width="318.57666666666682" height="253.84000000000015" fill="#C0C0C0" stroke="#A5A6A9" stroke-width="1" />
+          <text x="-259.66616170173256" y="1171.4901275796681" fill="#000000">User</text>
+          <rect x="-401.66616170173256" y="1181.5001275796681" width="308.57666666666682" height="220.88000000000014" fill="#1E1E1E" stroke="#A5A6A9" stroke-width="1" />
+          <g id="User_Id">
+            <rect x="-386.66616170173256" y="1193.540127579668" rx="3" ry="3" width="50" height="25.960000000000036" fill="#008000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-367.66616170173256" y="1211.4901275796681" fill="#FFFFFF">Id</text>
+          </g>
+          <g id="User_first_name">
+            <rect x="-182.57616170173287" y="1249.5001275796681" rx="3" ry="3" width="74.486666666666679" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-172.57616170173287" y="1267.4501275796681" fill="#FFFFFF">first_name</text>
+          </g>
+          <g id="User_last_name">
+            <rect x="-285.23949503506674" y="1249.5001275796681" rx="3" ry="3" width="72.663333333333412" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-275.23949503506674" y="1267.4501275796681" fill="#FFFFFF">last_name</text>
+          </g>
+          <g id="User_mobile">
+            <rect x="-226.66616170173256" y="1193.540127579668" rx="3" ry="3" width="56.510000000000218" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-216.66616170173256" y="1211.4901275796681" fill="#FFFFFF">mobile</text>
+          </g>
+          <g id="User_email">
+            <rect x="-306.66616170173256" y="1193.540127579668" rx="3" ry="3" width="50" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-296.66616170173256" y="1211.4901275796681" fill="#FFFFFF">email</text>
+          </g>
+          <g id="User_user_level">
+            <rect x="-386.66616170173256" y="1249.5001275796681" rx="3" ry="3" width="71.426666666666733" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-376.66616170173256" y="1267.4501275796681" fill="#FFFFFF">user_level</text>
+          </g>
+          <g id="User_fk_federated_user">
+            <rect x="-257.70282836839988" y="1305.4601275796681" rx="3" ry="3" width="113.07999999999993" height="25.960000000000036" fill="#C0A000" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-247.70282836839988" y="1323.4101275796681" fill="#FFFFFF">fk_federated_user</text>
+          </g>
+          <g id="User_last_known_time_offset">
+            <rect x="-386.66616170173256" y="1361.4201275796681" rx="3" ry="3" width="141.92666666666673" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-376.66616170173256" y="1379.3701275796682" fill="#FFFFFF">last_known_time_offset</text>
+          </g>
+          <g id="User_set_time_offset">
+            <rect x="-386.666161701733" y="1305.4601275796681" rx="3" ry="3" width="98.963333333333139" height="25.960000000000036" fill="#808040" stroke="#A5A6A9" stroke-width="1" />
+            <text x="-376.666161701733" y="1323.4101275796681" fill="#FFFFFF">set_time_offset</text>
+          </g>
+        </g>
+      </g>
+    </g>
+    <text x="4316.5355049649334" y="-1242.1098724203327" fill="#000000">LEGEND</text>
+    <text x="4316.5355049649334" y="-1219.1498724203327" fill="#000000">Table</text>
+    <text x="4316.5355049649334" y="-1196.1898724203327" fill="#000000">Schema</text>
+    <text x="4316.5355049649334" y="-1173.2298724203326" fill="#000000">Field Primary</text>
+    <text x="4316.5355049649334" y="-1150.2698724203326" fill="#000000">Field Optional</text>
+    <text x="4316.5355049649334" y="-1127.3098724203326" fill="#000000">Field Foreign</text>
+    <text x="4316.5355049649334" y="-1104.3498724203325" fill="#000000">Field</text>
+    <text x="4316.5355049649334" y="-1081.3898724203325" fill="#000000">Database</text>
+    <rect x="4410.7455049649334" y="-1232.0998724203328" width="20" height="20" fill="#C0C0C0" />
+    <rect x="4410.7455049649334" y="-1209.1398724203327" width="20" height="20" fill="#7F9169" />
+    <rect x="4410.7455049649334" y="-1186.1798724203327" width="20" height="20" fill="#008000" />
+    <rect x="4410.7455049649334" y="-1163.2198724203326" width="20" height="20" fill="#808040" />
+    <rect x="4410.7455049649334" y="-1140.2598724203326" width="20" height="20" fill="#8080FF" />
+    <rect x="4410.7455049649334" y="-1117.2998724203326" width="20" height="20" fill="#C0A000" />
+    <rect x="4410.7455049649334" y="-1094.3398724203325" width="20" height="20" fill="#FFFFFF" />
+    <rect x="4306.5355049649334" y="-1265.0598724203328" width="134.21" height="200.72000000000025" fill="none" stroke="#000000" stroke-width="1" />
+  </g>
+</svg>

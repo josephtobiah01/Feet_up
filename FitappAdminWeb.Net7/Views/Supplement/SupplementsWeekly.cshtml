@@ -1,0 +1,195 @@
+﻿@using System.Globalization;
+@model FitappAdminWeb.Net7.Models.SupplementWeeklyPlanListViewModel
+@{
+    string username = !String.IsNullOrEmpty(Model.CurrentUser.FirstName) ? 
+        $"{Model.CurrentUser.FirstName} {Model.CurrentUser.LastName} (ID: {Model.CurrentUser.Id})" :
+        Model.UserIdentity != null ? $"{Model.UserIdentity.UserName} (ID: {Model.CurrentUser.Id})" : $"User ID {Model.CurrentUser.Id}";
+    string[] daysOfWeekNames = {
+        "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+    };
+}
+
+<div class="d-flex justify-content-between">
+    <h4>Supplement Weekly Plans</h4>
+    <div class="btn-group">
+        <a class="btn btn-primary" asp-action="EditPlan" asp-route-new="true">
+            <i data-feather="plus"></i>&nbsp;Add New Plan
+        </a>
+        <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="visually-hidden">Toggle Dropdown</span>
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#copymodal">Add Plan From Existing One</a></li>
+        </ul>
+    </div>  
+</div>
+<p>
+    These are all the weekly supplement plans associated with this User: 
+    <a asp-action="Details" asp-controller="User" asp-route-id="@Model.CurrentUser.Id">@username</a>
+</p>
+<div id="plan_list">
+    <div class="row">
+    @foreach (var plan in Model.SupplementWeeklyPlanList)
+    {
+            <div class="mt-3 col-sm-12">
+                <div class="card supplement-card mb-2">
+                    <div class="row">
+                        <div class="col-md-6 text-size plan-status">
+                            @if (plan.IsActive)
+                            {
+                                <span class="fw-bold">Active Since:</span>
+                                <span class="text-muted">@plan.ActiveSince.GetValueOrDefault().ToLongDateString()</span>
+                            }
+                            else
+                            {
+
+                                <span class="fw-bold">Inactive Since:</span>
+                                <span class="text-muted">@plan.InactiveSince.GetValueOrDefault().ToLongDateString()</span>
+                            }
+                            <div class="remarks">
+                                <span class="fw-bold text-size">Remarks: </span>
+                                <span class="text-muted showRemarks" id="showRemarks_@plan.Id" data-bs-toggle="collapse" data-bs-target="#remarks_@plan.Id" aria-expanded="false" aria-controls="remarks_@plan.Id">Show remarks...</span><br>
+                                <span class="text-muted text-size collapse" id="remarks_@plan.Id">@plan.Remark</span>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6 plan-title">
+                            <span>
+                                <a class="mb-0" asp-action="EditPlan" asp-route-id="@plan.Id" data-toggle="tooltip" data-placement="top" title="Edit Plan @plan.Id">Plan @plan.Id</a><br>
+                                @if (plan.IsActive)
+                                {
+                                    <span class="badge bg-primary">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Inactive</span>
+                                }
+                            </span>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <span class="mb-3 plan_summary" data-bs-toggle="collapse" data-bs-target="#summary_@plan.Id" aria-expanded="false" aria-controls="summary_@plan.Id"><i data-feather="info"></i>&nbsp;View Plan Summary</span>
+                    </div>
+                    <div class="row collapse content" id="summary_@plan.Id">
+                        <table class="table table-striped">
+                            <thead>
+                                <th width="15"> Day </th>
+                                <th> Supplements </th>
+                            </thead>
+                            <tbody>
+                                    @foreach (var daily in plan.NdsSupplementPlanDaily)
+                                    {
+                                        var dayIndex = daily.DayOfWeek;
+                                        if (dayIndex > daysOfWeekNames.Length) dayIndex = 0;
+                                    <tr>
+                                        <td>
+                                            <span class="fw-bold"> @daysOfWeekNames[dayIndex] </span>
+                                        </td>
+                                        <td>
+                                        @foreach (var supplement in daily.NdsSupplementPlanSupplement)
+                                        {
+                                            var suppRef = Model.SupplementReference.FirstOrDefault(r => r.Id == supplement.FkSupplementReference);
+                                            var unitMetric = suppRef != null ? suppRef.FkUnitMetricNavigation.Name : "Units";
+
+                                                @if (supplement.IsCustomerCreatedEntry)
+                                                {
+                                                    <div class="badge bg-secondary">User Created</div>
+                                                }
+                                                @if (supplement.IsFreeEntry)
+                                                {
+                                                    <div class="badge bg-secondary">Free Entry</div>
+                                                }
+
+                                            int count = daily.NdsSupplementPlanSupplement.Count();
+                                            
+                                            @if (count > 1)
+                                            {
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <span class="fw-bold"> @(suppRef != null ? suppRef.Name : supplement.FreeEntryName) </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                            } else {
+                                                    <span class="fw-bold"> @(suppRef != null ? suppRef.Name : supplement.FreeEntryName) </span>
+                                            }
+
+                                            <table class="table table-striped">
+                                                <tr>
+                                                    <td width="20%"> Unit Count (in @unitMetric) </td>
+                                                    <td width="15%"> Limit </td>
+                                                    <td width="15%"> Schedule </td>
+                                                    <td width="50%"> Remark </td>
+                                                </tr>
+
+                                                @foreach(var dose in supplement.NdsSupplementPlanDose){
+                                                    
+                                                        <tr>
+                                                            <td> <span> @dose.UnitCount </span> </td>
+                                                            <td>
+                                                                <span class="text-warning">@dose.DoseWarningLimit</span> |
+                                                                <span class="text-danger">@dose.DoseHardCeilingLimit</span>
+                                                            </td>
+                                                            <td>@dose.ScheduledTime.ToString("hh\\:mm")</td>
+                                                            <td>@dose.Remark</td>
+                                                        </tr>
+                                                }
+                                                </table>
+
+                                    }
+                                        </td>
+                                    </tr>
+                                        }
+                            </tbody>
+                        </table>                       
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-primary me-2" asp-action="EditPlan" asp-route-id="@plan.Id" asp-route-copy="true">
+                            <i data-feather="copy"></i>&nbsp;Copy
+                        </a>
+                        <a class="btn btn-primary me-2" asp-action="EditPlan" asp-route-id="@plan.Id">
+                            <i data-feather="edit"></i>&nbsp;Edit
+                        </a>
+                        <button class="btn btn-danger" action="delete" data-id="@plan.Id">
+                            <i data-feather="trash-2"></i>&nbsp;Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+    }   
+    </div>
+</div>
+
+<div class="modal fade" id="copymodal" tabindex="-1" aria-labelledby="copymodal_title" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="copymodal_title">Add Plan from Existing Plan</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>You can load a weekly supplement plan to copy from. This can select from any existing plan from any customer.</p>
+                <div class="mb-3">
+                    <label class="form-label" for="copymodal_user">User</label>
+                    <select class="form-select" id="copymodal_user" asp-items="@Model.UserList" data-bind="value: UserId, event: { change: LoadPlans }">
+                        <option>Please select..</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="form-label" for="copymodal_id">Plan to copy</label>
+                    <select class="form-select" id="copymodal_id" name="id" data-bind="value: PlanId, options: PlanList, optionsText: 'text', optionsValue: 'value'"></select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bind="click: SubmitModel">Load Selected Plan</button>
+            </div>           
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script asp-src-include="~/lib/knockout/knockout-latest.min.js,~/lib/managed/supp_weekly_list.js"></script>
+}

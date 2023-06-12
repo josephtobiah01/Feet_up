@@ -1,0 +1,120 @@
+﻿@model FitappAdminWeb.Net7.Models.ExerciseTypeListViewModel
+
+<div class="mb-3">
+    <span class="d-flex justify-content-between">
+        <span class="fs-3">Exercise Types</span>
+        <a class="btn btn-primary align-end" asp-action="EditExerciseType" asp-route-new="true">
+            <i data-feather="plus"></i>&nbsp;Add New Exercise Type
+        </a>
+    </span>
+    <div>Exercise Types listed here will be available for selection when adding Exercises</div>    
+</div>
+<div id="exertype_list">
+    <div class="list-group altrow-color">
+        @foreach (var exerType in Model.EdsExerciseTypes)
+        {
+            <div class="list-group-item">
+                <div class="d-flex justify-content-between">
+                    <span>
+                        <a class="fw-bold fs-5" asp-action="EditExerciseType" asp-route-id="@exerType.Id">@exerType.Name</a>
+                        <span class="text-muted">(ID: @exerType.Id)</span>
+                    </span>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bs-target="#exertype_tbl_@exerType.Id"
+                        aria-expanded="false" aria-controls="exertype_tbl_@exerType.Id">
+                        <i data-feather="info"></i><span class="ms-2">Details</span>
+                    </button>
+                </div>
+                <div>
+                    <span class="fw-bold">Level:</span>
+                    <span class="text-muted">@exerType.FkLevel.Name</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Exercise Class:</span>
+                    <span class="text-muted">@exerType.FkExerciseClass.Name</span>
+                </div>
+                <div>
+                    <span class="fw-bold">Has Set Defaults</span>
+                    <span class="text-muted">@exerType.HasSetDefaultTemplate</span>
+                </div>
+                <div id="exertype_tbl_@exerType.Id" class="collapse">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="fw-bold">Force:</span>
+                            <span>@exerType.FkForce.Name</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="fw-bold">Mechanics Type:</span>
+                            <span>@exerType.FkMechanicsType.Name</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="fw-bold">Sport:</span>
+                            <span>@exerType.FkSport.Name</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="fw-bold">Equipment:</span>
+                            <span>@exerType.FkEquipment.Name</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="fw-bold">Main Muscle Worked:</span>
+                            <span>@exerType.FkMainMuscleWorked.Name</span>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="fw-bold">Other Muscle Worked:</span>
+                            <span>@exerType.FkOtherMuscleWorked.Name</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-primary me-2" asp-action="EditExerciseType" asp-route-id="@exerType.Id">
+                        <i data-feather="edit"></i><span class="ms-2">Edit</span>
+                    </a>
+                    <button class="btn btn-danger" action="delete" data-id="@exerType.Id">
+                        <i data-feather="trash-2"></i><span class="ms-2">Delete</span>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>   
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var delete_url = "/api/data/deleteexercisetype";
+
+            function callDelete(e) {
+                if (window.confirm("Are you sure you want to delete this exercise type? You won't be able to use this exercise type when adding/editing exercises.")) {
+                    var tgt = e.currentTarget;
+                    if (tgt == null) {
+                        tgt = e.target;
+                    }
+
+                    var idToDelete = tgt.getAttribute("data-id");
+                    fetch(delete_url, {
+                        method: "POST",
+                        cache: "no-cache",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(idToDelete)
+                    })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            if (data == true) {
+                                document.location.reload();
+                            }
+                        });
+                }
+            }
+
+            var deleteButtons = document.querySelectorAll("button[action='delete']");
+            deleteButtons.forEach((button) => {
+                button.addEventListener("click", callDelete);
+            });
+        })();
+    </script>
+}

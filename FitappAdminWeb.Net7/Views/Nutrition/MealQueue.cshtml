@@ -1,0 +1,159 @@
+﻿@model MealQueueViewModel
+@using X.PagedList;
+@using X.PagedList.Mvc.Bootstrap4.Core;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@{
+    string defaultTime = Model.DishToAdd.Time.ToString("hh\\:mm");
+}
+
+@if (ViewData["error"] != null)
+{
+    string error = ViewData["error"].ToString();
+
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            @if (error == "adddishfailed")
+            {
+                <span class="fw-bold">ERROR: </span>
+                <span>Add Dish Failed. Please try again.</span>
+            }
+        </div>
+    </div>
+}
+
+<div class="d-flex justify-content-between">
+    <h4>Dish Transcription Queue</h4>
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#add_dish_modal">
+        <i data-feather="plus"></i><span class="ms-2">Add Dish to Queue</span>
+    </button>
+</div>
+<p class="mb-3">This list contains dishes that are still pending for transcription.</p>
+<div class="row">
+    <form asp-action="MealQueue" method="get" id="options_form">
+        <div class="col-md-6 mb-3">
+            <h5>Queue Options</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="IncludeTestAccounts" />
+                <label class="form-check-label" asp-for="IncludeTestAccounts">Include Dishes from Test Accounts</label>
+            </div>
+        </div>
+    </form> 
+</div>
+<div id="meal_queue">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Creation Date</th>          
+                <th>Meal Type</th>
+                <th>Meal ID</th>
+                <th>Dish Type</th>
+                <th>Uploader</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model.DishesForTranscription.Count == 0)
+            {
+                <tr>
+                    <td colspan="5">
+                        <div class="d-flex justify-content-center">
+                            No Dishes to transcribe
+                        </div>                     
+                    </td>
+                </tr>
+            }
+            @foreach (var dish in Model.PagingDishesForTranscription)
+            {
+                <tr class="align-middle">
+                    <td>@dish.Id</td>
+                    <td>@dish.CreationTimestamp.ToString()</td>
+                    <td>@dish.FkNutritionActualMeal.MealType.Name</td>
+                    <td>@dish.FkNutritionActualMeal.Id</td>
+                    <td>@dish.FkDishType.Name</td>
+                    <td>
+                        @{
+                            var dish_user = dish.FkNutritionActualMeal.FkNutritionActualDay.FkUser;
+                            string username = $"{dish_user.FirstName} {dish_user.LastName} (ID: {dish_user.Id})";
+                        }
+                        <a asp-action="Details" asp-controller="User" asp-route-id="@dish_user.Id" target="_blank">@username</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-link" asp-action="DishEditor" asp-route-id="@dish.Id">Edit</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="col-md-12">
+        <div class="pagination justify-content-center">
+            @Html.PagedListPager(Model.PagingDishesForTranscription, page => Url.Action("MealQueue", new {page,Model.IncludeTestAccounts}), new PagedListRenderOptions() {MaximumPageNumbersToDisplay = 5}.ApplyBootstrap4Style() )
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="add_dish_modal" tabindex="-1" aria-labelledby="add_dish_modal" aria-hidden="true">
+    <form id="adddish_form" asp-action="AddDishToQueue" method="post">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="add_dish_modal">Add Dish to Queue</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This utility adds a dish into the queue for transcription. Normally, dishes for transcription will come in through the mobile app.</p>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="DishToAdd.UserId">User:</label>
+                        <select class="form-select" asp-for="DishToAdd.UserId" asp-items="Model.UserList" required>
+                            <option value="">Please select..</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="DishToAdd.Day">Date</label>
+                        <input type="date" class="form-control" asp-for="DishToAdd.Day" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="DishToAdd.Time">Time</label>
+                        <input type="time" class="form-control" asp-for="DishToAdd.Time" value="@defaultTime" required/>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="DishToAdd.MealTypeId">Meal Type</label>
+                        <select class="form-select" asp-for="DishToAdd.MealTypeId" asp-items="Model.MealTypeList" required>
+                            <option value="">Please select..</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="DishToAdd.DishTypeId">Dish Type</label>
+                        <select class="form-select" asp-for="DishToAdd.DishTypeId" asp-items="Model.DishTypeList" required>
+                            <option value="">Please select..</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label" asp-for="DishToAdd.ImageUrl">Image Url</label>
+                        <input type="text" class="form-control" asp-for="DishToAdd.ImageUrl" required/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add Dish</button>
+                </div>
+            </div>
+        </div>
+    </form> 
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $("#adddish_form").validate({
+                errorClass: "is-invalid",
+                validClass: "is-valid",
+            });
+            $("#IncludeTestAccounts").on("change", function () {
+                $("#options_form").submit();
+            });
+        })      
+    </script>
+}

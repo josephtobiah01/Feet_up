@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Chat.Views.ChatContentPage"
+             xmlns:local="clr-namespace:MauiApp1.Areas.Chat.Resources"
+             Title="ChatContentPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Loaded="ContentPage_Loaded" 
+             NavigationPage.IconColor="White"
+             >
+
+    <ContentPage.Resources>
+
+        <DataTemplate x:Key="ChatMessageReceived">
+            <!--<ViewCell>-->
+                <Frame BackgroundColor="White" CornerRadius="16" Margin="5, 5, 64, 5" BorderColor="#006272" HasShadow="false" HorizontalOptions="StartAndExpand" >
+                <VerticalStackLayout Margin="16, 0, 0, 0">
+                      <Label TextColor="#006272" HorizontalTextAlignment="Start"  Text="{Binding TimeStamp}"></Label> 
+                    <Label TextColor="#006272" HorizontalTextAlignment="Start" LineBreakMode="WordWrap"  Text="{Binding MessageText}"></Label>
+                </VerticalStackLayout>
+            </Frame>
+            <!--</ViewCell>-->
+        </DataTemplate>
+
+
+
+        
+        <DataTemplate x:Key="ChatMessageSent">
+            <!--<ViewCell>-->
+            <Frame BackgroundColor="#006272" CornerRadius="16" Margin="64, 5, 5, 5" HorizontalOptions="EndAndExpand" HasShadow="false">
+                <VerticalStackLayout Margin="0, 0, 16, 0">
+                     <Label HorizontalOptions="End" HorizontalTextAlignment="End"  TextColor="White" Text="{Binding TimeStamp}"></Label>
+                    <Label HorizontalOptions="End" HorizontalTextAlignment="End" LineBreakMode="WordWrap" TextColor="White" Text="{Binding MessageText}"></Label>
+                </VerticalStackLayout>
+            </Frame>
+            <!--</ViewCell>-->
+        </DataTemplate>
+
+        <local:ChatContentPageTemplateSelector x:Name="MessageDataTemplateSelectorname" x:Key="MessageDataTemplateSelector" 
+                                               SenderTemplate="{StaticResource ChatMessageSent}"
+                                               ReceiverTemplate="{StaticResource ChatMessageReceived}"
+                                               />
+    </ContentPage.Resources>
+
+    <Grid x:Name="RootGrid" BackgroundColor="White" ColumnDefinitions="*">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".10*" />
+            <RowDefinition Height=".80*" />
+            <RowDefinition Height=".10*" />
+        </Grid.RowDefinitions>
+        
+        <!-- navigation bar -->
+        <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="32" HeightRequest="24" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="4"/>
+
+            <Label Grid.Column="2" Text="Query"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+        </Grid>
+
+        <!-- chat area -->
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+         
+                <ScrollView Grid.Row="0" x:Name="ChatScrollView" BackgroundColor="#FAFAFA" Scrolled="ChatScrollView_Scrolled" >
+                <VerticalStackLayout
+                Spacing="25"
+                Padding="30,0"
+                VerticalOptions="Center">
+
+                    <VerticalStackLayout x:Name="ChatMessages"  BindableLayout.ItemsSource="{Binding MessageList}"  BindableLayout.ItemTemplateSelector="{StaticResource MessageDataTemplateSelector}">
+                    </VerticalStackLayout>
+
+                    <!--<CollectionView x:Name="ChatMessages" ItemsSource="{Binding MessageList}" ItemTemplate="{StaticResource MessageDataTemplateSelector}">
+
+                    </CollectionView>-->
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+
+
+            </Grid>
+    
+        
+        <Frame Grid.Row="2" HasShadow="false" BorderColor="black" Background="White" CornerRadius="16" Padding="0" Margin="5">
+        <Grid  VerticalOptions="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="100"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+                <Entry
+                x:Name="myChatMessage"
+                Grid.Column="0"
+                Grid.Row="0"
+                 Keyboard="Chat"
+                Placeholder="Send a Message"
+                BackgroundColor="white"
+                TextColor="black"
+                PlaceholderColor="DarkGray"
+                FontSize="18"
+                Margin="15,0,0,0"
+                VerticalOptions="Center"
+                HorizontalOptions="FillAndExpand" 
+                ReturnType="Done"
+                
+                ReturnCommand="{Binding SendChatMessageReturnCommand}"
+                />
+            <!-- returncommand only works on returntype done due to a maui bug-->
+            <ImageButton
+                x:Name="sendButton"
+                Grid.Column="1"
+                Grid.Row="1"
+                BackgroundColor="White"
+                Source="paperplane.png"
+                BorderWidth="0"
+                VerticalOptions="Center"
+                HeightRequest="24"
+                WidthRequest="24"
+                Clicked="sendButton_Clicked" 
+                HorizontalOptions="Center" Margin="16,0,16,0" />
+
+        </Grid>
+        </Frame>
+
+    </Grid>
+</ContentPage>

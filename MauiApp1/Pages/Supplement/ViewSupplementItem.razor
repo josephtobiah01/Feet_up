@@ -1,0 +1,97 @@
+﻿<div class="content-div" hidden="@Hidden">
+    <div class="button-content-group-div">
+        <button class="close-button" align="right" @onclick="CloseButton_Click">
+            <img class="close-button-icon-image" src="resources/public/icons/userInterface/close2.svg" />
+            Close
+        </button>
+    </div>
+
+    <MauiApp1.Pages.Supplement.ViewSupplementDetailsCard SupplementPageViewModel="@_supplementPageViewModel" />
+
+    <div class="scrollable-div">
+
+        @if (@_isSnoozeButtonHidden == false)
+        {
+            <div class="button-container-div" @onclick="()=>SnoozeButton_Click(_supplementPageViewModel)">
+                <button class="button-div">
+                    <img class="button-icon-image" src="resources/public/icons/userInterface/edit.svg" />
+                    Snooze
+                </button>
+                <div class="block-div" />
+                <label class="go-to-div"> > </label>
+            </div>
+
+            <hr class="solid-border-div">
+
+            <div class="button-container-div">
+                <button class="button-div">
+                    <img class="button-icon-image" src="resources/public/icons/userInterface/edit.svg" />
+                    Skip this time
+                </button>
+                <div class="block-div" />
+                <label class="go-to-div"> > </label>
+            </div>
+
+            <hr class="solid-border-div">
+        }
+        else
+        {
+
+        }
+
+
+
+
+        
+
+        @*<div class="button-container-div">
+        <button class="button-div">
+        <img class="button-icon-image" src="resources/public/icons/userInterface/edit.svg" />
+        Edit supplement
+        </button>
+        <div class="block-div" />
+        <label class="go-to-div"> > </label>
+        </div>
+
+        <hr class="solid-border-div">*@
+
+        @*   <div class="button-container-div">
+        <button class="button-div">
+        <img class="button-icon-image" src="resources/public/icons/userInterface/close2.svg" />
+        Stop taking this supplement
+        </button>
+        <div class="block-div" />
+        <label class="go-to-div"> > </label>
+        </div>
+
+        <hr class="solid-border-div">*@
+
+        <div class="button-container-div">
+            <button class="button-div">
+                <img class="button-icon-image" src="resources/public/icons/userInterface/location_info.svg" />
+                Know more
+            </button>
+            <div class="block-div" />
+            <label class="go-to-div"> > </label>
+        </div>
+
+        <hr class="solid-border-div">
+
+        @*<div class="button-container-div">
+        <button class="button-div">
+        <img class="button-icon-image" src="resources/public/icons/userInterface/trash_red.svg" />
+        Delete this supplement
+        </button>
+        <div class="block-div" />
+        <label class="go-to-div"> > </label>
+        </div>
+
+        <hr class="solid-border-div">*@
+
+        <div class="scroll-support-div" />
+    </div>
+</div>
+
+<div class="black-cover-div" hidden="@_isBlackCoverDivHidden" @onclick="CloseSnoozeContainerDiv_Click" />
+
+<MauiApp1.Pages.Supplement.ViewSnoozePage SupplementPageViewModel="_supplementPageViewModel" Hidden="_isSnoozeSupplementPageHidden" OnCloseClickCallback="CloseSnoozeContainerDiv_Click" SuccessEventCallback="SnoozeDialogIsSuccess_EventCallback" GetSupplementIdEventCallback="GetUpdatedSupplement_EventCallback" />

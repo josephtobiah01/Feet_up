@@ -1,0 +1,229 @@
+﻿
+<div class="content-div">
+
+    <div class="header-div">
+
+        <label class="title-label">@_supplementPageViewModel.SupplementName</label>
+
+        <div class="image-container-div">
+            
+            @if (@_supplementPageViewModel.IsSnoozed == false)
+            {
+                <img class="icon-image" src="resources/public/icons/time/clock1.svg" />
+            }
+            else
+            {
+                <img class="icon-image" src="resources/public/icons/education/bell.svg" />
+            }
+        </div>
+
+        @if (string.IsNullOrWhiteSpace(_supplementPageViewModel.TimeString) == true)
+        {
+            @*<label class="time-elapsed-label">@GetFormattedScheduleTime(@_supplementPageViewModel.ScheduledTime)</label>*@
+            <label class="time-elapsed-label">@GetFormattedScheduleTime(@_supplementPageViewModel.ScheduledTime,_supplementPageViewModel.IsSnoozed)</label>
+        }
+        else
+        {
+            <label class="time-elapsed-label">@_supplementPageViewModel.TimeString</label>
+        }
+        @*<span class="dot" />*@
+
+
+        <div class="block-div" />
+
+    </div>
+
+    <div class="daysbutton-content-group-div">
+
+  @switch (_supplementPageViewModel.is_Monday)
+        {
+            case true:
+
+                <div class="monday-button">M</div>
+                break;
+
+            case false:
+
+                <div class="monday-disable-button">M</div>
+                break;
+        }
+
+        @switch (_supplementPageViewModel.is_Tuesday)
+        {
+            case true:
+
+                <div class="tuesday-button">T</div>
+                break;
+
+            case false:
+
+                <div class="tuesday-disable-button">T</div>
+                break;
+        }
+
+        @switch (_supplementPageViewModel.is_Wednesday)
+        {
+            case true:
+
+                <div class="wednesday-button">W</div>
+                break;
+
+            case false:
+
+                <div class="wednesday-disable-button">W</div>
+                break;
+        }
+
+        @switch (_supplementPageViewModel.is_Thrusday)
+        {
+            case true:
+
+                <div class="thursday-button">T</div>
+                break;
+
+            case false:
+
+                <div class="thursday-disable-button">T</div>
+                break;
+        }
+
+        @switch (_supplementPageViewModel.is_Friday)
+        {
+            case true:
+
+                <div class="friday-button">F</div>
+                break;
+
+            case false:
+
+                <div class="friday-disable-button">F</div>
+                break;
+        }
+
+        @switch (_supplementPageViewModel.is_Saturday)
+        {
+            case true:
+
+                    <div class="saturday-button">S</div>
+                break;
+
+            case false:
+
+                <div class="saturday-disable-button">S</div>
+                break;
+        }
+
+        @switch (_supplementPageViewModel.is_Sunday)
+        {
+            case true:
+
+                <div class="sunday-button">S</div>
+                break;
+
+            case false:
+
+                <div class="sunday-disable-button">S</div>
+                break;
+        }
+
+    </div>
+
+    <hr class="header-dash-border-div">
+
+    @if (_supplementPageViewModel.UnitCount > 0)
+    {
+        <div class="tablet-description-container-div">
+            <div class="tablet-description-image-container-div">
+                <img class="tablet-description-icon-image" src="resources/public/icons/medical/medicine.svg" />
+            </div>
+            <label class="tablet-description-label">@_supplementPageViewModel.UnitCount @_supplementPageViewModel.UnitName</label>
+
+            @if (_supplementPageViewModel.Take_after_meal != null)
+            {
+                @switch (_supplementPageViewModel.Take_after_meal)
+                {
+                    case true:
+
+                        <span class="tablet-description-dot" />
+                        <label class="tablet-before-meal-description-label">After Meals</label>
+                        break;
+
+                    case false:
+
+                        <span class="tablet-description-dot" />
+                        <label class="tablet-before-meal-description-label">Before Meals</label>
+                        break;
+
+                }
+            }
+
+            @if (string.IsNullOrWhiteSpace(_supplementPageViewModel.FrequencyRemark) == false)
+            {
+                <span class="tablet-description-dot" />
+                <div class="tablet-description-image-container-div">
+                    <img class="tablet-description-icon-image" src="resources/public/icons/time/clock1.svg" />
+                </div>
+                <label class="tablet-before-meal-description-label">@_supplementPageViewModel.FrequencyRemark</label>
+            }
+
+            @if (string.IsNullOrWhiteSpace(_supplementPageViewModel.TimeRemark) == false)
+            {
+                <span class="tablet-description-dot" />
+                <label class="tablet-before-meal-description-label">@_supplementPageViewModel.TimeRemark</label>
+            }
+
+            @if (_supplementPageViewModel.Take_before_sleep != null)
+            {
+                @switch (_supplementPageViewModel.Take_before_sleep)
+                {
+                    case true:
+
+                        <span class="tablet-description-dot" />
+                        <label class="tablet-before-meal-description-label">Before Sleep</label>
+                        break;
+
+                    case false:
+
+                        <span class="tablet-description-dot" />
+                        <label class="tablet-before-meal-description-label">After Sleep</label>
+                        break;
+
+                }
+            }
+
+            @if (_supplementPageViewModel.Take_on_empty_stomach != null)
+            {
+                @switch (_supplementPageViewModel.Take_on_empty_stomach)
+                {
+                    case true:
+
+                        <span class="tablet-description-dot" />
+                        <label class="tablet-before-meal-description-label">Empty Stomach</label>
+                        break;
+
+                    case false:
+
+                        @* <span class="tablet-description-dot" />
+        <label class="tablet-before-meal-description-label">Full</label>*@
+                        break;
+
+                }
+            }
+        </div>
+    }
+    else
+    {
+
+    }
+
+    @if (string.IsNullOrWhiteSpace(_supplementPageViewModel.Instructions) == false)
+    {
+        <div class="avoid-description-div">
+            <div class="avoid-description-image-container-div">
+                <img class="avoid-description-icon-image" src="resources/public/icons/security/warning.svg" />
+            </div>
+            <label class="avoid-description-label">@_supplementPageViewModel.Instructions</label>
+        </div>
+
+    }
+</div>

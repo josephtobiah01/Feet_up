@@ -1,0 +1,173 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = FitappAdminWeb.Net7
+build_property.RootNamespace = FitappAdminWeb.Net7
+build_property.ProjectDir = C:\Users\joseph.alulod\source\repos\Feet_up\FitappAdminWeb.Net7\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\joseph.alulod\source\repos\Feet_up\FitappAdminWeb.Net7
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Chat/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Chat/Room.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxSb29tLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Chat/RoomsWithConcerns.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxSb29tc1dpdGhDb25jZXJucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Home/MuhdoRegister.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNdWhkb1JlZ2lzdGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Home/Promotion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcm9tb3Rpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Home/UserInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VySW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Lookup/EditExerciseType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9va3VwXEVkaXRFeGVyY2lzZVR5cGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Lookup/EditSupplementReference.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9va3VwXEVkaXRTdXBwbGVtZW50UmVmZXJlbmNlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Lookup/ExerciseType.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9va3VwXEV4ZXJjaXNlVHlwZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Lookup/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9va3VwXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Lookup/SupplementReference.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9va3VwXFN1cHBsZW1lbnRSZWZlcmVuY2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Lookup/TrainingSessionTemplates.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTG9va3VwXFRyYWluaW5nU2Vzc2lvblRlbXBsYXRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/DailyPlan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXERhaWx5UGxhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/DishEditor.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXERpc2hFZGl0b3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/EditPlan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXEVkaXRQbGFuLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/EditTranscription.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXEVkaXRUcmFuc2NyaXB0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/MealQueue.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXE1lYWxRdWV1ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/Overview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXE92ZXJ2aWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Nutrition/_DishBrowserModal.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTnV0cml0aW9uXF9EaXNoQnJvd3Nlck1vZGFsLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Overview/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3ZlcnZpZXdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Shared/ImagePreview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEltYWdlUHJldmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Supplement/EditPlan.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxlbWVudFxFZGl0UGxhbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Supplement/SupplementsWeekly.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3VwcGxlbWVudFxTdXBwbGVtZW50c1dlZWtseS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Training/EditProgram.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcRWRpdFByb2dyYW0uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Training/EditSession.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcRWRpdFNlc3Npb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Training/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Training/ProgramDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcUHJvZ3JhbURldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Training/Sessions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhaW5pbmdcU2Vzc2lvbnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/User/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/User/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/User/UserEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxVc2VyRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/FitappAdminWeb.Net7/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-043bh9qo56

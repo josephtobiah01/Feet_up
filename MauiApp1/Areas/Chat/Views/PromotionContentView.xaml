@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Chat.Views.PromotionContentView" Loaded="ContentView_Loaded" Unloaded="ContentView_Unloaded" >
+
+    <RefreshView x:Name="PromotionalRefreshView" IsRefreshing="False">
+        <Grid Padding="8">    
+    <CollectionView x:Name="PromotionalCollectionView" SelectionMode="Single" SelectionChanged="PromotionalCollectionView_SelectionChanged" ItemSizingStrategy="MeasureAllItems">
+            <CollectionView.ItemsLayout>
+                <LinearItemsLayout Orientation="Vertical" ItemSpacing="12"/>
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid WidthRequest="343">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="8" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="8" />
+                        </Grid.ColumnDefinitions>
+
+
+                            <Image Grid.Row="0" Grid.Column="1" MinimumHeightRequest="140" MinimumWidthRequest="343"  MaximumWidthRequest="343" MaximumHeightRequest="343" HeightRequest="{Binding ImageHeight}" WidthRequest="{Binding ImageWidth}" HorizontalOptions="Fill" Margin="8,16,0,0" Aspect="AspectFill"> 
+                            <Image.Source>
+                                <UriImageSource Uri="{Binding ImageUrl}"
+                        CacheValidity="00:01:00:00" />
+                            </Image.Source>
+                            <Image.Triggers>
+                                <DataTrigger TargetType="Image" Binding="{Binding HasImageUrl}" Value="true">
+                                    <Setter Property="IsVisible" Value="true" />
+                                </DataTrigger>
+                                <DataTrigger TargetType="Image" Binding="{Binding HasImageUrl}" Value="false">
+                                    <Setter Property="IsVisible" Value="false" />
+                                </DataTrigger>
+                            </Image.Triggers>
+                        </Image>
+              
+                        <Grid Grid.Row="1" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto" />
+                                <RowDefinition Height="auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto" />
+                                 <ColumnDefinition Width="*" />
+
+                                <ColumnDefinition Width="24" />
+                                <ColumnDefinition Width="16" />
+                            </Grid.ColumnDefinitions>
+
+                                <Image Grid.Row="0"  Margin="5,12,5,5"   Grid.Column="0" Source="{Binding Icon}" WidthRequest="32" HeightRequest="32" VerticalOptions="StartAndExpand">
+                                    <Image.Triggers>
+                                        <DataTrigger TargetType="Image" Binding="{Binding HasIconUrl}" Value="true">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Image" Binding="{Binding HasIconUrl}" Value="false">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
+                                    </Image.Triggers>
+                                </Image>
+
+                                <StackLayout Grid.Row="0" Grid.Column="1" Margin="0,8,0,0" Padding="0">
+                                    <Label Text="{Binding Title}" Margin="5,0,5,0"  Padding="5,5,5,5" FontFamily="Montserrat" FontSize="16" LineBreakMode="WordWrap"/>
+                                    <Label  Text="{Binding Message}" Margin="5,8,5,5"  Padding="5,5,5,5" FontFamily="Montserrat" FontSize="12" LineBreakMode="WordWrap"/>
+                                   <Rectangle  Margin="15,15,15,15" WidthRequest="300" HeightRequest="2" Fill="#EEF0F2" />
+                                </StackLayout>
+
+
+                                <Label Grid.Row="0" Grid.Column="2" Text=">" FontSize="24" HorizontalTextAlignment="Start" Padding="4,0,0,36" VerticalTextAlignment="Start" Margin="4,12,0,0" BackgroundColor="Transparent">
+                                    <Label.Triggers>
+                                        <DataTrigger TargetType="Label" Binding="{Binding HasLinkUrl}" Value="true">
+                                            <Setter Property="IsVisible" Value="true" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Label" Binding="{Binding HasLinkUrl}" Value="false">
+                                            <Setter Property="IsVisible" Value="false" />
+                                        </DataTrigger>
+                                    </Label.Triggers>
+                                </Label>
+
+                            </Grid>
+                     
+                        </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+    </RefreshView>
+</ContentView>

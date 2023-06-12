@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiApp1"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}" NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False">
+
+
+    <!--change status bar color (can be set per page)-->
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor ="#006272" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <BlazorWebView x:Name="blazorWebView" Grid.Row="0" HostPage="wwwroot/index.html">
+            <BlazorWebView.RootComponents>
+                <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+
+        <StackLayout  x:Name="BlackStackLayout" Grid.Row="0" Background="#191919" Opacity="0.4" IsVisible="false"/>
+        <ActivityIndicator x:Name="LoadingActivityIndicator " Grid.Row="0" IsRunning="true" Color="White" IsVisible="false  " WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"/>
+    </Grid>
+
+
+</ContentPage>

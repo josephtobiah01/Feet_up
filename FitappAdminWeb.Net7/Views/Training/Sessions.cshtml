@@ -1,0 +1,315 @@
+﻿@model FitappAdminWeb.Net7.Models.TrainingSessionViewModel
+@{
+    string dateformat = "yyyy-MM-dd";
+    //string dailyPickerMin = Model.CurrentProgram.StartDate.HasValue ? Model.CurrentProgram.StartDate.Value.ToString(dateformat) : String.Empty;
+    //string dailyPickerMax = Model.CurrentProgram.EndDate.HasValue ? Model.CurrentProgram.EndDate.Value.ToString(dateformat) : String.Empty;
+    string dailyPickerDefault = Model.SelectedDate.HasValue ? Model.SelectedDate.Value.ToString(dateformat) : "";
+    string username = Model.IdentityUser != null ? $"{Model.IdentityUser.UserName} (ID: {Model.IdentityUser.Id})" : $"User ID {Model.CurrentUser.Id}";
+}
+
+<h3>Training Sessions</h3>
+<div class="text-muted mb-3">@username</div>
+
+<form class="mb-3" method="get" asp-action="Sessions" asp-route-id="@Model.CurrentUser.Id">
+    <div class="form-group mb-3">
+        <label for="program_select">Select a Program</label>
+        <select name="pid" id="program_select" class="form-select" asp-items="Model.List_Programs"></select>
+        <a class="btn btn-link" asp-action="Index" asp-route-id="@Model.CurrentUser.Id">See All Programs</a>
+    </div>
+    <div class="form-group">
+        <label for="daily_select">Pick a day</label>
+        <div class="input-group">
+            <input type="date" class="form-control" id="dailySelect" name="date" aria-describedby="dailyHelp" value="@dailyPickerDefault" />
+            <button type="submit" class="btn btn-primary">Check</button>
+        </div>
+        <small id="dailyHelp" class="form-text text-muted">Picking a day will filter the session results to that day</small>
+    </div>
+</form>
+<div class="form-group mb-3">
+    @if (Model.SelectedDate.HasValue)
+    {
+        <a class="btn btn-primary" asp-action="EditSession" asp-route-new="true" asp-route-pid="@Model.SelectedProgramId" asp-route-date="@Model.SelectedDate.Value.ToString(dateformat)">Add New Training Session</a>
+    }
+    else
+    {
+        <a class="btn btn-primary" asp-action="EditSession" asp-route-new="true" asp-route-pid="@Model.SelectedProgramId">Add New Training Session</a>
+    }
+</div>
+
+@if (Model.SelectedDate.HasValue && Model.TrainingSessions.Count == 0)
+{
+    <h4>Training Sessions for @Model.SelectedDate.GetValueOrDefault().ToString("R")</h4>
+    <p class="text-muted align-content-center">No Existing Training Sessions. You can add one <a asp-action="EditSession" asp-route-pid="@Model.SelectedProgramId" asp-route-new="true" asp-route-date="@Model.SelectedDate.Value.ToString(dateformat)">here</a> or clicking the button above.</p>
+}
+else if (Model.TrainingSessions.Count > 0)
+{
+    <div id="trainingSessionSummary">
+        @if (Model.SelectedDate.HasValue)
+        {
+            <h4>Training Sessions for @Model.SelectedDate.GetValueOrDefault().ToString("R")</h4>
+        }
+        else
+        {
+            <h4>All Training Sessions for @Model.CurrentProgram.Name</h4>
+        }
+
+        <div id="tsessionList" class="list-group altrow-color">
+            @foreach (var session in Model.TrainingSessions)
+            {
+                <div class="list-group-item">
+                    <div class="row justify-content-between mb-2">
+                        <h5 class="col-md-6">
+                            <a data-bs-toggle="collapse" href="#sess_tbl_@session.Id" aria-expanded="false" aria-controls="sess_tbl_@session.Id role="button" id="" class="fw-bold">@session.Name</a>
+                            <span class="text-muted">ID: @session.Id</span>
+                            @if (session.IsCustomerAddedTrainingSession)
+                            {
+                                <span class="badge bg-secondary">User Added</span>
+                            }
+                            @if (session.IsSkipped)
+                            {
+                                <span class="badge bg-warning">Skipped</span>
+                            }
+                        </h5>
+                        @if (session.EdsExercise != null && session.EdsExercise.Count() > 0)
+                        {
+                            float maxSet = session.EdsExercise.Count();
+                            float doneSet = session.EdsExercise.Count(r => r.IsComplete);
+                            float skipSet = session.EdsExercise.Count(r => r.IsSkipped);
+                            float notDoneSet = session.EdsExercise.Count(r => !r.IsComplete && !r.IsSkipped);
+                            float progress = (doneSet / maxSet) * 100;
+                            float skip = (skipSet / maxSet) * 100;
+                            float notdone = (notDoneSet / maxSet) * 100;
+
+                            <div class="col-md-6">
+                                <div class="progress">
+                                    <div class="progress-bar bg-success" role="progressbar" style="width: @(progress)%" aria-valuenow="@progress" aria-valuemin="0" aria-valuemax="100">
+                                        @doneSet Exercises Done
+                                    </div>
+                                    <div class="progress-bar bg-danger" role="progressbar" style="width: @(skip)%" aria-valuenow="@skip" aria-valuemin="0" aria-valuemax="100">
+                                        @skipSet Exercises Skipped
+                                    </div>
+                                    <div class="progress-bar bg-secondary" role="progressbar" style="width: @(notdone)%" aria-valuenow="@notdone" aria-valuemin="0" aria-valuemax="100">
+                                        @notDoneSet Exercises Pending
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <div>
+                            <span class="fw-bold">Description:</span>
+                            <span class="text-muted">@session.Description</span>
+                        </div>
+                        <div>
+                            <span class="fw-bold">Start Date:</span>
+                            <span class="text-muted">@session.StartDateTime.GetValueOrDefault().ToString("R")</span>
+                        </div>
+                        <div>
+                            <span class="fw-bold">End Date:</span>
+                            <span class="text-muted">@session.EndDateTime.GetValueOrDefault().ToString("R")</span>
+                        </div>
+                        @if (!String.IsNullOrEmpty(session.CustomerFedback))
+                        {
+                            <div>
+                                <span class="fw-bold">Customer Feedback:</span>
+                                <span class="text-muted">@session.CustomerFedback</span>
+                            </div>
+                        }
+                        @if (session.ReadonForSkipping.HasValue)
+                        {
+                            <div>
+                                <span class="fw-bold">Reason For Skipping:</span>
+                                <span class="text-muted">@session.ReadonForSkippingNavigation.Name</span>
+                            </div>
+                        }
+                        @if (session.ReasonForReschedule.HasValue)
+                        {
+                            <div>
+                                <span class="fw-bold">Reason For Reschedule:</span>
+                                <span class="text-muted">@session.ReasonForRescheduleNavigation.Name</span>
+                            </div>
+                        }
+                    </div>
+                    @if (session.EdsExercise != null && session.EdsExercise.Count > 0)
+                    {
+                        <div id="sess_tbl_@session.Id" class="collapse list-group mb-2">
+                            @foreach (var exercise in session.EdsExercise)
+                            {
+                                <div class="list-group-item">
+                                    <div class="row justify-content-between">
+                                        <h5 class="col-md-6 mb-3">
+                                            <a role="button" data-bs-toggle="collapse" href="#ex_tbl_@exercise.Id">@exercise.FkExerciseType.Name</a>
+                                            <span class="text-muted">ID: @exercise.Id</span>
+                                            @if (exercise.IsComplete)
+                                            {
+                                                <span class="badge bg-success">Done</span>
+                                            }
+                                            @if (exercise.IsSkipped)
+                                            {
+                                                <span class="badge bg-warning">Skipped</span>
+                                            }
+                                            @if (exercise.IsCustomerAddedExercise)
+                                            {
+                                                <span class="badge bg-secondary">User added</span>
+                                            }
+                                        </h5>
+                                        @if (exercise.EdsSet != null && exercise.EdsSet.Count() > 0)
+                                        {
+                                            float s_maxSet = exercise.EdsSet.Count();
+                                            float s_doneSet = exercise.EdsSet.Count(r => r.IsComplete);
+                                            float s_skipSet = exercise.EdsSet.Count(r => r.IsSkipped);
+                                            float s_notDoneSet = exercise.EdsSet.Count(r => !r.IsComplete && !r.IsSkipped);
+
+                                            <div class="col-md-6 text-md-end">
+                                                <span class="text-success">
+                                                    <span class="fw-bold">@s_doneSet</span> Sets Done
+                                                </span>
+                                                <span class="text-danger">
+                                                    <span class="fw-bold">@s_skipSet</span> Sets Skipped
+                                                </span>
+                                                <span class="text-muted">
+                                                    <span class="fw-bold">@s_notDoneSet</span> Sets Pending
+                                                </span>
+                                            </div>
+                                        }
+                                    </div>
+                                    @if (exercise.EdsSet != null && exercise.EdsSet.Count > 0)
+                                    {
+                                        <div id="ex_tbl_@exercise.Id" class="collapse">
+                                            <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Set Number</th>
+                                                    <th>Target</th>
+                                                    <th>Actual</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var set in exercise.EdsSet)
+                                                {
+                                                    string target_metricText = String.Empty;
+                                                    string actual_metricText = String.Empty;
+                                                    @foreach (var metric in set.EdsSetMetrics)
+                                                    {
+                                                        target_metricText += $" {metric.TargetCustomMetric} {metric.FkMetricsType.Name} x";
+                                                        if (metric.ActualCustomMetric.HasValue)
+                                                        {
+                                                            actual_metricText += $" {metric.TargetCustomMetric} {metric.FkMetricsType.Name} x";
+                                                        }
+                                                    }
+                                                    <tr>
+                                                        <td>@set.SetSequenceNumber</td>
+                                                        <td>
+                                                            @if (target_metricText != String.Empty)
+                                                            {
+                                                                <span>@target_metricText.Substring(0, target_metricText.Length - 1)</span>
+                                                            }                                                          
+                                                        </td>
+                                                        <td>
+                                                            @if (actual_metricText != String.Empty)
+                                                            {
+                                                                <span>@actual_metricText.Substring(0, actual_metricText.Length - 1)</span>
+                                                            }
+                                                        </td>
+                                                        <td>
+                                                            @if (set.IsComplete)
+                                                            {
+                                                                <span class="badge bg-success">Done</span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="badge bg-secondary">Not Done</span>
+                                                            }
+                                                            @if (set.IsSkipped)
+                                                            {
+                                                                <span class="badge bg-warning">Skipped</span>
+                                                            }
+                                                            @if (set.IsCustomerAddedSet)
+                                                            {
+                                                                <span class="badge bg-secondary">User-added</span>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">No Sets Available</span>
+                                    }
+                                </div>
+                            }                          
+                        </div>
+                    }
+                    <div class="d-flex justify-content-end">
+                        <a class="btn btn-outline-primary d-flex me-2" asp-action="EditSession" asp-route-id="@session.Id" asp-route-copy="true" asp-route-uid="@Model.CurrentUser.Id">
+                            <i data-feather="copy"></i><span class="ms-2">Copy</span>
+                        </a>
+                        <a class="btn btn-outline-primary d-flex me-2" asp-action="EditSession" asp-route-id="@session.Id" asp-route-uid="@Model.CurrentUser.Id">
+                            <i data-feather="edit"></i><span class="ms-2">Edit</span>
+                        </a>
+                        <button class="btn btn-danger d-flex" action="delete" data-id="@session.Id">
+                            <i data-feather="trash-2"></i><span class="ms-2">Delete</span>
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p class="text-muted align-content-center">Please select a date above to view the training sessions for that day or you can add a new one by clicking the button above.</p>
+}
+
+@section Scripts {
+    <script>
+        (function() {
+            var delete_url = "/api/data/deletetrainingsession";
+
+            function callDelete(e) {
+                if (window.confirm("Are you sure you want to delete this session? This cannot be undone.")) {
+                    var tgt = e.currentTarget;
+                    if (tgt == null) {
+                        tgt = e.target;
+                    }
+
+                    var idToDelete = tgt.getAttribute("data-id");
+                    fetch(delete_url, {
+                        method: "POST",
+                        cache: "no-cache",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(idToDelete)
+                    })
+                    .then((response) => {
+                        if (!response.ok) {
+                            throw new Error("Delete Training Session Failed.");
+                        }
+                        return response.json();
+                     })
+                    .then((data) => {
+                        if (data == true) {
+                            document.location.reload();
+                        }
+                        else {
+                            throw new Error("Delete Training Session Failed.");
+                        }
+                    })
+                    .catch((error) => {
+                        window.FitApp.showToast("Error", "Failed to delete session", "danger");
+                    });
+                }
+            }
+
+            var deleteButtons = document.querySelectorAll("button[action='delete']");
+            deleteButtons.forEach((button) => {
+                button.addEventListener("click", callDelete);
+            });
+
+
+        })();
+    </script>
+}

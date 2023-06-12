@@ -1,0 +1,134 @@
+﻿
+/* Style the Image Used to Trigger the Modal */
+.imgmodal #imgView {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    #imgView:hover {
+        opacity: 0.7;
+    }
+
+/* The Modal (background) */
+.imgmodal.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+    .imgmodal.modal img {
+        transform-origin: 50% 50%;
+        transition: transform 1s, filter .5s ease-out;
+        cursor: zoom-in;
+    }
+
+/* Zoon In/Out via mouse click*/
+.imgmodal input[type=checkbox] {
+    display: none;
+}
+
+    .imgmodal input[type=checkbox]:checked ~ label > img {
+        transform: scale(3);
+        cursor: zoom-out;
+    }
+
+/* Modal Content (Image) */
+.imgmodal .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    overflow: hidden;
+}
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+.imgmodal #caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.imgmodal .modal-content, .imgmodal #caption, .imgmodal .rotateClockwise, .imgmodal .rotateAntiClockwise {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+    from {
+        transform: scale(0)
+    }
+
+    to {
+        transform: scale(1)
+    }
+}
+
+/* The Close Button */
+.imgmodal .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+    .imgmodal .close:hover,
+    .imgmodal .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+/* The Rotate Button */
+.imgmodal .rotateClockwise {
+    position: absolute;
+    top: 6%;
+    right: 45%;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+    .imgmodal .rotateClockwise:hover,
+    .imgmodal .rotateClockwise:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.imgmodal .rotateAntiClockwise {
+    position: absolute;
+    top: 6%;
+    right: 55%;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+    .imgmodal .rotateAntiClockwise:hover,
+    .imgmodal .rotateAntiClockwise:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+    .imgmodal .modal-content {
+        width: 100%;
+    }
+}

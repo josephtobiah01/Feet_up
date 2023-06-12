@@ -1,0 +1,101 @@
+﻿<div class="modal" tabindex="-1" id="dishbrowser_modal" data-bs-backdrop="static">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">User Dish History</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-warning" data-bind="visible: DishList().length == 0">
+                    User does not have any dishes yet in history
+                </div>
+                <p>You can browse through this user's previous transcribed dishes here. You can also copy a previous dish's nutritional value to the current dish being transcribed.</p>
+                <div class="mb-3">
+                    <label class="form-label" for="dishbrowser_list">Dish List</label>
+                    <select class="form-select" id="dishbrowser_list" data-bind="value: SelectedDishId, options: DishList, optionsText: 'text', optionsValue: 'value', event: { 'change': OnChangeSelected }, enable: DishList().length > 0">
+                        <option>Please select..</option>
+                    </select>
+                </div>
+                <div class="row" data-bind="with: SelectedDish">
+                    <div class="col-md-6 mb-3">
+                        <img class="w-100" data-bind="attr: {src: uploadPhotoReference, alt: name}" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <table class="table table-striped border">
+                            <tbody>
+                                <tr>
+                                    <th>Dish Name</th>
+                                    <td data-bind="text: name"></td>
+                                </tr>
+                                <tr>
+                                    <th>Dish ID</th>
+                                    <td data-bind="text: id">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Dish Type</th>
+                                    <td data-bind="text: fkDishType.name">Food</td>
+                                </tr>
+                                <tr>
+                                    <th>Uploaded On</th>
+                                    <td data-bind="text: new Date(creationTimestamp).toLocaleString()">@DateTime.Now.ToLongDateString()</td>
+                                </tr>
+                                <tr>
+                                    <th>Completed On</th>
+                                    <td data-bind="text: new Date(completionTimestamp).toLocaleString()">@DateTime.Now.ToLongDateString()</td>
+                                </tr>
+                                <tr>
+                                    <th>User Remarks</th>
+                                    <td data-bind="text: remarks ?? 'None'"></td>
+                                </tr>
+                                <tr>
+                                    <th>Transcriber Remarks</th>
+                                    <td data-bind="text: transcriberRemarks ?? 'None'"></td>
+                                </tr>
+                                <tr>
+                                    <th>Calories (kcal)</th>
+                                    <td data-bind="text: calorieActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Protein (g)</th>
+                                    <td data-bind="text: proteinActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Carbohydrates (g)</th>
+                                    <td data-bind="text: crabsActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Sugars (g)</th>
+                                    <td data-bind="text: sugarActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Fat (g)</th>
+                                    <td data-bind="text: fatActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Unsaturated Fat (g)</th>
+                                    <td data-bind="text: unsaturatedFatActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Saturated Fat (g)</th>
+                                    <td data-bind="text: saturatedFatGramsActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Fiber (g)</th>
+                                    <td data-bind="text: fiberGramsActual">0</td>
+                                </tr>
+                                <tr>
+                                    <th>Alcohol (g)</th>
+                                    <td data-bind="text: alcoholGramsActual">0</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>                 
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bind="click: SubmitModal">Copy nutritional data</button>
+            </div>
+        </div>
+    </div>
+</div>

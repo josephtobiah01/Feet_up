@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             ios:Page.UseSafeArea="False"
+             x:Class="MauiApp1.Areas.BarcodeScanning.Views.BarcodeScanningResultContentPage">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".1*"></RowDefinition>
+                <RowDefinition Height=".9*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <!-- navigation bar -->
+            <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--<ImageButton Grid.Column="0" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="32" HeightRequest="24" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="4"/>-->
+                <ImageButton Grid.Column="0" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+                <Label Grid.Column="1" Text="Barcode Scanner"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+            </Grid>
+
+
+            <!--content -->
+            <Grid Grid.Row="1" BackgroundColor="#006272">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height=".4*"></RowDefinition>
+                    <RowDefinition Height=".6*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Frame HasShadow="False" BackgroundColor="#005867" Margin="24" CornerRadius="16">
+                    <Label Grid.Row="0" HorizontalOptions="FillAndExpand" VerticalOptions="Center" TextColor="White" FontFamily="Montserrat" Padding="16" Text="If the scanner does not work, please ensure that the barcode is clearly in view and at the center of the scanner."></Label>
+                </Frame>
+
+                <Border Grid.Row="1" StrokeShape="RoundRectangle 16,16,0,0" Stroke="#006272" StrokeThickness="0">
+                    <Grid Background="white" Padding="20">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="15"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="*"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <!-- input -->
+                        <Border 
+                            Grid.Row="1" Grid.ColumnSpan="3" StrokeShape="RoundRectangle 16,16,16,16" StrokeThickness="1" Stroke="gray" WidthRequest="250" HeightRequest="75" BackgroundColor="White">
+                            <Entry
+                            x:Name="myChatMessage"
+                            Keyboard="Chat"
+                            Placeholder="Enter Barcode Number"
+                            BackgroundColor="white"
+                            TextColor="black"
+                            HorizontalTextAlignment="Center"
+                            PlaceholderColor="Gray"
+                            MinimumWidthRequest="200"
+                            FontSize="14"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center" />
+                        </Border>
+
+
+
+                        <!--button -->
+
+                        <Border  Grid.Row="3" Grid.Column="1" StrokeShape="RoundRectangle 15,15,15,15" StrokeThickness="1" Stroke="#006272" BackgroundColor="white">
+                            <Grid  HorizontalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Button 
+                                    CornerRadius="20"
+                                        Text="Submit" 
+                                        FontSize="16"
+                                        TextColor="#006272"
+                                        Grid.Column="1"
+                                        Clicked="SendButton_Clicked"
+                                        HeightRequest="48"
+                                        Margin="-12, 0,0,0"
+                                        BackgroundColor="transparent"
+                                        Padding="5"
+                                        ></Button>
+                                <ImageButton
+                                    CornerRadius="18"
+                                    Grid.Column="0"
+                                    x:Name="sendButton"
+                                    BackgroundColor="White"
+                                    Source="paperplanecolored.png"
+                                    BorderWidth="0"
+                                    VerticalOptions="Center"
+                                    HeightRequest="48"
+                                    WidthRequest="40"
+                                    Padding="16, 0, 0, 0"
+                                    Clicked="SendButton_Clicked" >
+                                </ImageButton>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border >
+
+            </Grid>
+        </Grid>
+
+    </ContentPage.Content>
+</ContentPage>

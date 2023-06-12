@@ -1,0 +1,322 @@
+﻿@page "/overview";
+@using ParentMiddleWare.Models;
+
+<!-- navigation bar area-->
+<div class="navigation-bar-background">
+    <button @onclick="ClosePage" class="navigation-bar-button"><img class="navigation-bar-button-icon" src="resources/public/icons/arrows/leftarrow-narrow.svg" /></button>
+    @if (HideOverviewContents)
+    {
+        <label class="navigation-bar-text">Summary</label>
+    }
+    else
+    {
+        <label class="navigation-bar-text">Overview</label>
+    }
+</div>
+<!--contents-->
+<div class="content-wrapper">
+    @if (HideOverviewContents)
+    {
+        if (DishesDisplayed == null || DishesDisplayed.Count == 0)
+        {
+            //empty
+        }
+        else{
+            @foreach (NutrientDish dish in DishesDisplayed)
+        {
+            <div class="recipes-wrapper">
+                @if (@dish.Recipe.NutrientInformation.Calories == null)
+                {
+
+                    <div class="recipe-item-big">
+                        <img class="recipe-item-icon-big" src=@dish.Recipe.DisplayImageUrl />
+                        <div class="recipe-item-contents">
+                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                            <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
+
+                            <div class="recipe-item-servings-grid">
+                                <label class="recipe-item-servings-grid-column-head"> Servings: @dish.NumberOfServings</label>
+                                @if (@dish.Notes == null || @dish.Notes == "")
+                                {
+                                    <label class="recipe-item-servings-grid-value">Notes: N/A</label>
+                                }
+                                else
+                                {
+                                    <label class="recipe-item-servings-grid-value">Notes: @dish.Notes</label>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                }
+                else
+                {
+
+                    <div class="recipe-item">
+                        <img class="recipe-item-icon" src=@dish.Recipe.DisplayImageUrl />
+                        <div class="recipe-item-contents">
+                            <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
+                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                            <div class="recipe-item-nutrients-grid">
+                                <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Carbohydrates g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fiber g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Protein g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fat g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Calories</label>
+                            </div>
+                            <div class="recipe-item-servings-grid">
+                                <label class="recipe-item-servings-grid-column-head"> Servings</label>
+                                <label class="recipe-item-servings-grid-value">@dish.NumberOfServings</label>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+            </div>
+        }
+        }
+    }
+    else
+    {
+        @foreach (NutrientDish dish in feedItem.NutrientsFeedItem.Meal.DishesEaten )
+    {
+        <div class="recipes-wrapper">
+                @if (@dish.Recipe!=null && @dish.Recipe.NutrientInformation != null && @dish.Recipe.NutrientInformation.Calories!= null)
+                {
+                    <div class="recipe-item">
+                        <img class="recipe-item-icon" src=@dish.Recipe.DisplayImageUrl />
+                        <div class="recipe-item-contents">
+                            <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
+                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                            <div class="recipe-item-nutrients-grid">
+                                <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
+                                <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Carbohydrates g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fiber g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Protein g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fat g</label>
+                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Calories</label>
+                            </div>
+                            <div class="recipe-item-servings-grid">
+                                <label class="recipe-item-servings-grid-column-head"> Servings</label>
+                                <label class="recipe-item-servings-grid-value">@dish.NumberOfServings</label>
+                            </div>
+                        </div>
+
+                    </div>
+                }
+                else
+                {
+                    <div class="recipe-item-big">
+                        <img class="recipe-item-icon-big" src=@dish.Recipe.DisplayImageUrl />
+                        <div class="recipe-item-contents">
+                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                            <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
+
+                            <div class="recipe-item-servings-grid">
+                                <label class="recipe-item-servings-grid-column-head"> Servings: @dish.NumberOfServings</label>
+                                @if (@dish.Notes == null || @dish.Notes == "")
+                                {
+                                    <label class="recipe-item-servings-grid-value">Notes: N/A</label>
+                                }
+                                else
+                                {
+                                    <label class="recipe-item-servings-grid-value">Notes: @dish.Notes</label>
+                                }
+                            </div>
+
+                        </div>
+                    </div>
+                }
+        </div>
+    }
+    }
+    @if (!HideOverviewContents)
+    {
+        <button class="add-more-button" @onclick="async ()=> await OpenNutrientPopup()">Add More</button>
+    }
+</div>
+<div class="footer">
+    @if (HideOverviewContents)
+    {
+        <button @onclick=GoToHome class="footer-go-back-home-button">Go back to home</button>
+    }
+    else
+    {
+        <button @onclick="GoToHome" class="footer-discard-button">Discard</button>
+        <button @onclick="async ()=> await SubmitMeal()" class="footer-add-button">Submit</button>
+    }
+</div>
+
+<!--popup-->
+<!--dark background overlay-->
+<div class="add-nutrient-popup-wrapper" style="--display-nutrient-popup-variable: @DisplayNutrientPopup">
+    <div class="add-nutrient-popup-background-dark-overlay"> </div>
+    <div class="add-nutrient-popup-background">
+        <div class="add-nutrient-popup-body">
+            <div>
+                <label class="add-nutrient-popup-header-title">Add More</label>
+                <button class="add-nutrient-popup-header-close-button" @onclick="CloseNutrientPopup"> <img class="add-popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
+
+            </div>
+            <div class="add-nutrient-popup-button-group">
+                <button class="add-nutrient-popup-camera-button" @onclick="async ()=> await TakePhoto()"><img class="add-nutrient-popup-camera-icon" src="resources/public/icons/multimedia/camera.svg" />Take a pic <img class="add-nutrient-popup-camera-background-icon" src="resources/public/icons/multimedia/camera.svg" /></button>
+                <button class="add-nutrient-popup-upload-button" @onclick="async ()=> await UploadPhoto()"><img class="add-nutrient-popup-upload-icon" src="resources/public/icons/arrows/upload.svg" />Upload from Gallery <img class="add-nutrient-popup-upload-background-icon" src="resources/public/icons/arrows/upload.svg" /></button>
+                <button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage( 1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>
+            </div>
+            @if (NutrientPopupRecipesDisplayed != null)
+            {
+                <!--favorites-->
+                <div class="add-nutrient-popup-recipe-list">
+                    <label class="add-nutrient-popup-header-label">Favourite</label>
+                    <button class="add-nutrient-popup-see-all-button" @onclick="()=>GoToSearchRecipesPage(2)">See All</button>
+                    @if (NutrientPopupRecipesDisplayed.Favorite.Count == 0)
+                    {
+                        <div class="add-nutrient-popup-recipes-wrapper">
+                            <div class="add-nutrient-popup-recipe-item">
+                                <div class="add-nutrient-popup-recipe-item-name-text">Empty!</div>
+                            </div>
+                        </div>
+                    }
+                    @foreach (NutrientRecipeModel item in NutrientPopupRecipesDisplayed.Favorite)
+                    {
+                        <div class="add-nutrient-popup-recipes-wrapper">
+                            <div class="add-nutrient-popup-recipe-item" @onclick="async ()=> await OpenAddDishPopup(null,item)">
+                                <img class="add-nutrient-popup-recipe-item-icon" src="@item.DisplayImageUrl" />
+                                <div class="add-nutrient-popup-recipe-item-name-text">@item.RecipeName</div>
+                                <button class="add-nutrient-popup-recipe-item-right-button" > > </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <!--history-->
+                <div>
+                    <label class="add-nutrient-popup-header-label">History</label>
+                    <button class="add-nutrient-popup-see-all-button" @onclick="()=>GoToSearchRecipesPage(3)"> See All</button>
+                    @if (NutrientPopupRecipesDisplayed.History.Count == 0)
+                    {
+                        <div class="add-nutrient-popup-recipes-wrapper">
+                            <div class="add-nutrient-popup-recipe-item">
+                                <div class="add-nutrient-popup-recipe-item-name-text">Empty!</div>
+                            </div>
+                        </div>
+                    }
+                    @foreach (NutrientRecipeModel item in NutrientPopupRecipesDisplayed.History)
+                    {
+                        <div class="add-nutrient-popup-recipes-wrapper">
+                            <div class="add-nutrient-popup-recipe-item" @onclick="async ()=> await OpenAddDishPopup(null,item)">
+                                <img class="add-nutrient-popup-recipe-item-icon" src="@item.DisplayImageUrl" />
+                                <div class="add-nutrient-popup-recipe-item-name-text">@item.RecipeName</div>
+                                <button class="add-nutrient-popup-recipe-item-right-button"> > </button>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+
+            }
+
+        </div>
+       
+    </div>
+</div>
+
+<!-- add dish popup-->
+<div class="add-dish-popup-wrapper" style="--display-add-dish-popup-variable: @DisplayAddDishPopup">
+    <div class="add-dish-popup-background-dark-overlay"> </div>
+    <div class="add-dish-popup-background">
+        <div class="add-dish-popup-body">
+            <div>
+                <label class="add-dish-popup-header-title">Add Nutrient</label>
+            </div>
+            <div class="add-dish-popup-exercise-item ">
+                @if (NutrientIsCustomAddedDish)
+                {
+
+                    <div class="add-dish-popup-add-textbox-wrapper">
+                        <img class="add-dish-popup-add-item-icon" src="@NutrientCustomDishImageUrl" />
+                        <input class="add-dish-popup-add-textbox" type="text" id="NutrientAddedTextBox" placeholder="Dish Name" @bind-value="@NutrientDishName">
+                    </div>
+                }
+                else
+                {
+
+                    <label class="add-dish-popup-exercise-item-name-label">@NutrientDishName</label>
+                }
+                @if (NutrientIsFavorite)
+                {
+                    <img class="add-dish-popup-favorite-icon red-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                }
+                else
+                {
+                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                }
+            </div>
+            <hr class="add-dish-popup-line-spacer" />
+            <div class="add-dish-popup-number-of-servings-card">
+                <label id="add-dish-popup-number-of-servings-label">Number of servings</label>
+                <div class="add-dish-popup-number-align-right">
+                    <button class="add-dish-popup-subtract-button" @onclick="SubtractServing"><img class="add-dish-popup-addorsubtract-button-icon" src="resources/public/icons/userInterface/remove.svg" /></button>
+                    <label id="add-dish-popup-number">@NutrientServings</label>
+                    <button class="add-dish-popup-add-button" @onclick="AddServing"><img class="add-dish-popup-addorsubtract-button-icon" src="resources/public/icons/userInterface/plus.svg" /></button>
+                </div>
+            </div>
+            <div class="add-dish-popup-how-much-you-ate-card">
+                <label id="add-dish-popup-how-much-you-ate-label">How much you ate</label>
+                <div class="radio">
+                    <input type="radio" name="radAnswer" class="add-dish-popup-percentage-button" @onclick="TwentyPercentPortion" label="20%">
+                    <input type="radio" name="radAnswer" class="add-dish-popup-percentage-button" @onclick="FourtyPercentPortion" label="40%">
+                    <input type="radio" name="radAnswer" class="add-dish-popup-percentage-button" @onclick="SixtyPercentPortion" label="60%">
+                    <input type="radio" name="radAnswer" class="add-dish-popup-percentage-button" @onclick="EightyPercentPortion" label="80%">
+                    <input type="radio" name="radAnswer" class="add-dish-popup-percentage-button" id="NutrientDefaultRadioButton" @onclick="async ()=> await OneHundredPercentPortion()" checked="checked" label="100%">
+                </div>
+            </div>
+            <textarea placeholder="Any Notes" class="add-dish-popup-notes" @bind="@NutrientNotes"> </textarea>
+        </div>
+        <div class="add-dish-popup-footer">
+            <button @onclick="async ()=> await CloseAddDishPopup()" class="add-dish-popup-footer-discard-button">Discard</button>
+            @if (NutrientIsCustomAddedDish)
+            {
+
+                <button class="add-dish-popup-footer-add-button" @onclick="async ()=> await AddDish(true,null)">Add</button>
+            }
+            else
+            {
+                <button class="add-dish-popup-footer-add-button" @onclick="async ()=> await AddDish(false ,NutrientRecipe)">Add</button>
+            }
+        </div>
+
+    </div>
+</div>
+
+<!-- loader -->
+<div class="loader-popup-wrapper" style="--display-loader-popup-variable: @DisplayLoaderPopup">
+    <div class="loader-popup-background-dark-overlay">
+        <div class="loader"></div>
+    </div>
+</div>
+
+<!--favorite notification popup-->
+<div class="recipe-favorite-popup-wrapper" style="--display-favorite-popup-variable: @DisplayFavoritePopup">
+    <div class="recipe-favorite-popup-background-dark-overlay">
+        <div class="recipe-favorite-popup-body">
+            <label class="recipe-favorite-popup-content-label"> This dish will be added to your favorites once our nutritionist has completed the food transcription. This process can take up to 24 hours.</label>
+
+            <div class="recipe-favorite-popup-show-again-toggle">
+                <input type="checkbox" id="showagain" name="showagain" @bind="ShowAgainCheckedValue" value="show">
+                <label for="showagain">never show this message again</label>
+            </div>
+            <div class="recipe-favorite-popup-okay-button-container">
+                <button class="recipe-favorite-popup-okay-button" @onclick="CloseFavoritePopup">OK</button>
+            </div>
+        </div>
+    </div>
+</div>

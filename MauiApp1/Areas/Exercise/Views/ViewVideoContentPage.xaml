@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Exercise.Views.ViewVideoContentPage"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             Title="ViewVideoContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded" NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor ="#006272" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+    <Grid CompressedLayout.IsHeadless="True" x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height=".1*"/>
+            <RowDefinition Height=".9*"/>
+        </Grid.RowDefinitions>
+        
+        <!--navbar-->
+        <Grid x:Name="TrainingSessionContentGrid" Grid.Row="0" BackgroundColor="#006272" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="63" />
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="102"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--<ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="32" HeightRequest="24" Clicked="CloseButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="4"/>-->
+                <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+                <Label Grid.Column="2" Text="Video"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Bold" TextColor="#FFFFFF"/>
+
+            </Grid>
+        </Grid>
+
+
+        <Grid Grid.Row="1" BackgroundColor="#006272" Margin="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".4*"></RowDefinition>
+                <RowDefinition Height=".6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <toolkit:MediaElement x:Name="MediaElement" Grid.Row="0"  ShouldShowPlaybackControls="True" ShouldKeepScreenOn="True"  ShouldLoopPlayback="True"  ShouldAutoPlay="False" MinimumWidthRequest="343" HorizontalOptions="Fill" Aspect="Center" ZIndex="4"/>
+
+            <Border Grid.Row="1" Stroke="#FAFAFA" StrokeShape="RoundRectangle 20,20,0,0" BackgroundColor="#FAFAFA" Margin="0, 20, 0, 0">
+            <VerticalStackLayout  HorizontalOptions="Center" VerticalOptions="Fill" Padding="40, 0, 40, 0" BackgroundColor="#FAFAFA" >
+                <Label Text="How to do the exercise" Margin="0,16,0,0" FontAttributes="Bold" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" TextColor="#1A1A1A" FontSize="14" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
+
+                <Label LineBreakMode="CharacterWrap" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" TextColor="#1A1A1A" FontSize="12" Margin="0,8,0,0" Text="Equipment needed: bench angled down at 15 degrees. Trusted Source and dumbbells or a barbell 
+                                                    &#x0a;
+1. Slowly lie down on the decline bench, so your legs are higher than your head, keeping your back firmly planted into the back of the bench. Place your feet in provided stirrups.
+                                                    &#x0a;
+2. Have a spotter help you lift the bar off the rack or grip dumbbells, if using. Hold the weight directly over the shoulders, arms slightly wider than shoulder height...."/>
+            </VerticalStackLayout>
+            </Border>
+        </Grid>
+
+
+    </Grid>
+</ContentPage>

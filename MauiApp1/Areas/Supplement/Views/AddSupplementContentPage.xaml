@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Supplement.Views.AddSupplementContentPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="AddSupplementContentPage" Loaded="ContentPage_Loaded">
+    <Grid x:Name="GridRootLayout" Grid.Row="0" BackgroundColor="#006272" CompressedLayout.IsHeadless="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="63" />
+            <RowDefinition Height="58"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <!--<ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="32" HeightRequest="24" Clicked="CloseButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="4"/>-->
+            <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+            <Label Grid.Column="2" Text="Add supplement"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Bold" TextColor="#FFFFFF"/>
+
+        </Grid>
+
+
+        <Rectangle Grid.Row="1" Fill="#006272" Margin="0"/>
+
+        <Border x:Name="OverallStatsBorderContent"  BackgroundColor="#FFFFFF" Margin="0" ZIndex="1" HeightRequest="121" WidthRequest="343"  Padding="0" Grid.Row="1" Grid.RowSpan="2">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="12"/>
+            </Border.StrokeShape>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="16"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="16" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="16" />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Never forget to take your supplements!" Grid.Row="1" Grid.Column="1" FontFamily="Montserrat-Bold" FontAttributes="Bold" HorizontalOptions="Start"/>
+
+                <Label Text="Added supplement will come on feed. Don’t worry we will remind you when to take them." Grid.Row="3" Grid.Column="1"  FontFamily="Montserrat-Regular" HorizontalOptions="Start"  Padding="0,0,8,0" LineBreakMode="WordWrap"/>
+
+
+            </Grid>
+
+        </Border>
+
+        <Rectangle Grid.Row="2" Fill="#FAFAFA" Grid.RowSpan="2" />
+
+        <Rectangle Grid.Row="3"  Grid.RowSpan="3" Fill="#FAFAFA" />
+
+        <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="3" IsRunning="True" HeightRequest="50"/>
+
+
+    </Grid>
+</ContentPage>

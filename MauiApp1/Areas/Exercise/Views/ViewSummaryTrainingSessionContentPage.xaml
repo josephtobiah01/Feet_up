@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.Areas.Exercise.Views.ViewSummaryTrainingSessionContentPage"  
+              xmlns:models="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
+                 xmlns:viewmodels="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
+                 x:DataType="viewmodels:ExercisePageViewModel" NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="ViewSummaryTrainingSessionContentPage" Loaded="ContentPage_Loaded">
+
+    <Grid CompressedLayout.IsHeadless="True" x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="TrainingSessionContentGrid" Grid.Row="0" BackgroundColor="#006272" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64"/>
+                <RowDefinition Height="63" />
+                <RowDefinition Height="58"/>
+                <RowDefinition Height="*" x:Name="ExerciseContentRowDefinition"/>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="102"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <!--<ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="32" HeightRequest="24" Clicked="CloseButton_Clicked" BackgroundColor="Transparent" Margin="16,0,0,0"  BorderColor="Transparent" Padding="4"/>-->
+                <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+                <Label Grid.Column="2" Text="Summary"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Bold" TextColor="#FFFFFF"/>
+
+            </Grid>
+
+            <Rectangle Grid.Row="1" Fill="#006272" Margin="0"/>
+
+            <VerticalStackLayout CompressedLayout.IsHeadless="True" Grid.Row="1" BackgroundColor="Transparent" Margin="0" ZIndex="1" Grid.RowSpan="2">
+                <Frame x:Name="OverallStatsBorderContent"  BackgroundColor="#FFFFFF" Margin="0" ZIndex="1" HeightRequest="121" WidthRequest="343"  CornerRadius="12" Padding="0">                  
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="16"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="13"/>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="16" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="16"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="16" />
+                        </Grid.ColumnDefinitions>
+
+                        <Label Text="Overall stats" Grid.Row="1" Grid.Column="1" HeightRequest="24" FontFamily="Montserrat-Bold" FontAttributes="Bold" HorizontalOptions="Start"/>
+
+                        <Grid Grid.Row="3" Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="16"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="16" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="16" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="6"/>
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout>
+                                    <Label Text="Time" Grid.Row="0" FontFamily="Montserrat-Regular" BackgroundColor="#FAFAFA" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label x:Name="TrainisngSessionTimerLabel" Text="0:00" Grid.Row="2" FontFamily="Montserrat-Medium" BackgroundColor="#FAFAFA" TextColor="#4D4D4D" FontSize="12" Margin="0,4,0,0"/>
+                                </VerticalStackLayout>
+                                <!--<Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="4"/>
+                                        <RowDefinition Height="*"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Text="Time" Grid.Row="0" FontFamily="Montserrat-Regular" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label x:Name="TrainisngSessionTimerLabel" Text="0:00" Grid.Row="2" FontFamily="Montserrat-Medium" TextColor="#4D4D4D" FontSize="12"/>
+                                </Grid>-->
+                            </Border>
+
+                            <Border Grid.Row="0" Grid.Column="3" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="6"/>
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout>
+                                    <Label Text="Sets" Grid.Row="0" FontFamily="Montserrat-Regular" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label x:Name="TotalSetLabel" Text="0" Grid.Row="2" FontFamily="Montserrat-Medium" TextColor="#4D4D4D" FontSize="12" Margin="0,4,0,0"/>
+                                </VerticalStackLayout>                               
+                                
+                            </Border>
+
+
+                            <Border Grid.Row="0" Grid.Column="5" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="6"/>
+                                </Border.StrokeShape>
+
+                                <VerticalStackLayout>
+                                    <Label Text="Volume" Grid.Row="0" FontFamily="Montserrat-Regular" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label x:Name="UnitOfMeasurementLabel" Text="0" Grid.Row="2" FontFamily="Montserrat-Medium" TextColor="#4D4D4D" FontSize="12" Margin="0,4,0,0"/>
+                                </VerticalStackLayout>                               
+                            </Border>
+
+                        </Grid>
+                    </Grid>
+
+                </Frame>
+
+
+            </VerticalStackLayout>
+
+            <Rectangle Grid.Row="2" Fill="#FAFAFA" Grid.RowSpan="2" />
+
+            <Rectangle Grid.Row="3"  Grid.RowSpan="3" Fill="#FAFAFA" />
+
+            <ScrollView  Grid.Row="3" Margin="0" BackgroundColor="#FAFAFA">
+                <VerticalStackLayout CompressedLayout.IsHeadless="True" Margin="0" BackgroundColor="#FAFAFA" Padding="0" ZIndex="1" >
+                    <Frame CompressedLayout.IsHeadless="True" BackgroundColor="#FFFFFF" Margin="16,24,16,0" MinimumHeightRequest="244" WidthRequest="343" CornerRadius="12" Padding="0" BorderColor="Transparent">
+
+                        <VerticalStackLayout BackgroundColor="Transparent"  HeightRequest="244" WidthRequest="343">
+                            <Label Text="How difficult was your exercise?"  FontFamily="Montserrat-Bold" FontAttributes="Bold" FontSize="18" Margin="16,16,16,0"/>
+
+                            <Label Text="Please share how was your workout and any feedback or comments for future references" FontSize="12" FontFamily="Montserrat-Regular" LineBreakMode="WordWrap" Margin="16,8,16,0" />
+
+                            <Label x:Name="RatingLabel" Text="Average" FontFamily="Montserrat-Bold" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,16,0,0" TextColor="#006272"/>
+
+                            <Grid HeightRequest="16" WidthRequest="311" Margin="12,16,12,0" BackgroundColor="Transparent">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+
+                                <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="4" WidthRequest="311">
+                                    <Rectangle.Background>
+                                        <LinearGradientBrush EndPoint="1,0">
+                                            <GradientStop Color="#81BA81"
+                          Offset="0.1" />
+                                            <GradientStop Color="#FF7768"
+                          Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Rectangle.Background>
+                                </Rectangle>
+
+
+
+                                <Ellipse x:Name="VeryEasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="0" WidthRequest="8" HeightRequest="8" HorizontalOptions="Start"/>
+                                <Button x:Name="VeryEasyRatingButton" Grid.Row="0" Grid.Column="0" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Start" Clicked="RatingButton_Clicked"/>
+
+                                <Ellipse x:Name="EasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="1" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" />
+                                <Button x:Name="EasyRatingButton" Grid.Row="0" Grid.Column="1" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>
+
+                                <Ellipse x:Name="AverageRatingEllipse" Fill="#006272" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="2" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center" />
+                                <Button x:Name="AverageRatingButton" Grid.Row="0" Grid.Column="2" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>
+
+                                <Ellipse x:Name="HardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="3" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" />
+                                <Button x:Name="HardRatingButton" Grid.Row="0" Grid.Column="3" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>
+
+                                <Ellipse x:Name="VeryHardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="4" WidthRequest="8" HeightRequest="8" HorizontalOptions="End" />
+                                <Button x:Name="VeryHardRatingButton" Grid.Row="0" Grid.Column="4" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="End" Clicked="RatingButton_Clicked"/>
+
+                            </Grid>
+
+                            <Editor x:Name="FeedbackEditor" PlaceholderColor="#85929B" Margin="16,20,16,16" AutoSize="Disabled" HeightRequest="80" TextColor="Black"/>
+
+                        </VerticalStackLayout>
+
+                    </Frame>
+
+                    <Frame CompressedLayout.IsHeadless="True" Padding="0" Margin="0,24,0,0" WidthRequest="343"  CornerRadius="12" BackgroundColor="#FFFFFF">
+                        <VerticalStackLayout>
+
+                            <Label Text="Exercise stats" FontFamily="Montserrat-Bold" FontAttributes="Bold" FontSize="18" Margin="16" />
+
+                            <Rectangle WidthRequest="344" HeightRequest="4" Margin="0,0,0,0" Fill="#EEF0F2" />
+
+                            <VerticalStackLayout CompressedLayout.IsHeadless="True" x:Name="ExerciseVerticalStackLayout" Margin="16,16,16,0" Padding="0">
+
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="models:ExercisePageViewModel" >
+
+                                        <VerticalStackLayout HorizontalOptions="Center"  VerticalOptions="Center" Margin="16,0,16,16" Padding="0" >
+
+                                            <Label Text="{Binding ExerciseName}" WidthRequest="280" Margin="0,0,16,24" FontFamily="Montserrat-Bold" FontSize="16" TextColor="#333333" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" VerticalOptions="Start" HorizontalOptions="StartAndExpand"/>
+
+                                            <Rectangle Fill="#EEF0F2" />
+
+
+                                            <HorizontalStackLayout CompressedLayout.IsHeadless="True" HorizontalOptions="Center" VerticalOptions="Start" Margin="0,16,0,16">
+
+                                                <Label WidthRequest="93" Text="Set"  FontSize="12"  TextColor="#4D4D4D" FontFamily="Montserrat-Regular" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+
+                                                <Label WidthRequest="93" Text="{Binding MetricsName1}" TextColor="#4D4D4D" FontSize="12" FontFamily="Montserrat-Regular" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+
+                                                <Label WidthRequest="93" Text="{Binding MetricsName2}" TextColor="#4D4D4D"  FontSize="12" FontFamily="Montserrat-Regular" HorizontalTextAlignment="Center" HorizontalOptions="FillAndExpand" />
+
+                                            </HorizontalStackLayout>
+
+
+
+                                            <VerticalStackLayout VerticalOptions="Center"  HorizontalOptions="FillAndExpand"  BindableLayout.ItemsSource="{Binding SetviewModel}"  CompressedLayout.IsHeadless="True" Padding="0">
+
+                                                <BindableLayout.ItemTemplate>
+
+                                                    <DataTemplate x:DataType="models:SetPageViewModel" >
+
+                                                        <HorizontalStackLayout VerticalOptions="Center"  HorizontalOptions="FillAndExpand"  HeightRequest="48" Padding="0">
+
+                                                            <Label WidthRequest="93"  Text="{Binding SetSequenceNumber}"  FontSize="12" TextColor="#4D4D4D" FontFamily="Montserrat-Regular" HorizontalTextAlignment="Center"  VerticalTextAlignment="Center"/>
+
+                                                            <Label HeightRequest="40" WidthRequest="93"  Text="{Binding MetricsValue1}" TextColor="#4D4D4D"  FontSize="12"  FontFamily="Montserrat-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+                                                            <Label HeightRequest="40" WidthRequest="93"  Text="{Binding MetricsValue2}" TextColor="#4D4D4D" FontSize="12"  FontFamily="Montserrat-Regular" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+
+
+                                                        </HorizontalStackLayout>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </VerticalStackLayout>
+
+                                            <Rectangle Fill="#EEF0F2" />
+                                        </VerticalStackLayout>
+
+                                    </DataTemplate>
+
+                                </BindableLayout.ItemTemplate>
+
+                            </VerticalStackLayout>
+
+                        </VerticalStackLayout>
+                        
+                    </Frame>
+
+
+                </VerticalStackLayout>
+
+            </ScrollView>
+
+            <Border  
+    x:Name="FooterContent"
+    Grid.Row="5"
+    Margin="-1"
+            HeightRequest="102"            
+    VerticalOptions="End"
+    HorizontalOptions="Fill"
+    StrokeThickness="0" Background="#FFFFFF">
+                <Border.Shadow>
+                    <Shadow Brush="Black"
+                Offset="20,20"
+                Radius="40"
+                Opacity="0.8" />
+                </Border.Shadow>
+
+                <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="16">
+                    <Button BackgroundColor="#006272" TextColor="#FFFFFF" Text="Go Back" CornerRadius="20" FontFamily="Montserrat-Regular" FontAttributes="Bold" Clicked="BackButton_Clicked"/>
+                </StackLayout>
+            </Border>
+        </Grid>
+
+        <!--<Border  
+    x:Name="FooterContent"
+    Grid.Row="0"
+    Margin="-1"
+            HeightRequest="102"            
+    VerticalOptions="End"
+    HorizontalOptions="Fill"
+    StrokeThickness="0" Background="#FFFFFF">
+            <Border.Shadow>
+                <Shadow Brush="Black"
+                Offset="20,20"
+                Radius="40"
+                Opacity="0.8" />
+            </Border.Shadow>
+
+            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="16">
+                <Button BackgroundColor="#006272" TextColor="#FFFFFF" Text="Go Back" CornerRadius="20" FontFamily="Montserrat-Regular" FontAttributes="Bold" Clicked="BackButton_Clicked"/>
+            </StackLayout>
+        </Border>-->
+    </Grid>
+
+</ContentPage>

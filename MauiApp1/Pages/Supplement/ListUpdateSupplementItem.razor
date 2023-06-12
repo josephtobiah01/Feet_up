@@ -1,0 +1,114 @@
+﻿
+<div class="content-div" @onclick="@SupplementItem_Click">
+
+    <div class="header-div">
+
+        <label class="title-label">@_supplementPageViewModel.SupplementName</label>
+
+        <div class="image-container-div">
+            @if (@_supplementPageViewModel.IsSnoozed == false)
+            {
+                <img class="icon-image" src="resources/public/icons/time/clock1.svg" />
+            }
+            else
+            {
+                <img class="icon-image" src="resources/public/icons/education/bell.svg" />
+            }
+        </div>
+
+        @*<label class="time-elapsed-label">@GetFormattedFromToTime(@_supplementPageViewModel.FromDate,@_supplementPageViewModel.ToDate)</label>*@
+        <label class="time-elapsed-label">@GetFormattedScheduleTime(@_supplementPageViewModel.ScheduledTime,_supplementPageViewModel.IsSnoozed)</label>
+        
+        @if (@_supplementPageViewModel.IsSnoozed == false)
+        {
+            <span class="dot" />
+            <button class="snooze-button" @onclick="SnoozeButton_Click">Snooze</button>
+        }
+        else
+        {
+            
+        }
+
+
+        <div class="block-div" />
+
+        <input class="checkbox-input" type="checkbox" name="@_supplementPageViewModel.SupplementName" value="@_supplementPageViewModel.SupplementId" checked="@_supplementPageViewModel.IsDone" @onclick="Checkbox_Click" @onchange="Checkbox_OnChanged">
+    </div>
+
+    <hr class="header-dash-border-div">
+
+    @if (_supplementPageViewModel.UnitCount > 0)
+    {
+        <div class="tablet-description-container-div">
+            <div class="tablet-description-image-container-div">
+                <img class="tablet-description-icon-image" src="resources/public/icons/medical/medicine.svg" />
+            </div>
+            <label class="tablet-description-label">@_supplementPageViewModel.UnitCount @_supplementPageViewModel.UnitName</label>
+
+            @switch (_supplementPageViewModel.Take_after_meal)
+            {
+                case true:
+
+                    <span class="tablet-description-dot" />
+                    <label class="tablet-before-meal-description-label">After Meals</label>
+                    break;
+
+                case false:
+
+                    <span class="tablet-description-dot" />
+                    <label class="tablet-before-meal-description-label">Before Meals</label>
+                    break;
+
+            }
+
+            @switch (_supplementPageViewModel.Take_before_sleep)
+            {
+                case true:
+
+                    <span class="tablet-description-dot" />
+                    <label class="tablet-before-meal-description-label">Before Sleep</label>
+                    break;
+
+                case false:
+
+                    <span class="tablet-description-dot" />
+                    <label class="tablet-before-meal-description-label">After Sleep</label>
+                    break;
+
+            }
+
+            @switch (_supplementPageViewModel.Take_on_empty_stomach)
+            {
+                case true:
+
+                    <span class="tablet-description-dot" />
+                    <label class="tablet-before-meal-description-label">Empty Stomach</label>
+                    break;
+
+                case false:
+
+                   @* <span class="tablet-description-dot" />
+                    <label class="tablet-before-meal-description-label">Full</label>*@
+                    break;
+
+            }
+            
+        </div>
+    }
+    else
+    {
+        
+    }
+
+    @if (string.IsNullOrWhiteSpace(_supplementPageViewModel.Instructions) == false)
+    {
+        <div class="avoid-description-div">
+            <div class="avoid-description-image-container-div">
+                <img class="avoid-description-icon-image" src="resources/public/icons/security/warning.svg" />
+            </div>
+            <label class="avoid-description-label">@_supplementPageViewModel.Instructions</label>
+        </div>
+        
+    }
+
+</div>

@@ -1,0 +1,183 @@
+/*variables*/
+:root {
+    --display-user-popup-variable: none;
+}
+/* navbar content */
+.navbar-toggler {
+    color:rgba(255,255,255,255);
+    border:none;
+    border-radius:40px;
+}
+
+html, body {
+    font-family: Montserrat;
+    overflow: hidden;
+}
+
+.product-name-label {
+    color: white;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px
+}
+
+/* navbar content */
+.navbar-light {
+    height: 2px;
+    background-color: rgba(0,98,114,255);
+    padding-bottom: 32px;
+    padding-right: 15px;
+    padding-left: 5px;
+}
+
+.oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+.flex-column {
+    background-color: rgba(0,98,114,255);
+}
+/* navbar dropdown content */
+.nav-item {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item ::deep a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+        /* current active highlight */
+.nav-item ::deep a.active {
+    background-color: rgba(255,255,255,0.25);
+    color: white;
+}
+        /* tap highlight */
+.nav-item ::deep a:hover {
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+}
+.AIR-logo{
+    height:24px;
+}
+.white-icon {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(183deg) brightness(100%) contrast(100%);
+}
+
+
+/*user popup*/
+.user-popup-wrapper {
+    position: absolute;
+    font-family: Montserrat;
+    display: var(--display-user-popup-variable);
+}
+
+.user-popup-background-dark-overlay {
+    background-color: rgba(25, 25, 25,0.6);
+    position: fixed;
+    height: 100vh;
+    display: block;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 3;
+}
+
+.user-popup-background {
+    position: fixed;
+    padding: 0px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 60vh;
+    top: 40vh;
+    width: 100vw;
+    left: 0;
+    background-color: white;
+    z-index: 4;
+}
+.user-popup-content{
+    padding:16px;
+    padding-top:64px;
+}
+.user-popup-header-title {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 700;
+    top: 24px;
+    margin-bottom: 16px;
+    align-content: flex-start;
+    position: absolute;
+}
+
+.user-popup-header-close-button {
+    position: absolute;
+    right: 0px;
+    color: black;
+    top: 0px;
+    margin: 16px;
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 500px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 700;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: none;
+    border: 1px solid #EEF0F2;
+}
+
+.user-popup-header-close-button-icon {
+    filter: invert(0%) sepia(100%) saturate(8%) hue-rotate(125deg) brightness(107%) contrast(101%);
+}
+
+.user-popup-item {
+    font-family: Montserrat;
+    color: black;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: auto 52px;
+    grid-template-rows: 72px;
+    align-items: center;
+    border-bottom: 1px solid #EEF0F2;
+}
+
+.user-popup-item-name-text {
+    font-size: 16px;
+    grid-column: 1;
+    grid-row: 1;
+    height: inherit;
+    overflow-y: auto;
+    align-content: flex-start;
+    vertical-align: central;
+    white-space: nowrap;
+}
+
+.user-popup-item-right-button {
+    background: white;
+    border: none;
+    grid-row: 1;
+    color: black;
+    grid-column: 2;
+}
+
+@media (min-width: 641px) {
+
+}

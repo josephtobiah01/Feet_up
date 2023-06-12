@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Chat.Views.ViewChatContentPage"
+             xmlns:models="clr-namespace:MauiApp1.Areas.Chat.Models"
+             Title="ViewChatContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded" NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False">
+    <!--<ScrollView x:Name="RootScrollView" IsEnabled="False">-->
+    <Grid x:Name="RootGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="9*" x:Name="ContentRowDefinition"/>
+            <RowDefinition Height="*" x:Name="ChatEntryContentRowDefinition"/>
+        </Grid.RowDefinitions>
+
+            <Grid BackgroundColor="White" ColumnDefinitions="*">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="64" />
+                    <RowDefinition Height="44" />
+                    <RowDefinition Height="*" x:Name="ChatContentRowDefinition" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <!-- navigation bar -->
+                <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto"/>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+                    <Label Grid.Column="2" Text="Inbox"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="11,15,15,15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+                </Grid>
+
+                <HorizontalStackLayout Grid.Row="1" RadioButtonGroup.GroupName="MenuCategories" BackgroundColor="#006272">
+
+                    <RadioButton x:Name="QueriesRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="True" CheckedChanged="QueriesRadioButton_CheckedChanged">
+                        <RadioButton.ControlTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="24"/>
+                                        <RowDefinition Height="2" />
+                                        <RowDefinition Height="8" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CheckedStates">
+                                                <VisualState x:Name="Checked">
+                                                    <VisualState.Setters>
+                                                        <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                                <VisualState x:Name="Unchecked">
+                                                    <VisualState.Setters>
+                                                        <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Label Text="Queries" Grid.Row="0" TextColor="White"/>
+                                    <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </RadioButton.ControlTemplate>
+                    </RadioButton>
+
+                    <RadioButton x:Name="FromUsRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="False" CheckedChanged="FromUsRadioButton_CheckedChanged">
+                        <RadioButton.ControlTemplate>
+                            <ControlTemplate>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="24"/>
+                                        <RowDefinition Height="2" />
+                                        <RowDefinition Height="8" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <VisualStateManager.VisualStateGroups>
+                                        <VisualStateGroupList>
+                                            <VisualStateGroup x:Name="CheckedStates">
+                                                <VisualState x:Name="Checked">
+                                                    <VisualState.Setters>
+                                                        <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+
+                                                <VisualState x:Name="Unchecked">
+                                                    <VisualState.Setters>
+                                                        <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                                    </VisualState.Setters>
+                                                </VisualState>
+                                            </VisualStateGroup>
+                                        </VisualStateGroupList>
+                                    </VisualStateManager.VisualStateGroups>
+                                    <Label Text="From us" Grid.Row="0" TextColor="White"/>
+                                    <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                                </Grid>
+                            </ControlTemplate>
+                        </RadioButton.ControlTemplate>
+                    </RadioButton>
+
+                </HorizontalStackLayout>
+
+                <RefreshView Grid.Row="2" x:Name="MessageRefreshView" IsRefreshing="False">
+                    <Grid Grid.Row="2" x:Name="ChatAreaGrid">
+                        <CollectionView x:Name="MessageCollectionView" ItemsUpdatingScrollMode="KeepScrollOffset" Margin="8,0,0,2" ItemSizingStrategy="MeasureAllItems" SelectionMode="None">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <StackLayout MaximumWidthRequest="300" Margin="8,0,8,0">
+                                <Border Margin="0,16,0,0" Padding="0" Stroke="Transparent">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="16"/>
+                                    </Border.StrokeShape>
+                                    <Border.Triggers>
+                                        <DataTrigger TargetType="Border" Binding="{Binding IsUserMessage}" Value="true">
+                                            <Setter Property="HorizontalOptions" Value="End" />
+                                            <Setter Property="BackgroundColor" Value="#006272" />
+                                        </DataTrigger>
+                                        <DataTrigger TargetType="Border" Binding="{Binding IsUserMessage}" Value="false">
+                                            <Setter Property="HorizontalOptions" Value="Start" />
+                                            <Setter Property="BackgroundColor" Value="LightGray" />
+                                        </DataTrigger>
+                                    </Border.Triggers>
+
+                                    <StackLayout Orientation="Vertical" MinimumWidthRequest="80">
+                                        <StackLayout.Triggers>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsUserMessage}" Value="false">
+                                                <Setter Property="Padding" Value="12,8,16,16" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="StackLayout" Binding="{Binding IsUserMessage}" Value="true">
+                                                <Setter Property="Padding" Value="8,8,12,16" />
+                                            </DataTrigger>
+                                        </StackLayout.Triggers>
+
+                                        <Label Text="{Binding UserName}" FontAttributes="Bold" LineBreakMode="NoWrap" FontSize="12" Margin="0" >
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsUserMessage}" Value="true">
+                                                    <Setter Property="IsVisible" Value="false" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsUserMessage}" Value="false">
+                                                    <Setter Property="HorizontalOptions" Value="Start" />
+                                                    <Setter Property="TextColor" Value="Black" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                        <Label  Text="{Binding TimeStamp}" FontAttributes="Bold" FontSize="12" Margin="0,0,0,0" Padding="0">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsUserMessage}" Value="true">
+                                                    <Setter Property="HorizontalOptions" Value="End" />
+                                                    <Setter Property="TextColor" Value="White" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsUserMessage}" Value="false">
+                                                    <Setter Property="HorizontalOptions" Value="Start" />
+                                                    <Setter Property="TextColor" Value="Black" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+
+                                        <Label Text="{Binding MessageText}" LineBreakMode="WordWrap" MaximumWidthRequest="243" FontSize="14" Margin="0,12,0,8">
+                                            <Label.Triggers>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsUserMessage}" Value="true">
+                                                    <Setter Property="HorizontalOptions" Value="End" />
+                                                    <Setter Property="HorizontalTextAlignment" Value="End" />
+                                                    <Setter Property="TextColor" Value="White" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Label" Binding="{Binding IsUserMessage}" Value="false">
+                                                    <Setter Property="HorizontalOptions" Value="Start" />
+                                                    <Setter Property="TextColor" Value="Black" />
+                                                </DataTrigger>
+                                            </Label.Triggers>
+                                        </Label>
+                                    </StackLayout>
+
+                                </Border>
+                            </StackLayout>
+
+
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                    </Grid>
+                </RefreshView>
+                <Grid x:Name="PromotionAreaStackLayout" Grid.Row="2" Grid.RowSpan="2" />
+                
+            </Grid>
+
+        <ScrollView x:Name="ChatBoxScrollView" Grid.Row="1" Padding="0,0">
+            <Border x:Name="ChatBoxFrame" Grid.Row="1" BackgroundColor="white" Stroke="Black" StrokeThickness="1" Padding="0" Margin="5,8,5,0" HeightRequest="64" VerticalOptions="End">
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="16"/>
+            </Border.StrokeShape>
+
+            <Grid VerticalOptions="Center" BackgroundColor="White">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Entry 
+                x:Name="ChatMessageEntry"
+                Grid.Column="0"
+                Grid.Row="0"
+                 Keyboard="Chat"
+                Placeholder="Send a Message"
+                BackgroundColor="white"
+                TextColor="black"
+                PlaceholderColor="DarkGray"
+                FontSize="18"
+                Margin="15,0,0,0"
+                VerticalOptions="Center" HeightRequest="44"
+                HorizontalOptions="FillAndExpand" Focused="ChatMessageEntry_Focused" Unfocused="ChatMessageEntry_Unfocused"/>
+                <ImageButton
+                x:Name="SendButton"
+                Grid.Column="1"
+                Grid.Row="1"
+                BackgroundColor="White"
+                Source="paperplane.png"
+                BorderWidth="0"
+                VerticalOptions="Center"
+                HeightRequest="24"
+                WidthRequest="24"
+                Clicked="SendButton_Clicked" 
+                HorizontalOptions="Center" Margin="16,0,16,0" />
+
+            </Grid>
+        </Border>
+        </ScrollView>
+    </Grid>
+    <!--</ScrollView>-->
+</ContentPage>

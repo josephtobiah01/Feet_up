@@ -1,0 +1,15 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\bin\Debug\net7.0\NutritionApi.Net7.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\bin\Debug\net7.0\NutritionApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\bin\Debug\net7.0\NutritionApi.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\bin\Debug\net7.0\ParentMiddleWare.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\bin\Debug\net7.0\ParentMiddleWare.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.csproj.CopyComplete
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\refint\NutritionApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\NutritionApi.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\ImageApi.Net7\obj\Debug\net7.0\ref\NutritionApi.Net7.dll

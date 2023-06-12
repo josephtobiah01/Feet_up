@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Supplement.Views.AddSupplementFormContentView"
+             xmlns:local="clr-namespace:MauiApp1.Areas.Supplement.ViewModels"
+             >
+    <ContentView.BindingContext>
+        <local:AddSupplementPageViewModel />
+    </ContentView.BindingContext>
+    <ScrollView >
+        <VerticalStackLayout WidthRequest="343" Margin="0,16,0,0">
+
+            <Label Text="Supplement data" MinimumWidthRequest="343" FontAttributes="Bold" Margin="16,8,16,0" TextColor="Black"/>
+
+            <Entry x:Name="SupplementNameEntry" MinimumWidthRequest="343" MinimumHeightRequest="32" Placeholder="Name of Supplement" Margin="16,16,16,0" TextColor="Black"/>
+
+            <Entry x:Name="SupplementDescriptionEntry" MinimumWidthRequest="343" MinimumHeightRequest="32" Placeholder="Description" Margin="16,16,16,0" TextColor="Black"/>
+
+            <HorizontalStackLayout Margin="16,8,16,0" WidthRequest="343">
+                <Entry x:Name="SupplementQuantityEntry" Placeholder="Enter quantity" MinimumWidthRequest="210" MinimumHeightRequest="32" WidthRequest="210" Margin="16,0,0,0"/>
+
+                <Picker x:Name="SupplementTypePicker" MinimumWidthRequest="92" WidthRequest="92" MinimumHeightRequest="32" SelectedIndex="1"  Margin="8,0,0,0">
+                    <Picker.Items>
+                        <x:String>Tablet  ></x:String>
+                        <x:String>Capsule ></x:String>
+                        <x:String>Gummy   ></x:String>
+                        <x:String>Powder  ></x:String>
+                    </Picker.Items>
+                </Picker>
+
+
+                <!--<Border StrokeThickness="1" Stroke="#EEF0F2" BackgroundColor="Transparent" Padding="0" IsEnabled="False" Margin="8,0,0,0">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+
+                    <Picker x:Name="SupplementTypePicker" WidthRequest="104" SelectedIndex="1"  Margin="0,0,0,0">
+                        <Picker.Items>
+                            <x:String>Tablet  ></x:String>
+                            <x:String>Capsule ></x:String>
+                            <x:String>Gummy   ></x:String>
+                            <x:String>Powder  ></x:String>
+                        </Picker.Items>
+                    </Picker>
+
+                    
+
+                </Border>-->
+
+            </HorizontalStackLayout>
+
+            <Label Text="Frequency" FontAttributes="Bold" Margin="16,24,16,0"/>
+
+            <HorizontalStackLayout HeightRequest="40" Margin="16,16,16,0">
+                <Button x:Name="MondayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="M" FontSize="14"  FontFamily="Montserrat-Regular" Padding="8" Clicked="MondayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsMonday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsMonday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="TuesdayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="T" FontSize="14" FontFamily="Montserrat-Regular" Padding="8" Margin="8,0,0,0" Clicked="TuesdayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsTuesday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsTuesday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="WednesdayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="W" FontSize="14" FontFamily="Montserrat-Regular" Padding="8" Margin="8,0,0,0" Clicked="WednesdayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsWednesday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsWednesday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="ThursdayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="T" FontSize="14" FontFamily="Montserrat-Regular" Padding="8" Margin="8,0,0,0" Clicked="ThursdayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsThursday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsThursday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="FridaydayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="F" FontSize="14" FontFamily="Montserrat-Regular" Padding="8" Margin="8,0,0,0" Clicked="FridaydayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsFriday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsFriday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="SaturdayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="S" FontSize="14" FontFamily="Montserrat-Regular" Padding="8" Margin="8,0,0,0" Clicked="SaturdayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsSaturday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsSaturday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="SundayButton" WidthRequest="36" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="S" FontSize="14" FontFamily="Montserrat-Regular" Padding="8" Margin="8,0,0,0" Clicked="SundayButton_Clicked">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsSunday}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                            <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                            <Setter Property="TextColor" Value="#85929B"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsSunday}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                            <Setter Property="TextColor" Value="#1A1A1A"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+            </HorizontalStackLayout>
+
+
+            <Label Text="When" FontAttributes="Bold" Margin="16,24,16,0"/>
+
+            <Label Text="Select multiple if more than one time. Adding supplements at same time will group them together." WidthRequest="343" FontSize="12" Margin="16,12,16,0" Padding="16,12,16,12" />
+
+            <VerticalStackLayout x:Name="TimeListStackLayout" CompressedLayout.IsHeadless="True" Margin="16,0,16,0">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout>
+                            <Border Stroke="#eef0f2" StrokeThickness="1" HeightRequest="52" WidthRequest="99" Margin="0,12,0,0" BackgroundColor="Transparent">
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="8" />
+                                </Border.StrokeShape>
+                                <Label Text="{Binding ., StringFormat='{0:HH:mm}'}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                
+                            </Border>
+                            
+                            <Button x:Name="RemoveSuplplementTimeButton" Text="X" BackgroundColor="Transparent" BorderColor="Transparent" TextColor="#BB111A" FontAttributes="Bold" Padding="0" Margin="16,12,0,0" Clicked="RemoveSuplplementTimeButton_Clicked"/>
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+
+
+            <HorizontalStackLayout>
+                <Border x:Name="TimePickerBorder" Stroke="#eef0f2" StrokeThickness="1" HeightRequest="52" MinimumWidthRequest="99" Margin="16,12,0,0" BackgroundColor="Transparent" HorizontalOptions="Center">
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="8" />
+                    </Border.StrokeShape>
+                    <TimePicker x:Name="SupplementTimePicker" Format="HH:mm" MinimumHeightRequest="32"  MinimumWidthRequest="40" HorizontalOptions="Center" TextColor="Black"/>
+
+
+                </Border>
+                <Button x:Name="AddSupplementTimeButton" HorizontalOptions="Center" Text="+ Add"  FontSize="16" FontAttributes="Bold" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" BorderColor="Transparent" TextColor="#006272" Clicked="AddSupplementTimeButton_Clicked"/>
+            </HorizontalStackLayout>
+
+            <Label Text="Preferences" FontAttributes="Bold" Margin="16,24,16,0"/>
+
+            <Grid Margin="12,16,14,0" Padding="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="92"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="90"/>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+
+                <Button x:Name="BeforeMealButton" Text="Before meal" Grid.Column="0" CornerRadius="16" Clicked="BeforeMealButton_Clicked" Padding="4" HeightRequest="36" WidthRequest="92" FontSize="12">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsBeforeMeal}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="Transparent" />
+                            <Setter Property="BorderColor"
+                                            Value="#eef0f2" />
+                            <Setter Property="TextColor" Value="#000000"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsBeforeMeal}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#006272" />
+                            <Setter Property="TextColor" Value="#FFFFFF"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="AfterMealButton" Text="After meal" Grid.Column="2" CornerRadius="16" Clicked="AfterMealButton_Clicked" Padding="4" HeightRequest="36" WidthRequest="90" FontSize="12">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsAfterMeal}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="Transparent" />
+                            <Setter Property="BorderColor"
+                                            Value="#eef0f2" />
+                            <Setter Property="TextColor" Value="#000000"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsAfterMeal}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#006272" />
+                            <Setter Property="TextColor" Value="#FFFFFF"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+                <Button x:Name="EmptyStomachButton" Text="Empty stomach" Grid.Column="4" CornerRadius="16" Clicked="EmptyStomachButton_Clicked" Padding="4" HeightRequest="36" WidthRequest="120" FontSize="12">
+                    <Button.Triggers>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsEmptyStomach}" Value="false">
+                            <Setter Property="BackgroundColor"
+                                            Value="Transparent" />
+                            <Setter Property="BorderColor"
+                                            Value="#eef0f2" />
+                            <Setter Property="TextColor" Value="#000000"/>
+                        </DataTrigger>
+                        <DataTrigger TargetType="Button" Binding="{Binding IsEmptyStomach}" Value="true">
+                            <Setter Property="BorderColor"
+                                            Value="#006272" />
+                            <Setter Property="BackgroundColor"
+                                            Value="#006272" />
+                            <Setter Property="TextColor" Value="#FFFFFF"/>
+                        </DataTrigger>
+                    </Button.Triggers>
+                </Button>
+
+            </Grid>
+
+
+            <Entry x:Name="ImportantNoteEntry" Placeholder="Important Note" MinimumHeightRequest="32" MinimumWidthRequest="343" Margin="16,32,16,0" TextColor="Black" />
+
+            <Label Text="By continuing forward you are accepting our terms and conditions" Margin="16,24,16,0" FontSize="12"/>
+
+            <Grid Margin="16,24,16,24">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="16"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button x:Name="DiscardButton" Text="Discard" Grid.Column="0" HeightRequest="53" BackgroundColor="#FFFFFF" CornerRadius="28" BorderColor="#006272" TextColor="#006272" BorderWidth="1" FontFamily="Montserrat-Bold" FontAttributes="Bold" FontSize="16" Margin="0,0,8,0" Clicked="DiscardButton_Clicked"/>
+
+                <Button x:Name="SubmitButton" Text="Submit" Grid.Column="2"  HeightRequest="53" BackgroundColor="#006272" CornerRadius="28" BorderColor="#006272" TextColor="#FFFFFF" BorderWidth="1" FontFamily="Montserrat-Bold" FontAttributes="Bold" FontSize="16" Clicked="SubmitButton_Clicked" />
+            </Grid>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+</ContentView>

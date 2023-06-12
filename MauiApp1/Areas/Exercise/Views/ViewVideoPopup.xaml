@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<toolkit:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.Areas.Exercise.Views.ViewVideoPopup" Opened="Popup_Opened" Closed="Popup_Closed" >
+    <VerticalStackLayout HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent" WidthRequest="343" MinimumWidthRequest="343">
+        
+        <Button x:Name="CloseButton" Text="X" WidthRequest="40" HeightRequest="40" CornerRadius="20" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent" BorderColor="Black" BorderWidth="1" FontSize="14" Clicked="CloseButton_Clicked"/>
+        
+        <toolkit:MediaElement x:Name="MediaElement" ShouldShowPlaybackControls="True" ShouldKeepScreenOn="True"  ShouldLoopPlayback="True"  ShouldAutoPlay="False" MinimumWidthRequest="343" WidthRequest="343" Aspect="Fill" PropertyChanged="MediaElement_PropertyChanged"/>
+    </VerticalStackLayout>
+</toolkit:Popup>

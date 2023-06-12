@@ -1,0 +1,196 @@
+﻿@model FitappAdminWeb.Net7.Models.SupplementWeeklyPlanEditViewModel
+@{
+    string[] dayList = { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" };
+}
+
+@if (Model.IsCopy)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            You are now in <span class="fw-bold">COPY</span> mode. This is a copy of plan @Model.Data.Id. This plan will be saved as a new plan.
+        </div>
+    </div>
+}
+
+<form id="suppsched_editor">
+    <div class="form-group mb-3">
+        <input type="hidden" id="editmode" value="@(Model.Data.Id > 0)" />
+        <input type="hidden" asp-for="Data.FkCustomerId" data-bind="value: UserId" />
+        <input type="hidden" asp-for="Data.Id" data-bind="value: Id" />
+        <fieldset>
+            <legend>Add/Edit Supplement Weekly Plan</legend>
+            @if (Model.CurrentUser != null)
+            {
+                <div class="row mb-3">
+                    <div class="col">
+                        <label for="currentuser">User:</label>
+                        <span class="form-text">@($"{Model.CurrentUser.FirstName} {Model.CurrentUser.LastName} (User ID: {Model.CurrentUser.Id})")</span>
+                    </div>                 
+                </div>
+            }
+
+            <div class="row mb-3">
+                <div class="col">
+                    <label asp-for="Data.Remark" class="form-label">Remarks</label>
+                    <textarea class="form-control" asp-for="Data.Remark" data-bind="value: Remark"></textarea>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6 mb-3">
+                    <input class="form-check-input" type="checkbox" asp-for="Data.IsActive" data-bind="checked: IsActive" />
+                    <label class="form-check-label" asp-for="Data.IsActive">Set As Active</label>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <input class="form-check-input" type="checkbox" asp-for="Data.ForceScheduleSync" data-bind="checked: ForceScheduleSync" />
+                    <label class="form-check-label" asp-for="Data.ForceScheduleSync">Force Immediate Schedule Sync</label>
+                </div>
+                <div class="col-md-6 mb-3 d-none">
+                    <input class="form-check-input" type="checkbox" asp-for="Data.IsTemplate" data-bind="checked: IsTemplate" />
+                    <label class="form-check-label" asp-for="Data.IsActive">Save As Template</label>
+                </div>
+            </div>          
+        </fieldset>
+    </div>
+    <div class="form-group mb-3">
+        <fieldset>
+            <legend>
+                <span>Plan Schedule</span>
+            </legend>
+            <div class="list-group altrow-color" data-bind="foreach: Days">
+                <div class="list-group-item">
+                    <div class="row">
+                        <div class="col d-flex justify-content-between mb-3">
+                            <h5 class="fw-bold text-muted" data-bind="text: DayName">Monday</h5>
+                            <span>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#copyday_modal" data-bs-dayindex="DayOfWeek">
+                                    <i data-feather="copy"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-primary" data-bs-toggle="collapse" data-bind="attr: {'data-bs-target': '#supplist_' + $index()}"><i data-feather="chevron-down"></i></button>
+                            </span>                      
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <button type="button" class="btn btn-secondary" data-bind="click: AddSupplement">
+                                <i data-feather="plus"></i><span class="ms-2">Add Supplement</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="list-group show" data-bind="attr: {id: 'supplist_' + $index()}, foreach: Supplements">
+                        <div class="list-group-item mt-3">
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <select class="form-select" data-bind="value: FkSupplementReference" asp-items="@Model.SupplementList">
+                                        <option value="">Select a Supplement</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-secondary ms-3" data-bind="click: AddDose">Add Dose</button>
+                                </div>
+                                <div class="col-md-3 d-flex justify-content-end">
+                                    <button class="btn btn-close mt-2" data-bind="click: $parent.DeleteSupplement"></button>
+                                </div>
+                            </div>
+                            <div class="my-3 p-3 bg-light border" data-bind="visible: FkSupplementReference() == '0'">
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="text-muted">Note: This will not be added to the Supplement Reference</span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Free Entry Name</label>
+                                        <input type="text" class="form-control" data-bind="value: FreeEntryName" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Dose Unit Metric</label>
+                                        <select class="form-select" asp-items="Model.UnitMetricList" data-bind="value: FkFreeEntryUnitMetric_string">
+                                            <option value="">Please Select..</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div data-bind="attr: {id: 'doselist_' + $index()}, foreach: Doses">
+                                <div class="row mb-2">
+                                    <div class="col-md-5">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Dose</span>
+                                            <input type="number" class="form-control" placeholder="Unit Count" data-bind="value: UnitCount" />
+                                            <input type="number" class="form-control text-warning" placeholder="Dose Warning Limit" data-bind="value: DoseWarningLimit" />
+                                            <input type="number" class="form-control text-danger" placeholder="Dose Hard Limit" data-bind="value: DoseHardCeilingLimit" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="input-group">
+                                            <span class="input-group-text">Schedule</span>
+                                            <input type="time" class="form-control" data-bind="value: ScheduledTime" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2 d-flex justify-content-start">
+                                        <button type="button" class="btn btn-close mt-2" data-bind="click: $parent.DeleteDose"></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group d-flex flex-row-reverse">
+            <button type="button" class="btn btn-primary" data-bind="click: SubmitModel">Save</button>
+            <button type="button" class="btn btn-link">Cancel</button>
+        </div>
+    </div>
+    <div class="modal fade" id="copyday_modal" tabindex="-1" aria-labelledby="copyday_modal_label" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="copyday_modal_label">Copy Day Utility</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>This utility will let you copy a day with all its supplements and doses to other days in the week. Please note that this will override the existing supplements and doses on the target days.</p>
+                    <div class="mb-3">
+                        <label class="form-label" for="copyday_src">Day to copy from:</label>
+                        <select class="form-select" id="copyday_src" data-bind="value: Copy_Source">
+                            @for (var i = 0; i < dayList.Length; i++)
+                            {
+                                <option value="@i">@dayList[i]</option>
+                            }
+                        </select>
+                    </div>
+                    <div>
+                        <label class="form-label d-block">Day/s to copy to:</label>
+                        <ul class="list-group">
+                            @for (var i = 0; i < dayList.Length; i++)
+                            {
+                                <li class="list-group-item">
+                                    <input class="form-check-input me-1" type="checkbox" id="copyday_dest@(i)" value="@(i)" data-bind="checked: Copy_Dest_@i" />
+                                    <label class="form-check-label" for="copyday_dest@(i)">@dayList[i]</label>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="copyday_modal_submit" data-bind="click: CopyDaySubmit_Click">Copy</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts {
+    <script asp-src-include="~/lib/knockout/knockout-latest.debug.js,~/lib/managed/supp_weekly_edit.js"></script>
+    <script>
+        window.fitapp.SupplementWeeklyEdit.Initialize({
+            UserId: @(Model.CurrentUser != null ? Model.CurrentUser.Id : 0),
+            WeeklyPlanId: @(Model.Data != null ? Model.Data.Id : 0),
+            CopyMode: @Model.IsCopy.ToString().ToLower()
+        });
+    </script>
+}

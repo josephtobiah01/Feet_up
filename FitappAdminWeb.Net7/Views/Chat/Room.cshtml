@@ -1,0 +1,109 @@
+﻿@model SpecificUserChatViewModel
+@{
+    string senderName = String.Format("{0} {1}", Model.LoggedInUser.FirstName, Model.LoggedInUser.LastName);
+    string roomOwnerName = String.Format("{0} {1}", Model.RoomOwner.FirstName, Model.RoomOwner.LastName);
+}
+
+<h4>User Chat</h4>
+<p>You can directly message a user here. Note that all your messages will be visible to all participants in this room.</p>
+
+<div class="bg-light">
+    <div class="card">
+        <div class="card-header">
+            <span>Now messaging @roomOwnerName <span class="fst-italic text-muted">(#@Model.RoomOwner.Email)</span> as @senderName <span class="fst-italic text-muted">(@Model.LoggedInUser.Email)</span></span>
+        </div>
+        <div class="card-body">
+            <div id="messagelist" style="height: 300px; overflow-y: scroll;">
+                @foreach (var message in Model.CurrentRoom.MsgMessage.OrderBy(r => r.Timestamp))
+                {
+                    var timespanFromNow = DateTime.UtcNow - message.Timestamp;
+                    string messageUserName = String.Format("{0} {1}", message.FkUserSenderNavigation.FirstName, message.FkUserSenderNavigation.LastName);
+
+                    if (message.FkUserSender == Model.LoggedInUser.Id)
+                    {
+                        <div class="d-flex justify-content-end mb-3">
+                            <div class="p-3 rounded-3 w-75 bg-primary bg-gradient text-white">
+                                <span class="fw-bold">@senderName</span>
+                                <p>@message.MessageContent</p>
+                                <p class="m-0 text-end">
+                                    <span>@message.Timestamp</span>
+                                    @if (timespanFromNow.Days > 0)
+                                    {
+                                        <span class="fst-italic">@timespanFromNow.Days days ago</span>
+                                    }
+                                    else if (timespanFromNow.Hours > 0)
+                                    {
+                                        <span class="fst-italic">@timespanFromNow.Hours hours ago</span>
+                                    }
+                                    else if (timespanFromNow.Minutes > 0)
+                                    {
+                                        <span class="fst-italic">@timespanFromNow.Minutes minutes ago </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fst-italic">Today</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex justify-content-start mb-3">
+                            <div class="p-3 rounded-3 w-75 bg-secondary bg-gradient text-white">
+                                <span class="fw-bold">@messageUserName</span>
+                                <p>@message.MessageContent</p>
+                                <p class="m-0 text-end">
+                                    <span>@message.Timestamp</span>
+                                    @if (timespanFromNow.Days > 0)
+                                    {
+                                        <span class="fst-italic">@timespanFromNow.Days days ago</span>
+                                    }
+                                    else if (timespanFromNow.Hours > 0)
+                                    {
+                                        <span class="fst-italic">@timespanFromNow.Hours hours ago</span>
+                                    }
+                                    else if (timespanFromNow.Minutes > 0)
+                                    {
+                                        <span class="fst-italic">@timespanFromNow.Minutes minutes ago </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="fst-italic">Today</span>
+                                    }
+                                </p>
+                            </div>
+                        </div>
+                    }
+                }
+            </div>                    
+        </div>
+        <div class="card-footer">
+            <form asp-action="SendMessage" method="post">
+                <input type="hidden" asp-for="Data.RoomId" />
+                <div class="form-group mb-3">
+                    <div class="form-floating">
+                        <textarea asp-for="Data.Message" class="form-control" placeholder="Message" style="height: 100px" required></textarea>
+                        <label class="form-label" asp-for="Data.Message">Message</label>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div class="form-check form-switch mt-2">
+                        <input type="checkbox" class="form-check-input" asp-for="Data.MarkAsHandled" autocomplete="off" />
+                        <label class="form-check-label" asp-for="Data.MarkAsHandled">Mark As Handled</label>
+                    </div>
+                    <button type="submit" id="sendmessage" class="btn btn-primary ms-2">
+                        <i data-feather="send"></i><span class="ms-3">Send</span>
+                    </button>
+                </div>              
+            </form>         
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        var chatHistory = document.getElementById("messagelist");
+        messagelist.scrollTop = messagelist.scrollHeight;
+    </script>
+}

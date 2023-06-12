@@ -1,0 +1,15 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\bin\Debug\net7.0\LogHelper.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\bin\Debug\net7.0\LogHelper.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\bin\Debug\net7.0\LogHelper.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\bin\Debug\net7.0\DAOLayer.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\bin\Debug\net7.0\DAOLayer.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.csproj.CopyComplete
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\refint\LogHelper.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\LogHelper.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\LogHelper\obj\Debug\net7.0\ref\LogHelper.dll

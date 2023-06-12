@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Supplement.Views.ViewAddSupplementSuccessContentPage"
+              xmlns:drawable="clr-namespace:MauiApp1.Areas.Supplement.Resources.Drawables"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="ViewAddSupplementSuccessContentPage" Loaded="ContentPage_Loaded">
+    <ContentPage.Resources>
+        <drawable:MultiColorFillEllipse x:Key="multiColorFillEllipse" />
+    </ContentPage.Resources>
+    <Grid Background="#006778">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="330"/>
+            <RowDefinition Height="41"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="16"/>
+            <RowDefinition Height="56"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="22"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="22"/>
+        </Grid.ColumnDefinitions>
+        
+        <GraphicsView Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" x:Name="CheckGraphicsView" Drawable="{StaticResource multiColorFillEllipse}"/>
+
+        <Image Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Source="checkmark.png" VerticalOptions="Center" HorizontalOptions="Center"/>
+
+        <Label Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="Supplement added successfully" WidthRequest="259" HeightRequest="56" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20" LineBreakMode="WordWrap" TextColor="#FFFFFF"/>
+
+        <Button x:Name="DoneButton" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" CornerRadius="20" Text="Done" WidthRequest="160" BackgroundColor="#FFFFFF" FontSize="16" TextColor="#006272" FontAttributes="Bold" Clicked="DoneButton_Clicked"/>
+
+    </Grid>
+</ContentPage>

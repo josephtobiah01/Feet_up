@@ -1,0 +1,155 @@
+﻿@model TrainingSessionTemplateListViewModel
+@{
+}
+<div class="d-flex justify-content-between">
+    <h3 class="d-inline mb-3">Training Session Templates</h3>
+    <span>
+        <a class="btn btn-primary" asp-controller="Training" asp-action="EditSession" asp-route-tmpl="true">
+            <i data-feather="plus"></i><span class="ms-2">Add Template</span>
+        </a>
+    </span>
+</div>
+
+
+<div id="trainingSessionSummary">
+    <div id="tsessionList" class="list-group altrow-color">
+        @foreach (var session in Model.TemplateSessions)
+        {
+            <div class="list-group-item">
+                <div class="row justify-content-between mb-2">
+                    <h5 class="col-md-6">
+                        <a data-bs-toggle="collapse" href="#sess_tbl_@session.Id" aria-expanded="false" aria-controls="sess_tbl_@session.Id role="button" id="" class="fw-bold">@session.Name</a>
+                        <span class="text-muted">ID: @session.Id</span>
+                    </h5>
+                    <div>
+                        <span class="fw-bold">Description:</span>
+                        <span class="text-muted">@session.Description</span>
+                    </div>
+                    <div>
+                        <span class="fw-bold">Added On:</span>
+                        <span class="text-muted">@session.StartDateTime.GetValueOrDefault().ToString("R")</span>
+                    </div>
+                </div>
+                @if (session.EdsExercise != null && session.EdsExercise.Count > 0)
+                {
+                    <div id="sess_tbl_@session.Id" class="collapse list-group mb-2">
+                        @foreach (var exercise in session.EdsExercise)
+                        {
+                            <div class="list-group-item">
+                                <div class="row justify-content-between">
+                                    <h5 class="col-md-6 mb-3">
+                                        <a role="button" data-bs-toggle="collapse" href="#ex_tbl_@exercise.Id">@exercise.FkExerciseType.Name</a>
+                                        <span class="text-muted">ID: @exercise.Id</span>
+                                    </h5>
+                                </div>
+                                @if (exercise.EdsSet != null && exercise.EdsSet.Count > 0)
+                                {
+                                    <div id="ex_tbl_@exercise.Id" class="collapse">
+                                        <table class="table table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Set Number</th>
+                                                    <th>Target</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach (var set in exercise.EdsSet)
+                                                {
+                                                    string target_metricText = String.Empty;
+                                                    string actual_metricText = String.Empty;
+                                                    @foreach (var metric in set.EdsSetMetrics)
+                                                    {
+                                                        target_metricText += $" {metric.TargetCustomMetric} {metric.FkMetricsType.Name} x";
+                                                        if (metric.ActualCustomMetric.HasValue)
+                                                        {
+                                                            actual_metricText += $" {metric.TargetCustomMetric} {metric.FkMetricsType.Name} x";
+                                                        }
+                                                    }
+                                                    <tr>
+                                                        <td>@set.SetSequenceNumber</td>
+                                                        <td>
+                                                            @if (target_metricText != String.Empty)
+                                                            {
+                                                                <span>@target_metricText.Substring(0, target_metricText.Length - 1)</span>
+                                                            }
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">No Sets Available</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                }
+                <div class="d-flex justify-content-end">
+                    <a class="btn btn-outline-primary d-flex me-2" asp-controller="Training" asp-action="EditSession" asp-route-id="@session.Id" asp-route-copy="true" asp-route-tmpl="true">
+                        <i data-feather="copy"></i><span class="ms-2">Copy</span>
+                    </a>
+                    <a class="btn btn-outline-primary d-flex me-2" asp-controller="Training" asp-action="EditSession" asp-route-id="@session.Id" asp-route-tmpl="true">
+                        <i data-feather="edit"></i><span class="ms-2">Edit</span>
+                    </a>
+                    <button class="btn btn-danger d-flex" action="delete" data-id="@session.Id">
+                        <i data-feather="trash-2"></i><span class="ms-2">Delete</span>
+                    </button>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        (function () {
+            var delete_url = "/api/data/deletetrainingsession";
+
+            function callDelete(e) {
+                if (window.confirm("Are you sure you want to delete this template? This cannot be undone.")) {
+                    var tgt = e.currentTarget;
+                    if (tgt == null) {
+                        tgt = e.target;
+                    }
+
+                    var idToDelete = tgt.getAttribute("data-id");
+                    fetch(delete_url, {
+                        method: "POST",
+                        cache: "no-cache",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(idToDelete)
+                    })
+                        .then((response) => {
+                            if (!response.ok) {
+                                throw new Error("Delete Training Session Failed.");
+                            }
+                            return response.json();
+                        })
+                        .then((data) => {
+                            if (data == true) {
+                                document.location.reload();
+                            }
+                            else {
+                                throw new Error("Delete Training Session Failed.");
+                            }
+                        })
+                        .catch((error) => {
+                            window.FitApp.showToast("Error", "Failed to delete session", "danger");
+                        });
+                }
+            }
+
+            var deleteButtons = document.querySelectorAll("button[action='delete']");
+            deleteButtons.forEach((button) => {
+                button.addEventListener("click", callDelete);
+            });
+
+
+        })();
+    </script>
+}

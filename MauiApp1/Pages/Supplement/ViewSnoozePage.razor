@@ -1,0 +1,43 @@
+﻿<div class="content-div" hidden="@Hidden">
+
+    <div class="header-div">
+
+        <label class="title-label">Snooze</label>
+
+        <div class="block-div" />
+
+        <div class="button-content-group-div">
+            <button class="close-button" align="center" @onclick="CloseButton_Click">
+                <img class="close-button-icon-image" src="resources/public/icons/userInterface/close2.svg" />
+                Close
+            </button>
+        </div>
+    </div>
+
+    <div class="card-div">
+
+        <label class="card-header-label">How much you want to snooze</label>
+
+
+        <div class="button-group-div">
+
+            <button class="thirty-minutes-button" @onclick="ThirtyMinutesSnoozeButton_Click">
+                30 mins
+            </button>
+
+            <button class="forty-five-minutes-button" @onclick="FortyFiveMinutesSnoozeButton_Click">
+                45 mins
+            </button>
+
+            <button class="one-hour-button" @onclick="OneHourSnoozeButton_Click">
+                1 hour
+            </button>
+
+            <button class="custom-button" @onclick="CustomSnoozeButton_Click">
+                Custom
+            </button>
+
+        </div>
+    </div>
+
+</div>

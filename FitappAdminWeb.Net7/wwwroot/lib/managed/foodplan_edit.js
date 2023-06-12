@@ -1,0 +1,239 @@
+﻿(function () {
+    function Meal() {
+        var self = this;
+        self.Id = ko.observable(0);
+        self.MealTypeId = ko.observable();
+        self.HasTarget = ko.observable();
+
+        //Do not allow meal deletions when either of these flags are true
+        //Editing targets should be fine, probably (for confirmation)
+        self.IsComplete = ko.observable(false);
+        self.IsOngoing = ko.observable(false);
+
+        self.MealCalorieTarget = ko.observable();
+        self.MealCalorieMin = ko.observable();
+        self.MealCalorieMax = ko.observable();
+        self.ProteinGramsTarget = ko.observable();
+        self.CrabsGramsTarget = ko.observable();
+        self.SugarGramsTarget = ko.observable();
+        self.FatGramsTarget = ko.observable();
+        self.UnsaturatedFatGramsTarget = ko.observable();
+        self.SaturatedFatGramsTarget = ko.observable();
+        self.FiberGramsTarget = ko.observable();
+        self.AlcoholGramsTarget = ko.observable();
+    }
+
+    function ViewModel() {
+        var self = this;
+        self.Id = ko.observable();
+        self.FkUserId = ko.observable();
+        self.Meals = ko.observableArray([]);
+        self.CopyMode = ko.observable(false);
+        self.Date = ko.observable();
+        self.DaysToExtrapolate = ko.observable();
+        self.IsSubmitEnabled = ko.observable(true);
+
+        //computed information
+        self.DayCalorieTarget = ko.computed(function () {
+            return mealPropertySummate("MealCalorieTarget", this.Meals);
+        }, self);
+        self.DayCalorieTargetMin = ko.computed(function () {
+            return mealPropertySummate("MealCalorieMin", this.Meals);
+        }, self);
+        self.DayCalorieTargetMax = ko.computed(function () {
+            return mealPropertySummate("MealCalorieMax", this.Meals);
+        }, self);
+        self.DayCalorieDisplay = ko.computed(function () {
+            var text = "{target} ({min} - {max})";
+            text = text.replace("{target}", this.DayCalorieTarget());
+            text = text.replace("{min}", this.DayCalorieTargetMin());
+            text = text.replace("{max}", this.DayCalorieTargetMax());
+            return text;
+        }, self);
+        self.ProteinGramsTarget = ko.computed(function () {
+            return mealPropertySummate("ProteinGramsTarget", this.Meals);
+        }, self);
+        self.CrabsGramsTarget = ko.computed(function () {
+            return mealPropertySummate("CrabsGramsTarget", this.Meals);
+        }, self);
+        self.SugarGramsTarget = ko.computed(function () {
+            return mealPropertySummate("SugarGramsTarget", this.Meals);
+        }, self);
+        self.FatGramsTarget = ko.computed(function () {
+            return mealPropertySummate("FatGramsTarget", this.Meals);
+        }, self);
+        self.SaturatedFatGramsTarget = ko.computed(function () {
+            return mealPropertySummate("SaturatedFatGramsTarget", this.Meals);
+        }, self);
+        self.UnsaturatedFatGramsTarget = ko.computed(function () {
+            return mealPropertySummate("UnsaturatedFatGramsTarget", this.Meals);
+        }, self);
+        self.FiberGramsTarget = ko.computed(function () {
+            return mealPropertySummate("FiberGramsTarget", this.Meals);
+        }, self);
+        self.AlcoholGramsTarget = ko.computed(function () {
+            return mealPropertySummate("AlcoholGramsTarget", this.Meals);
+        }, self);
+
+        self.AddMeal = function () {
+            var meal = new Meal();
+            self.Meals.push(meal);
+            scrollAndHighlightLastMealItem();
+        }
+
+        self.RemoveMeal = function (meal) {
+            self.Meals.remove(meal);
+        }
+
+        self.CloneMeal = function (meal) {
+            var newMeal = new Meal();
+            newMeal.MealTypeId(meal.MealTypeId());
+            newMeal.HasTarget(meal.HasTarget());
+            newMeal.MealCalorieTarget(meal.MealCalorieTarget());
+            newMeal.MealCalorieMin(meal.MealCalorieMin());
+            newMeal.MealCalorieMax(meal.MealCalorieMax());
+            newMeal.ProteinGramsTarget(meal.ProteinGramsTarget());
+            newMeal.CrabsGramsTarget(meal.CrabsGramsTarget());
+            newMeal.SugarGramsTarget(meal.SugarGramsTarget());
+            newMeal.FatGramsTarget(meal.FatGramsTarget());
+            newMeal.SaturatedFatGramsTarget(meal.SaturatedFatGramsTarget());
+            newMeal.UnsaturatedFatGramsTarget(meal.UnsaturatedFatGramsTarget());
+            newMeal.FiberGramsTarget(meal.FiberGramsTarget());
+            newMeal.AlcoholGramsTarget(meal.AlcoholGramsTarget());
+            self.Meals.push(newMeal);
+            scrollAndHighlightLastMealItem();
+        }
+
+        self.SubmitModel = function () {
+            var add_url = "/api/data/adddailyfoodplan";
+            var edit_url = "/api/data/editdailyfoodplan";
+
+            var url = self.Id() == "0" ? add_url : edit_url;
+
+            var model = ko.toJS(self);
+            console.log(model);
+
+            try {
+                self.IsSubmitEnabled(false);
+                fetch(url, {
+                    method: "POST",
+                    cache: "no-cache",
+                    credentials: "include",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(model)
+                }).then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Submit Failed. Returned invalid response");
+                    }
+                    return response.json();
+                }).then((data) => {
+                    console.log(data);
+                    self.IsSubmitEnabled(true);
+
+                    var redirectUrl = "/nutrition/dailyplan?userid={id}&start={date}";
+                    redirectUrl = redirectUrl.replace("{id}", self.FkUserId());
+                    redirectUrl = redirectUrl.replace("{date}", self.Date());
+                    //console.log(redirectUrl);
+                    document.location.href = redirectUrl;
+                });
+            }
+            catch (ex) {
+                self.IsSubmitEnabled(true);
+                throw ex;
+            }
+        }
+
+        function mealPropertySummate(mealProp, mealList) {
+            var total = 0;
+
+            mealList().forEach((meal) => {
+                var property = meal[mealProp]();
+                if (property != null && property != "" && !isNaN(property)) {
+                    total += parseFloat(property);
+                }
+            });
+
+            return total;
+        }
+
+        function scrollAndHighlightLastMealItem() {
+            var mealCount = self.Meals().length;
+            var targetElem = document.querySelector("#meal_" + mealCount);
+
+            //scroll to elem, then flash it
+            targetElem.scrollIntoView();
+
+            $(targetElem).delay(500).fadeOut().fadeIn().fadeOut().fadeIn();
+        }
+    }
+
+    function loadMealsInDay(dayId, vm) {
+        var url = "/api/data/getmealsinday?dayId=" + dayId;
+
+        try {
+            fetch(url)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("Cannot get meals in day " + dayId);
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    console.log(data);
+                    data.forEach((meal) => {
+                        var newMeal = new Meal();
+                        if (vm.CopyMode()) {
+                            meal.Id(0); //remove id for adding
+                        }
+                        newMeal.Id(meal.id);
+                        newMeal.MealTypeId(meal.mealTypeId);
+                        newMeal.MealCalorieTarget(meal.mealCalorieTarget);
+                        newMeal.MealCalorieMin(meal.mealCalorieMin);
+                        newMeal.MealCalorieMax(meal.mealCalorieMax);
+                        newMeal.ProteinGramsTarget(meal.proteinGramsTarget);
+                        newMeal.CrabsGramsTarget(meal.crabsGramsTarget);
+                        newMeal.SugarGramsTarget(meal.sugarGramsTarget);
+                        newMeal.FatGramsTarget(meal.fatGramsTarget);
+                        newMeal.UnsaturatedFatGramsTarget(meal.unsaturatedFatGramsTarget);
+                        newMeal.SaturatedFatGramsTarget(meal.saturatedFatGramsTarget);
+                        newMeal.FiberGramsTarget(meal.fiberGramsTarget);
+                        newMeal.AlcoholGramsTarget(meal.alcoholGramsTarget);
+                        newMeal.IsComplete(meal.isComplete);
+                        newMeal.IsOngoing(meal.isOngoing);
+
+                        vm.Meals.push(newMeal);
+                    })
+                });
+
+        }
+        catch (ex) {
+            throw ex;
+        }       
+    }
+
+    function init() {
+        var options = window["editfoodplan_options"];
+
+        var userId = options.UserId;
+        var dayId = options.DayId;
+        var isCopy = options.CopyMode;
+
+        var vm = new ViewModel();
+        vm.CopyMode(isCopy);
+        vm.FkUserId(userId);
+
+        if (dayId != null) {
+            vm.Id(isCopy ? 0 : dayId);
+            vm.Date(document.getElementById("Date").value);
+            loadMealsInDay(dayId, vm);
+        }
+
+        ko.applyBindings(vm, document.getElementById("dailyplan_editor"));
+    }
+
+    document.addEventListener("DOMContentLoaded", (evt) => {
+        init();
+    });
+})();

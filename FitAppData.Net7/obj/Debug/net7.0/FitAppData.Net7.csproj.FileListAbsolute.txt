@@ -1,0 +1,14 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\bin\Debug\net7.0\FitAppData.Net7.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\bin\Debug\net7.0\FitAppData.Net7.runtimeconfig.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\bin\Debug\net7.0\FitAppData.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\bin\Debug\net7.0\FitAppData.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\refint\FitAppData.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\FitAppData.Net7.genruntimeconfig.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitAppData.Net7\obj\Debug\net7.0\ref\FitAppData.Net7.dll
