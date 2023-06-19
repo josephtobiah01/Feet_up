@@ -61,15 +61,23 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         SaveFeedBack();
     }
 
-    private void RatingButton_Clicked(object sender, EventArgs e)
+    private void RatingSlider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
+        double sliderValue = e.NewValue;
 
-        Button button = (Button)sender;
-
-        HandleRatingButtonClick(button);
-
-
+        //this.RatingLabel.Text = sliderValue.ToString();
+        SetRatingSelectedValueChange(sliderValue);
     }
+
+    //private void RatingButton_Clicked(object sender, EventArgs e)
+    //{
+
+    //    Button button = (Button)sender;
+
+    //    HandleRatingButtonClick(button);
+
+
+    //}
 
     #endregion
 
@@ -134,6 +142,7 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
                                "Kg");
 
             ComputeCollectionViewHeight();
+            SetRatingSliderWidthRequest();
         }
         catch(Exception ex)
         {
@@ -142,6 +151,21 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         finally 
         { 
         }
+    }
+
+    private void SetRatingSliderWidthRequest()
+    {
+#if ANDROID
+        this.RatingSlider.WidthRequest = 336;
+#endif
+
+#if WINDOWS
+        this.RatingSlider.WidthRequest = 311;
+#endif
+
+#if IOS
+        this.RatingSlider.WidthRequest = 311;
+#endif
     }
 
     private void ComputeCollectionViewHeight()
@@ -310,63 +334,95 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
 
     }
 
-    private void HandleRatingButtonClick(Button button)
+    private void SetRatingSelectedValueChange(double sliderValue)
     {
-        if (button == this.AverageRatingButton)
+
+        if(sliderValue >= 0 && sliderValue < 0.22)
         {
-            UnSelectVeryEasyRating();
-            UnSelectEasyRating();
-            SelectAverageRating();
-            UnSelectHardRating();
-            UnSelectVeryHardRating();
-            //RatingLabel.Text = "Average";
-            RatingLabel.Text = AVERAGE_TEXT;
+            this.RatingLabel.Text = VERY_EASY_TEXT;
         }
-        else if (button == this.VeryEasyRatingButton)
+        else if (sliderValue >= 0.22 && sliderValue < 0.48)
         {
-            SelectVeryEasyRating();
-            UnSelectEasyRating();
-            UnSelectAverageRating();
-            UnSelectHardRating();
-            UnSelectVeryHardRating();
-            //RatingLabel.Text = "Very Easy";
-            RatingLabel.Text = VERY_EASY_TEXT;
+            this.RatingLabel.Text = EASY_TEXT;
         }
-        else if (button == this.EasyRatingButton)
+        else if (sliderValue >= 0.48 && sliderValue < 0.74)
         {
-            UnSelectVeryEasyRating();
-            SelectEasyRating();
-            UnSelectAverageRating();
-            UnSelectHardRating();
-            UnSelectVeryHardRating();
-            //RatingLabel.Text = "Easy";
-            RatingLabel.Text = EASY_TEXT;
+            this.RatingLabel.Text = AVERAGE_TEXT;
         }
-        else if (button == this.HardRatingButton)
+        else if (sliderValue >= 0.739 && sliderValue < 1)
         {
-            UnSelectVeryEasyRating();
-            UnSelectEasyRating();
-            UnSelectAverageRating();
-            SelectHardRating();
-            UnSelectVeryHardRating();
-            //RatingLabel.Text = "Hard";
-            RatingLabel.Text = HARD_TEXT;
+            this.RatingLabel.Text = HARD_TEXT;
         }
-        else if (button == this.VeryHardRatingButton)
+        else if (sliderValue == 1)
         {
-            UnSelectVeryEasyRating();
-            UnSelectEasyRating();
-            UnSelectAverageRating();
-            UnSelectHardRating();
-            SelectVeryHardRating();
-            //RatingLabel.Text = "Very Hard";
-            RatingLabel.Text = VERY_HARD_TEXT;
-        }
+            this.RatingLabel.Text = VERY_HARD_TEXT;
+        }        
         else
         {
-            DisplayAlert("Error Rating Click!", "An error occured while rating the difficulty level", "Ok");
+            //error
         }
+
+        //this.RatingLabel.Text = this.RatingLabel.Text + " :: " + sliderValue.ToString();
+
     }
+
+    //private void HandleRatingButtonClick(Button button)
+    //{
+    //    if (button == this.AverageRatingButton)
+    //    {
+    //        UnSelectVeryEasyRating();
+    //        UnSelectEasyRating();
+    //        SelectAverageRating();
+    //        UnSelectHardRating();
+    //        UnSelectVeryHardRating();
+    //        //RatingLabel.Text = "Average";
+    //        RatingLabel.Text = AVERAGE_TEXT;
+    //    }
+    //    else if (button == this.VeryEasyRatingButton)
+    //    {
+    //        SelectVeryEasyRating();
+    //        UnSelectEasyRating();
+    //        UnSelectAverageRating();
+    //        UnSelectHardRating();
+    //        UnSelectVeryHardRating();
+    //        //RatingLabel.Text = "Very Easy";
+    //        RatingLabel.Text = VERY_EASY_TEXT;
+    //    }
+    //    else if (button == this.EasyRatingButton)
+    //    {
+    //        UnSelectVeryEasyRating();
+    //        SelectEasyRating();
+    //        UnSelectAverageRating();
+    //        UnSelectHardRating();
+    //        UnSelectVeryHardRating();
+    //        //RatingLabel.Text = "Easy";
+    //        RatingLabel.Text = EASY_TEXT;
+    //    }
+    //    else if (button == this.HardRatingButton)
+    //    {
+    //        UnSelectVeryEasyRating();
+    //        UnSelectEasyRating();
+    //        UnSelectAverageRating();
+    //        SelectHardRating();
+    //        UnSelectVeryHardRating();
+    //        //RatingLabel.Text = "Hard";
+    //        RatingLabel.Text = HARD_TEXT;
+    //    }
+    //    else if (button == this.VeryHardRatingButton)
+    //    {
+    //        UnSelectVeryEasyRating();
+    //        UnSelectEasyRating();
+    //        UnSelectAverageRating();
+    //        UnSelectHardRating();
+    //        SelectVeryHardRating();
+    //        //RatingLabel.Text = "Very Hard";
+    //        RatingLabel.Text = VERY_HARD_TEXT;
+    //    }
+    //    else
+    //    {
+    //        DisplayAlert("Error Rating Click!", "An error occured while rating the difficulty level", "Ok");
+    //    }
+    //}
 
     private async void SaveFeedBack()
     {
@@ -424,77 +480,78 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         
     }
 
-    private void UnSelectVeryEasyRating()
-    {
-        this.VeryEasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-        this.VeryEasyRatingEllipse.WidthRequest = 8;
-        this.VeryEasyRatingEllipse.HeightRequest = 8;
-    }
+    //private void UnSelectVeryEasyRating()
+    //{
+    //    this.VeryEasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
+    //    this.VeryEasyRatingEllipse.WidthRequest = 8;
+    //    this.VeryEasyRatingEllipse.HeightRequest = 8;
+    //}
 
-    private void SelectVeryEasyRating()
-    {
-        this.VeryEasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-        this.VeryEasyRatingEllipse.WidthRequest = 16;
-        this.VeryEasyRatingEllipse.HeightRequest = 16;
-    }
+    //private void SelectVeryEasyRating()
+    //{
+    //    this.VeryEasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
+    //    this.VeryEasyRatingEllipse.WidthRequest = 16;
+    //    this.VeryEasyRatingEllipse.HeightRequest = 16;
+    //}
 
-    private void UnSelectEasyRating()
-    {
-        this.EasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-        this.EasyRatingEllipse.WidthRequest = 8;
-        this.EasyRatingEllipse.HeightRequest = 8;
-    }
+    //private void UnSelectEasyRating()
+    //{
+    //    this.EasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
+    //    this.EasyRatingEllipse.WidthRequest = 8;
+    //    this.EasyRatingEllipse.HeightRequest = 8;
+    //}
 
-    private void SelectEasyRating()
-    {
-        this.EasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-        this.EasyRatingEllipse.WidthRequest = 16;
-        this.EasyRatingEllipse.HeightRequest = 16;
-    }
+    //private void SelectEasyRating()
+    //{
+    //    this.EasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
+    //    this.EasyRatingEllipse.WidthRequest = 16;
+    //    this.EasyRatingEllipse.HeightRequest = 16;
+    //}
 
-    private void UnSelectAverageRating()
-    {
-        this.AverageRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-        this.AverageRatingEllipse.WidthRequest = 8;
-        this.AverageRatingEllipse.HeightRequest = 8;
-    }
+    //private void UnSelectAverageRating()
+    //{
+    //    this.AverageRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
+    //    this.AverageRatingEllipse.WidthRequest = 8;
+    //    this.AverageRatingEllipse.HeightRequest = 8;
+    //}
 
-    private void SelectAverageRating()
-    {
-        this.AverageRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-        this.AverageRatingEllipse.WidthRequest = 16;
-        this.AverageRatingEllipse.HeightRequest = 16;
-    }
+    //private void SelectAverageRating()
+    //{
+    //    this.AverageRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
+    //    this.AverageRatingEllipse.WidthRequest = 16;
+    //    this.AverageRatingEllipse.HeightRequest = 16;
+    //}
 
-    private void UnSelectHardRating()
-    {
-        this.HardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-        this.HardRatingEllipse.WidthRequest = 8;
-        this.HardRatingEllipse.HeightRequest = 8;
-    }
+    //private void UnSelectHardRating()
+    //{
+    //    this.HardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
+    //    this.HardRatingEllipse.WidthRequest = 8;
+    //    this.HardRatingEllipse.HeightRequest = 8;
+    //}
 
-    private void SelectHardRating()
-    {
-        this.HardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-        this.HardRatingEllipse.WidthRequest = 16;
-        this.HardRatingEllipse.HeightRequest = 16;
-    }
+    //private void SelectHardRating()
+    //{
+    //    this.HardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
+    //    this.HardRatingEllipse.WidthRequest = 16;
+    //    this.HardRatingEllipse.HeightRequest = 16;
+    //}
 
-    private void UnSelectVeryHardRating()
-    {
-        this.VeryHardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-        this.VeryHardRatingEllipse.WidthRequest = 8;
-        this.VeryHardRatingEllipse.HeightRequest = 8;
-    }
+    //private void UnSelectVeryHardRating()
+    //{
+    //    this.VeryHardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
+    //    this.VeryHardRatingEllipse.WidthRequest = 8;
+    //    this.VeryHardRatingEllipse.HeightRequest = 8;
+    //}
 
-    private void SelectVeryHardRating()
-    {
-        this.VeryHardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-        this.VeryHardRatingEllipse.WidthRequest = 16;
-        this.VeryHardRatingEllipse.HeightRequest = 16;
-    }
+    //private void SelectVeryHardRating()
+    //{
+    //    this.VeryHardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
+    //    this.VeryHardRatingEllipse.WidthRequest = 16;
+    //    this.VeryHardRatingEllipse.HeightRequest = 16;
+    //}
+
 
     #endregion
 
-
+    
 }

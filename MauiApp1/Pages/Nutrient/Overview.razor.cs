@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Components;
 using ImageApi.Net7;
 using FeedApi.Net7.Models;
 using Microsoft.JSInterop;
+using CommunityToolkit.Maui.Alerts;
+using System.Threading;
 
 namespace MauiApp1.Pages.Nutrient
 {
@@ -25,6 +27,7 @@ namespace MauiApp1.Pages.Nutrient
         //nutrient fields
         public NutrientrecipesForMeal NutrientPopupRecipesDisplayed;
         public List<NutrientDish> DishesDisplayed = new List<NutrientDish>();
+        public NutrientDish TotalNutrients = new NutrientDish();
         public bool NutrientIsCustomAddedDish = false;
         public int NutrientServings = 1;
         public double NutrientPortion = 1;
@@ -47,6 +50,7 @@ namespace MauiApp1.Pages.Nutrient
                 if(feedItem.Status == FeedItemStatus.Ongoing || feedItem.Status == FeedItemStatus.Completed)
                 {
                     HideOverviewContents = true;
+                    DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
                 }
                 else
                 {
@@ -57,6 +61,12 @@ namespace MauiApp1.Pages.Nutrient
             {
                 HideOverviewContents = true;
                 DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
+            }
+
+
+            if (HideOverviewContents)
+            {
+                GetTotals();
             }
         }
 
@@ -220,9 +230,13 @@ namespace MauiApp1.Pages.Nutrient
                 bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
                 StateHasChanged();
             }
-            else
+            else if (NutrientRecipe != null)
             {
                 await ImageApi.Net7.NutritionApi.UnFavoriteDish(NutrientRecipe.RecipeID);
+                StateHasChanged();
+            }
+            else
+            {
                 StateHasChanged();
             }
         }
@@ -337,8 +351,11 @@ namespace MauiApp1.Pages.Nutrient
                 Index.NutritionUploadModel = new List<NutritionUploadModel>();
                 DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
                 HideOverviewContents = true;
+                GetTotals();
                 StateHasChanged();
-                await App.Current.MainPage.DisplayAlert("Success!", "Your images were uploaded.", "OK");
+                //await App.Current.MainPage.DisplayAlert("Success!", "Your images were uploaded.", "OK");
+                var toast = Toast.Make("Success! Your images were uploaded!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                await toast.Show();
                 StateHasChanged();
                 //todo
                 //GoToHome();
@@ -350,7 +367,29 @@ namespace MauiApp1.Pages.Nutrient
             }
             //todo
         }
-
+        public void GetTotals()
+        {
+            TotalNutrients.NumberOfServings = 0;
+            TotalNutrients.Recipe = new NutrientRecipeModel();
+            TotalNutrients.Recipe.NutrientInformation = new NutrientRecipeModel.RecipeNutrientInformation();
+            TotalNutrients.Recipe.NutrientInformation.Carbohydrates = 0;
+            TotalNutrients.Recipe.NutrientInformation.Fiber = 0;
+            TotalNutrients.Recipe.NutrientInformation.Protein = 0;
+            TotalNutrients.Recipe.NutrientInformation.Fat = 0;
+            TotalNutrients.Recipe.NutrientInformation.Calories = 0;
+            for (int i = 0; i < DishesDisplayed.Count; i++)
+            {
+                TotalNutrients.NumberOfServings += DishesDisplayed[i].NumberOfServings;
+                if (DishesDisplayed[i].Recipe != null && DishesDisplayed[i].Recipe.NutrientInformation != null && DishesDisplayed[i].Recipe.NutrientInformation.Calories != null)
+                {
+                    TotalNutrients.Recipe.NutrientInformation.Carbohydrates += DishesDisplayed[i].Recipe.NutrientInformation.Carbohydrates;
+                    TotalNutrients.Recipe.NutrientInformation.Fiber += DishesDisplayed[i].Recipe.NutrientInformation.Fiber;
+                    TotalNutrients.Recipe.NutrientInformation.Protein += DishesDisplayed[i].Recipe.NutrientInformation.Protein;
+                    TotalNutrients.Recipe.NutrientInformation.Fat += DishesDisplayed[i].Recipe.NutrientInformation.Fat;
+                    TotalNutrients.Recipe.NutrientInformation.Calories += DishesDisplayed[i].Recipe.NutrientInformation.Calories;
+                }
+            }
+        }
 
         public async Task TakePhoto()
         {

@@ -1,5 +1,8 @@
-﻿using MauiApp1.Areas.Supplement.ViewModels;
+﻿using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
+using MauiApp1.Areas.Supplement.ViewModels;
 using Microsoft.AspNetCore.Components;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MauiApp1.Pages.Supplement
 {
@@ -239,6 +242,10 @@ namespace MauiApp1.Pages.Supplement
         {
             bool isSnoozeSuccessfully = false;
             int waitMinute = 30;
+            string text = "Successfully snooze for 30 minutes.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
@@ -249,7 +256,11 @@ namespace MauiApp1.Pages.Supplement
                     SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
 
                     InvokeSuccessEventCallback(_supplementPageViewModel.SupplementDoseId, waitMinute);
-                    await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Successfully snooze for 30 minutes.", "OK");
+
+                    IToast toast = Toast.Make(text, duration, fontSize);
+                    await toast.Show(cancellationTokenSource.Token);
+
+                    //await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Successfully snooze for 30 minutes.", "OK");
                 }
                 else
                 {
@@ -273,6 +284,11 @@ namespace MauiApp1.Pages.Supplement
             bool isSnoozeSuccessfully = false;
             bool isSnoozeAllSuccessfully = true;
             int waitMinute = 30;
+            string text = "Successfully snooze for 30 minutes.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
             try
             {
                 if (_supplementPageViewModels.Count > 0)
@@ -296,7 +312,12 @@ namespace MauiApp1.Pages.Supplement
                     if (isSnoozeAllSuccessfully == true)
                     {
                         InvokeSuccessEventCallback(null, waitMinute);
-                        await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Successfully snooze for 30 minutes.", "OK");
+
+                        
+                        IToast toast = Toast.Make(text, duration, fontSize);
+                        await toast.Show(cancellationTokenSource.Token);
+
+                        //await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Successfully snooze for 30 minutes.", "OK");
                     }
                     else
                     {
@@ -321,6 +342,10 @@ namespace MauiApp1.Pages.Supplement
         {
             bool isSnoozeSuccessfully = false;
             int waitMinute = 45;
+            string text = "Successfully snooze for 45 minutes.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
@@ -331,7 +356,9 @@ namespace MauiApp1.Pages.Supplement
                     SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
                     InvokeSuccessEventCallback(_supplementPageViewModel.SupplementDoseId, waitMinute);
 
-                    await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "Successfully snooze for 45 minutes.", "OK");
+                    IToast toast = Toast.Make(text, duration, fontSize);
+                    await toast.Show(cancellationTokenSource.Token);
+                    //await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "Successfully snooze for 45 minutes.", "OK");
                 }
                 else
                 {
@@ -356,6 +383,10 @@ namespace MauiApp1.Pages.Supplement
             bool isSnoozeSuccessfully = false;
             bool isSnoozeAllSuccessfully = true;
             int waitMinute = 45;
+            string text = "Successfully snooze for 45 minutes.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
@@ -380,7 +411,9 @@ namespace MauiApp1.Pages.Supplement
                     if (isSnoozeAllSuccessfully == true)
                     {
                         InvokeSuccessEventCallback(null, waitMinute);
-                        await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "Successfully snooze for 45 minutes.", "OK");
+                        IToast toast = Toast.Make(text, duration, fontSize);
+                        await toast.Show(cancellationTokenSource.Token);
+                        //await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "Successfully snooze for 45 minutes.", "OK");
                     }
                     else
                     {
@@ -404,6 +437,10 @@ namespace MauiApp1.Pages.Supplement
         {
             bool isSnoozeSuccessfully = false;
             int waitMinute = 60;
+            string text = "Successfully snooze for 1 hour.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
@@ -414,7 +451,9 @@ namespace MauiApp1.Pages.Supplement
                     SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
                     InvokeSuccessEventCallback(_supplementPageViewModel.SupplementDoseId, waitMinute);
 
-                    await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Successfully snooze for 1 hour.", "OK");
+                    IToast toast = Toast.Make(text, duration, fontSize);
+                    await toast.Show(cancellationTokenSource.Token);
+                    //await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Successfully snooze for 1 hour.", "OK");
                 }
                 else
                 {
@@ -438,6 +477,10 @@ namespace MauiApp1.Pages.Supplement
             bool isSnoozeSuccessfully = false;
             bool isSnoozeAllSuccessfully = true;
             int waitMinute = 60;
+            string text = "Successfully snooze for 1 hour.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
@@ -462,7 +505,9 @@ namespace MauiApp1.Pages.Supplement
                     if (isSnoozeAllSuccessfully == true)
                     {
                         InvokeSuccessEventCallback(null, waitMinute);
-                        await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Successfully snooze for 1 hour.", "OK");
+                        IToast toast = Toast.Make(text, duration, fontSize);
+                        await toast.Show(cancellationTokenSource.Token);
+                        //await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Successfully snooze for 1 hour.", "OK");
                     }
                     else
                     {
@@ -485,6 +530,10 @@ namespace MauiApp1.Pages.Supplement
         private async Task AddCustomHourSnoozeDose(int hour, int waitMinute)
         {
             bool isSnoozeSuccessfully = false;
+            string text = string.Format("Successfully snooze for {0} hour.", hour);
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
 
             try
             {
@@ -495,9 +544,10 @@ namespace MauiApp1.Pages.Supplement
                     SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
 
                     InvokeSuccessEventCallback(_supplementPageViewModel.SupplementDoseId, waitMinute);
-
-                    await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
-               string.Format("Successfully snooze for {0} hour.", hour), "OK");
+                    IToast toast = Toast.Make(text, duration, fontSize);
+                    await toast.Show(cancellationTokenSource.Token);
+               //     await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
+               //string.Format("Successfully snooze for {0} hour.", hour), "OK");
                 }
                 else
                 {
@@ -521,7 +571,11 @@ namespace MauiApp1.Pages.Supplement
         {
             bool isSnoozeSuccessfully = false;
             bool isSnoozeAllSuccessfully = true;
-          
+            string text = string.Format("Successfully snooze for {0} hour.", hour);
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
             try
             {
                 if (_supplementPageViewModels.Count > 0)
@@ -545,9 +599,10 @@ namespace MauiApp1.Pages.Supplement
                     if (isSnoozeAllSuccessfully == true)
                     {
                         InvokeSuccessEventCallback(null, waitMinute);
-
-                        await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
-              string.Format("Successfully snooze for {0} hour.", hour), "OK");
+                        IToast toast = Toast.Make(text, duration, fontSize);
+                        await toast.Show(cancellationTokenSource.Token);
+              //          await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
+              //string.Format("Successfully snooze for {0} hour.", hour), "OK");
                     }
                     else
                     {
@@ -568,352 +623,6 @@ namespace MauiApp1.Pages.Supplement
             }
 
         }
-
-        // TO BE DELETED
-        //private async void AddThirtyMinutesSnoozeTime()
-        //{
-        //    bool isSnoozeSuccessfully = false;
-        //    bool isSnoozeAllSuccessfully = true;
-
-        //    int waitMinute = 30;
-
-        //    try
-        //    {
-        //        if (_supplementPageViewModel != null)
-        //        {
-        //            isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(_supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //            if (isSnoozeSuccessfully == true)
-        //            {
-        //                //_supplementPageViewModel.ScheduledTime = _supplementPageViewModel.ScheduledTime.AddMinutes(waitMinute);
-        //                //_supplementPageViewModel.IsSnoozed= true;
-        //                SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
-
-        //                InvokeSuccessEventCallback(_supplementPageViewModel.SupplementId, waitMinute);
-        //                await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Successfully snooze for 30 minutes.", "OK");
-        //            }
-        //            else
-        //            {
-        //                await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
-        //            }
-
-        //            ClosePage();
-        //        }
-        //        else if (_supplementPageViewModels != null)
-        //        {
-        //            if (_supplementPageViewModels.Count > 0)
-        //            {
-        //                foreach (SupplementPageViewModel supplementPageViewModel in _supplementPageViewModels)
-        //                {
-        //                    isSnoozeSuccessfully = false;
-        //                    //supplementPageViewModel.ScheduledTime = supplementPageViewModel.ScheduledTime.AddMinutes(30);
-        //                    isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //                    if (isSnoozeSuccessfully == true)
-        //                    {
-        //                        //supplementPageViewModel.ScheduledTime = supplementPageViewModel.ScheduledTime.AddMinutes(30);
-        //                        SnoozeSupplementPageViewModel(supplementPageViewModel, waitMinute);
-        //                    }
-        //                    else
-        //                    {
-        //                        isSnoozeAllSuccessfully = false;
-        //                        break;
-        //                    }
-        //                }
-
-        //                if (isSnoozeAllSuccessfully == true)
-        //                {
-        //                    InvokeSuccessEventCallback(null, waitMinute);
-        //                    await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Successfully snooze for 30 minutes.", "OK");
-        //                }
-        //                else
-        //                {
-        //                    await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
-        //                }
-        //            }
-
-        //            ClosePage();
-        //        }
-        //        else
-        //        {
-        //            //Error
-        //            await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "An error occurred while adding 30 minutes of time.", "OK");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "An error occurred while adding 30 minutes of time.", "OK");
-        //    }
-        //    finally
-        //    {
-
-        //    }
-
-        //}
-
-        //private async void AddFortyMinutesSnoozeTime()
-        //{
-        //    bool isSnoozeSuccessfully = false;
-        //    bool isSnoozeAllSuccessfully = true;
-
-        //    int waitMinute = 40;
-
-        //    try
-        //    {
-        //        if (_supplementPageViewModel != null)
-        //        {
-        //            isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(_supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //            if (isSnoozeSuccessfully == true)
-        //            {
-        //                //_supplementPageViewModel.ScheduledTime = _supplementPageViewModel.ScheduledTime.AddMinutes(waitMinute);
-        //                SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
-        //                InvokeSuccessEventCallback(_supplementPageViewModel.SupplementId, waitMinute);
-
-        //                await App.Current.MainPage.DisplayAlert("Add 40 minutes Snooze", "Successfully snooze for 40 minutes.", "OK");
-        //            }
-        //            else
-        //            {
-        //                await App.Current.MainPage.DisplayAlert("Add 40 minutes Snooze", "Failed to snooze for 40 minutes.", "OK");
-        //            }
-
-
-        //            ClosePage();
-        //        }
-        //        else if (_supplementPageViewModels != null)
-        //        {
-        //            if (_supplementPageViewModels.Count > 0)
-        //            {
-        //                foreach (SupplementPageViewModel supplementPageViewModel in _supplementPageViewModels)
-        //                {
-        //                    isSnoozeSuccessfully = false;
-        //                    isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //                    if (isSnoozeSuccessfully == true)
-        //                    {
-        //                        //supplementPageViewModel.ScheduledTime = supplementPageViewModel.ScheduledTime.AddMinutes(40);
-        //                        SnoozeSupplementPageViewModel(supplementPageViewModel, waitMinute);
-        //                    }
-        //                    else
-        //                    {
-        //                        isSnoozeAllSuccessfully = false;
-        //                        break;
-        //                    }
-        //                }
-
-        //                if (isSnoozeAllSuccessfully == true)
-        //                {
-        //                    InvokeSuccessEventCallback(null, waitMinute);
-        //                    await App.Current.MainPage.DisplayAlert("Add 40 minutes Snooze", "Successfully snooze for 40 minutes.", "OK");
-        //                }
-        //                else
-        //                {
-        //                    await App.Current.MainPage.DisplayAlert("Add 40 minutes Snooze", "Failed to snooze for 40 minutes.", "OK");
-        //                }
-        //            }
-
-        //            ClosePage();
-        //        }
-        //        else
-        //        {
-        //            //Error
-        //            await App.Current.MainPage.DisplayAlert("Add 40 minutes Snooze", "An error occurred while adding 40 minutes of time.", "OK");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await App.Current.MainPage.DisplayAlert("Add 40 minutes Snooze", "An error occurred while adding 40 minutes of time.", "OK");
-        //    }
-        //    finally
-        //    {
-
-        //    }
-        //}
-
-        //private async void AddOneHourSnoozeTime()
-        //{
-
-        //    bool isSnoozeSuccessfully = false;
-        //    bool isSnoozeAllSuccessfully = true;
-
-        //    int waitMinute = 60;
-
-        //    try
-        //    {
-        //        if (_supplementPageViewModel != null)
-        //        {
-        //            isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(_supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //            if (isSnoozeSuccessfully == true)
-        //            {
-        //                _supplementPageViewModel.ScheduledTime = _supplementPageViewModel.ScheduledTime.AddMinutes(waitMinute);
-
-        //                //InvokeSuccessEventCallback(_supplementPageViewModel.SupplementId, waitMinute);
-        //                SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
-        //                await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Successfully snooze for 1 hour.", "OK");
-        //            }
-        //            else
-        //            {
-        //                await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Failed to snooze for 1 hour.", "OK");
-        //            }
-
-        //            ClosePage();
-        //        }
-        //        else if (_supplementPageViewModels != null)
-        //        {
-        //            if (_supplementPageViewModels.Count > 0)
-        //            {
-        //                foreach (SupplementPageViewModel supplementPageViewModel in _supplementPageViewModels)
-        //                {
-        //                    isSnoozeSuccessfully = false;
-        //                    isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //                    if (isSnoozeSuccessfully == true)
-        //                    {
-        //                        //supplementPageViewModel.ScheduledTime = supplementPageViewModel.ScheduledTime.AddMinutes(waitMinute);
-        //                        SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
-        //                    }
-        //                    else
-        //                    {
-        //                        isSnoozeAllSuccessfully = false;
-        //                        break;
-        //                    }
-        //                }
-
-        //                if (isSnoozeAllSuccessfully == true)
-        //                {
-        //                    InvokeSuccessEventCallback(null, waitMinute);
-        //                    await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Successfully snooze for 1 hour.", "OK");
-        //                }
-        //                else
-        //                {
-        //                    await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Failed to snooze for 1 hour", "OK");
-        //                }
-        //            }
-
-        //            ClosePage();
-        //        }
-        //        else
-        //        {
-        //            //Error
-        //            await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "An error occurred while adding 1 hour of time.", "OK");
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "An error occurred while adding 1 hour of time.", "OK");
-        //    }
-        //    finally
-        //    {
-
-        //    }
-        //}
-
-        //private async void AddCustomeSnoozeTime()
-        //{
-        //    int hour = 0;
-        //    int waitMinute = 0;
-        //    bool isSnoozeSuccessfully = false;
-        //    bool isSnoozeAllSuccessfully = true;
-        //    string result = await App.Current.MainPage.DisplayPromptAsync("Snooze", "Snooze for (Enter in hours)");
-        //    if (result != null)
-        //    {
-        //        bool isNumber = int.TryParse(result, out hour);
-
-        //        if (isNumber == true)
-        //        {
-        //            try
-        //            {
-        //                waitMinute = hour * 60;
-
-        //                if (_supplementPageViewModel != null)
-        //                {
-        //                    isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(_supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //                    if (isSnoozeSuccessfully == true)
-        //                    {
-
-        //                        //_supplementPageViewModel.ScheduledTime = _supplementPageViewModel.ScheduledTime.AddMinutes(waitMinute);
-        //                        SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
-
-        //                        InvokeSuccessEventCallback(_supplementPageViewModel.SupplementId, waitMinute);
-
-        //                        await App.Current.MainPage.DisplayAlert(string.Format("Add {0} hour Snooze", hour),
-        //                   string.Format("Successfully snooze for {0} hour.", hour), "OK");
-        //                    }
-        //                    else
-        //                    {
-        //                        await App.Current.MainPage.DisplayAlert(string.Format("Add {0} hour Snooze", hour),
-        //                    string.Format("Failed to snooze for {0} hour.", hour), "OK");
-        //                    }
-
-        //                    ClosePage();
-        //                }
-        //                else if (_supplementPageViewModels != null)
-        //                {
-        //                    if (_supplementPageViewModels.Count > 0)
-        //                    {
-        //                        foreach (SupplementPageViewModel supplementPageViewModel in _supplementPageViewModels)
-        //                        {
-        //                            isSnoozeSuccessfully = false;
-        //                            isSnoozeSuccessfully = await SupplementApi.Net7.SupplementApi.SnoozeDose(supplementPageViewModel.SupplementDoseId, waitMinute);
-
-        //                            if (isSnoozeSuccessfully == true)
-        //                            {
-        //                                //supplementPageViewModel.ScheduledTime = supplementPageViewModel.ScheduledTime.AddMinutes(waitMinute);
-        //                                SnoozeSupplementPageViewModel(_supplementPageViewModel, waitMinute);
-        //                            }
-        //                            else
-        //                            {
-        //                                isSnoozeAllSuccessfully = false;
-        //                                break;
-        //                            }
-        //                        }
-
-        //                        if (isSnoozeAllSuccessfully == true)
-        //                        {
-        //                            InvokeSuccessEventCallback(null, waitMinute);
-
-        //                            await App.Current.MainPage.DisplayAlert(string.Format("Add {0} hour Snooze", hour),
-        //                  string.Format("Successfully snooze for {0} hour.", hour), "OK");
-        //                        }
-        //                        else
-        //                        {
-        //                            await App.Current.MainPage.DisplayAlert(string.Format("Add {0} hour Snooze", hour),
-        //                   string.Format("Failed to snooze for {0} hour.", hour), "OK");
-        //                        }
-        //                    }
-
-        //                    ClosePage();
-        //                }
-        //                else
-        //                {
-        //                    //Error
-        //                    await App.Current.MainPage.DisplayAlert(string.Format("Add {0} hour Snooze", hour),
-        //                   string.Format("An error occurred while adding {0} hour of time.", hour), "OK");
-        //                }
-        //            }
-        //            catch (Exception ex)
-        //            {
-        //                await App.Current.MainPage.DisplayAlert(string.Format("Add {0} hour Snooze", hour),
-        //                   string.Format("An error occurred while adding {0} hour of time.", hour), "OK");
-        //            }
-        //            finally
-        //            {
-
-        //            }
-        //        }
-        //        else
-        //        {
-        //            await App.Current.MainPage.DisplayAlert("Add Custom Snooze", "Enter a valid number", "OK");
-        //        }
-        //    }
-        //    else
-        //    {
-
-        //    }
-        //}
-
         
         private void SnoozeSupplementPageViewModel(SupplementPageViewModel supplementPageViewModel, int snoozeInMinutes)
         {

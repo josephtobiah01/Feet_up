@@ -1,6 +1,7 @@
 ﻿using Foundation;
 using Shiny.Hosting;
 using UIKit;
+using UserNotifications;
 
 namespace MauiApp1
 {
@@ -9,30 +10,44 @@ namespace MauiApp1
     {
         protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 
-    //    [Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
-    //    public void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
-    //=> Host.Lifecycle.OnRegisteredForRemoteNotifications(deviceToken);
+        [Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
+        public void RegisteredForRemoteNotifications(UIApplication application, NSData deviceToken)
+        {
+            Host.Lifecycle.OnRegisteredForRemoteNotifications(deviceToken);
+        }
 
-        //[Export("application:didFailToRegisterForRemoteNotificationsWithError:")]
-        //public void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
-        //    => Host.Lifecycle.OnFailedToRegisterForRemoteNotifications(error);
+
+        [Export("application:didFailToRegisterForRemoteNotificationsWithError:")]
+        public void FailedToRegisterForRemoteNotifications(UIApplication application, NSError error)
+        { 
+             Host.Lifecycle.OnFailedToRegisterForRemoteNotifications(error);
+        }
+
 
         [Export("application:didReceiveRemoteNotification:fetchCompletionHandler:")]
         public void DidReceiveRemoteNotification(UIApplication application, NSDictionary userInfo, Action<UIBackgroundFetchResult> completionHandler)
-            => Host.Lifecycle.OnDidReceiveRemoveNotification(userInfo, completionHandler);
-
-
-        [Foundation.Export("application:didRegisterForRemoteNotificationsWithDeviceToken:")]
-        public virtual void RegisteredForRemoteNotifications(UIKit.UIApplication application, NSData deviceToken)
-        {
-            int x = 0;
+        { 
+             Host.Lifecycle.OnDidReceiveRemoteNotification(userInfo, completionHandler);
         }
 
-        [Export("application:didFailToRegisterForRemoteNotificationsWithError:")]
-        public void FailedToRegisterForRemoteNotifications(UIKit.UIApplication application, NSError error)
+        [Export("userNotificationCenter:willPresent:withCompletionHandler:")]
+        public void DidReceiveRemoteNotification2(UNUserNotificationCenter _UNUserNotificationCenter, UNNotification notif, UNNotificationPresentationOptions completionHandler)
         {
-            int x = 0;
+            var stop = true;
         }
 
+
+        [Export("userNotificationCenter:didReceiveNotificationResponse:withCompletionHandler:")]
+        public void DidReceiveNotificationResponse(UNUserNotificationCenter center, UNNotificationResponse response, Action completionHandler)
+        {
+            var stop = true;
+        }
+
+
+        public override void WillEnterForeground(UIApplication uiApplication)
+        {
+            var stop = true;
+            //Plugin.LocalNotification.NotificationCenter.ResetApplicationIconBadgeNumber(uiApplication);
+        }
     }
 }

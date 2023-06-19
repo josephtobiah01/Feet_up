@@ -1,7 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="me.AgeInReverse.AIR" android:versionCode="17" android:versionName="internal-17">
-	<application android:allowBackup="true" android:debuggable="true" android:hardwareAccelerated="true" android:exported="false" android:persistent="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Age In Reverse Longevity"></application>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="me.AgeInReverse.AIR" android:versionCode="26" android:versionName="internal-26">
+	<application android:allowBackup="true" android:debuggable="true" android:hardwareAccelerated="true" android:exported="false" android:persistent="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Age In Reverse Longevity">
+
+
+    <meta-data
+           android:name="com.google.firebase.messaging.default_notification_icon"
+           android:resource="@drawable/pushIcon" />
+    <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+    <!--<meta-data
+        android:name="com.google.firebase.messaging.default_notification_color"
+        android:color ="@color/Cornsilk" />-->
+    <!-- [END fcm_default_icon] -->
+    <!-- [START fcm_default_channel] -->
+    <!--<meta-data
+        android:name="com.google.firebase.messaging.default_notification_channel_id"
+        android:value="me.AgeInReverse.AIR.General" />-->
+
+    <service android:name="crc6494e14b9856016c30.PNFirebaseMessagingService" android:exported="true">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        <category android:name="1:368008538066:android:b25aacfaa968fe44130a0b" />
+      </intent-filter>
+    </service>
+    
+    
+ <!--<receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
+    <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+      <intent-filter>
+        <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+        <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+        <action android:name="com.google.firebase.MESSAGING_EVENT" />
+        <category android:name="1:368008538066:android:b25aacfaa968fe44130a0b" />
+      </intent-filter>
+    </receiver>-->
+    
+    
+
+</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+  
 	<uses-permission android:name="android.permission.INTERNET" />
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
@@ -10,7 +50,12 @@
 	<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
 	<uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
 	<uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-  <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
+  <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+  
+
+
   <!-- Badges -->
   <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
   <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />

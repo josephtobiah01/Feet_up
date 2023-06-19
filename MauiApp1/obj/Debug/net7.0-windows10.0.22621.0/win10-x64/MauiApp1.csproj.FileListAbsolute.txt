@@ -9,6 +9,7 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\CommunityToolkit.Maui.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\CommunityToolkit.Maui.Core.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\CommunityToolkit.Maui.MediaElement.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\CommunityToolkit.Mvvm.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.AspNetCore.Authorization.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.AspNetCore.Components.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.AspNetCore.Components.Forms.dll
@@ -55,18 +56,16 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.Windows.Widgets.Projection.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Newtonsoft.Json.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Plugin.FirebasePushNotification.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\PureWeen.Maui.FixesAndWorkarounds.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Core.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Hosting.Maui.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Notifications.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Notifications.Common.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Push.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Push.AzureNotificationHubs.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Support.Locations.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Shiny.Support.Repositories.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\SQLite-net.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\SQLitePCLRaw.batteries_v2.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\SQLitePCLRaw.nativelibrary.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\SQLitePCLRaw.core.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\SQLitePCLRaw.provider.dynamic_cdecl.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\System.IO.Pipelines.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\System.Reactive.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\System.Runtime.Caching.dll
@@ -76,7 +75,6 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\ZXing.Net.MAUI.Controls.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.Graphics.Canvas.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.WindowsAppRuntime.Bootstrap.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\e_sqlite3.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.CSharp.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.VisualBasic.Core.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\Microsoft.Win32.Primitives.dll
@@ -311,7 +309,7 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\hostfxr.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\hostpolicy.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\mscordaccore.dll
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\mscordaccore_amd64_amd64_7.0.523.17405.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\mscordaccore_amd64_amd64_7.0.723.27404.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\mscordbi.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\mscorrc.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-windows10.0.22621.0\win10-x64\msquic.dll

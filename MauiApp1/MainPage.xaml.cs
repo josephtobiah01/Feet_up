@@ -8,6 +8,10 @@ using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 [assembly: Android.App.UsesPermission(Android.Manifest.Permission.ReadMediaAudio)]
 [assembly: Android.App.UsesPermission(Android.Manifest.Permission.ReadMediaImages)]
 [assembly: Android.App.UsesPermission(Android.Manifest.Permission.ReadMediaVideo)]
+[assembly: Android.App.UsesPermission(Android.Manifest.Permission.PostNotifications)]
+[assembly: Android.App.UsesPermission(Android.Manifest.Permission.AccessNotificationPolicy)]
+[assembly: Android.App.UsesPermission(Android.Manifest.Permission.SystemAlertWindow)]
+
 
 // Needed for Taking photo/video
 [assembly: Android.App.UsesPermission(Android.Manifest.Permission.Camera)]

@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
     <link rel="shortcut icon" href="resources/private/icons/logo/16icon.svg" />
     <link href="css/app.css" rel="stylesheet" />
+    <link href="external/jquery-ui/jquery-ui.min.css" rel="stylesheet">
+    <script src="external/jquery-ui/external/jquery/jquery-3.6.4.min.js"></script>
+    <script src="external/jquery-ui/jquery-ui.min.js"></script>
     <link href="MauiApp1.styles.css" rel="stylesheet" />
 </head>
 
@@ -35,6 +38,23 @@
 
         function ScrollHTMLToEnd() {
             document.getElementById("html-root").scrollTo(0, document.getElementById("html-root").scrollHeight + 20);
+        }
+        function StartUp() {
+            var tx = document.getElementById("textinput");
+            tx.setAttribute("style", "height:" + (tx.scrollHeight) + "px;overflow-y:hidden;");
+            tx.addEventListener("input", OnInput, false);
+
+            function OnInput() {
+                this.style.height = 0;
+                this.style.height = (this.scrollHeight) + "px";
+                ScrollToEnd();
+                ScrollHTMLToEnd();
+            }
+        }
+        function ResetInputHeight() {
+            var tx = document.getElementById("textinput");
+            tx.setAttribute("style", "height:" + (tx.scrollHeight) + "px;overflow-y:hidden;");
+            tx.style.height = 43 + "px";
         }
       
     </script>

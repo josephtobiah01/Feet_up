@@ -72,6 +72,7 @@ namespace MauiApp1.Pages.Supplement
         {
             //_sheetHeight = (HTMLBridge.BrowserInnerHeight / 100) * 50;
             UpateMarkAllDoneLabelText();
+            SelectSupplementToTakeTabItem();
         }
 
         #endregion

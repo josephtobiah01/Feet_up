@@ -37,11 +37,11 @@
 <!-- cards -->
 <div class="content-group" id="content-group" style="height:@(SheetFeedItemListHeight)px">
 
-    <div id="resizeSheetDiv" class="resize-rectangle-content-group-div" @ontouchmove="@(e => FeedItemListSheet_OnTouchMove(e))" @ontouchleave="@(e=>FeedItemListSheet_OnTouchLeave(e))">
+    <div id="resizeSheetDiv" class="resize-rectangle-content-group-div" @ontouchmove="@(e => FeedItemListSheet_OnTouchMove(e))">
         <div class="resize-rectangle-div" draggable="false"></div>
     </div>
 
-    <div id="feed-item-list-div" class="content-background" >
+    <div id="feed-item-list-div" class="content-background">
         @if (_beforeFeedItems != null)
         {
             @if (_beforeFeedItems.Count > 0)

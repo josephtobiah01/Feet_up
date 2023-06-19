@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace MauiApp1.Pages.Chat
@@ -43,6 +44,7 @@ namespace MauiApp1.Pages.Chat
             if (firstRender)
             {
                 await ScrollDivToEnd();
+                await JSRuntime.InvokeVoidAsync("StartUp");
             }           
         }
 
@@ -66,7 +68,8 @@ namespace MauiApp1.Pages.Chat
                     for (int index = 0; index < _messageListReserve.Count; index++)
                     {
                         RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
-                        message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                        
+                        message = new IMessage(Linkify(recievedMessage.MessageContent), recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
                         _messageList.Add(message);
                     }
 
@@ -122,6 +125,18 @@ namespace MauiApp1.Pages.Chat
             await RefreshPage();
         }
 
+        public string Linkify(string input)
+        {
+            MatchCollection matches = Regex.Matches(input, "(?i)\\b((?:[a-z][\\w-]+:(?:/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))");
+
+            foreach (Match match in matches)
+            {
+                input = input.Replace(match.Value, "<a href='" + match.Value + "'>" + match.Value + "</a>");
+            }
+
+            return input;
+        }
+
         #endregion
 
         #region [Methods :: Tasks]
@@ -143,7 +158,7 @@ namespace MauiApp1.Pages.Chat
                     {
                         if (recievedMessage.IsUserMessage == false)
                         {
-                            message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                            message = new IMessage(Linkify(recievedMessage.MessageContent), recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
 
                             _messageList.Add(message);
                         }
@@ -187,13 +202,14 @@ namespace MauiApp1.Pages.Chat
 
                     if (sentMessage != null)
                     {
-                        message = new IMessage(sentMessage.MessageContent, sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage);
+                        message = new IMessage(Linkify(sentMessage.MessageContent), sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage);
                         _messageList.Add(message);
                         _isUserScroll = false;
                     }
                 }
                 this._userMessageText = null;
-                
+
+                await JSRuntime.InvokeVoidAsync("ResetInputHeight");
                 StateHasChanged();
 
                 await ScrollDivToEnd();
@@ -207,7 +223,6 @@ namespace MauiApp1.Pages.Chat
             }
             finally
             {
-
             }
         }
 

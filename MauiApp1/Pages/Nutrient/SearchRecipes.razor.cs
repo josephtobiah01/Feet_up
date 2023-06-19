@@ -206,9 +206,13 @@ namespace MauiApp1.Pages.Nutrient
                 bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
                 StateHasChanged();
             }
-            else
+            else if (NutrientRecipe != null)
             {
                 await ImageApi.Net7.NutritionApi.UnFavoriteDish(NutrientRecipe.RecipeID);
+                StateHasChanged();
+            }
+            else
+            {
                 StateHasChanged();
             }
         }

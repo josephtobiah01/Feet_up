@@ -165,11 +165,11 @@
         </HorizontalStackLayout>
 
         <Frame Grid.Row="4" BackgroundColor="White" CornerRadius="16" Padding="0">
-            <StackLayout VerticalOptions="FillAndExpand" BackgroundColor="Transparent">
-                <StackLayout x:Name="DashboardContentStackLayout" IsVisible="true"/>
+            <Grid VerticalOptions="FillAndExpand" >
+                <Grid x:Name="DashboardContentStackLayout" IsVisible="true"/>
 
-                <StackLayout x:Name="BiodataContentStackLayout" IsVisible="false"/>
-            </StackLayout>
+                <Grid x:Name="BiodataContentStackLayout" IsVisible="false"/>
+            </Grid>
         </Frame>
 
     </Grid>

@@ -9,7 +9,7 @@ public partial class ViewLoginContentPage : ContentPage
     #region [Fields]
     #endregion
 
-    #region [Methods :: EventHandlers :: Class]
+    #region [Methods :: EventHandlers :: Class] 
 
     public ViewLoginContentPage()
     {
@@ -20,7 +20,7 @@ public partial class ViewLoginContentPage : ContentPage
     {
         //Initialize Data Here
         //
-        //this.UsernameEntry.Text = "DominikTest";
+        //this.UsernameEntry.Text = "DominikTest1";
         //this.PasswordEntry.Text = "Aa12345!";
     }
 
@@ -87,7 +87,10 @@ public partial class ViewLoginContentPage : ContentPage
                 await Navigation.PopToRootAsync();
                 try
                 {
-                    await UserMiddleware.RegisterDevice(await PushRegistration.CheckPermission());
+#if !WINDOWS
+                    await UserMiddleware.RegisterDevice(await PushRegistration.CheckPermission(), PushRegistration.GetPlatform());
+#endif
+                  
                 }
                 catch(Exception ex)
                 {
@@ -96,12 +99,14 @@ public partial class ViewLoginContentPage : ContentPage
             }
             else
             {
-                await DisplayAlert("Login Error", "Login Error", "OK");
+                //await DisplayAlert("Login Error", "Login Error", "OK");
+                await DisplayAlert("Login Error", "An error occurred while logging in. Please ensure that the username and password are valid.", "OK");
             }
         }
         catch(Exception ex)
         {
-            await DisplayAlert("Login Error", ex.Message + " " + ex.StackTrace, "OK");
+            //await DisplayAlert("Login Error", ex.Message + " " + ex.StackTrace, "OK");
+            await DisplayAlert("Login Error", "An error occurred while logging in. Please ensure that you are connected to the internet.", "OK");
         }
         finally 
         {
@@ -118,7 +123,7 @@ public partial class ViewLoginContentPage : ContentPage
         await Navigation.PopToRootAsync();
     }
 
-    #endregion
+#endregion
 
     
 }

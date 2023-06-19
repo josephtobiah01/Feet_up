@@ -8,9 +8,9 @@
         <img class="white-icon AIR-logo" src="resources/private/icons/logo/24full.svg" />
     </div>
     <div align="right">
-        <button title="Add" class="navbar-toggler">
+@*        <button title="Add" class="navbar-toggler">
             <img class="white-icon" src="resources/public/icons/userInterface/addnew.svg" />
-        </button>
+        </button>*@
         <!-- debug button to 'search recipes' for testing purposes-->
         @if (isDebug())
         {
@@ -18,12 +18,13 @@
                 <img class="white-icon" src="resources/public/icons/userInterface/magnifier.svg" />
              </button>
         }
-        @if (isLoggedIn==true)
-        {
-            <button title="Messaging" class="navbar-toggler" @onclick=GoToChatPage hidden="@_hideMessageButton">
+        @*@if (isLoggedIn==true)*@
+      @*  @if(ParentMiddleWare.MiddleWare.UserID > 0)*@
+     @*   {*@
+            <button title="Messaging" class="navbar-toggler" @onclick=GoToChatPage>
                 <img class="white-icon" src="resources/public/icons/communication/mail1.svg" />
             </button>
-        }
+  @*      }*@
         <button title="User" class="navbar-toggler" @onclick="OpenUserPopup">
             <img class="white-icon" src="resources/public/icons/users/profile.svg"/>
         </button>

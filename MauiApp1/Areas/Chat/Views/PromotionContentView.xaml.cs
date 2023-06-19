@@ -10,6 +10,7 @@ public partial class PromotionContentView : ContentView
 
     #region [Fields]
 
+    private bool _isRefreshing = false;
     private ObservableCollection<PromotionViewModel> _promotionViewModel;
 
     #endregion
@@ -23,8 +24,9 @@ public partial class PromotionContentView : ContentView
 
     private async void ContentView_Loaded(object sender, EventArgs e)
     {
-        await InitialzeData();
         InitializeControl();
+        await InitialzeData();
+        
     }
 
     private void ContentView_Unloaded(object sender, EventArgs e)
@@ -36,10 +38,12 @@ public partial class PromotionContentView : ContentView
     {
         _promotionViewModel = new ObservableCollection<PromotionViewModel>();
 
-        //ClearPromotionMessage();
-        await RefreshPromotionMessages();
-
         this.PromotionalCollectionView.ItemsSource = _promotionViewModel;
+
+        if(_isRefreshing == false)
+        {
+            await RefreshPromotionMessages();
+        }
     }
 
     private void InitializeControl()
@@ -81,47 +85,18 @@ public partial class PromotionContentView : ContentView
     {
         try
         {
-            Size size = new Size();
+            _isRefreshing = true;
+
+            //Size size = new Size();
             ClearPromotionMessage();
 
             List<PromotionChatmessage> promotionChatmessages = await MessageApi.Net7.MessageApi.GetPromotionChat();
 
             foreach (PromotionChatmessage promotionChatmessage in promotionChatmessages)
             {
-                PromotionViewModel promotionViewModel = new PromotionViewModel();
-                if (promotionChatmessage.Icon == "Question")
-                {
-                    promotionViewModel.Icon = "question_44x44.png";
-                }
-                else if (promotionChatmessage.Icon == "Alert")
-                {
-                    promotionViewModel.Icon = "alert_44x44.png";
-                }
-                else if (promotionChatmessage.Icon == "Information")
-                {
-                    promotionViewModel.Icon = "information_44x44.png";
-                }
-                else
-                {
-                    // promotionViewModel.Icon = "information_44x44.png";
-                }
-
-                promotionViewModel.Title = promotionChatmessage.Title;
-                promotionViewModel.Message = promotionChatmessage.Message;
-                promotionViewModel.LinkUrl = promotionChatmessage.LinkUrl;
-                promotionViewModel.HasImageUrl = !string.IsNullOrEmpty(promotionChatmessage.ImageUrl);
-                promotionViewModel.HasIconUrl = !string.IsNullOrEmpty(promotionChatmessage.Icon);
-                promotionViewModel.HasLinkUrl = !string.IsNullOrEmpty(promotionChatmessage.LinkUrl);
-                promotionViewModel.ImageUrl = promotionChatmessage.ImageUrl;
-
-                if (promotionViewModel.HasImageUrl)
-                {
-                    size = await GetImageDimension(promotionViewModel.ImageUrl,343,343);
-                    promotionViewModel.ImageHeight = Convert.ToInt32(size.Height);
-                    promotionViewModel.ImageWidth = Convert.ToInt32(size.Width);
-                }
-
-                _promotionViewModel.Add(promotionViewModel);
+                LoadPromotionViewModel(promotionChatmessage);
+ 
+                await Task.Delay(10);
             }
             return;
         }
@@ -133,10 +108,49 @@ public partial class PromotionContentView : ContentView
         }
         finally
         {
-
+            _isRefreshing = false;
         }
     }
 
+    private void LoadPromotionViewModel(PromotionChatmessage promotionChatmessage)
+    {
+        PromotionViewModel promotionViewModel = new PromotionViewModel();
+        if (promotionChatmessage.Icon == "Question")
+        {
+            promotionViewModel.Icon = "question_44x44.png";
+        }
+        else if (promotionChatmessage.Icon == "Alert")
+        {
+            promotionViewModel.Icon = "alert_44x44.png";
+        }
+        else if (promotionChatmessage.Icon == "Information")
+        {
+            promotionViewModel.Icon = "information_44x44.png";
+        }
+        else
+        {
+            // promotionViewModel.Icon = "information_44x44.png";
+        }
+
+        promotionViewModel.Title = promotionChatmessage.Title;
+        promotionViewModel.Message = promotionChatmessage.Message;
+        promotionViewModel.LinkUrl = promotionChatmessage.LinkUrl;
+        promotionViewModel.HasImageUrl = !string.IsNullOrEmpty(promotionChatmessage.ImageUrl);
+        promotionViewModel.HasIconUrl = !string.IsNullOrEmpty(promotionChatmessage.Icon);
+        promotionViewModel.HasLinkUrl = !string.IsNullOrEmpty(promotionChatmessage.LinkUrl);
+        promotionViewModel.ImageUrl = promotionChatmessage.ImageUrl;
+
+        promotionViewModel.ImageHeight = 140;
+        promotionViewModel.ImageWidth = 343;
+        //if (promotionViewModel.HasImageUrl)
+        //{
+        //    size = await GetImageDimension(promotionViewModel.ImageUrl,343,343);
+        //    promotionViewModel.ImageHeight = Convert.ToInt32(size.Height);
+        //    promotionViewModel.ImageWidth = Convert.ToInt32(size.Width);
+        //}
+
+        _promotionViewModel.Add(promotionViewModel);
+    }
 
     //private void LoadPromotionViewModel(List<PromotionViewModel> promotionViewModels)
     //{
@@ -286,8 +300,11 @@ public partial class PromotionContentView : ContentView
     public async void RefreshPage()
     {
         //ClearPromotionMessage();
-
-        await RefreshPromotionMessages();
+        if (_isRefreshing == false)
+        {
+            await RefreshPromotionMessages();
+        }
+        //await RefreshPromotionMessages();
     }
 
     #endregion

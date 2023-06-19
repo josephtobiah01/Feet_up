@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Dashboard.Views.SleepDashboardContentView" Loaded="ContentView_Loaded">
+    <ScrollView BackgroundColor="Transparent" Orientation="Vertical" WidthRequest="343">
+        <VerticalStackLayout>
+            <Frame BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343" Margin="0,8,0,0">
+                <VerticalStackLayout>
+                    <Label WidthRequest="155" HeightRequest="24" FontSize="18" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,0,0,8" Text="Sleep"/>
+                    <Label WidthRequest="296" HeightRequest="40" HorizontalTextAlignment="Center" Text="Track your sleeping score and how you are sleeping"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="SleepSegmentPerDaysOfWeekFrame" BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343" Margin="0,8,0,0" Padding="0">
+                <VerticalStackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="64"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Start" FontAttributes="Bold" Text="Stages" Margin="16,16,16,0" />
+
+                        <GraphicsView Grid.Row="1" Grid.Column="0" x:Name="SleepSegmentPerDaysOfWeekGraphicsView" HeightRequest="300" WidthRequest="343"/>
+
+                        <Grid Grid.Row="2" HeightRequest="64" Margin="16">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="18"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <HorizontalStackLayout Grid.Row="0" Grid.Column="0" HeightRequest="16" WidthRequest="16" Margin="0,8">
+                                <Border BackgroundColor="#1C4599" Stroke="#1C4599" HeightRequest="16" WidthRequest="16">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+                                <Label Text="Deep" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0" />
+
+                                <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+
+                                <Border BackgroundColor="#3275CF" Stroke="#3275CF" HeightRequest="16" WidthRequest="16">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+                                <Label Text="Light" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0" />
+
+                                <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+
+                                <Border BackgroundColor="#AD5FC0" Stroke="#AD5FC0" HeightRequest="16" WidthRequest="16">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+                                <Label Text="REM" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0" />
+
+                                <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+
+                                <Border BackgroundColor="#EC77D4" Stroke="#EC77D4" HeightRequest="16" WidthRequest="16">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="34" />
+                                    </Border.StrokeShape>
+                                </Border>
+                                <Label Text="Awake" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0" />
+                            </HorizontalStackLayout>
+                        </Grid>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <Frame x:Name="SleepSegmentPerDayFrame" BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343" Margin="0,8,0,0" Padding="0" IsVisible="false">
+                <VerticalStackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="64"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Label Grid.Row="0" Grid.Column="0" VerticalOptions="Start" FontAttributes="Bold" Text="Last night stats" Margin="16,16,16,0" />
+
+                        <GraphicsView Grid.Row="1" Grid.Column="0" x:Name="SleepSegmentPerDayGraphicsView" HeightRequest="64" WidthRequest="343" />
+
+                        <Label Grid.Row="2" Grid.Column="0" VerticalOptions="Start" FontAttributes="Bold" Text="Hours slept: 5 hours 31 mins" Margin="16, 0, 0, 0" />
+
+                        <Grid Grid.Row="3" HeightRequest="64" Margin="16">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="18"/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="18"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                        </Grid>
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

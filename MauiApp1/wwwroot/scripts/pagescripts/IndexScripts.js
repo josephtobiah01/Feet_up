@@ -178,8 +178,7 @@ window.blazorjsFeedItemContentGroupDrag = {
                 e = e || window.event;
                 e.preventDefault();
                 _feedItemListDragging = true;
-                _scrollcounterExpand = 0;
-                _scrollcounterCollapse = 0;
+
                 // get the mouse cursor position at startup:
                 pos3 = e.clientX;
                 pos4 = e.clientY;
@@ -192,12 +191,11 @@ window.blazorjsFeedItemContentGroupDrag = {
                 e = e || window.event;
                 e.preventDefault();
                 _feedItemListDragging = true;
-                _scrollcounterExpand = 0;
-                _scrollcounterCollapse = 0;
-                //console.log(sheet.style.height);
-                // calculate the new cursor position:
+ 
+
+
                 var sheetHeight = (window.innerHeight - e.clientY);
-                var maxSheetDragHeight = window.innerHeight - 32;
+                var maxSheetDragHeight = window.innerHeight - 34;
 
                 if (sheetHeight <= minSheetHeight) {
                     sheetHeight = minSheetHeight;
@@ -216,8 +214,6 @@ window.blazorjsFeedItemContentGroupDrag = {
                 document.onmouseup = null;
                 document.onmousemove = null;
                 _feedItemListDragging = false;
-                _scrollcounterExpand = 0;
-                _scrollcounterCollapse = 0;
             }
         }
     }
@@ -231,8 +227,6 @@ window.GetBrowserDimensions = function () {
     };
 };
 
-var _scrollcounterExpand = 0;
-var _scrollcounterCollapse = 0;
 var _feedItemListDragging = false;
 var _feedItemListLastScroll = 0;
 
@@ -260,146 +254,121 @@ const debounce = (callback, time) => {
 //};
 
 
+let touchstartY = 0
+let touchendY = 0
+
+
+const isScrollDisabled = false;
+
+function preventDefault(e) {
+    e.preventDefault();
+}
+
+function panHandler(e) {
+    const DOCUMENT_POSITION_CONTAINED_BY = 16;
+    const problemDiv = document.getElementById('problem-div');
+
+    if (problemDiv.compareDocumentPosition(e.target) & DOCUMENT_POSITION_CONTAINED_BY) {
+        // Dragging within the scrollable problem div
+        if (!isScrollDisabled) {
+            problemDiv.addEventListener('touchmove', preventDefault);
+            isScrollDisabled = true;
+        }
+    }
+
+    /** Do other panning things **/
+
+    if (e.isFinal) {
+        const restoreCondition = true; // In case you want to restore state
+
+        if (restoreCondition) {
+            problemDiv.removeEventListener('touchmove', preventDefault);
+            isScrollDisabled = false;
+        }
+    }
+}
+
+
+
+
+
 function setupDebounce() {
-    var contentgroup = document.getElementById("feed-item-list-div");
-
-    //contentgroup.addEventListener("touchstart", touchStart, false);
-    //contentgroup.addEventListener("touchmove", touchMove, false);
-    //contentgroup.addEventListener("touchend", touchEnd, false);
-    //contentgroup.addEventListener("touchcancel", touchCancel, false);
-    //contentgroup.addEventListener("touchforcechange", touchForceChange, false);
 
 
-    var ts;
+
+
     var feeditemlist = document.getElementById("feed-item-list-div");
     var contentgroup = document.getElementById("content-group");
 
-    $(feeditemlist).bind('touchstart', function (e) {
-        ts = e.originalEvent.touches[0].clientY;
+
+
+    var ts;
+    feeditemlist.addEventListener('touchstart', function (e) {
+        ts = e.touches[0].clientY;
     });
 
-    $(feeditemlist).bind('touchmove', function (e) {
-        var te = e.originalEvent.changedTouches[0].clientY;
-        if (ts > te + 1)
+    feeditemlist.addEventListener('touchmove', function (e) {
+        var te = e.changedTouches[0].clientY;
+        if (ts > te)
         {
-            console.log('down');
-            contentgroup.style.transition = "all  0.35s ease-out";
+            contentgroup.style.transition = "all 0.35s ease-out";
             ExpandContentGroup(contentgroup);
 
         }
-        else if (ts < te - 1)
+        else if (ts < te)
         {
-            console.log('up');
-            contentgroup.style.transition = "all  0.35s ease-in";
+            contentgroup.style.transition = "all 0.35s ease-in";
             CollapseContentGroup(contentgroup);
         }
     });
 
+    feeditemlist.addEventListener('touchend', function (e) {
+        var te = e.changedTouches[0].clientY;
+        if (ts > te) {
+            contentgroup.style.transition = "all 0.35s ease-out";
+            ExpandContentGroup(contentgroup);
 
+        }
+        else if (ts < te) {
+            contentgroup.style.transition = "all 0.35s ease-in";
+            CollapseContentGroup(contentgroup);
+        }
+    });
+    feeditemlist.addEventListener('touchmove', function (e) {
+        var te = e.changedTouches[0].clientY;
+        if (ts > te) {
+            contentgroup.style.transition = "all 0.35s ease-out";
+            ExpandContentGroup(contentgroup);
+
+        }
+        else if (ts < te) {
+            contentgroup.style.transition = "all 0.35s ease-in";
+            CollapseContentGroup(contentgroup);
+        }
+    });
+    feeditemlist.addEventListener('touchcancel', function (e) {
+        var te = e.changedTouches[0].clientY;
+        if (ts > te) {
+            contentgroup.style.transition = "all 0.35s ease-out";
+            ExpandContentGroup(contentgroup);
+
+        }
+        else if (ts < te) {
+            contentgroup.style.transition = "all 0.35s ease-in";
+            CollapseContentGroup(contentgroup);
+        }
+    });
 }
 
-
-
-//const CheckScroll = async () => {
-//    return;
-//    var feeditemlist = document.getElementById("feed-item-list-div");
-//    var contentgroup = document.getElementById("content-group");
-
-
-
-//    feeditemlist.removeEventListener("scroll", CheckScroll);
-
-//    var st = feeditemlist.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
-//    if (st > lastScrollTop) {
-//        // downscroll code
-//        console.log('downscroll');
-//        contentgroup.style.transition = "all  0.35s ease-in";
-//        ExpandContentGroup(contentgroup);
-//    } else if (st < lastScrollTop) {
-//        // upscroll code
-//        console.log('upscroll');
-//        contentgroup.style.transition = "all  0.35s ease-out";
-//        CollapseContentGroup(contentgroup);
-//    } // else was horizontal scroll
-//    else {
-//        console.log('????');
-//    }
-//    lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-
-
-//    contentgroup.addEventListener("scroll", () => {
-//        CheckScroll();
-//    });
-
-
-    //console.log(feeditemlist.scrollTop);
-
-
-   // //if (!_doScroll) return;
-   // _doScroll = false;
-   //// debounce(updateDebounceValue, 500)
-   // console.log('CheckScroll');
-   // var feeditemlist = document.getElementById("feed-item-list-div");
-   // var contentgroup = document.getElementById("content-group");
-
-   // if (feeditemlist.scrollTop <= _feedItemListLastScroll) {
-
-   //     if (_feedItemListDragging == false) {
-   //         contentgroup.style.transition = "height 0.35s ease-out";
-   //         CollapseContentGroup(contentgroup);
-   //       //  contentgroup.style.transition = "initial";
-   //         SetFeedItemListLastScroll();
-   //     }
-   // }
-
-   // else if (feeditemlist.scrollTop >= _feedItemListLastScroll - 1) {
-
-   //     if (_feedItemListDragging == false) {
-   //         contentgroup.style.transition = "height 0.35s ease-in";
-   //         ExpandContentGroup(contentgroup);
-   //      //   contentgroup.style.transition = "initial";
-   //         //CollapseContentGroup(contentgroup);           
-   //         SetFeedItemListLastScroll();
-   //     }
-
-  //  }
-//}
-
 function ExpandContentGroup(contentgroup) {
-    _scrollcounterCollapse = 0;
-  //  if (_scrollcounterExpand > 2) {
-        //Expand
-       // contentgroup.style.transition = "height 0.35s ease-out";
-    console.log('Expand');
-        contentgroup.style.height = (window.innerHeight) - 32 + "px";
-
-   // }
-   // else {
-   //     _scrollcounterExpand = _scrollcounterExpand + 1;
-   // }
+    contentgroup.style.height = (window.innerHeight) - 34 + "px";
 }
 
 function CollapseContentGroup(contentgroup) {
-    _scrollcounterExpand = 0;
-   // if (_scrollcounterCollapse > 2) {
-        //Collapse
-   //     contentgroup.style.transition = "height 0.35s ease-in";
-    console.log('Collapse');
         contentgroup.style.height = (window.innerHeight - 260) + "px";
-  
-
-        
-    //}
-    //else {
-        _scrollcounterCollapse = _scrollcounterCollapse + 1;
-   // }
 }
 
 
-function ResetScrollCounter() {
-    _scrollcounterExpand = 0;
-    _scrollcounterCollapse = 0;
-}
 
 function SetFeedItemListLastScroll() {
     var feeditemlist = document.getElementById("feed-item-list-div");

@@ -87,15 +87,7 @@
                                     <Label Text="Time" Grid.Row="0" FontFamily="Montserrat-Regular" BackgroundColor="#FAFAFA" TextColor="#4D4D4D" FontSize="12"/>
                                     <Label x:Name="TrainisngSessionTimerLabel" Text="0:00" Grid.Row="2" FontFamily="Montserrat-Medium" BackgroundColor="#FAFAFA" TextColor="#4D4D4D" FontSize="12" Margin="0,4,0,0"/>
                                 </VerticalStackLayout>
-                                <!--<Grid>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="auto"/>
-                                        <RowDefinition Height="4"/>
-                                        <RowDefinition Height="*"/>
-                                    </Grid.RowDefinitions>
-                                    <Label Text="Time" Grid.Row="0" FontFamily="Montserrat-Regular" TextColor="#4D4D4D" FontSize="12"/>
-                                    <Label x:Name="TrainisngSessionTimerLabel" Text="0:00" Grid.Row="2" FontFamily="Montserrat-Medium" TextColor="#4D4D4D" FontSize="12"/>
-                                </Grid>-->
+                              
                             </Border>
 
                             <Border Grid.Row="0" Grid.Column="3" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
@@ -138,14 +130,14 @@
                 <VerticalStackLayout CompressedLayout.IsHeadless="True" Margin="0" BackgroundColor="#FAFAFA" Padding="0" ZIndex="1" >
                     <Frame CompressedLayout.IsHeadless="True" BackgroundColor="#FFFFFF" Margin="16,24,16,0" MinimumHeightRequest="244" WidthRequest="343" CornerRadius="12" Padding="0" BorderColor="Transparent">
 
-                        <VerticalStackLayout BackgroundColor="Transparent"  HeightRequest="244" WidthRequest="343">
+                        <VerticalStackLayout BackgroundColor="Transparent" HeightRequest="260" WidthRequest="343">
                             <Label Text="How difficult was your exercise?"  FontFamily="Montserrat-Bold" FontAttributes="Bold" FontSize="18" Margin="16,16,16,0"/>
 
                             <Label Text="Please share how was your workout and any feedback or comments for future references" FontSize="12" FontFamily="Montserrat-Regular" LineBreakMode="WordWrap" Margin="16,8,16,0" />
 
                             <Label x:Name="RatingLabel" Text="Average" FontFamily="Montserrat-Bold" FontSize="14" FontAttributes="Bold" HorizontalTextAlignment="Center" Margin="0,16,0,0" TextColor="#006272"/>
 
-                            <Grid HeightRequest="16" WidthRequest="311" Margin="12,16,12,0" BackgroundColor="Transparent">
+                            <Grid HeightRequest="36" WidthRequest="311" Margin="12,16,12,0" BackgroundColor="Transparent">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="*"/>
                                 </Grid.RowDefinitions>
@@ -156,7 +148,6 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-
 
                                 <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="4" WidthRequest="311">
                                     <Rectangle.Background>
@@ -169,22 +160,33 @@
                                     </Rectangle.Background>
                                 </Rectangle>
 
-
-
                                 <Ellipse x:Name="VeryEasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="0" WidthRequest="8" HeightRequest="8" HorizontalOptions="Start"/>
-                                <Button x:Name="VeryEasyRatingButton" Grid.Row="0" Grid.Column="0" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Start" Clicked="RatingButton_Clicked"/>
+                                <!--<Button x:Name="VeryEasyRatingButton" Grid.Row="0" Grid.Column="0" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Start" Clicked="RatingButton_Clicked"/>-->
 
-                                <Ellipse x:Name="EasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="1" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" />
-                                <Button x:Name="EasyRatingButton" Grid.Row="0" Grid.Column="1" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>
+                                <Ellipse x:Name="EasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="1" WidthRequest="8" HeightRequest="8" HorizontalOptions="Start" Margin="14,0,0,0"/>
+                                <!--<Button x:Name="EasyRatingButton" Grid.Row="0" Grid.Column="1" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>-->
 
-                                <Ellipse x:Name="AverageRatingEllipse" Fill="#006272" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="2" WidthRequest="24" HeightRequest="24" HorizontalOptions="Center" />
-                                <Button x:Name="AverageRatingButton" Grid.Row="0" Grid.Column="2" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>
+                                <Ellipse x:Name="AverageRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="2" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center"/>
+                                <!--<Button x:Name="AverageRatingButton" Grid.Row="0" Grid.Column="2" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>-->
 
-                                <Ellipse x:Name="HardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="3" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center" />
-                                <Button x:Name="HardRatingButton" Grid.Row="0" Grid.Column="3" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>
+                                <Ellipse x:Name="HardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="3" WidthRequest="8" HeightRequest="8" HorizontalOptions="End" Margin="0,0,14,0"/>
+                                <!--<Button x:Name="HardRatingButton" Grid.Row="0" Grid.Column="3" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>-->
 
-                                <Ellipse x:Name="VeryHardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="4" WidthRequest="8" HeightRequest="8" HorizontalOptions="End" />
-                                <Button x:Name="VeryHardRatingButton" Grid.Row="0" Grid.Column="4" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="End" Clicked="RatingButton_Clicked"/>
+                                <Ellipse x:Name="VeryHardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="4" WidthRequest="8" HeightRequest="8" HorizontalOptions="End"/>
+                                <!--<Button x:Name="VeryHardRatingButton" Grid.Row="0" Grid.Column="4" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="End" Clicked="RatingButton_Clicked"/>-->
+
+
+                                <Slider x:Name="RatingSlider" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="36" WidthRequest="311" Minimum="0" Maximum="1" Value="0.5" ValueChanged="RatingSlider_ValueChanged" MinimumTrackColor="Transparent" ThumbColor="#006272" BackgroundColor="Transparent" MaximumTrackColor="Transparent">
+                                    <!--<Slider.Background>
+                                        <LinearGradientBrush EndPoint="1,0">
+                                            <GradientStop Color="#81BA81"
+                          Offset="0.1" />
+                                            <GradientStop Color="#FF7768"
+                          Offset="1.0" />
+                                        </LinearGradientBrush>
+                                    </Slider.Background>-->
+                                </Slider>
+
 
                             </Grid>
 
@@ -284,25 +286,6 @@
             </Border>
         </Grid>
 
-        <!--<Border  
-    x:Name="FooterContent"
-    Grid.Row="0"
-    Margin="-1"
-            HeightRequest="102"            
-    VerticalOptions="End"
-    HorizontalOptions="Fill"
-    StrokeThickness="0" Background="#FFFFFF">
-            <Border.Shadow>
-                <Shadow Brush="Black"
-                Offset="20,20"
-                Radius="40"
-                Opacity="0.8" />
-            </Border.Shadow>
-
-            <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="16">
-                <Button BackgroundColor="#006272" TextColor="#FFFFFF" Text="Go Back" CornerRadius="20" FontFamily="Montserrat-Regular" FontAttributes="Bold" Clicked="BackButton_Clicked"/>
-            </StackLayout>
-        </Border>-->
     </Grid>
 
 </ContentPage>

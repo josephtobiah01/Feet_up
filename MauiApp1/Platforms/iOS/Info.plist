@@ -12,12 +12,10 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-        <key>UIBackgroundModes</key>
-        <array>
-        
-            <string>remote-notification</string>
-            
-        </array>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
@@ -32,5 +30,7 @@
 	<string>me.AgeInReverse.AIR</string>
 	<key>CFBundleDisplayName</key>
 	<string>Age In Reverse Longevity</string>
+	<key>CFBundleVersion</key>
+	<string>24</string>
 </dict>
 </plist>

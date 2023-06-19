@@ -7,7 +7,7 @@
 
     For more information on package manifest files, see http://go.microsoft.com/fwlink/?LinkID=241727
   -->
-  <Identity Name="2547BCB8-766D-437B-8EF0-F5709FDF729D" Publisher="CN=User Name" Version="2.2.1.19" ProcessorArchitecture="x64" />
+  <Identity Name="2547BCB8-766D-437B-8EF0-F5709FDF729D" Publisher="CN=User Name" Version="2.5.2.6" ProcessorArchitecture="x64" />
   <mp:PhoneIdentity PhoneProductId="EDF1FE79-E586-49FA-B766-149E8A0777B5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>Age In Reverse Longevity</DisplayName>

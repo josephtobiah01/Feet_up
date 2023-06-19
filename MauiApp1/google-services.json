@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "368008538066",
+    "project_id": "age-in-reverse-longevity",
+    "storage_bucket": "age-in-reverse-longevity.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:368008538066:android:b25aacfaa968fe44130a0b",
+        "android_client_info": {
+          "package_name": "me.AgeInReverse.AIR"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "368008538066-d9cucgp6o7gsddaubvoeq428krs18c7r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "me.AgeInReverse.AIR",
+            "certificate_hash": "ce189c70af370549e6d0c096256b03d1d8c18349"
+          }
+        },
+        {
+          "client_id": "368008538066-mnlbrb28i81dkm6fm3l6m1m7g61l0529.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzrjKFH0FDY27jy-cKhwndLZPdm64S8fM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "368008538066-mnlbrb28i81dkm6fm3l6m1m7g61l0529.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "368008538066-5ge0r1uactvnejb6aioc8tpuof2havjk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "me.AgeInReverse.AIR"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

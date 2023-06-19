@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K5lra9zifNjq6ZU+GYfmXd3QuF+GRzffB+5hvrFY7l0=",
+  "Hash": "RFfLAYjpsg/9wLmdUzNc4ODaEAel4pGPfyqj7Qfg0rc=",
   "Source": "MauiApp1",
   "BasePath": "/",
   "Mode": "Root",
@@ -542,23 +542,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\external\\jquery-ui\\LICENSE.txt"
-    },
-    {
-      "Identity": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\wwwroot\\external\\scripts\\swipedEvents.js",
-      "SourceId": "MauiApp1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "external/scripts/swipedEvents.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\external\\scripts\\swipedEvents.js"
     },
     {
       "Identity": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\wwwroot\\index.html",

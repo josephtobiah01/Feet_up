@@ -64,7 +64,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -134,7 +134,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -198,7 +198,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -262,12 +262,12 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
     "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\MauiApp1.csproj": {
-      "version": "2.2.1",
+      "version": "2.5.2",
       "restore": {
         "projectUniqueName": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\MauiApp1.csproj",
         "projectName": "MauiApp1",
@@ -387,6 +387,10 @@
               "target": "Package",
               "version": "[2.0.0, )"
             },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.0, )"
+            },
             "Microsoft.AspNetCore.Components.WebView.Maui": {
               "target": "Package",
               "version": "[7.0.86, )",
@@ -425,34 +429,46 @@
               "version": "[7.0.86, )",
               "autoReferenced": true
             },
+            "Plugin.Firebase.CloudMessaging": {
+              "target": "Package",
+              "version": "[2.0.2, )"
+            },
+            "Plugin.FirebasePushNotification": {
+              "target": "Package",
+              "version": "[3.4.35, )"
+            },
             "PureWeen.Maui.FixesAndWorkarounds": {
               "target": "Package",
               "version": "[1.4.9, )"
             },
             "Shiny.Core": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Extensions.Configuration": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Hosting.Maui": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Shiny.Notifications": {
+              "target": "Package",
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Shiny.Notifications.Common": {
+              "target": "Package",
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Push.AzureNotificationHubs": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
             },
             "Xamarin.Android.Glide": {
               "target": "Package",
               "version": "[4.13.2.2, )",
               "autoReferenced": true
-            },
-            "Xamarin.Android.ShortcutBadger": {
-              "target": "Package",
-              "version": "[1.2.0, )"
             },
             "Xamarin.AndroidX.Browser": {
               "target": "Package",
@@ -494,6 +510,26 @@
               "version": "[1.1.0-alpha03, )",
               "autoReferenced": true
             },
+            "Xamarin.Azure.NotificationHubs.Android": {
+              "target": "Package",
+              "version": "[1.1.4.1, )"
+            },
+            "Xamarin.Firebase.Common": {
+              "target": "Package",
+              "version": "[120.3.2.1, )"
+            },
+            "Xamarin.Firebase.Iid": {
+              "target": "Package",
+              "version": "[121.1.0.9, )"
+            },
+            "Xamarin.Firebase.Messaging": {
+              "target": "Package",
+              "version": "[123.1.2.1, )"
+            },
+            "Xamarin.Firebase.iOS.CloudMessaging": {
+              "target": "Package",
+              "version": "[8.10.0.3, )"
+            },
             "Xamarin.Google.Android.Material": {
               "target": "Package",
               "version": "[1.7.0, )",
@@ -504,6 +540,10 @@
               "version": "[1.7.0.1, )",
               "autoReferenced": true
             },
+            "Xamarin.GooglePlayServices.Base": {
+              "target": "Package",
+              "version": "[118.2.0.1, )"
+            },
             "ZXing.Net.Maui": {
               "target": "Package",
               "version": "[0.3.0-preview.1, )"
@@ -511,10 +551,6 @@
             "ZXing.Net.Maui.Controls": {
               "target": "Package",
               "version": "[0.3.0-preview.1, )"
-            },
-            "sqlite-net-pcl": {
-              "target": "Package",
-              "version": "[1.8.116, )"
             }
           },
           "imports": [
@@ -545,7 +581,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         },
         "net7.0-ios16.1": {
           "targetAlias": "net7.0-ios",
@@ -561,6 +597,10 @@
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.0, )"
             },
             "Microsoft.AspNetCore.Components.WebView.Maui": {
               "target": "Package",
@@ -600,25 +640,41 @@
               "version": "[7.0.86, )",
               "autoReferenced": true
             },
+            "Plugin.FirebasePushNotification": {
+              "target": "Package",
+              "version": "[3.4.35, )"
+            },
             "PureWeen.Maui.FixesAndWorkarounds": {
               "target": "Package",
               "version": "[1.4.9, )"
             },
             "Shiny.Core": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Extensions.Configuration": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Hosting.Maui": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Shiny.Notifications": {
+              "target": "Package",
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Shiny.Notifications.Common": {
+              "target": "Package",
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Push.AzureNotificationHubs": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Xamarin.Firebase.iOS.CloudMessaging": {
+              "target": "Package",
+              "version": "[8.10.0.3, )"
             },
             "ZXing.Net.Maui": {
               "target": "Package",
@@ -627,10 +683,6 @@
             "ZXing.Net.Maui.Controls": {
               "target": "Package",
               "version": "[0.3.0-preview.1, )"
-            },
-            "sqlite-net-pcl": {
-              "target": "Package",
-              "version": "[1.8.116, )"
             }
           },
           "imports": [
@@ -661,7 +713,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         },
         "net7.0-windows10.0.22621": {
           "targetAlias": "net7.0-windows10.0.22621.0",
@@ -677,6 +729,10 @@
             "CommunityToolkit.Maui.MediaElement": {
               "target": "Package",
               "version": "[2.0.0, )"
+            },
+            "CommunityToolkit.Mvvm": {
+              "target": "Package",
+              "version": "[8.2.0, )"
             },
             "Microsoft.AspNetCore.Components.WebView.Maui": {
               "target": "Package",
@@ -732,21 +788,37 @@
               "version": "[1.2.221209.1, )",
               "autoReferenced": true
             },
+            "Plugin.FirebasePushNotification": {
+              "target": "Package",
+              "version": "[3.4.35, )"
+            },
             "PureWeen.Maui.FixesAndWorkarounds": {
               "target": "Package",
               "version": "[1.4.9, )"
             },
             "Shiny.Core": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Hosting.Maui": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Shiny.Notifications": {
+              "target": "Package",
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Shiny.Notifications.Common": {
+              "target": "Package",
+              "version": "[3.0.0-beta-0154, )"
             },
             "Shiny.Push.AzureNotificationHubs": {
               "target": "Package",
-              "version": "[3.0.0-beta-0124, )"
+              "version": "[3.0.0-beta-0154, )"
+            },
+            "Xamarin.Firebase.iOS.CloudMessaging": {
+              "target": "Package",
+              "version": "[8.10.0.3, )"
             },
             "ZXing.Net.Maui": {
               "target": "Package",
@@ -755,10 +827,6 @@
             "ZXing.Net.Maui.Controls": {
               "target": "Package",
               "version": "[0.3.0-preview.1, )"
-            },
-            "sqlite-net-pcl": {
-              "target": "Package",
-              "version": "[1.8.116, )"
             }
           },
           "imports": [
@@ -775,11 +843,11 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.7, 7.0.7]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.7, 7.0.7]"
             },
             {
               "name": "Microsoft.Windows.SDK.NET.Ref",
@@ -787,7 +855,7 @@
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x64",
-              "version": "[7.0.5, 7.0.5]"
+              "version": "[7.0.7, 7.0.7]"
             }
           ],
           "frameworkReferences": {
@@ -807,7 +875,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -894,7 +962,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -964,7 +1032,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1028,7 +1096,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -1092,7 +1160,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
         }
       }
     }

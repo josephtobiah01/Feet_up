@@ -12,10 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Preference objects are inflated via reflection
--keep public class androidx.preference.Preference {
-    public <init>(android.content.Context, android.util.AttributeSet);
+# When layoutManager xml attribute is used, RecyclerView inflates
+#LayoutManagers' constructors using reflection.
+-keep public class * extends androidx.recyclerview.widget.RecyclerView$LayoutManager {
+    public <init>(android.content.Context, android.util.AttributeSet, int, int);
+    public <init>();
 }
--keep public class * extends androidx.preference.Preference {
-    public <init>(android.content.Context, android.util.AttributeSet);
+
+-keepclassmembers class androidx.recyclerview.widget.RecyclerView {
+    public void suppressLayout(boolean);
+    public boolean isLayoutSuppressed();
 }

@@ -22,63 +22,89 @@
             //empty
         }
         else{
+            if (feedItem.Status == FeedApi.Net7.Models.FeedItemStatus.Completed)
+            {
+                <div class="total-recipe-item">
+                    <div class="recipe-item-contents">
+                    <label class="recipe-item-name-text">Total Meal</label>
+                    <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                    <div class="recipe-item-nutrients-grid">
+                        <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
+                        <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
+                        <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
+                        <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
+                        <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
+                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Carbohydrates g</label>
+                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Fiber g</label>
+                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Protein g</label>
+                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Fat g</label>
+                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Calories</label>
+                    </div>
+                        <div class="recipe-item-servings-grid">
+                            <label class="recipe-item-servings-grid-column-head"> Servings</label>
+                            <label class="recipe-item-servings-grid-value">@TotalNutrients.NumberOfServings</label>
+                        </div>
+                    </div>
+                </div>
+            }
+
             @foreach (NutrientDish dish in DishesDisplayed)
-        {
-            <div class="recipes-wrapper">
-                @if (@dish.Recipe.NutrientInformation.Calories == null)
-                {
+            {
+                <div class="recipes-wrapper">
+                    @if (@dish.Recipe.NutrientInformation.Calories == null)
+                    {
 
-                    <div class="recipe-item-big">
-                        <img class="recipe-item-icon-big" src=@dish.Recipe.DisplayImageUrl />
-                        <div class="recipe-item-contents">
-                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
-                            <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
+                        <div class="recipe-item-big">
+                            <img class="recipe-item-icon-big" src=@dish.Recipe.DisplayImageUrl />
+                            <div class="recipe-item-contents">
+                                <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                                <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
 
-                            <div class="recipe-item-servings-grid">
-                                <label class="recipe-item-servings-grid-column-head"> Servings: @dish.NumberOfServings</label>
-                                @if (@dish.Notes == null || @dish.Notes == "")
-                                {
-                                    <label class="recipe-item-servings-grid-value">Notes: N/A</label>
-                                }
-                                else
-                                {
-                                    <label class="recipe-item-servings-grid-value">Notes: @dish.Notes</label>
-                                }
+                                <div class="recipe-item-servings-grid">
+                                    <label class="recipe-item-servings-grid-column-head"> Servings: @dish.NumberOfServings</label>
+                                    @if (@dish.Notes == null || @dish.Notes == "")
+                                    {
+                                        <label class="recipe-item-servings-grid-value">Notes: N/A</label>
+                                    }
+                                    else
+                                    {
+                                        <label class="recipe-item-servings-grid-value">Notes: @dish.Notes</label>
+                                    }
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+
+                        <div class="recipe-item">
+                            <img class="recipe-item-icon" src=@dish.Recipe.DisplayImageUrl />
+                            <div class="recipe-item-contents">
+                                <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
+                                <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                                <div class="recipe-item-nutrients-grid">
+                                    <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
+                                    <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
+                                    <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
+                                    <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
+                                    <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
+                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Carbohydrates g</label>
+                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fiber g</label>
+                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Protein g</label>
+                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fat g</label>
+                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Calories</label>
+                                </div>
+                                <div class="recipe-item-servings-grid">
+                                    <label class="recipe-item-servings-grid-column-head"> Servings</label>
+                                    <label class="recipe-item-servings-grid-value">@dish.NumberOfServings</label>
+                                </div>
                             </div>
 
                         </div>
-                    </div>
-                }
-                else
-                {
-
-                    <div class="recipe-item">
-                        <img class="recipe-item-icon" src=@dish.Recipe.DisplayImageUrl />
-                        <div class="recipe-item-contents">
-                            <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
-                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
-                            <div class="recipe-item-nutrients-grid">
-                                <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
-                                <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
-                                <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
-                                <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
-                                <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Carbohydrates g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fiber g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Protein g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fat g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Calories</label>
-                            </div>
-                            <div class="recipe-item-servings-grid">
-                                <label class="recipe-item-servings-grid-column-head"> Servings</label>
-                                <label class="recipe-item-servings-grid-value">@dish.NumberOfServings</label>
-                            </div>
-                        </div>
-
-                    </div>
-                }
-            </div>
-        }
+                    }
+                </div>
+            }
         }
     }
     else
@@ -170,7 +196,7 @@
             <div class="add-nutrient-popup-button-group">
                 <button class="add-nutrient-popup-camera-button" @onclick="async ()=> await TakePhoto()"><img class="add-nutrient-popup-camera-icon" src="resources/public/icons/multimedia/camera.svg" />Take a pic <img class="add-nutrient-popup-camera-background-icon" src="resources/public/icons/multimedia/camera.svg" /></button>
                 <button class="add-nutrient-popup-upload-button" @onclick="async ()=> await UploadPhoto()"><img class="add-nutrient-popup-upload-icon" src="resources/public/icons/arrows/upload.svg" />Upload from Gallery <img class="add-nutrient-popup-upload-background-icon" src="resources/public/icons/arrows/upload.svg" /></button>
-                <button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage( 1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>
+                <button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage(1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>
             </div>
             @if (NutrientPopupRecipesDisplayed != null)
             {

@@ -13,7 +13,7 @@
                     <div class="user-sent-message-div">
                         <label class="time-stamp-label">@message.TimeStamp</label>
                         <br />
-                        <label class="message-text-label">@message.MessageText</label>
+                        <div class="message-text-label">@((MarkupString)message.MessageText)</div>
                     </div>
 
                     break;
@@ -25,7 +25,7 @@
                         <br/>
                         <label class="time-stamp-label">@message.TimeStamp</label>
                         <br />
-                        <label class="message-text-label">@message.MessageText</label>
+                        <div class="message-text-label">@((MarkupString)message.MessageText)</div>
                     </div>
                     @*<div class="server-sent-message-blank-div"/>*@
 
@@ -36,9 +36,21 @@
     </div>
 
     <div class="footer-content-group-div">
-        <input type="text" class="chat-input" placeholder="Send a Message" @onfocus="ChatInput_Focused" @bind-value=@_userMessageText />
+        <!--input type="text" class="chat-input" placeholder="Send a Message" onfocus="ChatInput_Focused" bind-value=_userMessageText />-->
+        <textarea id="textinput" placeholder="Send a Message" class="chat-input" @onfocus="ChatInput_Focused" @bind="@_userMessageText"> </textarea>
         <button class="send-button" @onclick=SendButton_Clicked>
             <img class="white-icon" src="resources/public/icons/userInterface/paperplane.svg" />
         </button>
     </div>
 </div>
+
+<style>
+    .user-sent-message-div > a, a:active, a:visited, a:link {
+        color: #77A9B2 !important;
+    }
+
+    .user-sent-message-div > a:hover, a:focus {
+            color: #77A9B2 !important;
+        }
+
+</style>

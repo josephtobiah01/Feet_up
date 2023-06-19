@@ -76,6 +76,18 @@ html[b-qagr0w0ttb], body[b-qagr0w0ttb] {
     overflow-x: hidden;
     border: 1px solid #EEF0F2;
 }
+.total-recipe-item[b-qagr0w0ttb] {
+    font-family: Montserrat;
+    color: black;
+    height: fit-content;
+    display: grid;
+    padding: 16px;
+    grid-template-rows: auto;
+    align-items: center;
+    border-radius: 8px;
+    overflow-x: hidden;
+    border: 1px solid #EEF0F2;
+}
 .recipe-item-big[b-qagr0w0ttb] {
     font-family: Montserrat;
     color: black;

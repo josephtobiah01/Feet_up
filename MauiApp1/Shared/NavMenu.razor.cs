@@ -161,7 +161,7 @@ namespace MauiApp1.Shared
                 {
                     try
                     {
-                        await UserMiddleware.UnRegisterDevice(await PushRegistration.CheckPermission(), userId);
+                        await UserMiddleware.UnRegisterDevice(await PushRegistration.CheckPermission(), userId, PushRegistration.GetPlatform());
                     }
                     catch (Exception ex)
                     {
@@ -191,7 +191,22 @@ namespace MauiApp1.Shared
         }
         public async void GoToChatPage()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
+            bool userSignedIn = MiddleWare.UserID > 0;
+
+            switch (userSignedIn)
+            {
+                case true:
+
+                    await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
+                    break;
+
+                case false:
+
+                    await App.Current.MainPage.DisplayAlert("Access Denied", "You do not have access to this page. Please log in to access this page.", "OK");
+                    break;
+            }
+
+            
         }
 
         public void OpenUserPopup()
@@ -264,10 +279,7 @@ namespace MauiApp1.Shared
 
         public async void GoToTestPage()
         {
-            var count = 23;
-#if ANDROID || IOS
-            NotificationCounter.Default.SetNotificationCount(count);
-#endif
+            await App.Current.MainPage.Navigation.PushAsync(new ViewChatDetailPageVer2());
         }
         #endregion
     }

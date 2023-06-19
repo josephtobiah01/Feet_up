@@ -2,88 +2,109 @@
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiApp1.Areas.Dashboard.Views.OverviewDashboard" 
+             xmlns:local="clr-namespace:MauiApp1.Areas.Dashboard.ViewModel"
              Loaded="ContentView_Loaded">
-    <!--<VerticalStackLayout VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
-        <Image Source="icon_32x32.png" WidthRequest="78"  Margin="0,16,0,0"/>
-        <Label 
-            Text="Coming Soon!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" FontSize="Large" Margin="0,8,0,0"/>
-    </VerticalStackLayout>-->
-    <Grid VerticalOptions="FillAndExpand" WidthRequest="343">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <ScrollView Grid.Row="0">
-            <VerticalStackLayout Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" >
+    <ContentView.BindingContext>
+        <local:DashboardViewModel />
+    </ContentView.BindingContext>
+    <!--<ScrollView VerticalScrollBarVisibility="Always" BackgroundColor="Transparent" Orientation="Vertical" WidthRequest="343">-->
+        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  WidthRequest="343" BackgroundColor="#FFFFFF">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-            <Frame BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343">
-                <VerticalStackLayout>
-                    <Label WidthRequest="155" HeightRequest="24" FontSize="18" FontAttributes="Bold" Margin="0,0,0,8">Nutrients Intake</Label>
-                    <Label WidthRequest="296" HeightRequest="40" HorizontalTextAlignment="Center">Track how much nutrients you are consuming</Label>
-                </VerticalStackLayout>
-            </Frame>
+            <Grid WidthRequest="343" Grid.Row="0" Margin="0,16,0,0" VerticalOptions="StartAndExpand">
+                <ScrollView Orientation="Horizontal" WidthRequest="343">
+                    <HorizontalStackLayout WidthRequest="343">
 
-                <Label Grid.Row="0" VerticalOptions="Center" Margin="16" FontAttributes="Bold" Text="Calories Intake"/>
+                        <Button x:Name="AllButton" WidthRequest="42" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="All" FontSize="14"  FontFamily="Montserrat-Regular" Padding="8" Clicked="AllButton_Clicked">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowAllDashboard}" Value="false">
+                                    <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                                    <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                                    <Setter Property="TextColor" Value="#85929B"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowAllDashboard}" Value="true">
+                                    <Setter Property="BorderColor"
+                                            Value="#006272" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                                    <Setter Property="TextColor" Value="#1A1A1A"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
 
-                <Rectangle HeightRequest="2" WidthRequest="311" BackgroundColor="#EEF0F2" Margin="0,24,0,24"/>
+                        <Button x:Name="ExerciseButton" WidthRequest="82" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="Exercise" FontSize="14"  FontFamily="Montserrat-Regular" Margin="16,0,0,0" Padding="8" Clicked="ExerciseButton_Clicked">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowExerciseDashboard}" Value="false">
+                                    <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                                    <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                                    <Setter Property="TextColor" Value="#85929B"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowExerciseDashboard}" Value="true">
+                                    <Setter Property="BorderColor"
+                                            Value="#006272" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                                    <Setter Property="TextColor" Value="#1A1A1A"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
 
-                <GraphicsView Grid.Row="1" Grid.Column="0" x:Name="ProtienIntakeGraphicsView" HeightRequest="300" WidthRequest="343"  Background="White"/>
+                        <Button x:Name="NutrientsButton" WidthRequest="91" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="Nutrients" FontSize="14"  FontFamily="Montserrat-Regular" Margin="16,0,0,0" Padding="8" Clicked="NutrientsButton_Clicked">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowNutrientsDashboard}" Value="false">
+                                    <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                                    <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                                    <Setter Property="TextColor" Value="#85929B"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowNutrientsDashboard}" Value="true">
+                                    <Setter Property="BorderColor"
+                                            Value="#006272" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                                    <Setter Property="TextColor" Value="#1A1A1A"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
 
-                <Grid HeightRequest="64" WidthRequest="343">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="18"/>
-                        <RowDefinition Height="18"/>
-                        <RowDefinition Height="18"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="18"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-
-                    <Border BackgroundColor="#00A01A" Grid.Row="0" Grid.Column="0" HeightRequest="16" WidthRequest="16">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-                    <Label Text="Protein" Grid.Row="0" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0"/>
-
-                    <HorizontalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-
-                        <Label Text="Average intake"/>
-
-                        <Border BackgroundColor="#D9D9D9" HeightRequest="4" WidthRequest="4">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="34" />
-                            </Border.StrokeShape>
-                        </Border>
-
-                        <Label x:Name="ProtienPercentageIntakeLabel" Text="25%"/>
-
-                        <Border BackgroundColor="#D9D9D9" HeightRequest="4" WidthRequest="4">
-                            <Border.StrokeShape>
-                                <RoundRectangle CornerRadius="34" />
-                            </Border.StrokeShape>
-                        </Border>
-
-                        <Label x:Name="ProtienTotalIntakeLabel" Text="25gms"/>
+                        <Button x:Name="SleepButton" WidthRequest="63" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="Sleep" FontSize="14"  FontFamily="Montserrat-Regular" Margin="16,0,0,0" Padding="8" Clicked="SleepButton_Clicked">
+                            <Button.Triggers>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowSleepDashboard}" Value="false">
+                                    <Setter Property="BackgroundColor"
+                                            Value="#FFFFFF" />
+                                    <Setter Property="BorderColor"
+                                            Value="#EEF0F2" />
+                                    <Setter Property="TextColor" Value="#85929B"/>
+                                </DataTrigger>
+                                <DataTrigger TargetType="Button" Binding="{Binding ShowSleepDashboard}" Value="true">
+                                    <Setter Property="BorderColor"
+                                            Value="#006272" />
+                                    <Setter Property="BackgroundColor"
+                                            Value="#D6F9FF" />
+                                    <Setter Property="TextColor" Value="#1A1A1A"/>
+                                </DataTrigger>
+                            </Button.Triggers>
+                        </Button>
 
                     </HorizontalStackLayout>
+                </ScrollView>
+            </Grid>
 
-                    <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+        <Grid x:Name="AllStackLayout" Grid.Row="1" HorizontalOptions="CenterAndExpand" />
+        <Grid x:Name="NutrientsStackLayout" Grid.Row="1" HorizontalOptions="CenterAndExpand"/>
+        <Grid x:Name="ExerciseStackLayout" Grid.Row="1" HorizontalOptions="CenterAndExpand"/>
+        <Grid x:Name="SleepStackLayout" Grid.Row="1" HorizontalOptions="CenterAndExpand"/>
 
-                        <Label Text="Amino acid breakdown"/>
+        </Grid>
 
-                        <Label x:Name="AminoAcidBreakdownLabel" Text="5gm" Margin="8,0,0,0"/>                        
 
-                    </HorizontalStackLayout>
-
-                </Grid>
-                
-            
-        </VerticalStackLayout>
-
-       
-    </ScrollView>
-    </Grid>
+    <!--</ScrollView>-->
 </ContentView>

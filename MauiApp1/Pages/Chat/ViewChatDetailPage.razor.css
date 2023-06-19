@@ -5,7 +5,7 @@
     grid-template-areas:
         'body'
         'footer';
-    grid-template-rows: 1fr 64px;
+    grid-template-rows: 1fr auto;
     background-color: white;
     bottom: 0px;
     width: 100%;
@@ -52,7 +52,8 @@
         font-style: normal;
         margin-bottom: 8px;
         color: white;
-        word-break:break-word;
+        word-break: break-word;
+        white-space: pre-line;
     }
 
 .server-sent-message-blank-div {
@@ -87,23 +88,29 @@
     .server-sent-message-div > .message-text-label {
         font-size: 14px;
         word-break: break-word;
+        white-space: pre-line;
         margin-bottom: 8px;
     }
 
 .footer-content-group-div {
     grid-area: footer;
     border-top: 1px solid #85929B;
+    height:fit-content;
 }
 
     .footer-content-group-div > .chat-input {
         width: calc(100vw - 70px);
         margin: 8px;
-        height: 43px
+        height: 43px;
+        max-height: 150px;
     }
 
     .footer-content-group-div > .send-button {
         border: transparent;
         background-color: transparent;
+        position:absolute;
+        float:right;
+        margin-top:8px;
         height: 43px;
         width:43px;
     }

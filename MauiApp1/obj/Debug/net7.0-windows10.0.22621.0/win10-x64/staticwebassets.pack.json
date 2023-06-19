@@ -121,10 +121,6 @@
       "PackagePath": "staticwebassets\\external\\jquery-ui\\jquery-ui.min.js"
     },
     {
-      "Id": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\wwwroot\\external\\scripts\\swipedEvents.js",
-      "PackagePath": "staticwebassets\\external\\scripts\\swipedEvents.js"
-    },
-    {
       "Id": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },

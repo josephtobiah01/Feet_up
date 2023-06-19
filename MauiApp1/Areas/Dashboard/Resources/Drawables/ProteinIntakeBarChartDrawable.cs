@@ -14,7 +14,7 @@ namespace MauiApp1.Areas.Dashboard.Resources.Drawables
         private int _xAxisNumberOfLines = 6;
         private int _yAxisNumberOfLines = 8;
 
-        public double _xAxisMaxValue = 2500;
+        public double _xAxisMaxValue = 60;
 
         private double _canvasLeftMargin = 16;
         private double _canvasRightMargin = 16;
@@ -36,9 +36,10 @@ namespace MauiApp1.Areas.Dashboard.Resources.Drawables
             _origin = new Point(_canvasLeftMargin + _yAxisLongestTextBlockWidth, dirtyRect.Height - _chartBottomMargin);
             _xAxisEndPoint = new Point(dirtyRect.Width - _canvasRightMargin, dirtyRect.Height - _chartBottomMargin);
 
-            GenerateChartXAxes(canvas, dirtyRect);
             GenerateChartYAxes(canvas, dirtyRect);
             GenerateBars(canvas, dirtyRect);
+            GenerateChartXAxes(canvas, dirtyRect);           
+                    
         }
 
         private void GenerateChartXAxes(ICanvas canvas, RectF dirtyRect)
@@ -155,7 +156,19 @@ namespace MauiApp1.Areas.Dashboard.Resources.Drawables
             foreach (ProteinIntakeViewItem caloriesIntakeData in ProteinIntakeViewItems)
             {
                 Color barFillColor = Color.FromArgb("#00A01A");
+                Color barUnfillColor = Color.FromArgb("#EEF0F2");
+
                 double percentageValue = xAxisTotalInterval / _xAxisMaxValue * caloriesIntakeData.ProteinIntakeCount;
+                double percentageMaxValue = xAxisTotalInterval + xAxisInterval;
+
+                canvas.FillColor = barUnfillColor;
+                canvas.FillRoundedRectangle(
+                   x: (float)_origin.X,
+                   y: (float)(yAxisValue - (barHeight / 2)),
+                   width: (float)percentageMaxValue,
+                   height: 8,
+                   cornerRadius: 4
+               );
 
                 canvas.FillColor = barFillColor;
                 canvas.FillRoundedRectangle(

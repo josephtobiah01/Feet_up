@@ -44,7 +44,7 @@ namespace MauiApp1.Areas.Badges.Models
     {
 	    public void SetNotificationCount(int count)
 	    {
-		   //ME.Leolin.Shortcutbadger.ShortcutBadger.ApplyCount(global::Android.App.Application.Context, count);
+		//   ME.Leolin.Shortcutbadger.ShortcutBadger.ApplyCount(global::Android.App.Application.Context, count);
         }
     }
 #elif IOS

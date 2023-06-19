@@ -14,6 +14,8 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     max-width: 100vw;
 }
 
+*[b-ks7hjf3382], html[b-ks7hjf3382] {
+    scroll-behavior: smooth !important;
 }
 /*#region dynamic variable instantiation */
 :root[b-ks7hjf3382] {
@@ -230,7 +232,6 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     position: relative;
     overflow-y: scroll;
     overscroll-behavior: none;
-    transition:ease-in-out;
 }
 
 .white-icon[b-ks7hjf3382] {

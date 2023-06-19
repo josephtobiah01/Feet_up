@@ -35,9 +35,7 @@ public partial class ViewHybridChatContentPage : ContentPage
 
     public async void InitializeData()
     {
-
-       
-
+        await MauiApp1.Pages.Index.SetupUser();
     }
 
     private void InitializeControl()
@@ -101,6 +99,7 @@ public partial class ViewHybridChatContentPage : ContentPage
     private async void Close()
     {
         await Navigation.PopAsync();
+        
     }
 
     private void DisposeControls()

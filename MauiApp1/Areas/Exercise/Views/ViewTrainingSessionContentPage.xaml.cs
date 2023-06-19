@@ -1,3 +1,5 @@
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using MauiApp1.Areas.Exercise.Resources;
 using MauiApp1.Areas.Exercise.ViewModels;
@@ -671,13 +673,22 @@ public partial class ViewExerciseContentPage : ContentPage
     {
         try
         {
+            CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
+            string text = "Congratulation you have complete this training session.";
+            ToastDuration duration = ToastDuration.Long;
+            double fontSize = 14;
+
             if (_totalSet == _totalSetCompleted)
             {
                 bool completedTraningSession = await ExerciseApi.Net7.ExerciseApi.EndTrainingSession(_emTrainingSession.Id, _hours * 3600 + _minutes * 60 + _seconds);
                 if (completedTraningSession == true)
                 {
-                    await DisplayAlert("Notification", "Congratulation you have complete this training session.", "OK");
+                    //await DisplayAlert("Notification", "Congratulation you have complete this training session.", "OK");
                     //await Navigation.PopModalAsync();
+                    IToast toast = Toast.Make(text, duration, fontSize);
+                    await toast.Show(cancellationTokenSource.Token);
+
                     await Navigation.PushAsync(new ViewSummaryTrainingSessionContentPage(_emTrainingSession.Id));
                 }
             }
