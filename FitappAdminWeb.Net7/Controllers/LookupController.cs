@@ -2,8 +2,10 @@
 using DAOLayer.Net7.Exercise;
 using DAOLayer.Net7.Supplement;
 using FitappAdminWeb.Net7.Classes.Base;
+using FitappAdminWeb.Net7.Classes.Constants;
 using FitappAdminWeb.Net7.Classes.DTO;
 using FitappAdminWeb.Net7.Classes.Repositories;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,6 +20,7 @@ namespace FitappAdminWeb.Net7.Controllers
         SupplementRepository _supprep;
         TrainingRepository _trrepo;
         MessageRepository _messagerepo;
+        BlobStorageRepository _blobrepo;
         IMapper _mapper;
         ILogger<LookupController> _logger;
 
@@ -26,7 +29,8 @@ namespace FitappAdminWeb.Net7.Controllers
                                 IMapper mapper,
                                 ILogger<LookupController> logger,
                                 MessageRepository messagerepo,
-                                TrainingRepository trrepo)
+                                TrainingRepository trrepo,
+                                BlobStorageRepository blobrepo)
             : base(messagerepo)
         {
             _lookup = lookup;
@@ -35,6 +39,7 @@ namespace FitappAdminWeb.Net7.Controllers
             _supprep = supprep;
             _messagerepo = messagerepo;
             _trrepo = trrepo;
+            _blobrepo = blobrepo;
         }
 
         [HttpGet]
@@ -45,13 +50,16 @@ namespace FitappAdminWeb.Net7.Controllers
 
         #region Exercise Type
         [HttpGet]
-        public async Task<IActionResult> ExerciseType()
+        public async Task<IActionResult> ExerciseType(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
             var exerTypesList = await _lookup.GetExerciseTypesAllData();
             ExerciseTypeListViewModel vm = new ExerciseTypeListViewModel()
             {
                 EdsExerciseTypes = exerTypesList
             };
+            vm.PagingEdsExerciseTypes = new X.PagedList.PagedList<EdsExerciseType>(exerTypesList, pageNumber, pageSize);
             return View(vm);
         }
 
@@ -114,17 +122,43 @@ namespace FitappAdminWeb.Net7.Controllers
             }
             return RedirectToAction("ExerciseType");
         }
+
+        [HttpPost]
+        public async Task<JsonResult> UploadImage( IFormFile image)
+        {
+            try
+            {
+                byte[]? imageBytes = ImageUtil.GetBytesFromImageFormFile(image, UserConstants.EXTYPE_UPLOADIMAGE_SIZELIMIT, true,
+                    UserConstants.EXTYPE_UPLOADIMAGE_MAX_WIDTH, UserConstants.EXTYPE_UPLOADIMAGE_MAX_HEIGHT);
+                string contentType = image.ContentType;
+
+                if (imageBytes != null)
+                {
+                    return Json(await _blobrepo.UploadImageUrl(imageBytes, contentType));
+                }
+                _logger.LogWarning("Failed to upload image. Returning null.");
+                return Json(string.Empty);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed Upload Image");
+                return Json(string.Empty);
+            }
+        }
         #endregion
 
         #region Templates
         [HttpGet]
-        public async Task<IActionResult> TrainingSessionTemplates()
+        public async Task<IActionResult> TrainingSessionTemplates(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
             var templateList = await _trrepo.GetTemplateSessionsWithExercises();
             TrainingSessionTemplateListViewModel vm = new TrainingSessionTemplateListViewModel()
             {
                 TemplateSessions = templateList
             };
+            vm.PagingTemplateSessions = new X.PagedList.PagedList<EdsTrainingSession>(templateList, pageNumber, pageSize);
             return View(vm);
         }
         #endregion
@@ -132,17 +166,19 @@ namespace FitappAdminWeb.Net7.Controllers
         #region Supplement Reference
 
         [HttpGet]
-        public async Task<IActionResult> SupplementReference(int? Page = 0, string? Name = null, long? Id = null)
+        public async Task<IActionResult> SupplementReference(int? page)
         {
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
             SupplementReferenceListViewModel vm = new SupplementReferenceListViewModel()
             {
-                Page = Page,
-                Id = Id,
-                Name = Name
+                Page = page
             };
 
             List<NdsSupplementReference> supprefList = await _supprep.GetSupplementReferences();
             vm.NdsSupplementReferences = supprefList;
+            vm.PagingNdsSupplementReferences = new X.PagedList.PagedList<NdsSupplementReference>(supprefList, pageNumber, pageSize);
 
             return View(vm);
         }

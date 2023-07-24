@@ -11,8 +11,10 @@
 </div>
 <p>These are message rooms that have a pending concern or message from a User</p>
 
+
+
 <div class="row" id="room_list">
-    @foreach (var room in Model.RoomsWithConcerns)
+    @foreach (var room in Model.Rooms)
     {
         var recentMessage = room.MsgMessage.LastOrDefault();
 

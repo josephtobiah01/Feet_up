@@ -1,0 +1,103 @@
+﻿@model TrainingGraphViewModel
+<h4>Training Program</h4>
+<p>Pick a Program to view the progress with this User: <strong>@Model.CurrentUser.FirstName</strong>(Id : @Model.CurrentUser.Id)</p>
+
+<div class="border p-3 mb-3 bg-light">
+    <form asp-action="Chart" method="get" id="search-form">
+        <input type="hidden" name="userid" value="@Model.CurrentUser.Id" />
+        <div class="row">
+            <div class="col-sm-10">
+                <label class="form-label" for="selectedProgram">Select a Program</label>
+                <select name="selectedProgram" id="selectedProgram" class="form-select" asp-items="Model.List_Programs"></select>
+            </div>
+            <div class="col-sm align-self-end">
+                <button type="submit" class="btn btn-primary">Update Charts</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@if (Model.Programs == null || Model.Programs.Count == 0)
+{
+    <div class="d-flex justify-content-center py-3">
+        <span>No Training Program found.</span>
+    </div>
+}
+else if (Model.TrainingListChartDisplayData == null || Model.TrainingListChartDisplayData.Count == 0)
+{
+    <div class="d-flex justify-content-center py-3">
+        <span>No Training Session found.</span>
+    </div>
+}
+else
+{
+    <div class="row" id="graph_list">
+        @foreach (var programs in Model.TrainingListChartDisplayData)
+        {
+            <div class="col-md-6 mb-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <canvas id=@programs.Id style="width:100%;max-width:720px"></canvas>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@section Scripts {
+    <script asp-src-include="~/lib/managed/trainingchart.js"></script>
+
+    <script>
+        
+        var data = [];
+
+        @foreach (var item in Model.TrainingListChartDisplayData)
+        {
+            @:var total = [];
+            @:var complete = [];
+            @:var skipped = [];
+            @:var inComplete = [];
+            @:var label = [];
+            @:var _data = { Name: "", Id:"", Total: "", Complete: "", Skipped: "", InComplete: "", Label: "" };
+
+            @foreach (var t in item.GraphDataTotal)
+            {
+                @:total.push("@t");
+            }
+            @foreach (var a in item.GraphDataComplete)
+            {
+                @:complete.push("@a");
+            }
+            @foreach (var t in item.GraphDataSkipped)
+            {
+                @:skipped.push("@t");
+            }
+            @foreach (var a in item.GraphDataInComplete)
+            {
+                @:inComplete.push("@a");
+            }
+            @foreach (var l in item.GraphLabel)
+            {
+                @:label.push(decodeHtml('@l'));
+            }
+
+            @:_data.Name = "@item.Name";
+            @:_data.Id = "@item.Id";
+            @:_data.Total = total;
+            @:_data.Complete = complete;
+            @:_data.Skipped = skipped;
+            @:_data.InComplete = inComplete;
+            @:_data.Label = label;
+
+            @:data.push(_data);
+        }
+            window["trainingcharts_datas"] = { data };
+
+        function decodeHtml(html) {
+            var txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+    </script>
+}

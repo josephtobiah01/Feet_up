@@ -34,27 +34,72 @@
     background: #006272;
     border-radius: 8px 0px 8px 8px;
     text-align: right;
-    padding: 8px;
+    padding: 2px;
     margin-right: 8px;
 }
 
-    .user-sent-message-div > .time-stamp-label {
-        font-size: 12px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        color:white;
+    .user-sent-message-div > .image-container {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
     }
+
+        .user-sent-message-div > .image-container > .message-image {
+            flex-grow: 1;
+            object-fit: cover;
+            margin: 3px;
+            pointer-events: none;
+            border-radius: 5px;
+        }
+
+        .user-sent-message-div > .image-container > .message-text-label {
+            font-size: 14px;
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-style: normal;
+            margin-top: 5px;
+            color: white;
+            background-color: #006272;
+            border-radius: 5px;
+            padding: 5px 8px;
+            word-break: break-word;
+            white-space: pre-line;
+        }
 
     .user-sent-message-div > .message-text-label {
         font-size: 14px;
         font-family: 'Montserrat';
+        font-weight: 400;
         font-style: normal;
-        margin-bottom: 8px;
         color: white;
+        background-color: #006272;
+        border-radius: 5px;
+        padding: 5px 8px;
         word-break: break-word;
         white-space: pre-line;
     }
+
+
+    .user-sent-message-div > .time-stamp-container-div {
+        display: inline-block;
+    }
+
+        .user-sent-message-div > .time-stamp-container-div > .user-message-check-image {
+            color: white;
+            height: 20px;
+            width: 20px;
+        }
+
+        .user-sent-message-div > .time-stamp-container-div > .time-stamp-label {
+            font-size: 11px;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            color: white;
+            height:13px;
+        }
+
 
 .server-sent-message-blank-div {
 }
@@ -78,46 +123,111 @@
         font-weight: 700;
     }
 
-    .server-sent-message-div > .time-stamp-label {
-        font-size: 12px;
+    .server-sent-message-div > .server-sent-time-container-div {
+        justify-self: end;
+        text-align: right;
+    }
+
+    .server-sent-message-div > .server-sent-time-container-div > .time-stamp-label {
+        justify-self: end;
+        text-align: right;
+        align-self: end;
+        font-size: 11px;
         font-family: 'Montserrat';
         font-style: normal;
-        font-weight: 700;
+        font-weight: 400;
+        color: #85929B;
     }
 
     .server-sent-message-div > .message-text-label {
         font-size: 14px;
+        font-weight: 400;
         word-break: break-word;
         white-space: pre-line;
-        margin-bottom: 8px;
+        margin-bottom: 0px;
     }
 
 .footer-content-group-div {
     grid-area: footer;
     border-top: 1px solid #85929B;
-    height:fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
-    .footer-content-group-div > .chat-input {
-        width: calc(100vw - 70px);
-        margin: 8px;
-        height: 43px;
-        max-height: 150px;
+.textarea-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .textarea-container > .imageMessage {
+        max-width: 50px;
+        max-height: 50px;
+        object-fit: contain;
+        margin: 3px;
+        pointer-events: none;
+        border-radius: 5px;
     }
 
-    .footer-content-group-div > .send-button {
+    .textarea-container > .chat-input {
+        flex: 1;
+        margin: 4px;
+        height: 40px;
+        max-height: 150px;
+        border: none;
+        outline: none;
+    }
+
+    .textarea-container > .cancel-button {
+        font-size: 15px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        color: black;
+        border: 1px solid #778899;
+        background-color: #C0C0C0;
+        margin-left: 5px;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+
+
+.buttonarea-container{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .buttonarea-container > .send-button {
         border: transparent;
         background-color: transparent;
-        position:absolute;
-        float:right;
-        margin-top:8px;
+        margin-left: 3px;
         height: 43px;
-        width:43px;
+        width: 43px;
     }
 
-.chat-input{
-    font-family:Montserrat;
+
+
+
+
+.date-header-div {
+    justify-self: center;
 }
+
+    .date-header-div > .date-header-label {
+        text-align: center;
+        color: #85929B;
+        font-family: 'Montserrat';
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .chat-input {
+        font-family: Montserrat;
+    }
     .chat-input:focus{
         outline:none;
     }

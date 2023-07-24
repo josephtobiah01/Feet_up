@@ -24,12 +24,22 @@ namespace FitappAdminWeb.Net7.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> Rooms(bool WithConcernsOnly = false)
+        {
+            RoomSelectViewModel vm = new RoomSelectViewModel();
+            vm.CurrentUser = await _messagerepo.GetUserByLoggedInUserName(User);
+            vm.Rooms = await _messagerepo.GetRooms(WithConcernsOnly, 1);
+
+            return View(vm);
+        } 
+
+        [HttpGet]
         public async Task<IActionResult> RoomsWithConcerns()
         {
             //NOTE: This is Room Selection Mode (GetRoomWithConcerns)
             RoomSelectViewModel vm = new RoomSelectViewModel();
             vm.CurrentUser = await _messagerepo.GetUserByLoggedInUserName(User);
-            vm.RoomsWithConcerns = await _messagerepo.GetRoomsWithConcerns() ?? new List<DAOLayer.Net7.Chat.MsgRoom>();
+            vm.Rooms = await _messagerepo.GetRoomsWithConcerns() ?? new List<DAOLayer.Net7.Chat.MsgRoom>();
 
             return View(vm);
         }

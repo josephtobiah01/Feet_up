@@ -1,0 +1,95 @@
+﻿@page "/Profile"
+@using FeedApi.Net7.Models;
+@using ParentMiddleWare.Models;
+
+<!-- navigation bar area-->
+<div class="navigation-bar-background">
+    <button class="navigation-bar-button" @onclick="ClosePage"><img class="navigation-bar-button-icon" src="resources/public/icons/arrows/leftarrow-narrow.svg" /></button>
+    <label class="navigation-bar-text">Profile</label>
+</div>
+
+<!-- body -->
+<div class="content-wrapper">
+    <!-- body text -->
+    <div class="body-label">Name</div>
+    @if (FeedApi.Net7.FeedApi.UserName != null)
+    {
+        <div class="body-text">@FeedApi.Net7.FeedApi.UserName</div>
+    }
+    else
+    {
+        <div class="body-text">-:-</div>
+    }
+    <div class="body-divider"></div>
+    <div class="body-label">Email</div>
+    @if (FeedApi.Net7.FeedApi.Email!=null)
+    {
+        <div class="body-text">@FeedApi.Net7.FeedApi.Email</div>
+    }
+    else
+    {
+        <div class="body-text">-:-</div>
+    }
+    <div class="body-divider"></div>
+    <div class="body-label">Age</div>
+    @if (FeedApi.Net7.FeedApi.Age != null)
+    {
+        <div class="body-text">@FeedApi.Net7.FeedApi.Age Years old</div>
+    }
+    else
+    {
+        <div class="body-text">-:- Years old</div>
+    }
+    <div class="body-divider"></div>
+    <div class="body-label">Height</div>
+    @if (FeedApi.Net7.FeedApi.Height != null)
+    {
+        <div class="body-text">@FeedApi.Net7.FeedApi.Height cms</div>
+    }
+    else
+    {
+        <div class="body-text">-:- cms</div>
+    }
+    <div class="body-divider"></div>
+    <div class="body-label">Last recorded weight</div>
+    @if (FeedApi.Net7.FeedApi.Last_recorded_weight != null)
+    {
+        <div class="body-text">@FeedApi.Net7.FeedApi.Last_recorded_weight Kg</div>
+    }
+    else
+    {
+        <div class="body-text">-:- Kg</div>
+    }
+    <div class="body-divider"></div>
+    <div class="body-label">App version</div>
+    @*<div class="body-text">Version @FeedApi.Net7.FeedApi.App_version</div>*@
+    @if (@AppInfo.Current.VersionString != null)
+    {
+        <div class="body-text">Version @AppInfo.Current.VersionString</div>
+    }
+     <!-- body buttons -->
+
+    <div class="body-button-container" hidden="@_hideConnectedAppButton" @onclick="ConnectedApps_Clicked">
+        <div class="body-button-label">Connect to App</div>
+        <div class="body-button-text">Connect to Google Fit</div>
+        <div class="body-button-right-arrow">
+            <img class="body-button-right-arrow-image" src="resources/public/icons/arrows/arrow-right.svg" />
+        </div>
+    </div>
+
+     <div class="body-button-container" @onclick="async ()=> await GoToScanPage()">
+        <div class="body-button-label">Scan Barcode</div>
+        <div class="body-button-text">Use this to scan your DNA test</div>
+         <div class="body-button-right-arrow">
+            <img class="body-button-right-arrow-image" src="resources/public/icons/arrows/arrow-right.svg" />
+         </div>
+     </div>
+     <!-- disclaimer -->
+    <div class="body-disclaimer">For any queries, concerns, or feedback;<br />Please use chat or reach out to us on help@ageinreverse.me</div>
+</div>
+
+
+<!--footer-->
+<div class="footer">
+    <button class="logout-button" @onclick="async ()=> await SignOutUser()">Logout</button>
+</div>

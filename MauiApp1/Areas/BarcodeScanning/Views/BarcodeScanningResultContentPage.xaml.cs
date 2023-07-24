@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using UserApi.Net7;
 using System.Threading.Tasks;
-
+using CommunityToolkit.Maui.Core.Platform;
 
 namespace MauiApp1.Areas.BarcodeScanning.Views
 {
@@ -14,9 +14,9 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
 		public BarcodeScanningResultContentPage (string barcodescanresult)
 		{
 			InitializeComponent();
-            if (barcodescanresult != null && barcodescanresult!="")
+            if (barcodescanresult != null && barcodescanresult != "")
             {
-                myChatMessage.Text = barcodescanresult;
+                CodeEntry.Text = barcodescanresult;
                 _barcodescanresult = barcodescanresult;
             }
 
@@ -27,7 +27,10 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
         }
         private async void SendButton_Clicked(object sender, EventArgs e)
         {
-            bool successful = await UserApi.Net7.UserMiddleware.SubmitBarcode(_barcodescanresult);
+            if (string.IsNullOrEmpty(CodeEntry.Text)) return;
+            
+            bool successful = await UserApi.Net7.UserMiddleware.SubmitBarcode(CodeEntry.Text.Trim());
+
             if (successful)
             {
                 Close();
@@ -42,6 +45,33 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
             //await Application.Current.MainPage.Navigation.PopAsync();
             await Application.Current.MainPage.Navigation.PopToRootAsync();
         }
+        private async void OnCodeKeyboardFocus(object sender, FocusEventArgs e)
+        {
+#if IOS || ANDROID
+            if (KeyboardExtensions.IsSoftKeyboardShowing(this.CodeEntry) == false)
+            {
+                await KeyboardExtensions.ShowKeyboardAsync(this.CodeEntry, new CancellationToken());
 
+            }
+            //this.RootScrollView.IsEnabled = true;
+            if (this.VariableRow != null)
+            {
+                this.VariableRow.Height = new GridLength(1, GridUnitType.Star);
+            }
+#endif
+        }
+        private async void OnCodeKeyboardUnfocus(object sender, FocusEventArgs e)
+        {
+#if IOS || ANDROID
+            if (KeyboardExtensions.IsSoftKeyboardShowing(this.CodeEntry) == true)
+            {
+                await KeyboardExtensions.HideKeyboardAsync(this.CodeEntry, new CancellationToken());
+            }
+            if (this.VariableRow != null)
+            {
+                this.VariableRow.Height = new GridLength(0, GridUnitType.Star);
+            }
+#endif
+        }
     }
 }

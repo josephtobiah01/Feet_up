@@ -17,7 +17,7 @@
         <SingleProject>true</SingleProject>
         <ImplicitUsings>enable</ImplicitUsings>
         <EnableDefaultCssItems>false</EnableDefaultCssItems>
-
+         <DXVer>23.1.3</DXVer>
         <!-- Display name -->
         <ApplicationTitle>MauiApp1</ApplicationTitle>
 
@@ -37,22 +37,22 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-      <MtouchLink>None</MtouchLink>
+      <MtouchLink>SdkOnly</MtouchLink>
       <EnableSGenConc>True</EnableSGenConc>
       <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
       <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
-      <ApplicationVersion>6</ApplicationVersion>
-      <MtouchDebug>True</MtouchDebug>
-      <MtouchUseLlvm>False</MtouchUseLlvm>
+      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
+      <ApplicationVersion>9</ApplicationVersion>
       <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
       <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
       <OptimizePNGs>True</OptimizePNGs>
+      <MtouchUseLlvm>True</MtouchUseLlvm>
+      <MtouchDebug>True</MtouchDebug>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-      <CodesignKey>Apple Distribution: AGE IN REVERSE PTE. LTD (Y7KN7CU4RD)</CodesignKey>
-      <CodesignProvision>tt-release-tom</CodesignProvision>
+      <CodesignKey>Apple Development: Mario Baumann (MMYHLJ5WT5)</CodesignKey>
+      <CodesignProvision>tt-dev-tom</CodesignProvision>
       <ProvisioningType>manual</ProvisioningType>
     </PropertyGroup>
 
@@ -73,17 +73,17 @@
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+      <MtouchLink>SdkOnly</MtouchLink>
       <EnableSGenConc>True</EnableSGenConc>
       <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
       <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
-      <ApplicationVersion>6</ApplicationVersion>
-      <MtouchDebug>False</MtouchDebug>
-      <MtouchUseLlvm>True</MtouchUseLlvm>
-      <MtouchLink>SdkOnly</MtouchLink>
+      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
+      <ApplicationVersion>9</ApplicationVersion>
       <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
-      <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+      <CodesignEntitlements>Platforms\iOS\EntitlementsProd.plist</CodesignEntitlements>
       <OptimizePNGs>True</OptimizePNGs>
+      <MtouchUseLlvm>True</MtouchUseLlvm>
+      <MtouchDebug>False</MtouchDebug>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -101,10 +101,10 @@
       <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
       <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
       <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
-      <ApplicationVersion>6</ApplicationVersion>
+      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
+      <ApplicationVersion>9</ApplicationVersion>
       <AndroidKeyStore>True</AndroidKeyStore>
-      <AndroidSigningKeyStore>D:\Tfs\fitbitapp2\FitApp\filename.keystore</AndroidSigningKeyStore>
+      <AndroidSigningKeyStore>filename.keystore</AndroidSigningKeyStore>
       <AndroidSigningStorePass>Redneck12345!</AndroidSigningStorePass>
       <AndroidSigningKeyAlias>keystore.alias1</AndroidSigningKeyAlias>
       <AndroidSigningKeyPass>Redneck12345!</AndroidSigningKeyPass>
@@ -122,10 +122,10 @@
       <AndroidEnableProfiledAot>True</AndroidEnableProfiledAot>
       <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
       <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
-      <ApplicationVersion>6</ApplicationVersion>
+      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
+      <ApplicationVersion>9</ApplicationVersion>
       <AndroidKeyStore>True</AndroidKeyStore>
-      <AndroidSigningKeyStore>D:\Tfs\fitbitapp2\FitApp\filename.keystore</AndroidSigningKeyStore>
+      <AndroidSigningKeyStore>filename.keystore</AndroidSigningKeyStore>
       <AndroidSigningStorePass>Redneck12345!</AndroidSigningStorePass>
       <AndroidSigningKeyAlias>keystore.alias1</AndroidSigningKeyAlias>
       <AndroidSigningKeyPass>Redneck12345!</AndroidSigningKeyPass>
@@ -135,20 +135,18 @@
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.22621.0|AnyCPU'">
       <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
       <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
-      <ApplicationVersion>6</ApplicationVersion>
+      <ApplicationDisplayVersion>2.8.6</ApplicationDisplayVersion>
+      <ApplicationVersion>2</ApplicationVersion>
     </PropertyGroup>
 
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.22621.0|AnyCPU'">
       <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
       <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.5.2</ApplicationDisplayVersion>
-      <ApplicationVersion>6</ApplicationVersion>
+      <ApplicationDisplayVersion>2.8.6</ApplicationDisplayVersion>
+      <ApplicationVersion>2</ApplicationVersion>
     </PropertyGroup>
 
-    <PropertyGroup>
-      <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.22621.0</TargetFrameworks>
-    </PropertyGroup>
+
 
 
 
@@ -159,8 +157,20 @@
 	<ItemGroup>
 		<TrimmerRootAssembly Include="Newtonsoft.Json" />
 	</ItemGroup>
+  
+  <ItemGroup>
+    <TrimmerRootAssembly Include="FitnessData.Common" />
+  </ItemGroup>
 
-	
+  <Target Name="DisableTrimmerForCertainAssemblies" BeforeTargets="PrepareForPublish">
+    <ItemGroup>
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)" Condition="'%(Filename)%(Extension)' == 'System.Collections.Immutable.dll'">
+        <IsTrimmable>false</IsTrimmable>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+ 
+
 		<Target Name="DisableTrimmerForCertainAssemblies" BeforeTargets="PrepareForPublish">
 		<ItemGroup>
 			<ResolvedFileToPublish Update="@(ResolvedFileToPublish)" Condition="'%(Filename)%(Extension)' == 'Newtonsoft.Json.dll'">
@@ -168,7 +178,54 @@
 			</ResolvedFileToPublish>
 		</ItemGroup>
 	</Target>
+  <!-- 
+  This target ensures that iOS Frameworks and XCFrameworks are collected from NuGet packages when using Hot Restart.
+  _UnpackHotRestartFrameworkAssemblies doesn't work for NuGet packages, because the frameworks aren't stored as embedded resources, but just files in the package. 
+-->
+  <Target Name="_CollectHotRestartFrameworksFromPackages" BeforeTargets="_CollectHotRestartFrameworks" Condition="'$(IsHotRestartBuild)' == 'true'">
 
+    <!-- 
+    Find all resources within NuGet packages.
+    For example, a package with assembly Foo.dll will have an adjacent Foo.resources folder or a Foo.resources.zip file.
+  -->
+    <ItemGroup>
+      <_PackageResourcesDirs Include="@(AssembliesWithFrameworks -> '%(RootDir)%(Directory)%(FileName).resources')" Condition="Exists('%(RootDir)%(Directory)%(FileName).resources')" />
+
+      <_PackageResourcesZips Include="@(AssembliesWithFrameworks -> '%(RootDir)%(Directory)%(FileName).resources.zip')" Condition="Exists('%(RootDir)%(Directory)%(FileName).resources.zip')" />
+    </ItemGroup>
+
+    <!-- 
+    For zipped resources, we'll need to unpack them somewhere.
+    The DeviceSpecificIntermediateOutputPath can get too long and hit max path, so we'll work from TEMP instead.
+  -->
+    <PropertyGroup>
+      <HotRestartPackageResourcesDir>$(TEMP)\Xamarin\HotRestart\Resources\</HotRestartPackageResourcesDir>
+    </PropertyGroup>
+    <Unzip ZipFilePath="@(_PackageResourcesZips)" ExtractionPath="$(HotRestartPackageResourcesDir)%(NuGetPackageId)\%(NuGetPackageVersion)" Condition="'@(_PackageResourcesZips)' != '' And !Exists('$(HotRestartPackageResourcesDir)%(NuGetPackageId)\%(NuGetPackageVersion)')" />
+
+    <!-- Add the folders where we unzipped each file to _PackageResourcesDirs -->
+    <ItemGroup Condition="'@(_PackageResourcesZips)' != ''">
+      <_PackageResourcesDirs Include="@(_PackageResourcesZips -> '$(HotRestartPackageResourcesDir)%(NuGetPackageId)\%(NuGetPackageVersion)')" />
+    </ItemGroup>
+
+    <!-- If we have any _PackageResourcesDirs (from either originally zipped or unzipped), scan them for frameworks. -->
+    <ItemGroup Condition="'@(_PackageResourcesDirs)' != ''">
+
+      <!-- Regular frameworks will be found immediately in the root of the resources folder.  -->
+      <_PackageResourcesFrameworkFiles Include="%(_PackageResourcesDirs.Identity)\*.framework\*" />
+
+      <!-- XCFrameworks will have multiple targets.  We need only the framework from the ios-arm64 target.  -->
+      <_PackageResourcesFrameworkFiles Include="%(_PackageResourcesDirs.Identity)\**\*.xcframework\ios-arm64\*.framework\*" />
+
+      <!-- Condense the file list to the exact list of frameworks we're adding. -->
+      <_HotRestartFrameworksFromPackages Include="@(_PackageResourcesFrameworkFiles -> '%(RootDir)%(Directory)')" KeepDuplicates="false" />
+
+      <!-- Finally, add them to _HotRestartFrameworks, which is used by the existing _CollectHotRestartFrameworks target. -->
+      <_HotRestartFrameworks Include="@(_HotRestartFrameworksFromPackages -&gt; TrimEnd('\'))" />
+
+    </ItemGroup>
+
+  </Target>
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" />
@@ -178,6 +235,7 @@
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
+        <MauiImage Include="Resources\Images\**\*" />
         <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
         <!-- Custom Fonts -->
@@ -211,6 +269,8 @@
       <None Remove="Resources\Images\air_icon_90x32.png" />
       <None Remove="Resources\Images\air_icon_white_68x24.png" />
       <None Remove="Resources\Images\Areas\Shared\BackIcon_20x10.png" />
+      <None Remove="Resources\Images\Areas\Shared\internet_lost.png" />
+      <None Remove="Resources\Images\Areas\Shared\location_black_24x24.png" />
       <None Remove="Resources\Images\cancel.svg" />
       <None Remove="Resources\Images\checkmark.png" />
       <None Remove="Resources\Images\clock_black_14x14.png" />
@@ -227,8 +287,17 @@
 
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+    <PackageReference Include="DevExpress.Maui.Controls">
+      <Version>23.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.Maui.Core">
+      <Version>23.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.Maui.Editors">
+      <Version>23.1.3</Version>
+    </PackageReference>
     <PackageReference Include="Shiny.Extensions.Configuration">
-      <Version>3.0.0-beta-0154</Version>
+      <Version>3.0.0-beta-0124</Version>
     </PackageReference>
   </ItemGroup>
 
@@ -259,19 +328,44 @@
     </ItemGroup>
 
     <ItemGroup>
+        <TrimmableAssembly Include="DevExpress.Data.v23.1" />
+
+
+      <!--<TrimmerRootAssembly Include="DevExpress.iOS.CollectionView" />
+      <TrimmerRootAssembly Include="DevExpress.iOS.Editors" />
+      <TrimmerRootAssembly Include="DevExpress.iOS.Navigation" />-->
+      <TrimmerRootAssembly Include="DevExpress.Maui.CollectionView" />
+      <TrimmerRootAssembly Include="DevExpress.Maui.Controls" />
+      <TrimmerRootAssembly Include="DevExpress.Maui.Core" />
+      <TrimmerRootAssembly Include="DevExpress.Maui.Editors" />
+
+
+      <!--<TrimmableAssembly Include="DevExpress.iOS.CollectionView.v23.1" />
+      <TrimmableAssembly Include="DevExpress.iOS.Editors.v23.1" />
+      <TrimmableAssembly Include="DevExpress.iOS.Navigation.v23.1" />
+      <TrimmableAssembly Include="DevExpress.Maui.CollectionView.v23.1" />
+      <TrimmableAssembly Include="DevExpress.Maui.Controls.v23.1" />
+      <TrimmableAssembly Include="DevExpress.Maui.Core.v23.1" />
+      <TrimmableAssembly Include="DevExpress.Maui.Editors.v23.1" />-->
+      
+        <PackageReference Include="AIR.Maui.FitnessData.Client" Version="1.0.0-alpha35" />
+        <PackageReference Include="AIR.Maui.FitnessData.Common" Version="1.0.0-alpha35" />
+        <PackageReference Include="AIR.Maui.SecurityServices.Client" Version="1.0.0-alpha09" />
+        <PackageReference Include="AIR.Maui.SecurityServices.Common" Version="1.0.0-alpha09" />
         <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
         <PackageReference Include="CommunityToolkit.Maui.Core" Version="5.2.0" />
         <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="2.0.0" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+        <PackageReference Include="InputKit.Maui" Version="4.3.3" />
         <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.1.0" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-        <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
-        <PackageReference Include="Shiny.Core" Version="3.0.0-beta-0154" />
-        <PackageReference Include="Shiny.Hosting.Maui" Version="3.0.0-beta-0154" />
-        <PackageReference Include="Shiny.Notifications" Version="3.0.0-beta-0154" />
-        <PackageReference Include="Shiny.Notifications.Common" Version="3.0.0-beta-0154" />
-        <PackageReference Include="Shiny.Push.AzureNotificationHubs" Version="3.0.0-beta-0154" />
-        <PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />
+        <!--<PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />-->
+        <PackageReference Include="Shiny.Core" Version="3.0.0-beta-0124" />
+        <PackageReference Include="Shiny.Hosting.Maui" Version="3.0.0-beta-0124" />
+        <PackageReference Include="Shiny.Notifications" Version="3.0.0-beta-0124" />
+        <PackageReference Include="Shiny.Notifications.Common" Version="3.0.0-beta-0124" />
+        <PackageReference Include="Shiny.Push.AzureNotificationHubs" Version="3.0.0-beta-0124" />
+        <!--<PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />-->
         <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
         <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
         <PackageReference Include="PureWeen.Maui.FixesAndWorkarounds" Version="1.4.9" />
@@ -282,6 +376,7 @@
       <ProjectReference Include="..\FeedApi.Net7\FeedApi.Net7.csproj" />
       <ProjectReference Include="..\ImageApi.Net7\NutritionApi.Net7.csproj" />
       <ProjectReference Include="..\MessageApi.Net7\MessageApi.Net7.csproj" />
+      <ProjectReference Include="..\Statics\Statics.csproj" />
       <ProjectReference Include="..\SupplementApi.Net7\SupplementApi.Net7.csproj" />
       <ProjectReference Include="..\UserApi.Net7\UserApi.Net7.csproj" />
     </ItemGroup>
@@ -365,17 +460,24 @@
       <Folder Include="Areas\Overview\ViewModels\" />
       <Folder Include="Areas\Security\ViewModels\" />
       <Folder Include="Areas\Shared\" />
-      <Folder Include="Common\" />
+      <Folder Include="Areas\Test\ViewModels\" />
       <Folder Include="Resources\private\" />
-      <Folder Include="Resources\public\" />
       <Folder Include="wwwroot\external\scripts\" />
-      <Folder Include="wwwroot\pages\" />
       <Folder Include="wwwroot\resources\public\NewFolder\" />
     </ItemGroup>
 
     <ItemGroup>
       <Compile Update="Areas\Chat\Views\PromotionContentView.xaml.cs">
         <DependentUpon>PromotionContentView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Areas\Dashboard\Views\ThirdMealContentView.xaml.cs">
+        <DependentUpon>ThirdMealContentView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Areas\Dashboard\Views\FirstMealContentView.xaml.cs">
+        <DependentUpon>FirstMealContentView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Areas\Dashboard\Views\SecondMealContentView.xaml.cs">
+        <DependentUpon>SecondMealContentView.xaml</DependentUpon>
       </Compile>
       <Compile Update="Areas\Dashboard\Views\NutrientDashboardContentView.xaml.cs">
         <DependentUpon>NutrientDashboardContentView.xaml</DependentUpon>
@@ -389,11 +491,20 @@
       <Compile Update="Areas\Nutrient\Views\SearchRecipesPage.xaml.cs">
         <DependentUpon>SearchRecipesPage.xaml</DependentUpon>
       </Compile>
+      <Compile Update="Areas\Overview\Views\RazorHomeContentPage.xaml.cs">
+        <DependentUpon>RazorHomeContentPage.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Areas\Overview\Views\HomeContentPage.xaml.cs">
         <DependentUpon>HomeContentPage.xaml</DependentUpon>
       </Compile>
+      <Compile Update="Areas\Profile\Views\ViewProfileContentPage.xaml.cs">
+        <DependentUpon>ViewProfileContentPage.xaml</DependentUpon>
+      </Compile>
       <Compile Update="Areas\Supplement\Views\AddSupplementFormContentView.xaml.cs">
         <DependentUpon>AddSupplementFormContentView.xaml</DependentUpon>
+      </Compile>
+      <Compile Update="Areas\Test\Views\TestContentPage.xaml.cs">
+        <DependentUpon>TestContentPage.xaml</DependentUpon>
       </Compile>
     </ItemGroup>
 
@@ -425,16 +536,40 @@
       <MauiXaml Update="Areas\Chat\Views\ViewIOSChatContentPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\FirstMealContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\ThirdMealContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\ExerciseDashboardContentPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Areas\Dashboard\Views\ExerciseDashboardContentView.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\ExerciseFeedListContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\ExerciseStatsContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\SecondMealContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Areas\Dashboard\Views\NutrientDashboardContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\Dashboard\Views\NutrientsDailyIntakeContentPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Areas\Dashboard\Views\OverviewDashboard.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Areas\Dashboard\Views\SleepDashboardContentView.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\DeviceIntegration\Views\ViewDeviceIntegration.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Areas\Exercise\Views\AddExerciseContentPage.xaml">
@@ -461,10 +596,16 @@
       <MauiXaml Update="Areas\Exercise\Views\ViewVideoPopup.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Areas\Overview\Views\RazorHomeContentPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
       <MauiXaml Update="Areas\Overview\Views\HomeContentPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
-      <MauiXaml Update="Areas\Security\Views\ViewLoginContentPage.xaml">
+      <MauiXaml Update="Areas\Profile\Views\ViewProfileContentPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
+      <MauiXaml Update="Areas\Security\Views\MVPLoginContentPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
       <MauiXaml Update="Areas\Supplement\Views\AddSupplementContentPage.xaml">
@@ -482,6 +623,9 @@
       <MauiXaml Update="Areas\Supplement\Views\ViewAddSupplementSuccessContentPage.xaml">
         <Generator>MSBuild:Compile</Generator>
       </MauiXaml>
+      <MauiXaml Update="Areas\Test\Views\TestContentPage.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </MauiXaml>
     </ItemGroup>
 
     <ItemGroup>
@@ -489,8 +633,17 @@
     </ItemGroup>
 
     <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android33.0'">
+      <PackageReference Include="DevExpress.Maui.Controls">
+        <Version>23.1.3</Version>
+      </PackageReference>
+      <PackageReference Include="DevExpress.Maui.Core">
+        <Version>23.1.3</Version>
+      </PackageReference>
+      <PackageReference Include="DevExpress.Maui.Editors">
+        <Version>23.1.3</Version>
+      </PackageReference>
       <PackageReference Include="Shiny.Extensions.Configuration">
-        <Version>3.0.0-beta-0154</Version>
+        <Version>3.0.0-beta-0124</Version>
       </PackageReference>
       <PackageReference Include="Xamarin.Azure.NotificationHubs.Android">
         <Version>1.1.4.1</Version>
@@ -498,7 +651,7 @@
       <PackageReference Include="Xamarin.Firebase.Common">
         <Version>120.3.2.1</Version>
       </PackageReference>
-      <PackageReference Include="Plugin.Firebase.CloudMessaging" Version="2.0.2" />
+      <!--<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="2.0.2" />-->
       <PackageReference Include="Xamarin.Firebase.Iid">
         <Version>121.1.0.9</Version>
       </PackageReference>
@@ -508,6 +661,9 @@
       <PackageReference Include="Xamarin.GooglePlayServices.Base">
         <Version>118.2.0.1</Version>
       </PackageReference>
+      <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
+      <PackageReference Include="Xamarin.AndroidX.Activity" Version="1.7.2" />
+      <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.7.2" />
       <!--<PackageReference Include="Xamarin.GooglePlayServices.Basement">
         <Version>118.2.0.1</Version>
       </PackageReference>
@@ -515,5 +671,66 @@
         <Version>118.0.2.2</Version>
       </PackageReference>-->
     </ItemGroup>
+  
 
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Data.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.iOS.CollectionView.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.iOS.Editors.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.iOS.Navigation.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Maui.CollectionView.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Maui.Controls.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+
+  <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
+    <ItemGroup>
+      <ManagedAssemblyToLink Condition="'%(Filename)' == 'DevExpress.Maui.Core.v23.1'">
+        <IsTrimmable>true</IsTrimmable>
+      </ManagedAssemblyToLink>
+    </ItemGroup>
+  </Target>
+  
+  
+  
+  
 </Project>

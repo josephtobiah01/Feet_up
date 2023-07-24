@@ -9,7 +9,7 @@ namespace MauiApp1.Areas.Dashboard.ViewModel
     public class CarbohydratesIntakeViewItem
     {
         public Guid CarbohydratesDataId { get; set; }
-        public long CarbohydratesIntakeCount { get; set; }
+        public double CarbohydratesIntakeCount { get; set; }
         public DateTimeOffset TransactionDate { get; set; }
     }
 }

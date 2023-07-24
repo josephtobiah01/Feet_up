@@ -127,5 +127,22 @@
         public bool IsComplete { get; set; }
 
         public bool IsOngoing { get; set; }
+
+        public DateTime? ScheduledTime
+        {
+            get
+            {
+                if (Date.HasValue && ScheduledTime_TimeSpan.HasValue)
+                {
+                    return Date.Value.Add(ScheduledTime_TimeSpan.Value);
+                }
+                return null;
+            }
+        }
+
+        //DTO Specific Items
+        public DateTime? Date { get; set; }
+
+        public TimeSpan? ScheduledTime_TimeSpan { get; set; }
     }
 }

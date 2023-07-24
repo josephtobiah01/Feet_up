@@ -25,6 +25,7 @@ namespace LogHelper
         public static string API = "API";
         public static string Mobile = "Mobile";
         public static string Device = "Device";
+        public static string Backend = "Backend";
     }
 
 

@@ -51,8 +51,9 @@
                             <div class="list-group mt-3">
                                 @{
                                     int dayIndex = 1;
+                                    var edsDailyPlan = week.EdsDailyPlan.OrderBy(r => r.StartDay);
                                 }
-                                @foreach (var day in week.EdsDailyPlan)
+                                @foreach (var day in edsDailyPlan)
                                 {
                                     <div class="list-group-item list-group-item-action">
                                         <span class="fw-bold">Day @(dayIndex++) (@day.StartDay.GetValueOrDefault().ToLongDateString())</span>
@@ -111,7 +112,7 @@
                         body: JSON.stringify(idToDelete)
                     })
                     .then((response) => {
-                        if (!response.ok {
+                        if (!response.ok) {
                             throw new Error("Failed to delete plan");
                         }
                         return response.json();

@@ -7,6 +7,7 @@
                  xmlns:models    ="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
                  xmlns:viewmodels="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
                  x:DataType="viewmodels:ExercisePageViewModel"
+             xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
              NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False"
              Title="ViewExerciseContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
 
@@ -98,7 +99,7 @@
                 <RowDefinition Height="*" x:Name="ExerciseContentRowDefinition"/>
                 <RowDefinition Height="95"/>
 
-       
+
             </Grid.RowDefinitions>
 
             <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
@@ -110,16 +111,16 @@
                     <ColumnDefinition Width="auto" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                
+
                 <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
 
                 <Label Grid.Column="2" Text="Ongoing Exercise"
                VerticalOptions="Center"
                HorizontalOptions="Center"
-               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+               FontSize="17" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
 
-                <ImageButton Grid.Column="4" Source="schedule_20x20.png" x:Name="ScheduleButton" WidthRequest="20" HeightRequest="20" BackgroundColor="Transparent" Margin="0,0,19,0" 
-               HorizontalOptions="End"/>
+                <!--<ImageButton Grid.Column="4" Source="schedule_20x20.png" x:Name="ScheduleButton" WidthRequest="20" HeightRequest="20" BackgroundColor="Transparent" Margin="0,0,19,0" 
+               HorizontalOptions="End"/>-->
             </Grid>
 
             <Rectangle Grid.Row="1" Fill="#006272" Margin="0"/>
@@ -144,23 +145,20 @@
                             <ColumnDefinition Width="16" />
                         </Grid.ColumnDefinitions>
 
-                        <Label Text="Live stats" Grid.Row="1" Grid.Column="1" WidthRequest="72" HeightRequest="24" FontAttributes="Bold" HorizontalOptions="Start"/>
+                        <Label Text="Live stats" Grid.Row="1" Grid.Column="1" FontSize="20" FontAttributes="Bold" HorizontalOptions="Start"/>
 
                         <Grid Grid.Row="3" Grid.Column="1">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="auto"/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="10"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="10"/>
                                 <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="10" />
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*"/>
+
                             </Grid.ColumnDefinitions>
 
-                            <Border Grid.Row="0" Grid.Column="1" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
+                            <Border Grid.Row="0" Grid.Column="0" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="6"/>
                                 </Border.StrokeShape>
@@ -170,12 +168,31 @@
                                         <RowDefinition Height="4"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Label Text="Time" Grid.Row="0" FontFamily="Montserrat-Regular" TextColor="#4D4D4D" FontSize="12"/>
-                                    <Label x:Name="TrainisngSessionTimerLabel" Text="2:04" Grid.Row="2" FontFamily="Montserrat-Medium" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label 
+                                        Text="Time" 
+                                        Grid.Row="0" 
+                                        FontFamily="Montserrat-Regular" 
+                                        TextColor="#4D4D4D" 
+                                        FontSize="15" 
+                                        Margin="7,4,7,0" 
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+
+                                    <Label 
+                                        x:Name="TrainisngSessionTimerLabel" 
+                                        Text="2:04" 
+                                        Grid.Row="2" 
+                                        FontFamily="Montserrat-Medium" 
+                                        TextColor="#4D4D4D" 
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="StartAndExpand"
+                                        Margin="7,0,7,3"/>
                                 </Grid>
                             </Border>
 
-                            <Border Grid.Row="0" Grid.Column="3" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
+                            <Border Grid.Row="1" Grid.Column="1" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="6"/>
                                 </Border.StrokeShape>
@@ -185,13 +202,32 @@
                                         <RowDefinition Height="4"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Label Text="Sets" Grid.Row="0" FontFamily="Montserrat-Regular" TextColor="#4D4D4D" FontSize="12"/>
-                                    <Label x:Name="TotalSetLabel" Text="0" Grid.Row="2" FontFamily="Montserrat-Medium" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label
+                                        Text="Sets" 
+                                        Grid.Row="0" 
+                                        FontFamily="Montserrat-Regular" 
+                                        TextColor="#4D4D4D" 
+                                        FontSize="15" 
+                                        Margin="7,4,7,0" 
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+
+                                    <Label 
+                                        x:Name="TotalSetLabel" 
+                                        Text="0" 
+                                        Grid.Row="2" 
+                                        FontFamily="Montserrat-Medium" 
+                                        TextColor="#4D4D4D" 
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="StartAndExpand"
+                                        Margin="7,0,7,3"/>
                                 </Grid>
                             </Border>
 
 
-                            <Border Grid.Row="0" Grid.Column="5" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
+                            <Border Grid.Row="2" Grid.Column="2" BackgroundColor="#FAFAFA" HeightRequest="52" WidthRequest="94">
                                 <Border.StrokeShape>
                                     <RoundRectangle CornerRadius="6"/>
                                 </Border.StrokeShape>
@@ -201,8 +237,27 @@
                                         <RowDefinition Height="4"/>
                                         <RowDefinition Height="*"/>
                                     </Grid.RowDefinitions>
-                                    <Label Text="Volume" Grid.Row="0" FontFamily="Montserrat-Regular" BackgroundColor="#FAFAFA" TextColor="#4D4D4D" FontSize="12"/>
-                                    <Label x:Name="UnitOfMeasurementLabel" Text="0" Grid.Row="2" FontFamily="Montserrat-Medium" BackgroundColor="#FAFAFA" TextColor="#4D4D4D" FontSize="12"/>
+                                    <Label 
+                                        Text="Volume" 
+                                        Grid.Row="0" 
+                                        FontFamily="Montserrat-Regular" 
+                                        TextColor="#4D4D4D" 
+                                        FontSize="15" 
+                                        Margin="7,4,7,0" 
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="CenterAndExpand"/>
+
+                                    <Label 
+                                        x:Name="UnitOfMeasurementLabel" 
+                                        Text="0" 
+                                        Grid.Row="2" 
+                                        FontFamily="Montserrat-Medium" 
+                                        TextColor="#4D4D4D" 
+                                        FontSize="12"
+                                        FontAttributes="Bold"
+                                        HorizontalOptions="StartAndExpand"
+                                        VerticalOptions="StartAndExpand"
+                                        Margin="7,0,7,3"/>
                                 </Grid>
                             </Border>
 
@@ -225,17 +280,29 @@
                         <BindableLayout.ItemTemplate>
                             <DataTemplate x:DataType="models:ExercisePageViewModel" >
                                 <Frame Grid.Row="0"  CompressedLayout.IsHeadless="True"  BackgroundColor="#FFFFFF" Padding="0" Margin="0,0,0,24" WidthRequest="343"  CornerRadius="12" HasShadow="true">
-                                    <VerticalStackLayout HorizontalOptions="Center"  VerticalOptions="Center" Margin="16,24,16,24" Padding="0">
+                                    <VerticalStackLayout HorizontalOptions="Center"  VerticalOptions="Center" Margin="2,24,2,24" Padding="0">
 
                                         <HorizontalStackLayout VerticalOptions="Start" Margin="0,0,0,24">
-                                            <Label Text="{Binding ExerciseName}" WidthRequest="280" Margin="0,0,16,0" FontAttributes="Bold" FontSize="16" TextColor="#333333" VerticalTextAlignment="Center" HorizontalTextAlignment="Start"/>
+                                            <Label 
+                                                Text="{Binding ExerciseName}" 
+                                                WidthRequest="280" 
+                                                Margin="10,0,16,0" 
+                                                FontAttributes="Bold" 
+                                                FontSize="17" 
+                                                TextColor="#333333" 
+                                                VerticalTextAlignment="Center" 
+                                                HorizontalTextAlignment="Start"
+                                                HorizontalOptions="FillAndExpand"/>
 
                                             <ImageButton Source="kebab_16x16.png" HeightRequest="16" WidthRequest="16" BorderColor="Transparent"/>
                                         </HorizontalStackLayout>
 
-                                        <Rectangle Fill="#EEF0F2" />
+                                        <Rectangle 
+                                            Fill="#EEF0F2" 
+                                            HorizontalOptions="FillAndExpand"
+                                            Margin="0"/>
 
-                                        <HorizontalStackLayout HeightRequest="20" Margin="0,24,16,24" Padding="0">
+                                        <!--<HorizontalStackLayout HeightRequest="20" Margin="0,24,16,24" Padding="0">
 
 
                                             <RadioButton WidthRequest="112" HeightRequest="30" MinimumWidthRequest="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="8,0,0,0" ControlTemplate="{StaticResource RadioButtonTemplate}" IsChecked="{Binding IsRecordExerciseTabContentVisible}">
@@ -275,17 +342,69 @@
                                                     </StackLayout>
                                                 </RadioButton.Content>
                                             </RadioButton>
-                                        </HorizontalStackLayout>
+                                        </HorizontalStackLayout>-->
 
-                                        <HorizontalStackLayout CompressedLayout.IsHeadless="True" HorizontalOptions="Center" VerticalOptions="Start" Margin="10,0,10,5" HeightRequest="25" IsVisible="{Binding IsRecordExerciseTabContentVisible}">
-                                            <Label WidthRequest="25"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Set"  FontSize="12"  TextColor="#4D4D4D" FontFamily="Montserrat-Regular" />
-                                            <Label WidthRequest="105" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"  Text="Previous" FontSize="12" TextColor="#4D4D4D"  FontFamily="Montserrat-Regular"  />
-                                            <Label WidthRequest="50"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding MetricsName1}" TextColor="#4D4D4D" FontSize="12" FontFamily="Montserrat-Regular" />
-                                            <Label WidthRequest="50"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="{Binding MetricsName2}" TextColor="#4D4D4D"  FontSize="12" FontFamily="Montserrat-Regular" Margin="8,0,0,0"/>
-                                            <Label WidthRequest="45"  HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Text="Status" FontSize="12" TextColor="#4D4D4D" FontFamily="Montserrat-Regular" />
-                                        </HorizontalStackLayout>
+                                        <Grid
+                                            ColumnDefinitions="*,*,*,*,*"
+                                            HorizontalOptions="FillAndExpand" 
+                                            VerticalOptions="FillAndExpand" 
+                                            Margin="3,15,3,5"
+                                            ColumnSpacing="5"
+                                            IsVisible="{Binding IsRecordExerciseTabContentVisible}">
 
-                                        <VerticalStackLayout VerticalOptions="Center"  BindableLayout.ItemsSource="{Binding SetviewModel}"  CompressedLayout.IsHeadless="True" IsVisible="{Binding IsRecordExerciseTabContentVisible}">
+                                            <Label 
+                                                Grid.Column="0"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                VerticalOptions="CenterAndExpand" 
+                                                Text="Set"  
+                                                FontSize="12"  
+                                                TextColor="#4D4D4D" 
+                                                FontFamily="Montserrat-Regular" />
+
+                                            <Label 
+                                                Grid.Column="1"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                VerticalOptions="CenterAndExpand"  
+                                                Text="Previous"
+                                                FontSize="12" 
+                                                TextColor="#4D4D4D"  
+                                                FontFamily="Montserrat-Regular"  />
+
+                                            <Label  
+                                                Grid.Column="2"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="Weight" 
+                                                TextColor="#4D4D4D" 
+                                                FontSize="12"
+                                                FontFamily="Montserrat-Regular" />
+
+                                            <Label 
+                                                Grid.Column="3"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                VerticalOptions="CenterAndExpand" 
+                                                Text="Reps" 
+                                                TextColor="#4D4D4D"  
+                                                FontSize="12" 
+                                                FontFamily="Montserrat-Regular" />
+
+                                            <Label  
+                                                Grid.Column="4"
+                                                HorizontalOptions="CenterAndExpand" 
+                                                VerticalOptions="CenterAndExpand"
+                                                Text="Status" 
+                                                FontSize="12"
+                                                TextColor="#4D4D4D"
+                                                FontFamily="Montserrat-Regular" />
+
+                                        </Grid>
+
+                                        <VerticalStackLayout 
+                                            VerticalOptions="FillAndExpand" 
+                                            HorizontalOptions="FillAndExpand"
+                                            BindableLayout.ItemsSource="{Binding SetviewModel}" 
+                                            CompressedLayout.IsHeadless="True" 
+                                            IsVisible="{Binding IsRecordExerciseTabContentVisible}">
 
                                             <BindableLayout.ItemTemplate>
 
@@ -294,33 +413,194 @@
                                                     <SwipeView>
                                                         <SwipeView.RightItems>
                                                             <SwipeItems>
-                                                                <SwipeItemView Invoked="SwipeItem_Invoked">
-                                                                    <Grid WidthRequest="82" BackgroundColor="#BB111A">
-                                                                        <Grid.RowDefinitions>
-                                                                            <RowDefinition Height="10"/>
-                                                                            <RowDefinition Height="20"/>
-                                                                            <RowDefinition Height="16"/>
-                                                                            <RowDefinition Height="4"/>
-                                                                        </Grid.RowDefinitions>
-                                                                        <Image Grid.Row="1" Source="trash_18x20.png"/>
-                                                                        <Label Grid.Row="2" Text="Remove" FontSize="12" HorizontalOptions="Center" VerticalOptions="Center" TextColor="#FFFFFF" />
+                                                                <SwipeItemView Invoked="SwipeItem_Invoked" BindingContext="{Binding .}">
+                                                                    <Grid WidthRequest="82" 
+                                                                          BackgroundColor="#BB111A"
+                                                                          RowDefinitions="auto, auto">
+
+                                                                        <Image Grid.Row="0" Source="trash_18x20.png">
+                                                                        </Image>
+                                                                        <Label Grid.Row="1" 
+                                                                               Text="Remove" 
+                                                                               FontSize="12" 
+                                                                               HorizontalOptions="Center" VerticalOptions="Center" TextColor="#FFFFFF" />
                                                                     </Grid>
                                                                 </SwipeItemView>
                                                             </SwipeItems>
                                                         </SwipeView.RightItems>
 
-                                                        <HorizontalStackLayout CompressedLayout.IsHeadless="True" Margin="10,0,10,5"  HorizontalOptions="Center"  VerticalOptions="Center"   HeightRequest="48" >
+                                                        <!--<HorizontalStackLayout 
+                                                            CompressedLayout.IsHeadless="True" 
+                                                            Margin="10,0,10,5"  
+                                                            HorizontalOptions="Center"  
+                                                            VerticalOptions="Center"   
+                                                            HeightRequest="48" 
+                                                            Spacing="10">
 
-                                                            <Label WidthRequest="35" HorizontalTextAlignment="Center"  Text="{Binding SetSequenceNumber}"  FontSize="12" TextColor="#4D4D4D" FontFamily="Montserrat-Regular"  VerticalTextAlignment="Center"/>
-                                                            <Label WidthRequest="105" HorizontalTextAlignment="Center" Text="{Binding SetName}" FontSize="12"  TextColor="#4D4D4D"  FontFamily="Montserrat-Regular"  VerticalTextAlignment="Center"/>
+                                                            <Label 
+                                                                HorizontalTextAlignment="Center"  
+                                                                Text="{Binding SetSequenceNumber}" 
+                                                                FontSize="12" 
+                                                                TextColor="#4D4D4D"
+                                                                FontFamily="Montserrat-Regular" 
+                                                                VerticalTextAlignment="Center"/>
+                                                            <Label 
+                                                                HorizontalTextAlignment="Center"
+                                                                Text="{Binding SetName}"
+                                                                FontSize="12" 
+                                                                TextColor="#4D4D4D" 
+                                                                FontFamily="Montserrat-Regular" 
+                                                                VerticalTextAlignment="Center"/>
                                                             
-                                                            <Entry  WidthRequest="45" HorizontalTextAlignment="Center"  Text="{Binding MetricsValue1}" Unfocused="Label_Unfocused" Completed="Entry_Completed"  CursorPosition="10" SelectionLength="10" MaxLength="100"  ClearButtonVisibility="Never"  Keyboard="Numeric" BackgroundColor="#FFFFFF" TextColor="#4D4D4D"  FontSize="12"  FontFamily="Montserrat-Regular"  />
+                                                            <Entry 
+                                                                HorizontalTextAlignment="Center" 
+                                                                Text="{Binding MetricsValue1}"
+                                                                Unfocused="Label_Unfocused"
+                                                                Completed="Entry_Completed"  
+                                                                CursorPosition="10"
+                                                                SelectionLength="10"
+                                                                MaxLength="100"  
+                                                                ClearButtonVisibility="Never" 
+                                                                Keyboard="Numeric" 
+                                                                BackgroundColor="#FFFFFF"
+                                                                TextColor="#4D4D4D"  
+                                                                FontSize="12" 
+                                                                FontFamily="Montserrat-Regular"  />
                                                             
-                                                            <Entry  WidthRequest="45" HorizontalTextAlignment="Center"  Text="{Binding MetricsValue2}" Unfocused="Label_Unfocused_1" Completed="Entry_Completed_1"  CursorPosition="10" SelectionLength="10" MaxLength="100"  ClearButtonVisibility="Never"   Keyboard="Numeric" BackgroundColor="#FFFFFF" TextColor="#4D4D4D" FontSize="12"  FontFamily="Montserrat-Regular"  Margin="8,0,0,0"/>
+                                                            <Entry 
+                                                                HorizontalTextAlignment="Center" 
+                                                                Text="{Binding MetricsValue2}"
+                                                                Unfocused="Label_Unfocused_1"
+                                                                Completed="Entry_Completed_1" 
+                                                                CursorPosition="10"
+                                                                SelectionLength="10"
+                                                                MaxLength="100" 
+                                                                ClearButtonVisibility="Never" 
+                                                                Keyboard="Numeric"
+                                                                BackgroundColor="#FFFFFF" 
+                                                                TextColor="#4D4D4D"
+                                                                FontSize="12" 
+                                                                FontFamily="Montserrat-Regular" 
+                                                                Margin="8,0,0,0"/>
                                                             
-                                                            <CheckBox WidthRequest="45" IsChecked="{Binding IsComplete}" CheckedChanged="CheckBox_CheckedChanged" Style="{DynamicResource CheckboxStyle}" ScaleX="0.85" ScaleY="0.9" VerticalOptions="Center"  />
+                                                            <CheckBox 
+                                                                IsChecked="{Binding IsComplete}"
+                                                                CheckedChanged="CheckBox_CheckedChanged"
+                                                                Style="{DynamicResource CheckboxStyle}"
+                                                                ScaleX="0.85" ScaleY="0.9" 
+                                                                VerticalOptions="Center"  />
 
-                                                        </HorizontalStackLayout>
+                                                        </HorizontalStackLayout>-->
+
+                                                        <Grid
+                                                            ColumnDefinitions="*,1.1*,*,*,*"
+                                                            HorizontalOptions="FillAndExpand" 
+                                                            VerticalOptions="FillAndExpand" 
+                                                            Margin="3,15,3,5"
+                                                            ColumnSpacing="5">
+
+                                                            <Label 
+                                                                Grid.Column="0"
+                                                                HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand" 
+                                                                Text="{Binding SetSequenceNumber}"  
+                                                                FontSize="12"  
+                                                                TextColor="#4D4D4D" 
+                                                                FontFamily="Montserrat-Regular" />
+
+                                                            <Label 
+                                                                Grid.Column="1"
+                                                                HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand"  
+                                                                Text="{Binding SetName}" 
+                                                                FontSize="12" 
+                                                                TextColor="#4D4D4D"  
+                                                                FontFamily="Montserrat-Regular"  />
+
+
+                                                            <Entry 
+                                                                Grid.Column="2"
+                                                                HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand" 
+                                                                Text="{Binding MetricsValue1}"
+                                                                Unfocused="Label_Unfocused"
+                                                                Completed="Entry_Completed"  
+                                                                CursorPosition="1"
+                                                                SelectionLength="1"
+                                                                MaxLength="2"  
+                                                                ClearButtonVisibility="Never" 
+                                                                Keyboard="Numeric" 
+                                                                BackgroundColor="#FFFFFF"
+                                                                TextColor="#4D4D4D"  
+                                                                FontSize="12" 
+                                                                FontFamily="Montserrat-Regular" 
+                                                                Margin="0,0,3,0"
+                                                                />
+
+                                                            <Entry 
+                                                                   Grid.Column="3"
+                                                              HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand" 
+                                                                Text="{Binding MetricsValue2}"
+                                                                Unfocused="Label_Unfocused_1"
+                                                                Completed="Entry_Completed_1" 
+                                                                CursorPosition="1"
+                                                                SelectionLength="1"
+                                                                MaxLength="2"  
+                                                                ClearButtonVisibility="Never"
+                                                                Keyboard="Numeric"
+                                                                BackgroundColor="#FFFFFF" 
+                                                                TextColor="#4D4D4D"
+                                                                FontSize="12" 
+                                                                FontFamily="Montserrat-Regular" 
+                                                                Margin="0,0,4,0" />
+
+
+                                                            <!--<Label  
+                                                                Grid.Column="2"
+                                                                HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand" 
+                                                                TextColor="#4D4D4D" 
+                                                                FontSize="12"
+                                                                Margin="0,0,3,0"
+                                                                FontFamily="Montserrat-Regular" >
+                                                                <Label.FormattedText>
+                                                                    <FormattedString>
+                                                                        <Span Text="{Binding MetricsValue1} "/>
+                                                                        <Span Text="Kg"/>
+                                                                    </FormattedString>
+                                                                </Label.FormattedText>
+                                                            </Label>
+
+                                                            <Label 
+                                                                Grid.Column="3"
+                                                                HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand" 
+                                                                Text="{Binding MetricsValue2}" 
+                                                                TextColor="#4D4D4D"  
+                                                                FontSize="12" 
+                                                                Margin="0,0,4,0"
+                                                                FontFamily="Montserrat-Regular" />-->
+
+                                                            <input:CheckBox   
+                                                          Type="Material"
+                                                                      Color="#006272"
+                                                                                 BorderColor="LightGray"
+                                                                                 IconColor="White"
+                                                                                     BoxBackgroundColor="Grey"
+                                                                                  
+                                                                                     BackgroundColor="White"
+                                                                Grid.Column="4"
+                                                                HorizontalOptions="CenterAndExpand" 
+                                                                VerticalOptions="CenterAndExpand"
+                                                                IsChecked="{Binding IsComplete}"
+                                                                CheckChanged="CheckBox_CheckChanged"
+     
+                                                                 Style="{DynamicResource CheckboxStyle}"
+                                                                ScaleX="0.85" ScaleY="0.9">
+                                                            </input:CheckBox>
+
+                                                        </Grid>
                                                     </SwipeView>
                                                 </DataTemplate>
                                             </BindableLayout.ItemTemplate>
@@ -331,7 +611,7 @@
 
                                         <!--<toolkit:MediaElement x:Name="MediaElement" Source="https://aiqtoolstoragedev.blob.core.windows.net/music/Sultans.mp4"
               ShouldShowPlaybackControls="True" ShouldKeepScreenOn="True"  ShouldLoopPlayback="True"  ShouldAutoPlay="False"  IsVisible="{Binding IsSummaryTabContentVisible}" HeightRequest="132" Aspect="Fill" PropertyChanged="MediaElement_PropertyChanged"/>-->
-                                        <VerticalStackLayout x:Name="SummaryGridView" IsVisible="{Binding IsSummaryTabContentVisible}" Margin="16,16,16,0">
+                                        <!--<VerticalStackLayout x:Name="SummaryGridView" IsVisible="{Binding IsSummaryTabContentVisible}" Margin="16,16,16,0">
 
                                             <Border HeightRequest="132" BackgroundColor="Black" Margin="0,0,16,0">
                                                 <Border.StrokeShape>
@@ -354,7 +634,7 @@
 
                                         <VerticalStackLayout x:Name="History" IsVisible="{Binding IsHistoryTabContentVisible}">
 
-                                        </VerticalStackLayout>
+                                        </VerticalStackLayout>-->
 
                                         <Button IsVisible="{Binding IsRecordExerciseTabContentVisible}"  Grid.Row="5" HorizontalOptions="Center"   Text=" + Add more " Clicked="AddSetButton_Clicked" FontSize="16" FontAttributes="Bold" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" Margin="0,8,24,0" BorderColor="Transparent" TextColor="#006272"/>
                                     </VerticalStackLayout>
@@ -416,54 +696,6 @@
 
             </Border>
         </Grid>
-        
-        <!--<Border  
-    x:Name="FooterContent"
-    Grid.Row="1"
-    Margin="-1"
-            HeightRequest="95"            
-    VerticalOptions="End"
-    HorizontalOptions="Fill"
-    StrokeThickness="0" Background="#FFFFFF">
-            <Border.Shadow>
-                <Shadow Brush="Black"
-                Offset="20,20"
-                Radius="40"
-                Opacity="0.8" />
-            </Border.Shadow>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="56"></ColumnDefinition>
-                    <ColumnDefinition Width="*"></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                --><!-- progress gauge --><!--
-                <AbsoluteLayout Grid.Column="0">
-                    <GraphicsView HeightRequest="40" WidthRequest="40" x:Name="ProgressArcGraphicsView"  AbsoluteLayout.LayoutBounds="16,16" ZIndex="1">
-                    </GraphicsView>
-
-                    <GraphicsView HeightRequest="40" WidthRequest="40" x:Name="ProgressNeedleGraphicsView" AbsoluteLayout.LayoutBounds="16,24" Margin="0,0,0,0" ZIndex="2">
-                        <GraphicsView.Drawable>
-                            <drawables:ProgressNeedle></drawables:ProgressNeedle>
-                        </GraphicsView.Drawable>
-                    </GraphicsView>
-                </AbsoluteLayout>
-                <FlexLayout BackgroundColor="Transparent" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Direction="Column" AlignItems="Start" JustifyContent="SpaceEvenly" Grid.Column="1">
-
-                    <FlexLayout FlexLayout.Grow="1">
-                        <VerticalStackLayout  BackgroundColor="Transparent" FlexLayout.Grow="1" FlexLayout.Basis="50" FlexLayout.Order="-1">
-                            <Label WidthRequest="100" x:Name="ProgressLabel" Text="0%" HorizontalOptions="Start" TextColor="#006272" FontFamily="Montserrat-Regular" FontAttributes="Bold" Margin="12,16,0,0"/>
-                            <Label WidthRequest="100"  x:Name="CompletedLabel" Text="completed" HorizontalOptions="Start" TextColor="#000000" FontFamily="Montserrat-Regular" FontAttributes="Bold" Margin="12,8,0,0"/>
-                        </VerticalStackLayout>
-
-                        <StackLayout BackgroundColor="Transparent" FlexLayout.Grow="1">
-                            <Button x:Name="FinishTraningSessionButton"  Text="Finish" ImageSource="lighting_12x14.png" BorderColor="#006272" CornerRadius="20" BackgroundColor="#006272" TextColor="#FFFFFF"  HeightRequest="39" FontSize="14" FontFamily="Montserrat-Regular" FontAttributes="Bold"  Clicked="FinishTraningSessionButton_Clicked" Margin="12,16,16,0" VerticalOptions="Start" HorizontalOptions="End"/>
-                        </StackLayout>
-                    </FlexLayout>
-                </FlexLayout>
-            </Grid>
-
-        </Border>-->
     </Grid>
 
 </ContentPage>

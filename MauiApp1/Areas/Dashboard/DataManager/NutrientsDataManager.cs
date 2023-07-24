@@ -1,5 +1,9 @@
-﻿using MauiApp1.Areas.Dashboard.ViewModel;
+﻿using ImageApi.Net7;
+using MauiApp1.Areas.Dashboard.ViewModel;
 using MauiApp1.Models;
+using Newtonsoft.Json;
+using ParentMiddleWare;
+using ParentMiddleWare.NutrientModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,151 +15,119 @@ namespace MauiApp1.Areas.Dashboard.DataManager
     public class NutrientsDataManager
     {
 
-        public async Task<ApiResponse> GetProteinIntakeVer2(ProteinIntakeViewItem proteinIntakeViewItem)
-        {
-            ApiResponse ret = null;
-            
-            try
-            {
-                Dictionary<string, string> parameters = new Dictionary<string, string>();
-                parameters.Add("proteinDataId", proteinIntakeViewItem.ProteinDataId.ToString());
-                parameters.Add("proteinIntakeCount", proteinIntakeViewItem.ProteinIntakeCount.ToString());
-                parameters.Add("transactionDate", proteinIntakeViewItem.TransactionDate.ToString());
+        //public async Task<List<NutrientsDataResponse>> GetNutrients (DateTime startDate, DateTime endDate)
+        //{
+        //    NutrientsDataResponse ret = null;
 
-                var result = 
-            }
+        //    List<NutrientsDataResponse> nutrientsIntakeViewItems = new List<NutrientsDataResponse>();
+        //    try
+        //    {
+        //        string baseUrl = "";
+        //        var client = new HttpClient();
+
+        //        var requestUrl = $"{baseUrl}{startDate.ToString("yyyy-MM-dd")}&endDate={endDate.ToString("yyyy-MM-dd")}";
+
+        //        var message = new HttpRequestMessage(HttpMethod.Get, requestUrl);
+
+        //        var response = await client.SendAsync(message);
+
+        //        var responseString = await response.Content.ReadAsStringAsync();
+
+        //        var data = JsonConvert.DeserializeObject<NutrientsDataResponse>(responseString);
+
+        //        var nutrientsIntakeViewItem = new NutrientsDataResponse()
+        //        {
+        //            ProteinDataId = Guid.NewGuid(),
+        //            ProteinIntakeCount = 5,
+        //            TransactionDate = new DateTimeOffset(new DateTime(2023, 6, 21, 10, 30, 0)),
+
+        //            AverageCarbsIntake = data.AverageCarbsIntake,
+        //            AverageFatIntake = data.AverageFatIntake,
+        //            AverageProteinIntake = 3,
+
+        //            TotalCarbs = data.TotalCarbs,
+        //            TotalFat = data.TotalFat,
+        //            TotalProtein = 4,
+
+        //            AvgCurrentCalories = data.AvgCurrentCalories,
+        //            AvgTargetCalories = data.AvgTargetCalories
+
+        //        };
+
+        //        nutrientsIntakeViewItems.Add(nutrientsIntakeViewItem);
+
+        //        return nutrientsIntakeViewItems;
+        //    }
+
+        //    catch (Exception nie)
+        //    {
+        //        Console.WriteLine(nie);
+        //        return new List<NutrientsDataResponse>()
+        //        {
+        //            new NutrientsDataResponse()
+        //            {
+        //                Code = 0000,
+        //                Message = "Please check your internet connection."
+        //            }
+                    
+        //        };
+        //    }
             
-        }
-        public List<ProteinIntakeViewItem> GetProteinIntake()
+        //}
+        public List<ProteinIntakeViewItem> GetProteinIntake(NutrientsDataResponse model)
         {
+     
             List<ProteinIntakeViewItem> proteinIntakeViewItems = new List<ProteinIntakeViewItem>();
 
             ProteinIntakeViewItem proteinIntakeViewItem = new ProteinIntakeViewItem();
 
             proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 23;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 22, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
 
-            proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 52;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 23, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
-
-            proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 43;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 24, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
-
-            proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 55;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 25, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
-
-            proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 33;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 26, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
-
-            proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 55;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 27, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
-
-            proteinIntakeViewItem = new ProteinIntakeViewItem();
-            proteinIntakeViewItem.ProteinIntakeCount = 47;
-            proteinIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 28, 0, 15, 0, TimeSpan.FromHours(8));
-            proteinIntakeViewItems.Add(proteinIntakeViewItem);
+            foreach (var item in model.ProteinModel)
+            {
+                proteinIntakeViewItem.ProteinIntakeCount = item.ProteinIntakeCount;
+                proteinIntakeViewItem.TransactionDate = item.TransactionDate;
+                proteinIntakeViewItems.Add(proteinIntakeViewItem);
+            }
 
             return proteinIntakeViewItems;
         }
 
-        public List<CarbohydratesIntakeViewItem> GetCarbohydratesIntake()
+        public List<CarbohydratesIntakeViewItem> GetCarbohydratesIntake(NutrientsDataResponse model)
         {
             List<CarbohydratesIntakeViewItem> carbohydratesIntakeViewItems = new List<CarbohydratesIntakeViewItem>();
 
             CarbohydratesIntakeViewItem carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
 
             carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 23;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 22, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
 
-            carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 51;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 23, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
-
-            carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 43;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 24, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
-
-            carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 55;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 25, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
-
-            carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 33;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 26, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
-
-            carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 55;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 27, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
-
-            carbohydratesIntakeViewItem = new CarbohydratesIntakeViewItem();
-            carbohydratesIntakeViewItem.CarbohydratesIntakeCount = 47;
-            carbohydratesIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 28, 0, 15, 0, TimeSpan.FromHours(8));
-            carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
+            foreach (var item in model.CarbohydratesModel)
+            {
+                carbohydratesIntakeViewItem.CarbohydratesIntakeCount = item.CarbsIntakeCount;
+                carbohydratesIntakeViewItem.TransactionDate = item.TransactionDate;
+                carbohydratesIntakeViewItems.Add(carbohydratesIntakeViewItem);
+            }
 
             return carbohydratesIntakeViewItems;
         }
 
-        public List<FatIntakeViewItem> GetFatIntake()
+        public List<FatIntakeViewItem> GetFatIntake(NutrientsDataResponse model)
         {
             List<FatIntakeViewItem> fatIntakeViewItems = new List<FatIntakeViewItem>();
 
             FatIntakeViewItem fatIntakeViewItem = new FatIntakeViewItem();
 
             fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 23;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 22, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
 
-            fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 51;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 23, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
-
-            fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 43;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 24, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
-
-            fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 55;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 25, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
-
-            fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 33;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 26, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
-
-            fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 55;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 27, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
-
-            fatIntakeViewItem = new FatIntakeViewItem();
-            fatIntakeViewItem.FatIntakeCount = 47;
-            fatIntakeViewItem.TransactionDate = new DateTimeOffset(2023, 05, 28, 0, 15, 0, TimeSpan.FromHours(8));
-            fatIntakeViewItems.Add(fatIntakeViewItem);
+            foreach (var item in model.FatModel)
+            {
+                fatIntakeViewItem.FatIntakeCount = item.FatIntakeCount;
+                fatIntakeViewItem.TransactionDate = item.TransactionDate;
+                fatIntakeViewItems.Add(fatIntakeViewItem);
+            }
 
             return fatIntakeViewItems;
+
         }
     }
 }

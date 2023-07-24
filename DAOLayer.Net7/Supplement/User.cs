@@ -43,6 +43,8 @@ public partial class User
 
     public string Country { get; set; }
 
+    public long? FkInternalNotesId { get; set; }
+
     public virtual ICollection<NdsSupplementPlanWeekly> NdsSupplementPlanWeekly { get; set; } = new List<NdsSupplementPlanWeekly>();
 
     public virtual ICollection<NdsSupplementSchedulePerDate> NdsSupplementSchedulePerDate { get; set; } = new List<NdsSupplementSchedulePerDate>();

@@ -46,17 +46,14 @@
                 <input type="date" class="form-control" asp-for="Date" data-bind="value: Date" required />
             }          
         </div>
-        @if (!isEditMode)
-        {
-            <div class="col-md-6 mb-3">
-                <label class="form-label" asp-for="NumberOfDaysToCopy">Number of Days to Copy Plan</label>
-                <input type="number" class="form-control" asp-for="NumberOfDaysToCopy" data-bind="value: DaysToExtrapolate" />
-                <div class="form-text text-muted">
-                    <span>This indicates the number of days in the future starting from the plan date that this plan will be copied over.</span>
-                    <span>Please note that days with already existing plans will not be overwritten.</span>
-                </div>
+        <div class="col-md-6 mb-3">
+            <label class="form-label" asp-for="NumberOfDaysToCopy">Number of Days to Copy Plan</label>
+            <input type="number" class="form-control" asp-for="NumberOfDaysToCopy" data-bind="value: DaysToExtrapolate" />
+            <div class="form-text text-muted">
+                <span>This indicates the number of days in the future starting from the plan date that this plan will be copied over.</span>
+                <span>Please note that days with already existing plans will not be overwritten.</span>
             </div>
-        }
+        </div>
     </div>
     <div class="border-bottom pb-3 mb-3">
         <div class="">
@@ -137,8 +134,12 @@
                             <div class="card-body show">
                                 <div class="mb-3">
                                     <label class="form-label" for="mealtype">Meal Type</label>
-                                    <select class="form-select" id="mealtype" asp-items="Model.MealTypeList" data-bind="value: MealTypeId">
+                                    <select class="form-select" id="mealtype" asp-items="Model.MealTypeList" data-bind="value: MealTypeId, event: { change: MealTypeId_OnChange }">
                                     </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label" for="scheduledtime_ts">Scheduled Time</label>
+                                    <input type="time" class="form-control" id="scheduledtime_ts" data-bind="value: ScheduledTime_TimeSpan" />
                                 </div>
                                 <div class="mb-3 show" data-bind="attr: {id: 'nuttable' + $index() }">
                                     <label class="form-label">Nutritional Targets</label>

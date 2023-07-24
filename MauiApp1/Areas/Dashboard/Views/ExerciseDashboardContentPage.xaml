@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Dashboard.Views.ExerciseDashboardContentPage"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             Title="ExerciseDashboardContentPage" NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False" Loaded="ContentPage_Loaded">
+    <Grid BackgroundColor="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Margin="0,0,0,16" BackgroundColor="White" HeightRequest="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="1" Source="backicon_black_24x24.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+            <Label Grid.Column="2" Text="Exercise"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Bold" TextColor="Black"/>
+
+        </Grid>
+
+
+        <Grid Grid.Row="1" BackgroundColor="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="64"/>
+                </Grid.RowDefinitions>
+            
+            <ScrollView Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                <VerticalStackLayout x:Name="ChartVerticalStackLayout" Grid.Row="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="White"/>
+            </ScrollView>
+
+            <Border
+                        Grid.Row="1"
+                        StrokeShape="RoundRectangle 36, 36, 36, 36"  
+                        Stroke="#EEF0F2"
+                        StrokeThickness="1"
+                        BackgroundColor="White"
+                        Background="white"
+                        Margin="40, 14, 40, 14"
+                        >
+                <Grid RowDefinitions="36" ColumnDefinitions="auto, *, auto" BackgroundColor="White">
+                    <ImageButton 
+                                Grid.Column="0"
+                                Source="datepicker_arrow_left.png"
+                                HeightRequest="36"
+                                WidthRequest="48"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="Center"
+                                Clicked="DatePickerLeft_Clicked"
+                            />
+                    <Button 
+                                x:Name="DatePickerButton"
+                                HeightRequest="36" 
+                                Text="You Should Not Be Seeing This"
+                                FontFamily="Montserrat-Regular"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                Clicked="DatePickerButton_Clicked"
+                            />
+                    <ImageButton 
+                                Grid.Column="2"
+                                Source="datepicker_arrow_right.png"                                
+                                HeightRequest="36"
+                                WidthRequest="48"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center" 
+                                Aspect="Center"
+                                Clicked="DatePickerRight_Clicked"
+                            />
+                </Grid>
+            </Border>
+
+        </Grid>
+
+        <dxco:DXPopup Grid.Row="1" x:Name="CalendarDXPopup" AllowScrim="false" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="00, 0, 0, 50" AllowShadow="True">
+            <dxe:DXCalendar x:Name="Calendar" SelectedDateChanged="DateSelected"  BackgroundColor="White" HorizontalCellSpacing="0" VerticalCellSpacing="0" ShowTrailingDays="false" CellMinSize="40">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance HeaderTitleTextColor="#333333" BackgroundColor="white"  />
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                                       TodayEllipseBackgroundColor="#006272" TodayTextColor="White"
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.DayCellAppearance>
+                <dxe:DXCalendar.MonthCellAppearance>
+                    <dxe:CalendarMonthCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                    SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                        TextColor="#4D4D4D" />
+                </dxe:DXCalendar.MonthCellAppearance >
+                <dxe:DXCalendar.YearCellAppearance>
+                    <dxe:CalendarYearCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.YearCellAppearance>
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="10"
+                                                 TextColor="#333333" BackgroundColor="White"/>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+            </dxe:DXCalendar>
+        </dxco:DXPopup>
+
+
+    </Grid>
+</ContentPage>

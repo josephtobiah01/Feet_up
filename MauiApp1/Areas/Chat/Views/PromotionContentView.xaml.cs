@@ -22,10 +22,10 @@ public partial class PromotionContentView : ContentView
         InitializeComponent();
     }
 
-    private async void ContentView_Loaded(object sender, EventArgs e)
+    private void ContentView_Loaded(object sender, EventArgs e)
     {
         InitializeControl();
-        await InitialzeData();
+        InitialzeData();
         
     }
 

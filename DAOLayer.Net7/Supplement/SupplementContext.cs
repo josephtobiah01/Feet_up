@@ -8,10 +8,6 @@ namespace DAOLayer.Net7.Supplement;
 
 public partial class SupplementContext : DbContext
 {
-    public SupplementContext()
-    {
-    }
-
     public SupplementContext(DbContextOptions<SupplementContext> options)
         : base(options)
     {
@@ -159,7 +155,6 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.FkSupplementPlanWeeklyNavigation).WithMany(p => p.NdsSupplementPlanDaily)
                 .HasForeignKey(d => d.FkSupplementPlanWeekly)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_supplement_plan_daily_nds_supplement_plan_weekly");
         });
 
@@ -178,7 +173,6 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.FkSupplementPlanSupplementNavigation).WithMany(p => p.NdsSupplementPlanDose)
                 .HasForeignKey(d => d.FkSupplementPlanSupplement)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_supplement_plan_dose_nds_supplement_plan_supplement");
         });
 
@@ -201,7 +195,6 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.FkSupplementPlanDailyNavigation).WithMany(p => p.NdsSupplementPlanSupplement)
                 .HasForeignKey(d => d.FkSupplementPlanDaily)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_supplement_plan_supplement_nds_supplement_plan_daily");
 
             entity.HasOne(d => d.FkSupplementReferenceNavigation).WithMany(p => p.NdsSupplementPlanSupplement)
@@ -228,7 +221,6 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.FkCustomer).WithMany(p => p.NdsSupplementPlanWeekly)
                 .HasForeignKey(d => d.FkCustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_supplement_plan_weekly_User");
         });
 
@@ -280,18 +272,18 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.FkSupplementReferenceNavigation).WithMany(p => p.NdsSupplementSchedule)
                 .HasForeignKey(d => d.FkSupplementReference)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_supplement_schedule_nds_supplement_reference");
 
             entity.HasOne(d => d.FkSupplementSchedulePerDateNavigation).WithMany(p => p.NdsSupplementSchedule)
                 .HasForeignKey(d => d.FkSupplementSchedulePerDate)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_supplement_schedule_nds_Supplement_schedule_per_date");
         });
 
         modelBuilder.Entity<NdsSupplementScheduleDose>(entity =>
         {
             entity.ToTable("nds_supplement_schedule_dose");
+
+            entity.HasIndex(e => e.FkSupplementSchedule, "nci_wi_nds_supplement_schedule_dose_46F27D4527166743FA26AA202027D3B9");
 
             entity.Property(e => e.CompletionTime)
                 .HasColumnType("datetime")
@@ -323,6 +315,7 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.SupplementSkipReasonNavigation).WithMany(p => p.NdsSupplementScheduleDose)
                 .HasForeignKey(d => d.SupplementSkipReason)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_nds_supplement_schedule_dose_nds_supplement_skip_reason");
         });
 
@@ -337,7 +330,6 @@ public partial class SupplementContext : DbContext
 
             entity.HasOne(d => d.Customer).WithMany(p => p.NdsSupplementSchedulePerDate)
                 .HasForeignKey(d => d.CustomerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nds_Supplement_schedule_per_date_User");
         });
 
@@ -455,6 +447,7 @@ public partial class SupplementContext : DbContext
                 .IsRequired()
                 .HasMaxLength(450)
                 .HasColumnName("fk_federated_user");
+            entity.Property(e => e.FkInternalNotesId).HasColumnName("fk_internal_notes_id");
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .IsFixedLength()

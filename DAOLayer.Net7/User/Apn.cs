@@ -15,5 +15,11 @@ public partial class Apn
 
     public bool? IsActive { get; set; }
 
+    public string Platform { get; set; }
+
+    public DateTime Timestamp { get; set; }
+
+    public DateTime? LastActive { get; set; }
+
     public virtual User FkUser { get; set; }
 }

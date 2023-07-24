@@ -1,35 +1,122 @@
-﻿namespace MauiApp1._Push
+﻿using MauiApp1.Areas.Chat.Views;
+using MauiApp1.Business.DeviceServices;
+using MauiApp1.Pages;
+using Statics;
+
+namespace MauiApp1._Push
 {
     public class PushNavigationHelper
     {
-        // Open Chatpage 
-        public static void Navigate_to_chat()
+        public static MauiApp1.Pages.Index RootPage { get; set; }
+        public static async Task HandleNotificationTab(string aaction, string parameter)
+        {
+            try
+            {
+                NavigationIntercept intercept = new NavigationIntercept() { Action = aaction, Parameter1 = parameter };
+                switch (aaction)
+                {
+                    case Strings.NOTIF_CHAT:
+                        {
+                            if (App.Current.MainPage.Navigation.NavigationStack.Last().GetType().Name != "ViewHybridChatContentPage")
+                            {
+                                await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
+                            }
+                            break;
+                        }
+                    case Strings.NOTIF_NUTRIENT:
+                        {
+                            HTMLBridge.RefreshData = null;
+
+                            if (RootPage != null)
+                            {
+                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                                await Navigate_to_feed_item(intercept);
+                            }
+                            else
+                            {
+                                MauiApp1.Pages.Index.navigationIntercept = intercept;
+                            }
+                            break;
+                        }
+                    case Strings.NOTIF_SUPPLEMENT:
+                        {
+                            HTMLBridge.RefreshData = null;
+                            if (RootPage != null)
+                            {
+                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                                await Navigate_to_feed_item(intercept);
+                            }
+                            else
+                            {
+                                MauiApp1.Pages.Index.navigationIntercept = intercept;
+                            }
+                            break;
+                        }
+                    case Strings.NOTIF_TRAINING:
+                        {
+                            HTMLBridge.RefreshData = null;
+
+                            if (RootPage != null)
+                            {
+                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                                await Navigate_to_feed_item(intercept);
+                            }
+                            else
+                            {
+                                MauiApp1.Pages.Index.navigationIntercept = intercept;
+                            }
+                            break;
+                        }
+                    case Strings.NOTIF_TRANSCRIPT:
+                        {
+                            HTMLBridge.RefreshData = null;
+
+                            if (RootPage != null)
+                            {
+                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                                await Navigate_to_feed_item(intercept);
+                            }
+                            else
+                            {
+                                MauiApp1.Pages.Index.navigationIntercept = intercept;
+                            }
+                            break;
+                        }
+
+                    default:
+                        {
+                            break;
+                        }
+                }
+            }
+            catch { }
+        }
+
+        public static async Task DoIntercept(MauiApp1.Pages.NavigationIntercept intercept)
         {
 
         }
-
-        // Open ExercisePage for that traningsessionID
-        public static void Navigate_to_exercise(long TraningSessionId)
+        // Open Chatpage 
+        public static async Task Navigate_to_chat()
         {
 
         }
 
         // Navigate to the feeditem -- i want to give it a hidden long ID -- can taht be done?
-        public static void Navigate_to_feed_item(long Id)
+        public static async Task Navigate_to_feed_item(MauiApp1.Pages.NavigationIntercept intercept)
         {
+            try
+            {
+                if (RootPage != null)
+                {
+                    await App.Current.MainPage.Navigation.PopToRootAsync();
 
-        }
-
-        // Navigate and open (the popup) for that meal -- will be unsubmitted meal
-        public static void Navigate_to_nutrient(long MealId)
-        {
-            
-        }
-
-        // Navigate and open (the popup) for that supplement
-        public static void Navigate_to_supplement(long SUpplementId)
-        {
-
+                    RootPage.LockScrollingToNow();
+                    await RootPage.RefreshPage();
+                    await RootPage.DoNavigationIntercept(intercept.Action, intercept.Parameter1);
+                }
+            }
+            catch { }
         }
     }
 }

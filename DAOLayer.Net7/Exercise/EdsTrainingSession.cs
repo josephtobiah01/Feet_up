@@ -41,6 +41,8 @@ public partial class EdsTrainingSession
 
     public bool IsTemplate { get; set; }
 
+    public double FloatFeedback { get; set; }
+
     public virtual ICollection<EdsExercise> EdsExercise { get; set; } = new List<EdsExercise>();
 
     public virtual EdsDailyPlan FkEdsDailyPlanNavigation { get; set; }

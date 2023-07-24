@@ -25,10 +25,8 @@
     <div class="row mb-3">
         <div class="col-md-6">
             <label asp-for="Gender" class="form-label">Gender</label>
-            <select class="form-select" asp-for="Gender" required>
+            <select class="form-select" asp-for="FkGender" asp-items="Model.GenderList" required>
                 <option value="">Please select..</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
             </select>
         </div>
         <div class="col-md-6">
@@ -68,7 +66,31 @@
         <div class="col">
             <label asp-for="Country" class="form-label">Country</label>
             <select class="form-select" asp-for="Country" asp-items="Model.CountryList">
-                <option>Please select..</option>
+                <option value="">Please select..</option>
+            </select>
+        </div>
+    </div>
+    <h5 class="border-bottom mb-3 pb-2">Shipping Address</h5>
+    <input type="hidden" asp-for="ShippingAddress.Id" />
+    <div class="row">
+        <div class="col mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressLine1" placeholder="Address Line 1" required />
+            <input type="text" class="form-control mt-3" asp-for="ShippingAddress.AddressLine2" placeholder="Address Line 2" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressCity" placeholder="City" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressState" placeholder="State" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressPostalCode" placeholder="Postal Code" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <select class="form-select" asp-for="ShippingAddress.AddressCountry" asp-items="Model.CountryList" required>
+                <option value="">Please select Country..</option>
             </select>
         </div>
     </div>

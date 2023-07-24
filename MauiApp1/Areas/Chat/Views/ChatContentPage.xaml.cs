@@ -35,13 +35,13 @@ namespace MauiApp1.Areas.Chat.Views
             InitializeComponent();
         }
 
-        protected async void ContentPage_Loaded(object sender, EventArgs e)
+        protected  void ContentPage_Loaded(object sender, EventArgs e)
         {
             SendChatMessageReturnCommand = new Command(execute: () =>
             {
                 ChatEntryReturn();
             });
-            await InitializeData();
+             InitializeData();
             InitializeControl();
         }
 
@@ -62,7 +62,7 @@ namespace MauiApp1.Areas.Chat.Views
 
             foreach (var msg in await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddDays(-7)))
             {
-                MessageList.Add(new IMessage(msg.MessageContent, msg.TimeStamp.ToLocalTime(), msg.UserName, msg.IsUserMessage));
+                MessageList.Add(new IMessage(msg.TimeStamp.ToLocalTime(), msg.UserName, msg.IsUserMessage, msg.MessageContent));
             }
 
 
@@ -129,7 +129,7 @@ namespace MauiApp1.Areas.Chat.Views
                 var sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = Text });
                 if (sentMessage != null)
                 {
-                    MessageList.Add(new IMessage(sentMessage.MessageContent, sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage));
+                    MessageList.Add(new IMessage(sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage, sentMessage.MessageContent));
                     _isUserScroll = false;
                 }
                 myChatMessage.Text = null;
@@ -165,7 +165,7 @@ namespace MauiApp1.Areas.Chat.Views
                 {
                     if (!msg.IsUserMessage)
                     {
-                        MessageList.Add(new IMessage(msg.MessageContent, msg.TimeStamp.ToLocalTime(), msg.UserName, msg.IsUserMessage));
+                        MessageList.Add(new IMessage(msg.TimeStamp.ToLocalTime(), msg.UserName, msg.IsUserMessage, msg.MessageContent));
                         //await ChatScrollView.ScrollToAsync(ChatMessages, ScrollToPosition.End, true);
                         
                     }

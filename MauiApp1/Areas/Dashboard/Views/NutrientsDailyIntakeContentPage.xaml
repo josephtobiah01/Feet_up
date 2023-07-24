@@ -1,0 +1,719 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Dashboard.Views.NutrientsDailyIntakeContentPage"            
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:local="clr-namespace:MauiApp1.Areas.Dashboard.Views"
+             x:DataType="local:NutrientsDailyIntakeContentPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="Nutrients Intake"
+             BackgroundColor="White"
+             Loaded="ContentPage_Loaded">
+    <Grid
+        Margin="0,0,0,0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="FillAndExpand"
+        Padding="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="64"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="130"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Margin="0,0,0,16" BackgroundColor="White" HeightRequest="64">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="auto" />
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Grid.Column="1" Source="backicon_black_24x24.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+            <Label Grid.Column="2" Text="Nutrients Intake"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               FontSize="16" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Bold" TextColor="Black"/>
+
+        </Grid>
+
+        <Frame Grid.Row="1"
+            BorderColor="#EEF0F2" 
+            CornerRadius="8" 
+            BackgroundColor="White" 
+            Margin="15,0,15,10"
+            Padding="0"
+            HasShadow="False" >
+            <Grid 
+                ColumnDefinitions="auto,*,auto,56,64"
+                RowDefinitions="32,25,auto"
+                Margin="0"
+                RowSpacing="10"
+                ColumnSpacing="0"
+                Padding="3">
+
+
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
+                    Margin="10,12,0,0" 
+                    Padding="0,0,0,0"
+                    FontSize="14"
+                    FontFamily="Montserrat" TextColor="#000000">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Full day" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <GraphicsView 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="1"
+                    x:Name="TotalNutrientsGraphicsView"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" 
+                    Margin="0"/>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    ColumnDefinitions="*,3*"
+                    Margin="0,10,2,0">
+
+                    <Border 
+                        BackgroundColor="#00A01A" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Protein" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Start"
+                        VerticalOptions="Start"
+                        Margin="4,1,3,1" TextColor="#000000"/>
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    ColumnDefinitions="16,40"
+                    Margin="4,10,5,0">
+
+                    <Border 
+                        BackgroundColor="#F3C522" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Carbs" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Start"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        Margin="2,1,3,1" TextColor="#000000"/>
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    ColumnDefinitions="*,2*"
+                    Margin="8,10,3,0">
+
+                    <Border 
+                        BackgroundColor="#0000FF" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Fat" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="2,1,3,1" TextColor="#000000"/>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="32">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                    Grid.Column="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Margin="10,0,20,5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Current: " FontAttributes="None"/>
+                                <Span Text="{Binding CurrentCalories}"/>
+                                <Span Text="KCal"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                    Grid.Column="1"
+                        VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0,0,20,5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Target: " FontAttributes="None"/>
+                                <Span Text="{Binding TargetCalories}"/>
+                                <Span Text="KCal"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+                <!--<Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Margin="10,0,20,5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Current: " FontAttributes="Bold"/>
+                            <Span Text="{Binding CurrentCalories}"/>
+                            <Span Text="KCal"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="0,0,20,5" BackgroundColor="Red">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Target: " FontAttributes=" Bold"/>
+                            <Span Text="{Binding TargetCalories}"/>
+                            <Span Text="KCal"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+
+            </Grid>
+        </Frame>
+
+        <HorizontalStackLayout
+            Grid.Row="2"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            Spacing="10" Margin="10,0,0,0">
+
+            <Label 
+                x:Name="FirstMealLabel" 
+                Text="First Meal"
+                Margin="15,15,0,5" TextColor="#006272" IsVisible="false">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="FirstMealLabelTapped"/>
+                </Label.GestureRecognizers>
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsFirstMealClicked}" Value="false">
+                        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="None" />
+                        <Setter 
+                            Property="TextColor" 
+                            Value="#85929B"/>
+                        <Setter
+                            Property="FontAttributes"
+                            Value="None"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="14"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsFirstMealClicked}" Value="true">
+                        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="Underline" />
+                        <Setter 
+                            Property="TextColor"
+                            Value="#006272" />
+                        <Setter
+                            Property="FontAttributes"
+                            Value="Bold"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="16"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <Label 
+                x:Name="SecondMealLabel" 
+                Text="Second Meal"
+                Margin="15,15,0,5" IsVisible="false">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="SecondMealLabelTapped"/>
+                </Label.GestureRecognizers>
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsSecondMealClicked}" Value="false">
+                        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="None" />
+                        <Setter 
+                            Property="TextColor" 
+                            Value="#85929B"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="14"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsSecondMealClicked}" Value="true">
+                        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="Underline" />
+                        <Setter 
+                            Property="TextColor"
+                            Value="#006272" />
+                        <Setter
+                            Property="FontAttributes"
+                            Value="Bold"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="16"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <Label 
+                x:Name="ThirdMealLabel" 
+                Text="Third Meal"
+                Margin="15,15,0,5" IsVisible="false">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="ThirdMealLabelTapped"/>
+                </Label.GestureRecognizers>
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsThirdMealClicked}" Value="false">
+                        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="None" />
+                        <Setter 
+                            Property="TextColor" 
+                            Value="#85929B"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="14"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsThirdMealClicked}" Value="true">
+                        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="Underline" />
+                        <Setter 
+                            Property="TextColor"
+                            Value="#006272" />
+                        <Setter
+                            Property="FontAttributes"
+                            Value="Bold"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="16"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+            <Label 
+                x:Name="OtherMealLabel" 
+                Text="Other Meal"
+                Margin="15,15,0,5" IsVisible="false">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Tapped="OtherMealLabelTapped"/>
+                </Label.GestureRecognizers>
+                <Label.Triggers>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsOtherMealClicked}" Value="false">
+                        <Setter Property="FontFamily" Value="Montserrat-Regular"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="None" />
+                        <Setter 
+                            Property="TextColor" 
+                            Value="#85929B"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="14"/>
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label" Binding="{Binding IsOtherMealClicked}" Value="true">
+                        <Setter Property="FontFamily" Value="Montserrat-Bold"/>
+                        <Setter 
+                            Property="TextDecorations"
+                            Value="Underline" />
+                        <Setter 
+                            Property="TextColor"
+                            Value="#006272" />
+                        <Setter
+                            Property="FontAttributes"
+                            Value="Bold"/>
+                        <Setter
+                            Property="FontSize"
+                            Value="16"/>
+                    </DataTrigger>
+                </Label.Triggers>
+            </Label>
+
+        </HorizontalStackLayout>
+
+        <Frame 
+            Grid.Row="3"
+            BorderColor="#EEF0F2" 
+            CornerRadius="8" 
+            BackgroundColor="White" 
+            Margin="12,0,12,10"
+            Padding="3"
+            HasShadow="False">
+            <Grid 
+                ColumnDefinitions="auto,*,auto,56,64"
+                RowDefinitions="32,25,auto"
+                Margin="0"
+                RowSpacing="10"
+                Padding="0,2,10,2">
+
+
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
+                    Margin="10,12,0,0" 
+                    Padding="0,0,0,0"
+                    FontAttributes="Bold" 
+                    FontSize="14"
+                    FontFamily="Montserrat" TextColor="#000000">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Calories Intake" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <GraphicsView 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="1"
+                    x:Name="NutrientsPerMealGraphicsView"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" 
+                    Margin="0"/>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    ColumnDefinitions="*,3*"
+                    Margin="0,10,2,0">
+
+                    <Border 
+                        BackgroundColor="#00A01A" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                          HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Protein" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Start"
+                        VerticalOptions="Start"
+                        Margin="4,1,3,1" TextColor="#000000"/>
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    ColumnDefinitions="16,40"
+                    Margin="4,10,0,0">
+
+                    <Border 
+                        BackgroundColor="#F3C522" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Carbs" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Start"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        Margin="2,1,3,1" TextColor="#000000"/>
+
+                </Grid>
+
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    ColumnDefinitions="*,2*"
+                    Margin="8,10,3,0">
+
+                    <Border 
+                        BackgroundColor="#0000FF" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Fat" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="2,1,3,1" TextColor="#000000"/>
+
+                </Grid>
+
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="32">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label
+                    Grid.Column="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Margin="10,0,20,5" TextColor="#000000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Current: "/>
+                                <Span Text="{Binding MealCurrentCalories}"/>
+                                <Span Text="KCal"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                    Grid.Column="1"
+                        VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0,0,20,5" TextColor="#000000">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Target: "/>
+                                <Span Text="{Binding MealTargetCalories}"/>
+                                <Span Text="KCal"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+
+                <!--<Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Margin="10,0,20,5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Current: " FontAttributes="Bold"/>
+                            <Span Text="{Binding CurrentCalories}"/>
+                            <Span Text="KCal"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="0,0,20,5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Target: " FontAttributes=" Bold"/>
+                            <Span Text="{Binding TargetCalories}"/>
+                            <Span Text="KCal"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
+
+            </Grid>
+        </Frame>
+
+        <!--<VerticalStackLayout>
+
+            <Grid 
+                x:Name="BreakfastStack"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"/>
+
+            <Grid
+                x:Name="LunchStack"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"/>
+            <Grid
+                x:Name="DinnerStack"
+                Grid.Row="1"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"/>
+
+
+        </VerticalStackLayout>-->
+
+
+        <Grid x:Name="FirstMealStack" Grid.Row="4" VerticalOptions="FillAndExpand"/>
+
+        <Grid x:Name="SecondMealStack" Grid.Row="4" VerticalOptions="FillAndExpand" IsVisible="false"/>
+
+        <Grid x:Name="ThirdMealStack" Grid.Row="4" VerticalOptions="FillAndExpand" IsVisible="false"/>
+
+        <Grid x:Name="OtherMealStack" Grid.Row="4" VerticalOptions="FillAndExpand" IsVisible="false"/>
+
+        <Border
+                        Grid.Row="5"
+                        StrokeShape="RoundRectangle 36, 36, 36, 36"  
+                        Stroke="#EEF0F2"
+                        StrokeThickness="1"
+                        BackgroundColor="White"
+                        Background="white"
+                        Margin="40, 24, 40, 24"
+                        >
+            <Grid RowDefinitions="36" ColumnDefinitions="auto, *, auto">
+                <ImageButton 
+                                Grid.Column="0"
+                                Source="datepicker_arrow_left.png"
+                                HeightRequest="36"
+                                WidthRequest="48"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="Center"
+                                Clicked="DatePickerLeft_Clicked"
+                            />
+                <Button 
+                                x:Name="DatePickerButton"
+                                HeightRequest="36" 
+                                Text="You Should Not Be Seeing This"
+                                FontFamily="Montserrat-Regular"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                Clicked="DatePickerButton_Clicked"
+                            />
+                <ImageButton 
+                                Grid.Column="2"
+                                Source="datepicker_arrow_right.png"                                
+                                HeightRequest="36"
+                                WidthRequest="48"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                 Aspect="Center"
+                                Clicked="DatePickerRight_Clicked"
+                            />
+            </Grid>
+        </Border>
+
+        <dxco:DXPopup Grid.Row="1" x:Name="CalendarDXPopup" AllowScrim="false" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 60" AllowShadow="True">
+            <dxe:DXCalendar x:Name="Calendar" SelectedDateChanged="DateSelected"  BackgroundColor="White" HorizontalCellSpacing="0" VerticalCellSpacing="0" ShowTrailingDays="false" CellMinSize="40">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance HeaderTitleTextColor="#333333" BackgroundColor="white"  />
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                                       TodayEllipseBackgroundColor="#006272" TodayTextColor="White"
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.DayCellAppearance>
+                <dxe:DXCalendar.MonthCellAppearance>
+                    <dxe:CalendarMonthCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                    SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                        TextColor="#4D4D4D" />
+                </dxe:DXCalendar.MonthCellAppearance >
+                <dxe:DXCalendar.YearCellAppearance>
+                    <dxe:CalendarYearCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.YearCellAppearance>
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="10"
+                                                 TextColor="#333333" BackgroundColor="White"/>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+            </dxe:DXCalendar>
+        </dxco:DXPopup>
+
+        <!--<Grid x:Name="LoaderGrid" Grid.Row="1" Grid.RowSpan="5" IsVisible="false" BackgroundColor="Black" Opacity="0.5"/>
+        <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="1" Grid.RowSpan="5" IsVisible="false" IsRunning="True" HeightRequest="50" Margin="0,16,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>-->
+
+
+    </Grid>
+</ContentPage>

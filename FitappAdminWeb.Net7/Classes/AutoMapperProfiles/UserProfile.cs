@@ -21,6 +21,13 @@ namespace FitappAdminWeb.Net7.Classes.AutoMapperProfiles
             CreateMap<User, UserEditModel>()
                 .ForMember(r => r.Gender, opt => opt.MapFrom(r => r.Gender.Trim()))
                 .ForMember(r => r.Country, opt => opt.MapFrom(r => r.Country.Trim()))
+                .ForMember(r => r.ShippingAddress, opt => opt.MapFrom(s => s.FkShippingAddressNavigation))
+                .ReverseMap();
+
+            CreateMap<AddressModel, Address>()
+                .ReverseMap();
+            CreateMap<RegisterCustomerModel, User>()
+                .ForMember(r => r.FkShippingAddressNavigation, opt => opt.MapFrom(s => s.ShippingAddress))
                 .ReverseMap();
         }
     }

@@ -6,12 +6,17 @@ using FitappAdminWeb.Net7.Classes.Utilities;
 using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json;
+using UserApi.Net7.Models;
 
 namespace FitappAdminWeb.Net7.Controllers
 {
     public class UserController : BaseController
     {
+        readonly string DEFAULT_CUSTOMER_PASSWORD = "Ch@ngeMe123!";
+
         ClientRepository _clientrepo;
+        FitAppAPIUtil _apiutil;
         MessageRepository _messagerepo;
         TrainingRepository _trrepo;
         ILogger<UserController> _logger;
@@ -21,7 +26,8 @@ namespace FitappAdminWeb.Net7.Controllers
                               ILogger<UserController> logger,
                               TrainingRepository trrepo,
                               MessageRepository messagerepo,
-                              IMapper mapper)
+                              IMapper mapper,
+                              FitAppAPIUtil apiutil)
             : base(messagerepo)
         {
             _clientrepo = clientrepo;
@@ -29,6 +35,7 @@ namespace FitappAdminWeb.Net7.Controllers
             _trrepo = trrepo;
             _messagerepo = messagerepo;
             _mapper = mapper;
+            _apiutil = apiutil;
         }
 
         [HttpGet]
@@ -126,6 +133,7 @@ namespace FitappAdminWeb.Net7.Controllers
                 Text = r.Value.Trim(),
                 Value = r.Key.Trim()
             }).OrderBy(r => r.Text).ToList();
+            vm.GenderList = new SelectList(await _clientrepo.GetGenders(), "Id", "Name").ToList();
 
             //vm.CountryList = new SelectList(ListUtil.CountryList(), "Key", "Value").OrderBy(r => r.Text).ToList();
             return View(vm);
@@ -148,6 +156,40 @@ namespace FitappAdminWeb.Net7.Controllers
             {
                 _logger.LogError(ex, "Failed to update user id {id}", model.Id);
                 return View(model);
+            }
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Register()
+        {
+            RegisterCustomerModel vm = new RegisterCustomerModel();
+            vm.Password = DEFAULT_CUSTOMER_PASSWORD;
+
+            return View(vm);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterCustomerModel data)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return View(data);
+
+                var newUser = await _clientrepo.AddCustomer(data);
+
+                if (newUser != null)
+                {
+                    return RedirectToAction("Details", new { id = newUser.Id });
+                }
+                ModelState.AddModelError("UserCreateError", "Create customer failed. Please check if email is unique.");
+                return View(data);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to add new customer", JsonConvert.SerializeObject(data));
+                ModelState.AddModelError("UserCreateError", "An unexpected error has occurred when adding a customer.");
+                return View(data);
             }
         }
     }

@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../css/open-iconic/font/fonts/montserrat-variablefont_wght.ttf') format('truetype');
+}
+/* dynamic variable instantiation */
+:root[b-l0uudz7um6] {
+    --display-popup-variable: none;
+    --display-search-bar-variable: none;
+    --display-favorite-popup-variable: none;
+}
+
+html[b-l0uudz7um6], body[b-l0uudz7um6] {
+    font-family: Montserrat;
+    overflow: hidden;
+    max-height: 100vh;
+    max-width: 100vw;
+    background-color: #006272;
+}
+
+
+.popup-header-group[b-l0uudz7um6] {
+    height: 40px;
+}
+
+.popup-header-close-button[b-l0uudz7um6] {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    margin: 16px;
+    width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 500px;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 700;
+    color: black;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: none;
+    border: 1px solid #EEF0F2;
+}
+
+.popup-header-close-button-icon[b-l0uudz7um6] {
+    filter: invert(0%) sepia(100%) saturate(8%) hue-rotate(125deg) brightness(107%) contrast(101%);
+}
+
+.popup-label[b-l0uudz7um6] {
+    position: absolute;
+    top:0px;
+    left:0px;
+    font-family: Montserrat;
+    color: black;
+    font-weight: 700;
+    font-size: 20px;
+    margin: 16px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+}
+.popup-wrapper[b-l0uudz7um6] {
+    position: absolute;
+    font-family: Montserrat;
+    display: var(--display-popup-variable);
+}
+.popup-background-dark-overlay[b-l0uudz7um6] {
+    background-color: rgba(25, 25, 25,0.6);
+    position: fixed;
+    height: 100vh;
+    display: block;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 7;
+}
+
+.popup-background[b-l0uudz7um6] {
+    position: fixed;
+    padding: 0px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 70vh;
+    top: 30vh;
+    width: 100vw;
+    left: 0;
+    background-color: white;
+    z-index: 8;
+}
+.popup-body[b-l0uudz7um6] {
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0px;
+    padding-top: 4px;
+    height: calc(70vh - 0px);
+    place-content: center;
+}
+
+.popup-error-icon[b-l0uudz7um6] {
+    vertical-align: middle;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    place-self: center;
+    margin-top:-10px;
+    margin-bottom:-20px;
+    height: 224px;
+    width: 224px;
+}
+.popup-title[b-l0uudz7um6] {
+    font-family: Montserrat;
+    font-weight: 700;
+    align-self: center;
+    justify-self: center;
+    font-size: 18px;
+    margin:16px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    color: black;
+}
+.popup-subtext[b-l0uudz7um6] {
+    font-family: Montserrat;
+    font-weight: 400;
+    font-size: 14px;
+    margin: 16px;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    color: black;
+}
+
+.popup-footer[b-l0uudz7um6] {
+    position: absolute;
+    bottom: 24px;
+    width: 100vw;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.popup-footer-left-button[b-l0uudz7um6] {
+    position: relative;
+    border-radius: 500px;
+    font-family: Montserrat;
+    color: rgba(0, 98, 114, 1);
+    font-size: 16px;
+    grid-column: 1;
+    grid-row: 1;
+    margin: auto;
+    text-align: center;
+    width: 45vw;
+    height: 52px;
+    font-weight: 700;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: none;
+    border: 1px solid rgba(0, 98, 114, 1);
+}
+
+.popup-footer-right-button[b-l0uudz7um6] {
+    position: relative;
+    border-radius: 500px;
+    font-family: Montserrat;
+    color: white;
+    font-size: 16px;
+    grid-column: 2;
+    margin: auto;
+    grid-row: 1;
+    text-align: center;
+    width: 45vw;
+    height: 52px;
+    font-weight: 700;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background: rgba(0, 98, 114, 1);
+    border: 1px solid rgba(0, 98, 114, 1);
+}
+
+
+
+@media only screen and (max-width: 400px) {
+}

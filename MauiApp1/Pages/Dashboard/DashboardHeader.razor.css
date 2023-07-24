@@ -1,0 +1,140 @@
+﻿@font-face {
+    font-family: 'Montserrat';
+    src: url('../css/open-iconic/font/fonts/montserrat-variablefont_wght.ttf') format('truetype');
+}
+*, html {
+    scroll-behavior: smooth !important;
+    overflow:hidden;
+}
+body {
+    background-color: rgba(0,98,114,255);
+    overflow: hidden;
+}
+
+/*#region header*/
+.tab-item-navigation-div {
+    background-color: rgba(0,98,114,255);
+    padding-left: 16px;
+    padding-top: 32px;
+    height:61px;
+}
+.button-header {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    outline: none;
+    text-align: center;
+    background-color: rgba(0,0,0,0);
+    border-radius: 0px;
+    border-color: rgba(0,0,0,0);
+}
+
+.selected {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
+    color: #FFFFFF;
+    text-align: center;
+}
+/* header buttons animated underline */
+#underline {
+    content: "";
+    position: relative;
+    bottom: 0;
+    left: 0px;
+    width: 0px;
+    height: 2px;
+    border-radius: 10px;
+    background-color: white;
+    transition: left 0.2s ease, width 0.2s ease;
+}
+/*#endregion*/
+
+/*#region navbar */
+.navbar-toggler {
+    color: rgba(255,255,255,255);
+    border: none;
+    height:40px;
+}
+
+html, body {
+    font-family: Montserrat;
+    overflow: hidden;
+}
+
+.product-name-label {
+    color: white;
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px
+}
+
+/*  navbar content */
+.navbar-light {
+    height: 2px;
+    background-color: rgba(0,98,114,255);
+    padding-bottom: 32px;
+    padding-right: 15px;
+    padding-left: 5px;
+}
+
+.oi {
+    width: 2rem;
+    font-size: 1.1rem;
+    vertical-align: text-top;
+    top: -2px;
+}
+
+.flex-column {
+    background-color: rgba(0,98,114,255);
+}
+
+
+/*navbar dropdown content */
+.nav-item {
+    font-size: 0.9rem;
+    padding-bottom: 0.5rem;
+}
+
+    .nav-item:first-of-type {
+        padding-top: 1rem;
+    }
+
+    .nav-item:last-of-type {
+        padding-bottom: 1rem;
+    }
+
+    .nav-item ::deep a {
+        color: #d7d7d7;
+        border-radius: 4px;
+        height: 3rem;
+        display: flex;
+        align-items: center;
+        line-height: 3rem;
+    }
+        /* current active highlight */
+        .nav-item ::deep a.active {
+            background-color: rgba(255,255,255,0.25);
+            color: white;
+        }
+        /* tap highlight */
+        .nav-item ::deep a:hover {
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+        }
+
+.AIR-logo {
+    height: 24px;
+}
+
+.white-icon {
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(183deg) brightness(100%) contrast(100%);
+}
+/*#endregion*/

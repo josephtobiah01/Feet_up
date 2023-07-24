@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using MauiApp1.Areas.Chat.Views;
-using Shiny;
+﻿using MauiApp1._Push;
 using Shiny.Notifications;
 
 namespace Sample.Notifications;
@@ -20,34 +17,38 @@ public class MyNotificationDelegate : INotificationDelegate
     }
 
 
-    public async Task OnEntry(NotificationResponse response)
+    public  Task OnEntry(NotificationResponse response)
     {
+#if IOS
         try
         {
-            bool stop = true;
-            //   var m = response.ActionIdentifier;
             var l = response.Notification;
-
-            if (l != null && l.Payload.ContainsKey("aaction"))
+            string action = "";
+            string param1 = "";
+            if (l.Payload.Keys.Contains("aaction"))
             {
-                if (l.Payload["aaction"] == "CHAT")
-                {
-                    await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
-                }
+                 action = l.Payload.Where(t => t.Key == "aaction").FirstOrDefault().Value;
+            }
+            if (l.Payload.Keys.Contains("param1"))
+            {
+                param1 = l.Payload.Where(t => t.Key == "param1").FirstOrDefault().Value;
+            }
+      
+            if(!string.IsNullOrEmpty(action))
+            {
+                PushNavigationHelper.HandleNotificationTab(action, param1);
             }
         }
-        catch(Exception ex)
+        catch (Exception ex)
         {
-
+            return Task.FromResult<object>(null);
         }
-    }
-    public async Task OnReceived(NotificationResponse response)
-    {
-        bool stop = true;
+#endif
+              return Task.FromResult<object>(null);
     }
 
-    async Task DoChat(NotificationResponse response)
+    public  Task OnReceived(NotificationResponse response)
     {
-       
+        return Task.FromResult<object>(null);
     }
 }

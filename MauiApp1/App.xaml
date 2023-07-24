@@ -17,7 +17,7 @@
 
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="{DynamicResource PrimaryTextColor}" />
-                <Setter Property="FontFamily" Value="Montserrat" />
+                <!--<Setter Property="FontFamily" Value="Montserrat" />-->
             </Style>
 
             <Style TargetType="Button">

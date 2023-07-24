@@ -20,7 +20,7 @@
         var Target = item.Target;
         var Actual = item.Actual;
         var Label = item.Label;
-        var Id = item.Name + "Chart";
+        var Id = item.Name;
 
         if (item.Name == "Calories") {
             Name = item.Name;

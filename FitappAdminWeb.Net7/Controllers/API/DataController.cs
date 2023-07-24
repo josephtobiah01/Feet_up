@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using System.Net;
 using DAOLayer.Net7.Nutrition;
+using System.Drawing;
+using FitappAdminWeb.Net7.Classes.Utilities;
+using FitappAdminWeb.Net7.Classes.Constants;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -29,6 +32,7 @@ namespace FitappAdminWeb.Net7.Controllers.API
         LookupRepository _lookup;
         SupplementRepository _supprepo;
         NutritionRepository _nutrepo;
+        BlobStorageRepository _blobrepo;
         ILogger<DataController> _logger;
         IMapper _mapper;
 
@@ -38,6 +42,7 @@ namespace FitappAdminWeb.Net7.Controllers.API
             ILogger<DataController> logger, 
             LookupRepository lookup, 
             SupplementRepository supprepo,
+            BlobStorageRepository blobrepo,
             NutritionRepository nutrepo)
         {
             _trrepo = trrepo;
@@ -47,6 +52,7 @@ namespace FitappAdminWeb.Net7.Controllers.API
             _lookup = lookup;
             _supprepo = supprepo;
             _nutrepo = nutrepo;
+            _blobrepo = blobrepo;
         }
 
         #region Training
@@ -454,6 +460,12 @@ namespace FitappAdminWeb.Net7.Controllers.API
         public async Task<ActionResult<List<SelectListItem>>> GetDishList(long userid)
         {
             return await _nutrepo.GetDishListSelectItems(userid);
+        }
+
+        [HttpGet("getmealtypes")]
+        public async Task<ActionResult<List<FnsMealType>>> GetMealTypes()
+        {
+            return await _nutrepo.GetMealTypes();
         }
         #endregion
     }

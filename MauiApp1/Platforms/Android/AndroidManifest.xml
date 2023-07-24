@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="me.AgeInReverse.AIR" android:versionCode="26" android:versionName="internal-26">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="me.AgeInReverse.AIR" android:versionCode="57" android:versionName="internal-57">
 	<application android:allowBackup="true" android:debuggable="true" android:hardwareAccelerated="true" android:exported="false" android:persistent="true" android:icon="@mipmap/appicon" android:supportsRtl="true" android:label="Age In Reverse Longevity">
 
 
@@ -13,11 +13,11 @@
         android:color ="@color/Cornsilk" />-->
     <!-- [END fcm_default_icon] -->
     <!-- [START fcm_default_channel] -->
-    <!--<meta-data
+    <meta-data
         android:name="com.google.firebase.messaging.default_notification_channel_id"
-        android:value="me.AgeInReverse.AIR.General" />-->
+        android:value="General" />
 
-    <service android:name="crc6494e14b9856016c30.PNFirebaseMessagingService" android:exported="true">
+    <service android:name="crc6494e14b9856016c30.PNFirebaseMessagingService" android:exported="false">
       <intent-filter>
         <action android:name="com.google.android.c2dm.intent.RECEIVE" />
         <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
@@ -91,7 +91,10 @@
 	<uses-sdk android:minSdkVersion="29" android:targetSdkVersion="33" />
 	<queries>
 		<intent>
-			<action android:name="android.media.action.IMAGE_CAPTURE" />
+			<action android:name="android.media.action.IMAGE_CAPTURE" />		
 		</intent>
+    <intent>
+      <action android:name="android.support.customtabs.action.CustomTabsService" />
+    </intent>
 	</queries>
 </manifest>

@@ -1,37 +1,29 @@
 ﻿<div class="navbar navbar-light">
     <div align="left">
         <button aria-hidden="true" title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu" hidden="hidden">
-            <!-- hidden="hidden"-->
             <span class="navbar-toggler-icon"></span>
         </button>
-        <img />
         <img class="white-icon AIR-logo" src="resources/private/icons/logo/24full.svg" />
     </div>
     <div align="right">
-@*        <button title="Add" class="navbar-toggler">
-            <img class="white-icon" src="resources/public/icons/userInterface/addnew.svg" />
-        </button>*@
-        <!-- debug button to 'search recipes' for testing purposes-->
-        @if (isDebug())
+
+        @if (AddButtonHidden == false)
         {
-             <button title="notifications" class="navbar-toggler" @onclick=GoToTestPage>
-                <img class="white-icon" src="resources/public/icons/userInterface/magnifier.svg" />
-             </button>
+        <button title="Add" class="navbar-toggler" @onclick= "()=> OpenAddNewPopup()">
+            <img class="white-icon" src="resources/public/icons/userInterface/addnew.svg" />
+         </button>
         }
-        @*@if (isLoggedIn==true)*@
-      @*  @if(ParentMiddleWare.MiddleWare.UserID > 0)*@
-     @*   {*@
             <button title="Messaging" class="navbar-toggler" @onclick=GoToChatPage>
                 <img class="white-icon" src="resources/public/icons/communication/mail1.svg" />
             </button>
-  @*      }*@
-        <button title="User" class="navbar-toggler" @onclick="OpenUserPopup">
+
+        <button title="User" class="navbar-toggler" @onclick="async ()=> await GoToProfilePage()">
             <img class="white-icon" src="resources/public/icons/users/profile.svg"/>
         </button>
     </div>
 </div>
 
-<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+@*<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
     <nav class="flex-column">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
@@ -49,22 +41,4 @@
             </NavLink>
         </div>
     </nav>
-</div>
-<div class="user-popup-wrapper" style="--display-user-popup-variable: @DisplayUserPopup">
-    <div class="user-popup-background-dark-overlay"> </div>
-    <div class="user-popup-background">
-        <div class="user-popup-content">
-            <label class="user-popup-header-title">User Options</label>
-            <button class="user-popup-header-close-button" @onclick="CloseUserPopup"> <img class="user-popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> Close</button>
-
-            <div class="user-popup-item" @onclick="Login">
-                <div class="user-popup-item-name-text">@LoginLogout</div>
-                <button class="user-popup-item-right-button">></button>
-            </div>
-            <div class="user-popup-item" @onclick="GotoScanPage">
-                <div class="user-popup-item-name-text">Scan Barcode</div>
-                <button class="user-popup-item-right-button">></button>
-            </div>
-        </div>
-    </div>
-</div>
+</div>*@

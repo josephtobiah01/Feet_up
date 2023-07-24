@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAOLayer.Net7.User;
 using FitappAdminWeb.Net7.Classes.Constants;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using MuhdoApi.Net7;
 using MuhdoApi.Net7.Model;
 using Newtonsoft.Json;
 using System.Security.Claims;
+using UserApi.Net7.Models;
 
 namespace FitappAdminWeb.Net7.Classes.Repositories
 {
@@ -18,17 +20,32 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
     /// </summary>
     public class ClientRepository
     {
+        readonly string DEFAULT_CUSTOMER_PASSWORD = "Ch@ngeMe123!";
+        readonly string URL_CREATEUSER_API = "/api/User/CreateUser";
+
         UserContext _dbcontext;
         IdentityDbContext _iddb;
+        FitAppAPIUtil _apiutil;
         IMapper _mapper;
         ILogger<ClientRepository> _logger;
 
-        public ClientRepository(UserContext dbcontext, IdentityDbContext iddb, ILogger<ClientRepository> logger, IMapper mapper)
+        public ClientRepository(
+            UserContext dbcontext, 
+            IdentityDbContext iddb, 
+            ILogger<ClientRepository> logger, 
+            IMapper mapper,
+            FitAppAPIUtil apiutil)
         {
             _dbcontext = dbcontext;
             _iddb = iddb;
             _logger = logger;
             _mapper = mapper;
+            _apiutil = apiutil;
+        }
+
+        public async Task<string> GetQtoolLink(long userId)
+        {
+            return null;
         }
 
         public async Task<List<User>> GetAllClients(bool includeInactive)
@@ -52,8 +69,57 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
 
         public async Task<User?> GetClientById(long id)
         {
-            User? user = await _dbcontext.User.Where(r => r.Id == id).FirstOrDefaultAsync();
+            User? user = await _dbcontext.User.Where(r => r.Id == id)
+                .Include(r => r.FkGenderNavigation)
+                .Include(r => r.FkShippingAddressNavigation).FirstOrDefaultAsync();
             return user;
+        }
+
+        public async Task<List<Gender>> GetGenders()
+        {
+            return await _dbcontext.Gender.Where(r => r.IsActive == true).ToListAsync();
+        }
+
+        public async Task<User?> AddCustomer(RegisterCustomerModel data)
+        {
+            using (_logger.BeginScope("AddCustomer"))
+            {
+                try
+                {
+                    //create a user via API first
+                    CreateUserModel usermodel = new CreateUserModel()
+                    {
+                        Username = data.Email,
+                        Email = data.Email,
+                        Password = data.Password //DEFAULT_CUSTOMER_PASSWORD
+                    };
+                    var httpclient = _apiutil.GetHttpClient();
+                    var request = _apiutil.BuildRequest(URL_CREATEUSER_API, HttpMethod.Post, usermodel);
+                    var response = await httpclient.SendAsync(request);
+
+                    response.EnsureSuccessStatusCode();
+                    var useropresult = JsonConvert.DeserializeObject<UserOpResult>(await response.Content.ReadAsStringAsync());
+                    if (useropresult == null || useropresult.isSuccess == false)
+                        throw new InvalidOperationException($"API CreateUser failed. Parameters: {JsonConvert.SerializeObject(usermodel)}");
+
+                    //Retrieve newly created user and edit it using current information
+                    User currentUser = await _dbcontext.User.FirstOrDefaultAsync(r => r.Email == data.Email);
+                    if (currentUser == null)
+                        throw new InvalidOperationException($"Failed to retrieve newly created User with ID {useropresult.UserId}");
+
+                    _mapper.Map(data, currentUser);
+                    _dbcontext.Update(currentUser);
+                    await _dbcontext.SaveChangesAsync();
+
+                    return currentUser;
+
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to Add Customer");
+                    return null;
+                }
+            }
         }
 
         public async Task<User?> EditUser(UserEditModel input)
@@ -89,6 +155,18 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     _dbcontext.Update(currUser);
 
                     await _dbcontext.SaveChangesAsync();
+
+                    //Update IdentityDbContext Email 
+                    var identityUser = await GetIdentityUserById(currUser.FkFederatedUser);
+                    if (identityUser != null && identityUser.Email != currUser.Email)
+                    {
+                        identityUser.Email = currUser.Email;
+                        identityUser.NormalizedEmail = currUser.Email.ToUpper();
+
+                        _iddb.Update(identityUser);
+                        await _iddb.SaveChangesAsync();
+                    }
+
                     return currUser;
                 }
                 catch (Exception ex)
@@ -103,7 +181,6 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             return await _dbcontext.UInternalNotes.Where(r => r.ForUser == userId).OrderByDescending(r => r.Date).Take(count)
                 .Include(r => r.ByUserNavigation)
-                .Include(r => r.ForUserNavigation)
                 .ToListAsync();
         }
 

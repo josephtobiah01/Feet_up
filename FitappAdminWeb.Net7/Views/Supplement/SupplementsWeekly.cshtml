@@ -146,15 +146,21 @@
                         </table>                       
                     </div>
                     <div class="d-flex justify-content-end">
+                        <a class="btn btn-primary me-2" asp-action="SupplementPlanChart" asp-route-userId="@Model.CurrentUser.Id" asp-route-planId="@plan.Id">
+                           View Plan Chart
+                        </a>
                         <a class="btn btn-primary me-2" asp-action="EditPlan" asp-route-id="@plan.Id" asp-route-copy="true">
                             <i data-feather="copy"></i>&nbsp;Copy
                         </a>
                         <a class="btn btn-primary me-2" asp-action="EditPlan" asp-route-id="@plan.Id">
                             <i data-feather="edit"></i>&nbsp;Edit
                         </a>
-                        <button class="btn btn-danger" action="delete" data-id="@plan.Id">
-                            <i data-feather="trash-2"></i>&nbsp;Delete
-                        </button>
+                        @if (!plan.IsActive)
+                        {
+                            <button class="btn btn-danger" action="delete" data-id="@plan.Id">
+                                <i data-feather="trash-2"></i>&nbsp;Delete
+                            </button>
+                        }
                     </div>
                 </div>
             </div>

@@ -8,10 +8,6 @@ namespace DAOLayer.Net7.Exercise;
 
 public partial class ExerciseContext : DbContext
 {
-    public ExerciseContext()
-    {
-    }
-
     public ExerciseContext(DbContextOptions<ExerciseContext> options)
         : base(options)
     {
@@ -32,6 +28,10 @@ public partial class ExerciseContext : DbContext
     public virtual DbSet<EdsExerciseClass> EdsExerciseClass { get; set; }
 
     public virtual DbSet<EdsExerciseType> EdsExerciseType { get; set; }
+
+    public virtual DbSet<EdsExerciseTypeUserHistory> EdsExerciseTypeUserHistory { get; set; }
+
+    public virtual DbSet<EdsExerciseTypeUserHistorySetHistory> EdsExerciseTypeUserHistorySetHistory { get; set; }
 
     public virtual DbSet<EdsForce> EdsForce { get; set; }
 
@@ -64,7 +64,6 @@ public partial class ExerciseContext : DbContext
     public virtual DbSet<EdsWeeklyPlan> EdsWeeklyPlan { get; set; }
 
     public virtual DbSet<User> User { get; set; }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -100,6 +99,7 @@ public partial class ExerciseContext : DbContext
 
             entity.HasOne(d => d.FkCustomer).WithMany(p => p.Eds12weekPlan)
                 .HasForeignKey(d => d.FkCustomerId)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_eds_12week_plan_User");
         });
 
@@ -149,6 +149,7 @@ public partial class ExerciseContext : DbContext
         {
             entity.ToTable("eds_equipment");
 
+            entity.Property(e => e.ImageUrl).HasColumnName("image_url");
             entity.Property(e => e.IsDeleted).HasColumnName("isDeleted");
             entity.Property(e => e.Name)
                 .IsRequired()
@@ -197,6 +198,7 @@ public partial class ExerciseContext : DbContext
         {
             entity.ToTable("eds_exercise_type");
 
+            entity.Property(e => e.ExerciseImage).HasColumnName("exercise_image");
             entity.Property(e => e.ExplainerTextFr).HasColumnName("explainer_text_fr");
             entity.Property(e => e.ExplainerVideoFr).HasColumnName("explainer_video_fr");
             entity.Property(e => e.FkEquipmentId).HasColumnName("fk_equipment_id");
@@ -254,6 +256,31 @@ public partial class ExerciseContext : DbContext
                 .HasForeignKey(d => d.FkSportId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_eds_exercise_type_eds_sport");
+        });
+
+        modelBuilder.Entity<EdsExerciseTypeUserHistory>(entity =>
+        {
+            entity.ToTable("eds_exercise_type_user_history");
+
+            entity.Property(e => e.FkExerciseTypeId).HasColumnName("fk_exercise_type_id");
+            entity.Property(e => e.UserId).HasColumnName("user_id");
+        });
+
+        modelBuilder.Entity<EdsExerciseTypeUserHistorySetHistory>(entity =>
+        {
+            entity.ToTable("eds_exercise_type_user_history_set_history");
+
+            entity.Property(e => e.FkExerciseType).HasColumnName("fk_exercise_type");
+            entity.Property(e => e.FkSetId).HasColumnName("fk_set_id");
+            entity.Property(e => e.HistoryString)
+                .HasMaxLength(55)
+                .HasColumnName("history_string");
+            entity.Property(e => e.SetNumber).HasColumnName("set_number");
+
+            entity.HasOne(d => d.FkExerciseTypeNavigation).WithMany(p => p.EdsExerciseTypeUserHistorySetHistory)
+                .HasForeignKey(d => d.FkExerciseType)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_eds_exercise_type_user_history_set_history_eds_exercise_type_user_history");
         });
 
         modelBuilder.Entity<EdsForce>(entity =>
@@ -459,6 +486,7 @@ public partial class ExerciseContext : DbContext
                 .HasColumnName("end_time_stamp");
             entity.Property(e => e.ExerciseDuration).HasColumnName("exercise_duration");
             entity.Property(e => e.FkEdsDailyPlan).HasColumnName("fk_eds_daily_plan");
+            entity.Property(e => e.FloatFeedback).HasColumnName("float_feedback");
             entity.Property(e => e.IsCustomerAddedTrainingSession).HasColumnName("is_customer_added_training_session");
             entity.Property(e => e.IsMoved).HasColumnName("is_moved");
             entity.Property(e => e.IsSkipped).HasColumnName("is_skipped");
@@ -482,6 +510,7 @@ public partial class ExerciseContext : DbContext
 
             entity.HasOne(d => d.ReadonForSkippingNavigation).WithMany(p => p.EdsTrainingSession)
                 .HasForeignKey(d => d.ReadonForSkipping)
+                .OnDelete(DeleteBehavior.Cascade)
                 .HasConstraintName("FK_eds_training_session_eds_reason_for_skipping");
 
             entity.HasOne(d => d.ReasonForRescheduleNavigation).WithMany(p => p.EdsTrainingSession)
@@ -533,6 +562,7 @@ public partial class ExerciseContext : DbContext
                 .IsRequired()
                 .HasMaxLength(450)
                 .HasColumnName("fk_federated_user");
+            entity.Property(e => e.FkInternalNotesId).HasColumnName("fk_internal_notes_id");
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .IsFixedLength()

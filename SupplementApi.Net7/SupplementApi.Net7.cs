@@ -10,7 +10,7 @@ namespace SupplementApi.Net7
         {
             DateTime DateTakenUTC = DateTime.UtcNow;
             string dateString = string.Format("{0}/{1}/{2} {3}:{4}:{5}", DateTakenUTC.Month, DateTakenUTC.Day, DateTakenUTC.Year, DateTakenUTC.Hour, DateTakenUTC.Minute, DateTakenUTC.Second);
-            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Supplement/TakeDose?DoseId={1}&UnitCountActual={2}", BaseUrl, DoseId, UnitCountActual), null))
+            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Supplement/TakeDose?UserId={1}&DoseId={2}&UnitCountActual={3}", BaseUrl, UserID, DoseId, UnitCountActual), null))
             {
                 try
                 {

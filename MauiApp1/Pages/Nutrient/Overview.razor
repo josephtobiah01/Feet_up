@@ -13,123 +13,239 @@
         <label class="navigation-bar-text">Overview</label>
     }
 </div>
+
+
 <!--contents-->
-<div class="content-wrapper">
-    @if (HideOverviewContents)
-    {
-        if (DishesDisplayed == null || DishesDisplayed.Count == 0)
+<!--basically if summary-->
+@if (HideOverviewContents)
+{
+    <div class="content-wrapper">
+        @if (DishesDisplayed == null || DishesDisplayed.Count == 0)
         {
-            //empty
+        //empty
         }
         else{
-            if (feedItem.Status == FeedApi.Net7.Models.FeedItemStatus.Completed)
+            if (feedItem.Status == FeedApi.Net7.Models.FeedItemStatus.Completed && TotalNutrients!=null)
             {
-                <div class="total-recipe-item">
-                    <div class="recipe-item-contents">
+            <div class="total-recipe-item">
+                <div class="recipe-item-contents">
                     <label class="recipe-item-name-text">Total Meal</label>
-                    <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
-                    <div class="recipe-item-nutrients-grid">
+                    @*<button class="recipe-item-menu-button"><img class="recipe-item-trash-icon" src="resources/public/icons/userInterface/trash.svg" /></button>*@
+                    <div class="total-nutrients-grid">
                         <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
                         <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
                         <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
                         <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
                         <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
-                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Carbohydrates g</label>
-                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Fiber g</label>
-                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Protein g</label>
-                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Fat g</label>
-                        <label class="recipe-item-nutrients-grid-value">@TotalNutrients.Recipe.NutrientInformation.Calories</label>
+                            <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(TotalNutrients.Recipe.NutrientInformation.Carbohydrates),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(TotalNutrients.Recipe.NutrientInformation.Fiber),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(TotalNutrients.Recipe.NutrientInformation.Protein),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(TotalNutrients.Recipe.NutrientInformation.Fat),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(TotalNutrients.Recipe.NutrientInformation.Calories),1,MidpointRounding.AwayFromZero)</label>
                     </div>
-                        <div class="recipe-item-servings-grid">
-                            <label class="recipe-item-servings-grid-column-head"> Servings</label>
-                            <label class="recipe-item-servings-grid-value">@TotalNutrients.NumberOfServings</label>
+                    @*<div class="recipe-item-servings-grid">
+                <label class="recipe-item-servings-grid-column-head"> Servings</label>
+                <label class="recipe-item-servings-grid-value">@TotalNutrients.NumberOfServings</label>
+                </div>*@
+                </div>
+            </div>
+            }
+        }
+        <!--collapsible-->
+        @foreach (int index in DishesDisplayedIndices)
+        {
+            @if (DishesDisplayed[index].Recipe.NutrientInformation.Calories == null)
+            {
+                <div class="recipes-wrapper">
+                    <div class="recipe-item-big">
+                        <img class="recipe-item-icon-big" src=@DishesDisplayed[index].Recipe.DisplayImageUrl />
+                        <div class="recipe-item-contents">
+                            @*<button class="recipe-item-menu-button"><img class="recipe-item-trash-icon" src="resources/public/icons/userInterface/trash.svg" /></button>*@
+                            <label class="recipe-item-name-text">@DishesDisplayed[index].Recipe.RecipeName</label>
+
+                            <div class="recipe-item-servings-grid">
+                                <label class="recipe-item-servings-grid-column-head"> Servings: @DishesDisplayed[index].NumberOfServings</label>
+                                @if (@DishesDisplayed[index].Notes == null || @DishesDisplayed[index].Notes == "")
+                                {
+                                    <label class="recipe-item-servings-grid-value">Notes: N/A</label>
+                                }
+                                else
+                                {
+                                    <label class="recipe-item-servings-grid-value">Notes: @DishesDisplayed[index].Notes</label>
+                                }
+                            </div>
+
                         </div>
                     </div>
                 </div>
             }
-
-            @foreach (NutrientDish dish in DishesDisplayed)
+            else
             {
-                <div class="recipes-wrapper">
-                    @if (@dish.Recipe.NutrientInformation.Calories == null)
-                    {
-
-                        <div class="recipe-item-big">
-                            <img class="recipe-item-icon-big" src=@dish.Recipe.DisplayImageUrl />
-                            <div class="recipe-item-contents">
-                                <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
-                                <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
-
-                                <div class="recipe-item-servings-grid">
-                                    <label class="recipe-item-servings-grid-column-head"> Servings: @dish.NumberOfServings</label>
-                                    @if (@dish.Notes == null || @dish.Notes == "")
-                                    {
-                                        <label class="recipe-item-servings-grid-value">Notes: N/A</label>
-                                    }
-                                    else
-                                    {
-                                        <label class="recipe-item-servings-grid-value">Notes: @dish.Notes</label>
-                                    }
-                                </div>
-
-                            </div>
+                <div class="collapsible-border">
+                    <div class="collapsible-header-wrapper" @onclick="async ()=> await ToggleCollapsibleByIndex(index)">
+                        <img class="collapsible-meal-image" src=@DishesDisplayed[index].Recipe.DisplayImageUrl />
+                        <label class="collapsible-header-label">@DishesDisplayed[index].Recipe.RecipeName</label>
+                        <img class="collapsible-dropdown-button" id="@("img"+index.ToString())" />
+                    </div>
+                    <div class="collapsible" id="@("dropdown"+index.ToString())">
+                        <div class="collapsible-nutrients-grid">
+                            <label class="collapsible-item-nutrients-grid-column-head"> Carbs</label>
+                            <label class="collapsible-item-nutrients-grid-column-head"> Fibre</label>
+                            <label class="collapsible-item-nutrients-grid-column-head"> Protein</label>
+                            <label class="collapsible-item-nutrients-grid-column-head"> Fat</label>
+                            <label class="collapsible-item-nutrients-grid-column-head"> Calories</label>
+                            <label class="collapsible-item-nutrients-grid-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Carbohydrates),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="collapsible-item-nutrients-grid-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Fiber),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="collapsible-item-nutrients-grid-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Protein),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="collapsible-item-nutrients-grid-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Fat),1,MidpointRounding.AwayFromZero)gm</label>
+                            <label class="collapsible-item-nutrients-grid-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Calories),1,MidpointRounding.AwayFromZero)</label>
                         </div>
-                    }
-                    else
-                    {
-
-                        <div class="recipe-item">
-                            <img class="recipe-item-icon" src=@dish.Recipe.DisplayImageUrl />
-                            <div class="recipe-item-contents">
-                                <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
-                                <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
-                                <div class="recipe-item-nutrients-grid">
-                                    <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
-                                    <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
-                                    <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
-                                    <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
-                                    <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
-                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Carbohydrates g</label>
-                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fiber g</label>
-                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Protein g</label>
-                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fat g</label>
-                                    <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Calories</label>
-                                </div>
-                                <div class="recipe-item-servings-grid">
-                                    <label class="recipe-item-servings-grid-column-head"> Servings</label>
-                                    <label class="recipe-item-servings-grid-value">@dish.NumberOfServings</label>
-                                </div>
-                            </div>
-
+                        <div class="collapsible-item-servings-grid">
+                            <label class="collapsible-item-servings-grid-column-head"> Servings</label>
+                            <label class="collapsible-item-servings-grid-value">@DishesDisplayed[index].NumberOfServings</label>
                         </div>
-                    }
+
+                        <div class="collapsible-nutrient-information-wrapper">
+                            <svg height="16" width="16">
+                                <ellipse cx="8" cy="8" rx="8" ry="8" style="fill:#00A01A" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-header">Protein</label>
+                            <br />
+                            <label class="collapsible-nutrient-information-label">Intake</label>
+                            <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-value">@Math.Round(
+                                    (double)((
+                                        (DishesDisplayed[index].Recipe.NutrientInformation.Protein*4)
+                                        /
+                                        ((DishesDisplayed[index].Recipe.NutrientInformation.Protein*4)+
+                                        ((DishesDisplayed[index].Recipe.NutrientInformation.Carbohydrates)*4)+
+                                        ((DishesDisplayed[index].Recipe.NutrientInformation.Fat)*9))
+                    )*100),1,MidpointRounding.AwayFromZero)%
+                            </label>
+                            <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Protein),1,MidpointRounding.AwayFromZero)gm</label>
+                        </div>
+                        <div class="collapsible-dashed-line" />
+                        <div class="collapsible-nutrient-information-wrapper">
+                            <svg height="16" width="16">
+                                <ellipse cx="8" cy="8" rx="8" ry="8" style="fill:#F3C522" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-header">Carbs</label>
+                            <br />
+                            <label class="collapsible-nutrient-information-label">Intake</label>
+                            <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-value">
+                                @Math.Round(
+                                    (double)((
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Carbohydrates)*4)
+                                    /
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Protein*4)+
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Carbohydrates)*4)+
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Fat)*9))
+                    )*100),1,MidpointRounding.AwayFromZero)%
+                            </label>
+                            <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Carbohydrates),1,MidpointRounding.AwayFromZero)gm</label>
+                            <br />
+                            @if (DishesDisplayed[index].Recipe.NutrientInformation.Sugar != null)
+                            {
+                                <label class="collapsible-nutrient-information-label">Sugar</label>
+                                <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Sugar),1,MidpointRounding.AwayFromZero)gm</label>
+                            }
+                            @if (DishesDisplayed[index].Recipe.NutrientInformation.Sugar != null && DishesDisplayed[index].Recipe.NutrientInformation.Fiber != null)
+                            {
+                                <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                    <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                                </svg>
+                            }
+                            @if (DishesDisplayed[index].Recipe.NutrientInformation.Fiber != null)
+                            {
+                                <label class="collapsible-nutrient-information-label">Fiber</label>
+                                <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Fiber),1,MidpointRounding.AwayFromZero)gm</label>
+                            }
+                        </div>
+                        <div class="collapsible-dashed-line" />
+                        <div class="collapsible-nutrient-information-last-wrapper">
+                            <svg height="16" width="16">
+                                <ellipse cx="8" cy="8" rx="8" ry="8" style="fill:#0072DB" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-header">Fat</label>
+                            <br />
+                            <label class="collapsible-nutrient-information-label">Intake</label>
+                            <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-value">
+                                @Math.Round(
+                                    (double)((
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Fat)*9)
+                                    /
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Protein*4)+
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Carbohydrates)*4)+
+                                    ((DishesDisplayed[index].Recipe.NutrientInformation.Fat)*9))
+                    )*100),1,MidpointRounding.AwayFromZero)%
+                            </label>
+                            <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                            </svg>
+                            <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.Fat),1,MidpointRounding.AwayFromZero)gm</label>
+                            <br />
+                            @if (DishesDisplayed[index].Recipe.NutrientInformation.SaturatedFat != null)
+                            {
+                                <label class="collapsible-nutrient-information-label">Saturated</label>
+                                <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.SaturatedFat),1,MidpointRounding.AwayFromZero)gm</label>
+                            }
+                            @if (DishesDisplayed[index].Recipe.NutrientInformation.SaturatedFat != null && DishesDisplayed[index].Recipe.NutrientInformation.UnsaturatedFat != null)
+                            {
+                                <svg class="collapsible-nutrient-information-ball-divider" height="4" width="4">
+                                    <ellipse cx="2" cy="2" rx="2" ry="2" style="fill:#D9D9D9" />
+                                </svg>
+                            }
+                            @if (DishesDisplayed[index].Recipe.NutrientInformation.UnsaturatedFat != null)
+                            {
+                                <label class="collapsible-nutrient-information-label">Unsaturated</label>
+                                <label class="collapsible-nutrient-information-value">@Math.Round((double)(DishesDisplayed[index].Recipe.NutrientInformation.UnsaturatedFat),1,MidpointRounding.AwayFromZero)gm</label>
+                            }
+                        </div>
+                    </div>
                 </div>
             }
         }
-    }
-    else
-    {
-        @foreach (NutrientDish dish in feedItem.NutrientsFeedItem.Meal.DishesEaten )
-    {
-        <div class="recipes-wrapper">
-                @if (@dish.Recipe!=null && @dish.Recipe.NutrientInformation != null && @dish.Recipe.NutrientInformation.Calories!= null)
+    </div>
+}
+else
+{
+    <div class="content-wrapper-smaller">
+
+        @foreach (NutrientDish dish in feedItem.NutrientsFeedItem.Meal.DishesEaten)
+        {
+            <div class="recipes-wrapper">
+                @if (@dish.Recipe != null && @dish.Recipe.NutrientInformation != null && @dish.Recipe.NutrientInformation.Calories != null)
                 {
                     <div class="recipe-item">
                         <img class="recipe-item-icon" src=@dish.Recipe.DisplayImageUrl />
                         <div class="recipe-item-contents">
                             <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
-                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                            @*<button class="recipe-item-menu-button"><img class="recipe-item-trash-icon" src="resources/public/icons/userInterface/trash.svg" /></button>*@
                             <div class="recipe-item-nutrients-grid">
                                 <label class="recipe-item-nutrients-grid-column-head"> Carbs</label>
                                 <label class="recipe-item-nutrients-grid-column-head"> Fibre</label>
                                 <label class="recipe-item-nutrients-grid-column-head"> Protein</label>
                                 <label class="recipe-item-nutrients-grid-column-head"> Fat</label>
                                 <label class="recipe-item-nutrients-grid-column-head"> Calories</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Carbohydrates g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fiber g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Protein g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Fat g</label>
-                                <label class="recipe-item-nutrients-grid-value">@dish.Recipe.NutrientInformation.Calories</label>
+                                <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(dish.Recipe.NutrientInformation.Carbohydrates),1,MidpointRounding.AwayFromZero)gm</label>
+                                <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(dish.Recipe.NutrientInformation.Fiber),1,MidpointRounding.AwayFromZero)gm</label>
+                                <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(dish.Recipe.NutrientInformation.Protein),1,MidpointRounding.AwayFromZero)gm</label>
+                                <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(dish.Recipe.NutrientInformation.Fat),1,MidpointRounding.AwayFromZero)gm</label>
+                                <label class="recipe-item-nutrients-grid-value">@Math.Round((double)(dish.Recipe.NutrientInformation.Calories),1,MidpointRounding.AwayFromZero)</label>
                             </div>
                             <div class="recipe-item-servings-grid">
                                 <label class="recipe-item-servings-grid-column-head"> Servings</label>
@@ -144,7 +260,7 @@
                     <div class="recipe-item-big">
                         <img class="recipe-item-icon-big" src=@dish.Recipe.DisplayImageUrl />
                         <div class="recipe-item-contents">
-                            <button class="recipe-item-menu-button"><img class="recipe-item-icon gray-icon" src="resources/public/icons/userInterface/menu.svg" /></button>
+                            @*<button class="recipe-item-menu-button"><img class="recipe-item-trash-icon" src="resources/public/icons/userInterface/trash.svg" /></button>*@
                             <label class="recipe-item-name-text">@dish.Recipe.RecipeName</label>
 
                             <div class="recipe-item-servings-grid">
@@ -162,25 +278,25 @@
                         </div>
                     </div>
                 }
-        </div>
-    }
-    }
-    @if (!HideOverviewContents)
-    {
-        <button class="add-more-button" @onclick="async ()=> await OpenNutrientPopup()">Add More</button>
-    }
-</div>
-<div class="footer">
-    @if (HideOverviewContents)
-    {
+            </div>
+        }
+    </div>
+}
+
+@if (HideOverviewContents)
+{
+    <div class="footer">
         <button @onclick=GoToHome class="footer-go-back-home-button">Go back to home</button>
-    }
-    else
-    {
+    </div>
+}
+else
+{
+    <div class="footer-expanded">
+        <button class="add-more-button" @onclick="async ()=> await OpenNutrientPopup()">Add More</button>
         <button @onclick="GoToHome" class="footer-discard-button">Discard</button>
         <button @onclick="async ()=> await SubmitMeal()" class="footer-add-button">Submit</button>
-    }
-</div>
+    </div>
+}
 
 <!--popup-->
 <!--dark background overlay-->
@@ -194,9 +310,9 @@
 
             </div>
             <div class="add-nutrient-popup-button-group">
-                <button class="add-nutrient-popup-camera-button" @onclick="async ()=> await TakePhoto()"><img class="add-nutrient-popup-camera-icon" src="resources/public/icons/multimedia/camera.svg" />Take a pic <img class="add-nutrient-popup-camera-background-icon" src="resources/public/icons/multimedia/camera.svg" /></button>
-                <button class="add-nutrient-popup-upload-button" @onclick="async ()=> await UploadPhoto()"><img class="add-nutrient-popup-upload-icon" src="resources/public/icons/arrows/upload.svg" />Upload from Gallery <img class="add-nutrient-popup-upload-background-icon" src="resources/public/icons/arrows/upload.svg" /></button>
-                <button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage(1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>
+                <button class="add-nutrient-popup-camera-button" @onclick="async ()=> await TakePhoto()"><img class="add-nutrient-popup-camera-icon" src="resources/public/icons/multimedia/camera.svg" />Take a pic@* <img class="add-nutrient-popup-camera-background-icon" src="resources/public/icons/multimedia/camera.svg" />*@</button>
+                <button class="add-nutrient-popup-upload-button" @onclick="async ()=> await UploadPhoto()"><img class="add-nutrient-popup-upload-icon" src="resources/public/icons/multimedia/gallery.svg" />Upload from Gallery@*<img class="add-nutrient-popup-upload-background-icon" src="resources/public/icons/arrows/upload.svg" />*@</button>
+                @*<button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage(1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>*@
             </div>
             @if (NutrientPopupRecipesDisplayed != null)
             {
@@ -218,7 +334,7 @@
                             <div class="add-nutrient-popup-recipe-item" @onclick="async ()=> await OpenAddDishPopup(null,item)">
                                 <img class="add-nutrient-popup-recipe-item-icon" src="@item.DisplayImageUrl" />
                                 <div class="add-nutrient-popup-recipe-item-name-text">@item.RecipeName</div>
-                                <button class="add-nutrient-popup-recipe-item-right-button" > > </button>
+                                <button class="add-nutrient-popup-recipe-item-right-button"> > </button>
                             </div>
                         </div>
                     }
@@ -251,7 +367,7 @@
             }
 
         </div>
-       
+
     </div>
 </div>
 
@@ -279,11 +395,11 @@
                 }
                 @if (NutrientIsFavorite)
                 {
-                    <img class="add-dish-popup-favorite-icon red-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heartfilled.svg" @onclick="async ()=> await FavoriteDish()" />
                 }
                 else
                 {
-                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heart2.svg" @onclick="async ()=> await FavoriteDish()" />
                 }
             </div>
             <hr class="add-dish-popup-line-spacer" />

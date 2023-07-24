@@ -18,6 +18,4 @@ public partial class UInternalNotes
     public long ForUser { get; set; }
 
     public virtual User ByUserNavigation { get; set; }
-
-    public virtual User ForUserNavigation { get; set; }
 }

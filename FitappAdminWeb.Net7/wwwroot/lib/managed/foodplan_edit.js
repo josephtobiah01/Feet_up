@@ -1,14 +1,20 @@
 ﻿(function () {
+    var mealtype_lookup = [];
+
     function Meal() {
         var self = this;
         self.Id = ko.observable(0);
         self.MealTypeId = ko.observable();
         self.HasTarget = ko.observable();
+        self.Date = ko.observable();
+        self.MealTypes = [];
 
         //Do not allow meal deletions when either of these flags are true
         //Editing targets should be fine, probably (for confirmation)
         self.IsComplete = ko.observable(false);
         self.IsOngoing = ko.observable(false);
+        
+        self.ScheduledTime_TimeSpan = ko.observable();
 
         self.MealCalorieTarget = ko.observable();
         self.MealCalorieMin = ko.observable();
@@ -21,6 +27,20 @@
         self.SaturatedFatGramsTarget = ko.observable();
         self.FiberGramsTarget = ko.observable();
         self.AlcoholGramsTarget = ko.observable();
+
+        self.MealTypeId_OnChange = function (data, event) {
+            var currValue = event.target.value;
+            console.log("DETECTED MEAL TYPE ID: " + currValue);
+
+            var defaultTime;
+            data.MealTypes.forEach((mt) => {
+                if (mt.id == currValue) {
+                    console.log("DEFAULT TIME: " + mt.defaulttime);
+                    defaultTime = truncateTime(mt.defaulttime);
+                }
+            });
+            data.ScheduledTime_TimeSpan(defaultTime);
+        }
     }
 
     function ViewModel() {
@@ -32,6 +52,8 @@
         self.Date = ko.observable();
         self.DaysToExtrapolate = ko.observable();
         self.IsSubmitEnabled = ko.observable(true);
+
+        self.MealTypes = [];
 
         //computed information
         self.DayCalorieTarget = ko.computed(function () {
@@ -77,6 +99,17 @@
 
         self.AddMeal = function () {
             var meal = new Meal();
+            meal.MealTypes = self.MealTypes;
+            meal.Date(self.Date());
+
+            var defaultTime;
+            self.MealTypes.forEach((mt) => {
+                if (mt.id == 1) {
+                    defaultTime = truncateTime(mt.defaulttime);
+                }
+            });
+            meal.ScheduledTime_TimeSpan(defaultTime);
+
             self.Meals.push(meal);
             scrollAndHighlightLastMealItem();
         }
@@ -100,6 +133,7 @@
             newMeal.UnsaturatedFatGramsTarget(meal.UnsaturatedFatGramsTarget());
             newMeal.FiberGramsTarget(meal.FiberGramsTarget());
             newMeal.AlcoholGramsTarget(meal.AlcoholGramsTarget());
+            newMeal.MealTypes = meal.MealTypes;
             self.Meals.push(newMeal);
             scrollAndHighlightLastMealItem();
         }
@@ -169,6 +203,13 @@
         }
     }
 
+    function truncateTime(timeString) {
+        if (timeString == null) {
+            return null;
+        }
+        return timeString.substring(0, 5);
+    }
+
     function loadMealsInDay(dayId, vm) {
         var url = "/api/data/getmealsinday?dayId=" + dayId;
 
@@ -187,6 +228,7 @@
                         if (vm.CopyMode()) {
                             meal.Id(0); //remove id for adding
                         }
+                        newMeal.Date(vm.Date());
                         newMeal.Id(meal.id);
                         newMeal.MealTypeId(meal.mealTypeId);
                         newMeal.MealCalorieTarget(meal.mealCalorieTarget);
@@ -201,7 +243,9 @@
                         newMeal.FiberGramsTarget(meal.fiberGramsTarget);
                         newMeal.AlcoholGramsTarget(meal.alcoholGramsTarget);
                         newMeal.IsComplete(meal.isComplete);
+                        newMeal.ScheduledTime_TimeSpan(truncateTime(meal.scheduledTime_TimeSpan));
                         newMeal.IsOngoing(meal.isOngoing);
+                        newMeal.MealTypes = vm.MealTypes;
 
                         vm.Meals.push(newMeal);
                     })
@@ -211,6 +255,27 @@
         catch (ex) {
             throw ex;
         }       
+    }
+
+    function getMealTypeScheduledTimeDefaults(vm) {
+        var get_url = "/api/data/getmealtypes";
+
+        try {
+            fetch(get_url)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error("GetMealTypes returned a not OK (200) response.");
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    vm.MealTypes = data;
+                });
+        }
+        catch (ex) {
+            console.log(ex);
+            return null; //No defaults
+        }
     }
 
     function init() {
@@ -223,6 +288,7 @@
         var vm = new ViewModel();
         vm.CopyMode(isCopy);
         vm.FkUserId(userId);
+        getMealTypeScheduledTimeDefaults(vm);
 
         if (dayId != null) {
             vm.Id(isCopy ? 0 : dayId);

@@ -23,7 +23,8 @@ builder.Services.AddDbContext<ExerciseContext>(options =>
 builder.Services.AddDbContext<SupplementContext>(options =>
 {
     options.UseSqlServer(connectionString);
-  //  options.UseLazyLoadingProxies(true);
+   // options.EnableSensitiveDataLogging();
+    //  options.UseLazyLoadingProxies(true);
     //options.UseMemoryCache = ;
 });
 

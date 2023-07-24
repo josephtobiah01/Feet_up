@@ -1,4 +1,4 @@
-﻿// Licence file C:\Users\joseph.alulod\Documents\ReversePOCO.txt not found.
+﻿// Licence file C:\Users\thoma\Documents\ReversePOCO.txt not found.
 // Please obtain your licence file at www.ReversePOCO.co.uk, and place it in your documents folder shown above.
 // Defaulting to Trial version.
 
@@ -11,7 +11,6 @@
 //    "System.Data.OracleClient"
 //    "System.Data.SqlClient"
 //    "Microsoft.SqlServerCe.Client.4.0"
-//    "Microsoft.Data.SqlClient"
 
 /*   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling, SqlAuthenticationProviderManager sqlAuthProviderManager)
    at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
@@ -25,9 +24,9 @@
    at System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
    at System.Data.SqlClient.SqlConnection.Open()
-   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.DatabaseReader.Init() in C:\Users\joseph.alulod\source\repos\Feet_up\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 12270
-   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.SqlServerDatabaseReader.Init() in C:\Users\joseph.alulod\source\repos\Feet_up\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 15730
-   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.Generator.Init(DatabaseReader databaseReader, String singleDbContextSubNamespace) in C:\Users\joseph.alulod\source\repos\Feet_up\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 4158
-   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.GeneratorFactory.Create(FileManagementService fileManagementService, Type fileManagerType, String singleDbContextSubNamespace) in C:\Users\joseph.alulod\source\repos\Feet_up\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 6351*/
+   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.DatabaseReader.Init() in D:\Tfs\fitbitapp2\FitApp\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 12270
+   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.SqlServerDatabaseReader.Init() in D:\Tfs\fitbitapp2\FitApp\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 15730
+   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.Generator.Init(DatabaseReader databaseReader, String singleDbContextSubNamespace) in D:\Tfs\fitbitapp2\FitApp\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 4158
+   at Microsoft.VisualStudio.TextTemplating26CAA8AD1830C8648258EA214D02677163849E83E66D1D5E47D10D8622E5BD6114BEA2E0D1B2140E874F7BE5DAAC6157A86F772BD1C54DB72BB5FE7760EE6966.GeneratedTextTransformation.GeneratorFactory.Create(FileManagementService fileManagementService, Type fileManagerType, String singleDbContextSubNamespace) in D:\Tfs\fitbitapp2\FitApp\DataEntryTest\EF.Reverse.POCO.v3.ttinclude:line 6351*/
 // ------------------------------------------------------------------------------------------------
 

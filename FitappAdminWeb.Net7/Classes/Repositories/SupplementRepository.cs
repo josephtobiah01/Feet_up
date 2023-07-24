@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAOLayer.Net7.Supplement;
 using FitappAdminWeb.Net7.Classes.DTO;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System.Net;
@@ -13,7 +14,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         LookupRepository _lookup;
         ClientRepository _clientrepo;
         ILogger<SupplementRepository> _logger;
-        IHttpClientFactory _httpClientFactory;
+        FitAppAPIUtil _apiutil;
         IConfiguration _config;
         IMapper _mapper;
 
@@ -22,15 +23,15 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
 
         public SupplementRepository(SupplementContext dbcontext,
             LookupRepository lookupRepository, ClientRepository clientrepo,
-            IMapper mapper, IHttpClientFactory httpClientFactory, ILogger<SupplementRepository> logger, IConfiguration config)
+            IMapper mapper, ILogger<SupplementRepository> logger, IConfiguration config, FitAppAPIUtil apiutil)
         {
             _dbcontext = dbcontext;
             _lookup = lookupRepository;
             _clientrepo = clientrepo;
             _mapper = mapper;
             _logger = logger;
-            _httpClientFactory = httpClientFactory;
             _config = config;
+            _apiutil = apiutil;
         }
 
         public async Task<User?> GetUserByUserId(long userId)
@@ -437,13 +438,17 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             try
             {
-                string domain = _config.GetValue<string>(APPSETTINGKEY_MAINAPI_DOMAIN) ?? MAINAPI_DOMAIN_DEFAULT;
+                //string domain = _config.GetValue<string>(APPSETTINGKEY_MAINAPI_DOMAIN) ?? MAINAPI_DOMAIN_DEFAULT;
+                //string dateString = WebUtility.UrlEncode(startDate.ToString("s"));
+                //string post_url = $"{domain}/api/Automation/Supplements_Trigger_Schedule_Update?supplement_plan_weekly_id={planId}&start_date={dateString}&force={force}";
+
+                //var httpClient = _httpClientFactory.CreateClient();
+                //var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, post_url);
+
                 string dateString = WebUtility.UrlEncode(startDate.ToString("s"));
-                string post_url = $"{domain}/api/Automation/Supplements_Trigger_Schedule_Update?supplement_plan_weekly_id={planId}&start_date={dateString}&force={force}";
-
-                var httpClient = _httpClientFactory.CreateClient();
-
-                var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, post_url);
+                string post_url = $"/api/Automation/Supplements_Trigger_Schedule_Update?supplement_plan_weekly_id={planId}&start_date={dateString}&force={force}";
+                var httpClient = _apiutil.GetHttpClient();
+                var httpRequestMessage = _apiutil.BuildRequest(post_url, HttpMethod.Post);
 
                 var response = await httpClient.SendAsync(httpRequestMessage);
 

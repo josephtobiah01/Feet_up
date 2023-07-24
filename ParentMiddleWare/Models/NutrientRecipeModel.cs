@@ -20,9 +20,12 @@ namespace ParentMiddleWare.Models
         public class RecipeNutrientInformation
         {
             public double? Carbohydrates { get; set; } //in milligrams
+            public double? Sugar { get; set; } //in milligrams
             public double? Fiber { get; set; } //in milligrams
             public double? Protein { get; set; } //in milligrams
             public double? Fat { get; set; } //in milligrams
+            public double? UnsaturatedFat { get; set; } //in milligrams
+            public double? SaturatedFat { get; set; } //in milligrams
             public double? Calories { get; set; } //in milligrams
         }
 

@@ -15,6 +15,11 @@ using FitappAdminWeb.Net7.Hubs;
 using DAOLayer.Net7.Nutrition;
 using DAOLayer.Net7.Chat;
 using DAOLayer.Net7.User;
+using DAOLayer.Net7.Logs;
+using System.Net;
+using FitappAdminWeb.Net7.Classes.Utilities;
+
+System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -59,16 +64,19 @@ builder.Services.AddDbContext<ChatContext>(options =>
 builder.Services.AddDbContext<UserContext>(options =>
     options.UseSqlServer(connectionString, sqlopt => sqlopt.EnableRetryOnFailure())
 );
+builder.Services.AddDbContext<LogsContext>(options =>
+    options.UseSqlServer(connectionString, sqlopt => sqlopt.EnableRetryOnFailure())
+);
 builder.Services.AddDbContext<IdentityDbContext>(options =>
     options.UseSqlServer(connectionString, sqlopt => sqlopt.EnableRetryOnFailure())
 );
 
 builder.Services.AddAzureClients(clientBuilder =>
 {
-    string promotion_blobconnstring = builder.Configuration.GetValue<string>("Promotion_StorageAccount_ConnectionString");
+    string blobconnstring = builder.Configuration.GetValue<string>("BlobStorageAccount_ConnectionString");
 
     clientBuilder.ConfigureDefaults(builder.Configuration.GetSection("AzureDefaults"));
-    clientBuilder.AddBlobServiceClient(promotion_blobconnstring);
+    clientBuilder.AddBlobServiceClient(blobconnstring);
 });
 
 builder.Services.AddScoped<TrainingRepository>();
@@ -79,6 +87,9 @@ builder.Services.AddScoped<SupplementRepository>();
 builder.Services.AddScoped<NutritionRepository>();
 builder.Services.AddScoped<BlobStorageRepository>();
 builder.Services.AddScoped<PromotionRepository>();
+builder.Services.AddScoped<LogRepository>();
+
+builder.Services.AddScoped<FitAppAPIUtil>();
 
 builder.Services.AddAutoMapper(typeof(TrainingProfile));
 builder.Services.AddAutoMapper(typeof(SupplementProfile));

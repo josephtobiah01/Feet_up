@@ -14,16 +14,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AIR.Maui.FitnessData.Client" Version="1.0.0-alpha35" />
+    <PackageReference Include="AIR.Maui.SecurityServices.Client" Version="1.0.0-alpha08" />
+    <PackageReference Include="AIR.Maui.SecurityServices.Common" Version="1.0.0-alpha08" />
     <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="7.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Azure" Version="1.6.3" />
-    <PackageReference Include="Microsoft.Identity.Web" Version="2.11.1" />
-    <PackageReference Include="Microsoft.Identity.Web.UI" Version="2.11.1" />
+    <PackageReference Include="Microsoft.Identity.Web" Version="2.12.4" />
+    <PackageReference Include="Microsoft.Identity.Web.UI" Version="2.12.4" />
     <PackageReference Include="X.PagedList" Version="8.4.7" />
     <PackageReference Include="X.PagedList.Mvc.Bootstrap4" Version="8.1.0" />
     <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.7" />
@@ -35,6 +38,7 @@
     <ProjectReference Include="..\DAOLayer.Net7\DAOLayer.Net7.csproj" />
     <ProjectReference Include="..\FitAppData.Net7\FitAppData.Net7.csproj" />
     <ProjectReference Include="..\ImageApi.Net7\NutritionApi.Net7.csproj" />
+    <ProjectReference Include="..\LogHelper\LogHelper.csproj" />
     <ProjectReference Include="..\MuhdoApi.Net7\MuhdoApi.Net7.csproj" />
     <ProjectReference Include="..\ParentMiddleWare\ParentMiddleWare.csproj" />
     <ProjectReference Include="..\SupplementApi.Net7\SupplementApi.Net7.csproj" />
@@ -49,10 +53,10 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.5" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.8" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.8" />
   </ItemGroup>
 
 </Project>

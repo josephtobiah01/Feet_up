@@ -19,11 +19,11 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
     private double _totalSetCompleted = 0;
     private double _totalSetUnitCompleted = 0;
 
-    private const float VERY_EASY_RATING = 0.1f;
-    private const float EASY_RATING = 0.3f;
+    private const float VERY_EASY_RATING = 0.0f;
+    private const float EASY_RATING = 0.25f;
     private const float AVERAGE = 0.5f;
-    private const float HARD_RATING = 0.7f;
-    private const float VERY_HARD_RATING = 0.7f;
+    private const float HARD_RATING = 0.75f;
+    private const float VERY_HARD_RATING = 1.0f;
 
     private const string VERY_EASY_TEXT = "Very Easy";
     private const string EASY_TEXT = "Easy";
@@ -64,20 +64,9 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
     private void RatingSlider_ValueChanged(object sender, ValueChangedEventArgs e)
     {
         double sliderValue = e.NewValue;
-
-        //this.RatingLabel.Text = sliderValue.ToString();
         SetRatingSelectedValueChange(sliderValue);
     }
 
-    //private void RatingButton_Clicked(object sender, EventArgs e)
-    //{
-
-    //    Button button = (Button)sender;
-
-    //    HandleRatingButtonClick(button);
-
-
-    //}
 
     #endregion
 
@@ -99,7 +88,7 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
 
             InitializeControls();
         }
-        catch (Exception ex)
+        catch
         {
             await DisplayAlert("Retrieve Training Session", "An error occured while retrieving the training session." +
                 " Please check the internet connection and try again.", "OK");
@@ -144,9 +133,8 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
             ComputeCollectionViewHeight();
             SetRatingSliderWidthRequest();
         }
-        catch(Exception ex)
+        catch
         {
-            throw ex;
         }
         finally 
         { 
@@ -194,6 +182,8 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         ExercisePageViewModel exercisePageViewModel = null;
         exercisePageViewModel = new ExercisePageViewModel();
         exercisePageViewModel.SetviewModel = new ObservableCollection<SetPageViewModel>();
+        exercisePageViewModel.Exercise_type_id = emExercise.FkExerciseTypeId;
+
 
         exercisePageViewModel.ExerciseName = emExercise.EmExerciseType.Name;
         exercisePageViewModel.IsExerciseSkipped = emExercise.IsSkipped;
@@ -261,6 +251,7 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
 
         setmodel.SetId = emSet.Id;
         setmodel.ExerciseId = emSet.ExerciseId;
+        setmodel.Exercise_type_Id = ExerciseModel.Exercise_type_id;
         setmodel.TimeOffset = emSet.TimeOffset;
 
         if(emSet.SetSequenceNumber == 1)
@@ -277,7 +268,7 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         setmodel.IsCustomerAddedSet = emSet.IsCustomerAddedSet;
         setmodel.EndTimeStamp = emSet.EndTimeStamp;
         setmodel.TimeOffset = emSet.TimeOffset;
-        setmodel.SetName = emSet.GetText();
+    //    setmodel.SetName = emSet.GetTextAsync();
         setmodel.IsComplete = emSet.IsComplete;
         setmodel.IsCustomerAddedSet = emSet.IsCustomerAddedSet;
 
@@ -361,68 +352,8 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         {
             //error
         }
-
-        //this.RatingLabel.Text = this.RatingLabel.Text + " :: " + sliderValue.ToString();
-
     }
 
-    //private void HandleRatingButtonClick(Button button)
-    //{
-    //    if (button == this.AverageRatingButton)
-    //    {
-    //        UnSelectVeryEasyRating();
-    //        UnSelectEasyRating();
-    //        SelectAverageRating();
-    //        UnSelectHardRating();
-    //        UnSelectVeryHardRating();
-    //        //RatingLabel.Text = "Average";
-    //        RatingLabel.Text = AVERAGE_TEXT;
-    //    }
-    //    else if (button == this.VeryEasyRatingButton)
-    //    {
-    //        SelectVeryEasyRating();
-    //        UnSelectEasyRating();
-    //        UnSelectAverageRating();
-    //        UnSelectHardRating();
-    //        UnSelectVeryHardRating();
-    //        //RatingLabel.Text = "Very Easy";
-    //        RatingLabel.Text = VERY_EASY_TEXT;
-    //    }
-    //    else if (button == this.EasyRatingButton)
-    //    {
-    //        UnSelectVeryEasyRating();
-    //        SelectEasyRating();
-    //        UnSelectAverageRating();
-    //        UnSelectHardRating();
-    //        UnSelectVeryHardRating();
-    //        //RatingLabel.Text = "Easy";
-    //        RatingLabel.Text = EASY_TEXT;
-    //    }
-    //    else if (button == this.HardRatingButton)
-    //    {
-    //        UnSelectVeryEasyRating();
-    //        UnSelectEasyRating();
-    //        UnSelectAverageRating();
-    //        SelectHardRating();
-    //        UnSelectVeryHardRating();
-    //        //RatingLabel.Text = "Hard";
-    //        RatingLabel.Text = HARD_TEXT;
-    //    }
-    //    else if (button == this.VeryHardRatingButton)
-    //    {
-    //        UnSelectVeryEasyRating();
-    //        UnSelectEasyRating();
-    //        UnSelectAverageRating();
-    //        UnSelectHardRating();
-    //        SelectVeryHardRating();
-    //        //RatingLabel.Text = "Very Hard";
-    //        RatingLabel.Text = VERY_HARD_TEXT;
-    //    }
-    //    else
-    //    {
-    //        DisplayAlert("Error Rating Click!", "An error occured while rating the difficulty level", "Ok");
-    //    }
-    //}
 
     private async void SaveFeedBack()
     {
@@ -462,13 +393,12 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
                 default:
 
                     throw new Exception("Selected rating was not in the list of ratings");
-                    break;
             }
             
             await ExerciseApi.Net7.ExerciseApi.SetFeedBack(_TrainingSessionID, rating, feedback);
             await Navigation.PopToRootAsync();
         }
-        catch (Exception ex)
+        catch
         {
             await DisplayAlert("Saving Feedback", "An error occured while saving feedback." +
                 " Please check the internet connection and try again.", "OK");
@@ -479,79 +409,5 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
 
         
     }
-
-    //private void UnSelectVeryEasyRating()
-    //{
-    //    this.VeryEasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-    //    this.VeryEasyRatingEllipse.WidthRequest = 8;
-    //    this.VeryEasyRatingEllipse.HeightRequest = 8;
-    //}
-
-    //private void SelectVeryEasyRating()
-    //{
-    //    this.VeryEasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-    //    this.VeryEasyRatingEllipse.WidthRequest = 16;
-    //    this.VeryEasyRatingEllipse.HeightRequest = 16;
-    //}
-
-    //private void UnSelectEasyRating()
-    //{
-    //    this.EasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-    //    this.EasyRatingEllipse.WidthRequest = 8;
-    //    this.EasyRatingEllipse.HeightRequest = 8;
-    //}
-
-    //private void SelectEasyRating()
-    //{
-    //    this.EasyRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-    //    this.EasyRatingEllipse.WidthRequest = 16;
-    //    this.EasyRatingEllipse.HeightRequest = 16;
-    //}
-
-    //private void UnSelectAverageRating()
-    //{
-    //    this.AverageRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-    //    this.AverageRatingEllipse.WidthRequest = 8;
-    //    this.AverageRatingEllipse.HeightRequest = 8;
-    //}
-
-    //private void SelectAverageRating()
-    //{
-    //    this.AverageRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-    //    this.AverageRatingEllipse.WidthRequest = 16;
-    //    this.AverageRatingEllipse.HeightRequest = 16;
-    //}
-
-    //private void UnSelectHardRating()
-    //{
-    //    this.HardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-    //    this.HardRatingEllipse.WidthRequest = 8;
-    //    this.HardRatingEllipse.HeightRequest = 8;
-    //}
-
-    //private void SelectHardRating()
-    //{
-    //    this.HardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-    //    this.HardRatingEllipse.WidthRequest = 16;
-    //    this.HardRatingEllipse.HeightRequest = 16;
-    //}
-
-    //private void UnSelectVeryHardRating()
-    //{
-    //    this.VeryHardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#FFFFFF"));
-    //    this.VeryHardRatingEllipse.WidthRequest = 8;
-    //    this.VeryHardRatingEllipse.HeightRequest = 8;
-    //}
-
-    //private void SelectVeryHardRating()
-    //{
-    //    this.VeryHardRatingEllipse.Fill = new SolidColorBrush(Color.FromArgb("#006272"));
-    //    this.VeryHardRatingEllipse.WidthRequest = 16;
-    //    this.VeryHardRatingEllipse.HeightRequest = 16;
-    //}
-
-
-    #endregion
-
-    
+    #endregion  
 }

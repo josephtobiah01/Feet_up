@@ -1,0 +1,94 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:pages="clr-namespace:MauiApp1.Pages.Profile"
+             x:Class="MauiApp1.Areas.Test.Views.TestContentPage"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="SelectMeditation">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor ="#006272" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+
+    <ContentView>
+        <Grid BackgroundColor="#006272">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200"/>
+            </Grid.RowDefinitions>
+            <Button Clicked="Button_Clicked" Text="test" WidthRequest="500" BackgroundColor="White" TextColor="Black"></Button>
+            <dxco:BottomSheet x:Name="bottomSheet"
+                         CornerRadius="30"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.6"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+                <!--#region BottomSheetContent-->
+                <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                    <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                    <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Notification permission required" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                    <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Notification access will help us to notify you about important tasks." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                    <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Text="Sure" 
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                    <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text="Not Now"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                </Grid>
+                <!--#endregion-->
+            </dxco:BottomSheet>
+
+        </Grid>
+    </ContentView>
+</ContentPage>

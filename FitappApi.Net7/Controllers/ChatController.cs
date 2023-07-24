@@ -3,8 +3,6 @@ using DAOLayer.Net7.Chat;
 using DAOLayer.Net7.Chat.ApiModels;
 using DAOLayer.Net7.User;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.Azure.NotificationHubs;
 using Microsoft.EntityFrameworkCore;
 using ParentMiddleWare.Models;
 using User = DAOLayer.Net7.Chat.User;
@@ -16,8 +14,16 @@ namespace FitappApi.Net7.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class ChatController : ControllerBase
+    public class ChatController : BaseController
     {
+
+        // PROD
+        //public static string AzureFunctionURL = "https://air-functions-prod.azurewebsites.net";
+
+        //TEST
+        public static string AzureFunctionURL = "https://air-functions-test.azurewebsites.net";
+
+
         private readonly ChatContext _context;
         private readonly UserContext _uContext;
         public ChatController(ChatContext context, UserContext uContext)
@@ -31,6 +37,7 @@ namespace FitappApi.Net7.Controllers
         [Route("GetMessages")]
         public async Task<List<RecievedMessage>> GetMessages(long RoomId, DateTime fromDate)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             return MapChatMessage(await _context.MsgMessage.Where(t => t.FkRoomId == RoomId && t.Timestamp >= fromDate)
                 .Include(t=>t.FkUserSenderNavigation)
                 .Include(t=>t.FkRoom)
@@ -42,6 +49,7 @@ namespace FitappApi.Net7.Controllers
         [Route("GetMessagesFrontend")]
         public async Task<List<RecievedMessage>> GetMessagesFrontend(long UserId, DateTime fromDate)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var room = await CreateRoom(UserId);
             return MapChatMessage(await _context.MsgMessage.Where(t => t.FkRoomId == room.Id && t.Timestamp >= fromDate)
                  .Include(t => t.FkUserSenderNavigation)
@@ -51,10 +59,12 @@ namespace FitappApi.Net7.Controllers
         }
 
 
+
         [HttpPost]
         [Route("SendMessage")]
         public async Task<RecievedMessage> SendMessage(BackendMessage message)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 MsgMessage msg = new MsgMessage();
@@ -66,44 +76,14 @@ namespace FitappApi.Net7.Controllers
                 await _context.MsgMessage.AddAsync(msg);
                 if (await _context.SaveChangesAsync() > 0)
                 {
-
                     #region  APN
-                    //try
-                    //{
-                    //      INotificationHubClient hub = new NotificationHubClient(
-                    //      "Endpoint=sb://airns1.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=NSSFc3/djIcdHKt7JXDitQ2g6b3RyMTwIFLR5OrziQM=",
-                    //      "airnotificationhub"
-                    //      );
-
-                    //    var DeviceList = await _uContext.Apn.Where(t => t.FkUserId == message.Fk_Reciever_Id && t.IsActive == true).ToListAsync();
-                    //    if (DeviceList == null)
-                    //    {
-
-                    //    }
-                    //    foreach (var device in DeviceList)
-                    //    {
-                    //        var jsonPayload = "{\"aps\":{\"alert\":\"Notification Hub test notification\"}}";
-                    //        var n = new AppleNotification(jsonPayload);
-                    //        NotificationOutcome outcome = await hub.SendNotificationAsync(n, "RegistrationId:" + device.DeviceId + "/");
-                    //    }
-
-                    //}
-                    //catch (Exception ex)
-                    //{
-
-                    //}
+                    HttpClient _httpClient = new HttpClient();
+                   _httpClient.PostAsync(string.Format("{0}/api/SendChat?userId={1}", AzureFunctionURL, message.Fk_Reciever_Id), null);
                     #endregion
                 }
-
-
-
-
-
                 msg.FkUserSenderNavigation = _context.User.Where(t => t.Id == msg.FkUserSender).First();
                 return MapChatMessage(msg);
-            }
-            
-           
+            }          
             catch (Exception ex)
             {
                 return null;
@@ -114,6 +94,7 @@ namespace FitappApi.Net7.Controllers
         [Route("SendMessageFrontend")]
         public async Task<RecievedMessage> SendMessageFrontend(FrontendMessage message)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 MsgMessage msg = new MsgMessage();
@@ -129,7 +110,6 @@ namespace FitappApi.Net7.Controllers
                 if (await _context.SaveChangesAsync() > 0)
                 {
                     msg.FkUserSenderNavigation = _context.User.Where(t => t.Id == msg.FkUserSender).First();
-                    //await SendMessage(new BackendMessage() { Fk_Reciever_Id = message.Fk_Sender_Id,  Fk_Sender_Id = 1, MessageContent = "Beep Beep, Hello I am the Support Robot!" });
                     return MapChatMessage(msg);
                 }
                 return null;
@@ -144,6 +124,7 @@ namespace FitappApi.Net7.Controllers
         [Route("CreateRoom")]
         public async Task<MsgRoom> CreateRoom(long userId)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 var existingRoom = await _context.MsgRoom.Where(t => t.FkUserId == userId).FirstOrDefaultAsync();
@@ -169,6 +150,7 @@ namespace FitappApi.Net7.Controllers
         [Route("RemoveUnhandledFlag")]
         public async Task RemoveUnhandledFlag(long RoomId)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             _context.MsgRoom.Where(t => t.Id == RoomId).First().HasConcern = false;
             await _context.SaveChangesAsync();
         }
@@ -177,6 +159,7 @@ namespace FitappApi.Net7.Controllers
         [Route("AddUnhandledFlag")]
         public async Task AddUnhandledFlag(long UserId)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var room = await CreateRoom(UserId);
             room.HasConcern = true;
             await _context.SaveChangesAsync();
@@ -186,14 +169,12 @@ namespace FitappApi.Net7.Controllers
         [Route("GetRoomsWithConcerns")]
         public async Task<List<MsgRoom>> GetRoomsWithConcerns()
         {
-           return await _context.MsgRoom.Where(t => t.HasConcern == true)
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+            return await _context.MsgRoom.Where(t => t.HasConcern == true)
                 .AsNoTracking()
                 .ToListAsync();
         }
 
-
-
-        //
 
         public static List<RecievedMessage> MapChatMessage(List<MsgMessage> message)
         {
@@ -237,6 +218,7 @@ namespace FitappApi.Net7.Controllers
         [Route("SendPromotionChat")]
         public async Task<bool> SendPromotionChat([FromBody] PromotionChatmessage message)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 MsgBroadcast bmsg = new MsgBroadcast()
@@ -264,6 +246,7 @@ namespace FitappApi.Net7.Controllers
         [Route("GetPromotionChat")]
         public async Task<List<PromotionChatmessage>> GetPromotionChat()
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 var rlist = new List<PromotionChatmessage>();

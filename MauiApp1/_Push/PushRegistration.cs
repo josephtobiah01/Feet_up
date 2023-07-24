@@ -6,6 +6,7 @@ using Plugin.FirebasePushNotification;
 using ParentMiddleWare;
 using Shiny.Hosting;
 using Shiny.Push;
+using Shiny.Notifications;
 
 public class PushRegistration
 {
@@ -20,20 +21,21 @@ public class PushRegistration
     public static async Task<string> CheckPermission()
     {
         try
-        {
-
+        {        
             if (MiddleWare.UserID <= 0)
             {
                 return null;
             }
 #if ANDROID
+
                 var k =  CrossFirebasePushNotification.Current.Token;
+                return k;
 
             //if (!isInitialized)
             //{
             //    isInitialized = true;
 
-            //    var options = new Fireb aseOptions.Builder()
+            //    var options = new FirebaseOptions.Builder()
             //         .SetApplicationId(PushRegistration.AppId)
             //         .SetProjectId(PushRegistration.ProjectId)
             //         .SetApiKey(PushRegistration.ApiKey)
@@ -42,12 +44,13 @@ public class PushRegistration
 
             //    FirebaseApp.InitializeApp(Android.App.Application.Context, options);
             //}
-
+            var apush = Host.Current.Services.GetService<AzureNotificationHubsPushProvider>();
             var push = Host.Current.Services.GetService<IPushManager>();
 
             if (!string.IsNullOrEmpty(push.RegistrationToken))
             {
                 return push.RegistrationToken;
+               //return push.r
             }
 
 
@@ -62,9 +65,12 @@ public class PushRegistration
             if (!string.IsNullOrEmpty(push.RegistrationToken))
             {
                 return push.RegistrationToken;
+                //var list = push.Tags;
+                //var kkk = list.GetValue("InstallationId");
+                //return kkk.ToString(); ;
             }
 
-            var result = await push.RequestAccess(UserNotifications.UNAuthorizationOptions.ProvidesAppNotificationSettings |  UserNotifications.UNAuthorizationOptions.Badge | UserNotifications.UNAuthorizationOptions.Sound | UserNotifications.UNAuthorizationOptions.Alert);
+            var result = await push.RequestAccess(UserNotifications.UNAuthorizationOptions.ProvidesAppNotificationSettings | UserNotifications.UNAuthorizationOptions.Badge | UserNotifications.UNAuthorizationOptions.Sound | UserNotifications.UNAuthorizationOptions.Alert);
 
             if (result.Status == AccessState.Available)
             {
@@ -73,6 +79,14 @@ public class PushRegistration
                 // var token1 = service.NativeToken;
                 //  var token2 = service.InstallationId;
                 // you should send this to your server with a userId attached if you want to do custom work
+                //var list = push.Tags;
+                // var kkk = list.GetValue("InstallationId");
+                //return kkk.ToString();
+     
+
+           //     var apush = Host.Current.Services.GetService<AzureNotificationHubsPushProvider>();
+            
+
 
                 return result.RegistrationToken;
             }

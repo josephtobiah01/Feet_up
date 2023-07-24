@@ -21,7 +21,7 @@
 
             <Grid Grid.Row="0" >
 
-                <BlazorWebView x:Name="BlazorWebView" HostPage="wwwroot/searchRecipes.html" >
+                <BlazorWebView x:Name="BlazorWebView" HostPage="wwwroot/NutrientsOverviewHostPage.html" >
                     <BlazorWebView.RootComponents>
                         <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:Overview}" />
                     </BlazorWebView.RootComponents>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiApp1.Areas.Security.Views.MVPLoginContentPage"
+             NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False"
+             Title="MVPLoginContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded"
+             BackgroundColor="#006272"
+             >
+    <!--
+    <ContentPage.Background>
+
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#006272"
+                          Offset="0.0" />
+            <GradientStop Color="#00CCED"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+
+    </ContentPage.Background>
+    -->
+    <!--change status bar color (can be set per page)-->
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor ="#006272" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
+    
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0*" x:Name="VariableRow"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackLayout VerticalOptions="CenterAndExpand" 
+                    HorizontalOptions="CenterAndExpand" BackgroundColor="Transparent">
+                <Image Source="logo_blue.png" MaximumHeightRequest="35.36" MaximumWidthRequest="220" Margin="0,24,0,40"></Image>
+                <Border StrokeShape="RoundRectangle 8, 8, 8, 8"  
+                        Stroke="white"
+                        StrokeThickness="0"
+                        Background="white"
+                        Margin="0,24,0,0">
+                    <Entry x:Name="UsernameEntry" FontSize="14" TextChanged="CheckEnableButton" Focused="OnUsernameKeyboardFocus" Unfocused="OnUsernameKeyboardUnfocus" BackgroundColor="White" MinimumWidthRequest="343" MinimumHeightRequest="44" TextColor="Black" FontFamily="Montserrat-Regular" Keyboard="Default"  PlaceholderColor="DimGray" Placeholder="Enter Username"/>
+                </Border>
+                <Border StrokeShape="RoundRectangle 8, 8, 8, 8"  
+                        Stroke="white"
+                        StrokeThickness="0"
+                        Background="white"
+                        Margin="0,24,0,0">
+                    <Entry x:Name="PasswordEntry" FontSize="14" TextChanged="CheckEnableButton" Focused="OnPasswordKeyboardFocus" Unfocused="OnPasswordKeyboardUnfocus" BackgroundColor="White" MinimumWidthRequest="343" MinimumHeightRequest="44" TextColor="Black" FontFamily="Montserrat-Regular" Keyboard="Default" PlaceholderColor="DimGray" IsPassword="True" Placeholder="Enter Password"/>
+                </Border>
+                <Border StrokeShape="RoundRectangle 8, 8, 8, 8"  
+                        Stroke="#F3D8DA"
+                        StrokeThickness="0"
+                        Background="#F3D8DA"
+                        Padding="16,8" 
+                        Margin="0,4,0,0" 
+                        x:Name="FailedAttempt"
+                        IsVisible="false"
+                        MinimumWidthRequest="343" 
+                        MinimumHeightRequest="44" >
+                    <Label  BackgroundColor="#F3D8DA" FontAttributes="Bold" HorizontalTextAlignment="Start" VerticalTextAlignment="Center" FontFamily="Montserrat-Regular"  FontSize="14" TextColor="#BB111A" >Incorrect username or password</Label>
+                </Border>
+                <Button x:Name="LoginButton" Clicked="LogInButton_Clicked" BackgroundColor="#CED3D7" IsEnabled="True" CornerRadius="20" Text="Login" FontFamily="Montserrat-Regular" FontAttributes="Bold" FontSize="16" TextColor="#FFFFFF" HeightRequest="44" Margin="0,24,0,0"></Button>
+            </StackLayout>
+
+            <Frame x:Name="ActivityIndicatorFrame" Grid.Row="0" Grid.RowSpan="2" IsVisible="false" ZIndex="2" BackgroundColor="Transparent" HorizontalOptions="Fill" VerticalOptions="Fill" Padding="0">
+                <Grid VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Black" Opacity="0.5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--<Rectangle Grid.Row="0" Grid.RowSpan="3" BackgroundColor="Black" Opacity="0.3" ZIndex="3"/>-->
+
+                    <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="1" IsRunning="True" HeightRequest="50" WidthRequest="50" Color="White" ZIndex="4"/>
+                </Grid>
+            </Frame>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

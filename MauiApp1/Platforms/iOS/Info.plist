@@ -31,6 +31,19 @@
 	<key>CFBundleDisplayName</key>
 	<string>Age In Reverse Longevity</string>
 	<key>CFBundleVersion</key>
-	<string>24</string>
+	<string>2</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>My App</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>myapp</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+		</dict>
+	</array>
 </dict>
 </plist>

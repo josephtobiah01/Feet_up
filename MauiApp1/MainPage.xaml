@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:local="clr-namespace:MauiApp1"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiApp1.MainPage"
@@ -19,12 +21,386 @@
 
         <BlazorWebView x:Name="blazorWebView" Grid.Row="0" HostPage="wwwroot/index.html">
             <BlazorWebView.RootComponents>
-                <RootComponent Selector="#app" ComponentType="{x:Type local:Main}" />
+                <RootComponent x:Name="RootComponent" Selector="#app" ComponentType="{x:Type local:Main}" />
             </BlazorWebView.RootComponents>
         </BlazorWebView>
 
         <StackLayout  x:Name="BlackStackLayout" Grid.Row="0" Background="#191919" Opacity="0.4" IsVisible="false"/>
         <ActivityIndicator x:Name="LoadingActivityIndicator " Grid.Row="0" IsRunning="true" Color="White" IsVisible="false  " WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+        <dxco:DXPopup Grid.Row="0" x:Name="CalendarDXPopup" AllowScrim="false" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20, 0, 0, 65" AllowShadow="True">
+            <dxe:DXCalendar x:Name="Calendar" SelectedDateChanged="DateSelected"  BackgroundColor="White" HorizontalCellSpacing="0" VerticalCellSpacing="0" ShowTrailingDays="false" CellMinSize="40">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance HeaderTitleTextColor="#333333" BackgroundColor="white"  />
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                                       TodayEllipseBackgroundColor="#006272" TodayTextColor="White"
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.DayCellAppearance>
+                <dxe:DXCalendar.MonthCellAppearance>
+                    <dxe:CalendarMonthCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                    SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                        TextColor="#4D4D4D" />
+                </dxe:DXCalendar.MonthCellAppearance >
+                <dxe:DXCalendar.YearCellAppearance>
+                    <dxe:CalendarYearCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.YearCellAppearance>
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="10"
+                                                 TextColor="#333333" BackgroundColor="White"/>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+            </dxe:DXCalendar>
+        </dxco:DXPopup>
+        <dxco:BottomSheet x:Name="NotificationPermissionPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.7"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseNotificationPermissionPopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Notification permission required" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Notification access will help us to notify you about important tasks." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Text="Sure" 
+                        Clicked="RequestNotificationPermissions"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text="Not Now"
+                        Clicked="CloseNotificationPermissionPopup"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+        <dxco:BottomSheet x:Name="CameraPermissionPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.7"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseCameraPermissionPopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Camera permission required" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Camera access will help you to capture dish photos for nutrients breakdown." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Text="Sure" 
+                        Clicked="RequestCameraPermissions"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text="Not Now"
+                        Clicked="CloseCameraPermissionPopup"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+        <dxco:BottomSheet x:Name="StorageReadWritePermissionPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.7"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseStoragePermissionPopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Files permission required" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Files access will help you to share dish photos for nutrients breakdown." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Text="Sure" 
+                        Clicked="RequestStoragePermissions"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text="Not Now"
+                        Clicked="CloseStoragePermissionPopup"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+        <dxco:BottomSheet x:Name="LostInternetPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.8"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseLostInternetPopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Looks like you are offline!" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="We're sorry, but it seems that you're currently not connected to the internet. Our app requires an active internet connection to function properly and provide you with the best experience." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="2"
+                        Text="Go to settings" 
+                        Clicked="RequestStoragePermissions"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+        <dxco:BottomSheet x:Name="InternalErrorPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.8"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseInternalErrorPopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Encountering an Internal Glitch" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Our sincerest apologies! We're facing some internal hiccups that we didn't foresee. Our team is already working hard to iron this out. If this problem persist. Reach out to us on Help@ageinreverse.me" 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="2"
+                        Text="Go Back"
+                        Clicked="CloseStoragePermissionPopup"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+
     </Grid>
 
 

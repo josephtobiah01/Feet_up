@@ -2,9 +2,11 @@
 using DAOLayer.Net7.Chat.ApiModels;
 using FitappAdminWeb.Net7.Classes.Constants;
 using FitappAdminWeb.Net7.Classes.DTO;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Newtonsoft.Json;
+using System.Collections.Immutable;
 using System.Configuration;
 using System.Net;
 using System.Security.Claims;
@@ -16,7 +18,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
     /// </summary>
     public class MessageRepository
     {
-        IHttpClientFactory _httpclientfactory;
+        FitAppAPIUtil _apiutil;
         ILogger<MessageRepository> _logger;
         ChatContext _chatContext;
         IConfiguration _config;
@@ -30,12 +32,12 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         string _sendMessage_Url = "/api/chat/sendmessage";
         string _removeUnhandledFlag_Url = "/api/chat/removeunhandledflag";
 
-        public MessageRepository(IHttpClientFactory clientFactory, ILogger<MessageRepository> logger, IConfiguration config, ChatContext chatContext)
+        public MessageRepository(ILogger<MessageRepository> logger, IConfiguration config, ChatContext chatContext, FitAppAPIUtil apiutil)
         {
-            _httpclientfactory = clientFactory;
             _logger = logger;
             _config = config;
             _chatContext = chatContext;
+            _apiutil = apiutil;
 
             _apiDomain = _config.GetValue<string>(DOMAIN_APPSETTING_KEY);           
         }
@@ -172,17 +174,29 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         return false;
                     }
 
-                    HttpClient client = _httpclientfactory.CreateClient();
-                    string requestUrl = _apiDomain + _sendMessage_Url;
-                    HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
+                    #region Working API Call but with no security (Commented)
+                    //HttpClient client = _httpclientfactory.CreateClient();
+                    //string requestUrl = _apiDomain + _sendMessage_Url;
+                    //HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
 
+                    //BackendMessage msg = new BackendMessage()
+                    //{
+                    //    MessageContent = messageContent,
+                    //    Fk_Sender_Id = senderId,
+                    //    Fk_Reciever_Id = currentRoom.FkUserId
+                    //};
+                    //request.Content = JsonContent.Create(msg);
+                    #endregion
+
+                    //uses API util to build request message with prereq security headers
+                    HttpClient client = _apiutil.GetHttpClient();
                     BackendMessage msg = new BackendMessage()
                     {
                         MessageContent = messageContent,
                         Fk_Sender_Id = senderId,
                         Fk_Reciever_Id = currentRoom.FkUserId
                     };
-                    request.Content = JsonContent.Create(msg);
+                    HttpRequestMessage request = _apiutil.BuildRequest(_sendMessage_Url, HttpMethod.Post, msg);
 
                     var response = await client.SendAsync(request);
                     response.EnsureSuccessStatusCode();
@@ -208,6 +222,28 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         public async Task<List<MsgRoom>> GetRooms_Minimal(List<long> userIds)
         {
             return await _chatContext.MsgRoom.Where(r => userIds.Contains(r.FkUserId)).ToListAsync();
+        }
+
+        public async Task<List<MsgRoom>> GetRooms(bool hasConcernOnly = false, int numRecentMessages = 0)
+        {
+            List<MsgRoom> result;
+            if (hasConcernOnly)
+            {
+                result = await _chatContext.MsgRoom.Where(r => r.HasConcern && _chatContext.User.Any(s => s.Id == r.FkUserId))
+                   .Include(r => r.MsgMessage.OrderByDescending(r => r.Timestamp).Take(numRecentMessages))
+                       .ThenInclude(r => r.FkUserSenderNavigation).ToListAsync();
+            }
+            else
+            {
+                result = await _chatContext.MsgRoom.Where(r => _chatContext.User.Any(s => s.Id == r.FkUserId))
+                  .Include(r => r.MsgMessage.OrderByDescending(r => r.Timestamp).Take(numRecentMessages))
+                      .ThenInclude(r => r.FkUserSenderNavigation).ToListAsync();
+            }
+           
+            return result.OrderByDescending(r =>
+            {
+                return r.MsgMessage.OrderByDescending(s => s.Timestamp).Select(t => t.Timestamp).FirstOrDefault();
+            }).ToList();
         }
 
         public async Task<List<MsgRoom>?> GetRoomsWithConcerns()
@@ -238,7 +274,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             try
             {
-                var query = await _chatContext.MsgRoom.CountAsync(r => r.HasConcern);
+                var query = await _chatContext.MsgRoom.CountAsync(r => r.HasConcern && _chatContext.User.Any(s => s.Id == r.FkUserId));
                 return query;
             }
             catch (Exception ex)
@@ -252,10 +288,14 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             try
             {
-                HttpClient client = _httpclientfactory.CreateClient();
-                string url = _apiDomain + _sendMessage_Url;
+                //HttpClient client = _httpclientfactory.CreateClient();
+                //string url = _apiDomain + _sendMessage_Url;
 
-                var response = await client.PostAsJsonAsync(url, message);
+                //var response = await client.PostAsJsonAsync(url, message);
+                HttpClient client = _apiutil.GetHttpClient();
+                HttpRequestMessage request = _apiutil.BuildRequest(_sendMessage_Url, HttpMethod.Post, message);
+                var response = await client.SendAsync(request);
+
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
@@ -274,10 +314,14 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             try
             {
-                HttpClient client = _httpclientfactory.CreateClient();
-                string url = _apiDomain + _removeUnhandledFlag_Url;
+                //HttpClient client = _httpclientfactory.CreateClient();
+                //string url = _apiDomain + _removeUnhandledFlag_Url;
 
-                var response = await client.PostAsJsonAsync(url, roomId);
+                //var response = await client.PostAsJsonAsync(url, roomId);
+                HttpClient client = _apiutil.GetHttpClient();
+                var request = _apiutil.BuildRequest(_removeUnhandledFlag_Url, HttpMethod.Post, roomId);
+
+                var response = await client.SendAsync(request);
                 response.EnsureSuccessStatusCode();
 
                 return true;

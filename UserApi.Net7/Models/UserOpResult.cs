@@ -23,5 +23,10 @@ namespace UserApi.Net7.Models
 
         public string UserName { get; set; }
 
+        public string Email { get; set; }
+        public string Age { get; set; }
+        public string Height { get; set; }
+        public string Last_recorded_weight { get; set; }
+        public string App_version { get; set; }
     }
 }

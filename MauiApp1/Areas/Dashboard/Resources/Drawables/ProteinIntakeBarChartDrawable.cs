@@ -1,4 +1,5 @@
 ﻿using MauiApp1.Areas.Dashboard.ViewModel;
+using MauiApp1.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -90,7 +91,7 @@ namespace MauiApp1.Areas.Dashboard.Resources.Drawables
             double yAxisValue = _origin.Y;
             double yAxisInterval = (dirtyRect.Height - _chartTopMargin - _chartBottomMargin) / (_yAxisNumberOfLines);
 
-            for (int i = 0; i <= _yAxisNumberOfLines; i++)
+            for (int i = 1; i <= _yAxisNumberOfLines && i - 1 < this.ProteinIntakeViewItems.Count; i++)
             {
                 if(i == 1)
                 {
@@ -123,7 +124,7 @@ namespace MauiApp1.Areas.Dashboard.Resources.Drawables
                 //    x2: (float)_xAxisEndPoint.X,
                 //    y2: (float)yAxisValue);
 
-                if (i != 0 && i != _yAxisNumberOfLines)
+                if (this.ProteinIntakeViewItems != null && i - 1 < this.ProteinIntakeViewItems.Count)
                 {
                     string yValue = $"{this.ProteinIntakeViewItems[i - 1].TransactionDate.ToString("dd/MM")}";
 

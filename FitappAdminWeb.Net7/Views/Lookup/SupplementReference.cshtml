@@ -1,4 +1,8 @@
 ﻿@model FitappAdminWeb.Net7.Models.SupplementReferenceListViewModel
+@using X.PagedList;
+@using X.PagedList.Mvc.Bootstrap4.Core;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
 
 <div class="mb-3">
     <span class="d-flex justify-content-between">
@@ -11,7 +15,7 @@
 </div>
 <div id="suppref_list">
     <div class="list-group altrow-color">      
-        @foreach (var suppRef in Model.NdsSupplementReferences)
+        @foreach (var suppRef in Model.PagingNdsSupplementReferences)
         {
             <div class="list-group-item">
                 <div class="row mb-3">
@@ -89,5 +93,10 @@
                 </div>
             </div>
         }
+    </div>
+    <div class="col-md-12 my-3">
+        <div class="pagination justify-content-center">
+            @Html.PagedListPager(Model.PagingNdsSupplementReferences, page => Url.Action("SupplementReference", new {page}), new PagedListRenderOptions() {MaximumPageNumbersToDisplay = 5}.ApplyBootstrap4Style() )
+        </div>
     </div>
 </div>

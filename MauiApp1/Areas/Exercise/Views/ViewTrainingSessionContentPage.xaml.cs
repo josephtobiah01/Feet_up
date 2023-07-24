@@ -3,11 +3,12 @@ using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using MauiApp1.Areas.Exercise.Resources;
 using MauiApp1.Areas.Exercise.ViewModels;
-using Microsoft.Maui.Controls.Xaml;
+using ParentMiddleWare;
 using ParentMiddleWare.Models;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Timers;
-
+using System.Windows.Input;
 
 namespace MauiApp1.Areas.Exercise.Views;
 
@@ -20,6 +21,7 @@ public partial class ViewExerciseContentPage : ContentPage
 
     public static ObservableCollection<ExercisePageViewModel> _exerciseViewModels;
     public EmTrainingSession _emTrainingSession;
+    public SetPageViewModel _setPageViewModel;
 
     private static double _totalSetUnitCompleted = 0;
     private static double _totalSetCompleted = 0;
@@ -27,39 +29,35 @@ public partial class ViewExerciseContentPage : ContentPage
 
     private static double _totalSet = 0;
 
+
     IDispatcherTimer _dispatcherTimer;
     int _hours = 0;
     int _minutes = 0;
     int _seconds = 0;
 
-    ProgressArc _progressArc = new ProgressArc(); 
+    ProgressArc _progressArc = new ProgressArc();
+    
     #endregion
 
     #region [Methods :: EventHandlers :: Class]
 
     public ViewExerciseContentPage(EmTrainingSession emTrainingSession)
     {
+
         _emTrainingSession = emTrainingSession;
         this.Loaded += (s, e) =>
         {
-            //var t = Task.Run(async () =>
-            //{
-
-            //    foreach (var e in emTrainingSession.emExercises)
-            //    {
-            //        //  await Task.Delay(250);
-            //        await LoadExerciseInCurrentList(e);
-            //    }
-            //});
-            //t.Wait();
-
-            _doApiCalls = false;
+       //     _doApiCalls = false;
             BindableLayout.SetItemsSource(this.ExerciseListView, _exerciseViewModels);
             ComputeCollectionViewHeight();
-            _doApiCalls = true;
+          //  _doApiCalls = true;
         };
         InitializeComponent();
+
+        _setPageViewModel = new SetPageViewModel();
     }
+
+    
 
     public ViewExerciseContentPage()
     {
@@ -84,38 +82,31 @@ public partial class ViewExerciseContentPage : ContentPage
     private async void ContentPage_Loaded(object sender, EventArgs e)
     {
         await InitializeData();
-       // await InitializeControl();
         await InitializeDrawables();
     }
 
     private void ContentPage_Unloaded(object sender, EventArgs e)
     {
         DisposeControls();
-        //UnloadMediaElement();
     }
 
-    private bool _doApiCalls = false;
+    public static bool _doApiCalls = false;
 
     public async Task InitializeData()
     {
-      //  _exerciseViewModels = new ObservableCollection<ExercisePageViewModel>();
         _totalSet = 0;
         _totalSetUnitCompleted = 0;
         _totalSetCompleted = 0;
         _unitInMeasurement = string.Empty;
 
-
-     //   LoadExerciseViewModel();
-
         this.UnitOfMeasurementLabel.Text = string.Format("{0}{1}", _totalSetUnitCompleted,
                                 "Kg");
+        await InitializeTimer();
 
+       _setPageViewModel = new SetPageViewModel();
 
-       // _doApiCalls = false;
-       //BindableLayout.SetItemsSource(this.ExerciseListView, _exerciseViewModels);
-       //await ComputeCollectionViewHeight();
-       // _doApiCalls = true;
-       await InitializeTimer();
+        
+       
     }
 
     public async Task InitializeDrawables()
@@ -123,17 +114,10 @@ public partial class ViewExerciseContentPage : ContentPage
         double percentage = (_totalSetCompleted / _totalSet) * 100;
         _progressArc.setPercentage(percentage);
         this.ProgressArcGraphicsView.Drawable = _progressArc;
-        this.ProgressNeedleGraphicsView.Rotation = (int)Math.Round(percentage * 1.8);
+        this.ProgressNeedleGraphicsView.Rotation = Math.Min(180,Math.Max((int)Math.Round(percentage * 1.8),0));
         this.ProgressArcGraphicsView.Invalidate();
     }
 
-    //private async Task InitializeControl()
-    //{
-    //    //this.ExerciseListView.RefreshCommand = new Command(() =>
-    //    //{
-    //    //    RefreshExerciseListView();
-    //    //});
-    //}
 
     private async Task InitializeTimer()
     {
@@ -184,10 +168,10 @@ public partial class ViewExerciseContentPage : ContentPage
     {
         if (_dispatcherTimer != null)
         {
-            if(_dispatcherTimer.IsRunning == false)
+            if (_dispatcherTimer.IsRunning == false)
             {
                 _dispatcherTimer.Start();
-            }           
+            }
         }
     }
 
@@ -219,8 +203,6 @@ public partial class ViewExerciseContentPage : ContentPage
 
         var k = button.Parent;
 
-        // get the model
-
         ExercisePageViewModel setViewModel = (ExercisePageViewModel)button.BindingContext;
 
         HandleAddNewSet(setViewModel.ExerciseId);
@@ -247,15 +229,13 @@ public partial class ViewExerciseContentPage : ContentPage
     private void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
     {
         RadioButton radioButton = (RadioButton)sender;
-
-        HandleExerciseRadioButtonGroupCheckChange(radioButton);
     }
 
-    private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
-    {
-        CheckBox checkBox = (CheckBox)sender;
-        HandleSetCheckChange(checkBox);
-    }
+    //private void CheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+    //{
+    //    CheckBox checkBox = (CheckBox)sender;
+    //    HandleSetCheckChange(checkBox);
+    //}
 
     private void Timer_Elapsed(object sender, ElapsedEventArgs e)
     {
@@ -264,8 +244,7 @@ public partial class ViewExerciseContentPage : ContentPage
 
     private void MediaElement_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
     {
-        MediaElement mediaElement = (MediaElement)sender;
-        PauseMediaElement(mediaElement);
+      //  PauseMediaElement(mediaElement);
     }
 
     private void FinishTraningSessionButton_Clicked(object sender, EventArgs e)
@@ -275,9 +254,9 @@ public partial class ViewExerciseContentPage : ContentPage
 
     private void PlayVideoButton_Clicked(object sender, EventArgs e)
     {
-        ImageButton imageButton = (ImageButton)sender;
+        //ImageButton imageButton = (ImageButton)sender;
 
-        ShowVideoPage(imageButton);
+        //ShowVideoPage(imageButton);
     }
 
     #endregion
@@ -287,69 +266,76 @@ public partial class ViewExerciseContentPage : ContentPage
 
     public static async Task LoadExerciseViewModel(EmTrainingSession session)
     {
+       
         foreach (EmExercise emExercise in session.emExercises)
         {
-           await LoadExerciseInCurrentList(emExercise);
+            await LoadExerciseInCurrentList(emExercise);
         }
+    }
+
+    public static async Task<string> GetSetHistory(long exerciseTypeId, short setnumber)
+    {
+        var k = await AirMemoryCache.GetUserHistory();
+        var history = k.Where(t=>t.ExerciseTypeId == exerciseTypeId && t.SetNumber == setnumber).FirstOrDefault();
+        if (history == null) return "";
+        else return history.SetString;
     }
 
     public static async Task LoadSetInCurrentList(ExercisePageViewModel ExerciseModel, EmSet emSet)
     {
-       // var t = Task.Run(() =>
-       // {
-            SetPageViewModel setmodel = new SetPageViewModel();
-            _totalSet = _totalSet + 1;
+        SetPageViewModel setmodel = new SetPageViewModel();
+        _totalSet = _totalSet + 1;
 
-            setmodel.SetId = emSet.Id;
-            setmodel.ExerciseId = emSet.ExerciseId;
-            setmodel.TimeOffset = emSet.TimeOffset;
+        setmodel.SetId = emSet.Id;
+        setmodel.ExerciseId = emSet.ExerciseId;
+        setmodel.TimeOffset = emSet.TimeOffset;
+        setmodel.Exercise_type_Id = ExerciseModel.Exercise_type_id;
 
-            setmodel.SetSequenceNumber = emSet.SetSequenceNumber == 1 ? "W" : emSet.SetSequenceNumber.ToString();
-            setmodel.IsComplete = emSet.IsComplete;
-            setmodel.IsSkipped = emSet.IsSkipped;
-            setmodel.IsCustomerAddedSet = emSet.IsCustomerAddedSet;
-            setmodel.EndTimeStamp = emSet.EndTimeStamp;
-            setmodel.TimeOffset = emSet.TimeOffset;
-            setmodel.SetName = emSet.GetText();
-            setmodel.IsComplete = emSet.IsComplete;
-            setmodel.IsCustomerAddedSet = emSet.IsCustomerAddedSet;
+        setmodel.SetSequenceNumber = emSet.SetSequenceNumber == 1 ? "W" : emSet.SetSequenceNumber.ToString();
+        setmodel.IsComplete = emSet.IsComplete;
+        setmodel.IsSkipped = emSet.IsSkipped;
+        setmodel.IsCustomerAddedSet = emSet.IsCustomerAddedSet;
+        setmodel.EndTimeStamp = emSet.EndTimeStamp;
+        setmodel.TimeOffset = emSet.TimeOffset;
+        setmodel.SetName = await GetSetHistory(setmodel.Exercise_type_Id, emSet.SetSequenceNumber);
 
-            setmodel.SetRestTimeSecs = (int)emSet.GetRestTime();
 
-            if (emSet.EmSetMetrics != null)
+
+
+        setmodel.IsComplete = emSet.IsComplete;
+        setmodel.IsCustomerAddedSet = emSet.IsCustomerAddedSet;
+
+        setmodel.SetRestTimeSecs = (int)emSet.GetRestTime();
+
+        if (emSet.EmSetMetrics != null)
+        {
+            int i = 0;
+            foreach (var item in emSet.EmSetMetrics)
             {
-                int i = 0;
-                foreach (var item in emSet.EmSetMetrics)
+                try
                 {
-                    try
+                    if (item.EmSetMetricTypes.Name.Trim() == "Rest")
                     {
-                        if (item.EmSetMetricTypes.Name.Trim() == "Rest")
-                        {
-                            continue;
-                        }
+                        continue;
                     }
-                    catch { }
-                    if (i == 0)
-                    {
-                        setmodel.MetricsValue1 = item.ActualCustomMetric.HasValue ? item.ActualCustomMetric.Value.ToString() : item.TargetCustomMetric.ToString();
-                        setmodel.MetricsName1 = item.EmSetMetricTypes.Name;
-                        setmodel.MetricId1 = item.Id;
-                    }
-                    else if (i == 1)
-                    {
-                        setmodel.MetricsValue2 = item.ActualCustomMetric.HasValue ? item.ActualCustomMetric.Value.ToString() : item.TargetCustomMetric.ToString();
-                        setmodel.MetricsName2 = item.EmSetMetricTypes.Name;
-                        setmodel.MetricId2 = item.Id;
-                    }
-                    i++;
                 }
+                catch { }
+                if (i == 0)
+                {
+                    setmodel.MetricsValue1 = item.ActualCustomMetric.HasValue ? item.ActualCustomMetric.Value.ToString() : item.TargetCustomMetric.ToString();
+                    setmodel.MetricsName1 = item.EmSetMetricTypes.Name;
+                    setmodel.MetricId1 = item.Id;
+                }
+                else if (i == 1)
+                {
+                    setmodel.MetricsValue2 = item.ActualCustomMetric.HasValue ? item.ActualCustomMetric.Value.ToString() : item.TargetCustomMetric.ToString();
+                    setmodel.MetricsName2 = item.EmSetMetricTypes.Name;
+                    setmodel.MetricId2 = item.Id;
+                }
+                i++;
             }
-            //setmodel.MetricsValue1 = "10";
-            //setmodel.MetricsValue2 = "20";
-
-            ExerciseModel.SetviewModel.Add(setmodel);
-     //   });
-      //  t.Wait();
+        }
+        ExerciseModel.SetviewModel.Add(setmodel);
     }
 
     public static async Task LoadExerciseInCurrentList(EmExercise emExercise)
@@ -365,8 +351,7 @@ public partial class ViewExerciseContentPage : ContentPage
         viewmodel.IsCustomerAddedExercise = emExercise.IsCustomerAddedExercise;
 
         viewmodel.ExplainerText = emExercise.EmExerciseType.ExplainerTextFr;
-        //viewmodel.VideoUrl = emExercise.EmExerciseType.ExplainerVideoFr;
-
+        viewmodel.Exercise_type_id = emExercise.FkExerciseTypeId;
         viewmodel.IsRecordExerciseTabContentVisible = true;
         viewmodel.IsHistoryTabContentVisible = false;
         viewmodel.IsSummaryTabContentVisible = false;
@@ -383,7 +368,7 @@ public partial class ViewExerciseContentPage : ContentPage
 
         foreach (EmSet emSet in emExercise.EmSet)
         {
-           await LoadSetInCurrentList(viewmodel, emSet);
+            await LoadSetInCurrentList(viewmodel, emSet);
 
             if (emSet.EmSetMetrics != null)
             {
@@ -430,35 +415,36 @@ public partial class ViewExerciseContentPage : ContentPage
 #endif
     }
 
-    private void HandleExerciseRadioButtonGroupCheckChange(RadioButton radioButton)
+    private async void HandleSetCheckChange(InputKit.Shared.Controls.CheckBox checkBox)
     {
-
-    }
-
-    private async void HandleSetCheckChange(CheckBox checkBox)
-    {
-
         try
         {
             SetPageViewModel setPageViewModel = (SetPageViewModel)checkBox.BindingContext;
-
-        
-            //HorizontalStackLayout k = (HorizontalStackLayout)checkBox.Parent;
-            //k.IsVisible = false;
-
-
             switch (checkBox.IsChecked)
             {
                 case true:
                     setPageViewModel.IsComplete = true;
                     if (_doApiCalls)
-                    {  
+                    {
                         if (setPageViewModel.SetRestTimeSecs > 0)
                         {
-                            var popup = new SetPopup(setPageViewModel.SetRestTimeSecs);
-                            this.ShowPopup(popup);
+                        //    var popup = new SetPopup(setPageViewModel.SetRestTimeSecs);
+                          //  this.ShowPopup(popup);
                         }
                         await ExerciseApi.Net7.ExerciseApi.EndSet(setPageViewModel.SetId);
+                        try
+                        {
+                            short SetNumber = 1;
+                            string SetStats = setPageViewModel.MetricsValue1 + setPageViewModel.MetricsName1 + "x" + setPageViewModel.MetricsValue2 + setPageViewModel.MetricsName2;
+
+                            if (setPageViewModel.SetSequenceNumber != "W") SetNumber = short.Parse(setPageViewModel.SetSequenceNumber.Trim());
+                            // await MiddleWare.InsertSetHistory(setPageViewModel.Exercise_type_Id, SetNumber, SetStats);
+                            MiddleWare.InsertSetHistory(setPageViewModel.Exercise_type_Id, SetNumber, SetStats);
+                        }
+                        catch(Exception e)
+                        {
+
+                        }
                     }
                     _totalSetCompleted = _totalSetCompleted + 1;
 
@@ -518,7 +504,6 @@ public partial class ViewExerciseContentPage : ContentPage
                     break;
 
                 default:
-                    break;
             }
 
             this.UnitOfMeasurementLabel.Text = string.Format("{0}{1}", _totalSetUnitCompleted,
@@ -531,9 +516,8 @@ public partial class ViewExerciseContentPage : ContentPage
 
             AddNewCompleteExerciseStatus();
         }
-        catch (Exception ex)
+        catch
         {
-
             await DisplayAlert("Start Set", "An error occurred while starting a set.", "OK");
         }
         finally
@@ -543,36 +527,32 @@ public partial class ViewExerciseContentPage : ContentPage
 
     }
 
-    private void PauseMediaElement(MediaElement mediaElement)
-    {
-        if (mediaElement.IsVisible == false)
-        {
-            switch (mediaElement.CurrentState)
-            {
-                case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing:
-                    mediaElement.Pause();
-                    break;
-                default:
-                    break;
-            }
-
-        }
-        else
-        {
-            //    mediaElement.Play();
-        }
-    }
+    //private void PauseMediaElement(MediaElement mediaElement)
+    //{
+    //    if (mediaElement.IsVisible == false)
+    //    {
+    //        switch (mediaElement.CurrentState)
+    //        {
+    //            case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing:
+    //                mediaElement.Pause();
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //    mediaElement.Play();
+    //    }
+    //}
 
     private async void PauseTrainingSession()
     {
         try
         {
-            // api call to save exerciseduration
             await ExerciseApi.Net7.ExerciseApi.PauseTrainingSession(_emTrainingSession.Id, _hours * 3600 + _minutes * 60 + _seconds);
-
-            //await Navigation.PopAsync();
         }
-        catch (Exception ex)
+        catch
         {
             await DisplayAlert("Pause Training Session", "An error occurred while pausing the training session.", "OK");
         }
@@ -589,7 +569,6 @@ public partial class ViewExerciseContentPage : ContentPage
         {
             _minutes++;
             _seconds = 0;
-
         }
         if (_minutes == 59)
         {
@@ -602,67 +581,42 @@ public partial class ViewExerciseContentPage : ContentPage
         });
     }
 
-    private void UnloadMediaElement()
-    {
-        try
-        { 
-            foreach (Frame frame in this.ExerciseListView.Children)
-            {
-                if (frame != null)
-                {
-                    MediaElement mediaElement = frame.FindByName("MediaElement") as MediaElement;
-                    if (mediaElement != null)
-                    {
-                        if (mediaElement.Handler != null)
-                        {
-                            switch (mediaElement.CurrentState)
-                            {
-                                case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing:
-                                case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused:
-                                    mediaElement.Stop();
-                                    break;
-                                default:
-                                    break;
-                            }
-                            mediaElement.Handler.DisconnectHandler();
-                        }
-                    }
-                }
-            }
-
-            //ITemplatedItemsView<Cell> templatedItemsView = this.ExerciseListView as ITemplatedItemsView<Cell>;
-            //foreach (ViewCell viewCell in templatedItemsView.TemplatedItems)
-            //{
-            //    if (viewCell != null)
-            //    {
-            //        MediaElement mediaElement = viewCell.FindByName("MediaElement") as MediaElement;
-            //        if (mediaElement != null)
-            //        {
-            //            if (mediaElement.Handler != null)
-            //            {
-            //                switch (mediaElement.CurrentState)
-            //                {
-            //                    case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing:
-            //                    case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused:
-            //                        mediaElement.Stop();
-            //                        break;
-            //                    default:
-            //                        break;
-            //                }
-            //                mediaElement.Handler.DisconnectHandler();
-            //            }
-            //        }
-            //    }
-            //}
-        }
-        catch (Exception ex)
-        {
-            //Log error
-        }
-        finally
-        {
-        }
-    }
+    //private void UnloadMediaElement()
+    //{
+    //    try
+    //    {
+    //        foreach (Frame frame in this.ExerciseListView.Children)
+    //        {
+    //            if (frame != null)
+    //            {
+    //                MediaElement mediaElement = frame.FindByName("MediaElement") as MediaElement;
+    //                if (mediaElement != null)
+    //                {
+    //                    if (mediaElement.Handler != null)
+    //                    {
+    //                        switch (mediaElement.CurrentState)
+    //                        {
+    //                            case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Playing:
+    //                            case CommunityToolkit.Maui.Core.Primitives.MediaElementState.Paused:
+    //                                mediaElement.Stop();
+    //                                break;
+    //                            default:
+    //                                break;
+    //                        }
+    //                        mediaElement.Handler.DisconnectHandler();
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //    catch
+    //    {
+    //        //Log error
+    //    }
+    //    finally
+    //    {
+    //    }
+    //}
 
     private void CheckExerciseSets()
     {
@@ -684,37 +638,36 @@ public partial class ViewExerciseContentPage : ContentPage
                 bool completedTraningSession = await ExerciseApi.Net7.ExerciseApi.EndTrainingSession(_emTrainingSession.Id, _hours * 3600 + _minutes * 60 + _seconds);
                 if (completedTraningSession == true)
                 {
-                    //await DisplayAlert("Notification", "Congratulation you have complete this training session.", "OK");
-                    //await Navigation.PopModalAsync();
                     IToast toast = Toast.Make(text, duration, fontSize);
                     await toast.Show(cancellationTokenSource.Token);
-
+                    AirMemoryCache.RefreshUserHistory();
                     await Navigation.PushAsync(new ViewSummaryTrainingSessionContentPage(_emTrainingSession.Id));
                 }
             }
             else
             {
-                bool answer = await DisplayAlert("Notification", "There are still some exercises that need to be completed." + Environment.NewLine +
-                    "The sets that are not completed will be skipped" + Environment.NewLine +
-                    "Are you sure you want to finish the exercise?", "Yes", "No");
-                
-                if(answer == true)
+                bool answer = true;
+
+                //bool answer = await DisplayAlert("Notification", "There are still some exercises that need to be completed." + Environment.NewLine +
+                //    "The sets that are not completed will be skipped" + Environment.NewLine +
+                //    "Are you sure you want to finish the exercise?", "Yes", "No");
+
+                if (answer == true)
                 {
                     bool completedTraningSession = await ExerciseApi.Net7.ExerciseApi.EndTrainingSession(_emTrainingSession.Id, _hours * 3600 + _minutes * 60 + _seconds);
                     if (completedTraningSession == true)
                     {
-                        await DisplayAlert("Notification", "Congratulation you have finish this training session.", "OK");
+                       // await DisplayAlert("Notification", "Congratulation you have finish this training session.", "OK");
                         await Navigation.PushAsync(new ViewSummaryTrainingSessionContentPage(_emTrainingSession.Id));
                     }
                 }
             }
         }
-        catch (Exception ex)
+        catch
         {
             await DisplayAlert("Add New Complete Training Session Status", "An error occurred while completing the training session.", "OK");
         }
         finally { }
-
     }
 
     private async void AddNewCompleteExerciseStatus()
@@ -748,16 +701,12 @@ public partial class ViewExerciseContentPage : ContentPage
                         }
                         else
                         {
-
-                            // TODO: If exercise was compelte and a set was uncheked, then undo complete exercise, without calling the api functionm each time a set checked ...
-                          //  if(exer)
-                         //   await ExerciseApi.Net7.ExerciseApi.UndoEndSet(exercisePageViewModel.ExerciseId);
                         }
                     }
                 }
             }
         }
-        catch (Exception ex)
+        catch
         {
             await DisplayAlert("Add New Complete Exercise Status", "An error occurred while completing the exercise.", "OK");
         }
@@ -770,33 +719,12 @@ public partial class ViewExerciseContentPage : ContentPage
     {
         try
         {
-            // long exerciseId = await ExerciseApi.Net7.ExerciseApi.AddNewExercise(_emTrainingSession.Id);
-            //EmExercise exercise = await ExerciseApi.Net7.ExerciseApi.GetExercise(exerciseId);
-
-            // added new Api function to fo it in 1 api call
-            //EmExercise exercise = await ExerciseApi.Net7.ExerciseApi.AddNewExerciseAndReturn(_emTrainingSession.Id);
-
-         //   if (addExerciseContentPage == null)
-            {
-                addExerciseContentPage = new AddExerciseContentPage(_emTrainingSession);
-                addExerciseContentPage.ExerciseAdded += AddExerciseContentPage_ExerciseAdded;
-            }
+            addExerciseContentPage = new AddExerciseContentPage(_emTrainingSession);
+            addExerciseContentPage.ExerciseAdded += AddExerciseContentPage_ExerciseAdded;
             await Application.Current.MainPage.Navigation.PushModalAsync(addExerciseContentPage);
-
-            //if (exercise != null)
-            //{
-                //LoadExerciseInCurrentList(exercise);
-                RefreshExerciseListView();
-
-                //  AddNewExerciseInCurrentList(exercise);
-                //_viewExerciseContentPageExerciseViewModels.Clear();
-                //LoadViewExerciseContentPageExerciseViewModel();
-                //    RefreshExerciseListView();
-            //}
-
-
+            RefreshExerciseListView();
         }
-        catch (Exception ex)
+        catch
         {
             await DisplayAlert("Add New Exercise", "An error occurred while adding new exercise.", "OK");
         }
@@ -815,7 +743,7 @@ public partial class ViewExerciseContentPage : ContentPage
             await LoadExerciseInCurrentList(emExercise);
             RefreshProgressLabel();
         }
-        catch (Exception ex)
+        catch
         {
 
         }
@@ -823,8 +751,6 @@ public partial class ViewExerciseContentPage : ContentPage
 
     private void RefreshExerciseListView()
     {
-        //this.ExerciseListView.IsRefreshing = true;
-        //this.ExerciseListView.IsRefreshing = false;
 
     }
 
@@ -848,11 +774,9 @@ public partial class ViewExerciseContentPage : ContentPage
                 RefreshExerciseListView();
                 RefreshProgressLabel();
             }
-
         }
-        catch (Exception ex)
+        catch
         {
-            // Error
         }
         finally
         {
@@ -885,14 +809,10 @@ public partial class ViewExerciseContentPage : ContentPage
                     break;
 
                 default:
-                    break;
             }
-            
-
         }
-        catch (Exception ex)
+        catch
         {
-            // Error
         }
         finally
         {
@@ -908,6 +828,7 @@ public partial class ViewExerciseContentPage : ContentPage
         if (_doApiCalls)
         {
             var success = ExerciseApi.Net7.ExerciseApi.ChangeSetMetrics(setPageViewModel.SetId, setPageViewModel.MetricId1, newValue);
+            setPageViewModel.IsComplete = false;
         }
     }
 
@@ -919,6 +840,7 @@ public partial class ViewExerciseContentPage : ContentPage
         if (_doApiCalls)
         {
             var success = ExerciseApi.Net7.ExerciseApi.ChangeSetMetrics(setPageViewModel.SetId, setPageViewModel.MetricId2, newValue);
+            setPageViewModel.IsComplete = false;
         }
         ((Entry)sender).Unfocus();
     }
@@ -926,8 +848,6 @@ public partial class ViewExerciseContentPage : ContentPage
     private void Label_Unfocused(object sender, FocusEventArgs e)
     {
         SetPageViewModel setPageViewModel = (SetPageViewModel)((Entry)sender).BindingContext;
-     //   if (string.Compare(setPageViewModel.MetricsValue1, ((Entry)sender).Text) == 0) return;
-
         double newValue = 0;
         if (!double.TryParse(((Entry)sender).Text, out newValue)) return;
         if (_doApiCalls)
@@ -940,8 +860,6 @@ public partial class ViewExerciseContentPage : ContentPage
     private void Label_Unfocused_1(object sender, FocusEventArgs e)
     {
         SetPageViewModel setPageViewModel = (SetPageViewModel)((Entry)sender).BindingContext;
-       // if (string.Compare(setPageViewModel.MetricsValue2, ((Entry)sender).Text) == 0) return;
-
         double newValue = 0;
         if (!double.TryParse(((Entry)sender).Text, out newValue)) return;
         if (_doApiCalls)
@@ -975,6 +893,18 @@ public partial class ViewExerciseContentPage : ContentPage
         setPageViewModel.IsHistoryTabContentVisible = true;
     }
 
+    private void TapGestureRecognizer_Tapped_3(object sender, TappedEventArgs e)
+    {
+        SwipeItemView swipeItem = sender as SwipeItemView;
+        if (swipeItem?.BindingContext is SetPageViewModel setPageViewModel)
+        {
+            HandleDeleteSet(setPageViewModel);
+        }
+        //_setPageViewModel = swipeItem.BindingContext as SetPageViewModel;
+        
+        
+    }
+
     private void RemoveSetFromCurrentExerciseList(SetPageViewModel setPageViewModel)
     {
 
@@ -991,23 +921,26 @@ public partial class ViewExerciseContentPage : ContentPage
         this.ProgressLabel.Text = string.Format("{0}%", Math.Round(percentage));
 
         _progressArc.setPercentage(percentage);
-        this.ProgressNeedleGraphicsView.Rotation = (int)Math.Round(percentage * 1.8);
+        this.ProgressNeedleGraphicsView.Rotation = Math.Min(180, Math.Max((int)Math.Round(percentage * 1.8), 0));
         this.ProgressArcGraphicsView.Invalidate();
     }
 
     private async void ShowVideoPage(ImageButton imageButton)
     {
-        ExercisePageViewModel exercisePageViewModel = (ExercisePageViewModel)imageButton.BindingContext;
-        string videoUrl = exercisePageViewModel.VideoUrl;
-        string exerciseDescription = exercisePageViewModel.ExplainerText;
-
-        //Don't Understand why PushModalAsync not crashing in video content page while PushAsync Crash on back
-        await Navigation.PushModalAsync(new ViewVideoContentPage(videoUrl, exerciseDescription));
-        //var popup = new ViewVideoPopup(videoUrl);
-        //this.ShowPopup(popup);
+     //   ExercisePageViewModel exercisePageViewModel = (ExercisePageViewModel)imageButton.BindingContext;
+      //  string videoUrl = exercisePageViewModel.VideoUrl;
+      //  string exerciseDescription = exercisePageViewModel.ExplainerText;
+      //  await Navigation.PushModalAsync(new ViewVideoContentPage(videoUrl, exerciseDescription));
     }
+
 
     #endregion
 
+    private void CheckBox_CheckChanged(object sender, EventArgs e)
+    {
+        InputKit.Shared.Controls.CheckBox checkBox = (InputKit.Shared.Controls.CheckBox)sender;
+        HandleSetCheckChange(checkBox);
+    }
 
+    
 }

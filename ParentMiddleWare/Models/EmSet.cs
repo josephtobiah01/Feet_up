@@ -1,4 +1,5 @@
 ﻿using System.Reflection.Metadata.Ecma335;
+using System.Linq;
 
 namespace ParentMiddleWare.Models
 {
@@ -18,6 +19,7 @@ namespace ParentMiddleWare.Models
         public bool IsCustomerAddedSet { get; set; }
         public DateTime? EndTimeStamp { get; set; }
         public DateTimeOffset? TimeOffset { get; set; }
+        public string PreviousHistory { get; set; }
 
         public List<EmSetMetrics> EmSetMetrics { get; set; }
 
@@ -34,18 +36,21 @@ namespace ParentMiddleWare.Models
             return 0;
         }
 
-        public string GetText()
-        {
-            string r = string.Empty;
-            foreach (var x in EmSetMetrics)
-            {
-                if (x.EmSetMetricTypes.Name != "Rest")
-                {
-                    r += x.TargetCustomMetric + x.EmSetMetricTypes.Name + "x";
-                }
-            }
-            return r.Trim(new char[] { 'x' });
-        }
+        //public async Task<string> GetTextAsync()
+        //{
+        //   await AirMemoryCache.GetUserHistory().Wh
+
+
+        //    string r = string.Empty;
+        //    foreach (var x in EmSetMetrics)
+        //    {
+        //        if (x.EmSetMetricTypes.Name != "Rest")
+        //        {
+        //            r += x.TargetCustomMetric + x.EmSetMetricTypes.Name + "x";
+        //        }
+        //    }
+        //    return r.Trim(new char[] { 'x' });
+        //}
 
         public int GetNumberOfMetrics()
         {

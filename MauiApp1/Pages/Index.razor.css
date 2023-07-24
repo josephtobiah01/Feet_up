@@ -17,10 +17,10 @@ html, body {
 *, html {
     scroll-behavior: smooth !important;
 }
+
 /*#region dynamic variable instantiation */
 :root {
     --display-nutrient-popup-variable: none;
-    --display-user-popup-variable: none;
     --display-add-dish-popup-variable: none;
     --display-mindfulness-popup-variable: none;
     --display-add-new-popup-variable: none;
@@ -28,10 +28,7 @@ html, body {
     --display-footer: inline;
 }
 /*#endregion*/
-.tab-item-navigation-div {
-    margin-left: 16px;
-    margin-top: 32px;
-}
+
 
 .btn-group {
     display: block;
@@ -46,18 +43,13 @@ html, body {
     border-width: 2px;
 }
 /*#region header*/
+.tab-item-navigation-div {
+    background-color: rgba(0,98,114,255);
+    margin-left: 16px;
+    margin-top: 32px;
+    height: 60px;
+}
 .button-header {
-    /*    font-family: 'Montserrat';
-    color: white;
-    background-color: rgba(0,0,0,0);
-    border-radius: 0px;
-    text-align: center;
-    border: solid;
-    border-color: rgba(0,0,0,0);
-    outline: none;
-    margin-top: 10px;
-    font-size: 20px;
-    margin-bottom: 0px;*/
     font-family: 'Montserrat';
     font-style: normal;
     font-weight: 400;
@@ -199,6 +191,7 @@ html, body {
         'footer';
     grid-template-rows: max-content 1fr 90px;
     transition:ease-in-out;
+    padding-top:24px;
 }
 
     .content-group > .resize-rectangle-content-group-div {
@@ -344,7 +337,19 @@ html, body {
 .feed-item-time-elapsed-blue {
     color: #006272;
 }
-
+.feed-item-menu{
+    position:absolute;
+    right:48px;
+    margin-top:-24px;
+    background:none;
+    outline:none;
+    border:none;
+}
+.feed-item-menu-icon {
+    height:20px;
+    width:20px;
+    filter: invert(60%) sepia(14%) saturate(283%) hue-rotate(161deg) brightness(93%) contrast(89%);
+}
 .feed-item-title-div {
     font-family: 'Montserrat';
     font-style: normal;
@@ -419,12 +424,15 @@ html, body {
     border: 1px solid #006272;
     border-radius: 40px;
     background: #FFFFFF;
-    width: fit-content;
-    padding-left:15px;
-    padding-right:15px;
+    max-width: fit-content;
+    padding-left: 15px;
+    padding-right: 15px;
     height: 36px;
     margin-left: 10px;
     margin-top: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .feed-item-start-button-icon {
@@ -443,7 +451,7 @@ html, body {
     color: #FFFFFF;
     background: #006272;
     border-radius: 40px;
-    width: fit-content;
+    max-width: fit-content;
     padding-left: 14px;
     padding-right: 14px;
     height: 36px;
@@ -452,6 +460,9 @@ html, body {
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .feed-item-supplement-start-button {
@@ -469,9 +480,12 @@ html, body {
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 12px;
-    width: max-content;
+    max-width: max-content;
     padding-left: 16px;
     padding-right: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .feed-item-continue-button {
@@ -483,15 +497,18 @@ html, body {
     color: #FFFFFF;
     background: #006272;
     border-radius: 40px;
-    width: fit-content;
-    padding-left:14px;
-    padding-right:14px;
+    max-width: fit-content;
+    padding-left: 14px;
+    padding-right: 14px;
     height: 36px;
     border-color: #006272;
     border: thick;
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .feed-item-supplement-continue-button {
@@ -503,16 +520,19 @@ html, body {
     color: #FFFFFF;
     background: #006272;
     border-radius: 40px;
-    width: 130px;
+    max-width: fit-content;
     height: 36px;
     border-color: #006272;
     border: thick;
     margin-right: 10px;
     margin-left: 10px;
     margin-top: 12px;
-    width:max-content;
-    padding-left:16px;
-    padding-right:16px;
+    width: max-content;
+    padding-left: 16px;
+    padding-right: 16px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .feed-item-undo-button {
@@ -524,24 +544,31 @@ html, body {
     color: #006272;
     border: none;
     background: none;
-    width: 70px;
+    max-width: fit-content;
     height: 36px;
     margin-left: 10px;
     margin-top: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .feed-item-summary-button {
     font-family: 'Montserrat';
     font-style: normal;
+    justify-content: right;
     font-weight: 700;
     font-size: 14px;
     line-height: 20px;
     color: #006272;
     border: none;
     background: none;
-    width: 150px;
+    max-width: max-content;
     height: 36px;
     margin-left: 10px;
     margin-top: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .feed-item-see-details-button {
     font-family: 'Montserrat';
@@ -608,7 +635,7 @@ html, body {
     align-self: start;
     border-width: 4px;
     color: #4C4C4C;
-    font-size: medium;
+    font-size: 14px;
     border-color: #EEF0F2;
     border-radius: 40px;
     position: fixed;
@@ -618,19 +645,35 @@ html, body {
     bottom: 25px;
     height: 40px;
     left: 20px;
+    padding-left:10px;
+    padding-right:10px;
     float: left;
 }
 .datepicker-button {
     height: 40px;
     margin-top: -4px;
-    text-align:center;
-
+    text-align: center;
+    padding: 0px;
     font-family: Montserrat;
     color: black;
-    width: fit-content;
+    max-width: fit-content;
     background: none;
     border: none;
     outline: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.datepicker-image {
+    margin-top:-3px;
+    height: 10px;
+}
+.datepicker-prev-button {
+    margin-left:10px;
+}
+
+.datepicker-next-button {
+    margin-right:10px;
 }
 /*footer right area*/
 .footer-right {
@@ -660,7 +703,7 @@ html, body {
     vertical-align:middle;
     color: #1B7584;
     font-family: 'Montserrat';
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     text-align:center;
     outline:none;
@@ -671,8 +714,8 @@ html, body {
 }
 /*#endregion*/
 
-/*#region feed item details*/
 
+/*#region feed item details*/
 .feed-item-exercise-details-content-group-resize-rectangle-content-group-div {
 }
 
@@ -741,12 +784,21 @@ html, body {
             display: inline-block;
             position:center;
             padding-left:4px;
-            padding-top:2px;
             grid-area: icon;
         }
-        .feed-item-exercise-details-content-div > .feed-item-exercise-details-header-div > .image-icon {
+        .feed-item-exercise-icon-image {
+            height: 44px;
+            width: 44px;
+            display: inline;
+            margin-top:-2px;
+            grid-area: icon;
+            border-radius:8px;
+        }
+.feed-item-exercise-detail-barbell-icon {
             height: 20px;
             width: 20px;
+            margin-top:5px;
+            margin-left:2px;
             display: inline;
             grid-area: icon;
         }
@@ -766,7 +818,7 @@ html, body {
             font-weight: 700;
             font-size: 16px;
             line-height: 20px;
-            margin-left: 16px;
+            margin-left: 24px;
             margin-top: 14px;
             grid-area: title;
         }
@@ -777,7 +829,7 @@ html, body {
             font-weight: 400;
             font-size: 12px;
             line-height: 16px;
-            margin-left: 16px;
+            margin-left: 24px;
             margin-top: 8px;
             grid-area: descirption;
         }
@@ -950,7 +1002,6 @@ html, body {
             .feed-item-exercise-list-row-div > .feed-item-exercise-list-column-div > .feed-item-exercise-list-card-div > .image-container-div {
                 height: 24px;
                 width: 24px;
-                background-color: #D9D9D9;
                 border-radius: 50%;
                 display: inline-block;
                 grid-area: icon;
@@ -976,12 +1027,29 @@ html, body {
                 grid-area: descirption;
             }
 
+.feed-item-exercise-details-content-group-div > .feed-item-exercise-details-menu-button-div {
+    position: fixed;
+    width: 50%;
+    height: 102px;
+    z-index: 5;
+    left: 0px;
+    background: none;
+    border-radius: 6px 6px;
+    bottom: 0px;
+    padding: 16px;
+}
+.feed-item-exercise-details-menu-button {
+    position:relative;
+    background: none;
+    outline: none;
+    border: none;
+}
 .feed-item-exercise-details-content-group-div > .feed-item-exercise-details-button-group-div {
     position: fixed;
-    z-index: 4;
     width: 100%;
     height: 102px;
     left: 0px;
+    z-index: 4;
     background: #FFFFFF;
     box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.15);
     border-radius: 6px 6px;
@@ -1114,8 +1182,10 @@ html, body {
 }
 .add-nutrient-popup-item-icon {
     position:relative;
+    height:20px;
+    width:20px;
     grid-column: 1;
-    margin-left:4px;
+    margin-left:0px;
     margin-top:5px;
 }
 .add-nutrient-popup-item-time-elapsed-group{
@@ -1183,7 +1253,7 @@ html, body {
 .add-nutrient-popup-button-group {
     display: grid;
     grid-template-rows: 80px;
-    grid-template-columns: 33vw 33vw 33vw;
+    grid-template-columns: 50vw 50vw;
     align-content: center;
     margin-bottom: 32px;
     position: relative;
@@ -1194,7 +1264,7 @@ html, body {
     grid-column: 1;
     grid-row: 1;
     height: 80px;
-    width: calc(33vw - 16px);
+    width: calc(50vw - 32px);
     background-color: rgba(0, 98, 114, 1);
     color: white;
     font-size:13px;
@@ -1229,7 +1299,7 @@ html, body {
     grid-column: 2;
     grid-row: 1;
     height: 80px;
-    width: calc(33vw - 16px);
+    width: calc(50vw - 32px);
     background-color: rgba(0, 98, 114, 1);
     color: white;
     font-size: 13px;
@@ -1266,7 +1336,7 @@ html, body {
     color: black;
     font-size: 13px;
     height: 80px;
-    width: calc(33vw - 16px);
+    width: calc(50vw - 16px);
     border: 1px solid rgba(0, 98, 114, 1);
     display: grid;
     grid-template-columns: auto;
@@ -1451,9 +1521,10 @@ html, body {
     justify-self: end;
     align-self: center;
     margin-left: auto;
+    height:24px;
+    width:24px;
     grid-row: 1;
     grid-column: 2;
-    filter: invert(0%) sepia(100%) saturate(8%) hue-rotate(125deg) brightness(107%) contrast(101%);
 }
 
 .add-dish-popup-line-spacer {
@@ -1800,7 +1871,7 @@ html, body {
     box-shadow: 0px 0px 6px 6px rgba(0, 0, 0, 0.15);
 }
 .mindfulness-popup-footer-menu-button {
-    position: fixed;
+    position: absolute;
     left: 16px;
     margin-top: 16px;
 }
@@ -2002,547 +2073,3 @@ html, body {
 }
 /*#endregion*/
 
-/*#region for smaller screen sizes*/
-@media only screen and (max-width: 480px) {
-    .feed-item-snooze-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #006272;
-        border: 1px solid #006272;
-        border-radius: 40px;
-        background: #FFFFFF;
-        width: max-content;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-        text-align: center;
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .feed-item-start-button-icon {
-        margin-right: 5px;
-        width: 10px;
-        height: 10px;
-        align-self: center;
-    }
-
-    .feed-item-start-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: max-content;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 12px;
-        text-align: center;
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .feed-item-start-button2 {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: max-content;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 5px;
-        margin-top: 12px;
-        text-align: center;
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .feed-item-supplement-start-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 4px;
-        margin-top: 12px;
-        width: max-content;
-        text-align: center;
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .feed-item-continue-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: max-content;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 12px;
-        text-align: center;
-        padding-left: 14px;
-        padding-right: 14px;
-    }
-
-    .feed-item-supplement-continue-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 10px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: 130px;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 4px;
-        margin-top: 12px;
-        width: max-content;
-        padding-left: 6px;
-        padding-right: 6px;
-    }
-
-    .feed-item-undo-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: #FFFFFF;
-        width: 60px;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-
-    .feed-item-summary-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: #FFFFFF;
-        width: 80px;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-
-    .footer-left {
-        transform: scale(0.8);
-        left: -10px;
-    }
-
-    .footer-right {
-        transform: scale(0.8);
-        font-size: 10px;
-        right: 10px;
-    }
-
-    .new-item-button-icon {
-        height: 12px;
-        width: 12px;
-    }
-}
-
-@media only screen and (max-width: 400px) {
-    /*to do*/
-    .feed-item-snooze-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #006272;
-        border: 1px solid #006272;
-        border-radius: 40px;
-        background: #FFFFFF;
-        width: fit-content;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-
-    .feed-item-start-button-icon {
-        margin-right: 5px;
-        width: 10px;
-        height: 10px;
-        align-self: center;
-    }
-
-    .feed-item-start-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: fit-content;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-
-    .feed-item-start-button2 {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: max-content;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 5px;
-        margin-top: 12px;
-        text-align: center;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-    .feed-item-supplement-start-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 12px;
-        width: fit-content;
-        padding-left: 10px;
-        padding-right: 10px;
-    }
-
-    .feed-item-continue-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: fit-content;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 30px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 10px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-
-    .feed-item-undo-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: none;
-        width: fit-content;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-
-    .feed-item-summary-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: none;
-        width: fit-content;
-        padding-left: 10px;
-        padding-right: 10px;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-    .feed-item-see-details-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 11px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: none;
-        width: fit-content;
-        height: 30px;
-        margin-left: 10px;
-        margin-top: 12px;
-    }
-    .footer-left{
-       transform:scale(0.8);
-       left:-10px;
-    }
-    .footer-right{
-        transform:scale(0.8);
-        font-size:10px;
-        right:10px;
-    }
-    .new-item-button-icon{
-        height:12px;
-        width:12px;
-    }
-}
-
-@media only screen and (max-width: 360px) {
-    /*to do*/
-    .feed-item-snooze-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #006272;
-        border: 1px solid #006272;
-        border-radius: 40px;
-        background: #FFFFFF;
-        width: fit-content;
-        padding-left: 8px;
-        padding-right: 8px;
-        height: 24px;
-        margin-left: 4px;
-        margin-top: 12px;
-    }
-    .home-screen-training-session-now-feed-item-div{
-        padding:10px;
-    }
-    .feed-item-time-elapsed-group-div{
-        margin-top:10px;
-        margin-left:10px;
-    }
-    .feed-item-title-div{
-        margin-left:10px;
-    }
-    .home-screen-training-session-now-feed-item-div > .header-dash-border-div {
-        margin-left: 10px;
-        margin-right: 10px;
-    }
-    .feed-item-description-div{
-        margin-left:10px;
-    }
-    .feed-item-start-button-icon {
-        margin-right: 5px;
-        width: 10px;
-        height: 10px;
-        align-self: center;
-    }
-
-    .feed-item-start-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: fit-content;
-        padding-left: 8px;
-        padding-right: 8px;
-        height: 24px;
-        border-color: #006272;
-        border: thick;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-    }
-
-    .feed-item-supplement-start-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        height: 24px;
-        border-color: #006272;
-        border: thick;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-        width: fit-content;
-        padding-left: 8px;
-        padding-right: 8px;
-        text-align: center;
-    }
-
-    .feed-item-start-button2 {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: fit-content;
-        padding-left: 8px;
-        padding-right: 8px;
-        height: 24px;
-        border-color: #006272;
-        border: thick;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-        text-align: center;
-    }
-
-    .feed-item-continue-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: fit-content;
-        padding-left: 8px;
-        padding-right: 8px;
-        height: 24px;
-        border-color: #006272;
-        border: thick;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-        text-align: center;
-    }
-
-    .feed-item-supplement-continue-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #FFFFFF;
-        background: #006272;
-        border-radius: 40px;
-        width: fit-content;
-        padding-left: 4px;
-        padding-right: 4px;
-        height: 24px;
-        border-color: #006272;
-        border: thick;
-        margin-right: 4px;
-        margin-left: 4px;
-        margin-top: 12px;
-    }
-
-    .feed-item-undo-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: none;
-        width: fit-content;
-        height: 24px;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-    }
-
-    .feed-item-summary-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: none;
-        width: fit-content;
-        height: 24px;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-    }
-
-    .feed-item-see-details-button {
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 9px;
-        line-height: 20px;
-        color: #006272;
-        border: none;
-        background: none;
-        width: max-content;
-        height: 24px;
-        margin-left: 4px;
-        margin-right: 4px;
-        margin-top: 12px;
-    }
-}
-/*#endregion*/

@@ -10,7 +10,7 @@ namespace FitappApi.Net7.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class SupplementController : ControllerBase
+    public class SupplementController : BaseController
     {
         private readonly SupplementContext _sContext;
         private readonly LogsContext _lContext;
@@ -22,11 +22,14 @@ namespace FitappApi.Net7.Controllers
         }
 
 
+
         [HttpPost]
         [Route("TakeDose")]
-        public async Task<bool> TakeDose(long DoseId, float UnitCountActual, bool isCustomerAdded = false, bool isFreeEntry = false, string FreeEntryName = "")
+        public async Task<bool> TakeDose(long UserId,  long DoseId, float UnitCountActual, bool isCustomerAdded = false, bool isFreeEntry = false, string FreeEntryName = "")
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
+            if (dose == null) return false;
             dose.UnitCountActual = UnitCountActual;
             dose.IsComplete = true;
             dose.CompletionTime = DateTime.Now;
@@ -38,7 +41,9 @@ namespace FitappApi.Net7.Controllers
         [Route("TakeDoseUndo")]
         public async Task<bool> TakeDoseUndo(long DoseId)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
+            if (dose == null) return false;
             dose.UnitCountActual = 0;
             dose.IsComplete = false;
             dose.CompletionTime = null;
@@ -50,13 +55,15 @@ namespace FitappApi.Net7.Controllers
         [Route("SnoozeDose")]
         public async Task<bool> SnoozeDose(long DoseId, int MinutesSnoozed)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
+            if (dose == null) return false;
             dose.IsSnoozed = true;
             if (dose.SnoozedTime.HasValue)
             {
                 dose.SnoozedTime = dose.SnoozedTime.Value.AddMinutes(MinutesSnoozed);
             }
-            else
+            else if(dose.ScheduledTime.HasValue)
             {
                 dose.SnoozedTime = dose.ScheduledTime.Value.AddMinutes(MinutesSnoozed);
             }
@@ -69,7 +76,9 @@ namespace FitappApi.Net7.Controllers
         [Route("UndoSnooze")]
         public async Task<bool> UndoSnooze(long DoseId)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
+            if (dose == null) return false;
             dose.IsSnoozed = false;
             dose.SnoozedTime = null;
             await _sContext.SaveChangesAsync();
@@ -81,7 +90,9 @@ namespace FitappApi.Net7.Controllers
         [Route("UndoSkipSupplement")]
         public async Task<bool> UndoSkipSupplement(long DoseId, int MinutesSnoozed)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
+            if (dose == null) return false;
             dose.IsSnoozed = false;
             dose.SnoozedTime = null;
             dose.IsSkipped = false;
@@ -93,6 +104,7 @@ namespace FitappApi.Net7.Controllers
         [Route("GetAllSupplments")]
         public async Task<List<NdSupplementList>> GetAllSupplments(long UserId)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             var supp = await _sContext.NdsSupplementPlanWeekly.Where(t => t.FkCustomerId == UserId && t.IsActive == true)
                 .Include(t => t.NdsSupplementPlanDaily)
                 .ThenInclude(t => t.NdsSupplementPlanSupplement)
@@ -137,7 +149,6 @@ namespace FitappApi.Net7.Controllers
                     su_1.Frequency = "var per day";
                     su_1.Type = ssupp.FkSupplementReferenceNavigation.FkUnitMetricNavigation.Name;
 
-
                     foreach (var sdose in ssupp.NdsSupplementPlanDose)
                     {
                         su_1.DayOfWeek.Add((ParentMiddleWare.Models.DayOfWeek)(int)sday.DayOfWeek);
@@ -153,24 +164,5 @@ namespace FitappApi.Net7.Controllers
             }
             return lst;
         }
-
-
-
-        //[HttpPost]
-        //[Route("FavoriteDish")]
-        //public async Task<bool> FavoriteDish(long recipeId)
-        //{
-        //    try
-        //    {
-        //        var dish = await _context.FnsNutritionActualDish.Where(t => t.Id == recipeId).FirstAsync();
-        //        dish.IsFavorite = true;
-        //        await _context.SaveChangesAsync();
-        //        return true;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return false;
-        //    }
-        //}
     }
 }

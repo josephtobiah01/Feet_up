@@ -1,16 +1,14 @@
 ﻿using MauiApp1.Areas.Chat.Models;
 using MauiApp1.Areas.Chat.ViewModels.DeviceServices;
+using MauiApp1.Helpers;
+using MauiApp1.Models;
 using MessageApi.Net7;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using ParentMiddleWare;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using Image = Microsoft.Maui.Controls.Image;
 
 namespace MauiApp1.Pages.Chat
 {
@@ -22,17 +20,26 @@ namespace MauiApp1.Pages.Chat
         [Inject]
         IJSRuntime JSRuntime { get; set; }
 
+        
+
         private ObservableCollection<IMessage> _messageList = new ObservableCollection<IMessage>();
         private List<RecievedMessage> _messageListReserve;
+        private List<string> _galleryImages = new List<string>();
+        
 
         IDispatcherTimer _dispatcherTimer;
 
         private string _userMessageText = "";
+        private string _userMessageImage = "";
+        private bool _isCancelButtonVisible = false;
+        
 
         private bool _isUserScroll = false;
         private bool _isFirstLoad = true;
 
         private int _pageSize = 1;
+
+        
 
         #endregion
 
@@ -52,6 +59,7 @@ namespace MauiApp1.Pages.Chat
         {
             await IntializeData();
             InitializeControl();
+
         }
         
 
@@ -69,7 +77,7 @@ namespace MauiApp1.Pages.Chat
                     {
                         RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
                         
-                        message = new IMessage(Linkify(recievedMessage.MessageContent), recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                        message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, Linkify(recievedMessage.MessageContent));
                         _messageList.Add(message);
                     }
 
@@ -112,7 +120,12 @@ namespace MauiApp1.Pages.Chat
 
         private void SendButton_Clicked()
         {
-            SendMessage(this._userMessageText);
+            SendMessage(this._userMessageText, this._userMessageImage);
+        }
+
+        private void SendImage_Clicked()
+        {
+
         }
 
         private async void ChatInput_Focused()
@@ -158,7 +171,7 @@ namespace MauiApp1.Pages.Chat
                     {
                         if (recievedMessage.IsUserMessage == false)
                         {
-                            message = new IMessage(Linkify(recievedMessage.MessageContent), recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                            message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, Linkify(recievedMessage.MessageContent));
 
                             _messageList.Add(message);
                         }
@@ -191,23 +204,30 @@ namespace MauiApp1.Pages.Chat
             }
         }
 
-        public async void SendMessage(string text)
+        public async void SendMessage(string text, string image)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(text) == false)
+                if (string.IsNullOrWhiteSpace(text) == false && _userMessageImage != null)
                 {
                     IMessage message = null;
-                    RecievedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = text });
+                    //RecievedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(
+                    //    new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = text});
+
+                    MessageReceivedResponse sentMessage = await GetData(text, image);
 
                     if (sentMessage != null)
                     {
-                        message = new IMessage(Linkify(sentMessage.MessageContent), sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage);
+                        message = new IMessage(sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, 
+                            sentMessage.IsUserMessage, Linkify(sentMessage.MessageContent), sentMessage.MessageImageContent);
                         _messageList.Add(message);
                         _isUserScroll = false;
                     }
                 }
+              
                 this._userMessageText = null;
+                this._userMessageImage = null;
+                this._isCancelButtonVisible = false;
 
                 await JSRuntime.InvokeVoidAsync("ResetInputHeight");
                 StateHasChanged();
@@ -224,6 +244,97 @@ namespace MauiApp1.Pages.Chat
             finally
             {
             }
+        }
+
+        private async Task UploadPhoto()
+        {
+            string uploadImage = "";
+            PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Media>();
+            if (status != PermissionStatus.Denied || status != PermissionStatus.Unknown || status != PermissionStatus.Disabled)
+            {
+                var result = await FilePicker.PickAsync(new PickOptions
+                {
+                    PickerTitle = "Select image(s) to send",
+                    FileTypes = FilePickerFileType.Images
+                });
+
+                if (result == null)
+                    return;
+
+                var stream = await result.OpenReadAsync();
+
+                uploadImage = await ConvertStreamToBase64Async(stream);
+
+                _userMessageImage += $"data:image/png;base64,{uploadImage}";
+                _isCancelButtonVisible = true;
+
+            }
+
+            else
+            {
+                var result = await Permissions.RequestAsync<Permissions.Media>();
+
+                if (result == PermissionStatus.Denied || result == PermissionStatus.Unknown || result != PermissionStatus.Disabled)
+                {
+                    await App.Current.MainPage.DisplayAlert("Required", "You must allow the permission to get your image", "Ok");
+                }
+            }
+        }
+
+        private async Task TakePhoto()
+        {
+            string takeImage = "";
+            var photo = await MediaPicker.CapturePhotoAsync();
+
+            var stream = await photo.OpenReadAsync();
+
+            takeImage = await ConvertStreamToBase64Async(stream);
+
+            _userMessageImage = $"data:image/png;base64,{takeImage}";
+
+        }
+
+        private async Task<string> ConvertStreamToBase64Async(Stream stream)
+        {
+            using (var memoryStream = new MemoryStream())
+            {
+                await stream.CopyToAsync(memoryStream);
+                byte[] bytes = memoryStream.ToArray();
+                return Convert.ToBase64String(bytes);
+            }
+        }
+
+        private void CancelButtonClick()
+        {
+            _userMessageImage = "";
+            _isCancelButtonVisible = false;
+        }
+
+        private string SetPlaceholder()
+        {
+            if (!string.IsNullOrEmpty(_userMessageImage))
+            {
+                return "";
+            }
+            else
+            {
+                return string.IsNullOrEmpty(_userMessageText) ? "Send a message" : "";
+            }
+        }
+
+
+        private async Task<MessageReceivedResponse> GetData(string text, string image)
+        {
+            MessageReceivedResponse response = new MessageReceivedResponse();
+
+            response.MessageContent = text;
+            response.MessageImageContent = image;
+            response.IsUserMessage = true;
+            response.TimeStamp = DateTime.Now;
+            response.UserName = "test";
+
+            await Task.Delay(2);
+            return response;
         }
 
         private async Task ScrollDivToEnd()

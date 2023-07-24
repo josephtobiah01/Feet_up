@@ -3,12 +3,14 @@ using DAOLayer.Net7.Supplement;
 using FitappAdminWeb.Net7.Classes.DTO;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
+using X.PagedList;
 
 namespace FitappAdminWeb.Net7.Models
 {
     public class ExerciseTypeListViewModel
     {
         public List<EdsExerciseType> EdsExerciseTypes { get; set; } = new List<EdsExerciseType>();
+        public PagedList<EdsExerciseType>? PagingEdsExerciseTypes { get; set; }
     }
 
     public class ExerciseTypeEditViewModel
@@ -33,7 +35,8 @@ namespace FitappAdminWeb.Net7.Models
         public string? Name { get; set; }
         public long? Id { get; set; }
 
-        public List<NdsSupplementReference> NdsSupplementReferences { get; set; }
+        public List<NdsSupplementReference> NdsSupplementReferences { get; set; } = new List<NdsSupplementReference>();
+        public PagedList<NdsSupplementReference>? PagingNdsSupplementReferences { get; set; }
     }
 
     public class SupplementReferenceEditViewModel
@@ -47,5 +50,6 @@ namespace FitappAdminWeb.Net7.Models
     public class TrainingSessionTemplateListViewModel
     {
         public List<EdsTrainingSession> TemplateSessions { get; set; } = new List<EdsTrainingSession>();
+        public PagedList<EdsTrainingSession>? PagingTemplateSessions { get; set; }
     }
 }

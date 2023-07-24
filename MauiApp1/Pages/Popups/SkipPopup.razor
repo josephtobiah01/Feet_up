@@ -1,0 +1,27 @@
+﻿@page "/skipPopup";
+@using ParentMiddleWare.Models;
+
+
+<!--popup-->
+<!--dark background overlay-->
+<div class="popup-wrapper" style="--display-popup-variable: @DisplayPopup">
+    <div class="popup-background-dark-overlay"> </div>
+    <div class="popup-background">
+        <div class="popup-body">
+            <div class="popup-header-group">
+                <button class="popup-header-close-button" @onclick="async ()=> await ClosePopup()"> <img class="popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
+            </div>
+            <img class="popup-error-icon" src="resources/private/icons/error/internet_lost.svg" />
+            <div class="popup-title">
+                <label >Are you sure?</label>
+            </div>
+            <div class="popup-subtext">
+                <label >Doing this will consider it skipped from your today’s task.</label>
+            </div>
+            <div class="popup-footer">
+                <button class="popup-footer-left-button" @onclick="async ()=> await ClosePopup()">No</button>
+                <button class="popup-footer-right-button" @onclick="async ()=> await ConfirmSkip()">Sure</button>
+            </div>
+        </div>
+    </div>
+</div>

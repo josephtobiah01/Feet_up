@@ -8,18 +8,24 @@ namespace DAOLayer.Net7.User;
 
 public partial class UserContext : DbContext
 {
-    public UserContext()
-    {
-    }
-
     public UserContext(DbContextOptions<UserContext> options)
         : base(options)
     {
     }
 
+    public virtual DbSet<Address> Address { get; set; }
+
     public virtual DbSet<Apn> Apn { get; set; }
 
+    public virtual DbSet<ApnErrorLog> ApnErrorLog { get; set; }
+
+    public virtual DbSet<ApnLogs> ApnLogs { get; set; }
+
+    public virtual DbSet<ApnSchedule> ApnSchedule { get; set; }
+
     public virtual DbSet<Country> Country { get; set; }
+
+    public virtual DbSet<Gender> Gender { get; set; }
 
     public virtual DbSet<UInternalNotes> UInternalNotes { get; set; }
 
@@ -27,6 +33,28 @@ public partial class UserContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Address>(entity =>
+        {
+            entity.Property(e => e.AddressCity)
+                .HasMaxLength(127)
+                .HasColumnName("address_city");
+            entity.Property(e => e.AddressCountry)
+                .HasMaxLength(127)
+                .HasColumnName("address_country");
+            entity.Property(e => e.AddressLine1)
+                .HasMaxLength(255)
+                .HasColumnName("address_line_1");
+            entity.Property(e => e.AddressLine2)
+                .HasMaxLength(255)
+                .HasColumnName("address_line_2");
+            entity.Property(e => e.AddressPostalCode)
+                .HasMaxLength(50)
+                .HasColumnName("address_postal_code");
+            entity.Property(e => e.AddressState)
+                .HasMaxLength(127)
+                .HasColumnName("address_state");
+        });
+
         modelBuilder.Entity<Apn>(entity =>
         {
             entity.Property(e => e.DeviceId)
@@ -38,11 +66,87 @@ public partial class UserContext : DbContext
                 .IsRequired()
                 .HasDefaultValueSql("((1))")
                 .HasColumnName("is_active");
+            entity.Property(e => e.LastActive)
+                .HasColumnType("datetime")
+                .HasColumnName("last_active");
+            entity.Property(e => e.Platform)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsFixedLength();
+            entity.Property(e => e.Timestamp)
+                .HasColumnType("datetime")
+                .HasColumnName("timestamp");
 
             entity.HasOne(d => d.FkUser).WithMany(p => p.Apn)
                 .HasForeignKey(d => d.FkUserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Apn_User");
+        });
+
+        modelBuilder.Entity<ApnErrorLog>(entity =>
+        {
+            entity.Property(e => e.FkUsrId).HasColumnName("fk_usrId");
+            entity.Property(e => e.Message)
+                .IsRequired()
+                .HasColumnName("message");
+            entity.Property(e => e.Stack).HasColumnName("stack");
+            entity.Property(e => e.Timestamp)
+                .HasColumnType("datetime")
+                .HasColumnName("timestamp");
+        });
+
+        modelBuilder.Entity<ApnLogs>(entity =>
+        {
+            entity.Property(e => e.Category)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("category");
+            entity.Property(e => e.Devicekey)
+                .IsRequired()
+                .HasMaxLength(128)
+                .IsUnicode(false)
+                .HasColumnName("devicekey");
+            entity.Property(e => e.FkUserId).HasColumnName("fk_userId");
+            entity.Property(e => e.Platform)
+                .IsRequired()
+                .HasMaxLength(10)
+                .IsFixedLength()
+                .HasColumnName("platform");
+            entity.Property(e => e.Timestamp)
+                .HasColumnType("datetime")
+                .HasColumnName("timestamp");
+            entity.Property(e => e.Title)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("title");
+        });
+
+        modelBuilder.Entity<ApnSchedule>(entity =>
+        {
+            entity.Property(e => e.Category)
+                .IsRequired()
+                .HasMaxLength(50)
+                .IsUnicode(false)
+                .HasColumnName("category");
+            entity.Property(e => e.CreatedUtc)
+                .HasColumnType("datetime")
+                .HasColumnName("CreatedUTC");
+            entity.Property(e => e.DateToTriggerUtc)
+                .HasColumnType("datetime")
+                .HasColumnName("DateToTriggerUTC");
+            entity.Property(e => e.DeviceId)
+                .IsRequired()
+                .HasMaxLength(255)
+                .IsUnicode(false);
+            entity.Property(e => e.HasSent).HasColumnName("hasSent");
+            entity.Property(e => e.Message)
+                .IsRequired()
+                .HasMaxLength(2048)
+                .IsUnicode(false)
+                .HasColumnName("message");
+            entity.Property(e => e.Platform)
+                .IsRequired()
+                .HasMaxLength(1)
+                .IsFixedLength();
         });
 
         modelBuilder.Entity<Country>(entity =>
@@ -54,6 +158,18 @@ public partial class UserContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("name");
             entity.Property(e => e.TimeOffset).HasColumnName("time_offset");
+        });
+
+        modelBuilder.Entity<Gender>(entity =>
+        {
+            entity.Property(e => e.IsActive)
+                .IsRequired()
+                .HasDefaultValueSql("((1))")
+                .HasColumnName("is_Active");
+            entity.Property(e => e.Name)
+                .IsRequired()
+                .HasMaxLength(50)
+                .HasColumnName("name");
         });
 
         modelBuilder.Entity<UInternalNotes>(entity =>
@@ -70,15 +186,9 @@ public partial class UserContext : DbContext
                 .HasMaxLength(512)
                 .HasColumnName("note");
 
-            entity.HasOne(d => d.ByUserNavigation).WithMany(p => p.UInternalNotesByUserNavigation)
+            entity.HasOne(d => d.ByUserNavigation).WithMany(p => p.UInternalNotes)
                 .HasForeignKey(d => d.ByUser)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_u_internal_notes_User");
-
-            entity.HasOne(d => d.ForUserNavigation).WithMany(p => p.UInternalNotesForUserNavigation)
-                .HasForeignKey(d => d.ForUser)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_u_internal_notes_User1");
         });
 
         modelBuilder.Entity<User>(entity =>
@@ -105,7 +215,9 @@ public partial class UserContext : DbContext
                 .IsRequired()
                 .HasMaxLength(450)
                 .HasColumnName("fk_federated_user");
+            entity.Property(e => e.FkGender).HasColumnName("fk_gender");
             entity.Property(e => e.FkInternalNotesId).HasColumnName("fk_internal_notes_id");
+            entity.Property(e => e.FkShippingAddress).HasColumnName("fk_shipping_address");
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .IsFixedLength()
@@ -119,12 +231,26 @@ public partial class UserContext : DbContext
             entity.Property(e => e.LastName)
                 .HasMaxLength(50)
                 .HasColumnName("last_name");
+            entity.Property(e => e.MiddleName)
+                .HasMaxLength(50)
+                .HasColumnName("middle_name");
             entity.Property(e => e.Mobile)
                 .HasMaxLength(50)
                 .HasColumnName("mobile");
+            entity.Property(e => e.MobileCountryCode)
+                .HasMaxLength(10)
+                .HasColumnName("mobile_country_code");
             entity.Property(e => e.SetTimeOffset).HasColumnName("set_time_offset");
             entity.Property(e => e.UserLevel).HasColumnName("user_level");
             entity.Property(e => e.Weight).HasColumnName("weight");
+
+            entity.HasOne(d => d.FkGenderNavigation).WithMany(p => p.User)
+                .HasForeignKey(d => d.FkGender)
+                .HasConstraintName("FK_User_Gender");
+
+            entity.HasOne(d => d.FkShippingAddressNavigation).WithMany(p => p.User)
+                .HasForeignKey(d => d.FkShippingAddress)
+                .HasConstraintName("FK_User_Address");
         });
 
         OnModelCreatingPartial(modelBuilder);

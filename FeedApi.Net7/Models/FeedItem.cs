@@ -55,7 +55,7 @@ namespace FeedApi.Net7.Models
 
     public class FeedItem
     {
-
+        public string ID { get; set; }
         public FeedItemType ItemType { get; set; }
         public FeedItemStatus Status { get; set; }
         // The Date when it's starting. Clients calculate the remaining minutes 

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using DAOLayer.Net7.Nutrition;
 using FitappAdminWeb.Net7.Classes.DTO;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,17 +12,24 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
     public class NutritionRepository
     {
         NutritionContext _nutcontext;
+        FitAppAPIUtil _apiutil;
+        IConfiguration _config;
         ILogger<NutritionRepository> _logger;
         IMapper _mapper;
 
         const int ACTUALDAY_DEFAULT_DATERANGE = 7;
         const long TRANSCRIPTIONTYPEID_PHOTO = 1;
+        readonly string API_NOTIFYTRANSCRIPTIONCOMPLETE = "/api/Nutrition/NotifyTranscriptionComplete?MealId=";
+        readonly string APPSETTINGKEY_MAINAPI_DOMAIN = "MainApi_Domain";
+        readonly int CUSTOM_MEALTYPE_ID = 4;
 
-        public NutritionRepository(NutritionContext nutritionContext, ILogger<NutritionRepository> logger, IMapper mapper)
+        public NutritionRepository(NutritionContext nutritionContext, ILogger<NutritionRepository> logger, IConfiguration config, IMapper mapper, FitAppAPIUtil apiutil)
         {
             _nutcontext = nutritionContext;
             _logger = logger;
             _mapper = mapper;
+            _config = config;
+            _apiutil = apiutil;
         }
 
         public async Task<FnsNutritionActualDay?> GetActualDayByDate(long userId, DateTime dt)
@@ -70,7 +78,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
 
         public async Task<List<FnsNutritionActualDish>> GetTranscriptionList(bool includeTestAccounts = false)
         {
-            return await _nutcontext.FnsNutritionActualDish.Where(r => !r.IsComplete && (includeTestAccounts || r.FkNutritionActualMeal.FkNutritionActualDay.FkUser.IsActive == true))
+            return await _nutcontext.FnsNutritionActualDish.Where(r => !r.IsComplete && r.FkDishTranscriptionTypeId == TRANSCRIPTIONTYPEID_PHOTO && (includeTestAccounts || r.FkNutritionActualMeal.FkNutritionActualDay.FkUser.IsActive == true))
                 .OrderBy(r => r.CreationTimestamp)
                 .Include(r => r.FkDishTranscriptionType)
                 .Include(r => r.FkDishType)
@@ -117,12 +125,14 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
             {
                 try
                 {
+                    
                     FnsNutritionActualDish currDish = await GetActualDishById(input.Id);
                     if (currDish == null)
                     {
                         _logger.LogError("Cannot edit dish. Cannot find dish id {id}", input.Id);
                         return null;
                     }
+                    bool firstTranscription = !currDish.IsComplete;
 
                     _mapper.Map(input, currDish);
 
@@ -145,6 +155,28 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     
                     _nutcontext.Update(currDish);
                     await _nutcontext.SaveChangesAsync();
+
+                    //Call NotifyTranscriptionComplete API for this current dish when all dishes are complete
+                    if (firstTranscription && currDish.IsComplete && currDish.FkNutritionActualMeal.IsComplete)
+                    {
+                        try
+                        {
+                            string apiurl = API_NOTIFYTRANSCRIPTIONCOMPLETE + currDish.FkNutritionActualMeal.Id;
+                            HttpClient client = _apiutil.GetHttpClient();
+                            var request = _apiutil.BuildRequest(apiurl, HttpMethod.Post);
+                            _ = Task.Run(() => client.SendAsync(request));
+
+                            //string apiurl = $"{_config[APPSETTINGKEY_MAINAPI_DOMAIN]}{API_NOTIFYTRANSCRIPTIONCOMPLETE}" + currDish.FkNutritionActualMeal.Id;
+                            //HttpClient client = _httpclientfactory.CreateClient();
+
+                            //do not await this result. Just call it then move on
+                            //_ = Task.Run(() => client.PostAsync(apiurl, null));
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogWarning(ex, "Failed to call GetMealDishes API on dish id {id}", currDish.Id);
+                        }
+                    }
 
                     return currDish;
                 }
@@ -265,7 +297,17 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         var newDailyPlan = _mapper.Map<FnsNutritionActualDay>(input);
                         foreach (var meal in input.Meals)
                         {
+                            //custom meals are NOT copied
+                            if (meal.MealTypeId == CUSTOM_MEALTYPE_ID)
+                            {
+                                continue;
+                            }
+
                             var newMeal = _mapper.Map<FnsNutritionActualMeal>(meal);
+                            if (newMeal.ScheduledTime.HasValue)
+                            {
+                                newMeal.ScheduledTime = currDate.Add(newMeal.ScheduledTime.Value.TimeOfDay);
+                            }
                             newDailyPlan.FnsNutritionActualMeal.Add(newMeal);
                         }
                         newDailyPlan.Date = currDate;
@@ -315,6 +357,9 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         currDay.FnsNutritionActualMeal.Add(newMealRow);
                     }
 
+                    //await CopyDayToFutureDays(input);
+                    await CopyDayToFutureDays_V2(input);
+
                     int rowChanges = await _nutcontext.SaveChangesAsync();
                     _logger.LogInformation($"Updated Actual Day ID {input.Id}. Rows Changed: {rowChanges}");
                     return true;
@@ -325,6 +370,149 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     _logger.LogError(ex, "Failed to edit nutritional daily plans");
                     return false;
                 }
+            }
+        }
+
+        /// <summary>
+        /// This returns a list of days that do not contain any dish data and are therefore replaceable
+        /// </summary>
+        /// <param name="userId"></param>
+        /// <param name="startDate"></param>
+        /// <param name="daysToExtrapolate"></param>
+        /// <returns></returns>
+        private async Task<List<FnsNutritionActualDay>> GetActualDaysToReplace(long userId, DateTime startDate, int daysToExtrapolate)
+        {
+            DateTime endDate = startDate.AddDays(daysToExtrapolate);
+            var actualday_list = await _nutcontext.FnsNutritionActualDay.Where(r => r.FkUserId == userId && 
+                r.Date > startDate && r.Date <= endDate &&
+                r.FnsNutritionActualMeal.Count(s => s.FnsNutritionActualDish.Count > 0) == 0)
+                .Include(r => r.FnsNutritionActualMeal)
+                .ToListAsync();
+
+            return actualday_list;
+        }
+
+        private async Task<List<FnsNutritionActualDay>> GetActualDaysToReplace_V2(long userId, DateTime startDate, int daysToExtrapolate)
+        {
+            DateTime endDate = startDate.AddDays(daysToExtrapolate);
+            var actualday_list = await _nutcontext.FnsNutritionActualDay.Where(r => r.FkUserId == userId &&
+                r.Date > startDate && r.Date <= endDate)
+                .Include(r => r.FnsNutritionActualMeal)
+                    .ThenInclude(r => r.FnsNutritionActualDish)
+                        .ThenInclude(r => r.FkDishType)
+                .Include(r => r.FnsNutritionActualMeal)
+                    .ThenInclude(r => r.MealType)
+                .ToListAsync();
+
+            return actualday_list;
+        }
+
+        private async Task CopyDayToFutureDays(ActualDay_DTO input)
+        {
+            var actualDayList = await GetActualDaysToReplace(input.FkUserId, input.Date, input.DaysToExtrapolate);
+            for (var i = 0; i < input.DaysToExtrapolate; i++)
+            {
+                var currDate = input.Date.AddDays(i + 1);
+                var currDays = actualDayList.Where(r => r.Date.Date == currDate.Date).ToList();
+
+                //add a day row if there is no day there.
+
+                foreach (var currDay in currDays)
+                {
+                    if (currDay != null)
+                    {
+                        //delete actual day from db.
+                        //Note: Might need to drill down to meals depending on db schema
+                        _nutcontext.FnsNutritionActualMeal.RemoveRange(currDay.FnsNutritionActualMeal.ToArray());
+                        _nutcontext.FnsNutritionActualDay.Remove(currDay);
+                    }
+
+                    //add a new actual day row based on input
+                    var newDayRow = _mapper.Map<FnsNutritionActualDay>(input);
+                    newDayRow.Id = 0;
+                    newDayRow.Date = currDate;
+
+                    foreach (var inputMeal in input.Meals)
+                    {
+                        //skip copying meal type 4 (custom meals)
+                        if (inputMeal.MealTypeId == CUSTOM_MEALTYPE_ID)
+                        {
+                            continue;
+                        }
+
+                        var newMealRow = _mapper.Map<FnsNutritionActualMeal>(inputMeal);
+                        newMealRow.Id = 0;
+                        newMealRow.FkNutritionActualDayId = 0;
+
+                        if (newMealRow.ScheduledTime.HasValue)
+                        {
+                            newMealRow.ScheduledTime = currDate.Add(newMealRow.ScheduledTime.Value.TimeOfDay);
+                        }
+                        newDayRow.FnsNutritionActualMeal.Add(newMealRow);
+
+                    }
+                    _nutcontext.FnsNutritionActualDay.Add(newDayRow);
+                }
+            }
+        }
+
+        private async Task CopyDayToFutureDays_V2(ActualDay_DTO input)
+        {
+            var actualDayList = await GetActualDaysToReplace_V2(input.FkUserId, input.Date, input.DaysToExtrapolate);
+            for (var i = 0; i < input.DaysToExtrapolate; i++)
+            {
+                var currDate = input.Date.AddDays(i + 1);
+                var currDays = actualDayList.Where(r => r.Date.Date == currDate.Date).ToList();
+                bool hasData = currDays.Any(r => r.FnsNutritionActualMeal.Any(s => s.FnsNutritionActualDish.Count > 0));
+
+                if (hasData) continue; //If dishes already exist in any plan in the date, we skip this date
+
+                //delete actual day from db.
+                foreach (var currDay in currDays)
+                {
+                    if (currDay != null)
+                    {                       
+                        _nutcontext.FnsNutritionActualMeal.RemoveRange(currDay.FnsNutritionActualMeal.ToArray());
+                        _nutcontext.FnsNutritionActualDay.Remove(currDay);
+                    }
+                }
+
+                //add a new actual day row based on input
+                var newDayRow = _mapper.Map<FnsNutritionActualDay>(input);
+                newDayRow.Id = 0;
+                newDayRow.Date = currDate;
+
+                foreach (var inputMeal in input.Meals)
+                {
+                    //skip copying meal type 4 (custom meals)
+                    if (inputMeal.MealTypeId == CUSTOM_MEALTYPE_ID)
+                    {
+                        continue;
+                    }
+
+                    var newMealRow = _mapper.Map<FnsNutritionActualMeal>(inputMeal);
+                    newMealRow.Id = 0;
+                    newMealRow.FkNutritionActualDayId = 0;
+
+                    if (newMealRow.ScheduledTime.HasValue)
+                    {
+                        newMealRow.ScheduledTime = currDate.Add(newMealRow.ScheduledTime.Value.TimeOfDay);
+                    }
+
+                    if (newMealRow.IsComplete)
+                    {
+                        newMealRow.IsComplete = false;
+                    }
+
+                    if (newMealRow.IsOngoing)
+                    {
+                        newMealRow.IsOngoing = false;
+                    }
+
+                    newDayRow.FnsNutritionActualMeal.Add(newMealRow);
+
+                }
+                _nutcontext.FnsNutritionActualDay.Add(newDayRow);
             }
         }
 

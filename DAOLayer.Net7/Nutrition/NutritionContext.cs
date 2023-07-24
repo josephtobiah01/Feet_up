@@ -8,10 +8,6 @@ namespace DAOLayer.Net7.Nutrition;
 
 public partial class NutritionContext : DbContext
 {
-    public NutritionContext()
-    {
-    }
-
     public NutritionContext(DbContextOptions<NutritionContext> options)
         : base(options)
     {
@@ -34,7 +30,6 @@ public partial class NutritionContext : DbContext
     public virtual DbSet<FnsTranscriptionType> FnsTranscriptionType { get; set; }
 
     public virtual DbSet<User> User { get; set; }
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -88,6 +83,7 @@ public partial class NutritionContext : DbContext
         {
             entity.ToTable("fns_meal_type");
 
+            entity.Property(e => e.Defaulttime).HasColumnName("defaulttime");
             entity.Property(e => e.HasTarget).HasColumnName("has_target");
             entity.Property(e => e.IsDeleted).HasColumnName("is_deleted");
             entity.Property(e => e.Name)
@@ -223,6 +219,9 @@ public partial class NutritionContext : DbContext
             entity.Property(e => e.MealTypeId).HasColumnName("meal_type_id");
             entity.Property(e => e.ProteinGramsTarget).HasColumnName("protein_grams_target");
             entity.Property(e => e.SaturatedFatGramsTarget).HasColumnName("saturated_fat_grams_target");
+            entity.Property(e => e.ScheduledTime)
+                .HasColumnType("datetime")
+                .HasColumnName("scheduled_time");
             entity.Property(e => e.SnoozedTime)
                 .HasColumnType("datetime")
                 .HasColumnName("snoozed_time");

@@ -45,9 +45,19 @@ public partial class User
 
     public long? FkInternalNotesId { get; set; }
 
+    public long? FkGender { get; set; }
+
+    public string MiddleName { get; set; }
+
+    public string MobileCountryCode { get; set; }
+
+    public long? FkShippingAddress { get; set; }
+
     public virtual ICollection<Apn> Apn { get; set; } = new List<Apn>();
 
-    public virtual ICollection<UInternalNotes> UInternalNotesByUserNavigation { get; set; } = new List<UInternalNotes>();
+    public virtual Gender FkGenderNavigation { get; set; }
 
-    public virtual ICollection<UInternalNotes> UInternalNotesForUserNavigation { get; set; } = new List<UInternalNotes>();
+    public virtual Address FkShippingAddressNavigation { get; set; }
+
+    public virtual ICollection<UInternalNotes> UInternalNotes { get; set; } = new List<UInternalNotes>();
 }

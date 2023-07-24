@@ -11,7 +11,7 @@ namespace FitappApi.Net7.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
-    public class AutomationController : ControllerBase
+    public class AutomationController : BaseController
     {
 
         private readonly ExerciseContext _context;
@@ -31,6 +31,7 @@ namespace FitappApi.Net7.Controllers
         [Route("Supplements_Trigger_Schedule_Update_All")]
         public async Task<bool> Supplements_Trigger_Schedule_Update_All(DateTime start_date, bool force = false)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 Logs llog =  sLogHelper.Log(LogHelper.Component.API,
@@ -85,6 +86,7 @@ namespace FitappApi.Net7.Controllers
         [Route("Supplements_Trigger_Schedule_Update")]
         public async Task<bool> Supplements_Trigger_Schedule_Update(long supplement_plan_weekly_id, DateTime start_date, bool force = false)
         {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
              //   DbContextOptionsBuilder.EnableSensitiveDataLogging;
@@ -109,14 +111,21 @@ namespace FitappApi.Net7.Controllers
 
 
 
-                    if (DayOfWeek__start_date >= DayOfWeek__Plan && force == false)
+                    if (DayOfWeek__start_date == DayOfWeek__Plan && force == false)
+                    {
+                        continue;
+                    }
+                    if(DayOfWeek__start_date > DayOfWeek__Plan)
                     {
                         continue;
                     }
 
-                    DateTime targetDate = start_date.Date.AddDays(DayOfWeek__Plan - DayOfWeek__start_date);
+                        DateTime targetDate = start_date.Date.AddDays(DayOfWeek__Plan - DayOfWeek__start_date);
 
-                    NdsSupplementSchedulePerDate s_date = await _sContext.NdsSupplementSchedulePerDate.Where(t => t.CustomerId == x.FkCustomerId && t.Date == targetDate).FirstOrDefaultAsync();
+                    NdsSupplementSchedulePerDate s_date = await _sContext.NdsSupplementSchedulePerDate.Where(t => t.CustomerId == x.FkCustomerId && t.Date == targetDate)
+                        .Include(t=>t.NdsSupplementSchedule)
+                        .ThenInclude(t=>t.NdsSupplementScheduleDose)
+                        .FirstOrDefaultAsync();
                     if (s_date == null)
                     {
                         s_date = new NdsSupplementSchedulePerDate()
@@ -130,13 +139,15 @@ namespace FitappApi.Net7.Controllers
                     }
                     else
                     {
-                        if (!force) continue;
-                        if(force)
-                        {
-                          // do we need to delete old, or does linq do that already automatically?
-                          // if double schedules show up, check
-                        }
-
+                        //// if (!force) continue;
+                        // if(force)
+                        // {
+                        //   // do we need to delete old, or does linq do that already automatically?
+                        //   // if double schedules show up, check
+                        // }
+                       
+                        s_date.NdsSupplementSchedule.Clear();
+                        await _sContext.SaveChangesAsync();
                     }
                         foreach(var plan_supplement in day.NdsSupplementPlanSupplement)
                         {
@@ -224,168 +235,5 @@ namespace FitappApi.Net7.Controllers
                 default: return 0;
             }
         }
-
-        //[HttpGet]
-        //[Route("GetMessagesFrontend")]
-        //public async Task<List<RecievedMessage>> GetMessagesFrontend(long UserId, DateTime fromDate)
-        //{
-        //    var room = await CreateRoom(UserId);
-        //    return MapChatMessage(await _context.MsgMessage.Where(t => t.FkRoomId == room.Id && t.Timestamp >= fromDate)
-        //         .Include(t => t.FkUserSenderNavigation)
-        //         .Include(t => t.FkRoom)
-        //         .AsNoTracking()
-        //         .ToListAsync());
-        //}
-
-
-        //[HttpPost]
-        //[Route("SendMessage")]
-        //public async Task<RecievedMessage> SendMessage(BackendMessage message)
-        //{
-        //    try
-        //    {
-        //        MsgMessage msg = new MsgMessage();
-        //        msg.FkRoom = await CreateRoom(message.Fk_Reciever_Id);
-        //        msg.MessageContent = message.MessageContent;
-        //        msg.FkUserSender = message.Fk_Sender_Id;
-        //        msg.Timestamp = DateTime.UtcNow;
-
-        //        await _context.MsgMessage.AddAsync(msg);
-        //        if (await _context.SaveChangesAsync() > 0)
-        //        {
-        //            msg.FkUserSenderNavigation = _context.User.Where(t => t.Id == msg.FkUserSender).First();
-        //            return MapChatMessage(msg);
-        //        }
-        //        return null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        //[HttpPost]
-        //[Route("SendMessageFrontend")]
-        //public async Task<RecievedMessage> SendMessageFrontend(FrontendMessage message)
-        //{
-        //    try
-        //    {
-        //        MsgMessage msg = new MsgMessage();
-
-        //        msg.FkRoom = await CreateRoom(message.Fk_Sender_Id);
-        //        msg.FkRoom.HasConcern = true;
-        //        msg.MessageContent = message.MessageContent;
-        //        msg.FkUserSender = message.Fk_Sender_Id;
-        //        msg.Timestamp = DateTime.UtcNow;
-
-
-        //        await _context.MsgMessage.AddAsync(msg);
-        //        if (await _context.SaveChangesAsync() > 0)
-        //        {
-        //            msg.FkUserSenderNavigation = _context.User.Where(t => t.Id == msg.FkUserSender).First();
-        //            await SendMessage(new BackendMessage() { Fk_Reciever_Id = message.Fk_Sender_Id, Fk_Sender_Id = 1, MessageContent = "Beep Beep, Hello I am the Support Robot!" });
-        //            return MapChatMessage(msg);
-        //        }
-        //        return null;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        //[HttpPost]
-        //[Route("CreateRoom")]
-        //public async Task<MsgRoom> CreateRoom(long userId)
-        //{
-        //    try
-        //    {
-        //        var existingRoom = await _context.MsgRoom.Where(t => t.FkUserId == userId).FirstOrDefaultAsync();
-        //        if (existingRoom == null)
-        //        {
-        //            MsgRoom room = new MsgRoom();
-        //            room.FkUserId = userId;
-        //            User user = await _context.User.Where(t => t.Id == userId).FirstAsync();
-        //            room.RoomName = (user.FirstName + " : " + user.Email).Trim();
-        //            await _context.MsgRoom.AddAsync(room);
-        //            await _context.SaveChangesAsync();
-        //            return room;
-        //        }
-        //        return existingRoom;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return null;
-        //    }
-        //}
-
-        //[HttpPost]
-        //[Route("RemoveUnhandledFlag")]
-        //public async Task RemoveUnhandledFlag(long RoomId)
-        //{
-        //    _context.MsgRoom.Where(t => t.Id == RoomId).First().HasConcern = false;
-        //    await _context.SaveChangesAsync();
-        //}
-
-        //[HttpPost]
-        //[Route("AddUnhandledFlag")]
-        //public async Task AddUnhandledFlag(long UserId)
-        //{
-        //    var room = await CreateRoom(UserId);
-        //    room.HasConcern = true;
-        //    await _context.SaveChangesAsync();
-        //}
-
-        //[HttpGet]
-        //[Route("GetRoomsWithConcerns")]
-        //public async Task<List<MsgRoom>> GetRoomsWithConcerns()
-        //{
-        //    return await _context.MsgRoom.Where(t => t.HasConcern == true)
-        //         .AsNoTracking()
-        //         .ToListAsync();
-        //}
-
-
-
-        ////
-
-        //public static List<RecievedMessage> MapChatMessage(List<MsgMessage> message)
-        //{
-        //    List<RecievedMessage> msgList = new List<RecievedMessage>();
-        //    foreach (MsgMessage msg in message)
-        //    {
-        //        msgList.Add(MapChatMessage(msg));
-        //    }
-        //    return msgList;
-        //}
-
-        //public static RecievedMessage MapChatMessage(MsgMessage message)
-        //{
-        //    RecievedMessage msg = new RecievedMessage();
-        //    msg.MessageContent = message.MessageContent;
-        //    msg.TimeStamp = message.Timestamp;
-        //    msg.IsUserMessage = (message.FkRoom.FkUserId == message.FkUserSender);
-        //    msg.UserName = (message.FkUserSenderNavigation.FirstName + " " + message.FkUserSenderNavigation.Email).Trim();
-        //    return msg;
-        //}
-
-        //public static MsgMessage MapMsgMessage(ChatMessage ChatMessage)
-        //{
-        //    MsgMessage msg = new MsgMessage();
-        //    msg.MessageContent = ChatMessage.MessageContent;
-        //    msg.FkRoomId = ChatMessage.FkRoomId;
-        //    msg.FkUserSender = ChatMessage.FkUserSender;
-        //    msg.Timestamp = ChatMessage.Timestamp;
-
-        //    return msg;
-        //}
-
-
-        //public static ChatRoom MapChatRoom(MsgRoom room)
-        //{
-        //    return null;
-        //}
-
-
     }
 }

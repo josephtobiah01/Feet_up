@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.Overview.Views.RazorHomeContentPage"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
+             xmlns:pages="clr-namespace:MauiApp1.Pages.Dashboard"
+             xmlns:local="clr-namespace:MauiApp1.Areas.Overview.Views"
+             x:DataType="local:RazorHomeContentPage"
+             xmlns:ios="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;assembly=Microsoft.Maui.Controls"
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="HomeContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
+    <!--Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded"-->
+    <Grid x:Name="GridRootLayout" BackgroundColor="#006272" CompressedLayout.IsHeadless="True" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+
+        <BlazorWebView Grid.Row="0" x:Name="BlazorWebView" HostPage="wwwroot/dashboardHostPage.html" >
+            <BlazorWebView.RootComponents>
+                <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:DashboardHeader}" />
+            </BlazorWebView.RootComponents>
+        </BlazorWebView>
+
+        <Rectangle Grid.Row="1" Grid.RowSpan="2"  BackgroundColor="White" Margin="0, 64, 0, 0"/>
+
+        <Border Grid.Row="1" BackgroundColor="White" StrokeShape="RoundRectangle 16, 16, 0, 0"  Padding="0" Margin="0, 24, 0, 0">
+
+            <ScrollView>
+
+                <Grid 
+                    VerticalOptions="FillAndExpand"
+                    HorizontalOptions="FillAndExpand"
+                    RowDefinitions="120,120,120,120,auto,*,auto">
+
+                    <!--<Rectangle Grid.Row="0" Grid.RowSpan="2" BackgroundColor="Red"/>
+                    <Rectangle Grid.Row="2" Grid.RowSpan="2" BackgroundColor="Blue"/>-->
+
+                    <Grid 
+                        x:Name="NutrientsBarChartLayout" 
+                        Grid.Row="0"
+                        Grid.RowSpan="2"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Margin="5,0,5,5" HeightRequest="240"/>
+
+                    <Grid 
+                        x:Name="ExerciseBarChartLayout" 
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand" HeightRequest="240"/>
+
+                    <Grid 
+                        x:Name="BiodataContentStackLayout" 
+                        Grid.Row="4"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"/>                   
+                   
+
+                </Grid>
+            </ScrollView>
+
+        </Border>
+
+        <VerticalStackLayout Grid.Row="2" BackgroundColor="White">
+            
+            <Rectangle HeightRequest="2" BackgroundColor="#EEF0F2"/>
+            
+            <Border
+                        
+                        StrokeShape="RoundRectangle 36, 36, 36, 36"  
+                        Stroke="#EEF0F2"
+                        StrokeThickness="1"
+                        BackgroundColor="White"
+                        Background="white"
+                        Margin="40, 20, 40, 24"
+                        >
+                <Grid RowDefinitions="36" ColumnDefinitions="auto, *, auto">
+                    <ImageButton 
+                                Grid.Column="0"
+                                Source="datepicker_arrow_left.png"
+                                HeightRequest="36"
+                                WidthRequest="48"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="Center"
+                                Clicked="DatePickerLeft_Clicked"
+                            />
+                    <Button 
+                                x:Name="DatePickerButton"
+                                HeightRequest="54" 
+                                Text="You Should Not Be Seeing This"
+                                FontFamily="Montserrat-Regular"
+                                VerticalOptions="CenterAndExpand"
+                                HorizontalOptions="CenterAndExpand"
+                                Grid.Column="1"
+                                BackgroundColor="Transparent"
+                                Clicked="DatePickerButton_Clicked"
+                            />
+                    <ImageButton 
+                                Grid.Column="2"
+                                Source="datepicker_arrow_right.png"                                
+                                HeightRequest="36"
+                                WidthRequest="48"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                Aspect="Center"
+                                Clicked="DatePickerRight_Clicked"
+                            />
+                </Grid>
+            </Border>
+        </VerticalStackLayout>
+
+
+
+        <dxco:DXPopup Grid.Row="1" x:Name="CalendarDXPopup" AllowScrim="false" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="20, 0, 0, 60" AllowShadow="True">
+            <dxe:DXCalendar x:Name="Calendar" SelectedDateChanged="DateSelected"  BackgroundColor="White" HorizontalCellSpacing="0" VerticalCellSpacing="0" ShowTrailingDays="false" CellMinSize="40">
+                <dxe:DXCalendar.HeaderAppearance>
+                    <dxe:CalendarHeaderAppearance HeaderTitleTextColor="#333333" BackgroundColor="white"  />
+                </dxe:DXCalendar.HeaderAppearance>
+                <dxe:DXCalendar.DayCellAppearance>
+                    <dxe:CalendarDayCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                                       TodayEllipseBackgroundColor="#006272" TodayTextColor="White"
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.DayCellAppearance>
+                <dxe:DXCalendar.MonthCellAppearance>
+                    <dxe:CalendarMonthCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                    SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                        TextColor="#4D4D4D" />
+                </dxe:DXCalendar.MonthCellAppearance >
+                <dxe:DXCalendar.YearCellAppearance>
+                    <dxe:CalendarYearCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="12" 
+                                                       SelectedEllipseBackgroundColor="#006272" SelectedTextColor="White" 
+                                           TextColor="#4D4D4D"/>
+                </dxe:DXCalendar.YearCellAppearance>
+                <dxe:DXCalendar.DayOfWeekCellAppearance>
+                    <dxe:CalendarDayOfWeekCellAppearance FontAttributes="Bold" FontFamily="Montserrat" FontSize="10"
+                                                 TextColor="#333333" BackgroundColor="White"/>
+                </dxe:DXCalendar.DayOfWeekCellAppearance>
+            </dxe:DXCalendar>
+        </dxco:DXPopup>
+
+        <Grid x:Name="LoaderGrid" Grid.Row="0" Grid.RowSpan="3" IsVisible="true" BackgroundColor="Black" Opacity="0.2"/>
+        <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="0" Grid.RowSpan="2" IsVisible="true" IsRunning="True" HeightRequest="50" Margin="0,16,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>
+    </Grid>
+</ContentPage>

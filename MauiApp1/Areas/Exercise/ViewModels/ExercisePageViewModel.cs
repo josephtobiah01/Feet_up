@@ -9,6 +9,7 @@ namespace MauiApp1.Areas.Exercise.ViewModels
         public ObservableCollection<SetPageViewModel> SetviewModel { get; set; }
         public long ExerciseId { get; set; }
 
+        public long Exercise_type_id { get; set; }
         public string ExerciseName { get; set; }
 
         public long TraningSessionId { get; set; }
@@ -17,12 +18,13 @@ namespace MauiApp1.Areas.Exercise.ViewModels
         public string MetricsName2 { get; set; }
 
         //public string VideoUrl { get; set; }
-        public string VideoUrl { 
-            get {
-                return "https://aiqtoolstoragedev.blob.core.windows.net/music/Sultans.mp4";
-                //return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"; 
-            }
-         }
+        //public string VideoUrl { 
+        //    get {
+        //      //  return "https://aiqtoolstoragedev.blob.core.windows.net/music/Sultans.mp4";
+        //        //return "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"; 
+        //    }
+        // }
+
         public string ExplainerText { get; set; }
 
         private bool isRecordExerciseTabContentVisible;

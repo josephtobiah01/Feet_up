@@ -1,4 +1,11 @@
 ﻿(function () {
+    var previewimg_elem = document.getElementById("image_preview_img");
+    var field_imgurl = document.getElementById("extype_image");
+    var reader;
+
+    var max_img_width = 163;
+    var max_img_height = 121;
+
     function SetDefault() {
         var self = this;
 
@@ -38,6 +45,7 @@
         self.FkMechanicsTypeId = ko.observable();
         self.FkMainMuscleWorkedId = ko.observable();
         self.FkOtherMuscleWorkedId = ko.observable();
+        self.ExerciseImage = ko.observable();
 
         self.ExerciseClassFreeText = ko.observable();
         self.MainMuscleWorkedFreeText = ko.observable();
@@ -81,6 +89,7 @@
             self.ExplainerTextFr(document.getElementById("Data_ExplainerTextFr").value);
             self.ExplainerVideoFr(document.getElementById("Data_ExplainerVideoFr").value);
             self.EditMode(document.getElementById("editmode").value);
+            self.ExerciseImage(document.getElementById("Data_ExerciseImage").value);
 
             self.FkLevelId(document.getElementById("Data_FkLevelId").value);
             self.FkExerciseClassId(document.getElementById("Data_FkExerciseClassId").value);
@@ -127,34 +136,77 @@
         self.SubmitModel = function () {
             var add_url = "/api/data/addexercisetype";
             var edit_url = "/api/data/editexercisetype";
+            var uploadimage_url = "/lookup/uploadimage";
 
             var url = self.EditMode() ? edit_url : add_url;
 
             if (self.ValidateModel()) {
                 var model = ko.toJS(self);
-                console.log("=====POSTING=====");;
+                var uploadedFile = field_imgurl.files[0];
+
+                console.log("=====POSTING=====");
+                console.log(uploadedFile);
                 console.log(url);
-                console.log(model);
 
                 try {
-                    fetch(url, {
-                        method: "POST",
-                        cache: "no-cache",
-                        credentials: "include",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
-                        body: JSON.stringify(model)
-                    })
-                    .then((response) => response.json())
-                    .then((data) => {
-                        console.log(data);
-                        var redirectUrl = "/lookup/exercisetype";
-                        document.location.href = redirectUrl;
-                    });
+                    
+                    //NOTE: upload image first to retrieve blob url then save the edits/add afterwards
+                    //If upload fails, set upload url to null and move on.
+                    //NOTE: Use formdata to pass the file here..
+                    //We might need to create the action not in WebAPI depending on support. In that case, create a seperate controller for this. /Image/Upload maybe
+
+                    if (uploadedFile != null) {
+                        var img_formdata = new FormData();
+                        img_formdata.append("image", uploadedFile);
+
+                        fetch(uploadimage_url, {
+                            method: "POST",
+                            cache: "no-cache",
+                            credentials: "include",
+                            body: img_formdata
+                        })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                console.log(data);
+                                model.ExerciseImage = data;
+
+                                fetch(url, {
+                                    method: "POST",
+                                    cache: "no-cache",
+                                    credentials: "include",
+                                    headers: {
+                                        "Content-Type": "application/json"
+                                    },
+                                    body: JSON.stringify(model)
+                                })
+                                    .then((response) => response.json())
+                                    .then((data) => {
+                                        console.log(data);
+                                        var redirectUrl = "/lookup/exercisetype";
+                                        document.location.href = redirectUrl;
+                                    });
+                            })
+                    }
+                    else {
+                        fetch(url, {
+                            method: "POST",
+                            cache: "no-cache",
+                            credentials: "include",
+                            headers: {
+                                "Content-Type": "application/json"
+                            },
+                            body: JSON.stringify(model)
+                        })
+                        .then((response) => response.json())
+                        .then((data) => {
+                            console.log(data);
+                            var redirectUrl = "/lookup/exercisetype";
+                            document.location.href = redirectUrl;
+                        });
+                    }
                 }
                 catch (ex) {
-
+                    console.log(ex);
                 }
             }         
         }
@@ -204,6 +256,31 @@
             loadSetDefaults(vm, vm.Id());
         }
         vm.SetupValidation();
+
+        previewimg_elem.onload = function () {
+            var height = this.height;
+            var width = this.width;
+            console.log("Width: " + width + ", Height: " + height);
+        };
+
+        field_imgurl.onchange = (evt) => {
+            if (FileReader !== undefined) {
+                if (reader == null) {
+                    reader = new FileReader();
+                }
+                reader.readAsDataURL(field_imgurl.files[0]);
+                reader.onload = function (e) {
+                    previewimg_elem.src = e.target.result;
+                };
+            }
+            else {
+                console.log("[WARN] FileReader not available. Falling back to CreateObjectURL.");
+                const [file] = field_imgurl.files;
+                if (file) {
+                    previewimg_elem.src = URL.createObjectURL(file);
+                }
+            }
+        };
 
         ko.applyBindings(vm, document.getElementById("exertype_editor"));
     }

@@ -633,12 +633,24 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\Chart.css",
+      "PackagePath": "staticwebassets\\lib\\chartJS\\Chart.css"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\Chart.min.css",
+      "PackagePath": "staticwebassets\\lib\\chartJS\\Chart.min.css"
+    },
+    {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\chart.js",
       "PackagePath": "staticwebassets\\lib\\chartJS\\chart.js"
     },
     {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\chart.min.js",
       "PackagePath": "staticwebassets\\lib\\chartJS\\chart.min.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\utils.js",
+      "PackagePath": "staticwebassets\\lib\\chartJS\\utils.js"
     },
     {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\base.css",
@@ -805,12 +817,20 @@
       "PackagePath": "staticwebassets\\lib\\managed\\supp_weekly_list.js"
     },
     {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supplementChart.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\supplementChart.js"
+    },
+    {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supplement_edit.js",
       "PackagePath": "staticwebassets\\lib\\managed\\supplement_edit.js"
     },
     {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\training_edit.js",
       "PackagePath": "staticwebassets\\lib\\managed\\training_edit.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\trainingchart.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\trainingchart.js"
     },
     {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\utilities.js",

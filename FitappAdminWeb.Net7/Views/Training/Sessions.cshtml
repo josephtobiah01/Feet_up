@@ -94,6 +94,7 @@ else if (Model.TrainingSessions.Count > 0)
                                 </div>
                             </div>
                         }
+
                         <div>
                             <span class="fw-bold">Description:</span>
                             <span class="text-muted">@session.Description</span>
@@ -105,6 +106,10 @@ else if (Model.TrainingSessions.Count > 0)
                         <div>
                             <span class="fw-bold">End Date:</span>
                             <span class="text-muted">@session.EndDateTime.GetValueOrDefault().ToString("R")</span>
+                        </div>
+                        <div>
+                            <span class="fw-bold">Difficulty Feedback:</span>
+                            <span class="text-muted">@(session.FloatFeedback * 100)%</span>
                         </div>
                         @if (!String.IsNullOrEmpty(session.CustomerFedback))
                         {

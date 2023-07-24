@@ -1,0 +1,77 @@
+﻿@page "/feedItemMenuPopup";
+@using FeedApi.Net7.Models;
+@using MauiApp1._Push;
+@using ParentMiddleWare.Models;
+
+
+<div class="popup-wrapper" style="--display-popup-variable: @DisplayPopup">
+    <div class="popup-background-dark-overlay"> </div>
+    <div class="popup-background">
+        <div class="popup-body">
+            <div class="popup-header-group">
+                <button class="popup-header-close-button" @onclick="async ()=> await ClosePopup()"> <img class="popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
+            </div>
+            <div class="popup-feed-item-wrapper">
+                @if (feedItem != null)
+                {
+                    <label class="popup-feed-item-name">@feedItem.Title</label>
+                    <div class="popup-feed-item-time-elapsed-group">
+                        <img class="popup-feed-item-clock-icon" src="resources/public/icons/time/clock1.svg" />
+                        <div class="popup-feed-item-time-elapsed-text">@PushNavigationHelper.RootPage.GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                    </div>
+                    @foreach (TextPair feedItemTextPair in feedItem.Text)
+                    {
+                        if (feedItemTextPair.TextCategory == TextCategory.Description)
+                        {
+                            <label class="popup-feed-item-subtext">@feedItemTextPair.Text</label>
+                        }
+                    }
+                }
+            </div>
+
+            <div class="popup-list">
+
+                <div class="popup-item-wrapper">
+                    <div class="popup-item" @onclick="async ()=> await PushNavigationHelper.RootPage.OpenSnoozePopup(true)">
+                        <img class="popup-item-icon" src="resources/public/icons/time/clock3.svg" />
+                        <div class="popup-item-name-text">Snooze</div>
+                        <button class="popup-item-right-button"> 
+                            <img class="popup-item-right-button-icon" src="resources/public/icons/arrows/arrow-right.svg" />
+                        </button>
+                    </div>
+                </div>
+                @if (feedItem != null)
+                {
+                    @switch (feedItem.ItemType)
+                    {
+                        case FeedItemType.TrainingSessionFeedItem:
+                            <div class="popup-item-wrapper">
+                                <div class="popup-item" @onclick="async ()=> await OpenSkipPopup()">
+                                    <img class="popup-item-icon" src="resources/public/icons/multimedia/skipforward1.svg" />
+                                    <div class="popup-item-name-text">Skip this time</div>
+                                    <button class="popup-item-right-button">
+                                        <img class="popup-item-right-button-icon" src="resources/public/icons/arrows/arrow-right.svg" />
+                                    </button>
+                                </div>
+                            </div>
+                            break;
+                        case FeedItemType.NutrientsFeedItem:
+                            <div class="popup-item-wrapper">
+                                <div class="popup-item" @onclick="async ()=> await OpenSkipPopup()">
+                                    <img class="popup-item-icon" src="resources/public/icons/multimedia/skipforward1.svg" />
+                                    <div class="popup-item-name-text">Skip this time</div>
+                                    <button class="popup-item-right-button">
+                                        <img class="popup-item-right-button-icon" src="resources/public/icons/arrows/arrow-right.svg" />
+                                    </button>
+                                </div>
+                            </div>
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            </div>
+        </div>
+
+    </div>
+</div>

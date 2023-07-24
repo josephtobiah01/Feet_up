@@ -93,11 +93,39 @@ build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\AllDashboardCo
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\AllDashboardContentView.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/ExerciseDashboardContentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.ExerciseDashboardContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\ExerciseDashboardContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\ExerciseDashboardContentPage.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/ExerciseDashboardContentView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.ExerciseDashboardContentView.xaml
 build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\ExerciseDashboardContentView.xaml
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\ExerciseDashboardContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/ExerciseFeedListContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.ExerciseFeedListContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\ExerciseFeedListContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\ExerciseFeedListContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/ExerciseStatsContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.ExerciseStatsContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\ExerciseStatsContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\ExerciseStatsContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/FirstMealContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.FirstMealContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\FirstMealContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\FirstMealContentView.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/NutrientDashboardContentView.xaml]
@@ -107,6 +135,27 @@ build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\NutrientDashbo
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\NutrientDashboardContentView.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/NutrientDishListContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.NutrientDishListContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\NutrientDishListContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\NutrientDishListContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/NutrientsDailyIntakeContentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.NutrientsDailyIntakeContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\NutrientsDailyIntakeContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\NutrientsDailyIntakeContentPage.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/OtherMealContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.OtherMealContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\OtherMealContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\OtherMealContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/OverviewDashboard.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.OverviewDashboard.xaml
@@ -114,11 +163,32 @@ build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\OverviewDashbo
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\OverviewDashboard.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/SecondMealContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.SecondMealContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\SecondMealContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\SecondMealContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/SleepDashboardContentView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.SleepDashboardContentView.xaml
 build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\SleepDashboardContentView.xaml
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\SleepDashboardContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/ThirdMealContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.ThirdMealContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\ThirdMealContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\ThirdMealContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/DeviceIntegration/Views/ViewDeviceIntegration.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.DeviceIntegration.Views.ViewDeviceIntegration.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\DeviceIntegration\Views\ViewDeviceIntegration.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\DeviceIntegration\Views\ViewDeviceIntegration.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Exercise/Views/AddExerciseContentPage.xaml]
@@ -163,11 +233,11 @@ build_metadata.AdditionalFiles.TargetPath = Areas\Exercise\Views\ViewVideoPopup.
 build_metadata.AdditionalFiles.RelativePath = Areas\Exercise\Views\ViewVideoPopup.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Mindfulness/views/SelectMeditationPage.xaml]
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Mindfulness/Views/SelectMeditationPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Mindfulness.views.SelectMeditationPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Areas\Mindfulness\views\SelectMeditationPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Areas\Mindfulness\views\SelectMeditationPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Mindfulness.Views.SelectMeditationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Mindfulness\Views\SelectMeditationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Mindfulness\Views\SelectMeditationPage.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Nutrient/Views/OverviewPage.xaml]
@@ -191,11 +261,25 @@ build_metadata.AdditionalFiles.TargetPath = Areas\Overview\Views\HomeContentPage
 build_metadata.AdditionalFiles.RelativePath = Areas\Overview\Views\HomeContentPage.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Security/Views/ViewLoginContentPage.xaml]
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Overview/Views/RazorHomeContentPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Security.Views.ViewLoginContentPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Areas\Security\Views\ViewLoginContentPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Areas\Security\Views\ViewLoginContentPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Overview.Views.RazorHomeContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Overview\Views\RazorHomeContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Overview\Views\RazorHomeContentPage.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Profile/Views/ViewProfileContentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Profile.Views.ViewProfileContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Profile\Views\ViewProfileContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Profile\Views\ViewProfileContentPage.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Security/Views/MVPLoginContentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Security.Views.MVPLoginContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Security\Views\MVPLoginContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Security\Views\MVPLoginContentPage.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Supplement/Views/AddSupplementContentPage.xaml]
@@ -231,6 +315,13 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Supplement.Views.ViewAddSupplementSuccessContentPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Areas\Supplement\Views\ViewAddSupplementSuccessContentPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Areas\Supplement\Views\ViewAddSupplementSuccessContentPage.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Test/Views/TestContentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Test.Views.TestContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Test\Views\TestContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Test\Views\TestContentPage.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/MainPage.xaml]
@@ -289,6 +380,13 @@ build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhdFxWaWV3Q2hhdERldGFpbFBh
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = b-aukp499u09
 
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Dashboard/DashboardHeader.razor]
+build_metadata.AdditionalFiles.GenKind = 
+build_metadata.AdditionalFiles.ManifestResourceName = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGFzaGJvYXJkXERhc2hib2FyZEhlYWRlci5yYXpvcg==
+build_metadata.AdditionalFiles.RelativePath = 
+build_metadata.AdditionalFiles.CssScope = b-7oqou9bazd
+
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Index.razor]
 build_metadata.AdditionalFiles.GenKind = 
 build_metadata.AdditionalFiles.ManifestResourceName = 
@@ -323,6 +421,34 @@ build_metadata.AdditionalFiles.ManifestResourceName =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTnV0cmllbnRcU2VhcmNoUmVjaXBlcy5yYXpvcg==
 build_metadata.AdditionalFiles.RelativePath = 
 build_metadata.AdditionalFiles.CssScope = b-21qi2zzq0n
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Popups/FeedItemMenuPopup.razor]
+build_metadata.AdditionalFiles.GenKind = 
+build_metadata.AdditionalFiles.ManifestResourceName = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9wdXBzXEZlZWRJdGVtTWVudVBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.RelativePath = 
+build_metadata.AdditionalFiles.CssScope = b-z7z8oxjabx
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Popups/SkipPopup.razor]
+build_metadata.AdditionalFiles.GenKind = 
+build_metadata.AdditionalFiles.ManifestResourceName = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9wdXBzXFNraXBQb3B1cC5yYXpvcg==
+build_metadata.AdditionalFiles.RelativePath = 
+build_metadata.AdditionalFiles.CssScope = b-l0uudz7um6
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Popups/SnoozePopup.razor]
+build_metadata.AdditionalFiles.GenKind = 
+build_metadata.AdditionalFiles.ManifestResourceName = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9wdXBzXFNub296ZVBvcHVwLnJhem9y
+build_metadata.AdditionalFiles.RelativePath = 
+build_metadata.AdditionalFiles.CssScope = b-ywgmmvvh50
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Profile/ViewProfile.razor]
+build_metadata.AdditionalFiles.GenKind = 
+build_metadata.AdditionalFiles.ManifestResourceName = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZVxWaWV3UHJvZmlsZS5yYXpvcg==
+build_metadata.AdditionalFiles.RelativePath = 
+build_metadata.AdditionalFiles.CssScope = b-zq3gu820ij
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Pages/Supplement/ListSupplementItem.razor]
 build_metadata.AdditionalFiles.GenKind = 

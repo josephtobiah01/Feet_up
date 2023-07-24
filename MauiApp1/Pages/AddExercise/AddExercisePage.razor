@@ -25,10 +25,10 @@
 <!--contents-->
 <div class="content-wrapper">
     <!--suggested exercises-->
-    <div>
+    @*<div>
         <label class="header-label"> Suggested</label>
         <div class="exercises-wrapper">
-            @foreach (EmExerciseType SuggestedExercise in SuggestedExerciseList)
+            foreach (EmExerciseType SuggestedExercise in SuggestedExerciseList)
             {
                 <div class="exercise-item">
                     <img class="exercise-item-icon" src="resources/public/icons/sports/barbell.svg" />
@@ -44,25 +44,29 @@
                 </div>
             }
         </div>
-    </div>
+    </div>*@
     <!--all exercises-->
     <div>
         <label class="header-label" > All Exercises</label>
         <div class="exercises-wrapper">
-            @foreach (EmExerciseType Exercise in FullExerciseList)
+            @if (FullExerciseList != null)
             {
-                <div class="exercise-item">
-                    <img class="exercise-item-icon" src="resources/public/icons/sports/barbell.svg" />
-                    <div class="exercise-item-name-text">@Exercise.Name</div>
-                    <div class="exercise-subtext-wrapper">
-                        <div class="exercise-item-muscle-text">@Exercise.EmMainMuscleWorked.Name</div>
-                        <svg height="12" width="12">
-                            <ellipse cx="6" cy="6" rx="4" ry="4" style="fill:#D9D9D9" />
-                        </svg>
-                        <div class="exercise-item-equipment-text">@Exercise.EmEquipment.Name</div>
+                @foreach (EmExerciseType Exercise in FullExerciseList)
+                {
+                    <div class="exercise-item" @onclick="()=> AddExercisetoTrainingSession(Exercise.Id)">
+                        <img class="exercise-item-icon" src="resources/public/icons/sports/barbell.svg" />
+                        <div class="exercise-item-name-text">@Exercise.Name</div>
+                        <div class="exercise-subtext-wrapper">
+                            <div class="exercise-item-muscle-text">@Exercise.EmMainMuscleWorked.Name</div>
+                            <svg height="12" width="12">
+                                <ellipse cx="6" cy="6" rx="4" ry="4" style="fill:#D9D9D9" />
+                            </svg>
+                            <div class="exercise-item-equipment-text">@Exercise.EmEquipment.Name</div>
+                        </div>
+                        <button class="exercise-item-right-button"> > </button>
                     </div>
-                    <button class="exercise-item-right-button" @onclick="()=> AddExercisetoTrainingSession(Exercise.Id)"> > </button>
-                </div>
+                }
+
             }
         </div>
     </div>
@@ -83,11 +87,26 @@
             <!-- items list-->
             @if (filterdisplaycategory == 1)
             {
+                <div>
+                    <button class="filter-popup-item" @onclick="()=> FilterByEquipment(null)">
+                        <img class="filter-popup-item-image" src="resources/Rectangle346.png" />
+                        <div class="filter-popup-item-name">
+                            All Equipment
+                        </div>
+                    </button>
+                </div>
                 @foreach(EmEquipment Equipment in FullEquipmentList)
                 {
                     <div>
                         <button class="filter-popup-item" @onclick="()=> FilterByEquipment(Equipment)">
-                            <img class="filter-popup-item-image" src="resources/Rectangle346.png" />
+                            @if (Equipment.ImageUrl != null)
+                            {
+                                <img class="filter-popup-item-image" src="@Equipment.ImageUrl" />
+                            }
+                            else
+                            {
+                                <img class="filter-popup-item-image" src="resources/Rectangle346.png" />
+                            }
                             <div class="filter-popup-item-name">
                                 @Equipment.Name
                             </div>
@@ -97,6 +116,14 @@
             }
             else if (filterdisplaycategory == 2)
             {
+                <div>
+                    <button class="filter-popup-item" @onclick="()=> FilterByMainMuscleWorked(null)">
+                        <img class="filter-popup-item-image" src="resources/Rectangle346.png" />
+                        <div class="filter-popup-item-name">
+                            All Muscles
+                        </div>
+                    </button>
+                </div>
                 @foreach (EmMainMuscleWorked MainMuscle in FullMainMuscleWorkedList)
                 {
                     <div>
@@ -108,6 +135,7 @@
                         </button>
                     </div>
                 }
+
             }
             else
             {

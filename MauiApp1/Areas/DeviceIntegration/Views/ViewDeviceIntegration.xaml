@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiApp1.Areas.DeviceIntegration.ViewDeviceIntegration"
+             Title="ViewDeviceIntegration">
+    <Grid x:Name="GridRootLayout" Grid.Row="0" BackgroundColor="White" CompressedLayout.IsHeadless="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Label Text="{Binding Path=Provider, StringFormat='Connected App :: {0}'}" Margin="16" FontAttributes="Bold" FontSize="16"></Label>
+
+        <Grid Grid.Row="1" Margin="16">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="5*" />
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Provider" Grid.Row="0" Grid.Column="0" Margin="0,4"></Label>
+            <Label Text="{Binding Path=Provider}" Grid.Row="0" Grid.Column="1" Margin="0,4"></Label>
+
+            <Label Text="Account" Grid.Row="1" Grid.Column="0" Margin="0,4"></Label>
+            <Label Text="{Binding Path=Account}" Grid.Row="1" Grid.Column="1" Margin="0,4"></Label>
+
+            <Label Text="Last Synced" Grid.Row="2" Grid.Column="0" Margin="0,4"></Label>
+            <Label Text="{Binding Path=Synced, StringFormat='{0:ddd, dd MMM yyy hh:mm tt}'}" Grid.Row="2" Grid.Column="1" Margin="0,4"></Label>
+        </Grid>
+        <Button Grid.Row="2" x:Name="DisconnectButton" Text="Disconnect" VerticalOptions="Start" HorizontalOptions="End" CornerRadius="16" Margin="0, 0, 16, 0" Clicked="DisconnectButton_Clicked"/>
+    </Grid>
+</ContentPage>

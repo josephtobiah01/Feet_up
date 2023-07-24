@@ -2,19 +2,11 @@
 using MauiApp1.Areas.Chat.Models;
 using MauiApp1.Areas.Chat.ViewModels.DeviceServices;
 using MauiApp1.Helpers;
-//using MauiApp1.Helpers;
 using MessageApi.Net7;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using ParentMiddleWare;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MauiApp1.Areas.Chat.ViewModels
 {
@@ -44,8 +36,8 @@ namespace MauiApp1.Areas.Chat.ViewModels
         public List<IMessage> MessageList
         {
             get => _messageList;
-            //set => _messageList = value;
-           set { SetPropertyValue(ref _messageList, value); }
+            set => _messageList = value;
+           //set { SetPropertyValue(ref _messageList, value); }
         }
 
         #endregion Properties
@@ -89,7 +81,7 @@ namespace MauiApp1.Areas.Chat.ViewModels
                     for (int index = 0; index < _messageListReserve.Count; index++)
                     {
                         RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
-                        message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                        message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
                         MessageList.Add(message);
                     }
 
@@ -179,7 +171,7 @@ namespace MauiApp1.Areas.Chat.ViewModels
                     {
                         if (recievedMessage.IsUserMessage == false)
                         {
-                            message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                            message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
 
                             MessageList.Add(message);
                         }
@@ -223,7 +215,7 @@ namespace MauiApp1.Areas.Chat.ViewModels
 
                     if (sentMessage != null)
                     {
-                        message = new IMessage(sentMessage.MessageContent, sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage);
+                        message = new IMessage(sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage, sentMessage.MessageContent);
                         MessageList.Add(message);
                         _isUserScroll = false;
                     }

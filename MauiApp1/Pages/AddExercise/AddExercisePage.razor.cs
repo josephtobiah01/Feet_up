@@ -24,7 +24,7 @@ namespace MauiApp1.Pages.AddExercise
         private List<EmExerciseType> FullExerciseList;
         //static unchanging copy of the entire list of exercises to refresh the exercise list every time we filter
         //and avoid having to call GetExerciseTypes each time we need to refresh FullExerciseList
-        private List<EmExerciseType> FullExerciseListStaticCopy;
+        private List<EmExerciseType> FullExerciseListBaseCopy;
         private List<EmExerciseType> SuggestedExerciseList;
         private List<EmEquipment> FullEquipmentList;
         private List<EmMainMuscleWorked> FullMainMuscleWorkedList;
@@ -63,29 +63,24 @@ namespace MauiApp1.Pages.AddExercise
         }
         private async Task InitializeData()
         {
-            SuggestedExerciseList = new List<EmExerciseType>();
+            //SuggestedExerciseList = new List<EmExerciseType>();
             FullExerciseList = new List<EmExerciseType>();
             FullEquipmentList = new List<EmEquipment>();
             FullMainMuscleWorkedList = new List<EmMainMuscleWorked>();
-            FullExerciseList = await ExerciseApi.Net7.ExerciseApi.GetExerciseTypes();
-            FullExerciseListStaticCopy = new List<EmExerciseType>();
-           /* for(int i = 0; i < FullExerciseList.Count; i++)
-            {
-                if (!FullExerciseList[i].IsDeleted)
-                {
-                    FullExerciseListStaticCopy.Add(FullExerciseList[i]);
-                }
-            }
-            FullExerciseList = new List<EmExerciseType>(FullExerciseListStaticCopy);*/
+            FullExerciseListBaseCopy = new List<EmExerciseType>();
+
+            FullExerciseListBaseCopy = await ExerciseApi.Net7.ExerciseApi.GetExerciseTypes();
+            FullExerciseList = new List<EmExerciseType>(FullExerciseListBaseCopy);
             FullEquipmentList = await ExerciseApi.Net7.ExerciseApi.GetEquipments();
             FullMainMuscleWorkedList = await ExerciseApi.Net7.ExerciseApi.GetMainMuscleWorked();
-            //should probably make a static copy of the suggested list as well.
+            //should probably make a base copy of the suggested list as well.
 
             #region[TEMPORARY]
+            /*
             for (int i=0;i< FullExerciseList.Count&&i<3;i++)
             {
                 SuggestedExerciseList.Add(FullExerciseList[i]);
-            }
+            }*/
             #endregion
         }
         #endregion
@@ -136,7 +131,7 @@ namespace MauiApp1.Pages.AddExercise
             ResetLists();
 
             var TempFullExerciseList = new List<EmExerciseType>();
-            var TempSuggestedExerciseList = new List<EmExerciseType>();
+            //var TempSuggestedExerciseList = new List<EmExerciseType>();
             for (int i = 0; i < FullExerciseList.Count(); i++)
             {
                 if (EquipmentFilterTerm != null)
@@ -159,7 +154,7 @@ namespace MauiApp1.Pages.AddExercise
                 {
                     TempFullExerciseList.Add(FullExerciseList[i]);
                 }
-            }
+            }/*
             for (int i = 0; i < SuggestedExerciseList.Count(); i++)
             {
                 if (EquipmentFilterTerm != null)
@@ -182,24 +177,25 @@ namespace MauiApp1.Pages.AddExercise
                 {
                     TempSuggestedExerciseList.Add(SuggestedExerciseList[i]);
                 }
-            }
+            }*/
             //set to null so that we dont filter again next time
             EquipmentFilterTerm = null;
             MainMuscleFilterTerm = null;
 
             //set list contents to the filtered templist contents
             FullExerciseList = TempFullExerciseList;
-            SuggestedExerciseList = TempSuggestedExerciseList;
+            //SuggestedExerciseList = TempSuggestedExerciseList;
         }
         //resets list to initial state
         public void ResetLists()
         {
-            FullExerciseList = new List<EmExerciseType>(FullExerciseListStaticCopy);
+            FullExerciseList = new List<EmExerciseType>(FullExerciseListBaseCopy);
             #region[TEMPORARY]
+            /*
             for (int i = 0; i < FullExerciseList.Count && i < 3; i++)
             {
                 SuggestedExerciseList.Add(FullExerciseList[i]);
-            }
+            }*/
             #endregion
         }
         public void CloseAddExercisePage()

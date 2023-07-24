@@ -2,12 +2,64 @@
 using DAOLayer.Net7.Exercise;
 using DAOLayer.Net7.Supplement;
 using DAOLayer.Net7.User;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.ComponentModel.DataAnnotations;
 
 namespace FitappAdminWeb.Net7.Models
 {
+    public class RegisterCustomerModel
+    {
+        public RegisterCustomerModel()
+        {
+            CountryList = ListUtil.CountryList().Select(r => new SelectListItem()
+            {
+                Text = r.Value.Trim(),
+                Value = r.Key.Trim()
+            }).OrderBy(r => r.Text).ToList();
+        }
+
+        [Required]
+        public string FirstName { get; set; }
+
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
+        public string Mobile { get; set; }
+
+        [Required]
+        public string Email { get; set; }
+
+        [Required]
+        public string Password { get; set; }
+
+        public string? Country { get; set; } //in ISO country string. eg. Philippines = "PH"
+
+        public AddressModel ShippingAddress { get; set; } = new AddressModel();
+
+        public List<SelectListItem> CountryList { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>();
+    }
+
+    public class AddressModel
+    {
+        public long Id { get; set; } = 0;
+
+        public string? AddressLine1 { get; set; }
+
+        public string? AddressLine2 { get; set; }
+
+        public string? AddressCity { get; set; }
+
+        public string? AddressState { get; set; }
+
+        public string? AddressPostalCode { get; set; }
+
+        public string? AddressCountry { get; set; }
+    }
+
     public class UserListViewModel
     {
         public List<DAOLayer.Net7.User.User> Users { get; set; } = new List<DAOLayer.Net7.User.User>();
@@ -39,19 +91,21 @@ namespace FitappAdminWeb.Net7.Models
         [Required]
         public DateTime? Dob { get; set; }
 
-        [Required]
         public int? Height { get; set; }
 
-        [Required]
         public int? Weight { get; set; }
 
-        [Required]
         public string? Gender { get; set; } //"male":"female"
 
         [Required]
-        public string Country { get; set; } //in ISO country string. eg. Philippines = "PH"
+        public long? FkGender { get; set; }
+
+        public string? Country { get; set; } //in ISO country string. eg. Philippines = "PH"
+
+        public AddressModel ShippingAddress { get; set; } = new AddressModel();
 
         public List<SelectListItem> CountryList { get; set; } = new List<SelectListItem>();
+        public List<SelectListItem> GenderList { get; set; } = new List<SelectListItem>();
     }
 
     public class UserDetailViewModel

@@ -4,9 +4,9 @@
 }
 /* navbar content */
 .navbar-toggler {
-    color:rgba(255,255,255,255);
-    border:none;
-    border-radius:40px;
+    color: rgba(255,255,255,255);
+    border: none;
+    height: 40px;
 }
 
 html, body {
@@ -81,102 +81,6 @@ html, body {
 }
 
 
-/*user popup*/
-.user-popup-wrapper {
-    position: absolute;
-    font-family: Montserrat;
-    display: var(--display-user-popup-variable);
-}
-
-.user-popup-background-dark-overlay {
-    background-color: rgba(25, 25, 25,0.6);
-    position: fixed;
-    height: 100vh;
-    display: block;
-    width: 100vw;
-    top: 0;
-    left: 0;
-    z-index: 3;
-}
-
-.user-popup-background {
-    position: fixed;
-    padding: 0px;
-    border-top-left-radius: 12px;
-    border-top-right-radius: 12px;
-    height: 60vh;
-    top: 40vh;
-    width: 100vw;
-    left: 0;
-    background-color: white;
-    z-index: 4;
-}
-.user-popup-content{
-    padding:16px;
-    padding-top:64px;
-}
-.user-popup-header-title {
-    font-family: Montserrat;
-    font-size: 16px;
-    font-weight: 700;
-    top: 24px;
-    margin-bottom: 16px;
-    align-content: flex-start;
-    position: absolute;
-}
-
-.user-popup-header-close-button {
-    position: absolute;
-    right: 0px;
-    color: black;
-    top: 0px;
-    margin: 16px;
-    width: fit-content;
-    padding-left: 15px;
-    padding-right: 15px;
-    border-radius: 500px;
-    font-family: Montserrat;
-    font-size: 14px;
-    font-weight: 700;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    background: none;
-    border: 1px solid #EEF0F2;
-}
-
-.user-popup-header-close-button-icon {
-    filter: invert(0%) sepia(100%) saturate(8%) hue-rotate(125deg) brightness(107%) contrast(101%);
-}
-
-.user-popup-item {
-    font-family: Montserrat;
-    color: black;
-    height: fit-content;
-    display: grid;
-    grid-template-columns: auto 52px;
-    grid-template-rows: 72px;
-    align-items: center;
-    border-bottom: 1px solid #EEF0F2;
-}
-
-.user-popup-item-name-text {
-    font-size: 16px;
-    grid-column: 1;
-    grid-row: 1;
-    height: inherit;
-    overflow-y: auto;
-    align-content: flex-start;
-    vertical-align: central;
-    white-space: nowrap;
-}
-
-.user-popup-item-right-button {
-    background: white;
-    border: none;
-    grid-row: 1;
-    color: black;
-    grid-column: 2;
-}
 
 @media (min-width: 641px) {
 

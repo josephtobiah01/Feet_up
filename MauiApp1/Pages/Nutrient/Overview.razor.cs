@@ -5,7 +5,6 @@ using ImageApi.Net7;
 using FeedApi.Net7.Models;
 using Microsoft.JSInterop;
 using CommunityToolkit.Maui.Alerts;
-using System.Threading;
 
 namespace MauiApp1.Pages.Nutrient
 {
@@ -27,7 +26,8 @@ namespace MauiApp1.Pages.Nutrient
         //nutrient fields
         public NutrientrecipesForMeal NutrientPopupRecipesDisplayed;
         public List<NutrientDish> DishesDisplayed = new List<NutrientDish>();
-        public NutrientDish TotalNutrients = new NutrientDish();
+        public List<int> DishesDisplayedIndices = new List<int>();
+        public NutrientDish TotalNutrients;
         public bool NutrientIsCustomAddedDish = false;
         public int NutrientServings = 1;
         public double NutrientPortion = 1;
@@ -50,7 +50,7 @@ namespace MauiApp1.Pages.Nutrient
                 if(feedItem.Status == FeedItemStatus.Ongoing || feedItem.Status == FeedItemStatus.Completed)
                 {
                     HideOverviewContents = true;
-                    DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
+                    await BuildDishesDisplayedList();
                 }
                 else
                 {
@@ -60,13 +60,21 @@ namespace MauiApp1.Pages.Nutrient
             else
             {
                 HideOverviewContents = true;
-                DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
+                await BuildDishesDisplayedList();
             }
 
 
             if (HideOverviewContents)
             {
                 GetTotals();
+            }
+        }
+
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+            if (firstRender)
+            {
             }
         }
 
@@ -86,6 +94,7 @@ namespace MauiApp1.Pages.Nutrient
         {
             await App.Current.MainPage.Navigation.PopToRootAsync();
         }
+        #region popups
         public async Task OpenNutrientPopup()
         {
             NutrientPopupRecipesDisplayed = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
@@ -99,7 +108,7 @@ namespace MauiApp1.Pages.Nutrient
         {
             DisplayAddDishPopup = "inline";
             NutrientServings = 1;
-            NutrientIsFavorite = false;
+            NutrientIsFavorite = false;https://0.0.0.0/resources/public/icons/arrows/arrow.svg
 
             await OneHundredPercentPortion();
             NutrientDishName = "";
@@ -218,13 +227,6 @@ namespace MauiApp1.Pages.Nutrient
         public async Task FavoriteDish()
         {
             NutrientIsFavorite = !NutrientIsFavorite;
-            if (NutrientIsFavorite)
-            {
-                if (ParentMiddleWare.MiddleWare.ShowFavoriteMsg)
-                {
-                    OpenFavoritePopup();
-                }
-            }
             if (NutrientIsFavorite && NutrientRecipe != null)
             {
                 bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
@@ -237,6 +239,10 @@ namespace MauiApp1.Pages.Nutrient
             }
             else
             {
+                if (NutrientIsFavorite && ParentMiddleWare.MiddleWare.ShowFavoriteMsg)
+                {
+                    OpenFavoritePopup();
+                }
                 StateHasChanged();
             }
         }
@@ -252,7 +258,7 @@ namespace MauiApp1.Pages.Nutrient
             }
             DisplayFavoritePopup = "none";
         }
-
+        #endregion
         public async Task SubmitMeal()
         {
             await Task.Run(() => OpenLoaderPopup());
@@ -349,7 +355,7 @@ namespace MauiApp1.Pages.Nutrient
             if (IsSuccessful)
             {
                 Index.NutritionUploadModel = new List<NutritionUploadModel>();
-                DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
+                await BuildDishesDisplayedList();
                 HideOverviewContents = true;
                 GetTotals();
                 StateHasChanged();
@@ -369,6 +375,7 @@ namespace MauiApp1.Pages.Nutrient
         }
         public void GetTotals()
         {
+            TotalNutrients = new NutrientDish();
             TotalNutrients.NumberOfServings = 0;
             TotalNutrients.Recipe = new NutrientRecipeModel();
             TotalNutrients.Recipe.NutrientInformation = new NutrientRecipeModel.RecipeNutrientInformation();
@@ -390,7 +397,20 @@ namespace MauiApp1.Pages.Nutrient
                 }
             }
         }
+        public async Task BuildDishesDisplayedList()
+        {
+            DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
+            for(int i = 0; i < DishesDisplayed.Count(); i++)
+            {
+                DishesDisplayedIndices.Add(i);
+            }
+        }
+        public async Task ToggleCollapsibleByIndex(int index)
+        {
+            await JSRuntime.InvokeAsync<string>("ToggleCollapsible", index.ToString());
+        }
 
+        #region photos
         public async Task TakePhoto()
         {
             try
@@ -430,5 +450,6 @@ namespace MauiApp1.Pages.Nutrient
                 return ms.ToArray();
             }
         }
+        #endregion
     }
 }

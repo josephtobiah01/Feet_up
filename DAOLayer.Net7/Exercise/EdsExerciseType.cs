@@ -37,6 +37,8 @@ public partial class EdsExerciseType
 
     public bool IsDeleted { get; set; }
 
+    public string ExerciseImage { get; set; }
+
     public virtual ICollection<EdsAvaiableSetMetrics> EdsAvaiableSetMetrics { get; set; } = new List<EdsAvaiableSetMetrics>();
 
     public virtual ICollection<EdsExercise> EdsExercise { get; set; } = new List<EdsExercise>();

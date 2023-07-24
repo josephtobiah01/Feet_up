@@ -24,9 +24,8 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         ILogger<TrainingRepository> _logger;
         IMapper _mapper;
 
-        public static readonly long TEMPLATE_USER_ID = -10000; //User ID where we store templates in
+        public static readonly long TEMPLATE_USER_ID = 10000; //User ID where we store templates in
         public static readonly string TEMPLATE_PLAN_NAME = "TemplatePlan";
-        public static readonly long TEMPLATE_PLAN_ID = -10000;
 
         public TrainingRepository(ExerciseContext dbcontext, ILogger<TrainingRepository> logger, IMapper mapper, LookupRepository lookup, ClientRepository clientrepo)
         {
@@ -54,6 +53,15 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             Eds12weekPlan? plan = await _dbcontext.Eds12weekPlan.Where(x => x.Id == pid).FirstOrDefaultAsync();
             return plan;
+        }
+
+        public async Task<Eds12weekPlan?> GetProgramForEditById(long pid)
+        {
+            return await _dbcontext.Eds12weekPlan.Where(r => r.Id == pid)
+                .Include(r => r.EdsWeeklyPlan)
+                    .ThenInclude(r => r.EdsDailyPlan)
+                        .ThenInclude(r => r.EdsTrainingSession)
+                .FirstOrDefaultAsync();
         }
 
         public async Task<List<Eds12weekPlan>> GetAllProgramsByUserId(long userId)
@@ -435,7 +443,8 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         Email = "n/a",
                         UserLevel = (int)TEMPLATE_USER_ID,
                         FkFederatedUser = "n/a",
-                        Mobile = "n/a"
+                        Mobile = "n/a",
+                        IsActive = false
                     };
 
                     var plan = await _dbcontext.Eds12weekPlan.FirstOrDefaultAsync(r => r.Name == TEMPLATE_PLAN_NAME);
@@ -640,11 +649,45 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
             {
                 try
                 {
-                    Eds12weekPlan programToBeEdited = await GetProgramById(prog.Id);
+                    Eds12weekPlan programToBeEdited = await GetProgramForEditById(prog.Id);
                     if (programToBeEdited == null)
                     {
                         _logger.LogError("Cannot find 12 week plan ID {id} to edit.", prog.Id);
                         return null;
+                    }
+
+                    if (programToBeEdited.StartDate != prog.StartDate)
+                    {
+                        //we do not do this if start date is identical
+                        //translate all daily plan and training session times based on new start date
+                        foreach (var weekly in programToBeEdited.EdsWeeklyPlan)
+                        {
+                            if (weekly.StartDate.HasValue && prog.StartDate.HasValue)
+                            {
+                                //edit weekly plan dates
+                                var old_week_startdiff = weekly.StartDate - programToBeEdited.StartDate;
+                                var old_week_enddiff = weekly.EndDate - programToBeEdited.StartDate;
+                                weekly.StartDate = prog.StartDate + old_week_startdiff;
+                                weekly.EndDate = prog.StartDate + old_week_enddiff;
+
+                                //edit daily plan dates
+                                foreach (var daily in weekly.EdsDailyPlan)
+                                {
+                                    var old_day_startdiff = daily.StartDay - programToBeEdited.StartDate;
+                                    var old_day_enddiff = daily.EndDay - programToBeEdited.StartDate;
+                                    daily.StartDay = prog.StartDate + old_day_startdiff;
+                                    daily.EndDay = prog.StartDate + old_day_enddiff;
+
+                                    foreach (var session in daily.EdsTrainingSession)
+                                    {
+                                        var old_session_startdiff = session.StartDateTime - programToBeEdited.StartDate;
+                                        var old_session_enddiff = session.EndDateTime - programToBeEdited.StartDate;
+                                        session.StartDateTime = prog.StartDate + old_session_startdiff;
+                                        session.EndDateTime = prog.StartDate + old_session_enddiff;
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     programToBeEdited.StartDate = prog.StartDate;

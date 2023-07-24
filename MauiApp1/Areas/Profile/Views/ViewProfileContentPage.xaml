@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:pages="clr-namespace:MauiApp1.Pages.Profile"
+             x:Class="MauiApp1.Areas.Profile.Views.ViewProfileContentPage"             
+             NavigationPage.HasNavigationBar="False"
+             NavigationPage.HasBackButton="False"
+             Title="ViewProfileContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
+    <ContentPage.Behaviors>
+        <toolkit:StatusBarBehavior StatusBarColor ="White" StatusBarStyle="DarkContent"/>
+    </ContentPage.Behaviors>
+
+    <ContentView>
+        <Grid BackgroundColor="#000000">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+                <BlazorWebView x:Name="BlazorWebView" HostPage="wwwroot/defaultHostPage.html" >
+                    <BlazorWebView.RootComponents>
+                        <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:ViewProfile}" />
+                    </BlazorWebView.RootComponents>
+                </BlazorWebView>
+
+
+        </Grid>
+    </ContentView>
+</ContentPage>

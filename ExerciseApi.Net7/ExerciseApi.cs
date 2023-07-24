@@ -7,16 +7,12 @@ namespace ExerciseApi.Net7
 {
     public class ExerciseApi : MiddleWare
     {
-
-        // CreateRandomDailyExercise
         public static async Task<bool> CreateRandomDailyExercise(long UserID, int offset)
         {
             try
             {
                 using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Exercise/CreateRandomDailyExercise?UserID={1}&offset={2}", BaseUrl, UserID, offset), null))
                 {
-                    //string apiResponse = await response.Content.ReadAsStringAsync();
-                    // return JsonConvert.DeserializeObject<bool>(apiResponse);
                     return true;
                 }
             }
@@ -485,23 +481,21 @@ namespace ExerciseApi.Net7
             }
         }
 
-
+        // TODO !!!!!
         public static async Task<bool> SetFeedBack(long traningsessionId, float sliderFeedback, string Textfeedback)
         {
-
-            return true;
-            //try
-            //{
-            //    using (var response = await _httpClient.GetAsync(string.Format("{0}/api/Exercise/GetTrainingSession?TraningSessionId={1}", BaseUrl, TraningSessionId)))
-            //    {
-            //        string apiResponse = await response.Content.ReadAsStringAsync();
-            //        return JsonConvert.DeserializeObject<EmTrainingSession>(apiResponse);
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    return null;
-            //}
+            try
+            {  //float sliderFeedback, string Textfeedback
+                using (var response = await _httpClient.GetAsync(string.Format("{0}/api/Exercise/SetFeedBack?TraningSessionId={1}&sliderFeedback={2}&Textfeedback={3}", BaseUrl, traningsessionId, sliderFeedback, Textfeedback)))
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<bool>(apiResponse);
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
 

@@ -149,15 +149,23 @@ else
                                                 var mealTotal = dayTotal.MealTotals.FirstOrDefault(r => r.MealId == meal.Id) ?? new MealActualNutritionalValueCalculationModel();
 
                                                 <tr>
-                                                    <td class="fw-bold align-middle">
-                                                        @meal.MealType.Name
+                                                    <td class="align-middle">
+                                                        <span class="fw-bold">@meal.MealType.Name</span>
                                                         @if (meal.IsComplete)
                                                         {
-                                                            <div class="badge bg-success">Complete</div>
+                                                            <span class="badge bg-success">Complete</span>
                                                         }
                                                         @if (meal.IsSkipped)
                                                         {
-                                                            <div class="badge bg-warning">Skipped</div>
+                                                            <span class="badge bg-warning">Skipped</span>
+                                                        }
+                                                        @if (meal.ScheduledTime.HasValue)
+                                                        {
+                                                            <div class="fst-italic">Scheduled on: @meal.ScheduledTime.Value.ToString("f")</div>
+                                                        }
+                                                        @if (meal.Timestamp.HasValue)
+                                                        {
+                                                            <div class="fst-italic">Taken on: @meal.Timestamp.Value.ToString("f")</div>
                                                         }
                                                     </td>
                                                     <td>

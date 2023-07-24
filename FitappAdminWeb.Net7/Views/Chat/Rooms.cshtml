@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model RoomSelectViewModel
+
+<div class="d-flex justify-content-between">
+    <h4>User Rooms</h4>
+    <a href="#" class="btn btn-primary align-middle" onclick="location.reload()">
+        <i data-feather="refresh-ccw"></i><span class="ms-2">Refresh</span>
+    </a>
+</div>
+<p>These are the currently existing user message rooms. You can select a room to start messaging with a specific user.</p>
+
+<div class="border p-3 mb-3 bg-light">
+    <h5>Filter Options:</h5>
+    <form asp-action="Rooms" method="get" id="filter_options">
+        <div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" asp-for="WithConcernsOnly" />
+                <label class="form-check-label" asp-for="WithConcernsOnly">Include Rooms with Concerns Only</label>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="row" id="room_list">
+    @foreach (var room in Model.Rooms)
+    {
+        var recentMessage = room.MsgMessage.LastOrDefault();
+
+        <div class="col-md-6 mb-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h5 class="card-title d-flex justify-content-between">
+                        Room #@room.Id
+                        @if (room.HasConcern)
+                        {
+                            <span class="badge bg-danger align">Concern</span>
+                        }
+                    </h5>
+                    <h6 class="card-subtitle mb-2 text-muted">#@room.RoomName</h6>                   
+                    @if (recentMessage != null)
+                    {
+                        var timespanFromNow = DateTime.UtcNow - recentMessage.Timestamp;
+
+                        <span class="fw-bold">Most Recent Message</span>
+                        <div class="m-3 rounded-3 bg-secondary bg-gradient text-white p-3">
+                            <p class="fw-bold">
+                                @(recentMessage.FkUserSenderNavigation.FirstName) @(recentMessage.FkUserSenderNavigation.LastName)
+                                <span class="fs-6 text-white-50">(ID: @recentMessage.FkUserSender)</span>
+                            </p>
+                            <p>@recentMessage.MessageContent</p>
+                            <p class="text-end">
+                                @if (timespanFromNow.Days > 0)
+                                {
+                                    <span class="fst-italic">@timespanFromNow.Days days ago</span>
+                                }
+                                else if (timespanFromNow.Hours > 0)
+                                {
+                                    <span class="fst-italic">@timespanFromNow.Hours hours ago</span>
+                                }
+                                else if (timespanFromNow.Minutes > 0)
+                                {
+                                    <span class="fst-italic">@timespanFromNow.Minutes minutes ago </span>
+                                }
+                                else
+                                {
+                                    <span class="fst-italic">Today</span>
+                                }
+                            </p>
+                        </div>
+                    }
+                    <a asp-action="Room" asp-route-id="@room.Id" class="card-link">Enter Room</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#WithConcernsOnly").on("change", function () { $("#filter_options").submit(); })
+        });
+    </script>
+}

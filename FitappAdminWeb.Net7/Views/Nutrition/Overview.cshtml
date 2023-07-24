@@ -42,74 +42,27 @@
         </div>
     </form>
 </div>
-<div class="row" id="graph_list">
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="CaloriesChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
+@if (Model.NutritionListChartDisplayData == null || Model.NutritionListChartDisplayData.Count == 0)
+{
+    <div class="d-flex justify-content-center py-3">
+        <span>No nutrition plans found.</span>
     </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="ProteinChart" style="width:100%;max-width:720px"></canvas>
+}
+else
+{
+    <div class="row" id="graph_list">
+        @foreach (var item in Model.NutritionListChartDisplayData)
+        {
+            <div class="col-md-6 mb-3">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <canvas id=@item.Name style="width:100%;max-width:720px"></canvas>
+                    </div>
+                </div>
             </div>
-        </div>
+        }
     </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="CarbohydratesChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="SugarsChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="FatChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="SaturatedFatChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="UnsaturatedFatChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="FiberChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-6 mb-3">
-        <div class="card bg-light">
-            <div class="card-body">
-                <canvas id="AlcoholChart" style="width:100%;max-width:720px"></canvas>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="d-flex justify-content-center py-3">
-</div>
-
+}
 
 @section Scripts {
     <script asp-src-include="~/lib/managed/nutritionchart.js"></script>

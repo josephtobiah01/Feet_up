@@ -1,0 +1,96 @@
+﻿@model RegisterCustomerModel
+@{
+    var modelstate = ViewContext.ModelState;
+}
+
+@if (modelstate.ErrorCount > 0)
+{
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            Failed to add new customer. 
+            <ul>
+                @foreach (var state in modelstate)
+                {
+                    if (state.Value.Errors.Count > 0)
+                    {
+                        <li>@state.Key : @string.Join(",", state.Value.Errors.Select(r => r.ErrorMessage))</li>
+                    }                   
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+<h4>Add New Customer</h4>
+<p>You can add new customers here.</p>
+
+<form asp-action="Register" method="post" id="user_form">
+    <h5 class="mb-3 fw-bold">Account Information</h5>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="FirstName" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="LastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" asp-for="LastName" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <label asp-for="Password" class="form-label">Initial Password for Account</label>
+            <input type="text" class="form-control" asp-for="Password" required />
+        </div>
+    </div>
+    <h5 class="mb-3 fw-bold">Contact Information</h5>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label asp-for="Email" class="form-label">Email</label>
+            <input type="text" class="form-control" asp-for="Email" required />
+            <span class="form-text text-muted">Created account username will use this email. Email must be unique.</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12 mb-3">
+            <label asp-for="Mobile" class="form-label">Mobile</label>
+            <input type="text" class="form-control" asp-for="Mobile" required />
+        </div>
+    </div>
+    <h5 class="mb-3 fw-bold">Shipping Address</h5>
+    <div class="row">
+        <div class="col mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressLine1" placeholder="Address Line 1" required />
+            <input type="text" class="form-control mt-3" asp-for="ShippingAddress.AddressLine2" placeholder="Address Line 2" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressCity" placeholder="City" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressState" placeholder="State" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            <input type="text" class="form-control" asp-for="ShippingAddress.AddressPostalCode" placeholder="Postal Code" required />
+        </div>
+        <div class="col-md-6 mb-3">
+            @*<input type="text" class="form-control" asp-for="ShippingAddress.AddressCountry" placeholder="Country" required />*@
+            <select class="form-select" asp-for="ShippingAddress.AddressCountry" asp-items="Model.CountryList" required>
+                <option value="">Please select Country..</option>
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-3 d-flex justify-content-end">
+            <button type="submit" class="btn btn-primary">Add New User</button>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <script>
+        $("#user_form").validate({
+            errorClass: "is-invalid",
+            validClass: "is-valid",
+        })
+    </script>
+}

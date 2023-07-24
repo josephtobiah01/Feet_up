@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap-toaster/css/bootstrap-toaster.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/choices.js//choices.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/chartjs/Chart.css" />
     @await RenderSectionAsync("Styles", required: false)
 </head>
 <body>
@@ -24,7 +25,7 @@
                     <li><a asp-controller="Home" asp-action="Index" class="nav-link px-2 link-dark">User List</a></li>
                     <li><a asp-controller="Lookup" asp-action="Index" class="nav-link px-2 link-dark">Lookups</a></li>
                     <li>
-                        <a asp-controller="Chat" asp-action="RoomsWithConcerns" class="nav-link px-2 link-dark">
+                        <a asp-controller="Chat" asp-action="Rooms" class="nav-link px-2 link-dark">
                             Chat
                             <span class="badge bg-danger">@ViewBag.RoomWithConcernsCount</span>
                         </a>

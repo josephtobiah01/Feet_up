@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("MauiApp1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("2.5.2.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("2.5.2")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("3.1.4.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("3.1.4")]
 [assembly: System.Reflection.AssemblyProductAttribute("MauiApp1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MauiApp1")]
-[assembly: System.Reflection.AssemblyVersionAttribute("2.5.2.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("3.1.4.0")]
 [assembly: System.Runtime.Versioning.TargetPlatformAttribute("Android33.0")]
 [assembly: System.Runtime.Versioning.SupportedOSPlatformAttribute("Android29.0")]
 

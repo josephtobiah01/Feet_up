@@ -94,7 +94,13 @@
         self.StartDateTime_TimeSpan = ko.observable("");
         self.StartDateTime = ko.observable("");
         self.EndDateTime_TimeSpan = ko.observable("");
-        self.EndDateTime = ko.observable("");
+        self.EndDateTime = ko.computed(() => {
+            var startDate = self.StartDateTime();
+            if (startDate != null && startDate != "") {
+                return startDate;
+            }
+            return null;
+        }, this);
         self.IsTemplate = ko.observable(false);
         self.TemplateId = ko.observable();
         self.Description = ko.observable();
@@ -118,6 +124,14 @@
             if (confirm("Are you sure you want to remove this exercise?")) {
                 self.Exercises.remove(exercise);
             }         
+        }
+
+        self.DisplayDateTime = function (date) {
+            if (date != null && date != "") {
+                var date_time = (new Date(date)).toISOString().split('T')[0];
+                //console.log(date_time);
+                return date_time;
+            }
         }
 
         self.LoadTemplate = function () {
@@ -156,7 +170,7 @@
             if (!self.IsTemplate()) {
                 self.StartDateTime(document.getElementById("Data_StartDateTime").value);
                 self.StartDateTime_TimeSpan(document.getElementById("Data_StartDateTime_TimeSpan").value);
-                self.EndDateTime(document.getElementById("Data_EndDateTime").value);
+                //self.EndDateTime(document.getElementById("Data_EndDateTime").value);
                 self.EndDateTime_TimeSpan(document.getElementById("Data_EndDateTime_TimeSpan").value);
             }           
             self.Description(document.getElementById("Data_Description").value);

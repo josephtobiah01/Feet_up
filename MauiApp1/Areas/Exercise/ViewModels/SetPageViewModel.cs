@@ -20,6 +20,7 @@ namespace MauiApp1.Areas.Exercise.ViewModels
 
         public long SetId { get; set; }
         public long ExerciseId { get; set; }
+        public long Exercise_type_Id { get; set; }
         public string SetName { get; set; }
         public string SetSequenceNumber { get; set; }
         public bool IsSkipped { get; internal set; }

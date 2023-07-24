@@ -51,6 +51,8 @@ public partial class FnsNutritionActualMeal
 
     public DateTime? Timestamp { get; set; }
 
+    public DateTime? ScheduledTime { get; set; }
+
     public virtual FnsNutritionActualDay FkNutritionActualDay { get; set; }
 
     public virtual ICollection<FnsNutritionActualDish> FnsNutritionActualDish { get; set; } = new List<FnsNutritionActualDish>();

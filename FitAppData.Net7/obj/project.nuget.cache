@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "gIU/wtgGUWpv+g4eXcOFfdGBBhs54OSt2uHlpjfgPZz01gPlhiMKigyVNfZtEIa6QEqIj998hasgitrlYEAsWQ==",
+  "dgSpecHash": "HbJMm/ge0U8RWFO18aODOmBtUl2NcO957dnMeeC5Zxv7ZoNMdFTX0YnQh2EIApc6NZj3IkCs43CtGSBIqe5bEw==",
   "success": true,
   "projectFilePath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\FitAppData.Net7\\FitAppData.Net7.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\air.maui.fitnessdata.client\\1.0.0-alpha35\\air.maui.fitnessdata.client.1.0.0-alpha35.nupkg.sha512",
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\air.maui.fitnessdata.common\\1.0.0-alpha35\\air.maui.fitnessdata.common.1.0.0-alpha35.nupkg.sha512",
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\air.maui.securityservices.client\\1.0.0-alpha08\\air.maui.securityservices.client.1.0.0-alpha08.nupkg.sha512",
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\air.maui.securityservices.common\\1.0.0-alpha08\\air.maui.securityservices.common.1.0.0-alpha08.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
@@ -41,6 +45,7 @@
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\system.codedom\\4.4.0\\system.codedom.4.4.0.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\system.configuration.configurationmanager\\5.0.0\\system.configuration.configurationmanager.5.0.0.nupkg.sha512",

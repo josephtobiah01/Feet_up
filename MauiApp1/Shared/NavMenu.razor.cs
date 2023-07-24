@@ -1,22 +1,21 @@
 ﻿using FeedApi.Net7.Models;
 using MauiApp1.Areas.BarcodeScanning.Views;
 using MauiApp1.Areas.Security.Views;
-using MauiApp1.Areas.Mindfulness.Views;
 using MauiApp1.Areas.Chat.Views;
+using MauiApp1.Areas.Profile.Views;
 using MauiApp1.Business.DeviceServices;
-using Microsoft.Maui.Controls;
+using MauiApp1._Push;
 using ParentMiddleWare;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UserApi.Net7.Models;
-using Microsoft.JSInterop;
 using UserApi.Net7;
-#if ANDROID || IOS
-using MauiApp1.Areas.Badges.Models;
-#endif
+using MauiApp1.Areas.Test.Views;
+using MauiApp1.Areas.Overview.Views;
+using FitnessData.Client.Business;
+using FitnessData.Common;
+using Newtonsoft.Json;
+using System.Text;
+using MauiApp1.Business;
+using MauiApp1.Helpers;
+using Microsoft.AspNetCore.Components;
 
 namespace MauiApp1.Shared
 {
@@ -27,12 +26,15 @@ namespace MauiApp1.Shared
         public string DisplayUserPopup = "none";
         private bool collapseNavMenu = true;
         public string LoginLogout = "Login";
+        private string _connectedAppsText = "Connect Application";
         public static bool isLoggedIn = false;
 
         private bool _hideMessageButton = true;
+        private bool _hideConnectedAppButton = true;
         private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
 
         #endregion
+
         #region[Initialization]
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -41,7 +43,7 @@ namespace MauiApp1.Shared
             if (firstRender)
             {
 #if IOS || ANDROID
-                NotificationCounter.Default.SetNotificationCount(0);
+                //NotificationCounter.Default.SetNotificationCount(0);
 #endif
                 bool IssignedInUser = MiddleWare.UserID > 0;
               if (IssignedInUser)
@@ -65,6 +67,7 @@ namespace MauiApp1.Shared
             }
         }
         #endregion
+
         #region [Methods :: EventHandlers :: Class]
 
         public NavMenu() 
@@ -74,121 +77,26 @@ namespace MauiApp1.Shared
         #endregion
 
         #region [Methods :: EventHandlers :: Controls]
-        private void ProfilePictureButton_Click()
-        {
-            ShowUserMenu();
-        }
-
         protected virtual async void RefreshMenu_OnRefresh(object sender, EventArgs e)
         {
             RefreshMenu();
+        }
+        private void ConnectedApps_Clicked()
+        {
+            //ConnectApplicationToGoogleFit();
         }
 
         #endregion
 
         #region [Methods :: Tasks]
 
-        public async void Login()
-        {
-            bool IssignedInUser = MiddleWare.UserID > 0;
-            if (IssignedInUser)
-            {
-                SignOutUser();
-                CloseUserPopup();
-            }
-            else
-            {
-                await App.Current.MainPage.Navigation.PushAsync(new ViewLoginContentPage());
-                ////temporary
-                //LoginLogout = "Logout";
-                CloseUserPopup();
-                StateHasChanged();
-            }            
-        }
-        private async void ShowUserMenu()
-        {
-
-            string[] menu = new string[1];
-
-            bool  IssignedInUser = MiddleWare.UserID > 0;
-
-            if (IssignedInUser)
-            {
-                menu[0] = "Sign out";
-            }
-            else
-            {
-                menu[0] = "Sign in";
-
-            }          
-
-            string action = await App.Current.MainPage.DisplayActionSheet("Menu", "Cancel", null,
-                 menu);
-
-            switch (action)
-            {
-                case "Sign out":
-
-                    SignOutUser();
-                    //await App.Current.MainPage.Navigation.PushModalAsync(new MainPage());
-                    break;
-
-                case "Sign in":
-
-                    await App.Current.MainPage.Navigation.PushAsync(new ViewLoginContentPage());
-                    break;               
-
-                default:                   
-                    break;
-            }
-
-
-        }
-
-        private async void SignOutUser()
-        {
-
-            ShowLoadingActivityIndicator();
-
-            bool userSignedOut = await App.Current.MainPage.DisplayAlert("Sign Out", "Are you sure you want to sign out","Sign out", "Cancel");
-       
-            if (userSignedOut == true)
-            {
-                long userId = MiddleWare.UserID;
-                bool userSignedOutSuccessful = MauiApp1.Pages.Index.LogOffuser();
-
-                if(userSignedOutSuccessful == true)
-                {
-                    try
-                    {
-                        await UserMiddleware.UnRegisterDevice(await PushRegistration.CheckPermission(), userId, PushRegistration.GetPlatform());
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
-                    if (HTMLBridge.RefreshData != null)
-                    {
-                        HTMLBridge.RefreshData.Invoke(this, null);
-                    }
-                }
-                //await App.Current.MainPage.Navigation.PushModalAsync(new MainPage());
-                LoginLogout = "Login";
-                isLoggedIn = false;
-                CloseUserPopup();
-                StateHasChanged();
-            }
-            else
-            {
-                HideLoadingActivityIndicator();
-                StateHasChanged();
-            }
-        }
+        
 
         private void ToggleNavMenu()
         {
             collapseNavMenu = !collapseNavMenu;
         }
+
         public async void GoToChatPage()
         {
             bool userSignedIn = MiddleWare.UserID > 0;
@@ -208,15 +116,16 @@ namespace MauiApp1.Shared
 
             
         }
-
-        public void OpenUserPopup()
+        public async void OpenAddNewPopup()
         {
-            RefreshMenu();
-            DisplayUserPopup = "inline";
+            if (PushNavigationHelper.RootPage != null)
+            {
+               await PushNavigationHelper.RootPage.OpenAddNewPopup();
+            }
         }
-        public void CloseUserPopup()
+        public async Task GoToProfilePage()
         {
-            DisplayUserPopup = "none";
+            await App.Current.MainPage.Navigation.PushAsync(new ViewProfileContentPage());
         }
         private async void GotoScanPage()
         {
@@ -254,33 +163,52 @@ namespace MauiApp1.Shared
             if (userSignedIn == true)
             {
                 _hideMessageButton = false;
+                _hideConnectedAppButton = false;
                 LoginLogout = "Logout";
                 isLoggedIn = true;
             }
             else
             {
                 _hideMessageButton = true;
+                _hideConnectedAppButton = true;
                 LoginLogout = "Login";
                 isLoggedIn = false;
             }
+
             StateHasChanged();
         }
 
+        private void ClearFitnessServiceStorage()
+        {
+            Preferences.Default.Set("fitness_service", string.Empty);
+        }
+
+
         #endregion
+
+        #region [Fields :: Public]
+
+        [Parameter]
+        public bool AddButtonHidden { get; set; }
+
+
+        #endregion
+
         #region[DEBUG]
         public bool isDebug()
         {
-            #if DEBUG
+#if DEBUG
                 return true;
-            #else
+#else
                 return false;
-            #endif
+#endif
         }
 
         public async void GoToTestPage()
         {
-            await App.Current.MainPage.Navigation.PushAsync(new ViewChatDetailPageVer2());
+            await App.Current.MainPage.Navigation.PushAsync(new TestContentPage());
         }
         #endregion
+
     }
 }

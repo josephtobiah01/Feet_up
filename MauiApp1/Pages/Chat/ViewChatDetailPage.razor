@@ -2,18 +2,67 @@
 <div id="content-div" class="content-div">
 
     <div id="list-content-group-div" class="list-content-group-div">
+        @{
+            DateTime currentdatetime = DateTime.MinValue;
+            DateTime currentdateMinusSixDays = DateTime.MinValue;
+            string dateHeader = string.Empty;
+         }
+            
 
         @foreach (IMessage message in _messageList)
         {
+            @if (currentdatetime.ToLocalTime().Date != message.TimeStamp.ToLocalTime().Date)
+            {
+                currentdatetime = message.TimeStamp;
+
+                if (currentdatetime.ToLocalTime().Date == DateTime.Now.Date)
+                {
+                    dateHeader = "Today";
+                }
+                else
+                {
+                    currentdateMinusSixDays = DateTime.Now.Date.AddDays(-7);
+                    if (currentdateMinusSixDays < currentdatetime.Date)
+                    {
+                        dateHeader = currentdatetime.ToLocalTime().Date.DayOfWeek.ToString();
+                    }
+                    else
+                    {
+                        dateHeader = currentdatetime.ToLocalTime().Date.ToString("dd/MM/yyyy");
+                    }
+                }
+
+                <div class="date-header-div">
+                    <label class="date-header-label">@dateHeader</label>
+                </div>
+            }
+
             @switch (message.IsUserMessage)
             {
                 case true:
 
-                    @*<div class="user-sent-message-blank-div" />*@
-                    <div class="user-sent-message-div">
-                        <label class="time-stamp-label">@message.TimeStamp</label>
-                        <br />
-                        <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+                    
+                    <div class="user-sent-message-div">                       
+                        @if (message.MessageImage != null)
+                        {
+                            <div class="image-container">
+                                <img class="message-image" src="@(message.MessageImage)" />
+                                @if (!string.IsNullOrEmpty(message.MessageText))
+                                {
+                                    <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+                                }
+                            </div>
+                            
+                        }
+                        else if (!string.IsNullOrEmpty(message.MessageText))
+                        {
+                            <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+                        }
+                        
+                        <div class="time-stamp-container-div">
+                            <label class="time-stamp-label">@message.TimeStamp.ToLocalTime().ToString("hh:mm tt").ToUpper()</label>
+                            <img class="user-message-check-image" src="resources/public/icons/uniconsSolid/check_white.svg">
+                        </div>
                     </div>
 
                     break;
@@ -21,11 +70,14 @@
                 case false:
 
                     <div class="server-sent-message-div">
-                        <label class="username-label">@message.UserName</label>
-                        <br/>
-                        <label class="time-stamp-label">@message.TimeStamp</label>
-                        <br />
+                        @*<label class="username-label">@message.UserName</label>
+                        <br/>                        *@
                         <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+
+                        <div class="server-sent-time-container-div">
+                            <label class="time-stamp-label">@message.TimeStamp.ToLocalTime().ToString("hh:mm tt").ToUpper()</label>
+                        </div>
+                                                
                     </div>
                     @*<div class="server-sent-message-blank-div"/>*@
 
@@ -33,14 +85,35 @@
             }
         }
 
+        
+
     </div>
 
     <div class="footer-content-group-div">
-        <!--input type="text" class="chat-input" placeholder="Send a Message" onfocus="ChatInput_Focused" bind-value=_userMessageText />-->
-        <textarea id="textinput" placeholder="Send a Message" class="chat-input" @onfocus="ChatInput_Focused" @bind="@_userMessageText"> </textarea>
-        <button class="send-button" @onclick=SendButton_Clicked>
-            <img class="white-icon" src="resources/public/icons/userInterface/paperplane.svg" />
-        </button>
+        
+        <div class="textarea-container">
+
+            <img class="imageMessage" src="@_userMessageImage"/>
+
+            @if (_isCancelButtonVisible)
+            {
+                <button class="cancel-button" @onclick=CancelButtonClick>Cancel</button>
+            }
+
+            <textarea class="chat-input" id="textinput" placeholder="@SetPlaceholder()" @onfocus="ChatInput_Focused" @bind="@_userMessageText" maxlength="250"/> 
+
+        </div>
+        <div class="buttonarea-container">
+
+            <button class="send-button" @onclick=UploadPhoto>
+                <img class="sendimage-icon" src="resources\public\icons\communication\mail.svg" />
+            </button>
+
+            <button class="send-button" @onclick=SendButton_Clicked>
+                <img class="white-icon" src="resources/public/icons/userInterface/paperplane.svg" />
+            </button>
+
+        </div>
     </div>
 </div>
 

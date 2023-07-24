@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MauiApp1.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -12,9 +13,10 @@ namespace MauiApp1.Helpers
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected bool SetPropertyValue<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
+
+        protected bool SetPropertyValue<T>(ref T field, T value, string propertyName)
         {
-            if(Equals(field, value))
+            if (Equals(field, value))
             {
                 return false;
             }

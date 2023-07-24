@@ -43,5 +43,7 @@ public partial class User
 
     public string Country { get; set; }
 
+    public long? FkInternalNotesId { get; set; }
+
     public virtual ICollection<Eds12weekPlan> Eds12weekPlan { get; set; } = new List<Eds12weekPlan>();
 }

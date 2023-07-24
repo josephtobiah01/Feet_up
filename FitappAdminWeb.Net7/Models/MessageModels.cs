@@ -5,7 +5,9 @@ namespace FitappAdminWeb.Net7.Models
     public class RoomSelectViewModel
     {
         public User? CurrentUser { get; set; }
-        public List<MsgRoom> RoomsWithConcerns { get; set; } = new List<MsgRoom>();
+        public List<MsgRoom> Rooms { get; set; } = new List<MsgRoom>();
+
+        public bool WithConcernsOnly { get; set; }
     }
 
     public class SpecificUserChatViewModel

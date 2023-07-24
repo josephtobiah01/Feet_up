@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:models="clr-namespace:MauiApp1.Areas.Dashboard.ViewModel"
+             x:Class="MauiApp1.Areas.Dashboard.Views.SecondMealContentView" Loaded="ContentView_Loaded">
+    <ScrollView>
+        <VerticalStackLayout VerticalOptions="FillAndExpand">
+
+            <VerticalStackLayout x:Name="DishDetailsVerticalStackLayout" VerticalOptions="Fill">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate x:DataType="models:DishItemViewModel">
+                        <Frame BorderColor="#E8E8E8" CornerRadius="8" HasShadow="False" Margin="8,8,8,0" Padding="0,0,0,0">
+                            <VerticalStackLayout VerticalOptions="FillAndExpand">
+                                <Grid VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HeightRequest="56">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                                    </Grid.GestureRecognizers>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="64"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="100"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Frame Grid.Column="0" BorderColor="Transparent" CornerRadius="16" HeightRequest="32" WidthRequest="32" IsClippedToBounds="True" HorizontalOptions="Center" VerticalOptions="Center" Margin="8,8,0,8" HasShadow="False">
+                                        <Image WidthRequest="32" HeightRequest="32" Aspect="AspectFill" Source="{Binding ImageUrl}"/>
+
+                                    </Frame>
+
+                                    <Label Text="{Binding Name}" Grid.Column="1" FontAttributes="Bold" FontSize="Medium" HorizontalOptions="Start" VerticalTextAlignment="Center" Margin="0,8,0,8"/>
+
+                                    <Frame Grid.Column="2" BorderColor="#D6F9FF" BackgroundColor="#D6F9FF" CornerRadius="16" HeightRequest="32" WidthRequest="84" IsClippedToBounds="True" HorizontalOptions="Center" VerticalOptions="Center" Padding="0"  Margin="0,8,32,8" HasShadow="False">
+                                        <Frame.Triggers>
+                                            <DataTrigger TargetType="Frame" Binding="{Binding Active}" Value="true">
+                                                <Setter Property="IsVisible" Value="false" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Frame" Binding="{Binding Active}" Value="false">
+                                                <Setter Property="IsVisible" Value="true" />
+                                            </DataTrigger>
+                                        </Frame.Triggers>
+                                        <Label Text="in progress" TextColor="Black" FontSize="12" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                    </Frame>
+
+                                    <Border Grid.Column="2" Stroke="#E8E8E8" HeightRequest="24" WidthRequest="24" Margin="16,8,0,8">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="12" />
+                                        </Border.StrokeShape>
+                                        <Border.Triggers>
+                                            <DataTrigger TargetType="Border" Binding="{Binding Active}" Value="true">
+                                                <Setter Property="IsVisible" Value="true" />
+                                            </DataTrigger>
+                                            <DataTrigger TargetType="Border" Binding="{Binding Active}" Value="false">
+                                                <Setter Property="IsVisible" Value="false" />
+                                            </DataTrigger>
+                                        </Border.Triggers>
+                                        <Image HorizontalOptions="Center" VerticalOptions="Center">
+                                            <Image.Triggers>
+                                                <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="true">
+                                                    <Setter Property="IsVisible" Value="true" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Image" Binding="{Binding Active}" Value="false">
+                                                    <Setter Property="IsVisible" Value="false" />
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="Image" Binding="{Binding IsExpanded}" Value="false">
+                                                    <Setter Property="Source" Value="expand_more_16x16.png" />
+                                                </DataTrigger>
+                                                <DataTrigger TargetType="Image" Binding="{Binding IsExpanded}" Value="true">
+                                                    <Setter Property="Source" Value="expand_less_16x16.png" />
+                                                </DataTrigger>
+                                            </Image.Triggers>
+                                        </Image>
+                                    </Border>
+
+                                </Grid>
+
+                                <VerticalStackLayout IsVisible="{Binding IsExpanded,Mode=OneWay}" Margin="8,0,8,0">
+                                    <Grid Margin="64,0,0,0">
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="16"/>
+                                            <RowDefinition Height="*"/>
+                                            <RowDefinition Height="16"/>
+                                            <RowDefinition Height="*"/>
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="8"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="10" WidthRequest="300" HeightRequest="2" Fill="#EEF0F2" />
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="0" Margin="0,12,0,0">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Carbs" TextColor="#4D4D4D" FontSize="12"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding Path=Carb, StringFormat='{0}gm'}" TextColor="Black" FontSize="12" Margin="0,8,0,0"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="2" Margin="0,12,0,0">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Fibre" TextColor="#4D4D4D" FontSize="12"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding Path=Fibre, StringFormat='{0}gm'}" TextColor="Black" FontSize="12" Margin="0,8,0,0"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="4" Margin="0,12,0,0">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Protein" TextColor="#4D4D4D" FontSize="12"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding Path=Protein, StringFormat='{0}gm'}" TextColor="Black" FontSize="12" Margin="0,8,0,0"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="6" Margin="0,12,0,0">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Fat" TextColor="#4D4D4D" FontSize="12"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding Path=Fat, StringFormat='{0}gm'}" TextColor="Black" FontSize="12" Margin="0,8,0,0"/>
+                                        </VerticalStackLayout>
+
+                                        <VerticalStackLayout Grid.Row="1" Grid.Column="8" Margin="0,12,0,0">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Cal" TextColor="#4D4D4D" FontSize="12"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding Path=Calories}" TextColor="Black" FontSize="12" Margin="0,8,0,0"/>
+                                        </VerticalStackLayout>
+
+
+                                        <Rectangle Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="10" WidthRequest="300" Margin="0,12,0,0" HeightRequest="2" Fill="#EEF0F2" />
+
+                                        <VerticalStackLayout Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,12,0,0">
+                                            <Label>
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="Servings" TextColor="#4D4D4D" FontSize="12"/>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label Text="{Binding Path=Servings}" TextColor="Black" FontSize="12" Margin="0,8,0,0"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+
+                                    <VerticalStackLayout Margin="0,16,0,0">
+                                        <HorizontalStackLayout>
+                                            <Ellipse Fill="#00A01A" Stroke="Transparent" StrokeThickness="0" WidthRequest="16" HeightRequest="16" HorizontalOptions="Start" Margin="16,0,0,0"/>
+                                            <Label Text="Protein" Grid.Column="1" FontAttributes="Bold" FontSize="12" Margin="8,0,0,0" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Intake" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12"/>
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=ProteinPercentageIntake, StringFormat='{0}%'}" VerticalOptions="Center" HorizontalOptions="Center" FontSize="12" Margin="8,0,0,0"/>
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=Protein, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>
+
+                                        <!--<HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Amino acid breakdown" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            <Label Text="{Binding Path=AminoAcid, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>-->
+                                    </VerticalStackLayout>
+
+                                    <!--<Line X1="16" Y1="0" X2="343" Y2="0" Margin="0,24,0,0" Stroke="#E8E8E8" StrokeDashArray="1,1" StrokeDashOffset="2" StrokeThickness="2" />-->
+                                    <Rectangle WidthRequest="343" Margin="0,12,0,0" HeightRequest="2" Fill="#EEF0F2" />
+
+                                    <VerticalStackLayout Margin="0,12,0,0">
+                                        <HorizontalStackLayout>
+                                            <Ellipse Fill="#F3C522" Stroke="Transparent" StrokeThickness="0" WidthRequest="16" HeightRequest="16" HorizontalOptions="Start" Margin="16,0,0,0"/>
+                                            <Label Text="Carbs" Grid.Column="1" FontAttributes="Bold" FontSize="12" Margin="8,0,0,0" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Intake" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=CarbsPercentageIntake, StringFormat='{0}%'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=Carb, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Sugar" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            <Label Text="{Binding Path=Sugar, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="Fibre" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=Fibre, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>
+                                    </VerticalStackLayout>
+
+                                    <!--<Line X1="16" Y1="0" X2="343" Y2="0" Margin="0,24,0,0" Stroke="#E8E8E8" StrokeDashArray="1,1" StrokeDashOffset="2" StrokeThickness="2" />-->
+                                    <Rectangle WidthRequest="343" Margin="0,12,0,0" HeightRequest="2" Fill="#EEF0F2" />
+
+                                    <VerticalStackLayout Margin="0,12,0,12">
+                                        <HorizontalStackLayout>
+                                            <Ellipse Fill="#0072DB" Stroke="Transparent" StrokeThickness="0" WidthRequest="16" HeightRequest="16" HorizontalOptions="Start" Margin="16,0,0,0"/>
+                                            <Label Text="Fat" Grid.Column="1" FontAttributes="Bold" FontSize="12" Margin="8,0,0,0" />
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Intake" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=FatPercentageIntake, StringFormat='{0}%'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=Fat, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>
+
+                                        <HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Saturated" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            <Label Text="{Binding Path=StarturatedFat, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+
+                                            <Ellipse Fill="#D9D9D9" Stroke="Transparent" StrokeThickness="0" WidthRequest="4" HeightRequest="4" HorizontalOptions="Center" Margin="8,0,0,0"/>
+
+                                            <Label Text="Unsaturated" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                            <Label Text="{Binding Path=UnsaturatedFat, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>
+
+                                        <!--<HorizontalStackLayout Margin="16,8,0,0">
+                                            <Label Text="Poly unsaturated" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" />
+                                            <Label Text="{Binding Path=UnsaturatedFat, StringFormat='{0}gm'}" FontSize="12" VerticalOptions="Center" HorizontalOptions="Center" Margin="8,0,0,0"/>
+                                        </HorizontalStackLayout>-->
+                                    </VerticalStackLayout>
+
+                                </VerticalStackLayout>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+
+                <StackLayout HeightRequest="64"/>
+            </VerticalStackLayout>
+            <ActivityIndicator x:Name="LoadingActivityIndicator" IsRunning="True" HeightRequest="50" Margin="0,16,0,0"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

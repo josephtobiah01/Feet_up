@@ -7,6 +7,10 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\n
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\DataEntryTest.runtimeconfig.json
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\DataEntryTest.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\DataEntryTest.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\FitnessData.Client.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\FitnessData.Common.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\SecurityServices.Client.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\SecurityServices.Common.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\Azure.Core.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\Azure.Identity.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\bin\Debug\net7.0\ErikEJ.EntityFrameworkCore.6.DgmlBuilder.dll

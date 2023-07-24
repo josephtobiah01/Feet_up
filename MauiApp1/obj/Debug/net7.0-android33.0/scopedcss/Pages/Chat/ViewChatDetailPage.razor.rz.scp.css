@@ -1,0 +1,233 @@
+.content-div[b-aukp499u09] {
+    position: fixed;
+    display: grid;
+    /* height: 500px; */
+    grid-template-areas:
+        'body'
+        'footer';
+    grid-template-rows: 1fr auto;
+    background-color: white;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+}
+
+.list-content-group-div[b-aukp499u09] {
+    display: grid;
+    grid-auto-rows: max-content;
+    grid-row-gap: 12px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+
+.user-sent-message-blank-div[b-aukp499u09] {
+}
+
+.user-sent-message-div[b-aukp499u09] {
+    justify-self: end;
+    width: fit-content;
+    height:fit-content;
+    max-width: 70vw;
+    float: right;
+    background: #006272;
+    border-radius: 8px 0px 8px 8px;
+    text-align: right;
+    padding: 2px;
+    margin-right: 8px;
+}
+
+    .user-sent-message-div > .image-container[b-aukp499u09] {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+
+    }
+
+        .user-sent-message-div > .image-container > .message-image[b-aukp499u09] {
+            flex-grow: 1;
+            object-fit: cover;
+            margin: 3px;
+            pointer-events: none;
+            border-radius: 5px;
+        }
+
+        .user-sent-message-div > .image-container > .message-text-label[b-aukp499u09] {
+            font-size: 14px;
+            font-family: 'Montserrat';
+            font-weight: 400;
+            font-style: normal;
+            margin-top: 5px;
+            color: white;
+            background-color: #006272;
+            border-radius: 5px;
+            padding: 5px 8px;
+            word-break: break-word;
+            white-space: pre-line;
+        }
+
+    .user-sent-message-div > .message-text-label[b-aukp499u09] {
+        font-size: 14px;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-style: normal;
+        color: white;
+        background-color: #006272;
+        border-radius: 5px;
+        padding: 5px 8px;
+        word-break: break-word;
+        white-space: pre-line;
+    }
+
+
+    .user-sent-message-div > .time-stamp-container-div[b-aukp499u09] {
+        display: inline-block;
+    }
+
+        .user-sent-message-div > .time-stamp-container-div > .user-message-check-image[b-aukp499u09] {
+            color: white;
+            height: 20px;
+            width: 20px;
+        }
+
+        .user-sent-message-div > .time-stamp-container-div > .time-stamp-label[b-aukp499u09] {
+            font-size: 11px;
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            color: white;
+            height:13px;
+        }
+
+
+.server-sent-message-blank-div[b-aukp499u09] {
+}
+
+.server-sent-message-div[b-aukp499u09] {
+    justify-self: start;
+    width: fit-content;
+    height: fit-content;
+    max-width: 70vw;
+    float: left;
+    background: #EEF0F2;
+    border-radius: 0px 8px 8px 8px;
+    padding: 8px;
+    margin-left: 8px;
+}
+
+    .server-sent-message-div > .username-label[b-aukp499u09] {
+        font-size: 12px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 700;
+    }
+
+    .server-sent-message-div > .server-sent-time-container-div[b-aukp499u09] {
+        justify-self: end;
+        text-align: right;
+    }
+
+    .server-sent-message-div > .server-sent-time-container-div > .time-stamp-label[b-aukp499u09] {
+        justify-self: end;
+        text-align: right;
+        align-self: end;
+        font-size: 11px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        color: #85929B;
+    }
+
+    .server-sent-message-div > .message-text-label[b-aukp499u09] {
+        font-size: 14px;
+        font-weight: 400;
+        word-break: break-word;
+        white-space: pre-line;
+        margin-bottom: 0px;
+    }
+
+.footer-content-group-div[b-aukp499u09] {
+    grid-area: footer;
+    border-top: 1px solid #85929B;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.textarea-container[b-aukp499u09] {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .textarea-container > .imageMessage[b-aukp499u09] {
+        max-width: 50px;
+        max-height: 50px;
+        object-fit: contain;
+        margin: 3px;
+        pointer-events: none;
+        border-radius: 5px;
+    }
+
+    .textarea-container > .chat-input[b-aukp499u09] {
+        flex: 1;
+        margin: 4px;
+        height: 40px;
+        max-height: 150px;
+        border: none;
+        outline: none;
+    }
+
+    .textarea-container > .cancel-button[b-aukp499u09] {
+        font-size: 15px;
+        font-family: 'Montserrat';
+        font-style: normal;
+        font-weight: 400;
+        color: black;
+        border: 1px solid #778899;
+        background-color: #C0C0C0;
+        margin-left: 5px;
+        padding: 3px;
+        border-radius: 5px;
+    }
+
+
+
+.buttonarea-container[b-aukp499u09]{
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+    .buttonarea-container > .send-button[b-aukp499u09] {
+        border: transparent;
+        background-color: transparent;
+        margin-left: 3px;
+        height: 43px;
+        width: 43px;
+    }
+
+
+
+
+
+.date-header-div[b-aukp499u09] {
+    justify-self: center;
+}
+
+    .date-header-div > .date-header-label[b-aukp499u09] {
+        text-align: center;
+        color: #85929B;
+        font-family: 'Montserrat';
+        font-size: 12px;
+        font-weight: 400;
+    }
+
+    .chat-input[b-aukp499u09] {
+        font-family: Montserrat;
+    }
+    .chat-input:focus[b-aukp499u09]{
+        outline:none;
+    }

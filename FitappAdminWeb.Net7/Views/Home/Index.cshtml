@@ -3,8 +3,16 @@
     ViewData["Title"] = "Home Page";
 }
 
-<h4>User List</h4>
-<p class="mb-3">Lists all customers in the system, as well as a jumping point for further actions.</p>
+<div class="d-flex justify-content-between">
+    <div>
+        <h4>Customer List</h4>
+        <p class="mb-3">Lists all customers in the system, as well as a jumping point for further actions.</p>
+    </div>
+    <div>
+        <a class="btn btn-primary" asp-action="Register" asp-controller="User">Add Customer</a>
+    </div>
+</div>
+
 <div class="row">
     <form asp-action="Index" method="get" id="options_form">
         <div class="col border bg-light p-3 mb-3">

@@ -15,5 +15,7 @@ public partial class FnsMealType
 
     public bool IsDeleted { get; set; }
 
+    public TimeSpan? Defaulttime { get; set; }
+
     public virtual ICollection<FnsNutritionActualMeal> FnsNutritionActualMeal { get; set; } = new List<FnsNutritionActualMeal>();
 }

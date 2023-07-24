@@ -14,6 +14,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AIR.Maui.FitnessData.Client" Version="1.0.0-alpha35" />
+    <PackageReference Include="AIR.Maui.SecurityServices.Client" Version="1.0.0-alpha08" />
+    <PackageReference Include="AIR.Maui.SecurityServices.Common" Version="1.0.0-alpha08" />
+    <PackageReference Include="AIR.NetCore.SecurityServices.Common" Version="1.0.0-alpha07" />
+    <PackageReference Include="AIR.NetCore.SecurityServices.Core" Version="1.0.0-alpha07" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\ParentMiddleWare\ParentMiddleWare.csproj" />
   </ItemGroup>
 

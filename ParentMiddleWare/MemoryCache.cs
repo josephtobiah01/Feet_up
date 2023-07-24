@@ -34,8 +34,47 @@ namespace ParentMiddleWare
             _memoryCache.Remove(key);
         }
 
+        public static async Task<List<UserSetHistory>> GetUserHistory()
+        {
+            try
+            {
+                if (_memoryCache.Get("SetHistory" + MiddleWare.UserID.ToString()) == null)
+                {
+                    var stats = await MiddleWare.GetSetHistory();
+                    Set("SetHistory" + MiddleWare.UserID.ToString(), stats);
+                }
+
+                return _memoryCache.Get("SetHistory" + MiddleWare.UserID.ToString()) as List<UserSetHistory>;
+            }
+            catch
+            {
+                return new List<UserSetHistory>();
+            }
+        }
+
+
+        public static async Task RefreshUserHistory()
+        {
+            try
+            {
+                var stats = await MiddleWare.GetSetHistory();
+                Set("SetHistory" + MiddleWare.UserID.ToString(), stats);
+            }
+            catch
+            {
+            }
+        }
+
     }
 
+
+    public class UserSetHistory
+    {
+        public long UserId { get; set; }
+        public long ExerciseTypeId { get; set; }
+        public short SetNumber { get; set; }
+        public string SetString { get; set; }
+    }
 
 
     public class MemoryCacheItem

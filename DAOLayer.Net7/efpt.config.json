@@ -1,49 +1,50 @@
 ﻿{
    "CodeGenerationMode": 3,
-   "ContextClassName": "NutritionContext",
+   "ContextClassName": "UserContext",
    "ContextNamespace": null,
    "DefaultDacpacSchema": null,
    "FilterSchemas": false,
-   "IncludeConnectionString": true,
+   "IncludeConnectionString": false,
    "ModelNamespace": null,
    "OutputContextPath": null,
-   "OutputPath": "Nutrition",
+   "OutputPath": "User",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "DAOLayer.Net7",
    "Schemas": null,
    "SelectedHandlebarsLanguage": 0,
    "SelectedToBeGenerated": 0,
+   "T4TemplatePath": null,
    "Tables": [
+      {
+         "Name": "[dbo].[Address]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Apn]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ApnErrorLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ApnLogs]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ApnSchedule]",
+         "ObjectType": 0
+      },
       {
          "Name": "[dbo].[country]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[fms_dish_type]",
+         "Name": "[dbo].[Gender]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[fns_error_code]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[fns_meal_type]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[fns_nutrition_actual_day]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[fns_nutrition_actual_dish]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[fns_nutrition_actual_meal]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[fns_transcription_type]",
+         "Name": "[dbo].[u_internal_notes]",
          "ObjectType": 0
       },
       {
@@ -51,7 +52,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "c88-sqlserver-sea-test.FitApp-test_dev",
+   "UiHint": "c88-sqlserver-sea-test.FitApp-test_dev.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,
@@ -68,6 +69,7 @@
    "UseNodaTime": false,
    "UseNullableReferences": false,
    "UseSchemaFolders": false,
+   "UseSchemaNamespaces": false,
    "UseSpatial": false,
    "UseT4": false
 }

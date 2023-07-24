@@ -1,0 +1,52 @@
+﻿@using System.Globalization;
+@model SupplementPlanChartModel
+@{
+    string[] daysOfWeekNames = {
+        "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
+    };
+
+    string[] chartNames =
+            {
+        "myChart_1","myChart_2","myChart_3","myChart_4","myChart_5","myChart_6","myChart_7","myChart_8"
+    };
+}
+
+<div class="row">
+    
+</div>
+<div class="row">
+
+    @foreach(var suppnames in @Model.supplementValues){
+
+        <div class="col-md-6 mb-3">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <canvas id="@suppnames.suppId" style="width:100%;max-width:720px"></canvas>
+                </div>
+            </div>
+        </div>
+
+    }
+
+</div>
+
+
+@section Scripts{
+    <script src="~/lib/managed/supplementChart.js"></script>
+    <script>
+    
+        var chart = []
+
+        @foreach (var chart in Model.supplementValues)
+        {
+            @:var _data = {ID: "", Name: ""};
+            @:_data.ID = "@chart.suppId";
+            @:_data.Name = "@chart.Name";
+
+            @:chart.push(_data);
+        };
+
+        loadChart(chart);
+
+    </script>
+}

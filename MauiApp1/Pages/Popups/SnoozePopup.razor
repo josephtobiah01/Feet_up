@@ -1,0 +1,26 @@
+﻿@page "/snoozePopup";
+@using ParentMiddleWare.Models;
+
+
+<!--popup-->
+<!--dark background overlay-->
+<div class="popup-wrapper" style="--display-popup-variable: @DisplayPopup">
+    <div class="popup-background-dark-overlay"> </div>
+    <div class="popup-background">
+        <div class="popup-body">
+            <div class="popup-header-group">
+                <button class="popup-header-close-button" @onclick="ClosePopup"> <img class="popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
+            </div>
+            <label class="popup-label">Snooze</label>
+            <div class="popup-content-card">
+                <label id="radio-button-label">How much do you want to snooze?</label>
+                <div class="radio">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" label="30 mins" @onclick="async ()=> await thirty_onclick()">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" label="45 mins" @onclick="async ()=> await fourtyfive_onclick()">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" label="1 hour" @onclick="async ()=> await sixty_onclick()">
+                    <input type="radio" name="radAnswer" class="filter-popup-percentage-button" label="2 hours" @onclick="async ()=> await onehundredtwenty_onclick()">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

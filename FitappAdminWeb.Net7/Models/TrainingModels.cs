@@ -114,4 +114,24 @@ namespace FitappAdminWeb.Net7.Models
         [Required]
         public DateTime? StartDay { get; set; }
     }
+
+    public class TrainingGraphViewModel
+    {
+        public User? CurrentUser { get; set; }
+        public List<Eds12weekPlan> Programs { get; set; } = new List<Eds12weekPlan>();
+        public Eds12weekPlan? CurrentProgram { get; set; }
+        public List<SelectListItem> List_Programs { get; set; } = new List<SelectListItem>();
+        public List<TrainingChartDisplayData> TrainingListChartDisplayData { get; set; } = new List<TrainingChartDisplayData>();
+    }
+
+    public class TrainingChartDisplayData
+    {
+        public string? Name { get; set; }
+        public string? Id { get; set; }
+        public List<double> GraphDataTotal { get; set; } = new List<double>();
+        public List<double> GraphDataComplete { get; set; } = new List<double>();
+        public List<double> GraphDataSkipped { get; set; } = new List<double>();
+        public List<double> GraphDataInComplete { get; set; } = new List<double>();
+        public List<string> GraphLabel { get; set; } = new List<string>();
+    }
 }

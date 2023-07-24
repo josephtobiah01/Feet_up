@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace ParentMiddleWare.Models
 {
     [Serializable]
@@ -11,6 +13,8 @@ namespace ParentMiddleWare.Models
         public string ExplainerVideoFr { get; set; }
 
         public string ExplainerTextFr { get; set; }
+
+        public string ImageUrl { get; set; }
 
         public bool HasSetDefaultTemplate { get; set; }
 

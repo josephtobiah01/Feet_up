@@ -182,6 +182,7 @@ html, body {
     background:white;
     border:none;
     grid-row: 1/2;
+    color:black;
     grid-column: 4;
     margin-top:20px;
 }
@@ -234,6 +235,7 @@ html, body {
     top: 8px;
     margin: 16px;
     width: fit-content;
+    color: black;
     padding-left: 15px;
     padding-right: 15px;
     border-radius: 500px;
@@ -283,6 +285,8 @@ html, body {
 .filter-popup-item-image {
     object-fit: cover;
     border-radius: 8px;
+    height:69px;
+    width: 139px;
     max-height: 100%;
     max-width: 100%;
     align-content: center;

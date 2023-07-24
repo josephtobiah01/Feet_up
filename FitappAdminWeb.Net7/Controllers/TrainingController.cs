@@ -461,5 +461,85 @@ namespace FitappAdminWeb.Net7.Controllers
                 return null;
             }
         }
+        [HttpGet]
+        public async Task<IActionResult> Chart(long userId, long? selectedProgram = null)
+        {
+            TrainingGraphViewModel vm = new TrainingGraphViewModel();
+
+            var user = await _trrepo.GetClientById(userId);
+            if (user == null)
+            {
+                _logger.LogWarning("Cannot find user {id}.", userId);
+                return RedirectToAction("Index", "Home");
+            }
+
+            vm.CurrentUser = user;
+
+            vm.Programs = await _trrepo.GetAllProgramsForUser(user.Id);
+            if (vm.Programs == null || vm.Programs.Count == 0)
+            {
+                _logger.LogWarning("TrainingProgram: Cannot find in the user {id}.", userId);
+                return View(vm);
+            }
+
+            vm.CurrentProgram = vm.Programs.Find(item => item.IsCurrent == true);
+
+            selectedProgram ??= vm.Programs.Find(item => item.IsCurrent).Id;
+
+            vm.List_Programs = (from program in vm.Programs
+                                select new SelectListItem()
+                                {
+                                    Text = program.Name + (program.IsCurrent ? "(Current)" : String.Empty),
+                                    Value = program.Id.ToString(),
+                                    Selected = vm.CurrentProgram != null ? program.Id == selectedProgram : false,
+                                }).ToList();
+
+            foreach (var programs in vm.Programs)
+            {
+                if (programs.Id == selectedProgram)
+                {
+                    List<EdsTrainingSession> trainingSessions = new List<EdsTrainingSession>();
+                    trainingSessions.AddRange(await _trrepo.GetAllTrainingSessionsInProgram(programs.Id));
+
+                    int weekIndex = 1;
+                    foreach (var week in programs.EdsWeeklyPlan)
+                    {
+                        var chartData = new TrainingChartDisplayData();
+                        chartData.Name = "Week " + weekIndex++ + " ( " + week.StartDate.GetValueOrDefault().ToShortDateString() + " - " + week.EndDate.GetValueOrDefault().ToShortDateString() + " )";
+                        chartData.Id = week.Id.ToString();
+
+                        int dayIndex = 1;
+                        List<EdsExercise> exercise_select = new List<EdsExercise>();
+                        foreach (var daily in week.EdsDailyPlan)
+                        {
+                            var nameDay = "Day " + dayIndex++ + "(" + daily.StartDay.GetValueOrDefault().ToShortDateString() + ")" + daily.Id;
+
+                            foreach (var item in daily.EdsTrainingSession)
+                            {
+                                var session = trainingSessions.Find(x => x.Id == item.Id);
+
+                                foreach (var exercise in session.EdsExercise)
+                                {
+                                    exercise_select.Add(exercise);  
+                                }
+                            }
+                        }
+
+                        var queryData = exercise_select.GroupBy(x => x.FkExerciseType.Name).Select(y => y).ToList();
+                        foreach (var item in queryData)
+                        {
+                            chartData.GraphDataTotal.Add(item.Select(y => y.EdsSet.Count()).Sum());
+                            chartData.GraphDataComplete.Add(item.Select(y => y.EdsSet.Count(r => r.IsComplete)).Sum());
+                            chartData.GraphDataSkipped.Add(item.Select(y => y.EdsSet.Count(r => r.IsSkipped)).Sum());
+                            chartData.GraphDataInComplete.Add(item.Select(y => y.EdsSet.Count(r => !r.IsComplete && !r.IsSkipped)).Sum());
+                            chartData.GraphLabel.Add(item.Key.ToString());
+                        }
+                        vm.TrainingListChartDisplayData.Add(chartData);
+                    }
+                }
+            }
+
+            return View(vm);
+        }
     }
 }

@@ -5,7 +5,9 @@ using FitappAdminWeb.Net7.Classes.Repositories;
 using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using ParentMiddleWare.Models;
 using System.Collections.Immutable;
+using System.Linq;
 
 namespace FitappAdminWeb.Net7.Controllers
 {
@@ -115,6 +117,60 @@ namespace FitappAdminWeb.Net7.Controllers
             return View(vm);
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> SupplementPlanChart(long userId, long planId)
+        {
+            if (userId != 0)
+            {
+                HttpContext.Session.SetInt32(SKEY_CURRENTUSER, (int)userId);
+            }
+
+            int? currentUserId = HttpContext.Session.GetInt32(SKEY_CURRENTUSER);
+            if (currentUserId.HasValue)
+            {
+                SupplementPlanChartModel vm = new SupplementPlanChartModel();
+                vm.CurrentUser = await _supprepo.GetUserByUserId(currentUserId.Value);
+
+                vm.UserList = (await _supprepo.GetUsersList()).Select(r => new SelectListItem()
+                {
+                    Text = $"{r.FirstName} {r.LastName} (ID: {r.Id})",
+                    Value = r.Id.ToString()
+                }).ToList();
+
+                if (vm.CurrentUser != null)
+                {
+                    vm.SupplementWeeklyPlanList = await _supprepo.GetWeeklyPlansByUserId(currentUserId.Value);
+
+                    var supprefIdList = from suppPlan in vm.SupplementWeeklyPlanList
+                                        from dailyPlan in suppPlan.NdsSupplementPlanDaily
+                                        from supplement in dailyPlan.NdsSupplementPlanSupplement
+                                        select supplement.FkSupplementReference;
+
+                    vm.SupplementReference = await _supprepo.GetSupplementReferenceByIdList(supprefIdList.ToList());
+
+
+                    foreach (var value in vm.SupplementReference)
+                    {
+                        var values = new supplementValues();
+                        values.suppId = value.Id;
+                        values.Name = value.Name;
+                        vm.supplementValues.Add(values);
+                    }
+
+
+
+                    var suppTypes = await _supprepo.GetSupplementReferenceIds();
+                    vm.SupplementList = suppTypes.Select(r => new SelectListItem() { Text = r.Name, Value = r.Id.ToString() }).ToList();
+
+                    var metricList = await _supprepo.GetUnitMetricList();
+                    vm.UnitMetricList = metricList.Select(r => new SelectListItem() { Text = r.Name, Value = r.Id.ToString() }).ToList();
+
+                }
+                return View(vm);
+            }
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
 }

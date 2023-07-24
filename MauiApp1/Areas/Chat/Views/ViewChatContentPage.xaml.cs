@@ -60,7 +60,7 @@ public partial class ViewChatContentPage : ContentPage
                 for (int index = 0; index < _messageListReserve.Count; index++)
                 {
                     RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
-                    message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                    message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
                     _messageList.Add(message);
                 }
 
@@ -182,7 +182,7 @@ public partial class ViewChatContentPage : ContentPage
 
                 if (sentMessage != null)
                 {
-                    message = new IMessage(sentMessage.MessageContent, sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage);
+                    message = new IMessage(sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage, sentMessage.MessageContent);
                     _messageList.Add(message);
                     _isUserScroll = false;
 
@@ -222,7 +222,7 @@ public partial class ViewChatContentPage : ContentPage
                 {
                     if (recievedMessage.IsUserMessage == false)
                     {
-                        message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                        message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
 
                         _messageList.Add(message);
                     }
@@ -286,7 +286,7 @@ public partial class ViewChatContentPage : ContentPage
             _messageList.Clear();
             foreach (RecievedMessage recievedMessage in _messageListReserve)
             {
-                message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
                 _messageList.Add(message);
             }
         }
@@ -297,7 +297,7 @@ public partial class ViewChatContentPage : ContentPage
             for (int index = startingIndex; index < _messageListReserve.Count; index++)
             {
                 RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
-                message = new IMessage(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
+                message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
                 _messageList.Add(message);
             }
         }

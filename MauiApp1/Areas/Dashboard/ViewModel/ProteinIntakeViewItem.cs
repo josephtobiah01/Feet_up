@@ -9,7 +9,7 @@ namespace MauiApp1.Areas.Dashboard.ViewModel
     public class ProteinIntakeViewItem
     {
         public Guid ProteinDataId { get; set; }
-        public long ProteinIntakeCount { get; set; }
-        public DateTimeOffset TransactionDate { get; set; }
+        public double ProteinIntakeCount { get; set; }
+        public DateTime TransactionDate { get; set; }
     }
 }

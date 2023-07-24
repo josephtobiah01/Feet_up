@@ -194,13 +194,7 @@ namespace MauiApp1.Pages.Nutrient
         public async Task FavoriteDish()
         {
             NutrientIsFavorite = !NutrientIsFavorite;
-            if (NutrientIsFavorite)
-            {
-                if (ParentMiddleWare.MiddleWare.ShowFavoriteMsg)
-                {
-                    OpenFavoritePopup();
-                }
-            }
+
             if (NutrientIsFavorite && NutrientRecipe != null)
             {
                 bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
@@ -213,6 +207,10 @@ namespace MauiApp1.Pages.Nutrient
             }
             else
             {
+                if (NutrientIsFavorite && ParentMiddleWare.MiddleWare.ShowFavoriteMsg)
+                {
+                    OpenFavoritePopup();
+                }
                 StateHasChanged();
             }
         }

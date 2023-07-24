@@ -27,7 +27,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -48,6 +50,28 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.NetCore.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            },
+            "AIR.NetCore.SecurityServices.Core": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -64,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -91,7 +115,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -109,6 +135,10 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "EfCore.SchemaCompare": {
+              "target": "Package",
+              "version": "[7.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
@@ -117,7 +147,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[7.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
@@ -140,7 +170,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -167,7 +197,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -188,6 +220,28 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.NetCore.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            },
+            "AIR.NetCore.SecurityServices.Core": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -204,7 +258,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -231,8 +285,10 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.304\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -266,6 +322,18 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
             "Azure.Storage.Blobs": {
               "target": "Package",
               "version": "[12.16.0, )"
@@ -304,7 +372,7 @@
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[7.0.5, )"
+              "version": "[7.0.8, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
@@ -334,7 +402,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -361,7 +429,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -382,6 +452,20 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -398,7 +482,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -425,7 +509,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -443,6 +529,26 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.NetCore.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            },
+            "AIR.NetCore.SecurityServices.Core": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
@@ -468,7 +574,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -495,7 +601,9 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -516,6 +624,28 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
+          "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.NetCore.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            },
+            "AIR.NetCore.SecurityServices.Core": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -532,7 +662,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.304\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

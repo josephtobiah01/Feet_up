@@ -9,8 +9,5 @@
     }
   },
   "ConnectionStrings": {
-    //"DefaultConnection": "Data Source=(localdb)\\ProjectModels;Initial Catalog=testfitapp;Integrated Security=true; MultipleActiveResultSets=true; Trusted_Connection=True"
-    //"DefaultConnection": "Data Source=c88-sqlserver-sea-test.database.windows.net;Initial Catalog=FitApp-test;Persist Security Info=True;User ID=FitApp;Password=\"f^2kL;$f78DFbjh79\""
-    "DefaultConnection": "Data Source=c88-sqlserver-sea-test.database.windows.net;Initial Catalog=FitApp-test_dev;Persist Security Info=True;User ID=FitApp;Password=\"f^2kL;$f78DFbjh79\""
   }
 }

@@ -90,3 +90,6 @@ https://learn.microsoft.com/en-us/aspnet/core/blazor/hybrid/root-component-param
 
 .NET MAUI Graphics View (for rendering shapes and graphics)
 https://learn.microsoft.com/en-us/dotnet/maui/user-interface/controls/graphicsview
+
+onafterrenderasync at 
+https://learn.microsoft.com/en-us/aspnet/core/blazor/components/lifecycle?view=aspnetcore-7.0#after-component-render-onafterrenderasync

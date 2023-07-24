@@ -174,6 +174,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     }
 
                     EdsExerciseType input = _mapper.Map<EdsExerciseType>(Data);
+                    _mapper.Map(Data, itemToEdit);
 
                     //add dependent lookups if it doesn't exist
                     if (Data.FkEquipmentId == 0)
@@ -217,11 +218,12 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         itemToEdit.FkOtherMuscleWorked = eds_othermuscle;
                     }
 
-                    foreach (var in_set in input.EdsSetDefaults)
+                    foreach (var in_set in Data.SetDefaults)
                     {
                         if (in_set.Id == 0)
                         {
-                            itemToEdit.EdsSetDefaults.Add(in_set);
+                            var setToAdd = _mapper.Map<EdsSetDefaults>(in_set);
+                            itemToEdit.EdsSetDefaults.Add(setToAdd);
                             continue;
                         }
 
@@ -229,11 +231,12 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         if (currSet != null)
                         {
                             currSet.SetSequenceNumber = in_set.SetSequenceNumber;
-                            foreach (var in_metric in in_set.EdsSetMetricsDefault)
+                            foreach (var in_metric in in_set.SetMetricDefaults)
                             {
                                 if (in_metric.Id == 0)
                                 {
-                                    currSet.EdsSetMetricsDefault.Add(in_metric);
+                                    var metricToAdd = _mapper.Map<EdsSetMetricsDefault>(in_metric);
+                                    currSet.EdsSetMetricsDefault.Add(metricToAdd);
                                     continue;
                                 }
 
@@ -241,21 +244,62 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                                     .FirstOrDefault(r => r.Id == in_metric.Id);
                                 if (currMetric != null)
                                 {
-                                    currMetric.FkSetMetricType = in_metric.FkSetMetricType;
+                                    currMetric.FkSetMetricType = _dbcontext.EdsSetMetricTypes.First(r => r.Id == in_metric.FkSetMetricTypeId);
                                     currMetric.FkSetMetricTypeId = in_metric.FkSetMetricTypeId;
                                     currMetric.DefaultCustomMetric = in_metric.DefaultCustomMetric;
                                 }
                             }
                             //delete all unwanted metrics
-                            List<long> metricsToRemoveId = currSet.EdsSetMetricsDefault.Select(r => r.Id).Except(in_set.EdsSetMetricsDefault.Select(r => r.Id)).ToList();
+                            List<long> metricsToRemoveId = currSet.EdsSetMetricsDefault.Select(r => r.Id).Except(in_set.SetMetricDefaults.Select(r => r.Id)).ToList();
                             foreach (var id in metricsToRemoveId)
                             {
                                 _dbcontext.EdsSetMetricsDefault.Remove(currSet.EdsSetMetricsDefault.First(r => r.Id == id));
                             }
                         }
                     }
+
+                    #region OLD CODE FOR HANDLING SET DEFAULTS
+                    //foreach (var in_set in input.EdsSetDefaults)
+                    //{
+                    //    if (in_set.Id == 0)
+                    //    {
+                    //        itemToEdit.EdsSetDefaults.Add(in_set);
+                    //        continue;
+                    //    }
+
+                    //    var currSet = itemToEdit.EdsSetDefaults.FirstOrDefault(r => r.Id == in_set.Id);
+                    //    if (currSet != null)
+                    //    {
+                    //        currSet.SetSequenceNumber = in_set.SetSequenceNumber;
+                    //        foreach (var in_metric in in_set.EdsSetMetricsDefault)
+                    //        {
+                    //            if (in_metric.Id == 0)
+                    //            {
+                    //                currSet.EdsSetMetricsDefault.Add(in_metric);
+                    //                continue;
+                    //            }
+
+                    //            var currMetric = itemToEdit.EdsSetDefaults.First(r => r.Id == in_set.Id).EdsSetMetricsDefault
+                    //                .FirstOrDefault(r => r.Id == in_metric.Id);
+                    //            if (currMetric != null)
+                    //            {
+                    //                currMetric.FkSetMetricType = in_metric.FkSetMetricType;
+                    //                currMetric.FkSetMetricTypeId = in_metric.FkSetMetricTypeId;
+                    //                currMetric.DefaultCustomMetric = in_metric.DefaultCustomMetric;
+                    //            }
+                    //        }
+                    //        //delete all unwanted metrics
+                    //        List<long> metricsToRemoveId = currSet.EdsSetMetricsDefault.Select(r => r.Id).Except(in_set.EdsSetMetricsDefault.Select(r => r.Id)).ToList();
+                    //        foreach (var id in metricsToRemoveId)
+                    //        {
+                    //            _dbcontext.EdsSetMetricsDefault.Remove(currSet.EdsSetMetricsDefault.First(r => r.Id == id));
+                    //        }
+                    //    }
+                    //}
+                    #endregion
+
                     //delete all unwanted sets
-                    List<long> setsToRemoveId = itemToEdit.EdsSetDefaults.Select(r => r.Id).Except(input.EdsSetDefaults.Select(r => r.Id)).ToList();
+                    List<long> setsToRemoveId = itemToEdit.EdsSetDefaults.Select(r => r.Id).Except(Data.SetDefaults.Select(r => r.Id)).ToList();
                     itemToEdit.HasSetDefaultTemplate = itemToEdit.EdsSetDefaults.Count - setsToRemoveId.Count != 0;
                     foreach (var id in setsToRemoveId)
                     {
@@ -267,7 +311,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         _dbcontext.EdsSetDefaults.Remove(currset);
                     }
                     
-                    _dbcontext.Entry<EdsExerciseType>(itemToEdit).State = EntityState.Modified;
+                    //_dbcontext.Entry<EdsExerciseType>(itemToEdit).State = EntityState.Modified;
                     await _dbcontext.SaveChangesAsync();
 
                     return itemToEdit;

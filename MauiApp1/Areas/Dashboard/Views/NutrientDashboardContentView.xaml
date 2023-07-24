@@ -1,209 +1,229 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Areas.Dashboard.Views.NutrientDashboardContentView" Loaded="ContentView_Loaded">
-    <ScrollView BackgroundColor="Transparent" Orientation="Vertical" WidthRequest="343">
-        <VerticalStackLayout>
-            <Frame BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343" Margin="0,8,0,0">
-                <VerticalStackLayout>
-                    <Label WidthRequest="155" HeightRequest="24" FontSize="18" FontAttributes="Bold" Margin="0,0,0,8" Text="Nutrients Intake"/>
-                    <Label WidthRequest="296" HeightRequest="40" HorizontalTextAlignment="Center" Text="Track how much nutrients you are consuming"/>
-                </VerticalStackLayout>
-            </Frame>
+             x:Class="MauiApp1.Areas.Dashboard.Views.NutrientDashboardContentView" 
+             xmlns:local="clr-namespace:MauiApp1.Areas.Dashboard.Views"
+             x:DataType="local:NutrientDashboardContentView">
+    <!--<ScrollView BackgroundColor="Transparent" Orientation="Vertical" WidthRequest="343">
+        
+    </ScrollView>-->
 
-            <Label Grid.Row="0" VerticalOptions="Center" Margin="16" FontAttributes="Bold" Text="Calories Intake"/>
+    <VerticalStackLayout
+        Margin="0"
+        HorizontalOptions="FillAndExpand"
+        VerticalOptions="CenterAndExpand"
+        Padding="0">
 
-            <Rectangle HeightRequest="2" WidthRequest="311" BackgroundColor="#EEF0F2" Margin="0,24,0,24"/>
+        <Label 
+            Margin="10,0,5,15"
+            FontSize="Medium"
+            FontFamily="Montserrat"
+            >
+            <Label.FormattedText>
+                <FormattedString>
+                    <Span Text="Nutrients Stats" FontAttributes="Bold"/>
+                </FormattedString>
+            </Label.FormattedText>
+        </Label>
 
-            <GraphicsView Grid.Row="1" Grid.Column="0" x:Name="ProteinIntakeGraphicsView" HeightRequest="300" WidthRequest="343"/>
+        <Frame 
+            BorderColor="#EEF0F2" 
+            CornerRadius="8" 
+            BackgroundColor="White" 
+            Margin="15,0,15,10"
+            Padding="0"
+            HasShadow="False">
+            <Grid 
+               ColumnDefinitions="auto,*,auto,56,64"
+                RowDefinitions="32,25,auto"
+                Margin="0"
+                RowSpacing="10"
+                Padding="3">
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer
+                        Command="{Binding NavigateTo2ndPage}"/>
+                </Grid.GestureRecognizers>
 
-            <Grid HeightRequest="64" WidthRequest="343">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="18"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <Label 
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalOptions="Fill"
+                    HorizontalOptions="Fill"
+                    Margin="10,10,0,0" 
+                    Padding="0,0,0,0"
+                    FontSize="14"
+                    FontFamily="Montserrat" TextColor="#000000">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Full day" FontAttributes="Bold"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
 
-                <Border BackgroundColor="#00A01A" Grid.Row="0" Grid.Column="0" HeightRequest="16" WidthRequest="16">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="34" />
-                    </Border.StrokeShape>
-                </Border>
-                <Label Text="Protein" Grid.Row="0" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0"/>
+                <GraphicsView 
+                    Grid.Column="0"
+                    Grid.ColumnSpan="5"
+                    Grid.Row="1"
+                    x:Name="TotalNutrientsGraphicsView"
+                    HorizontalOptions="FillAndExpand" 
+                    VerticalOptions="FillAndExpand" 
+                    Margin="0"/>
 
-                <HorizontalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="2"
+                    ColumnDefinitions="*,3*"
+                    Margin="0,10,2,0">
 
-                    <Label Text="Average intake"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
+                    <Border 
+                        BackgroundColor="#00A01A" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="34" />
                         </Border.StrokeShape>
                     </Border>
+                    <Label 
+                        Text="Protein" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Start"
+                        VerticalOptions="Start"
+                        Margin="4,1,3,1" TextColor="#000000"/>
 
-                    <Label x:Name="ProtienPercentageIntakeLabel" Text="25%"/>
+                </Grid>
 
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="3"
+                    ColumnDefinitions="16,40"
+                    Margin="4,10,5,0">
+
+                    <Border 
+                        BackgroundColor="#F3C522" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="34" />
                         </Border.StrokeShape>
                     </Border>
+                    <Label 
+                        Text="Carbs" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        VerticalTextAlignment="Center" 
+                        HorizontalTextAlignment="Start"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Start"
+                        Margin="2,1,3,1" TextColor="#000000"/>
 
-                    <Label x:Name="ProtienTotalIntakeLabel" Text="25gms"/>
+                </Grid>
 
-                </HorizontalStackLayout>
+                <Grid
+                    Grid.Row="0"
+                    Grid.Column="4"
+                    ColumnDefinitions="*,2*"
+                    Margin="8,10,3,0">
 
-                <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                    <Border 
+                        BackgroundColor="#0000FF" 
+                        Grid.Column="0" 
+                        HeightRequest="16" 
+                        WidthRequest="16"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="34" />
+                        </Border.StrokeShape>
+                    </Border>
+                    <Label 
+                        Text="Fat" 
+                        Grid.Column="1" 
+                        FontSize="12" 
+                        HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="2,1,3,1" TextColor="#000000"/>
 
-                    <Label Text="Amino acid breakdown"/>
+                </Grid>
 
-                    <Label x:Name="AminoAcidBreakdownLabel" Text="5gm" Margin="8,0,0,0"/>
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="32">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                </HorizontalStackLayout>
+                    <Label
+                    Grid.Column="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Margin="10,0,20,5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Current " FontAttributes="None"/>
+                                <Span Text="{Binding CurrentCalories}"/>
+                                <Span Text="KCal"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Label
+                    Grid.Column="1"
+                        VerticalOptions="Center"
+                    HorizontalOptions="End"
+                    Margin="0,0,20,5">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Target: " FontAttributes="None"/>
+                                <Span Text="{Binding TargetCalories}"/>
+                                <Span Text="KCal"/>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </Grid>
+                <!--<Label
+                    Grid.Row="2"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="3"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Center"
+                    Margin="10,0,20,5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Current: " FontAttributes="Bold"/>
+                            <Span Text="{Binding CurrentCalories}"/>
+                            <Span Text="KCal"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="EndAndExpand"
+                    Margin="0,0,20,5" BackgroundColor="Red">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Target: " FontAttributes=" Bold"/>
+                            <Span Text="{Binding TargetCalories}"/>
+                            <Span Text="KCal"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>-->
 
             </Grid>
+        </Frame>
 
-            <Rectangle HeightRequest="2" WidthRequest="311" BackgroundColor="#EEF0F2" Margin="0,24,0,24"/>
-
-            <GraphicsView Grid.Row="1" Grid.Column="0" x:Name="CarbohydratesIntakeGraphicsView" HeightRequest="300" WidthRequest="343"  Background="White"/>
-
-            <Grid HeightRequest="64" WidthRequest="343">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="18"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Border BackgroundColor="#F3C522" Grid.Row="0" Grid.Column="0" HeightRequest="16" WidthRequest="16">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="34" />
-                    </Border.StrokeShape>
-                </Border>
-                <Label Text="Carbs" Grid.Row="0" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0"/>
-
-                <HorizontalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-
-                    <Label Text="Average intake"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-
-                    <Label x:Name="CarbohydratesPercentageIntakeLabel" Text="70%"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="4" WidthRequest="4" Margin="8,0,8,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-
-                    <Label x:Name="CarbohydratesTotalIntakeLabel" Text="70gms"/>
-
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-
-                    <Label Text="Sugar"/>
-
-                    <Label x:Name="SugarLabel" Text="10gm" Margin="8,0,0,0"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-
-                    <Label Text="Fibre"/>
-
-                    <Label x:Name="FibreLabel" Text="60gm" Margin="8,0,0,0"/>
-
-                </HorizontalStackLayout>
-
-            </Grid>
-
-            <Rectangle HeightRequest="2" WidthRequest="311" BackgroundColor="#EEF0F2" Margin="0,24,0,24"/>
-
-            <GraphicsView Grid.Row="1" Grid.Column="0" x:Name="FatIntakeGraphicsView" HeightRequest="300" WidthRequest="343"  Background="White"/>
-
-            <Grid HeightRequest="88" WidthRequest="343">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                    <RowDefinition Height="18"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="18"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <Border BackgroundColor="#0072DB" Grid.Row="0" Grid.Column="0" HeightRequest="16" WidthRequest="16">
-                    <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="34" />
-                    </Border.StrokeShape>
-                </Border>
-                <Label Text="Fat" Grid.Row="0" Grid.Column="1" FontSize="12" VerticalTextAlignment="Center" HorizontalTextAlignment="Start" Margin="8,0,0,0"/>
-
-                <HorizontalStackLayout Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
-
-                    <Label Text="Average intake"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="4" WidthRequest="4" Margin="8,0,8,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-
-                    <Label x:Name="FatPercentageIntakeLabel" Text="5%"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="4" WidthRequest="4" Margin="8,0,8,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-
-                    <Label x:Name="FatTotalIntakeLabel" Text="5gms"/>
-
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
-
-                    <Label Text="Saturated"/>
-
-                    <Label x:Name="SaturatedLabel" Text="1gm" Margin="8,0,0,0"/>
-
-                    <Border BackgroundColor="#D9D9D9" HeightRequest="8" WidthRequest="8" Margin="8,0,8,0">
-                        <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="34" />
-                        </Border.StrokeShape>
-                    </Border>
-
-                    <Label Text="Mono unsaturated"/>
-
-                    <Label x:Name="MonoUnsaturatedLabel" Text="3gm" Margin="8,0,0,0"/>
-
-                </HorizontalStackLayout>
-
-                <HorizontalStackLayout Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2">
-
-                    <Label Text="Poly unsaturated"/>
-
-                    <Label x:Name="PolyUnsaturatedLabel" Text="1gm" Margin="8,0,0,0"/>
-
-                </HorizontalStackLayout>
-
-            </Grid>
-
-        </VerticalStackLayout>
-    </ScrollView>
+    </VerticalStackLayout>
 </ContentView>

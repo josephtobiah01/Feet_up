@@ -9,7 +9,7 @@ namespace MauiApp1.Areas.Dashboard.ViewModel
     public class FatIntakeViewItem
     {
         public Guid FatDataId { get; set; }
-        public long FatIntakeCount { get; set; }
+        public double FatIntakeCount { get; set; }
         public DateTimeOffset TransactionDate { get; set; }
     }
 }

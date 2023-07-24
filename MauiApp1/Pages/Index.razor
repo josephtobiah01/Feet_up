@@ -13,13 +13,15 @@
         }
 
         <button type="button" class="button-header" id="dashboardbutton" @onclick="DashboardButton_Click">Dashboard</button>
-        <button type="button" class="button-header" id="biodatabutton" @onclick="BiodataButton_Click">BioData</button>
+        @*<button type="button" class="button-header" @onclick="async ()=> await testperms()">testperms</button>*@
+        @*<button type="button" class="button-header" id="biodatabutton" @onclick="BiodataButton_Click">BioData</button>*@
     </div>
     <div id="underline"></div>
 </div>
+<!-- @*
 <div class="dashboard-header" @onclick="Dashboard_Click">
     <div>
-        @*<label class="greeting-label" align="left">Good Afternoon @FeedApi.Net7.FeedApi.UserName</label>*@
+        //<label class="greeting-label" align="left">Good Afternoon @FeedApi.Net7.FeedApi.UserName</label>
         <label class="greeting-label" align="left">@_greeting</label>
         <img class="dashboard-dartboard-image" src="resources/private/images/dart_board_front_2.png" />
     </div>
@@ -34,181 +36,395 @@
         </label>
     </div>
 </div>
+*@
+-->
 <!-- cards -->
-<div class="content-group" id="content-group" style="height:@(SheetFeedItemListHeight)px">
-
+<div class="content-group" id="content-group" style="height:calc(100vh - 112px)">
+    @*(SheetFeedItemListHeight)px
     <div id="resizeSheetDiv" class="resize-rectangle-content-group-div" @ontouchmove="@(e => FeedItemListSheet_OnTouchMove(e))">
         <div class="resize-rectangle-div" draggable="false"></div>
     </div>
-
+    *@
     <div id="feed-item-list-div" class="content-background">
         @if (_beforeFeedItems != null)
         {
             @if (_beforeFeedItems.Count > 0)
             {
-                <label class="content-header">Before</label>
+                <label class="content-header">Past</label>
                 <div style="margin:10px;">
-                    <!-- hardcoded barcode feed item
-                    <div class="content-body">
-                    if (ParentMiddleWare.MiddleWare.TestKitStatus != 0)
-                    {
-                    <div class="blue-circle">
-                    <img src="resources/public/icons/photography/focus3.svg" class="feed-item-icon white-icon" />
-                    </div>
-                    <div class="home-screen-training-session-now-feed-item-div">
-                    <div class="feed-item-time-elapsed-group-div">
-                    <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
-                    <div class="feed-item-time-elapsed-div">sample barcode time</div>
-                    </div>
-                    <div class="feed-item-title-div">Barcode Item</div>
-                    <hr class="header-dash-border-div">
-                    if (ParentMiddleWare.MiddleWare.TestKitStatus == 2)
-                    {
-                    <div class="feed-item-description-div">Waiting for results...</div>
-                    }
-                    else
-                    {
-                    <div class="feed-item-description-div">This is a sample barcode item</div>
-                    }
-                    if (ParentMiddleWare.MiddleWare.TestKitStatus == 1)
-                    {
-                    <div align="right">
-                    <button type="button" class="feed-item-snooze-button smoothed" onclick="GotoScanPage">Scan</button>
-                    </div>
-                    }
-                    else if (ParentMiddleWare.MiddleWare.TestKitStatus == 3)
-                    {
-                    <div align="right">
-                    <button type="button" class="feed-item-snooze-button smoothed">Results</button>
-                    </div>
-                    }
-                    else
-                    {
-                    // should not happen
-                    }
-                    </div>
-                    }
-                    </div>-->
                     @foreach (FeedItem feedItem in _beforeFeedItems)
                     {
+                        <div id="@feedItem.ID">
+                            @if (_TestMode == true ){
 
-                        @switch (feedItem.ItemType)
-                        {
-                            case FeedItemType.TrainingSessionFeedItem:
-                                {
-                                    <!-- exercise icon -->
-                                    <div class="blue-circle">
-                                        <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
+                                <div @onclick="async () => await FeedItem_Click(feedItem)">
+                                    @switch (feedItem.ItemType)
+                                    {
+                                        case FeedItemType.TrainingSessionFeedItem:
+                                            {
+                                                <!-- exercise icon -->
+                                                <div class="blue-circle">
+                                                    <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
+                                                </div>
+                                                break;
+                                            }
+                                        case FeedItemType.NutrientsFeedItem:
+                                            {
+                                                <!--nutrient icon-->
+                                                <div class="orange-circle">
+                                                    <img src="resources/public/icons/userInterface/spoonandfork.svg" class="feed-item-icon white-icon" />
+                                                </div>
+                                                break;
+                                            }
+                                        case FeedItemType.SupplementItem:
+                                            {
+                                                <!--supplement icon-->
+                                                <div class="orange-circle">
+                                                    <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
+                                                </div>
+
+                                                break;
+                                            }
+                                        case FeedItemType.MedicationFeedItem:
+                                            {
+
+                                                break;
+                                            }
+                                        default:
+                                            {
+                                                break;
+                                            }
+                                    }
+
+                                    <span class="ellipse"></span>
+                                    <div class="home-screen-training-session-now-feed-item-div">
+                                        <div class="feed-item-time-elapsed-group-div">
+                                            @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
+                                            {
+                                                <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
+                                                <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                            }
+                                            else
+                                            {
+                                                <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
+                                                <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                            }
+                                        </div>
+                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        {
+                                            <div>
+                                                <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
+                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                </button>
+                                            </div>
+                                        }
+                                        <div class="feed-item-title-div">@feedItem.Title</div>
+
+
+                                        <!-- START OF : For Testing ONLY -->
+                                        <hr class="header-dash-border-div">
+
+                                        @*    @if (feedItem is TrainingSessionFeedItem)*@
+                                        @switch (feedItem.ItemType)
+                                        {
+                                            case FeedItemType.TrainingSessionFeedItem:
+                                                {
+                                                    @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                    {
+                                                        switch (feedItemTextPair.TextCategory)
+                                                        {
+                                                            case TextCategory.Estimated_Time:
+
+                                                                <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
+                                                                break;
+
+                                                            case TextCategory.Target_Muscles:
+
+                                                                <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
+                                                                break;
+
+                                                            case TextCategory.Description:
+
+                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                break;
+
+                                                            default:
+                                                                //ERROR : should not be possible.
+                                                                break;
+                                                        }
+                                                    }
+                                                    break;
+                                                }
+                                            case FeedItemType.NutrientsFeedItem:
+                                                {
+                                                    @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                    {
+                                                        switch (feedItemTextPair.TextCategory)
+                                                        {
+                                                            case TextCategory.Description:
+
+                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                break;
+                                                            case TextCategory.Nutrient_Calories:
+                                                                <img src="resources/public/icons/userInterface/fire.svg" class="feed-item-fire-icon-image" />
+                                                                <label class="feed-item-nutrient-calorie-intake-text">Total Calories Intake</label>
+                                                                <label class="feed-item-nutrient-calorie-intake-value">~@feedItemTextPair.Text KCal</label>
+                                                                break;
+                                                            case TextCategory.Nutrient_Note:
+                                                                <div class="feed-item-alert-description">There was a problem with your submitted picture</div>
+                                                                <hr class="header-dash-border-div">
+                                                                <img src="resources/public/icons/communication/mail1.svg" class="feed-item-mail-icon-image" />
+                                                                <label class="feed-item-nutrient-note-text">&quot @feedItemTextPair.Text &quot</label>
+                                                                break;
+                                                            default:
+                                                                //ERROR : should not be possible.
+                                                                break;
+                                                        }
+                                                    }
+                                                    break;
+                                                }
+                                            case FeedItemType.MedicationFeedItem:
+                                                {
+
+                                                    break;
+                                                }
+                                            case FeedItemType.SupplementItem:
+                                                {
+                                                    @if (feedItem.Status != FeedItemStatus.Skipped)
+                                                    {
+                                                        @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                        {
+                                                            switch (feedItemTextPair.TextCategory)
+                                                            {
+                                                                case TextCategory.Estimated_Time:
+
+                                                                    <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Target_Muscles:
+
+                                                                    <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Description:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Supplement_Count:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Supplement_Instructions:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                default:
+                                                                    //ERROR : should not be possible.
+                                                                    break;
+                                                            }
+                                                        }
+                                                    }
+                                                    break;
+                                                }
+                                            default:
+                                                {
+                                                    break;
+                                                }
+                                        }
+                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        {
+                                            @switch (feedItem.ItemType)
+                                            {
+                                                case FeedItemType.TrainingSessionFeedItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Skipped)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>StopTraningSession(feedItem)">Finish</button>
+                                                                <button type="button" class="feed-item-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue ></button>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-start-button2 smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)"><img class="white-icon feed-item-start-button-icon" src="resources/public/icons/userInterface/lightning1.svg" />Start</button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.NutrientsFeedItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Skipped)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-undo-button smoothed">Undo</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See details</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Error)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-continue-button smoothed">Resubmit</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Snoozed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze again</button>
+                                                                <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.SupplementItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            @* <div align="right">
+                        <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                        </div>*@
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.MedicationFeedItem:
+                                                    {
+                                                        break;
+                                                    }
+                                                default:
+                                                    {
+                                                        break;
+                                                    }
+                                            }
+                                        }
+                                        else if (DateTime.Now.Date > _dateSelected.Date)
+                                        {
+
+                                            @switch (feedItem.ItemType)
+                                            {
+                                                case FeedItemType.TrainingSessionFeedItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.NutrientsFeedItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.SupplementItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            @* <div align="right">
+                        <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                        </div>*@
+                                                        }
+                                                        break;
+                                                    }
+                                                default:
+                                                    {
+                                                        break;
+                                                    }
+                                            }
+                                        }
+                                        <!-- END OF   : For Testing ONLY -->
+
                                     </div>
-                                    break;
-                                }
-                            case FeedItemType.NutrientsFeedItem:
-                                {
-                                    <!--nutrient icon-->
-                                    <div class="yellow-circle">
-                                        <img src="resources/public/icons/arrows/subdirectoryarrow.svg" class="feed-item-icon white-icon" />
-                                    </div>
-                                    break;
-                                }
-                            case FeedItemType.SupplementItem:
-                                {
-                                    <!--supplement icon-->
-                                    <div class="orange-circle">
-                                        <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
-                                    </div>
-
-                                    break;
-                                }
-                            case FeedItemType.MedicationFeedItem:
-                                {
-
-                                    break;
-                                }
-                            default:
-                                {
-                                    break;
-                                }
-                        }
-
-                        <span class="ellipse"></span>
-                        <div class="home-screen-training-session-now-feed-item-div">
-                            <div class="feed-item-time-elapsed-group-div">
-                                @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
-                                {
-                                    <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
-                                    <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
-                                }
-                                else
-                                {
-                                    <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
-                                    <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
-                                }
-                            </div>
-
-                            <div class="feed-item-title-div">@feedItem.Title</div>
-
-                            @if (_TestMode == true)
+                                </div>
+                            }
+                            else
                             {
-                                <!-- START OF : For Testing ONLY -->
-                                <hr class="header-dash-border-div">
 
-                                @*    @if (feedItem is TrainingSessionFeedItem)*@
                                 @switch (feedItem.ItemType)
                                 {
                                     case FeedItemType.TrainingSessionFeedItem:
                                         {
-                                            @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                            {
-                                                switch (feedItemTextPair.TextCategory)
-                                                {
-                                                    case TextCategory.Estimated_Time:
-
-                                                        <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
-                                                        break;
-
-                                                    case TextCategory.Target_Muscles:
-
-                                                        <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
-                                                        break;
-
-                                                    case TextCategory.Description:
-
-                                                        <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                        break;
-
-                                                    default:
-                                                        //ERROR : should not be possible.
-                                                        break;
-                                                }
-                                            }
+                                            <!-- exercise icon -->
+                                            <div class="blue-circle">
+                                                <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
+                                            </div>
                                             break;
                                         }
                                     case FeedItemType.NutrientsFeedItem:
                                         {
-                                            @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                            {
-                                                switch (feedItemTextPair.TextCategory)
-                                                {
-                                                    case TextCategory.Description:
+                                            <!--nutrient icon-->
+                                            <div class="orange-circle">
+                                                <img src="resources/public/icons/userInterface/spoonandfork.svg" class="feed-item-icon white-icon" />
+                                            </div>
+                                            break;
+                                        }
+                                    case FeedItemType.SupplementItem:
+                                        {
+                                            <!--supplement icon-->
+                                            <div class="orange-circle">
+                                                <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
+                                            </div>
 
-                                                        <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                        break;
-                                                    case TextCategory.Nutrient_Calories:
-                                                        <img src="resources/public/icons/userInterface/fire.svg" class="feed-item-fire-icon-image" />
-                                                        <label class="feed-item-nutrient-calorie-intake-text">Total Calories Intake</label>
-                                                        <label class="feed-item-nutrient-calorie-intake-value">~@feedItemTextPair.Text KCal</label>
-                                                        break;
-                                                    case TextCategory.Nutrient_Note:
-                                                        <div class="feed-item-alert-description">There was a problem with your submitted picture</div>
-                                                        <hr class="header-dash-border-div">
-                                                        <img src="resources/public/icons/communication/mail1.svg" class="feed-item-mail-icon-image" />
-                                                        <label class="feed-item-nutrient-note-text">&quot @feedItemTextPair.Text &quot</label>
-                                                        break;
-                                                    default:
-                                                        //ERROR : should not be possible.
-                                                        break;
-                                                }
-                                            }
                                             break;
                                         }
                                     case FeedItemType.MedicationFeedItem:
@@ -216,211 +432,38 @@
 
                                             break;
                                         }
-                                    case FeedItemType.SupplementItem:
-                                        {
-                                            @if (feedItem.Status != FeedItemStatus.Skipped)
-                                            {
-                                                @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                                {
-                                                    switch (feedItemTextPair.TextCategory)
-                                                    {
-                                                        case TextCategory.Estimated_Time:
-
-                                                            <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Target_Muscles:
-
-                                                            <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Description:
-
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Supplement_Count:
-
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Supplement_Instructions:
-
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        default:
-                                                            //ERROR : should not be possible.
-                                                            break;
-                                                    }
-                                                }
-                                            }
-                                            break;
-                                        }
                                     default:
                                         {
                                             break;
                                         }
                                 }
-                                @if (DateTime.Now.Date == _dateSelected.Date)
-                                {
-                                    @switch (feedItem.ItemType)
-                                    {
-                                        case FeedItemType.TrainingSessionFeedItem:
-                                            {
-                                                @if (feedItem.Status == FeedItemStatus.Completed)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Skipped)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                        <button type="button" class="feed-item-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue ></button>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                        <button type="button" class="feed-item-start-button2 smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)"><img class="white-icon feed-item-start-button-icon" src="resources/public/icons/userInterface/lightning1.svg" />Start</button>
-                                                    </div>
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.NutrientsFeedItem:
-                                            {
-                                                @if (feedItem.Status == FeedItemStatus.Completed)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Skipped)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-undo-button smoothed">Undo</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See details</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Error)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                        <button type="button" class="feed-item-continue-button smoothed">Resubmit</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Snoozed)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze again</button>
-                                                        <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                        <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
-                                                    </div>
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.SupplementItem:
-                                            {
-                                                @if (feedItem.Status == FeedItemStatus.Completed)
-                                                {
-                                                    @* <div align="right">
-                <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                </div>*@
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                    </div>
-                                                }
-                                                else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                        <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
-                                                    </div>
-                                                }
-                                                else
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                        <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
-                                                    </div>
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.MedicationFeedItem:
-                                            {
-                                                break;
-                                            }
-                                        default:
-                                            {
-                                                break;
-                                            }
-                                    }
-                                }
-                                else if (DateTime.Now.Date > _dateSelected.Date)
-                                {
 
-                                    @switch (feedItem.ItemType)
+                                <span class="ellipse"></span>
+                                <div class="home-screen-training-session-now-feed-item-div">
+                                    <div class="feed-item-time-elapsed-group-div">
+                                        @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
+                                        {
+                                            <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
+                                            <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                        }
+                                        else
+                                        {
+                                            <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
+                                            <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                        }
+                                    </div>
+                                    @if (DateTime.Now.Date == _dateSelected.Date)
                                     {
-                                        case FeedItemType.TrainingSessionFeedItem:
-                                            {
-                                                @if (feedItem.Status == FeedItemStatus.Completed)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                                                    </div>
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.NutrientsFeedItem:
-                                            {
-                                                @if (feedItem.Status == FeedItemStatus.Completed)
-                                                {
-                                                    <div align="right">
-                                                        <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
-                                                    </div>
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.SupplementItem:
-                                            {
-                                                @if (feedItem.Status == FeedItemStatus.Completed)
-                                                {
-                                                    @* <div align="right">
-                <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                </div>*@
-                                                }
-                                                break;
-                                            }
-                                        default:
-                                            {
-                                                break;
-                                            }
+                                        <div>
+                                            <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
+                                                <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                            </button>
+                                        </div>
                                     }
-                                }
-                                <!-- END OF   : For Testing ONLY -->
+                                    <div class="feed-item-title-div">@feedItem.Title</div>
+
+                                </div>
+
                             }
 
                         </div>
@@ -445,143 +488,33 @@
                         @foreach (FeedItem feedItem in _nowFeedItems)
                         {
                             string nowStatusWithTimeElapsed = GetStatuswithFormattedTimeElapsed(feedItem.ItemType, feedItem.Date, feedItem.Status);
-                            <div class="content-body" @onclick="() =>FeedItem_Click(feedItem)">
-                                @switch (feedItem.ItemType)
-                                {
-                                    case FeedItemType.TrainingSessionFeedItem:
-                                        {
-                                            <!-- exercise icon -->
-                                            <div class="blue-circle">
-                                                <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
-                                            </div>
-                                            break;
-                                        }
-                                    case FeedItemType.NutrientsFeedItem:
-                                        {
-                                            <!--nutrient icon-->
-                                            <div class="yellow-circle">
-                                                <img src="resources/public/icons/arrows/subdirectoryarrow.svg" class="feed-item-icon white-icon" />
-                                            </div>
-                                            break;
-                                        }
-                                    case FeedItemType.SupplementItem:
-                                        {
-                                            <!--supplement icon-->
-                                            <div class="orange-circle">
-                                                <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
-                                            </div>
-
-                                            break;
-                                        }
-                                    case FeedItemType.MedicationFeedItem:
-                                        {
-
-                                            break;
-                                        }
-                                    default:
-                                        {
-                                            break;
-                                        }
-                                }
-
-
-                                <!-- subtext and icon detailing feed item status -->
-                                <div class="home-screen-training-session-now-feed-item-div">
-                                    @if (feedItem.Status == FeedItemStatus.Scheduled || feedItem.Status == FeedItemStatus.Snoozed || feedItem.Status == FeedItemStatus.Ongoing)
-                                    {
-                                        <div class="feed-item-time-elapsed-group-div">
-                                            @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
-                                            {
-                                                <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
-                                                <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
-                                            }
-                                            else
-                                            {
-                                                <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
-                                                <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
-                                            }
-                                        </div>
-                                    }
-                                    else if (feedItem.Status == FeedItemStatus.Completed)
-                                    {
-                                        <div class="feed-item-time-elapsed-group-div">
-                                            <img class="feed-item-completed-icon-image" src="resources/public/icons/uniconsSolid/check.svg" />
-                                            <div class="feed-item-time-elapsed-div feed-item-completed-text" color="#006272">@nowStatusWithTimeElapsed</div>
-                                        </div>
-                                    }
-                                    else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
-                                    {
-                                        <div class="feed-item-time-elapsed-group-div">
-                                            <img class="feed-item-skipped-icon-image" src="resources/public/icons/multimedia/stop.svg" />
-                                            <div class="feed-item-time-elapsed-div feed-item-skipped-text" color="#BB111A">@nowStatusWithTimeElapsed</div>
-                                        </div>
-                                    }
-                                    else
-                                    {
-                                        //should not happen
-                                    }
-                                    @*<div class="feed-item-time-elapsed-div">@nowTimeElapsed</div>*@
-                                    <div class="feed-item-title-div">@feedItem.Title</div>
-
-                                    <hr class="header-dash-border-div">
-
-                                    @*    @if (feedItem is TrainingSessionFeedItem)*@
+                            <div id="@feedItem.ID">
+                                <div class="content-body" @onclick="async () =>await FeedItem_Click(feedItem)">
                                     @switch (feedItem.ItemType)
                                     {
                                         case FeedItemType.TrainingSessionFeedItem:
                                             {
-                                                @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                                {
-                                                    switch (feedItemTextPair.TextCategory)
-                                                    {
-                                                        case TextCategory.Estimated_Time:
-
-                                                            <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Target_Muscles:
-
-                                                            <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Description:
-
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        default:
-                                                            //ERROR : should not be possible.
-                                                            break;
-                                                    }
-                                                }
+                                                <!-- exercise icon -->
+                                                <div class="blue-circle">
+                                                    <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
+                                                </div>
                                                 break;
                                             }
                                         case FeedItemType.NutrientsFeedItem:
                                             {
-                                                @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                                {
-                                                    switch (feedItemTextPair.TextCategory)
-                                                    {
-                                                        case TextCategory.Description:
+                                                <!--nutrient icon-->
+                                                <div class="orange-circle">
+                                                    <img src="resources/public/icons/userInterface/spoonandfork.svg" class="feed-item-icon white-icon" />
+                                                </div>
+                                                break;
+                                            }
+                                        case FeedItemType.SupplementItem:
+                                            {
+                                                <!--supplement icon-->
+                                                <div class="orange-circle">
+                                                    <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
+                                                </div>
 
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-                                                        case TextCategory.Nutrient_Calories:
-                                                            <img src="resources/public/icons/userInterface/fire.svg" class="feed-item-fire-icon-image" />
-                                                            <label class="feed-item-nutrient-calorie-intake-text">Total Calories Intake</label>
-                                                            <label class="feed-item-nutrient-calorie-intake-value">~@feedItemTextPair.Text KCal</label>
-                                                            break;
-                                                        case TextCategory.Nutrient_Note:
-                                                            <div class="feed-item-alert-description">There was a problem with your submitted picture</div>
-                                                            <hr class="header-dash-border-div">
-                                                            <img src="resources/public/icons/communication/mail1.svg" class="feed-item-mail-icon-image" />
-                                                            <label class="feed-item-nutrient-note-text">&quot @feedItemTextPair.Text &quot</label>
-                                                            break;
-                                                        default:
-                                                            //ERROR : should not be possible.
-                                                            break;
-                                                    }
-                                                }
                                                 break;
                                             }
                                         case FeedItemType.MedicationFeedItem:
@@ -589,9 +522,65 @@
 
                                                 break;
                                             }
-                                        case FeedItemType.SupplementItem:
+                                        default:
                                             {
-                                                @if (feedItem.Status != FeedItemStatus.Skipped)
+                                                break;
+                                            }
+                                    }
+
+
+                                    <!-- subtext and icon detailing feed item status -->
+                                    <div class="home-screen-training-session-now-feed-item-div">
+                                        @if (feedItem.Status == FeedItemStatus.Scheduled || feedItem.Status == FeedItemStatus.Snoozed || feedItem.Status == FeedItemStatus.Ongoing)
+                                        {
+                                            <div class="feed-item-time-elapsed-group-div">
+                                                @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
+                                                {
+                                                    <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
+                                                    <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                                }
+                                                else
+                                                {
+                                                    <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
+                                                    <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                                }
+                                            </div>
+                                        }
+                                        else if (feedItem.Status == FeedItemStatus.Completed)
+                                        {
+                                            <div class="feed-item-time-elapsed-group-div">
+                                                <img class="feed-item-completed-icon-image" src="resources/public/icons/uniconsSolid/check.svg" />
+                                                <div class="feed-item-time-elapsed-div feed-item-completed-text" color="#006272">@nowStatusWithTimeElapsed</div>
+                                            </div>
+                                        }
+                                        else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
+                                        {
+                                            <div class="feed-item-time-elapsed-group-div">
+                                                <img class="feed-item-skipped-icon-image" src="resources/public/icons/multimedia/stop.svg" />
+                                                <div class="feed-item-time-elapsed-div feed-item-skipped-text" color="#BB111A">@nowStatusWithTimeElapsed</div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            //should not happen
+                                        }
+                                        @*<div class="feed-item-time-elapsed-div">@nowTimeElapsed</div>*@
+                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        {
+                                            <div>
+                                                <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
+                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                </button>
+                                            </div>
+                                        }
+                                        <div class="feed-item-title-div">@feedItem.Title</div>
+
+                                        <hr class="header-dash-border-div">
+
+                                        @*    @if (feedItem is TrainingSessionFeedItem)*@
+                                        @switch (feedItem.ItemType)
+                                        {
+                                            case FeedItemType.TrainingSessionFeedItem:
                                                 {
                                                     @foreach (TextPair feedItemTextPair in feedItem.Text)
                                                     {
@@ -612,139 +601,85 @@
                                                                 <div class="feed-item-description-div">@feedItemTextPair.Text</div>
                                                                 break;
 
-                                                            case TextCategory.Supplement_Count:
-
-                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                                break;
-
-                                                            case TextCategory.Supplement_Instructions:
-
-                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                                break;
-
                                                             default:
                                                                 //ERROR : should not be possible.
                                                                 break;
                                                         }
                                                     }
-                                                }
-                                                break;
-                                            }
-                                        default:
-                                            {
-                                                break;
-                                            }
-                                    }
-
-                                    @if (DateTime.Now.Date == _dateSelected.Date)
-                                    {
-                                        @switch (feedItem.ItemType)
-                                        {
-                                            case FeedItemType.TrainingSessionFeedItem:
-                                                {
-                                                    @if (feedItem.Status == FeedItemStatus.Completed)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Skipped)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue ></button>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-start-button2 smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)"><img class="white-icon feed-item-start-button-icon" src="resources/public/icons/userInterface/lightning1.svg" />Start</button>
-                                                        </div>
-                                                    }
                                                     break;
                                                 }
                                             case FeedItemType.NutrientsFeedItem:
                                                 {
-                                                    @if (feedItem.Status == FeedItemStatus.Completed)
+                                                    @foreach (TextPair feedItemTextPair in feedItem.Text)
                                                     {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Skipped)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=>GoToOverviewPage(feedItem,true)">See details</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Error)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-continue-button smoothed">Resubmit</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Snoozed)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze again</button>
-                                                            <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)"> Snooze</button>
-                                                            <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=>await OpenNutrientPopup(feedItem)">Start ></button>
-                                                        </div>
-                                                    }
-                                                    break;
-                                                }
-                                            case FeedItemType.SupplementItem:
-                                                {
-                                                    @if (feedItem.Status == FeedItemStatus.Completed)
-                                                    {
-                                                        @* <div align="right">
-                    <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                    </div>*@
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
-                                                        </div>
+                                                        switch (feedItemTextPair.TextCategory)
+                                                        {
+                                                            case TextCategory.Description:
+
+                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                break;
+                                                            case TextCategory.Nutrient_Calories:
+                                                                <img src="resources/public/icons/userInterface/fire.svg" class="feed-item-fire-icon-image" />
+                                                                <label class="feed-item-nutrient-calorie-intake-text">Total Calories Intake</label>
+                                                                <label class="feed-item-nutrient-calorie-intake-value">~@feedItemTextPair.Text KCal</label>
+                                                                break;
+                                                            case TextCategory.Nutrient_Note:
+                                                                <div class="feed-item-alert-description">There was a problem with your submitted picture</div>
+                                                                <hr class="header-dash-border-div">
+                                                                <img src="resources/public/icons/communication/mail1.svg" class="feed-item-mail-icon-image" />
+                                                                <label class="feed-item-nutrient-note-text">&quot @feedItemTextPair.Text &quot</label>
+                                                                break;
+                                                            default:
+                                                                //ERROR : should not be possible.
+                                                                break;
+                                                        }
                                                     }
                                                     break;
                                                 }
                                             case FeedItemType.MedicationFeedItem:
                                                 {
+
+                                                    break;
+                                                }
+                                            case FeedItemType.SupplementItem:
+                                                {
+                                                    @if (feedItem.Status != FeedItemStatus.Skipped)
+                                                    {
+                                                        @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                        {
+                                                            switch (feedItemTextPair.TextCategory)
+                                                            {
+                                                                case TextCategory.Estimated_Time:
+
+                                                                    <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Target_Muscles:
+
+                                                                    <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Description:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Supplement_Count:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Supplement_Instructions:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                default:
+                                                                    //ERROR : should not be possible.
+                                                                    break;
+                                                            }
+                                                        }
+                                                    }
                                                     break;
                                                 }
                                             default:
@@ -752,7 +687,125 @@
                                                     break;
                                                 }
                                         }
-                                    }
+
+                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        {
+                                            @switch (feedItem.ItemType)
+                                            {
+                                                case FeedItemType.TrainingSessionFeedItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Skipped)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>StopTraningSession(feedItem)">Finish</button>
+                                                                <button type="button" class="feed-item-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue ></button>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-start-button2 smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)"><img class="white-icon feed-item-start-button-icon" src="resources/public/icons/userInterface/lightning1.svg" />Start</button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.NutrientsFeedItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Skipped)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=>GoToOverviewPage(feedItem,true)">See details</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Error)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-continue-button smoothed">Resubmit</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Snoozed)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze again</button>
+                                                                <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)"> Snooze</button>
+                                                                <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=>await OpenNutrientPopup(feedItem)">Start ></button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.SupplementItem:
+                                                    {
+                                                        @if (feedItem.Status == FeedItemStatus.Completed)
+                                                        {
+                                                            @* <div align="right">
+                        <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                        </div>*@
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                            </div>
+                                                        }
+                                                        else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
+                                                            </div>
+                                                        }
+                                                        else
+                                                        {
+                                                            <div align="right">
+                                                                <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
+                                                            </div>
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.MedicationFeedItem:
+                                                    {
+                                                        break;
+                                                    }
+                                                default:
+                                                    {
+                                                        break;
+                                                    }
+                                            }
+                                        }
+                                    </div>
                                 </div>
                             </div>
                         }
@@ -773,286 +826,41 @@
                     {
                         @foreach (FeedItem feedItem in _laterFeedItems)
                         {
-
-                            @switch (feedItem.ItemType)
-                            {
-                                case FeedItemType.TrainingSessionFeedItem:
-                                    {
-                                        <!-- exercise icon -->
-                                        <div class="blue-circle">
-                                            <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
-                                        </div>
-                                        break;
-                                    }
-                                case FeedItemType.NutrientsFeedItem:
-                                    {
-                                        <!--nutrient icon-->
-                                        <div class="yellow-circle">
-                                            <img src="resources/public/icons/arrows/subdirectoryarrow.svg" class="feed-item-icon white-icon" />
-                                        </div>
-                                        break;
-                                    }
-                                case FeedItemType.SupplementItem:
-                                    {
-                                        <!--supplement icon-->
-                                        <div class="orange-circle">
-                                            <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
-                                        </div>
-
-                                        break;
-                                    }
-                                case FeedItemType.MedicationFeedItem:
-                                    {
-
-                                        break;
-                                    }
-                                default:
-                                    {
-                                        break;
-                                    }
-                            }
-
-                            <span class="ellipse"></span>
-                            <div class="home-screen-training-session-now-feed-item-div">
-                                <div class="feed-item-time-elapsed-group-div">
-                                    @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
-                                    {
-                                        <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
-                                        <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
-                                    }
-                                    else
-                                    {
-                                        <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
-                                        <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
-                                    }
-                                </div>
-
-                                <div class="feed-item-title-div">@feedItem.Title</div>
+                            <div id="@feedItem.ID">
                                 @if (_TestMode == true)
                                 {
-                                    <!-- START OF : For Testing ONLY -->
-                                    <hr class="header-dash-border-div">
+                                    <div @onclick="async () =>await FeedItem_Click(feedItem)">
 
-                                    @*    @if (feedItem is TrainingSessionFeedItem)*@
-                                    @switch (feedItem.ItemType)
-                                    {
-                                        case FeedItemType.TrainingSessionFeedItem:
-                                            {
-                                                @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                                {
-                                                    switch (feedItemTextPair.TextCategory)
-                                                    {
-                                                        case TextCategory.Estimated_Time:
-
-                                                            <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Target_Muscles:
-
-                                                            <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        case TextCategory.Description:
-
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-
-                                                        default:
-                                                            //ERROR : should not be possible.
-                                                            break;
-                                                    }
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.NutrientsFeedItem:
-                                            {
-                                                @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                                {
-                                                    switch (feedItemTextPair.TextCategory)
-                                                    {
-                                                        case TextCategory.Description:
-
-                                                            <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                            break;
-                                                        case TextCategory.Nutrient_Calories:
-                                                            <img src="resources/public/icons/userInterface/fire.svg" class="feed-item-fire-icon-image" />
-                                                            <label class="feed-item-nutrient-calorie-intake-text">Total Calories Intake</label>
-                                                            <label class="feed-item-nutrient-calorie-intake-value">~@feedItemTextPair.Text KCal</label>
-                                                            break;
-                                                        case TextCategory.Nutrient_Note:
-                                                            <div class="feed-item-alert-description">There was a problem with your submitted picture</div>
-                                                            <hr class="header-dash-border-div">
-                                                            <img src="resources/public/icons/communication/mail1.svg" class="feed-item-mail-icon-image" />
-                                                            <label class="feed-item-nutrient-note-text">&quot @feedItemTextPair.Text &quot</label>
-                                                            break;
-                                                        default:
-                                                            //ERROR : should not be possible.
-                                                            break;
-                                                    }
-                                                }
-                                                break;
-                                            }
-                                        case FeedItemType.MedicationFeedItem:
-                                            {
-
-                                                break;
-                                            }
-                                        case FeedItemType.SupplementItem:
-                                            {
-                                                @if (feedItem.Status != FeedItemStatus.Skipped)
-                                                {
-                                                    @foreach (TextPair feedItemTextPair in feedItem.Text)
-                                                    {
-                                                        switch (feedItemTextPair.TextCategory)
-                                                        {
-                                                            case TextCategory.Estimated_Time:
-
-                                                                <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
-                                                                break;
-
-                                                            case TextCategory.Target_Muscles:
-
-                                                                <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
-                                                                break;
-
-                                                            case TextCategory.Description:
-
-                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                                break;
-
-                                                            case TextCategory.Supplement_Count:
-
-                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                                break;
-
-                                                            case TextCategory.Supplement_Instructions:
-
-                                                                <div class="feed-item-description-div">@feedItemTextPair.Text</div>
-                                                                break;
-
-                                                            default:
-                                                                //ERROR : should not be possible.
-                                                                break;
-                                                        }
-                                                    }
-                                                }
-                                                break;
-                                            }
-                                        default:
-                                            {
-                                                break;
-                                            }
-                                    }
-
-                                    @if (DateTime.Now.Date == _dateSelected.Date)
-                                    {
                                         @switch (feedItem.ItemType)
                                         {
                                             case FeedItemType.TrainingSessionFeedItem:
                                                 {
-                                                    @if (feedItem.Status == FeedItemStatus.Completed)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Skipped)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue ></button>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-start-button2 smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)"><img class="white-icon feed-item-start-button-icon" src="resources/public/icons/userInterface/lightning1.svg" />Start</button>
-                                                        </div>
-                                                    }
+                                                    <!-- exercise icon -->
+                                                    <div class="blue-circle">
+                                                        <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
+                                                    </div>
                                                     break;
                                                 }
                                             case FeedItemType.NutrientsFeedItem:
                                                 {
-                                                    @if (feedItem.Status == FeedItemStatus.Completed)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Skipped)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-undo-button smoothed">Undo</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=>GoToOverviewPage(feedItem,true)">See details</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Error)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-continue-button smoothed">Resubmit</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Snoozed)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze again</button>
-                                                            <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)"> Snooze</button>
-                                                            <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
-                                                        </div>
-                                                    }
+                                                    <!--nutrient icon-->
+                                                    <div class="orange-circle">
+                                                        <img src="resources/public/icons/userInterface/spoonandfork.svg" class="feed-item-icon white-icon" />
+                                                    </div>
                                                     break;
                                                 }
                                             case FeedItemType.SupplementItem:
                                                 {
-                                                    @if (feedItem.Status == FeedItemStatus.Completed)
-                                                    {
-                                                        @* <div align="right">
-                <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                </div>*@
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
-                                                        </div>
-                                                    }
-                                                    else if (feedItem.Status == FeedItemStatus.Ongoing)
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
-                                                        </div>
-                                                    }
-                                                    else
-                                                    {
-                                                        <div align="right">
-                                                            <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                            <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
-                                                        </div>
-                                                    }
+                                                    <!--supplement icon-->
+                                                    <div class="orange-circle">
+                                                        <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
+                                                    </div>
+
                                                     break;
                                                 }
                                             case FeedItemType.MedicationFeedItem:
                                                 {
+
                                                     break;
                                                 }
                                             default:
@@ -1060,48 +868,346 @@
                                                     break;
                                                 }
                                         }
-                                    }
-                                    <!-- END OF   : For Testing ONLY -->
-                                }
 
+                                        <span class="ellipse"></span>
+                                        <div class="home-screen-training-session-now-feed-item-div">
+                                            <div class="feed-item-time-elapsed-group-div">
+                                                @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
+                                                {
+                                                    <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
+                                                    <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                                }
+                                                else
+                                                {
+                                                    <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
+                                                    <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                                }
+                                            </div>
+                                            @if (DateTime.Now.Date == _dateSelected.Date)
+                                            {
+                                                <div>
+                                                    <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
+                                                        <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                    </button>
+                                                </div>
+                                            }
+                                            <div class="feed-item-title-div">@feedItem.Title</div>
+                                            <!-- START OF : For Testing ONLY -->
+                                            <hr class="header-dash-border-div">
+
+                                            @*    @if (feedItem is TrainingSessionFeedItem)*@
+                                            @switch (feedItem.ItemType)
+                                            {
+                                                case FeedItemType.TrainingSessionFeedItem:
+                                                    {
+                                                        @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                        {
+                                                            switch (feedItemTextPair.TextCategory)
+                                                            {
+                                                                case TextCategory.Estimated_Time:
+
+                                                                    <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Target_Muscles:
+
+                                                                    <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                case TextCategory.Description:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+
+                                                                default:
+                                                                    //ERROR : should not be possible.
+                                                                    break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.NutrientsFeedItem:
+                                                    {
+                                                        @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                        {
+                                                            switch (feedItemTextPair.TextCategory)
+                                                            {
+                                                                case TextCategory.Description:
+
+                                                                    <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                    break;
+                                                                case TextCategory.Nutrient_Calories:
+                                                                    <img src="resources/public/icons/userInterface/fire.svg" class="feed-item-fire-icon-image" />
+                                                                    <label class="feed-item-nutrient-calorie-intake-text">Total Calories Intake</label>
+                                                                    <label class="feed-item-nutrient-calorie-intake-value">~@feedItemTextPair.Text KCal</label>
+                                                                    break;
+                                                                case TextCategory.Nutrient_Note:
+                                                                    <div class="feed-item-alert-description">There was a problem with your submitted picture</div>
+                                                                    <hr class="header-dash-border-div">
+                                                                    <img src="resources/public/icons/communication/mail1.svg" class="feed-item-mail-icon-image" />
+                                                                    <label class="feed-item-nutrient-note-text">&quot @feedItemTextPair.Text &quot</label>
+                                                                    break;
+                                                                default:
+                                                                    //ERROR : should not be possible.
+                                                                    break;
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                case FeedItemType.MedicationFeedItem:
+                                                    {
+
+                                                        break;
+                                                    }
+                                                case FeedItemType.SupplementItem:
+                                                    {
+                                                        @if (feedItem.Status != FeedItemStatus.Skipped)
+                                                        {
+                                                            @foreach (TextPair feedItemTextPair in feedItem.Text)
+                                                            {
+                                                                switch (feedItemTextPair.TextCategory)
+                                                                {
+                                                                    case TextCategory.Estimated_Time:
+
+                                                                        <div class="feed-item-description-div">Estimated Time: @feedItemTextPair.Text</div>
+                                                                        break;
+
+                                                                    case TextCategory.Target_Muscles:
+
+                                                                        <div class="feed-item-description-div">Target Muscle: @feedItemTextPair.Text</div>
+                                                                        break;
+
+                                                                    case TextCategory.Description:
+
+                                                                        <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                        break;
+
+                                                                    case TextCategory.Supplement_Count:
+
+                                                                        <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                        break;
+
+                                                                    case TextCategory.Supplement_Instructions:
+
+                                                                        <div class="feed-item-description-div">@feedItemTextPair.Text</div>
+                                                                        break;
+
+                                                                    default:
+                                                                        //ERROR : should not be possible.
+                                                                        break;
+                                                                }
+                                                            }
+                                                        }
+                                                        break;
+                                                    }
+                                                default:
+                                                    {
+                                                        break;
+                                                    }
+                                            }
+
+                                            @if (DateTime.Now.Date == _dateSelected.Date)
+                                            {
+                                                @switch (feedItem.ItemType)
+                                                {
+                                                    case FeedItemType.TrainingSessionFeedItem:
+                                                        {
+                                                            @if (feedItem.Status == FeedItemStatus.Completed)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Skipped)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>StopTraningSession(feedItem)">Finish</button>
+                                                                    <button type="button" class="feed-item-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue ></button>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                    <button type="button" class="feed-item-start-button2 smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)"><img class="white-icon feed-item-start-button-icon" src="resources/public/icons/userInterface/lightning1.svg" />Start</button>
+                                                                </div>
+                                                            }
+                                                            break;
+                                                        }
+                                                    case FeedItemType.NutrientsFeedItem:
+                                                        {
+                                                            @if (feedItem.Status == FeedItemStatus.Completed)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=> GoToOverviewPage(feedItem,true)">See More Information</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Skipped)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-undo-button smoothed">Undo</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-see-details-button smoothed" @onclick="()=>GoToOverviewPage(feedItem,true)">See details</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Error)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                    <button type="button" class="feed-item-continue-button smoothed">Resubmit</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Snoozed)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze again</button>
+                                                                    <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)"> Snooze</button>
+                                                                    <button type="button" class="feed-item-start-button2 smoothed" @onclick="async ()=> await OpenNutrientPopup(feedItem)">Start ></button>
+                                                                </div>
+                                                            }
+                                                            break;
+                                                        }
+                                                    case FeedItemType.SupplementItem:
+                                                        {
+                                                            @if (feedItem.Status == FeedItemStatus.Completed)
+                                                            {
+                                                                @* <div align="right">
+                    <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                    </div>*@
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-undo-button smoothed" @onclick=" ()=>FeedItemUndoButton_Click(feedItem)">Undo</button>
+                                                                </div>
+                                                            }
+                                                            else if (feedItem.Status == FeedItemStatus.Ongoing)
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                    <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <div align="right">
+                                                                    <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
+                                                                    <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
+                                                                </div>
+                                                            }
+                                                            break;
+                                                        }
+                                                    case FeedItemType.MedicationFeedItem:
+                                                        {
+                                                            break;
+                                                        }
+                                                    default:
+                                                        {
+                                                            break;
+                                                        }
+                                                }
+                                            }
+                                            <!-- END OF   : For Testing ONLY -->
+
+                                        </div>
+
+                                    </div>
+                                }
+                                else
+                                {
+                                    @switch (feedItem.ItemType)
+                                    {
+                                        case FeedItemType.TrainingSessionFeedItem:
+                                            {
+                                                <!-- exercise icon -->
+                                                <div class="blue-circle">
+                                                    <img src="resources/public/icons/sports/barbell.svg" class="feed-item-icon white-icon" />
+                                                </div>
+                                                break;
+                                            }
+                                        case FeedItemType.NutrientsFeedItem:
+                                            {
+                                                <!--nutrient icon-->
+                                                <div class="orange-circle">
+                                                    <img src="resources/public/icons/userInterface/spoonandfork.svg" class="feed-item-icon white-icon" />
+                                                </div>
+                                                break;
+                                            }
+                                        case FeedItemType.SupplementItem:
+                                            {
+                                                <!--supplement icon-->
+                                                <div class="orange-circle">
+                                                    <img src="resources/public/icons/medical/medicine1.svg" class="feed-item-icon white-icon" />
+                                                </div>
+
+                                                break;
+                                            }
+                                        case FeedItemType.MedicationFeedItem:
+                                            {
+
+                                                break;
+                                            }
+                                        default:
+                                            {
+                                                break;
+                                            }
+                                    }
+                                    <span class="ellipse"></span>
+                                    <div class="home-screen-training-session-now-feed-item-div">
+                                        <div class="feed-item-time-elapsed-group-div">
+                                            @if (feedItem.ItemType == FeedItemType.NutrientsFeedItem && feedItem.Status == FeedItemStatus.Snoozed)
+                                            {
+                                                <img class="feed-item-time-elapsed-icon-image primary-color-icon" src="resources/public/icons/time/clock1.svg" />
+                                                <div class="feed-item-time-elapsed-div feed-item-time-elapsed-blue">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                            }
+                                            else
+                                            {
+                                                <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
+                                                <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
+                                            }
+                                        </div>
+                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        {
+                                            <div>
+                                                <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
+                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                </button>
+                                            </div>
+                                        }
+                                        <div class="feed-item-title-div">@feedItem.Title</div>
+                                    </div>
+                                }
                             </div>
                         }
                     }
-
-                    <!-- hardcoded nutrient feed item
-                    <div class="content-body">
-                        <div class="yellow-circle">
-                            <img src="resources/public/icons/arrows/subdirectoryarrow.svg" class="feed-item-icon white-icon" />
-                        </div>
-                        <div class="home-screen-training-session-now-feed-item-div">
-                            <div class="feed-item-time-elapsed-group-div">
-                                <img class="feed-item-time-elapsed-icon-image" src="resources/public/icons/time/clock1.svg" />
-                                <div class="feed-item-time-elapsed-div">sample nutrient time</div>
-                            </div>
-                            <div class="feed-item-title-div">Sample Nutrient Item</div>
-                            <hr class="header-dash-border-div">
-                            <div class="feed-item-description-div">This is a sample nutrient item to be able to access and test the other nutrient pages</div>
-                            <div align="right">
-                                <button type="button" class="feed-item-snooze-button smoothed" onclick="()=>OpenNutrientPopup()">Start ></button>
-                            </div>
-                        </div>
-                    </div>
-                    -->
                 </div>
-
             }
         }
-
     </div>
-
 </div>
 <!-- footer -->
 <div class="footer-mask" style="--display-footer: @DisplayFooter">
     <div class="footer">
         <div class="footer-left" role="group">
-            <button type="button" class="datepicker-button" disabled="@_isChangeDateButtonDisable" @onclick="GoToPreviousDateButton_Click">&lt</button>
-            <input type="text" class="datepicker-button" disabled="@_isChangeDateButtonDisable" @bind="@_DateSelected" id="datepickerInput" readonly="readonly" />
-            <button type="button" class="datepicker-button" disabled="@_isChangeDateButtonDisable" @onclick="GoToNextDateButton_Click">&gt</button>
+            <button type="button" class="datepicker-button datepicker-prev-button" disabled="@_isChangeDateButtonDisable" @onclick="GoToPreviousDateButton_Click"><img class="datepicker-image" src="resources/public/icons/arrows/arrow-left.svg" /></button>
+            <input type="text" @onclick="ShowCalendar" class="datepicker-button" disabled="@_isChangeDateButtonDisable" @bind="@_DateSelected" id="datepickerInput" readonly="readonly" />
+            <button type="button" class="datepicker-button datepicker-next-button" disabled="@_isChangeDateButtonDisable" @onclick="GoToNextDateButton_Click"><img class="datepicker-image" src="resources/public/icons/arrows/arrow-right.svg" /></button>
         </div>
 
         <div class="footer-right">
@@ -1110,7 +1216,7 @@
     </div>
 </div>
 
-<div class="black-cover-div" hidden="@_isBlackCoverDivHidden" @onclick="BlackCoverDiv_Click"></div>
+<div id="BlackCoverDiv" class="black-cover-div" hidden="@_isBlackCoverDivHidden" @onclick="BlackCoverDiv_Click"></div>
 
 <!--exercise popup-->
 <div id="sheet" class="feed-item-exercise-details-content-group-div" hidden="@_isFeedItemDetailsDivHidden" style="height:@(_sheetHeight)px">
@@ -1130,7 +1236,7 @@
                         <div class="feed-item-exercise-details-header-div">
 
                             <div class="image-container-div">
-                                <img src="resources/public/icons/sports/barbell.svg" class="image-icon white-icon" />
+                                <img src="resources/public/icons/sports/barbell.svg" class="feed-item-exercise-detail-barbell-icon white-icon" />
                             </div>
 
                             <label class="feed-item-time-exercise-details-elapsed-label">@GetStatuswithFormattedTimeElapsed(_feedItem.ItemType,_feedItem.Date, _feedItem.Status)</label>
@@ -1140,7 +1246,7 @@
                         </div>
 
                         <hr class="header-dash-border-div">
-
+                        @*
                         <div class="feed-exercise-details-tab-group-container-div">
                             <div class="feed-exercise-details-tab-item-container-div tab-item-container-whats-inside-div">
                                 <label for="feed-details-tab-item-container-whats-inside-input">What's Inside</label>
@@ -1154,8 +1260,8 @@
 
                             </div>
                         </div>
-
-                        <div class="feed-item-exercise-list-content-group" hidden="@_isExerciseWhatsNewTabDiv">
+        *@
+                        <div class="feed-item-exercise-list-content-group">
 
                             @foreach (EmExercise emExercise in _feedItem.TrainingSessionFeedItem.TraningSession.emExercises)
                             {
@@ -1164,7 +1270,9 @@
                                     <div class="feed-item-exercise-list-column-div">
                                         <div class="feed-item-exercise-list-card-div">
                                             <div class="image-container-div">
-                                                <img class="feed-item-exercise-icon-image" />
+                                                @if(emExercise.EmExerciseType.ImageUrl!=null){
+                                                    <img class="feed-item-exercise-icon-image" src="@emExercise.EmExerciseType.ImageUrl"/>
+                                                }
                                             </div>
 
                                             <label class="feed-item-exercise-title-label">@emExercise.EmExerciseType.Name</label>
@@ -1180,9 +1288,12 @@
                         </div>
 
                     </div>
-
+                    <div class="feed-item-exercise-details-menu-button-div" align="left">
+                        <button type="button" class="feed-item-exercise-details-menu-button" @onclick="async ()=> await FeedItemMenu_Click(_feedItem)">
+                            <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
+                        </button>
+                    </div>
                     <div class="feed-item-exercise-details-button-group-div" align="right">
-                        <button type="button" class="feed-item-exercise-details-content-more-button">More</button>
                         <button type="button" class="feed-item-exercise-details-content-snooze-button" @onclick="() =>FeedItemSnooze_Click(_feedItem)">Snooze</button>
                         <button type="button" class="feed-item-exercise-details-content-start-button" @onclick="() =>FeedItemDetailsStart_Click(_feedItem)">Start</button>
                     </div>
@@ -1234,8 +1345,8 @@
                 <button class="add-nutrient-popup-header-close-button" @onclick="CloseNutrientPopup"> <img class="add-nutrient-popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
             </div>
             <div class="add-nutrient-popup-item-grid">
-                <div class="yellow-circle add-nutrient-popup-item-circle">
-                    <img src="resources/public/icons/arrows/subdirectoryarrow.svg" class="add-nutrient-popup-item-icon white-icon" />
+                <div class="orange-circle add-nutrient-popup-item-circle">
+                    <img src="resources/public/icons/userInterface/spoonandfork.svg" class="add-nutrient-popup-item-icon white-icon" />
                 </div>
                 <div class="add-nutrient-popup-item-time-elapsed-group">
                     <img class="add-nutrient-popup-item-clock-icon" src="resources/public/icons/time/clock1.svg" />
@@ -1258,9 +1369,9 @@
             <div class="add-nutrient-popup-line-spacer"></div>
             <label class="add-nutrient-popup-instruction">Log your calories intake</label>
             <div class="add-nutrient-popup-button-group">
-                <button class="add-nutrient-popup-camera-button" @onclick="async ()=> await TakePhoto()"><img class="add-nutrient-popup-camera-icon" src="resources/public/icons/multimedia/camera.svg" />Take a pic <img class="add-nutrient-popup-camera-background-icon" src="resources/public/icons/multimedia/camera.svg" /></button>
-                <button class="add-nutrient-popup-upload-button" @onclick="async ()=> await UploadPhoto()"><img class="add-nutrient-popup-upload-icon" src="resources/public/icons/arrows/upload.svg" />Upload from Gallery <img class="add-nutrient-popup-upload-background-icon" src="resources/public/icons/arrows/upload.svg" /></button>
-                <button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage(NutrientPopupCurrentFeedItem, 1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>
+                <button class="add-nutrient-popup-camera-button" @onclick="async ()=> await TakePhoto()"><img class="add-nutrient-popup-camera-icon" src="resources/public/icons/multimedia/camera.svg" />Take a pic@* <img class="add-nutrient-popup-camera-background-icon" src="resources/public/icons/multimedia/camera.svg" />*@</button>
+                <button class="add-nutrient-popup-upload-button" @onclick="async ()=> await UploadPhoto()"><img class="add-nutrient-popup-upload-icon" src="resources/public/icons/multimedia/gallery.svg" />Upload from Gallery@*<img class="add-nutrient-popup-upload-background-icon" src="resources/public/icons/arrows/upload.svg" />*@</button>
+                @*<button class="add-nutrient-popup-search-button" @onclick="()=>GoToSearchRecipesPage(NutrientPopupCurrentFeedItem, 1)"><img class="add-nutrient-popup-search-icon" src="resources/public/icons/userInterface/search.svg" />Search from recipe<img class="add-nutrient-popup-search-background-icon" src="resources/public/icons/userInterface/search.svg" /></button>*@
             </div>
             @if (NutrientPopupRecipesDisplayed != null)
             {
@@ -1342,11 +1453,11 @@
                 }
                 @if (NutrientIsFavorite)
                 {
-                    <img class="add-dish-popup-favorite-icon red-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heartfilled.svg" @onclick="async ()=> await FavoriteDish()" />
                 }
                 else
                 {
-                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heart.svg" @onclick="async ()=> await FavoriteDish()" />
+                    <img class="add-dish-popup-favorite-icon" src="resources/public/icons/shapes/heart2.svg" @onclick="async ()=> await FavoriteDish()" />
                 }
             </div>
             <hr class="add-dish-popup-line-spacer" />
@@ -1427,6 +1538,10 @@
             </div>
             <label class="add-new-popup-label">Start</label>
             <div class="add-new-content-grid">
+                <div class="add-new-content-object-container" @onclick="AddNewExercise">
+                    <label class="add-new-content-object-label">Exercise</label>
+                    <label class="add-new-content-object-subtext">Start a new workout!</label>
+                </div>
                 <div class="add-new-content-object-container" @onclick="GoToChatPage">
                     <label class="add-new-content-object-label">Chat with trainer</label>
                     <label class="add-new-content-object-subtext">Ask a question</label>
@@ -1463,3 +1578,80 @@
         </div>
     </div>
 </div>
+
+
+
+<style>
+    /*#region override datepicker*/
+    .ui-datepicker{
+        border-radius:12px;
+        font-family:Montserrat;
+        padding:16px;
+    }
+    .ui-datepicker-header{
+        background:white;
+        outline:none;
+        border: 0px none white;
+        font-family:Montserrat;
+    }
+    .ui-datepicker-title{
+        font-size:14px;
+        font-weight:700;
+        color:#333333;
+    }
+    .ui-datepicker th{
+        font-weight:400;
+        font-size:10px;
+        color:black;
+    }
+    .ui-datepicker td{
+        padding:0px;
+    }
+    .ui-widget-header .ui-icon {
+        background-image:none;
+    }
+    .ui-button:hover{
+        background:none !important;
+        border:none !important;
+        color:transparent !important;
+    }
+    .ui-datepicker-next-hover{
+        background:none !important;
+        border:none !important;
+        top:2px !important;
+        right:2px !important;
+    }
+    .ui-datepicker-prev-hover{
+        background:none !important;
+        border:none !important;
+        left:2px !important;
+        top:2px !important;
+    }
+    .ui-icon-circle-triangle-w{
+        content: url("resources/public/icons/arrows/arrow-left.svg");
+    }
+    .ui-icon-circle-triangle-e{
+        content: url("resources/public/icons/arrows/arrow-right.svg");
+    }
+    .ui-datepicker td a{    
+        font-size:12px;
+        border-radius:20px;
+        height:30px;
+        color:#4D4D4D;
+        line-height: 30px;
+        width:30px;
+        padding:0px;
+        text-align:center !important;
+        background:none !important;
+        border:none !important;
+    }
+    .ui-datepicker-calendar .ui-state-active {
+        background:#006272 !important;
+        color:white;
+    }
+    /*#endregion*/
+</style>
+
+<MauiApp1.Pages.Popups.SnoozePopup DisplayPopup="@DisplaySnoozePopup" OpenMenuOnClose="@DisplayMenuOnSnoozeClose"></MauiApp1.Pages.Popups.SnoozePopup>
+<MauiApp1.Pages.Popups.FeedItemMenuPopup DisplayPopup="@DisplayMenuPopup" feedItem="@_feedItem"></MauiApp1.Pages.Popups.FeedItemMenuPopup>
+<MauiApp1.Pages.Popups.SkipPopup DisplayPopup="@DisplaySkipPopup"></MauiApp1.Pages.Popups.SkipPopup>

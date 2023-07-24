@@ -1,5 +1,6 @@
 ﻿using Azure.Core;
 using ChartApi.Net7;
+using FitappAdminWeb.Net7.Classes.Utilities;
 using FitappAdminWeb.Net7.Models;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -9,20 +10,24 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
 {
     public class PromotionRepository
     {
-        private IHttpClientFactory _httpclientfactory;
         private IConfiguration _configuration;
         private ILogger<PromotionRepository> _logger;
         private BlobStorageRepository _blobrepo;
+        private FitAppAPIUtil _apiutil;
 
         private readonly string URL_SENDPROMOTIONCHAT = "/api/Chat/SendPromotionChat";
         private readonly string APPSETTING_MAINAPIDOMAIN = "MainApi_Domain";
 
-        public PromotionRepository(IHttpClientFactory httpclientfactory, IConfiguration configuration, ILogger<PromotionRepository> logger, BlobStorageRepository blobrepo)
+        public PromotionRepository( 
+            IConfiguration configuration, 
+            ILogger<PromotionRepository> logger, 
+            BlobStorageRepository blobrepo,
+            FitAppAPIUtil apiutil)
         {
-            _httpclientfactory = httpclientfactory;
             _configuration = configuration;
             _logger = logger;
             _blobrepo = blobrepo;
+            _apiutil = apiutil;
         }
 
         public async Task<bool> SendPromotionChatMessage(PromotionModel data)
@@ -58,15 +63,17 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                             return false;
                         }
                         message.ImageUrl = imageUrl;
-                    }             
+                    }
 
                     //send promotion message dto to API as POST
-                    var url = $"{apidomain}{URL_SENDPROMOTIONCHAT}";
-                    var httpclient = _httpclientfactory.CreateClient();
+                    //var url = $"{apidomain}{URL_SENDPROMOTIONCHAT}";
+                    //var httpclient = _httpclientfactory.CreateClient();
 
-                    var request = new HttpRequestMessage(HttpMethod.Post, url);
-                    var stringcontent = new StringContent(JsonConvert.SerializeObject(message), Encoding.UTF8, "application/json");
-                    request.Content = stringcontent;
+                    //var request = new HttpRequestMessage(HttpMethod.Post, url);
+                    //var stringcontent = new StringContent(JsonConvert.SerializeObject(message), Encoding.UTF8, "application/json");
+                    //request.Content = stringcontent;
+                    var httpclient = _apiutil.GetHttpClient();
+                    var request = _apiutil.BuildRequest(URL_SENDPROMOTIONCHAT, HttpMethod.Post, message);
 
                     var response = await httpclient.SendAsync(request);
                     response.EnsureSuccessStatusCode();

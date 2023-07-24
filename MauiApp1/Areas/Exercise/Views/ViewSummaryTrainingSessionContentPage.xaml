@@ -161,36 +161,17 @@
                                 </Rectangle>
 
                                 <Ellipse x:Name="VeryEasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="0" WidthRequest="8" HeightRequest="8" HorizontalOptions="Start"/>
-                                <!--<Button x:Name="VeryEasyRatingButton" Grid.Row="0" Grid.Column="0" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Start" Clicked="RatingButton_Clicked"/>-->
-
                                 <Ellipse x:Name="EasyRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="1" WidthRequest="8" HeightRequest="8" HorizontalOptions="Start" Margin="14,0,0,0"/>
-                                <!--<Button x:Name="EasyRatingButton" Grid.Row="0" Grid.Column="1" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>-->
-
                                 <Ellipse x:Name="AverageRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="2" WidthRequest="8" HeightRequest="8" HorizontalOptions="Center"/>
-                                <!--<Button x:Name="AverageRatingButton" Grid.Row="0" Grid.Column="2" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>-->
-
                                 <Ellipse x:Name="HardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="3" WidthRequest="8" HeightRequest="8" HorizontalOptions="End" Margin="0,0,14,0"/>
-                                <!--<Button x:Name="HardRatingButton" Grid.Row="0" Grid.Column="3" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="Center" Clicked="RatingButton_Clicked"/>-->
-
                                 <Ellipse x:Name="VeryHardRatingEllipse" Fill="#FFFFFF" Stroke="#006272" StrokeThickness="1" Grid.Row="0" Grid.Column="4" WidthRequest="8" HeightRequest="8" HorizontalOptions="End"/>
-                                <!--<Button x:Name="VeryHardRatingButton" Grid.Row="0" Grid.Column="4" WidthRequest="24" HeightRequest="24" BackgroundColor="Transparent" BorderColor="Transparent" HorizontalOptions="End" Clicked="RatingButton_Clicked"/>-->
-
-
                                 <Slider x:Name="RatingSlider" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" HeightRequest="36" WidthRequest="311" Minimum="0" Maximum="1" Value="0.5" ValueChanged="RatingSlider_ValueChanged" MinimumTrackColor="Transparent" ThumbColor="#006272" BackgroundColor="Transparent" MaximumTrackColor="Transparent">
-                                    <!--<Slider.Background>
-                                        <LinearGradientBrush EndPoint="1,0">
-                                            <GradientStop Color="#81BA81"
-                          Offset="0.1" />
-                                            <GradientStop Color="#FF7768"
-                          Offset="1.0" />
-                                        </LinearGradientBrush>
-                                    </Slider.Background>-->
                                 </Slider>
 
 
                             </Grid>
 
-                            <Editor x:Name="FeedbackEditor" PlaceholderColor="#85929B" Margin="16,20,16,16" AutoSize="Disabled" HeightRequest="80" TextColor="Black"/>
+                            <Editor x:Name="FeedbackEditor" PlaceholderColor="#85929B" Margin="16,20,16,16" AutoSize="Disabled" HeightRequest="80" TextColor="Black" BackgroundColor="White"/>
 
                         </VerticalStackLayout>
 

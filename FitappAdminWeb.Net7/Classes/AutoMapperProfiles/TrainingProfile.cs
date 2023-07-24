@@ -71,7 +71,7 @@ namespace FitappAdminWeb.Net7.Classes.AutoMapperProfiles
 
             CreateMap<EdsExerciseType, ExerciseType_DTO>();
             CreateMap<ExerciseType_DTO, EdsExerciseType>()
-                .ForMember(r => r.EdsSetDefaults, opt => opt.MapFrom(src => src.SetDefaults))
+                .ForMember(r => r.EdsSetDefaults, opt => opt.Ignore())
                 .PreserveReferences();
             CreateMap<SetDefault_DTO, EdsSetDefaults>()
                 .ForMember(r => r.EdsSetMetricsDefault, opt => opt.MapFrom(src => src.SetMetricDefaults))

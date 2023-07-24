@@ -1,23 +1,30 @@
 ﻿using FeedApi.Net7.Models;
 using ImageApi.Net7;
+using MauiApp1._Push;
 using MauiApp1.Areas.BarcodeScanning.Views;
 using MauiApp1.Areas.Chat.Views;
 using MauiApp1.Areas.Exercise.ViewModels;
 using MauiApp1.Areas.Exercise.Views;
 using MauiApp1.Areas.Nutrient.Views;
 using MauiApp1.Areas.Overview.Views;
+using MauiApp1.Areas.Security.Views;
 using MauiApp1.Business.BrowserServices;
 using MauiApp1.Business.DeviceServices;
+using MauiApp1.Helpers;
 using MauiApp1.Pages.Nutrient;
+using MauiApp1.Pages.Popups;
 using MauiApp1.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using Newtonsoft.Json;
 using ParentMiddleWare;
 using ParentMiddleWare.Models;
+using Statics;
 using System.Collections.ObjectModel;
+#if WINDOWS
 using System.Drawing;
 using System.Drawing.Drawing2D;
+#endif
 using System.Text;
 using UserApi.Net7;
 using UserApi.Net7.Models;
@@ -25,24 +32,38 @@ using UserApi.Net7.Models;
 
 namespace MauiApp1.Pages
 {
+    #region NavigationIntercept
+    public class NavigationIntercept
+    {
+        public string Action { get; set; }
+        public string Parameter1 { get; set; }
+        public string Parameter2 { get; set; }
+    }
+
+    #endregion
+
     public partial class Index
     //in order to be referenced by the parent .razor, class has to be PARTIAL
     {
         [Inject]
         IJSRuntime JSRuntime { get; set; }
-        [Inject]
-        NavigationManager NavigationManager { get; set; }
+
         #region [Fields]
+        //intercept
+        public static NavigationIntercept navigationIntercept { get; set; }
         //navigation
         private IDisposable registration;
         //For Ui Fields
         public static string DisplayFooter = "none";
         public static string DisplayNutrientPopup = "none";
-        public static string DisplayUserPopup = "none";
         public static string DisplayAddDishPopup = "none";
         public static string DisplayMindfulnessPopup = "none";
         public static string DisplayAddNewPopup = "none";
         public static string DisplayFavoritePopup = "none";
+        public static string DisplaySnoozePopup = "none";
+        public static string DisplayMenuPopup = "none";
+        public static string DisplaySkipPopup = "none";
+        public bool DisplayMenuOnSnoozeClose = false;
 
         private bool _isBlackCoverDivHidden = true;
         private bool _isFeedItemDetailsDivHidden = true;
@@ -53,6 +74,7 @@ namespace MauiApp1.Pages
         private bool _isFeedItemSnoozeClick = false;
         private bool _isFeedItemUndoClick = false;
         private bool _isFeedItemSummaryClick = false;
+        private bool _isFeedItemMenuClick = false;
 
         private bool _isRefreshFeedItemNeeded = false;
         private bool _ReloadFeedItemDetailsPage = true;
@@ -86,7 +108,7 @@ namespace MauiApp1.Pages
         private int _sheetHeight = 492;
         private double _sheetFeedItemListInitialHeight = 0;
         private double _sheetFeedItemListMaxHeight = 0;
-        private double _sheetFeedItemListHeight = 295;
+        private double _sheetFeedItemListHeight = 600; //295;
         public double SheetFeedItemListHeight
         {
             get { return _sheetFeedItemListHeight; }
@@ -107,7 +129,7 @@ namespace MauiApp1.Pages
         private double _InnerWidth { get; set; }
         private string _greeting { get; set; }
         bool _TestMode = true;
-
+        private bool LockScroll = false;
         #endregion
 
         #region [Fields :: Custom]
@@ -128,17 +150,99 @@ namespace MauiApp1.Pages
 
         #region[Initialization]
 
-        /* this method is run after page is rendered */
-        /* more detail on this and onafterrenderasync at https://learn.microsoft.com/en-us/aspnet/core/blazor/components/lifecycle?view=aspnetcore-7.0#after-component-render-onafterrenderasync */
+
+        public async Task DoNavigationIntercept(string aaction, string parameter)
+        {
+            switch (aaction)
+            {
+                case Strings.NOTIF_NUTRIENT:
+                    {
+                        await ScrollToFeedID(parameter, aaction);
+                        break;
+                    }
+                case Strings.NOTIF_SUPPLEMENT:
+                    {
+                        await ScrollToFeedID(parameter, aaction);
+                        break;
+                    }
+                case Strings.NOTIF_TRAINING:
+                    {
+                        await ScrollToFeedID(parameter, aaction);
+                        break;
+                    }
+                case Strings.NOTIF_TRANSCRIPT:
+                    {
+                        await ScrollToFeedID(parameter, aaction);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+        }
+
+        public async Task ScrollToFeedID(string ID, string Action)
+        {
+            FeedItem Target;
+            if(_nowFeedItems.Count == 0 && _laterFeedItems.Count == 0 && _beforeFeedItems.Count == 0)
+            {
+                await GetFeedItems();
+            }
+            Target = _nowFeedItems.Where(t => t.ID == ID).FirstOrDefault();
+            if (Target == null)
+            {
+                Target = _laterFeedItems.Where(t => t.ID == ID).FirstOrDefault();
+            }
+            if (Target == null)
+            {
+                Target = _beforeFeedItems.Where(t => t.ID == ID).FirstOrDefault();
+            }
+            if (Target == null) return;
+
+            if (Action == Strings.NOTIF_TRANSCRIPT && Target.ItemType == FeedItemType.NutrientsFeedItem)
+            {
+                await Task.Delay(250);
+                await GoToOverviewPage(Target, true);
+            }
+            else if (Target.Status != FeedItemStatus.Completed && Target.Status != FeedItemStatus.Skipped)
+            {
+                if (Target.ItemType == FeedItemType.NutrientsFeedItem)
+                {
+                    await Task.Delay(250);
+                    await OpenNutrientPopup(Target);
+                }
+                else if (Target.ItemType == FeedItemType.SupplementItem)
+                {
+                   await Task.Delay(250);
+                   await  ViewSupplementFeedItemDetails(Target);
+                }
+                else if (Target.ItemType == FeedItemType.TrainingSessionFeedItem)
+                {
+                    await Task.Delay(250);
+                    await FeedItem_Click(Target);
+                }
+                else
+                {
+                    return;
+                }
+            }
+            await JSRuntime.InvokeVoidAsync("ScrollToItemID", ID);
+            // LockScroll will prevent the first call to scrolltonow. It resets automatically
+            LockScroll = true;
+            await StateHasChanged();
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
             if (firstRender)
             {
+                PushNavigationHelper.RootPage = this;
                 await JSRuntime.InvokeVoidAsync("renderJqueryComponentsinIndex");
-                await JSRuntime.InvokeVoidAsync("JavaScriptInteropDatepicker");
+                //await JSRuntime.InvokeVoidAsync("JavaScriptInteropDatepicker");
                 await JSRuntime.InvokeVoidAsync("blazorjs.dragable");
-                await JSRuntime.InvokeVoidAsync("blazorjsFeedItemContentGroupDrag.dragable");
+                //await JSRuntime.InvokeVoidAsync("blazorjsFeedItemContentGroupDrag.dragable");
                 await LoadBrowserDimensions();
                 await IntializeData();
             }
@@ -148,11 +252,11 @@ namespace MauiApp1.Pages
 
         #region [Methods :: EventHandlers :: Class]
 
-
         private async Task IntializeData()
         {
             try
             {
+                PushNavigationHelper.RootPage = this;
                 _nowFeedItems = new List<FeedItem>();
                 _beforeFeedItems = new List<FeedItem>();
                 _laterFeedItems = new List<FeedItem>();
@@ -161,36 +265,37 @@ namespace MauiApp1.Pages
 
                 InitializeSelectDate();
 
-                await GetFeedItems();
+               // await GetFeedItems();
 
-                GetGreeting();
-
-                await StateHasChanged();
+                //GetGreeting();
 
                 if (HTMLBridge.RefreshData != null)
                 {
                     HTMLBridge.RefreshData -= RefreshData_OnRefresh;
                 }
-
                 HTMLBridge.RefreshData += RefreshData_OnRefresh;
 
+                if (navigationIntercept != null)
+                {
+                    await PushNavigationHelper.Navigate_to_feed_item(navigationIntercept);
+                    navigationIntercept = null;
 
-                InitializeControl();
-
+                    // LockScroll will prevent the first call to scrolltonow. It resets automatically
+                    LockScroll = true;
+                }
+                else
+                {
+                    LoadData();
+                  //  await StateHasChanged();
+                }
             }
-            catch
-            {
-            }
-            finally
-            {
-
-            }
-
+            catch { }
         }
 
-        private void InitializeControl()
+        private async Task LoadData()
         {
-
+            await GetFeedItems();
+            await StateHasChanged();
         }
 
         #endregion
@@ -205,9 +310,9 @@ namespace MauiApp1.Pages
         {
             DisplayFooter = "none";
         }
-        private void NewButton_Click()
+        private async void NewButton_Click()
         {
-            OpenAddNewPopup();
+           await OpenAddNewPopup();
         }
 
         private void GoToPreviousDateButton_Click()
@@ -235,9 +340,9 @@ namespace MauiApp1.Pages
             HandleFeedItemUndoButtonClick(feedItem);
         }
 
-        private void FeedItem_Click(FeedItem feedItem)
+        private async Task FeedItem_Click(FeedItem feedItem)
         {
-            HandleFeedItemClick(feedItem);
+            await HandleFeedItemClick(feedItem);
         }
 
 
@@ -254,14 +359,31 @@ namespace MauiApp1.Pages
 
         private async void BlackCoverDiv_Click()
         {
-           await BlackCoverDivToggle();
+            await BlackCoverDivToggle();
         }
+        //StopTraningSession
+
+        private async void StopTraningSession(FeedItem feedItem)
+        {
+            ShowLoadingActivityIndicator();
+            int vale = feedItem.TrainingSessionFeedItem.TraningSession.ExerciseDuration.HasValue ? feedItem.TrainingSessionFeedItem.TraningSession.ExerciseDuration.Value : 30;
+            await ExerciseApi.Net7.ExerciseApi.EndTrainingSession(feedItem.TrainingSessionFeedItem.TraningSession.Id, vale);
+            // await StateHasChanged();
+
+            HideLoadingActivityIndicator();
+            await RefreshPageWithoutClearingFeedItem();
+        }
+
 
         private void FeedItemSnooze_Click(FeedItem feedItem)
         {
             HandleFeedItemSnoozeButtonClick(feedItem);
         }
 
+        private async Task FeedItemMenu_Click(FeedItem feedItem)
+        {
+            await HandleFeedItemMenuButtonClick(feedItem);
+        }
         private void FeedItemDetailsStart_Click(FeedItem feedItem)
         {
             HandleFeedItemStartButtonClick(feedItem);
@@ -269,6 +391,7 @@ namespace MauiApp1.Pages
 
         private void FeedItemListSheet_OnTouchMove(Microsoft.AspNetCore.Components.Web.TouchEventArgs args)
         {
+            /*
             this.SheetFeedItemListHeight = Convert.ToInt32(_InnerHeight - args.ChangedTouches[0].ClientY);
 
             if (this.SheetFeedItemListHeight <= _sheetFeedItemListInitialHeight)
@@ -279,19 +402,23 @@ namespace MauiApp1.Pages
             if (this.SheetFeedItemListHeight >= _sheetFeedItemListMaxHeight)
             {
                 this.SheetFeedItemListHeight = _sheetFeedItemListMaxHeight;
-            }
+            }*/
         }
 
-        private void FeedItemDetailsBottomSheet_OnTouchMove(Microsoft.AspNetCore.Components.Web.TouchEventArgs args)
+        private async void FeedItemDetailsBottomSheet_OnTouchMove(Microsoft.AspNetCore.Components.Web.TouchEventArgs args)
         {
-            int maxSheetDragHeight = (int)((_InnerHeight / 100) * 86);
+            int maxSheetDragHeight = (int)((_InnerHeight - 60));
             _sheetHeight = Convert.ToInt32(_InnerHeight - args.ChangedTouches[0].ClientY);
 
-            if (_sheetHeight <= 492)
+            if (_sheetHeight <= 300)
             {
-                _sheetHeight = 492;
-            }
+                //_sheetHeight = 492;
+                await JSRuntime.InvokeVoidAsync("HideExerciseDetail");
+                _isBlackCoverDivHidden = true;
+                _isFeedItemDetailsDivHidden = true;
+                _isExerciseWhatsNewTabDiv = true;
 
+            }
             if (_sheetHeight >= maxSheetDragHeight)
             {
                 _sheetHeight = maxSheetDragHeight;
@@ -300,50 +427,49 @@ namespace MauiApp1.Pages
 
         private async void FeedButton_Click()
         {
-           await GoToCurrentDate();
+            await GoToCurrentDate();
         }
 
         private async void DashboardButton_Click()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new HomeContentPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new RazorHomeContentPage());
         }
 
         private async void BiodataButton_Click()
         {
-            await Application.Current.MainPage.Navigation.PushAsync(new HomeContentPage());
+            await Application.Current.MainPage.Navigation.PushAsync(new RazorHomeContentPage());
         }
 
         private async void Dashboard_Click()
         {
-           await GoToCurrentDate();
+            await GoToCurrentDate();
         }
-        private async void ChatButton_Click()
-        {
 
-#if IOS
-            await Application.Current.MainPage.Navigation.PushAsync(new ViewIOSChatContentPage());
-#else
-           await Application.Current.MainPage.Navigation.PushAsync(new ViewChatContentPage());
-#endif
+        public async void AddNewExercise()
+        {
+            var result = await UserMiddleware.AddCustomTrainingSession();
+            if (result == null)
+            {
+                await CloseAddNewPopup();
+                return;
+            }
+           await CloseAddNewPopup();
+            ViewExerciseContentPage._exerciseViewModels = new ObservableCollection<ExercisePageViewModel>();
+            var TraningPage = new ViewExerciseContentPage(result);
+            await App.Current.MainPage.Navigation.PushAsync(TraningPage, true);
         }
+
         public async void GoToChatPage()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
-            CloseAddNewPopup();
+            await CloseAddNewPopup();
         }
+
         private async void GotoScanPage()
         {
             await Application.Current.MainPage.Navigation.PushAsync(new BarcodeScannerContentPage());
         }
-        public async void GoToSearchRecipesPage(FeedItem feeditem, long status)
-        {
-            await App.Current.MainPage.Navigation.PushAsync(new SearchRecipesPage(feeditem, status));
-        }
-        public async void GoToOverviewPage(FeedItem feeditem, bool IsSubmitted = false)
-        {
-            var Page = new OverviewPage(feeditem, IsSubmitted);
-            await App.Current.MainPage.Navigation.PushAsync(Page);
-        }
+
 
         private async Task Page_Unloaded(object sender, EventArgs e)
         {
@@ -377,14 +503,7 @@ namespace MauiApp1.Pages
             string selectedDate = args.Value.ToString();
             await SelectDateOnChange(selectedDate);
         }
-        public void OpenUserPopup()
-        {
-            DisplayUserPopup = "inline";
-        }
-        public void CloseUserPopup()
-        {
-            DisplayUserPopup = "none";
-        }
+        #region NUTRIENT_METHODS
         public async Task OpenNutrientPopup(FeedItem currentfeeditem, bool IsCustomDish = false)
         {
             if (IsCustomDish)
@@ -398,6 +517,7 @@ namespace MauiApp1.Pages
                 temporaryFeedItem.Status = FeedItemStatus.Scheduled;
                 temporaryFeedItem.Date = DateTime.Now;
                 temporaryFeedItem.NutrientsFeedItem.Meal.IsCustom = true;
+                temporaryFeedItem.NutrientsFeedItem.Meal.TargetKiloCalories = 420;
                 NutrientPopupCurrentFeedItem = temporaryFeedItem;
             }
             else
@@ -408,7 +528,7 @@ namespace MauiApp1.Pages
             NutrientPopupRecipesDisplayed = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
             DisplayNutrientPopup = "inline";
         }
-        public void CloseNutrientPopup()
+        public async Task CloseNutrientPopup()
         {
             DisplayNutrientPopup = "none";
         }
@@ -446,7 +566,6 @@ namespace MauiApp1.Pages
         }
         public void CloseFavoritePopup()
         {
-
             if (ShowAgainCheckedValue)
             {
                 ParentMiddleWare.MiddleWare.SetShowFavoriteMsg(false);
@@ -545,16 +664,9 @@ namespace MauiApp1.Pages
         public async Task FavoriteDish()
         {
             NutrientIsFavorite = !NutrientIsFavorite;
-            if (NutrientIsFavorite)
-            {
-                if (MiddleWare.ShowFavoriteMsg)
-                {
-                    OpenFavoritePopup();
-                }
-            }
             if (NutrientIsFavorite && NutrientRecipe != null)
             {
-                bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
+                await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
                 await StateHasChanged();
             }
             else if (NutrientRecipe != null)
@@ -564,9 +676,25 @@ namespace MauiApp1.Pages
             }
             else
             {
+                if (NutrientIsFavorite && ParentMiddleWare.MiddleWare.ShowFavoriteMsg)
+                {
+                    OpenFavoritePopup();
+                }
                 await StateHasChanged();
             }
         }
+        #endregion
+        public async Task OpenAddNewPopup()
+        {
+            DisplayAddNewPopup = "inline";
+             await StateHasChanged();
+        }
+        private async Task CloseAddNewPopup()
+        {
+            DisplayAddNewPopup = "none";
+            await StateHasChanged();
+        }
+
         private void SetIsRefreshFeedItemNeeded_EventCallback()
         {
             _isRefreshFeedItemNeeded = true;
@@ -577,24 +705,28 @@ namespace MauiApp1.Pages
             _ReloadFeedItemDetailsPage = reloadFeedItemDetailsPage;
         }
 
+
         private void CloseMindfulnessPopup()
         {
             DisplayMindfulnessPopup = "none";
-        }
-
-        private void OpenAddNewPopup()
-        {
-            DisplayAddNewPopup = "inline";
-        }
-        private void CloseAddNewPopup()
-        {
-            DisplayAddNewPopup = "none";
         }
         public void Dispose()
         {
             registration?.Dispose();
         }
-
+        public async void GoToSearchRecipesPage(FeedItem feeditem, long status)
+        {
+            await CloseAddNewPopup();
+            //CloseNutrientPopup();
+            await App.Current.MainPage.Navigation.PushAsync(new SearchRecipesPage(feeditem, status));
+        }
+        public async Task GoToOverviewPage(FeedItem feeditem, bool IsSubmitted = false)
+        {
+             await CloseAddNewPopup();
+             await CloseNutrientPopup();
+            var Page = new OverviewPage(feeditem, IsSubmitted);
+            await App.Current.MainPage.Navigation.PushAsync(Page);
+        }
         #endregion
 
         #region [Methods :: Tasks]
@@ -609,57 +741,95 @@ namespace MauiApp1.Pages
             formattedDate = string.Format("{0} {1}, {2}", _dateSelected.Day + numberSuffix, monthShort, _dateSelected.DayOfWeek);
             _selectedDate = formattedDate;
         }
+        private void ShowCalendar()
+        {
+#if !WINDOWS
+            if (HTMLBridge.DXCalenderPopup != null)
+            {
+                HTMLBridge.DXCalenderPopup.IsOpen = true;
+            }
+#endif
+        }
+        public async Task SetDate(DateTime? DateInput)
+        {
+            string formattedDate = string.Empty;
+            string numberSuffix = string.Empty;
+            string monthShort = string.Empty;
+            if (DateInput != null)
+            {
+                //System.Diagnostics.Debug.WriteLine(DateInput.ToString());
 
+                _dateSelected = DateInput.GetValueOrDefault();
+
+                monthShort = _dateSelected.ToString("MMM");
+
+                numberSuffix = GetDayNumberSuffix(_dateSelected);
+
+                formattedDate = string.Format("{0} {1}, {2}", _dateSelected.Day + numberSuffix, monthShort, _dateSelected.DayOfWeek);
+
+                _selectedDate = formattedDate;
+
+                _beforeFeedItems.Clear();
+                _nowFeedItems.Clear();
+                _laterFeedItems.Clear();
+
+                await GetFeedItems();
+                _isChangeDateButtonDisable = false;
+
+                await StateHasChanged();
+            }
+        }
         private async Task GetFeedItems()
         {
-            isblocked = false;
-            if (!MiddleWare.IsInit)
-            {
-                //  Trace.TraceError("Starting Middleware.init");
-                //  MiddleWare.BaseUrl = "https://fitapp-mainapi-test.azurewebsites.net";
-                //// FeedApi.Net7.FeedApi.BaseUrl = "https://localhost:7174";
-              //  MiddleWare.UserID = -100;
-               // await SetupUser();
-
-                //var config = await FeedApi.Net7.FeedApi.GetConfig();
-                //MiddleWare.NowLaterTime = config[0];
-                //MiddleWare.AutoSkippedTimeout = config[1];
-                //MiddleWare.OverDueTime = config[2];
-                //MiddleWare.TestKitStatus = config[3];
-                MiddleWare.IsInit = true;
-
-#if !WINDOWS //&& !DEBUG
-
-                if (MiddleWare.UserID > 0)
-                {
-                    // not async by design
-                    UserMiddleware.RegisterDevice(await PushRegistration.CheckPermission(), PushRegistration.GetPlatform());
-                    if (MiddleWare.UserID >= 0)
-                    {
-                        // not async by design
-                        UserMiddleware.UpdateOffset();
-                    }
-                }
-#endif
-            }
-
-            ShowLoadingActivityIndicator();
-
-            if (MiddleWare.UserID <= 0)
-            {
-                HideLoadingActivityIndicator();
-                return;
-            }
-            _beforeFeedItems = new List<FeedItem>();
-            _nowFeedItems = new List<FeedItem>();
-            _laterFeedItems = new List<FeedItem>();
-
             try
             {
+                if (MiddleWare.UserID <= 0)
+                {
+                    HideLoadingActivityIndicator();
+                    return;
+                }
+
+                isblocked = false;
+                if (!MiddleWare.IsInit && MiddleWare.UserID > 0)
+                {
+                    MiddleWare.IsInit = true;
+
+
+
+                    if (MiddleWare.UserID > 0)
+                    {
+                        bool IsNotificationAllowed = await CheckNotificationPermissions();
+                        if (IsNotificationAllowed)
+                        {
+                            // not async by design
+                            UserMiddleware.RegisterDevice(await PushRegistration.CheckPermission(), PushRegistration.GetPlatform());
+                        }
+                        else
+                        {
+                            OpenRequestNotificationPermissionsPopup();
+                        }
+                        if (MiddleWare.UserID >= 0)
+                        {
+                            // not async by design
+                            UserMiddleware.UpdateOffset();
+                        }
+                    }
+
+                }
+
+                ShowLoadingActivityIndicator();
+
+
+                _beforeFeedItems = new List<FeedItem>();
+                _nowFeedItems = new List<FeedItem>();
+                _laterFeedItems = new List<FeedItem>();
+
+
                 List<FeedItem> feedItems = await FeedApi.Net7.FeedApi.GetDailyFeedAsync(_dateSelected);
                 var nowIsFilled = false;
                 FeedItem LaterPlaceholder = null;
                 bool isLaterPlaceHolderFilled = false;
+
                 if (_dateSelected.Date != DateTime.Now.Date) nowIsFilled = true;
 
                 foreach (FeedItem feedItem in feedItems)
@@ -682,34 +852,32 @@ namespace MauiApp1.Pages
                     else
                     {
                         _laterFeedItems.Add(feedItem);
-                        if(!isLaterPlaceHolderFilled)
+                        if (!isLaterPlaceHolderFilled)
                         {
                             LaterPlaceholder = feedItem;
                             isLaterPlaceHolderFilled = true;
                         }
                     }
                 }
-                if(!nowIsFilled && LaterPlaceholder != null)
+
+                if (!nowIsFilled && LaterPlaceholder != null)
                 {
                     _laterFeedItems.Remove(LaterPlaceholder);
                     _nowFeedItems.Add(LaterPlaceholder);
                 }
             }
-            catch
+            catch(Exception e)
             {
                 HideLoadingActivityIndicator();
                 await App.Current.MainPage.DisplayAlert("Retrieve Feed Item", "An error occurred while retrieving feed items. Please check internet connection and try again", "OK");
-
             }
             finally
             {
                 HideLoadingActivityIndicator();
             }
-
-
         }
 
-        private string GetStatuswithFormattedTimeElapsed(FeedItemType feedItemType, DateTime dateTime, FeedItemStatus status)
+        public string GetStatuswithFormattedTimeElapsed(FeedItemType feedItemType, DateTime dateTime, FeedItemStatus status)
         {
             string formattedText = string.Empty;
             string timeElapsed = string.Empty;
@@ -1062,21 +1230,25 @@ namespace MauiApp1.Pages
 
         private async Task BlackCoverDivToggle()
         {
+            /*
             if (_isBlackCoverDivHidden == true)
             {
+
+                await JSRuntime.InvokeVoidAsync("ShowExerciseDetail");
                 _isBlackCoverDivHidden = false;
                 _isFeedItemDetailsDivHidden = false;
             }
             else
-            {
-                _isBlackCoverDivHidden = true;
-                _isFeedItemDetailsDivHidden = true;
-                _ReloadFeedItemDetailsPage = true;
-            }
+            {*/
+            await JSRuntime.InvokeVoidAsync("HideExerciseDetail");
+            _isBlackCoverDivHidden = true;
+            _isFeedItemDetailsDivHidden = true;
+            _ReloadFeedItemDetailsPage = true;
+            /*}*/
 
             if (_isRefreshFeedItemNeeded == true)
             {
-               await RefreshPage();
+                await RefreshPage();
                 _isRefreshFeedItemNeeded = false;
             }
             else
@@ -1087,12 +1259,19 @@ namespace MauiApp1.Pages
 
         private async Task ScrollDivToNowSection()
         {
-            await JSRuntime.InvokeVoidAsync("ScrollToNow");
-            await JSRuntime.InvokeVoidAsync("setupDebounce");
+            if (LockScroll)
+            {
+                LockScroll = false;
+            }
+            else
+            {
+                await JSRuntime.InvokeVoidAsync("ScrollToNow");
+            }
+            //   await JSRuntime.InvokeVoidAsync("setupDebounce");
         }
 
         private bool is_user_interaction = false;
-        private void HandleFeedItemClick(FeedItem feedItem)
+        private async Task HandleFeedItemClick(FeedItem feedItem)
         {
             is_user_interaction = true;
             if (_isFeedItemStartClick == true)
@@ -1111,20 +1290,24 @@ namespace MauiApp1.Pages
             {
                 _isFeedItemSummaryClick = false;
             }
+            else if (_isFeedItemMenuClick == true)
+            {
+                _isFeedItemMenuClick = false;
+            }
             else
             {
-                ViewFeedItemDetail(feedItem);
+                await ViewFeedItemDetail(feedItem);
             }
             is_user_interaction = false;
         }
 
-        private void ViewFeedItemDetail(FeedItem feedItem)
+        private async Task ViewFeedItemDetail(FeedItem feedItem)
         {
             is_user_interaction = true;
             switch (feedItem.ItemType)
             {
                 case FeedItemType.TrainingSessionFeedItem:
-                    ViewTrainingSessionFeedItemDetails(feedItem);
+                    await ViewTrainingSessionFeedItemDetails(feedItem);
                     break;
 
                 case FeedItemType.NutrientsFeedItem:
@@ -1139,402 +1322,131 @@ namespace MauiApp1.Pages
             is_user_interaction = false;
         }
 
-        private void ViewTrainingSessionFeedItemDetails(FeedItem feedItem)
+        private async Task ViewTrainingSessionFeedItemDetails(FeedItem feedItem)
         {
             _feedItem = feedItem;
             _sheetHeight = 495;
+            await JSRuntime.InvokeVoidAsync("ShowExerciseDetail");
             _isBlackCoverDivHidden = false;
             _isFeedItemDetailsDivHidden = false;
             _isExerciseWhatsNewTabDiv = false;
         }
 
-        private void ViewSupplementFeedItemDetails(FeedItem feedItem)
+        private async Task ViewSupplementFeedItemDetails(FeedItem feedItem)
         {
+            _isBlackCoverDivHidden = false;
+            _isFeedItemDetailsDivHidden = false;
+            _isExerciseWhatsNewTabDiv = false;
             _feedItem = feedItem;
             _sheetHeight = ((int)_InnerHeight / 100) * 86;
-            _isBlackCoverDivHidden = false;
-            _isFeedItemDetailsDivHidden = false;
-            _isExerciseWhatsNewTabDiv = false;
+            await JSRuntime.InvokeVoidAsync("ShowExerciseDetail");
+            
+        }
+        private async Task HandleFeedItemMenuButtonClick(FeedItem selectedFeedItem)
+        {
+            _isFeedItemMenuClick = true;
+            _feedItem = selectedFeedItem;
+            await OpenMenuPopup();
+        }
+        public async Task OpenMenuPopup()
+        {
+            DisplayMenuPopup = "inline";
+            await StateHasChanged();
+        }
+        public async Task CloseMenuPopup()
+        {
+            DisplayMenuPopup = "none";
+            await StateHasChanged();
         }
 
+        #region SNOOZING
         private async void HandleFeedItemSnoozeButtonClick(FeedItem selectedFeedItem)
+        {
+            _isFeedItemSnoozeClick = true;
+            _feedItem = selectedFeedItem;
+            await OpenSnoozePopup();
+
+        }
+
+        public async Task OpenSnoozePopup(bool OpenMenuOnClose = false)
+        {
+            if (OpenMenuOnClose)
+            {
+                DisplayMenuOnSnoozeClose = true;
+                await CloseMenuPopup();
+            }
+            DisplaySnoozePopup = "inline";
+            await StateHasChanged();
+        }
+
+        public async Task CloseSnoozePopup()
+        {
+            if (DisplayMenuOnSnoozeClose)
+            {
+                DisplayMenuOnSnoozeClose = false;
+                await OpenMenuPopup();
+            }
+            DisplaySnoozePopup = "none";
+            await StateHasChanged();
+        }
+
+        public async Task SnoozeByAmount(int amount)
         {
             try
             {
-                _isFeedItemSnoozeClick = true;
+                _feedItem.Date.AddMinutes(amount);
 
-                string action = await App.Current.MainPage.DisplayActionSheet("Snooze Notification", "Cancel", null,
-                  "2 hours", "1 hour", "30 minutes", "15 minutes");
-
-                int wait = 0;
-                switch (action)
-                {
-                    case "15 minutes":
-                        wait = 15;
-                        selectedFeedItem.Date.AddMinutes(15);
-                        break;
-
-                    case "30 minutes":
-                        wait = 30;
-                        selectedFeedItem.Date.AddMinutes(30);
-                        break;
-
-                    case "1 hour":
-                        wait = 60;
-                        selectedFeedItem.Date.AddMinutes(60);
-                        break;
-
-                    case "2 hours":
-                        wait = 120;
-                        selectedFeedItem.Date.AddMinutes(120);
-                        break;
-
-                    default:
-                        break;
-                }
-
-                if (wait > 0)
+                if (amount > 0)
                 {
                     ShowLoadingActivityIndicator();
 
-                    switch (selectedFeedItem.ItemType)
+                    switch (_feedItem.ItemType)
                     {
                         case FeedItemType.TrainingSessionFeedItem:
 
-                            await SnoozeTrainingSessionFeedItem(selectedFeedItem, wait);
+                            await SnoozeTrainingSessionFeedItem(_feedItem, amount);
                             break;
 
                         case FeedItemType.NutrientsFeedItem:
 
-                            await SnoozeNutrientFeedItem(selectedFeedItem, wait);
+                            await SnoozeNutrientFeedItem(_feedItem, amount);
                             break;
 
                         case FeedItemType.SupplementItem:
 
-                            await SnoozeSupplementFeedItem(selectedFeedItem, wait);
+                            await SnoozeSupplementFeedItem(_feedItem, amount);
                             break;
 
                         case FeedItemType.HabitsFeedItem:
 
-                            await SnoozeHabitFeedItem(selectedFeedItem, wait);
+                            await SnoozeHabitFeedItem(_feedItem, amount);
                             break;
 
                         case FeedItemType.MedicationFeedItem:
 
-                            await SnoozeMedicalFeedItem(selectedFeedItem, wait);
+                            await SnoozeMedicalFeedItem(_feedItem, amount);
                             break;
 
                         default:
                             break;
 
                     }
-                    await RefreshPage();
+                    HideLoadingActivityIndicator();
+                    await RefreshPageWithoutClearingFeedItem();
                 }
             }
             catch
             {
-               await App.Current.MainPage.DisplayAlert("Reschedule Feed Item", "An error occurred while rescheduling feed items.", "OK");
+                await App.Current.MainPage.DisplayAlert("Reschedule Feed Item", "An error occurred while rescheduling feed items.", "OK");
             }
         }
-
-        private async void HandleFeedItemUndoButtonClick(FeedItem feedItem)
-        {
-            is_user_interaction = true;
-            _isFeedItemUndoClick = true;
-
-            switch (feedItem.ItemType)
-            {
-                case FeedItemType.TrainingSessionFeedItem:
-
-                    await UndoSnoozeTrainingSessionFeedItem(feedItem);
-                    break;
-
-                case FeedItemType.NutrientsFeedItem:
-
-                    await UndoSnoozeNutrientFeedItem(feedItem);
-                    break;
-
-                case FeedItemType.SupplementItem:
-
-                    await UndoSkipSupplementFeedItem(feedItem);
-                    break;
-
-                case FeedItemType.HabitsFeedItem:
-
-                    await UndoSnoozeHabitFeedItem(feedItem);
-                    break;
-
-                case FeedItemType.MedicationFeedItem:
-
-                    await UndoSnoozeMedicalFeedItem(feedItem);
-                    break;
-
-                default:
-                    break;
-
-            }
-            await RefreshPage();
-            is_user_interaction = false;
-        }
-
-        private async void HandleFeedItemStartButtonClick(FeedItem selectedFeedItem)
-        {
-            try
-            {
-                is_user_interaction = true;
-                _feedItem = selectedFeedItem;
-                _isFeedItemStartClick = true;
-                switch (selectedFeedItem.ItemType)
-                {
-                    case FeedItemType.TrainingSessionFeedItem:
-
-                        await ExerciseApi.Net7.ExerciseApi.StartTrainingSession(selectedFeedItem.TrainingSessionFeedItem.TraningSession.Id);
-                        ViewTrainingSessionDetail((selectedFeedItem.TrainingSessionFeedItem));
-                        break;
-
-                    case FeedItemType.NutrientsFeedItem:
-                        break;
-
-                    case FeedItemType.HabitsFeedItem:
-                        break;
-
-                    case FeedItemType.SupplementItem:
-
-                        ViewSupplementFeedItemDetails(selectedFeedItem);
-                        break;
-
-                    default:
-
-                        //No calls yet
-                       await App.Current.MainPage.DisplayAlert("Retrieve Feed Item", "An error occurred while viewing feed items.", "OK");
-                        break;
-                }
-                is_user_interaction = false;
-            }
-            catch
-            {
-                await App.Current.MainPage.DisplayAlert("Start Feed Item", "An error occurred while starting feed items.", "OK");
-            }
-            finally
-            {
-            }
-        }
-
-        private static bool isblocked = false;
-        private async void ViewTrainingSessionDetail(TrainingSessionFeedItem trainingSessionFeedItem)
-        {
-            if (!isblocked)
-            {
-                isblocked = true;
-
-                ShowLoadingActivityIndicator();
-
-                ViewExerciseContentPage._exerciseViewModels = new ObservableCollection<ExercisePageViewModel>();
-                var TraningPage = new ViewExerciseContentPage(trainingSessionFeedItem.TraningSession);
-
-                await App.Current.MainPage.Navigation.PushAsync(TraningPage, true);
-
-                await Task.Delay(10);
-                foreach (var e in trainingSessionFeedItem.TraningSession.emExercises)
-                {
-                    await Task.Delay(1);
-                    await ViewExerciseContentPage.LoadExerciseInCurrentList(e);
-                }
-
-                isblocked = false;
-
-            }
-        }
-
-        private async void ViewTrainingSessionSummaryDetail(TrainingSessionFeedItem trainingSessionFeedItem)
-        {
-            is_user_interaction = true;
-            _isFeedItemSummaryClick = true;
-
-            ShowLoadingActivityIndicator();
-
-            await App.Current.MainPage.Navigation.PushAsync(new ViewSummaryTrainingSessionContentPage(trainingSessionFeedItem.TraningSession.Id), true);
-            is_user_interaction = false;
-
-        }
-
-        private async Task SelectDateOnChange(string selectedDate)
-        {
-            string formattedDate = string.Empty;
-            string numberSuffix = string.Empty;
-            string monthShort = string.Empty;
-            DateTime dateTimeParsed;
-
-            _isChangeDateButtonDisable = true;
-
-            if (!DateTime.TryParseExact(selectedDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateTimeParsed))
-            {
-                await App.Current.MainPage.DisplayAlert("Date Parse Error", "An error occurred while parsing date picker.", "OK");
-                _isChangeDateButtonDisable = false;
-            }
-            else
-            {
-                DateTime date = DateTime.ParseExact(selectedDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
-                _dateSelected = date;
-
-                monthShort = _dateSelected.ToString("MMM");
-
-                numberSuffix = GetDayNumberSuffix(_dateSelected);
-
-                formattedDate = string.Format("{0} {1}, {2}", _dateSelected.Day + numberSuffix, monthShort, _dateSelected.DayOfWeek);
-
-                _selectedDate = formattedDate;
-
-                _beforeFeedItems.Clear();
-                _nowFeedItems.Clear();
-                _laterFeedItems.Clear();
-
-                await GetFeedItems();
-                _isChangeDateButtonDisable = false;
-
-                await StateHasChanged();
-            }
-
-        }
-
-        protected new async Task StateHasChanged()
-        {
-            base.StateHasChanged();
-            await Task.Delay(10);
-            await ScrollDivToNowSection();
-        }
-
-        private async Task LoadBrowserDimensions()
-        {
-            BrowserServices browserServices = new BrowserServices(JSRuntime);
-            var dimension = await browserServices.GetDimensions();
-            _InnerHeight = dimension.Height;
-            _InnerWidth = dimension.Width;
-
-            HTMLBridge.BrowserInnerHeight = _InnerHeight;
-            HTMLBridge.BrowserInnerWidth = _InnerWidth;
-
-            await InitializeFeedItemListSheetHeight();
-        }
-
-        private async Task InitializeFeedItemListSheetHeight()
-        {
-            _sheetFeedItemListInitialHeight = _InnerHeight - 260;
-            _sheetFeedItemListMaxHeight = _InnerHeight - 32;
-            this.SheetFeedItemListHeight = _sheetFeedItemListInitialHeight;
-            await StateHasChanged();
-        }
-
-        public async Task RefreshPage()
-        {
-            try
-            {
-                _beforeFeedItems.Clear();
-                _nowFeedItems.Clear();
-                _laterFeedItems.Clear();
-                _feedItem = null;
-
-                await GetFeedItems();
-
-
-                _isBlackCoverDivHidden = true;
-                _isFeedItemDetailsDivHidden = true;
-
-                HideLoadingActivityIndicator();
-
-                GetGreeting();
-
-                await StateHasChanged();
-
-                //ScrollDivToNowSection();
-
-                await JSRuntime.InvokeVoidAsync("SetUnderlineOnInitialize");
-
-                if (HTMLBridge.RefreshMenu != null)
-                {
-                    HTMLBridge.RefreshMenu.Invoke(this, null);
-                }
-
-            }
-            catch (Exception)
-            {
-                //Log Error
-            }
-            finally
-            {
-
-            }
-        }
-
-        private async void AddNewDailyExercise()
-        {
-            try
-            {
-                bool dailyExerciseCreatedSuccessfully = await ExerciseApi.Net7.ExerciseApi.CreateRandomDailyExercise(FeedApi.Net7.FeedApi.UserID, DateTimeOffset.Now.Offset.Hours);
-
-                if (dailyExerciseCreatedSuccessfully == true)
-                {
-
-                }
-                else
-                {
-                    await App.Current.MainPage.DisplayAlert("Add Daily Exercise", "The system failed to create a new daily exercise", "OK");
-                }
-
-               await RefreshPage();
-
-            }
-            catch (Exception ex)
-            {
-                await App.Current.MainPage.DisplayAlert("Add Daily Exercise", "An error occurred while adding daily exercise.", "OK");
-            }
-            finally
-            {
-            }
-        }
-
-        private void GetGreeting()
-        {
-            DateTime dateNow = DateTime.Now;
-            int hours = dateNow.Hour;
-
-            string username = string.Empty;
-
-            if (string.IsNullOrWhiteSpace(MiddleWare.UserName) == true)
-            {
-                username = "Guest";
-            }
-            else
-            {
-                username = MiddleWare.UserName;
-            }
-
-            if (hours > 5 && hours < 12)
-            {
-                _greeting = string.Format("Good Morning {0}", username);
-            }
-            else if (hours >= 12 && hours < 18)
-            {
-                _greeting = string.Format("Good Afternoon {0}", username);
-            }
-            else if (hours >= 18 && hours <= 23)
-            {
-                _greeting = string.Format("Good Evening {0}", username);
-            }
-            else
-            {
-                _greeting = string.Format("Good Night {0}", username);
-            }
-        }
-
-
         private async Task SnoozeTrainingSessionFeedItem(FeedItem feedItem, int waitTimeInMinutes)
         {
             try
             {
                 await ExerciseApi.Net7.ExerciseApi.RescheduleTrainingSession(feedItem.TrainingSessionFeedItem.TraningSession.Id, waitTimeInMinutes);
             }
-            catch (Exception ex)
+            catch
             {
                 await App.Current.MainPage.DisplayAlert("Reschedule Training Session Feed Item", "An error occurred while rescheduling training session feed items.", "OK");
             }
@@ -1550,7 +1462,7 @@ namespace MauiApp1.Pages
             {
                 await NutritionApi.SnoozeMeal(feedItem.NutrientsFeedItem.Meal.MealId, waitTimeInMinutes);
             }
-            catch (Exception ex)
+            catch
             {
                 await App.Current.MainPage.DisplayAlert("Reschedule Nutrient Feed Item", "An error occurred while rescheduling supplement feed items.", "OK");
             }
@@ -1694,6 +1606,409 @@ namespace MauiApp1.Pages
 
             }
         }
+        #endregion
+
+        #region SKIPPING
+        public async Task SkipCurrentFeedItem()
+        {
+            ShowLoadingActivityIndicator();
+
+            switch (_feedItem.ItemType)
+            {
+                case FeedItemType.TrainingSessionFeedItem:
+                    try
+                    {
+                        await ExerciseApi.Net7.ExerciseApi.SkipTrainingSession(_feedItem.TrainingSessionFeedItem.TraningSession.Id, "");
+                    }
+                    catch
+                    {
+
+                    }
+                    break;
+
+                case FeedItemType.NutrientsFeedItem:
+                    try
+                    {
+                        await ImageApi.Net7.NutritionApi.Skip(_feedItem.NutrientsFeedItem.Meal.MealId);
+                    }
+                    catch
+                    {
+
+                    }
+                    break;
+
+                case FeedItemType.SupplementItem:
+
+                    //nothing at the moment
+                    break;
+
+                case FeedItemType.HabitsFeedItem:
+
+                    //nothing at the moment
+                    break;
+
+                case FeedItemType.MedicationFeedItem:
+
+                    //nothing at the moment
+                    break;
+
+                default:
+                    break;
+
+            }
+            await RefreshPageWithoutClearingFeedItem();
+        }
+        public async Task OpenSkipPopup()
+        {
+            await CloseMenuPopup();
+            DisplaySkipPopup = "inline";
+            await StateHasChanged();
+        }
+        public async Task CloseSkipPopup()
+        {
+            await OpenMenuPopup();
+            DisplaySkipPopup = "none";
+            await StateHasChanged();
+        }
+
+
+        #endregion
+
+        private async void HandleFeedItemUndoButtonClick(FeedItem feedItem)
+        {
+            is_user_interaction = true;
+            _isFeedItemUndoClick = true;
+
+            switch (feedItem.ItemType)
+            {
+                case FeedItemType.TrainingSessionFeedItem:
+
+                    await UndoSnoozeTrainingSessionFeedItem(feedItem);
+                    break;
+
+                case FeedItemType.NutrientsFeedItem:
+
+                    await UndoSnoozeNutrientFeedItem(feedItem);
+                    break;
+
+                case FeedItemType.SupplementItem:
+
+                    await UndoSkipSupplementFeedItem(feedItem);
+                    break;
+
+                case FeedItemType.HabitsFeedItem:
+
+                    await UndoSnoozeHabitFeedItem(feedItem);
+                    break;
+
+                case FeedItemType.MedicationFeedItem:
+
+                    await UndoSnoozeMedicalFeedItem(feedItem);
+                    break;
+
+                default:
+                    break;
+
+            }
+            await RefreshPage();
+            is_user_interaction = false;
+        }
+
+        private async void HandleFeedItemStartButtonClick(FeedItem selectedFeedItem)
+        {
+            try
+            {
+                is_user_interaction = true;
+                _feedItem = selectedFeedItem;
+                _isFeedItemStartClick = true;
+                switch (selectedFeedItem.ItemType)
+                {
+                    case FeedItemType.TrainingSessionFeedItem:
+
+                        await ExerciseApi.Net7.ExerciseApi.StartTrainingSession(selectedFeedItem.TrainingSessionFeedItem.TraningSession.Id);
+                        await ViewTrainingSessionDetail((selectedFeedItem.TrainingSessionFeedItem));
+                        break;
+
+                    case FeedItemType.NutrientsFeedItem:
+                        break;
+
+                    case FeedItemType.HabitsFeedItem:
+                        break;
+
+                    case FeedItemType.SupplementItem:
+
+                        await ViewSupplementFeedItemDetails(selectedFeedItem);
+                        break;
+
+                    default:
+
+                        //No calls yet
+                        await App.Current.MainPage.DisplayAlert("Retrieve Feed Item", "An error occurred while viewing feed items.", "OK");
+                        break;
+                }
+                is_user_interaction = false;
+            }
+            catch
+            {
+                await App.Current.MainPage.DisplayAlert("Start Feed Item", "An error occurred while starting feed items.", "OK");
+            }
+            finally
+            {
+            }
+        }
+
+        private static bool isblocked = false;
+        private async Task ViewTrainingSessionDetail(TrainingSessionFeedItem trainingSessionFeedItem)
+        {
+            if (!isblocked)
+            {
+                isblocked = true;
+                ViewExerciseContentPage._doApiCalls = false;
+                ShowLoadingActivityIndicator();
+
+                ViewExerciseContentPage._exerciseViewModels = new ObservableCollection<ExercisePageViewModel>();
+                var TraningPage = new ViewExerciseContentPage(trainingSessionFeedItem.TraningSession);
+
+                await App.Current.MainPage.Navigation.PushAsync(TraningPage, true);
+
+                await Task.Delay(10);
+                foreach (var e in trainingSessionFeedItem.TraningSession.emExercises)
+                {
+                    await Task.Delay(1);
+                    await ViewExerciseContentPage.LoadExerciseInCurrentList(e);
+                }
+                ViewExerciseContentPage._doApiCalls = true;
+                isblocked = false;
+
+            }
+        }
+
+        private async void ViewTrainingSessionSummaryDetail(TrainingSessionFeedItem trainingSessionFeedItem)
+        {
+            is_user_interaction = true;
+            _isFeedItemSummaryClick = true;
+
+            ShowLoadingActivityIndicator();
+
+            await App.Current.MainPage.Navigation.PushAsync(new ViewSummaryTrainingSessionContentPage(trainingSessionFeedItem.TraningSession.Id), true);
+            is_user_interaction = false;
+
+        }
+
+        private async Task SelectDateOnChange(string selectedDate)
+        {
+            string formattedDate = string.Empty;
+            string numberSuffix = string.Empty;
+            string monthShort = string.Empty;
+            DateTime dateTimeParsed;
+
+            _isChangeDateButtonDisable = true;
+
+            if (!DateTime.TryParseExact(selectedDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out dateTimeParsed))
+            {
+                await App.Current.MainPage.DisplayAlert("Date Parse Error", "An error occurred while parsing date picker.", "OK");
+                _isChangeDateButtonDisable = false;
+            }
+            else
+            {
+                DateTime date = DateTime.ParseExact(selectedDate, "dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
+                _dateSelected = date;
+
+                monthShort = _dateSelected.ToString("MMM");
+
+                numberSuffix = GetDayNumberSuffix(_dateSelected);
+
+                formattedDate = string.Format("{0} {1}, {2}", _dateSelected.Day + numberSuffix, monthShort, _dateSelected.DayOfWeek);
+
+                _selectedDate = formattedDate;
+
+                _beforeFeedItems.Clear();
+                _nowFeedItems.Clear();
+                _laterFeedItems.Clear();
+
+                await GetFeedItems();
+                _isChangeDateButtonDisable = false;
+
+                await StateHasChanged();
+            }
+
+        }
+
+        protected new async Task StateHasChanged()
+        {
+            base.StateHasChanged();
+        }
+
+        private async Task LoadBrowserDimensions()
+        {
+            BrowserServices browserServices = new BrowserServices(JSRuntime);
+            var dimension = await browserServices.GetDimensions();
+            _InnerHeight = dimension.Height;
+            _InnerWidth = dimension.Width;
+
+            HTMLBridge.BrowserInnerHeight = _InnerHeight;
+            HTMLBridge.BrowserInnerWidth = _InnerWidth;
+
+            await InitializeFeedItemListSheetHeight();
+        }
+
+        private async Task InitializeFeedItemListSheetHeight()
+        {
+            _sheetFeedItemListInitialHeight = _InnerHeight - 260;
+            _sheetFeedItemListMaxHeight = _InnerHeight - 32;
+            this.SheetFeedItemListHeight = _sheetFeedItemListInitialHeight;
+            await StateHasChanged();
+        }
+
+        public void LockScrollingToNow()
+        {
+            // LockScroll will prevent the first call to scrolltonow. It resets automatically
+            LockScroll = true;
+        }
+        public async Task RefreshPage()
+        {
+            try
+            {
+                _beforeFeedItems.Clear();
+                _nowFeedItems.Clear();
+                _laterFeedItems.Clear();
+                _feedItem = null;
+
+                await CloseNutrientPopup();
+                await CloseAddNewPopup();
+                await CloseMenuPopup();
+                await GetFeedItems();
+
+
+                await JSRuntime.InvokeVoidAsync("HideExerciseDetail");
+                _isBlackCoverDivHidden = true;
+                _isFeedItemDetailsDivHidden = true;
+
+                HideLoadingActivityIndicator();
+
+                GetGreeting();
+
+                await StateHasChanged();
+
+
+                await Task.Delay(5);
+                await ScrollDivToNowSection();
+                await JSRuntime.InvokeVoidAsync("SetUnderlineOnInitialize");
+
+                if (HTMLBridge.RefreshMenu != null)
+                {
+                    HTMLBridge.RefreshMenu.Invoke(this, null);
+                }
+
+            }
+            catch
+            {
+                //Log Error
+            }
+            finally
+            {
+
+            }
+        }
+        public async Task RefreshPageWithoutClearingFeedItem()
+        {
+            //does not close popups or clear feed item
+            try
+            {
+                _beforeFeedItems.Clear();
+                _nowFeedItems.Clear();
+                _laterFeedItems.Clear();
+
+                await GetFeedItems();
+
+                //_isBlackCoverDivHidden = true;
+                //_isFeedItemDetailsDivHidden = true;
+
+                HideLoadingActivityIndicator();
+
+                //  GetGreeting();
+
+                await StateHasChanged();
+
+                await JSRuntime.InvokeVoidAsync("SetUnderlineOnInitialize");
+
+                if (HTMLBridge.RefreshMenu != null)
+                {
+                    HTMLBridge.RefreshMenu.Invoke(this, null);
+                }
+
+            }
+            catch
+            {
+                //Log Error
+            }
+            finally
+            {
+
+            }
+        }
+
+        private async void AddNewDailyExercise()
+        {
+            try
+            {
+                bool dailyExerciseCreatedSuccessfully = await ExerciseApi.Net7.ExerciseApi.CreateRandomDailyExercise(FeedApi.Net7.FeedApi.UserID, DateTimeOffset.Now.Offset.Hours);
+
+                if (dailyExerciseCreatedSuccessfully == true)
+                {
+
+                }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Add Daily Exercise", "The system failed to create a new daily exercise", "OK");
+                }
+                await RefreshPage();
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Add Daily Exercise", "An error occurred while adding daily exercise.", "OK");
+            }
+            finally
+            {
+            }
+        }
+
+        private void GetGreeting()
+        {
+            DateTime dateNow = DateTime.Now;
+            int hours = dateNow.Hour;
+
+            string username = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(MiddleWare.UserName) == true)
+            {
+                username = "Guest";
+            }
+            else
+            {
+                username = MiddleWare.UserName;
+            }
+
+            if (hours > 5 && hours < 12)
+            {
+                _greeting = string.Format("Good Morning {0}", username);
+            }
+            else if (hours >= 12 && hours < 18)
+            {
+                _greeting = string.Format("Good Afternoon {0}", username);
+            }
+            else if (hours >= 18 && hours <= 23)
+            {
+                _greeting = string.Format("Good Evening {0}", username);
+            }
+            else
+            {
+                _greeting = string.Format("Good Night {0}", username);
+            }
+        }
+
+
+
 
         private void ShowLoadingActivityIndicator()
         {
@@ -1724,11 +2039,6 @@ namespace MauiApp1.Pages
         #region USERS
         public static async Task<bool> SetupUser()
         {
-            //var config = await FeedApi.Net7.FeedApi.GetConfig();
-            //MiddleWare.NowLaterTime = config[0];
-            //MiddleWare.AutoSkippedTimeout = config[1];
-            //MiddleWare.OverDueTime = config[2];
-
             MiddleWare.UserID = -1000;
             var user = await GetLoggedInUser();
             if (user != null && user.isSuccess)
@@ -1806,10 +2116,14 @@ namespace MauiApp1.Pages
                 PlanId = MiddleWare.DailyPlanId[DateTime.Parse(dString, System.Globalization.CultureInfo.InvariantCulture)];
             }
 
-            MiddleWare.UserName = user.UserName + " U: " + user.UserId + " P: " + PlanId;
+            //   MiddleWare.UserName = user.UserName + " U: " + user.UserId + " P: " + PlanId;
+            MiddleWare.UserName = user.UserName;
 
+            //GetUserInfo
             EnableFooter();
             NavMenu.isLoggedIn = true;
+            // sync by design
+            UserMiddleware.GetUserInfo();
             return true;
         }
 
@@ -1839,40 +2153,55 @@ namespace MauiApp1.Pages
             return szOutStringBuild.ToString();
         }
 
-#endregion
-
+        #endregion
 
         #region Photos
 
         public async Task TakePhoto()
         {
-            try
+            bool IsCameraAllowed = await CheckCameraPermissions();
+            if (IsCameraAllowed)
             {
-                string temp = await HandleImageAndSetNutrientImage(true);
-                if (temp != null && temp != "")
+                try
                 {
-                    await OpenAddDishPopup(temp);
+                    string temp = await HandleImageAndSetNutrientImage(true);
+                    if (temp != null && temp != "")
+                    {
+                        await OpenAddDishPopup(temp);
+                    }
+                }
+                catch (Exception)
+                {
+
                 }
             }
-            catch (Exception)
+            else
             {
-
+                OpenRequestCameraPermissionsPopup();
             }
         }
 
         public async Task UploadPhoto()
         {
-            try
+            bool IsFileAllowed = await CheckFilePermissions();
+            if (IsFileAllowed)
             {
-                string temp = await Index.HandleImageAndSetNutrientImage(false);
-                if (temp != null && temp != "")
+                try
                 {
-                    await OpenAddDishPopup(temp);
+                    string temp = await Index.HandleImageAndSetNutrientImage(false);
+                    if (temp != null && temp != "")
+                    {
+                        await OpenAddDishPopup(temp);
+                    }
+                }
+                catch (Exception)
+                {
+
                 }
             }
-            catch (Exception)
+            else
             {
-
+                OpenRequestFilePermissionsPopup();
             }
         }
 
@@ -1906,7 +2235,7 @@ namespace MauiApp1.Pages
                     float precision = 0.8f;
                     byte[] bytes;
 #if ANDROID
-                    var  image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(file);
+                    var image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(file);
                     if (image.Width > maxImageSize || image.Height > maxImageSize)
                     {
                         image = image.Downsize(maxImageSize, true);
@@ -1957,7 +2286,6 @@ namespace MauiApp1.Pages
         public static bool IsBackDisabled()
         {
             return DisplayNutrientPopup == "inline" ||
-            DisplayUserPopup == "inline" ||
             DisplayAddDishPopup == "inline" ||
             DisplayMindfulnessPopup == "inline" ||
             DisplayAddNewPopup == "inline" ||
@@ -1967,14 +2295,13 @@ namespace MauiApp1.Pages
         {
             //does not work. why?
             DisplayNutrientPopup = "none";
-            DisplayUserPopup = "none";
             DisplayAddDishPopup = "none";
             DisplayMindfulnessPopup = "none";
             DisplayAddNewPopup = "none";
             DisplayFavoritePopup = "none";
         }
 
-
+#if WINDOWS
         public static System.Drawing.Image resizeImage(System.Drawing.Image imgToResize, System.Drawing.Size size)
         {
             //Get the image current width  
@@ -2009,7 +2336,7 @@ namespace MauiApp1.Pages
         {
             using (var ms = new MemoryStream())
             {
-                ImageConverter imgCon = new ImageConverter();
+                ImageConverter imgCon = new();
                 return (byte[])imgCon.ConvertTo(imageIn, typeof(byte[]));
 
                 //  System.Drawing.Imaging.EncoderParameters param = new System.Drawing.Imaging.EncoderParameters() { Param}
@@ -2017,6 +2344,122 @@ namespace MauiApp1.Pages
                 //  return ms.ToArray();
             }
         }
+#endif
+        #endregion
+
+        #region permissions
+        public static async Task<bool> CheckCameraPermissions()
+        {
+            PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Camera>();
+            if (status == PermissionStatus.Denied || status == PermissionStatus.Unknown || status == PermissionStatus.Disabled)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void OpenRequestCameraPermissionsPopup()
+        {
+            if (HTMLBridge.CameraPermissionPopup != null)
+            {
+                HTMLBridge.CameraPermissionPopup.State = DevExpress.Maui.Controls.BottomSheetState.HalfExpanded;
+            }
+        }
+
+        public async Task RequestCameraPermissions()
+        {
+            PermissionStatus status = await Permissions.RequestAsync<Permissions.Camera>();
+            if (HTMLBridge.CameraPermissionPopup != null)
+            {
+                HTMLBridge.CameraPermissionPopup.State = DevExpress.Maui.Controls.BottomSheetState.Hidden;
+            }
+            if (status != PermissionStatus.Denied)
+            {
+                await Task.Delay(1000);
+                await TakePhoto();
+            }
+        }
+
+        public async Task<bool> CheckFilePermissions()
+        {
+            PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Photos>();
+            if (status == PermissionStatus.Denied || status == PermissionStatus.Unknown || status == PermissionStatus.Disabled)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public void OpenRequestFilePermissionsPopup()
+        {
+            if (HTMLBridge.StoragePermissionPopup != null)
+            {
+                HTMLBridge.StoragePermissionPopup.State = DevExpress.Maui.Controls.BottomSheetState.HalfExpanded;
+            }
+        }
+
+        public async Task RequestFilePermissions()
+        {
+            PermissionStatus status = await Permissions.RequestAsync<Permissions.Photos>();
+            if (HTMLBridge.StoragePermissionPopup != null)
+            {
+                HTMLBridge.StoragePermissionPopup.State = DevExpress.Maui.Controls.BottomSheetState.Hidden;
+            }
+            if (status != PermissionStatus.Denied)
+            {
+                await Task.Delay(1000);
+                await UploadPhoto();
+            }
+        }
+
+        public static async Task<bool> CheckNotificationPermissions()
+        {
+
+#if ANDROID
+            PermissionStatus status = await Permissions.CheckStatusAsync<PushNotificationPermissionsAndroid>();
+            if (status == PermissionStatus.Denied || status == PermissionStatus.Unknown || status == PermissionStatus.Disabled)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+#elif IOS
+            PushNotificationPermissionsIOS IOSPermissions = new PushNotificationPermissionsIOS();
+            return await IOSPermissions.CheckAsync();
+#endif
+        }
+        public void OpenRequestNotificationPermissionsPopup()
+        {
+            if (HTMLBridge.NotificationPermissionPopup != null)
+            {
+                HTMLBridge.NotificationPermissionPopup.State = DevExpress.Maui.Controls.BottomSheetState.HalfExpanded;
+            }
+        }
+
+        public async Task RequestNotificationPermissions()
+        {
+#if ANDROID
+            PermissionStatus status = await Permissions.RequestAsync<PushNotificationPermissionsAndroid>();
+#elif IOS
+            PushNotificationPermissionsIOS IOSPermissions = new PushNotificationPermissionsIOS();
+            await IOSPermissions.RequestAsync();
+#endif
+            if (HTMLBridge.NotificationPermissionPopup != null)
+            {
+                HTMLBridge.NotificationPermissionPopup.State = DevExpress.Maui.Controls.BottomSheetState.Hidden;
+            }
+            //not async by design
+            await UserMiddleware.RegisterDevice(await PushRegistration.CheckPermission(), PushRegistration.GetPlatform());
+        }
+        #endregion
+
     }
-    #endregion
 }

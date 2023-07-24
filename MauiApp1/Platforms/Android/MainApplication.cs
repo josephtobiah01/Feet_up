@@ -29,7 +29,7 @@ namespace MauiApp1
             //   Task<bool> task = Task.Run<bool>(async () => await MauiApp1.Pages.Index.SetupUser());
             // var serviceResult = task.Result;
 
-           /// await MauiApp1.Pages.Index.SetupUser();
+           // await MauiApp1.Pages.Index.SetupUser();
 
             //Set the default notification channel for your app when running Android Oreo  
             if (Build.VERSION.SdkInt >= Android.OS.BuildVersionCodes.O)
@@ -54,7 +54,7 @@ namespace MauiApp1
 
                 FirebasePushNotificationManager.ShouldShowWhen = true;
                 FirebasePushNotificationManager.UseBigTextStyle = true;
-                FirebasePushNotificationManager.LargeIconResource = Resource.Drawable.air_icon_90x32;
+             //   FirebasePushNotificationManager.LargeIconResource = Resource.Drawable.air_icon_90x32;
             //    FirebasePushNotificationManager.NotificationActivityFlags = ActivityFlags.
 
             }
@@ -91,6 +91,8 @@ namespace MauiApp1
             FirebaseMessaging.Instance.AutoInitEnabled = true; //.SetAutoInitEnabled(true);
             FirebaseMessaging.Instance.SubscribeToTopic("subTopic");
 
+
+            //FirebasePushNotificationManager.Initialize(this, false);
             FirebasePushNotificationManager.Initialize(this, false, true, false);
 
 
@@ -116,32 +118,32 @@ namespace MauiApp1
             //notificationManager.CreateNotificationChannel(notificationChannel2);
 
 
-#if DEBUG
-            //    FirebasePushNotificationManager.Initialize(this, true);
-#else
-              FirebasePushNotificationManager.Initialize(this,false);  
-#endif
+//#if DEBUG
+//            //    FirebasePushNotificationManager.Initialize(this, true);
+//#else
+//              FirebasePushNotificationManager.Initialize(this,false);  
+//#endif
 
             //Handle notification when app is closed here  
-            CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
-            {
+            //CrossFirebasePushNotification.Current.OnNotificationReceived += (s, p) =>
+            //{
 
-            };
+            //};
 
-            CrossFirebasePushNotification.Current.OnNotificationAction += (s, p) =>
-            {
+            //CrossFirebasePushNotification.Current.OnNotificationAction += (s, p) =>
+            //{
 
-            };
+            //};
 
-            CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
-            {
+            //CrossFirebasePushNotification.Current.OnNotificationOpened += (s, p) =>
+            //{
 
-            };
+            //};
 
-            CrossFirebasePushNotification.Current.OnNotificationError += (s, p) =>
-            {
+            //CrossFirebasePushNotification.Current.OnNotificationError += (s, p) =>
+            //{
 
-            };
+            //};
         }
     }
 }

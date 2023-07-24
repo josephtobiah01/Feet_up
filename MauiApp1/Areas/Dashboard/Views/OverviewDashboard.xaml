@@ -75,7 +75,7 @@
                             </Button.Triggers>
                         </Button>
 
-                        <Button x:Name="SleepButton" WidthRequest="63" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="Sleep" FontSize="14"  FontFamily="Montserrat-Regular" Margin="16,0,0,0" Padding="8" Clicked="SleepButton_Clicked">
+                        <Button x:Name="SleepButton" WidthRequest="63" HeightRequest="36" CornerRadius="20" BorderWidth="1" Text="Sleep" FontSize="14"  FontFamily="Montserrat-Regular" Margin="16,0,0,0" Padding="8" Clicked="SleepButton_Clicked" IsVisible="false">
                             <Button.Triggers>
                                 <DataTrigger TargetType="Button" Binding="{Binding ShowSleepDashboard}" Value="false">
                                     <Setter Property="BackgroundColor"

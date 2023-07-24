@@ -13,5 +13,7 @@ public partial class EdsEquipment
 
     public bool IsDeleted { get; set; }
 
+    public string ImageUrl { get; set; }
+
     public virtual ICollection<EdsExerciseType> EdsExerciseType { get; set; } = new List<EdsExerciseType>();
 }

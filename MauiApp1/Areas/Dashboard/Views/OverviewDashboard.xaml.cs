@@ -1,6 +1,11 @@
+using FitnessData.Client.Business;
+using FitnessData.Common;
+using FitnessData.Common.Data;
 using MauiApp1.Areas.Dashboard.DataManager;
 using MauiApp1.Areas.Dashboard.Resources.Drawables;
 using MauiApp1.Areas.Dashboard.ViewModel;
+using MauiApp1.Interfaces;
+using MauiApp1.Services;
 
 namespace MauiApp1.Areas.Dashboard.Views;
 
@@ -28,7 +33,7 @@ public partial class OverviewDashboard : ContentView
 
     private void InitializeData()
     {
-
+        //LoginGoogleFitness();
     }
 
     private void InitializeControl()
@@ -68,6 +73,17 @@ public partial class OverviewDashboard : ContentView
     #endregion
 
     #region [Methods :: Tasks]
+
+    private async void LoginGoogleFitness()
+    {
+        //GoogleAuthorizationManager googleAuthorizationManager = new GoogleAuthorizationManager();
+        //FitnessService fitnessService = await googleAuthorizationManager.GetFitnessServiceAsync("me");
+
+
+
+        //GoogleFitStepsCountDataManager googleFitStepsCountDataManager = new GoogleFitStepsCountDataManager(fitnessService);
+        //List<StepsCountDataPointViewItem> stepsCountDataPoints = googleFitStepsCountDataManager.GetTotalStepsCountPerDay();
+    }
 
     private void HandleSelectAllDashboardClick(Button button)
     {
@@ -265,11 +281,13 @@ public partial class OverviewDashboard : ContentView
 
     private void ShowNutrientsDashboard()
     {
+        INutrientsIntakeService nutrientsIntakeService = new NutrientsIntakeService();
+        NutrientDashboardContentView nutrientDashboardContentView = new NutrientDashboardContentView(nutrientsIntakeService);
         if (this.NutrientsStackLayout != null)
         {
             if (this.NutrientsStackLayout.Children.Count <= 0)
             {
-                this.NutrientsStackLayout.Add(new NutrientDashboardContentView());
+                this.NutrientsStackLayout.Add(nutrientDashboardContentView);
             }
             this.NutrientsStackLayout.IsVisible = true;
         }

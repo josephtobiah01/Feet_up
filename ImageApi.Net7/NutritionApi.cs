@@ -1,6 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using MauiApp1.Areas.Dashboard.TemporaryStubModel;
+using Newtonsoft.Json;
 using ParentMiddleWare;
 using ParentMiddleWare.Models;
+using ParentMiddleWare.NutrientModels;
 using System.Text;
 using System.Text.Encodings.Web;
 using static ParentMiddleWare.Models.NutrientRecipeModel;
@@ -23,6 +25,50 @@ namespace ImageApi.Net7
                     }
                 }
                 catch(Exception ex)
+                {
+                    return null;
+                }
+                return null;
+            }
+        }
+
+
+        public static async Task<DailyNutrientDetails> GetDailyNutrientDetails(DateTime Date)
+        {
+            string dString = string.Format("{0}/{1}/{2} 12:00:00", Date.Month, Date.Day, Date.Year);
+            using (var response = await _httpClient.GetAsync(string.Format("{0}/api/Nutrition/GetDailyNutrientDetails?UserId={1}&Date={2}", BaseUrl, UserID, dString)))
+            {
+                try
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    if (!String.IsNullOrEmpty(apiResponse))
+                    {
+                        return JsonConvert.DeserializeObject<DailyNutrientDetails>(apiResponse);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return new DailyNutrientDetails();
+                }
+                return new DailyNutrientDetails();
+            }
+        }
+
+
+        public static async Task<NutrientsDataResponse> GetNutrientsFirstPage(DateTime Date)
+        {
+            string dString = string.Format("{0}/{1}/{2} 12:00:00", Date.Month, Date.Day, Date.Year);
+            using (var response = await _httpClient.GetAsync(string.Format("{0}/api/Nutrition/GetNutrientsFirstPage?UserId={1}&Date={2}", BaseUrl, UserID, dString)))
+            {
+                try
+                {
+                    string apiResponse = await response.Content.ReadAsStringAsync();
+                    if (!String.IsNullOrEmpty(apiResponse))
+                    {
+                        return JsonConvert.DeserializeObject<NutrientsDataResponse>(apiResponse);
+                    }
+                }
+                catch (Exception ex)
                 {
                     return null;
                 }
@@ -119,7 +165,9 @@ namespace ImageApi.Net7
         {
             //servings and portions seem swapped in the backend?
             StringContent sc = new StringContent(ImageData, Encoding.UTF8, "application/json");
-            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Nutrition/AddDishByPhotoCustomMeal?Name={1}&share={2}&portions={3}&ContentType={4}&userId={5}&Note={6}&FavoriteDish={7}&offset={8}", BaseUrl, Name, share, portions, ContentType, ParentMiddleWare.MiddleWare.UserID, Note, FavoriteDish, TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow).TotalHours), sc))
+            DateTime date = DateTime.Now;
+            string dString = string.Format("{0}/{1}/{2} 12:00:00", date.Month, date.Day, date.Year);
+            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Nutrition/AddDishByPhotoCustomMeal?Dateft={1}&Name={2}&share={3}&portions={4}&ContentType={5}&userId={6}&Note={7}&FavoriteDish={8}&offset={9}", BaseUrl, dString, Name, share, portions, ContentType, ParentMiddleWare.MiddleWare.UserID, Note, FavoriteDish, TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow).TotalHours), sc))
             {
                 try
                 {
@@ -160,8 +208,10 @@ namespace ImageApi.Net7
 
         public static async Task<long> AddDishByReferenceCustomMeal(long recipId, string note,  double share, double portions, bool FavoriteDish = false)
         {
+            DateTime date = DateTime.Now;
+            string dString = string.Format("{0}/{1}/{2} 12:00:00", date.Month, date.Day, date.Year);
             //servings and portions seem swapped in the backend?
-            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Nutrition/AddDishByReferenceCustomMeal?recipId={1}&share={2}&portions={3}&userId={4}&FavoriteDish={5}&offset={6}&Note={7}", BaseUrl, recipId, share, portions, MiddleWare.UserID, FavoriteDish, TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow).TotalHours, note), null))
+            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Nutrition/AddDishByReferenceCustomMeal?Dateft={1}&recipId={2}&share={3}&portions={4}&userId={5}&FavoriteDish={6}&offset={7}&Note={8}", BaseUrl, dString, recipId, share, portions, MiddleWare.UserID, FavoriteDish, TimeZoneInfo.Local.GetUtcOffset(DateTime.UtcNow).TotalHours, note), null))
             {
                 try
                 {
@@ -241,6 +291,25 @@ namespace ImageApi.Net7
                 return false;
             }
         }
-
+        public static async Task<bool> Skip(long mealId)
+        {
+            return false;
+            //using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Nutrition/UndoSkip?mealId={1}", BaseUrl, mealId), null))
+            //{
+            //    try
+            //    {
+            //        string apiResponse = await response.Content.ReadAsStringAsync();
+            //        if (!String.IsNullOrEmpty(apiResponse))
+            //        {
+            //            return JsonConvert.DeserializeObject<bool>(apiResponse);
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        return false;
+            //    }
+            //    return false;
+            //}
+        }
     }
 }

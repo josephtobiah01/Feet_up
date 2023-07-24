@@ -4,13 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Authorization;
 using FitappAdminWeb.Net7.Classes.Base;
-using System.Globalization;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using DAOLayer.Net7.User;
 using AutoMapper;
 using FitappAdminWeb.Net7.Classes.Utilities;
-using Azure.Storage.Blobs;
-using Microsoft.AspNetCore.Http;
 using System.Drawing;
 using System.Drawing.Imaging;
 
@@ -86,6 +82,7 @@ namespace FitappAdminWeb.Net7.Controllers
             {
                 var currUser = await _clientrepo.GetClientById(id.Value);
                 model = _mapper.Map<MuhdoRegisterModel>(currUser);
+                model.Gender = currUser.FkGenderNavigation != null ? currUser.FkGenderNavigation.Name.ToLower() : currUser.Gender;
                 model.Id = id.Value;
             }
             else

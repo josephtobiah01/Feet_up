@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+YMhOYkfigAFKz9GV8AbnC7KKmXV5GpNbJ7eBzePOUM=",
+  "Hash": "9Ky/aFAOncBoZvppK0CGGVc+tM6qk5jzoMBna9r29U4=",
   "Source": "FitappAdminWeb.Net7",
   "BasePath": "_content/FitappAdminWeb.Net7",
   "Mode": "Default",
@@ -2720,6 +2720,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\bootstrap-toaster\\js\\bootstrap-toaster.min.js"
     },
     {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\Chart.css",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/chartJS/Chart.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\chartJS\\Chart.css"
+    },
+    {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\chart.js",
       "SourceId": "FitappAdminWeb.Net7",
       "SourceType": "Discovered",
@@ -2737,6 +2754,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\chartJS\\chart.js"
     },
     {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\Chart.min.css",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/chartJS/Chart.min.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\chartJS\\Chart.min.css"
+    },
+    {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\chart.min.js",
       "SourceId": "FitappAdminWeb.Net7",
       "SourceType": "Discovered",
@@ -2752,6 +2786,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\chartJS\\chart.min.js"
+    },
+    {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\chartJS\\utils.js",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/chartJS/utils.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\chartJS\\utils.js"
     },
     {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\choices.js\\base.css",
@@ -3468,6 +3519,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\managed\\supplement_edit.js"
     },
     {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supplementChart.js",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/managed/supplementChart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\managed\\supplementChart.js"
+    },
+    {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\training_edit.js",
       "SourceId": "FitappAdminWeb.Net7",
       "SourceType": "Discovered",
@@ -3483,6 +3551,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\managed\\training_edit.js"
+    },
+    {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\trainingchart.js",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/managed/trainingchart.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\managed\\trainingchart.js"
     },
     {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\utilities.js",

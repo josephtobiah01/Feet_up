@@ -45,6 +45,9 @@ namespace FitappAdminWeb.Net7.Classes.DTO
         public string? ExplainerVideoFr { get; set; }
 
         public string? ExplainerTextFr { get; set; }
+        public string? ExerciseImage { get; set; }
+        
+        public IFormFile? Image { get; set; }
 
         public List<SetDefault_DTO> SetDefaults { get; set; } = new List<SetDefault_DTO>();
     }
