@@ -73,7 +73,7 @@ public partial class ExerciseFeedListContentView : ContentView
         }
         catch
         {
-            await Application.Current.MainPage.DisplayAlert("Retrieve Feed Item", "An error occurred while retrieving feed items. Please check internet connection and try again", "OK");
+            ShowAlertBottomSheet("Retrieve Feed Item", "An error occurred while retrieving feed items. Please check internet connection and try again", "OK");
             return null;
         }
         finally
@@ -126,6 +126,15 @@ public partial class ExerciseFeedListContentView : ContentView
 
         return exerciseFeedItemDashboardViewModel;
     }
+
+    private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+    {
+        if (App.alertBottomSheetManager != null)
+        {
+            App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+        }
+    }
+
     #endregion
 
     #region [Methods :: Public Tasks] 
@@ -156,7 +165,7 @@ public partial class ExerciseFeedListContentView : ContentView
         }
         catch (Exception ex)
         {
-            await App.Current.MainPage.DisplayAlert("Retreive Feed Item", "The system encountered a problem while retrieving training session feed item.", "OK");
+            ShowAlertBottomSheet("Retreive Feed Item", "The system encountered a problem while retrieving training session feed item.", "OK");
         }
         finally
         {

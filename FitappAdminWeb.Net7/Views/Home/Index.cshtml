@@ -1,4 +1,5 @@
-﻿@model FitappAdminWeb.Net7.Models.UserListViewModel
+﻿@using FitappAdminWeb.Net7.Classes.Constants;
+@model FitappAdminWeb.Net7.Models.UserListViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -32,6 +33,7 @@
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Has Concern</th>
+            <th scope="col">Signup Status</th>
             <th scope="col"></th>
         </tr>
     </thead>
@@ -52,6 +54,20 @@
                     @if (room != null && room.HasConcern)
                     {
                         <div class="badge bg-danger">Concern</div>
+                    }
+                </td>
+                <td>
+                    @if (user.Signupstatus == (int) SignupStatus.INCOMPLETE)
+                    {
+                        <span class="badge bg-danger">Incomplete</span>
+                    }
+                    @if (user.Signupstatus == (int) SignupStatus.REVIEW_PENDING)
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                    @if (user.Signupstatus == (int) SignupStatus.COMPLETE)
+                    {
+                        <span class="badge bg-success">Complete</span>
                     }
                 </td>
                 <td>

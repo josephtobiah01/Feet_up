@@ -23,7 +23,7 @@
 
             <hr class="solid-border-div">
 
-            <div class="button-container-div">
+            <div class="button-container-div" @onclick="SkipButton_Click">
                 <button class="button-div">
                     <img class="button-icon-image" src="resources/public/icons/userInterface/edit.svg" />
                     Skip this time
@@ -95,3 +95,5 @@
 <div class="black-cover-div" hidden="@_isBlackCoverDivHidden" @onclick="CloseSnoozeContainerDiv_Click" />
 
 <MauiApp1.Pages.Supplement.ViewSnoozePage SupplementPageViewModel="_supplementPageViewModel" Hidden="_isSnoozeSupplementPageHidden" OnCloseClickCallback="CloseSnoozeContainerDiv_Click" SuccessEventCallback="SnoozeDialogIsSuccess_EventCallback" GetSupplementIdEventCallback="GetUpdatedSupplement_EventCallback" />
+
+<MauiApp1.Pages.Popups.SkipPopup DisplayPopup="@_displaySkipPopup" SupplementPageViewModel="_supplementPageViewModel" OpenMenuPopup=false></MauiApp1.Pages.Popups.SkipPopup>

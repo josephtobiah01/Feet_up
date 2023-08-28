@@ -10,6 +10,7 @@ using Microsoft.Identity.Web;
 using MuhdoApi.Net7;
 using MuhdoApi.Net7.Model;
 using Newtonsoft.Json;
+using System.Net;
 using System.Security.Claims;
 using UserApi.Net7.Models;
 
@@ -20,34 +21,89 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
     /// </summary>
     public class ClientRepository
     {
-        readonly string DEFAULT_CUSTOMER_PASSWORD = "Ch@ngeMe123!";
         readonly string URL_CREATEUSER_API = "/api/User/CreateUser";
+        readonly string URL_GETQTOOLLINK = "/api/user/GetQtoolLinkForUser?USERID=";
+        readonly string URL_VIEWQTOOL = "/Formquestions/View?UserId=";
+        readonly string URL_SENDPASSWORDRESET = "/api/user/GetPasswordResetLinkForUserQtool?Username=";
+        readonly string APPSETTING_QTOOLSERVER = "Qtool_Domain";
 
         UserContext _dbcontext;
         IdentityDbContext _iddb;
         FitAppAPIUtil _apiutil;
         IMapper _mapper;
         ILogger<ClientRepository> _logger;
+        IConfiguration _config;
+
+        string? _qtooldomain = null;
 
         public ClientRepository(
             UserContext dbcontext, 
             IdentityDbContext iddb, 
             ILogger<ClientRepository> logger, 
             IMapper mapper,
-            FitAppAPIUtil apiutil)
+            FitAppAPIUtil apiutil, IConfiguration config)
         {
             _dbcontext = dbcontext;
             _iddb = iddb;
             _logger = logger;
             _mapper = mapper;
             _apiutil = apiutil;
+            _config = config;
+            _qtooldomain = config.GetValue<string>(APPSETTING_QTOOLSERVER) ?? null;
         }
 
-        public async Task<string> GetQtoolLink(long userId)
+        public async Task<string?> GetQtoolLink(long userId, string? url = null)
         {
-            return null;
+            try
+            {
+                var client = _apiutil.GetHttpClient();
+                var request = _apiutil.BuildRequest(URL_GETQTOOLLINK + userId, HttpMethod.Get);
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                string responseString = await response.Content.ReadAsStringAsync();
+                return responseString;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Qtool Link Generation failed.");
+                return String.Empty;
+            }
         }
 
+        public string? GetQuestionViewLink(long userId)
+        {
+            if (String.IsNullOrEmpty(_qtooldomain))
+                return null;
+
+            return _qtooldomain + URL_VIEWQTOOL + userId;
+        }
+
+        public async Task<bool> CompleteSignupForUser(long userId)
+        {
+            try
+            {
+                User currUser = await _dbcontext.User.FirstOrDefaultAsync(r => r.Id == userId);
+                if (currUser == null)
+                    throw new ArgumentException($"Cannot find user with ID {userId}");
+
+                currUser.Signupstatus = (int)SignupStatus.COMPLETE;
+
+                //remove ALL Qtool links of this user
+                var formlinks = _dbcontext.QtoolConnect.Where(r => r.FkUserId == userId);
+                _dbcontext.QtoolConnect.RemoveRange(formlinks);
+
+                await _dbcontext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Cannot complete signup for user {id}", userId);
+                return false;
+            }
+        }
+        
         public async Task<List<User>> GetAllClients(bool includeInactive)
         {
             //NOTE: This must filter only Users that are clients, not staff based on UserLevel
@@ -233,6 +289,9 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                         }
 
                         user.IsNewBarcode = false;
+                        user.MuhdoEmail = signuprequest.Email;
+                        user.BarcodeString = signuprequest.KitId;
+
                         _dbcontext.Update(user);
                         await _dbcontext.SaveChangesAsync();
                     }
@@ -244,6 +303,29 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     _logger.LogError(ex, "Failed to call muhdo register api {data}", JsonConvert.SerializeObject(input));
                     return false;
                 }
+            }
+        }
+
+        public async Task<string?> GetPasswordResetLink(string feduserid)
+        {
+            try
+            {
+                var client = _apiutil.GetHttpClient();
+                var url = URL_SENDPASSWORDRESET + feduserid;
+                var request = _apiutil.BuildRequest(url, HttpMethod.Get);
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                string response_result = await response.Content.ReadAsStringAsync();
+                if (response_result.ToLower().Contains("error"))
+                    throw new InvalidOperationException(response_result);
+
+                return response_result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to send Password Reset Email");
+                return null;
             }
         }
 

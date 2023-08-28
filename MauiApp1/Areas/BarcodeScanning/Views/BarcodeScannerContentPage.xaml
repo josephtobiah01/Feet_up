@@ -43,11 +43,15 @@
                FontSize="12" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
 
 
-                <Label Grid.Column="3" Text="Enter Manually"
+                <Button Grid.Column="3" Text="Enter Manually"
                VerticalOptions="Center"
+                        Clicked="ForwardButton_Clicked" 
                HorizontalOptions="Center"
-               FontSize="12" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
-                <ImageButton Grid.Column="4" Rotation="180" Source="backicon_20x10.png" WidthRequest="32" HeightRequest="24" Clicked="ForwardButton_Clicked" BackgroundColor="Transparent" Margin="0,0,16,0"  BorderColor="Transparent" Padding="4"/>
+                        Background="Transparent"
+                    FontSize="12" Margin="15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF">
+
+                </Button>
+                    <ImageButton Grid.Column="4" Rotation="180" Source="backicon_20x10.png" WidthRequest="32" HeightRequest="24" Clicked="ForwardButton_Clicked" BackgroundColor="Transparent" Margin="0,0,16,0"  BorderColor="Transparent" Padding="4"/>
 
             </Grid>
 

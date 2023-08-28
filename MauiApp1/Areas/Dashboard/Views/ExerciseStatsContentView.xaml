@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiApp1.Areas.Dashboard.Views.ExerciseStatsContentView" Loaded="ContentView_Loaded"
+             x:Class="MauiApp1.Areas.Dashboard.Views.ExerciseStatsContentView" Loaded="ContentView_Loaded" Unloaded="ContentView_Unloaded"
              x:Name="ContentView">
     <!--<ContentView.GestureRecognizers>
         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" Command="{Binding Source={x:Reference ContentView}, Path=CommandParameter}"></TapGestureRecognizer>
@@ -9,11 +9,11 @@
     <VerticalStackLayout>
         
    
-    <Frame x:Name="ExerciseStatFrame" BorderColor="White" CornerRadius="0" BackgroundColor="White" WidthRequest="343" Margin="0" Padding="0" HasShadow="False" IsVisible="false">
+    <Frame x:Name="ExerciseStatFrame" BorderColor="White" CornerRadius="0" BackgroundColor="White" HeightRequest="240" Margin="0" Padding="0" HasShadow="False" IsVisible="false" HorizontalOptions="FillAndExpand">
         
         <VerticalStackLayout >
             <Label
-            Margin="15,15,5,15"
+            Margin="15,0,0,12"
             FontSize="16" TextColor="Black">
                 <Label.FormattedText>
                     <FormattedString>
@@ -22,7 +22,7 @@
                 </Label.FormattedText>        
             </Label>
 
-            <Frame x:Name="CaloriesBurnedPerDaySummaryFrame" BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343" Margin="0,8,0,0" Padding="0" HasShadow="False">
+                <Frame x:Name="CaloriesBurnedPerDaySummaryFrame" BorderColor="#EEF0F2" CornerRadius="8" BackgroundColor="White" WidthRequest="343" Margin="0,8,0,0" Padding="0" HasShadow="False">
                
                 <VerticalStackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
                     <Grid>
@@ -58,7 +58,7 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="7*"/>
+                                <ColumnDefinition Width="6*"/>
                             </Grid.ColumnDefinitions>
 
 
@@ -108,7 +108,7 @@
 
 
 
-                            <VerticalStackLayout Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Margin="0,4,0,0" VerticalOptions="Start">
+                            <VerticalStackLayout Grid.Row="0" Grid.RowSpan="3" Grid.Column="1" Margin="0,4,0,0" VerticalOptions="Start" HorizontalOptions="End" Padding="0">
                                 <Label VerticalTextAlignment="Center" HorizontalTextAlignment="End" Margin="16,0,0,0" TextColor="Black">
                                     <Label.FormattedText>
                                         <FormattedString>

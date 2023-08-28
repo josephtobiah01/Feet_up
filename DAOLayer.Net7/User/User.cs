@@ -53,11 +53,17 @@ public partial class User
 
     public long? FkShippingAddress { get; set; }
 
+    public int Signupstatus { get; set; }
+
+    public string MuhdoEmail { get; set; }
+
     public virtual ICollection<Apn> Apn { get; set; } = new List<Apn>();
 
     public virtual Gender FkGenderNavigation { get; set; }
 
     public virtual Address FkShippingAddressNavigation { get; set; }
+
+    public virtual ICollection<UGenericQuestions> UGenericQuestions { get; set; } = new List<UGenericQuestions>();
 
     public virtual ICollection<UInternalNotes> UInternalNotes { get; set; } = new List<UInternalNotes>();
 }

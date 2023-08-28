@@ -77,6 +77,7 @@ namespace FitappAdminWeb.Net7.Classes.DTO
         public long Id { get; set; }
 
         [Required]
+        [StringLength(100)]
         public string? Name { get; set; }
 
         public SupplementUnitMetric_DTO UnitMetric { get; set; } = new SupplementUnitMetric_DTO();
@@ -92,6 +93,7 @@ namespace FitappAdminWeb.Net7.Classes.DTO
         public long? Id { get; set; }
 
         [Required]
+        [StringLength(250)]
         public string? Description { get; set; }
 
         public bool RequiresSourceOfFat { get; set; }

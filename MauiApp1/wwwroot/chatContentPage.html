@@ -29,14 +29,41 @@
     <script src="_framework/blazor.webview.js" autostart="false"></script>
 
     <script>
+
+        function GetScrollPosition() {
+            return document.getElementById("list-content-group-div").scrollTop;
+        }
+
+        function SetScrollPosition(position) {
+            document.getElementById("list-content-group-div").scrollTop = position;
+        }
+
+        function GetIsScrolledTop() {
+
+            var scrollTop = document.getElementById("list-content-group-div").scrollTop;
+
+            if (scrollTop == 0) {
+                return true;
+            }
+            return false;
+            
+        }
+
+        function IsDivScrollable() {
+            var element = document.getElementById("list-content-group-div");
+            if (element.scrollHeight > element.clientHeight) {
+                return true;
+            }
+        }
         function ScrollToEnd() {
             //document.getElementById("list-content-group-div").scrollTop = document.getElementById("list-content-group-div").scrollHeight;
             var scrollHeight = document.getElementById("list-content-group-div").scrollHeight;
-            console.log(scrollHeight);
-            document.getElementById("list-content-group-div").scrollTo(0, scrollHeight+20);
+            // console.log(scrollHeight);
+            document.getElementById("list-content-group-div").scrollTop = scrollHeight;
         }
 
         function ScrollHTMLToEnd() {
+            
             document.getElementById("html-root").scrollTo(0, document.getElementById("html-root").scrollHeight + 20);
         }
         function StartUp() {

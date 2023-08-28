@@ -54,13 +54,14 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
     line-height: 20px;
-    color: #FFFFFF;
+    color: #ffffff;
     outline: none;
     text-align: center;
-    background-color: rgba(0,0,0,0);
-    border-radius: 0px;
-    border-color: rgba(0,0,0,0);
+    border-color: transparent;
+    background: transparent;
 }
 
 .selected[b-ks7hjf3382] {
@@ -73,21 +74,9 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     text-align: center;
 }
 /* header buttons animated underline */
-#underline[b-ks7hjf3382] {
-    content: "";
-    position: relative;
-    bottom: 0;
-    /*
-    left: var(--headerslideranimation-left);
-    width: var(--headerslideranimation-width);
-        */
-    left: 0px;
-    width: 0px;
-    height: 2px;
-    border-radius: 10px;
-    background-color: white;
-    /*transition: left 0.5s ease, width 0.5s ease;*/
-    transition: left 0.2s ease, width 0.2s ease;
+#feedbutton[b-ks7hjf3382] {
+    border-radius: 20px;
+    box-shadow: rgba(255,255,255) 0px 13px 0px -10px;
 }
 /*greeting background*/
 .dashboard-header[b-ks7hjf3382] {
@@ -147,7 +136,7 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
 
 /*#region card contents*/
 .content-body[b-ks7hjf3382] {
-    margin: 10px;
+    margin: 0px;
     text-align: center;
 }
 
@@ -178,8 +167,8 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     /*padding-top: 20px;*/
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 16px;
+    padding-right: 16px;
     bottom: 0;
     display: grid;
     padding-bottom: 0px;
@@ -286,8 +275,7 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
 
 .feed-item-time-elapsed-group-div[b-ks7hjf3382] {
     display: flex;
-    margin-left: 16px;
-    margin-top: 16px;
+    margin-left: 0px;
 }
 
 .feed-item-time-elapsed-icon-image[b-ks7hjf3382] {
@@ -339,7 +327,7 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
 }
 .feed-item-menu[b-ks7hjf3382]{
     position:absolute;
-    right:48px;
+    right:6px;
     margin-top:-24px;
     background:none;
     outline:none;
@@ -358,15 +346,12 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     line-height: 20px;
     color: #000000;
     margin-top: 12px;
-    margin-left: 16px;
     text-align: left;
 }
 
 .home-screen-training-session-now-feed-item-div > .header-dash-border-div[b-ks7hjf3382] {
     border-top: 1px dashed #E8E8E8;
     margin-top: 16px;
-    margin-left: 16px;
-    margin-right: 16px;
     margin-bottom: 20px;
 }
 
@@ -377,7 +362,6 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     font-size: 12px;
     line-height: 16px;
     color: #1A1A1A;
-    margin-left: 16px;
     margin-top: 8px;
     text-align: left;
 }
@@ -389,7 +373,6 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     font-size: 12px;
     line-height: 16px;
     color: #BB111A;
-    margin-left: 16px;
     margin-top: 8px;
     text-align: left;
 }
@@ -457,7 +440,7 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     height: 36px;
     border-color: #006272;
     border: thick;
-    margin-right: 10px;
+    margin-right: 0px;
     margin-left: 10px;
     margin-top: 12px;
     white-space: nowrap;
@@ -477,7 +460,7 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     height: 36px;
     border-color: #006272;
     border: thick;
-    margin-right: 10px;
+    margin-right: 0px;
     margin-left: 10px;
     margin-top: 12px;
     max-width: max-content;
@@ -593,10 +576,10 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     border-width: 2px;
     border-color: rgba(232,232,232,255);
     border-radius: 15px;
-    margin-right: 20px;
-    margin-left: 40px;
+    margin-right: 0;
+    margin-left: 48px;
     margin-bottom:24px;
-    padding: 15px;
+    padding: 16px;
 }
 /*#endregion*/
 
@@ -614,12 +597,15 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
 /*footer background*/
 .footer[b-ks7hjf3382] {
     position: fixed;
-    width: 100%;
+    width: 100vw;
     bottom: 0px;
-    display:grid;
-    grid-template-columns: auto auto auto;
-    grid-template-rows:auto;
-    align-content:center;
+    display: grid;
+    grid-template-columns: auto 20px auto auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    grid-column-gap: 0px;
+    grid-template-rows: auto;
+    align-content: center;
     height: 90px;
     background: white;
     box-shadow: 0px 0px 40px 10px rgba(232,232,232,255);
@@ -638,15 +624,15 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     font-size: 14px;
     border-color: #EEF0F2;
     border-radius: 40px;
-    position: fixed;
+    display: grid;
+    grid-template-rows: auto;
     text-align: center;
     vertical-align: middle;
     width: fit-content;
     bottom: 25px;
     height: 40px;
-    left: 20px;
-    padding-left:10px;
-    padding-right:10px;
+    padding-left: 10px;
+    padding-right: 10px;
     float: left;
 }
 .datepicker-button[b-ks7hjf3382] {
@@ -661,6 +647,7 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     border: none;
     outline: none;
     white-space: nowrap;
+    grid-row: 1;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -669,18 +656,19 @@ html[b-ks7hjf3382], body[b-ks7hjf3382] {
     height: 10px;
 }
 .datepicker-prev-button[b-ks7hjf3382] {
-    margin-left:10px;
+    width:fit-content;
 }
 
 .datepicker-next-button[b-ks7hjf3382] {
-    margin-right:10px;
+    width: fit-content;
 }
 /*footer right area*/
 .footer-right[b-ks7hjf3382] {
-    position: fixed;
     text-align: center;
     bottom: 25px;
     right: 20px;
+    grid-column:4;
+    grid-row:1;
     vertical-align: middle;
     align-content:center;
     float: left;

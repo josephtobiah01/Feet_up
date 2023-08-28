@@ -19,6 +19,7 @@ namespace FitappAdminWeb.Net7.Controllers
         private MessageRepository _messagerepo;
         private IMapper _mapper;
         private PromotionRepository _promorepo;
+        private IConfiguration _configuration;
 
         private readonly int UPLOAD_BYTELIMIT = 4194304;
         private readonly int PROMOTION_IMG_WIDTH_LIMIT = 343;
@@ -28,7 +29,8 @@ namespace FitappAdminWeb.Net7.Controllers
             ClientRepository clientrepo,
             MessageRepository messagerepo,
             PromotionRepository promorepo,
-            IMapper mapper)
+            IMapper mapper,
+            IConfiguration configuration)
             : base(messagerepo)
         {
             _logger = logger;
@@ -36,6 +38,7 @@ namespace FitappAdminWeb.Net7.Controllers
             _messagerepo = messagerepo;
             _mapper = mapper;
             _promorepo = promorepo;
+            _configuration = configuration;
         }
 
         public async Task<IActionResult> Index(bool IsTest)
@@ -45,7 +48,7 @@ namespace FitappAdminWeb.Net7.Controllers
             var idUserList = await _clientrepo.GetIdentityUsersWithFederatedList(fedIdList);
             var roomList = await _messagerepo.GetRooms_Minimal(userList.Select(r => r.Id).ToList());
 
-            UserListViewModel vm = new UserListViewModel()
+			UserListViewModel vm = new UserListViewModel()
             {
                 Users = userList,
                 Id_Users = idUserList,

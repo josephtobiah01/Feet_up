@@ -92,6 +92,17 @@ namespace MauiApp1.Areas.Supplement.ViewModels
             }
         }
 
+        private bool isSkipped;
+        public bool IsSkipped
+        {
+            get { return isSkipped; }
+            set
+            {
+                isSkipped = value;
+                OnPropertyChanged();
+            }
+        }
+
         private bool isDone;
         public bool IsDone
         {
@@ -107,7 +118,14 @@ namespace MauiApp1.Areas.Supplement.ViewModels
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            try
+            {
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            }
+            catch
+            {
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "An error occurred.", "OK");
+            }
         }
     }
 

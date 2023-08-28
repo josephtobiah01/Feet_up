@@ -4,19 +4,16 @@
 
 <!-- header -->
 <div class="tab-item-navigation-div">
-    <div align="left" class="btn-group">
-        <button type="button" class="button-header" id="feedbutton" @onclick="FeedButton_Click">Feed</button>
+    <button type="button" class="button-header" id="feedbutton" @onclick="FeedButton_Click">Feed</button>
 
-        @if (ParentMiddleWare.MiddleWare.UserID >= 0)
-        {
-            <!-- <button type="button" class="button-header" id="chatbutton" onclick="ChatButton_Click">Chat</button> -->
-        }
+    @if (ParentMiddleWare.MiddleWare.FkFederatedUser != string.Empty)
+    {
+        <!-- <button type="button" class="button-header" id="chatbutton" onclick="ChatButton_Click">Chat</button> -->
+    }
 
-        <button type="button" class="button-header" id="dashboardbutton" @onclick="DashboardButton_Click">Dashboard</button>
-        @*<button type="button" class="button-header" @onclick="async ()=> await testperms()">testperms</button>*@
-        @*<button type="button" class="button-header" id="biodatabutton" @onclick="BiodataButton_Click">BioData</button>*@
-    </div>
-    <div id="underline"></div>
+    <button type="button" class="button-header" id="dashboardbutton" @onclick="DashboardButton_Click">Dashboard</button>
+    @*<button type="button" class="button-header" @onclick="async ()=> await testperms()">testperms</button>*@
+    @*<button type="button" class="button-header" id="biodatabutton" @onclick="BiodataButton_Click">BioData</button>*@
 </div>
 <!-- @*
 <div class="dashboard-header" @onclick="Dashboard_Click">
@@ -42,7 +39,7 @@
 <div class="content-group" id="content-group" style="height:calc(100vh - 112px)">
     @*(SheetFeedItemListHeight)px
     <div id="resizeSheetDiv" class="resize-rectangle-content-group-div" @ontouchmove="@(e => FeedItemListSheet_OnTouchMove(e))">
-        <div class="resize-rectangle-div" draggable="false"></div>
+    <div class="resize-rectangle-div" draggable="false"></div>
     </div>
     *@
     <div id="feed-item-list-div" class="content-background">
@@ -51,11 +48,12 @@
             @if (_beforeFeedItems.Count > 0)
             {
                 <label class="content-header">Past</label>
-                <div style="margin:10px;">
+                <div style="margin:0px;">
                     @foreach (FeedItem feedItem in _beforeFeedItems)
                     {
                         <div id="@feedItem.ID">
-                            @if (_TestMode == true ){
+                            @if (_TestMode == true)
+                            {
 
                                 <div @onclick="async () => await FeedItem_Click(feedItem)">
                                     @switch (feedItem.ItemType)
@@ -110,11 +108,11 @@
                                                 <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
                                             }
                                         </div>
-                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        @if (DateTime.Now.Date == _dateSelected.Date && feedItem.Status != FeedItemStatus.Completed && feedItem.Status != FeedItemStatus.Skipped && feedItem.Status != FeedItemStatus.Ongoing)
                                         {
                                             <div>
                                                 <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
-                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
                                                 </button>
                                             </div>
                                         }
@@ -329,14 +327,14 @@
                                                         {
                                                             <div align="right">
                                                                 <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                                <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
+                                                                <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue></button>
                                                             </div>
                                                         }
                                                         else
                                                         {
                                                             <div align="right">
                                                                 <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                                <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
+                                                                <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start></button>
                                                             </div>
                                                         }
                                                         break;
@@ -452,11 +450,11 @@
                                             <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
                                         }
                                     </div>
-                                    @if (DateTime.Now.Date == _dateSelected.Date)
+                                    @if (DateTime.Now.Date == _dateSelected.Date && feedItem.Status != FeedItemStatus.Completed && feedItem.Status != FeedItemStatus.Skipped && feedItem.Status != FeedItemStatus.Ongoing)
                                     {
                                         <div>
                                             <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
-                                                <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
                                             </button>
                                         </div>
                                     }
@@ -565,11 +563,11 @@
                                             //should not happen
                                         }
                                         @*<div class="feed-item-time-elapsed-div">@nowTimeElapsed</div>*@
-                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        @if (DateTime.Now.Date == _dateSelected.Date && feedItem.Status != FeedItemStatus.Completed && feedItem.Status != FeedItemStatus.Skipped && feedItem.Status != FeedItemStatus.Ongoing)
                                         {
                                             <div>
                                                 <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
-                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
                                                 </button>
                                             </div>
                                         }
@@ -783,14 +781,14 @@
                                                         {
                                                             <div align="right">
                                                                 <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                                <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
+                                                                <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue></button>
                                                             </div>
                                                         }
                                                         else
                                                         {
                                                             <div align="right">
                                                                 <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                                <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
+                                                                <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start></button>
                                                             </div>
                                                         }
                                                         break;
@@ -821,7 +819,7 @@
             {
                 <label class="content-header">Later</label>
 
-                <div style="margin:10px;">
+                <div style="margin:0px;">
                     @if (_laterFeedItems != null)
                     {
                         @foreach (FeedItem feedItem in _laterFeedItems)
@@ -883,11 +881,11 @@
                                                     <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
                                                 }
                                             </div>
-                                            @if (DateTime.Now.Date == _dateSelected.Date)
+                                            @if (DateTime.Now.Date == _dateSelected.Date && feedItem.Status != FeedItemStatus.Completed && feedItem.Status != FeedItemStatus.Skipped && feedItem.Status != FeedItemStatus.Ongoing)
                                             {
                                                 <div>
                                                     <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
-                                                        <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                        <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
                                                     </button>
                                                 </div>
                                             }
@@ -1088,8 +1086,8 @@
                                                             @if (feedItem.Status == FeedItemStatus.Completed)
                                                             {
                                                                 @* <div align="right">
-                    <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
-                    </div>*@
+                        <button type="button" class="feed-item-summary-button smoothed" @onclick="() =>FeedItemSummaryButton_Click(feedItem)">Summary</button>
+                        </div>*@
                                                             }
                                                             else if (feedItem.Status == FeedItemStatus.Skipped || feedItem.Status == FeedItemStatus.Partly_Skipped)
                                                             {
@@ -1101,14 +1099,14 @@
                                                             {
                                                                 <div align="right">
                                                                     <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                                    <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue logging ></button>
+                                                                    <button type="button" class="feed-item-supplement-continue-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Continue></button>
                                                                 </div>
                                                             }
                                                             else
                                                             {
                                                                 <div align="right">
                                                                     <button type="button" class="feed-item-snooze-button smoothed" @onclick="() =>FeedItemSnooze_Click(feedItem)">Snooze</button>
-                                                                    <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start logging ></button>
+                                                                    <button type="button" class="feed-item-supplement-start-button smoothed" @onclick="() =>FeedItemStartButton_Click(feedItem)">Start></button>
                                                                 </div>
                                                             }
                                                             break;
@@ -1182,11 +1180,11 @@
                                                 <div class="feed-item-time-elapsed-div">@GetStatuswithFormattedTimeElapsed(feedItem.ItemType,feedItem.Date,feedItem.Status)</div>
                                             }
                                         </div>
-                                        @if (DateTime.Now.Date == _dateSelected.Date)
+                                        @if (DateTime.Now.Date == _dateSelected.Date && feedItem.Status != FeedItemStatus.Completed && feedItem.Status != FeedItemStatus.Skipped && feedItem.Status != FeedItemStatus.Ongoing)
                                         {
                                             <div>
                                                 <button type="button" class="feed-item-menu" @onclick="async ()=> await FeedItemMenu_Click(feedItem)">
-                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg"/>
+                                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
                                                 </button>
                                             </div>
                                         }
@@ -1247,19 +1245,19 @@
 
                         <hr class="header-dash-border-div">
                         @*
-                        <div class="feed-exercise-details-tab-group-container-div">
-                            <div class="feed-exercise-details-tab-item-container-div tab-item-container-whats-inside-div">
-                                <label for="feed-details-tab-item-container-whats-inside-input">What's Inside</label>
-                                <input id="feed-details-tab-item-container-whats-inside-input" name="tabs-two" type="radio" checked="checked" @onclick="TabItemExerciseWhatsInsideInput_Click">
+        <div class="feed-exercise-details-tab-group-container-div">
+        <div class="feed-exercise-details-tab-item-container-div tab-item-container-whats-inside-div">
+        <label for="feed-details-tab-item-container-whats-inside-input">What's Inside</label>
+        <input id="feed-details-tab-item-container-whats-inside-input" name="tabs-two" type="radio" checked="checked" @onclick="TabItemExerciseWhatsInsideInput_Click">
 
 
-                            </div>
-                            <div class="feed-exercise-details-tab-item-container-div tab-item-container-history-div">
-                                <label for="feed-details-tab-item-container-history-input">History</label>
-                                <input id="feed-details-tab-item-container-history-input" name="tabs-two" type="radio" @onclick="TabItemExerciseHistoryInput_Click">
+        </div>
+        <div class="feed-exercise-details-tab-item-container-div tab-item-container-history-div">
+        <label for="feed-details-tab-item-container-history-input">History</label>
+        <input id="feed-details-tab-item-container-history-input" name="tabs-two" type="radio" @onclick="TabItemExerciseHistoryInput_Click">
 
-                            </div>
-                        </div>
+        </div>
+        </div>
         *@
                         <div class="feed-item-exercise-list-content-group">
 
@@ -1270,8 +1268,9 @@
                                     <div class="feed-item-exercise-list-column-div">
                                         <div class="feed-item-exercise-list-card-div">
                                             <div class="image-container-div">
-                                                @if(emExercise.EmExerciseType.ImageUrl!=null){
-                                                    <img class="feed-item-exercise-icon-image" src="@emExercise.EmExerciseType.ImageUrl"/>
+                                                @if (emExercise.EmExerciseType.ImageUrl != null)
+                                                {
+                                                    <img class="feed-item-exercise-icon-image" src="@emExercise.EmExerciseType.ImageUrl" />
                                                 }
                                             </div>
 
@@ -1288,15 +1287,35 @@
                         </div>
 
                     </div>
-                    <div class="feed-item-exercise-details-menu-button-div" align="left">
-                        <button type="button" class="feed-item-exercise-details-menu-button" @onclick="async ()=> await FeedItemMenu_Click(_feedItem)">
-                            <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
-                        </button>
-                    </div>
-                    <div class="feed-item-exercise-details-button-group-div" align="right">
-                        <button type="button" class="feed-item-exercise-details-content-snooze-button" @onclick="() =>FeedItemSnooze_Click(_feedItem)">Snooze</button>
-                        <button type="button" class="feed-item-exercise-details-content-start-button" @onclick="() =>FeedItemDetailsStart_Click(_feedItem)">Start</button>
-                    </div>
+                    @switch (_feedItem.Status)
+                    {
+                        case FeedItemStatus.Completed:
+
+                            <div class="feed-item-exercise-details-button-group-div" align="right">
+                                <button type="button" class="feed-item-exercise-details-content-summary-button" @onclick="() =>FeedItemSummaryButton_Click(_feedItem)">Summary</button>
+                            </div>
+                            break;
+
+                        case FeedItemStatus.Skipped:
+
+
+                            break;
+
+                        case FeedItemStatus.Ongoing:
+                        default:
+
+                            <div class="feed-item-exercise-details-menu-button-div" align="left">
+                                <button type="button" class="feed-item-exercise-details-menu-button" @onclick="async ()=> await FeedItemMenu_Click(_feedItem)">
+                                    <img class="feed-item-menu-icon" src="resources/public/icons/userInterface/menu.svg" />
+                                </button>
+                            </div>
+                            <div class="feed-item-exercise-details-button-group-div" align="right">
+                                <button type="button" class="feed-item-exercise-details-content-snooze-button" @onclick="() =>FeedItemSnooze_Click(_feedItem)">Snooze</button>
+                                <button type="button" class="feed-item-exercise-details-content-start-button" @onclick="() =>FeedItemDetailsStart_Click(_feedItem)">Start</button>
+                            </div>
+                            break;
+
+                    }
                     break;
                 }
             case FeedItemType.NutrientsFeedItem:
@@ -1308,9 +1327,9 @@
                 {
 
                     <MauiApp1.Pages.Supplement.ViewFeedItemSupplementPage FeedItem="_feedItem" ReloadFeedItemDetail="_ReloadFeedItemDetailsPage"
-                    OnCloseClickCallback="BlackCoverDiv_Click" ShowFeedItemDetail="_isFeedItemDetailsDivHidden" 
-                    UpdateParentEventCallback="SetIsRefreshFeedItemNeeded_EventCallback" 
-                    ReloadFeedItemDetailsPageEventCallback="LoadFeedItemNeeded_EventCallback" />
+                                                                          OnCloseClickCallback="BlackCoverDiv_Click" ShowFeedItemDetail="_isFeedItemDetailsDivHidden"
+                                                                          UpdateParentEventCallback="SetIsRefreshFeedItemNeeded_EventCallback"
+                                                                          ReloadFeedItemDetailsPageEventCallback="LoadFeedItemNeeded_EventCallback" />
                     break;
                 }
             case FeedItemType.MedicationFeedItem:
@@ -1579,78 +1598,6 @@
     </div>
 </div>
 
-
-
-<style>
-    /*#region override datepicker*/
-    .ui-datepicker{
-        border-radius:12px;
-        font-family:Montserrat;
-        padding:16px;
-    }
-    .ui-datepicker-header{
-        background:white;
-        outline:none;
-        border: 0px none white;
-        font-family:Montserrat;
-    }
-    .ui-datepicker-title{
-        font-size:14px;
-        font-weight:700;
-        color:#333333;
-    }
-    .ui-datepicker th{
-        font-weight:400;
-        font-size:10px;
-        color:black;
-    }
-    .ui-datepicker td{
-        padding:0px;
-    }
-    .ui-widget-header .ui-icon {
-        background-image:none;
-    }
-    .ui-button:hover{
-        background:none !important;
-        border:none !important;
-        color:transparent !important;
-    }
-    .ui-datepicker-next-hover{
-        background:none !important;
-        border:none !important;
-        top:2px !important;
-        right:2px !important;
-    }
-    .ui-datepicker-prev-hover{
-        background:none !important;
-        border:none !important;
-        left:2px !important;
-        top:2px !important;
-    }
-    .ui-icon-circle-triangle-w{
-        content: url("resources/public/icons/arrows/arrow-left.svg");
-    }
-    .ui-icon-circle-triangle-e{
-        content: url("resources/public/icons/arrows/arrow-right.svg");
-    }
-    .ui-datepicker td a{    
-        font-size:12px;
-        border-radius:20px;
-        height:30px;
-        color:#4D4D4D;
-        line-height: 30px;
-        width:30px;
-        padding:0px;
-        text-align:center !important;
-        background:none !important;
-        border:none !important;
-    }
-    .ui-datepicker-calendar .ui-state-active {
-        background:#006272 !important;
-        color:white;
-    }
-    /*#endregion*/
-</style>
 
 <MauiApp1.Pages.Popups.SnoozePopup DisplayPopup="@DisplaySnoozePopup" OpenMenuOnClose="@DisplayMenuOnSnoozeClose"></MauiApp1.Pages.Popups.SnoozePopup>
 <MauiApp1.Pages.Popups.FeedItemMenuPopup DisplayPopup="@DisplayMenuPopup" feedItem="@_feedItem"></MauiApp1.Pages.Popups.FeedItemMenuPopup>

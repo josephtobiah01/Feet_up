@@ -44,6 +44,14 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[QtoolConnect]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[u_generic_questions]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[u_internal_notes]",
          "ObjectType": 0
       },
@@ -52,7 +60,7 @@
          "ObjectType": 0
       }
    ],
-   "UiHint": "c88-sqlserver-sea-test.FitApp-test_dev.dbo",
+   "UiHint": "air-sql-prod-sea.FitApp-prod.dbo",
    "UncountableWords": null,
    "UseBoolPropertiesWithoutDefaultSql": false,
    "UseDatabaseNames": false,

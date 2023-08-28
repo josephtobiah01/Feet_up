@@ -1,7 +1,7 @@
 ﻿@using MauiApp1.Areas.Chat.Models;
 <div id="content-div" class="content-div">
 
-    <div id="list-content-group-div" class="list-content-group-div">
+    <div id="list-content-group-div" class="list-content-group-div" @onscroll="HandleScrollEvent">
         @{
             DateTime currentdatetime = DateTime.MinValue;
             DateTime currentdateMinusSixDays = DateTime.MinValue;
@@ -42,21 +42,28 @@
                 case true:
 
                     
-                    <div class="user-sent-message-div">                       
-                        @if (message.MessageImage != null)
+                    <div class="user-sent-message-div">
+                        @if (!string.IsNullOrEmpty(message.MessageImage))
                         {
-                            <div class="image-container">
-                                <img class="message-image" src="@(message.MessageImage)" />
-                                @if (!string.IsNullOrEmpty(message.MessageText))
-                                {
-                                    <div class="message-text-label">@((MarkupString)message.MessageText)</div>
-                                }
-                            </div>
+                            @*<div class="image-container">
+                                
+                            </div>*@
+
+                            <img class="message-image" src="@(message.MessageImage)" />
+                            @if (!string.IsNullOrEmpty(message.MessageText))
+                            {
+                                <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+                                
+                            }
                             
                         }
                         else if (!string.IsNullOrEmpty(message.MessageText))
                         {
-                            <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+                            @*<div class="text-container">
+                                
+                            </div>*@
+
+                            <label class="message-text-label">@((MarkupString)message.MessageText)</label>
                         }
                         
                         <div class="time-stamp-container-div">
@@ -70,9 +77,19 @@
                 case false:
 
                     <div class="server-sent-message-div">
-                        @*<label class="username-label">@message.UserName</label>
-                        <br/>                        *@
-                        <div class="message-text-label">@((MarkupString)message.MessageText)</div>
+
+                        @if (!string.IsNullOrEmpty(message.MessageImage))
+                        {
+                            <img class="message-imahe" src="@(message.MessageImage)" />
+
+                        }
+                        else if (!string.IsNullOrEmpty(message.MessageText))
+                        {
+
+                            <label class="message-text-label">@((MarkupString)message.MessageText)</label>
+                        }
+                        
+                        @*<div class="message-text-label">@((MarkupString)message.MessageText)</div>*@
 
                         <div class="server-sent-time-container-div">
                             <label class="time-stamp-label">@message.TimeStamp.ToLocalTime().ToString("hh:mm tt").ToUpper()</label>
@@ -93,24 +110,22 @@
         
         <div class="textarea-container">
 
-            <img class="imageMessage" src="@_userMessageImage"/>
-
-            @if (_isCancelButtonVisible)
-            {
-                <button class="cancel-button" @onclick=CancelButtonClick>Cancel</button>
-            }
-
             <textarea class="chat-input" id="textinput" placeholder="@SetPlaceholder()" @onfocus="ChatInput_Focused" @bind="@_userMessageText" maxlength="250"/> 
 
         </div>
+
         <div class="buttonarea-container">
 
-            <button class="send-button" @onclick=UploadPhoto>
-                <img class="sendimage-icon" src="resources\public\icons\communication\mail.svg" />
+            <button class="send-button" @onclick="async ()=> await UploadPhoto()">
+                <img class="sendimage-icon" src="/resources/public/icons/userInterface/cameraSvg.svg"/>
             </button>
 
-            <button class="send-button" @onclick=SendButton_Clicked>
-                <img class="white-icon" src="resources/public/icons/userInterface/paperplane.svg" />
+            <button class="send-button" @*@onclick="async ()=> await UploadPhoto()"*@>
+                <img class="sendimage-icon" src="resources/public/icons/userInterface/microphone.png" />
+            </button>
+
+            <button class="send-button" @onclick="async ()=> await SendButton_Clicked()">
+                <img class="white-icon" src="resources/public/icons/userInterface/paper-airplane.png" />
             </button>
 
         </div>

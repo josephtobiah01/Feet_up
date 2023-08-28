@@ -132,6 +132,13 @@ build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\FirstMealConte
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\FirstMealContentView.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/MealContentView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.MealContentView.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\MealContentView.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\MealContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/NutrientDashboardContentView.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.NutrientDashboardContentView.xaml
@@ -186,6 +193,13 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.ThirdMealContentView.xaml
 build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\ThirdMealContentView.xaml
 build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\ThirdMealContentView.xaml
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/Dashboard/Views/Version2/NutrientsDailyIntakeContentPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MauiApp1.Areas.Dashboard.Views.Version2.NutrientsDailyIntakeContentPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Areas\Dashboard\Views\Version2\NutrientsDailyIntakeContentPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Areas\Dashboard\Views\Version2\NutrientsDailyIntakeContentPage.xaml
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/joseph.alulod/source/repos/Feet_up/MauiApp1/Areas/DeviceIntegration/Views/ViewDeviceIntegration.xaml]

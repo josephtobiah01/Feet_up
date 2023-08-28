@@ -1,0 +1,477 @@
+is_global = true
+build_property.TargetFramework = net7.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DataEntryTest
+build_property.RootNamespace = DataEntryTest
+build_property.ProjectDir = C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest\
+build_property.RazorLangVersion = 7.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DataEntryTest
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/Shared/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WaWV3SW1wb3J0cy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Eds12weekPlan1/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzMTJ3ZWVrUGxhbjFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Eds12weekPlan1/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzMTJ3ZWVrUGxhbjFcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Eds12weekPlan1/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzMTJ3ZWVrUGxhbjFcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Eds12weekPlan1/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzMTJ3ZWVrUGxhbjFcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Eds12weekPlan1/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzMTJ3ZWVrUGxhbjFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsAvaiableSetMetrics/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzQXZhaWFibGVTZXRNZXRyaWNzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsAvaiableSetMetrics/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzQXZhaWFibGVTZXRNZXRyaWNzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsAvaiableSetMetrics/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzQXZhaWFibGVTZXRNZXRyaWNzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsAvaiableSetMetrics/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzQXZhaWFibGVTZXRNZXRyaWNzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsAvaiableSetMetrics/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzQXZhaWFibGVTZXRNZXRyaWNzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsDailyPlans/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRGFpbHlQbGFuc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsDailyPlans/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRGFpbHlQbGFuc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsDailyPlans/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRGFpbHlQbGFuc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsDailyPlans/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRGFpbHlQbGFuc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsDailyPlans/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRGFpbHlQbGFuc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsEquipments/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXF1aXBtZW50c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsEquipments/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXF1aXBtZW50c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsEquipments/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXF1aXBtZW50c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsEquipments/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXF1aXBtZW50c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsEquipments/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXF1aXBtZW50c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseClasses/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VDbGFzc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseClasses/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VDbGFzc2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseClasses/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VDbGFzc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseClasses/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VDbGFzc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseClasses/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VDbGFzc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExercises/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExercises/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExercises/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExercises/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExercises/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VUeXBlc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VUeXBlc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VUeXBlc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VUeXBlc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsExerciseTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRXhlcmNpc2VUeXBlc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsForces/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRm9yY2VzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsForces/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRm9yY2VzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsForces/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRm9yY2VzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsForces/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRm9yY2VzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsForces/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzRm9yY2VzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsLevels/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTGV2ZWxzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsLevels/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTGV2ZWxzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsLevels/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTGV2ZWxzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsLevels/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTGV2ZWxzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsLevels/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTGV2ZWxzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMainMuscleWorkeds/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWFpbk11c2NsZVdvcmtlZHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMainMuscleWorkeds/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWFpbk11c2NsZVdvcmtlZHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMainMuscleWorkeds/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWFpbk11c2NsZVdvcmtlZHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMainMuscleWorkeds/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWFpbk11c2NsZVdvcmtlZHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMainMuscleWorkeds/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWFpbk11c2NsZVdvcmtlZHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMechanicsTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWVjaGFuaWNzVHlwZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMechanicsTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWVjaGFuaWNzVHlwZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMechanicsTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWVjaGFuaWNzVHlwZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMechanicsTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWVjaGFuaWNzVHlwZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsMechanicsTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzTWVjaGFuaWNzVHlwZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsOtherMuscleWorkeds/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzT3RoZXJNdXNjbGVXb3JrZWRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsOtherMuscleWorkeds/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzT3RoZXJNdXNjbGVXb3JrZWRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsOtherMuscleWorkeds/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzT3RoZXJNdXNjbGVXb3JrZWRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsOtherMuscleWorkeds/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzT3RoZXJNdXNjbGVXb3JrZWRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsOtherMuscleWorkeds/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzT3RoZXJNdXNjbGVXb3JrZWRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetDefaults/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0RGVmYXVsdHNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetDefaults/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0RGVmYXVsdHNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetDefaults/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0RGVmYXVsdHNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetDefaults/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0RGVmYXVsdHNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetDefaults/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0RGVmYXVsdHNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricsDefaults/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc0RlZmF1bHRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricsDefaults/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc0RlZmF1bHRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricsDefaults/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc0RlZmF1bHRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricsDefaults/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc0RlZmF1bHRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricsDefaults/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc0RlZmF1bHRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetrics/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetrics/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetrics/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetrics/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetrics/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricTypes/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljVHlwZXNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricTypes/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljVHlwZXNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricTypes/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljVHlwZXNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricTypes/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljVHlwZXNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSetMetricTypes/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0TWV0cmljVHlwZXNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSets/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0c1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSets/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0c1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSets/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0c1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSets/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0c1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSets/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU2V0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSports/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU3BvcnRzXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSports/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU3BvcnRzXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSports/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU3BvcnRzXERldGFpbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSports/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU3BvcnRzXEVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsSports/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzU3BvcnRzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsTrainingSessions/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzVHJhaW5pbmdTZXNzaW9uc1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsTrainingSessions/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzVHJhaW5pbmdTZXNzaW9uc1xEZWxldGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsTrainingSessions/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzVHJhaW5pbmdTZXNzaW9uc1xEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsTrainingSessions/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzVHJhaW5pbmdTZXNzaW9uc1xFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsTrainingSessions/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzVHJhaW5pbmdTZXNzaW9uc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsWeeklyPlans/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzV2Vla2x5UGxhbnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsWeeklyPlans/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzV2Vla2x5UGxhbnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsWeeklyPlans/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzV2Vla2x5UGxhbnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsWeeklyPlans/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzV2Vla2x5UGxhbnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/EdsWeeklyPlans/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRWRzV2Vla2x5UGxhbnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Users/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Users/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Users/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Users/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/Users/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlcnNcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/joseph.alulod/source/Workspaces/FitApp/FitApp/DataEntryTest/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tvvta3n8mn

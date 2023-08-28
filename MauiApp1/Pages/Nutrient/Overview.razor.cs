@@ -97,7 +97,14 @@ namespace MauiApp1.Pages.Nutrient
         #region popups
         public async Task OpenNutrientPopup()
         {
-            NutrientPopupRecipesDisplayed = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
+            try
+            {
+                NutrientPopupRecipesDisplayed = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
+            }
+            catch
+            {
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Error getting favorites and history.", "OK");
+            }
             DisplayNutrientPopup = "inline";
         }
         public void CloseNutrientPopup()
@@ -108,7 +115,7 @@ namespace MauiApp1.Pages.Nutrient
         {
             DisplayAddDishPopup = "inline";
             NutrientServings = 1;
-            NutrientIsFavorite = false;https://0.0.0.0/resources/public/icons/arrows/arrow.svg
+            NutrientIsFavorite = false;
 
             await OneHundredPercentPortion();
             NutrientDishName = "";
@@ -130,7 +137,26 @@ namespace MauiApp1.Pages.Nutrient
         }
         public async Task CloseAddDishPopup()
         {
-            NutrientPopupRecipesDisplayed = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
+            try
+            {
+                NetworkAccess accessType = Connectivity.Current.NetworkAccess;
+
+                if (accessType == NetworkAccess.Internet)
+                {
+                    try
+                    {
+                        NutrientPopupRecipesDisplayed = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
+                    }
+                    catch
+                    {
+                        App.alertBottomSheetManager.ShowAlertMessage("Error", "Error getting favorites and history.", "OK");
+                    }
+                }
+            }
+            catch
+            {
+
+            }
             DisplayAddDishPopup = "none";
         }
         public void AddServing()
@@ -173,68 +199,89 @@ namespace MauiApp1.Pages.Nutrient
         }
         public async Task AddDish(bool image = false, NutrientRecipeModel recipe = null)
         {
-            NutrientDish dishAdded = new NutrientDish();
-            dishAdded.NumberOfServings = NutrientServings;
-            dishAdded.PercentageEaten = NutrientPortion;
-            dishAdded.Notes = NutrientNotes;
-
-            NutritionUploadModel uploadModel = new NutritionUploadModel();
-
-            if (image == false && recipe != null)
+            try
             {
-                dishAdded.Recipe = recipe;
-                uploadModel.IsFavorite = NutrientIsFavorite;
-                uploadModel.MealId = Index.NutrientPopupCurrentFeedItem.NutrientsFeedItem.Meal.MealId;
-                uploadModel.RecipeId = recipe.RecipeID;
-                uploadModel.NumberOfServings = NutrientServings;
-                uploadModel.NutrientPortion = NutrientPortion;
-                uploadModel.UploadType = NutritionUploadModel_Type.ByRecipe;
-                Index.NutritionUploadModel.Add(uploadModel);
-            }
-            else
-            {
-                NutrientRecipeModel newrecipe = new NutrientRecipeModel();
-                uploadModel.UploadType = NutritionUploadModel_Type.PhotoUpload;
-                uploadModel.NumberOfServings = NutrientServings;
-                uploadModel.NutrientPortion = NutrientPortion;
-                uploadModel.FoodImage64String = Index.NutrientImageData;
-                uploadModel.FoodImageType = Index.NutrientImageType;
-                newrecipe.DisplayImageUrl = NutrientCustomDishImageUrl;
-                uploadModel.NutrientNotes = NutrientNotes;
-                newrecipe.IsFavorite = NutrientIsFavorite;
-                uploadModel.IsFavorite = NutrientIsFavorite;
-                if (NutrientDishName == null || NutrientDishName == "")
+                NutrientDish dishAdded = new NutrientDish();
+                dishAdded.NumberOfServings = NutrientServings;
+                dishAdded.PercentageEaten = NutrientPortion;
+                dishAdded.Notes = NutrientNotes;
+
+                NutritionUploadModel uploadModel = new NutritionUploadModel();
+
+                if (image == false && recipe != null)
                 {
-                    await App.Current.MainPage.DisplayAlert("Error", "Please enter a name for the dish.", "OK");
-                    return;
+                    dishAdded.Recipe = recipe;
+                    uploadModel.IsFavorite = NutrientIsFavorite;
+                    uploadModel.MealId = Index.NutrientPopupCurrentFeedItem.NutrientsFeedItem.Meal.MealId;
+                    uploadModel.RecipeId = recipe.RecipeID;
+                    uploadModel.NumberOfServings = NutrientServings;
+                    uploadModel.NutrientPortion = NutrientPortion;
+                    uploadModel.UploadType = NutritionUploadModel_Type.ByRecipe;
+                    Index.NutritionUploadModel.Add(uploadModel);
                 }
-                newrecipe.RecipeName = NutrientDishName;
-                uploadModel.NutrientDishName = NutrientDishName;
-                uploadModel.MealId = Index.NutrientPopupCurrentFeedItem.NutrientsFeedItem.Meal.MealId;
-                dishAdded.Recipe = newrecipe;
-                Index.NutritionUploadModel.Add(uploadModel);
-                
-            }
+                else
+                {
+                    NutrientRecipeModel newrecipe = new NutrientRecipeModel();
+                    uploadModel.UploadType = NutritionUploadModel_Type.PhotoUpload;
+                    uploadModel.NumberOfServings = NutrientServings;
+                    uploadModel.NutrientPortion = NutrientPortion;
+                    uploadModel.FoodImage64String = Index.NutrientImageData;
+                    uploadModel.FoodImageType = Index.NutrientImageType;
+                    newrecipe.DisplayImageUrl = NutrientCustomDishImageUrl;
+                    uploadModel.NutrientNotes = NutrientNotes;
+                    newrecipe.IsFavorite = NutrientIsFavorite;
+                    uploadModel.IsFavorite = NutrientIsFavorite;
+                    if (NutrientDishName == null || NutrientDishName == "")
+                    {
+                        ShowAlertBottomSheet("Error", "Please enter a name for the dish.", "OK");
+                        return;
+                    }
+                    newrecipe.RecipeName = NutrientDishName;
+                    uploadModel.NutrientDishName = NutrientDishName;
+                    uploadModel.MealId = Index.NutrientPopupCurrentFeedItem.NutrientsFeedItem.Meal.MealId;
+                    dishAdded.Recipe = newrecipe;
+                    Index.NutritionUploadModel.Add(uploadModel);
 
-            if (feedItem.NutrientsFeedItem.Meal.DishesEaten == null)
-            {
-                feedItem.NutrientsFeedItem.Meal.DishesEaten = new List<NutrientDish>();
+                }
+
+                if (feedItem.NutrientsFeedItem.Meal.DishesEaten == null)
+                {
+                    feedItem.NutrientsFeedItem.Meal.DishesEaten = new List<NutrientDish>();
+                }
+                feedItem.NutrientsFeedItem.Meal.DishesEaten.Add(dishAdded);
+                await CloseAddDishPopup();
+                CloseNutrientPopup();
             }
-            feedItem.NutrientsFeedItem.Meal.DishesEaten.Add(dishAdded);
-            await CloseAddDishPopup();
-            CloseNutrientPopup();
+            catch
+            {
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Error adding dish.", "OK");
+            }
         }
         public async Task FavoriteDish()
         {
             NutrientIsFavorite = !NutrientIsFavorite;
             if (NutrientIsFavorite && NutrientRecipe != null)
             {
-                bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
+                try
+                {
+                    bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
+                }
+                catch
+                {
+                    App.alertBottomSheetManager.ShowAlertMessage("Error", "Error favoriting dish.", "OK");
+                }
                 StateHasChanged();
             }
             else if (NutrientRecipe != null)
             {
-                await ImageApi.Net7.NutritionApi.UnFavoriteDish(NutrientRecipe.RecipeID);
+                try
+                {
+                    await ImageApi.Net7.NutritionApi.UnFavoriteDish(NutrientRecipe.RecipeID);
+                }
+                catch
+                {
+                    App.alertBottomSheetManager.ShowAlertMessage("Error", "Error unfavoriting dish.", "OK");
+                }
                 StateHasChanged();
             }
             else
@@ -347,6 +394,7 @@ namespace MauiApp1.Pages.Nutrient
                 }
                 catch (Exception ex)
                 {
+                    App.alertBottomSheetManager.ShowAlertMessage("Error", "Error submitting dishes.", "OK");
                 }
                 LockSubmission = false;
             }
@@ -369,7 +417,7 @@ namespace MauiApp1.Pages.Nutrient
             else
             {
                 StateHasChanged();
-                await App.Current.MainPage.DisplayAlert("Error", "There was an error uploading images. Please try again later.", "OK");
+                ShowAlertBottomSheet("Error", "There was an error uploading images. Please try again later.", "OK");
             }
             //todo
         }
@@ -399,10 +447,17 @@ namespace MauiApp1.Pages.Nutrient
         }
         public async Task BuildDishesDisplayedList()
         {
-            DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
-            for(int i = 0; i < DishesDisplayed.Count(); i++)
+            try
             {
-                DishesDisplayedIndices.Add(i);
+                DishesDisplayed = await ImageApi.Net7.NutritionApi.GetMealDishes(feedItem.NutrientsFeedItem.Meal.MealId);
+                for (int i = 0; i < DishesDisplayed.Count(); i++)
+                {
+                    DishesDisplayedIndices.Add(i);
+                }
+            }
+            catch
+            {
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Error getting dishes.", "OK");
             }
         }
         public async Task ToggleCollapsibleByIndex(int index)
@@ -450,6 +505,18 @@ namespace MauiApp1.Pages.Nutrient
                 return ms.ToArray();
             }
         }
+        #endregion
+
+        #region [Methods :: Tasks]
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
+        }
+
         #endregion
     }
 }

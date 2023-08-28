@@ -3,10 +3,12 @@ using Firebase;
 using ParentMiddleWare;
 using Plugin.FirebasePushNotification;
 #endif
-using ParentMiddleWare;
+#if IOS
 using Shiny.Hosting;
 using Shiny.Push;
 using Shiny.Notifications;
+#endif
+using ParentMiddleWare;
 
 public class PushRegistration
 {
@@ -22,43 +24,18 @@ public class PushRegistration
     {
         try
         {        
-            if (MiddleWare.UserID <= 0)
+            if (MiddleWare.FkFederatedUser == string.Empty)
             {
                 return null;
             }
 #if ANDROID
 
-                var k =  CrossFirebasePushNotification.Current.Token;
-                return k;
-
-            //if (!isInitialized)
-            //{
-            //    isInitialized = true;
-
-            //    var options = new FirebaseOptions.Builder()
-            //         .SetApplicationId(PushRegistration.AppId)
-            //         .SetProjectId(PushRegistration.ProjectId)
-            //         .SetApiKey(PushRegistration.ApiKey)
-            //         .SetGcmSenderId(PushRegistration.SenderId)
-            //    .Build();
-
-            //    FirebaseApp.InitializeApp(Android.App.Application.Context, options);
-            //}
-            var apush = Host.Current.Services.GetService<AzureNotificationHubsPushProvider>();
-            var push = Host.Current.Services.GetService<IPushManager>();
-
-            if (!string.IsNullOrEmpty(push.RegistrationToken))
+            try
             {
-                return push.RegistrationToken;
-               //return push.r
+                var k = CrossFirebasePushNotification.Current.Token;
+                return k;
             }
-
-
-            var result = await push.RequestAccess();
-            return result.RegistrationToken;
-
-
-
+            catch { }
 #endif
 #if IOS
             var push = Host.Current.Services.GetService<IApplePushManager>();

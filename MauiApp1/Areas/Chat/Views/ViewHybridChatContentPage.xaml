@@ -1,133 +1,263 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              x:Class="MauiApp1.Areas.Chat.Views.ViewHybridChatContentPage"
              xmlns:pages="clr-namespace:MauiApp1.Pages.Chat"
-             Title="ViewHybridChatContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded" NavigationPage.HasNavigationBar="False"
+             Title="ViewHybridChatContentPage"
+             Loaded="ContentPage_Loaded"
+             Unloaded="ContentPage_Unloaded"
+             NavigationPage.HasNavigationBar="False"
              NavigationPage.HasBackButton="False">
-    <Grid x:Name="RootGrid" BackgroundColor="White">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="64" />
-            <RowDefinition Height="44" />
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
 
-        <!-- navigation bar -->
-        <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition Width="auto" />
-            </Grid.ColumnDefinitions>
+    <ContentPage.Content>
 
-            <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+        <Grid x:Name="RootGrid" BackgroundColor="White">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="64" />
+                <RowDefinition Height="44" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
 
-            <Label Grid.Column="2" Text="Inbox"
+            <!-- navigation bar -->
+            <Grid Grid.Row="0" Margin="0" BackgroundColor="#006272">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="auto" />
+                </Grid.ColumnDefinitions>
+
+                <ImageButton Grid.Column="1" Source="backicon_20x10.png" x:Name="BackButton" WidthRequest="40" HeightRequest="32" Clicked="BackButton_Clicked" BackgroundColor="Transparent" Margin="12,0,0,0"  BorderColor="Transparent" Padding="6,5,6,5"/>
+
+                <Label Grid.Column="2" Text="Inbox"
                VerticalOptions="Center"
                HorizontalOptions="Center"
                FontSize="16" Margin="11,15,15,15" FontAttributes="Bold" FontFamily="Montserrat-Regular" TextColor="#FFFFFF"/>
+            </Grid>
+
+            <HorizontalStackLayout Grid.Row="1" RadioButtonGroup.GroupName="MenuCategories" BackgroundColor="#006272">
+
+                <RadioButton x:Name="QueriesRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="True" CheckedChanged="QueriesRadioButton_CheckedChanged">
+                    <RadioButton.ControlTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24"/>
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="8" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CheckedStates">
+                                            <VisualState x:Name="Checked">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                            <VisualState x:Name="Unchecked">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                                <Label Text="Queries" Grid.Row="0" TextColor="White"/>
+                                <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </RadioButton.ControlTemplate>
+                </RadioButton>
+
+                <RadioButton x:Name="FromUsRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="False" CheckedChanged="FromUsRadioButton_CheckedChanged">
+                    <RadioButton.ControlTemplate>
+                        <ControlTemplate>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="24"/>
+                                    <RowDefinition Height="2" />
+                                    <RowDefinition Height="8" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                </Grid.ColumnDefinitions>
+                                <VisualStateManager.VisualStateGroups>
+                                    <VisualStateGroupList>
+                                        <VisualStateGroup x:Name="CheckedStates">
+                                            <VisualState x:Name="Checked">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="white"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+
+                                            <VisualState x:Name="Unchecked">
+                                                <VisualState.Setters>
+                                                    <Setter
+                                TargetName="Indicator"
+                                Property="BoxView.Color"
+                                Value="Transparent"/>
+                                                </VisualState.Setters>
+                                            </VisualState>
+                                        </VisualStateGroup>
+                                    </VisualStateGroupList>
+                                </VisualStateManager.VisualStateGroups>
+                                <Label Text="From us" Grid.Row="0" TextColor="White"/>
+                                <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
+                            </Grid>
+                        </ControlTemplate>
+                    </RadioButton.ControlTemplate>
+                </RadioButton>
+
+            </HorizontalStackLayout>
+
+            <BlazorWebView x:Name="ChatBlazorWebView" Grid.Row="2" HostPage="wwwroot/chatContentPage.html">
+                <BlazorWebView.RootComponents>
+                    <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:ViewChatDetailPage}"/>
+                </BlazorWebView.RootComponents>
+            </BlazorWebView>
+
+            <Grid x:Name="PromotionAreaStackLayout" Grid.Row="2" />
+
+            <dxco:BottomSheet
+            Grid.Row="3"
+            x:Name="SendPhotoBottomSheet"
+            CornerRadius="30"
+            BackgroundColor="White"
+            HalfExpandedRatio="0.5"
+            AllowedState="HalfExpanded"
+            AllowDismiss="False"
+            IsModal="True">
+
+                <Grid
+                RowDefinitions="2*,*"
+                ColumnDefinitions="*,*">
+
+                    <Border
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    Padding="0"
+                    Stroke="#006272"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 7"
+                    StrokeThickness="3"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                        <Image x:Name="UserSelectedImage"
+                        Aspect="AspectFit"
+                               HeightRequest="160"
+                               WidthRequest="160"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Margin="0"/>
+
+
+
+                        <!--<dxco:DXImage 
+                            x:Name="userSelectedImage"
+                        Aspect="AspectFit"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Margin="0"/>-->
+
+
+                        <!--<Image 
+                        x:Name="userSelectedImage"
+                        Aspect="AspectFit"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="FillAndExpand"
+                        Margin="0"/>-->
+
+                    </Border>
+
+                    <Border
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Stroke="#006272"
+                    Padding="0"
+                    StrokeShape="RoundRectangle 7"
+                    HorizontalOptions="EndAndExpand"
+                    VerticalOptions="Center"
+                    Margin="0,0,5,0">
+
+                        <dxco:SimpleButton 
+                          Text="Cancel"
+                        FontFamily="montserrat"
+                        TextColor="#006272"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        BackgroundColor="White"
+                        Clicked="CancelButton_Clicked"
+                        />
+
+                        <!--<Button
+                        Text="Cancel"
+                        FontFamily="montserrat"
+                        TextColor="#006272"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        BackgroundColor="White"
+                        Clicked="CancelButton_Clicked"/>-->
+
+                    </Border>
+
+                    <Border
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Stroke="#006272"
+                    Padding="0"
+                    StrokeShape="RoundRectangle 7"
+                    BackgroundColor="White"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"
+                    Margin="5,0,0,0">
+
+
+                        <dxco:SimpleButton 
+                 Text="Send"
+                        FontFamily="montserrat"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Clicked="SendButton_Clicked"
+                        />
+
+                        <!--<Button
+                        Text="Send"
+                        FontFamily="montserrat"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        Clicked="SendButton_Clicked"/>-->
+
+                    </Border>
+
+
+
+
+
+                </Grid>
+
+            </dxco:BottomSheet>
         </Grid>
-
-        <HorizontalStackLayout Grid.Row="1" RadioButtonGroup.GroupName="MenuCategories" BackgroundColor="#006272">
-
-            <RadioButton x:Name="QueriesRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="True" CheckedChanged="QueriesRadioButton_CheckedChanged">
-                <RadioButton.ControlTemplate>
-                    <ControlTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="24"/>
-                                <RowDefinition Height="2" />
-                                <RowDefinition Height="8" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroupList>
-                                    <VisualStateGroup x:Name="CheckedStates">
-                                        <VisualState x:Name="Checked">
-                                            <VisualState.Setters>
-                                                <Setter
-                                TargetName="Indicator"
-                                Property="BoxView.Color"
-                                Value="white"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-
-                                        <VisualState x:Name="Unchecked">
-                                            <VisualState.Setters>
-                                                <Setter
-                                TargetName="Indicator"
-                                Property="BoxView.Color"
-                                Value="Transparent"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateGroupList>
-                            </VisualStateManager.VisualStateGroups>
-                            <Label Text="Queries" Grid.Row="0" TextColor="White"/>
-                            <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
-                        </Grid>
-                    </ControlTemplate>
-                </RadioButton.ControlTemplate>
-            </RadioButton>
-
-            <RadioButton x:Name="FromUsRadioButton" MinimumWidthRequest="0" Margin="16,0,0,0" IsChecked="False" CheckedChanged="FromUsRadioButton_CheckedChanged">
-                <RadioButton.ControlTemplate>
-                    <ControlTemplate>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="24"/>
-                                <RowDefinition Height="2" />
-                                <RowDefinition Height="8" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                            </Grid.ColumnDefinitions>
-                            <VisualStateManager.VisualStateGroups>
-                                <VisualStateGroupList>
-                                    <VisualStateGroup x:Name="CheckedStates">
-                                        <VisualState x:Name="Checked">
-                                            <VisualState.Setters>
-                                                <Setter
-                                TargetName="Indicator"
-                                Property="BoxView.Color"
-                                Value="white"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-
-                                        <VisualState x:Name="Unchecked">
-                                            <VisualState.Setters>
-                                                <Setter
-                                TargetName="Indicator"
-                                Property="BoxView.Color"
-                                Value="Transparent"/>
-                                            </VisualState.Setters>
-                                        </VisualState>
-                                    </VisualStateGroup>
-                                </VisualStateGroupList>
-                            </VisualStateManager.VisualStateGroups>
-                            <Label Text="From us" Grid.Row="0" TextColor="White"/>
-                            <BoxView x:Name="Indicator" Grid.Row="1"  Color="Transparent"/>
-                        </Grid>
-                    </ControlTemplate>
-                </RadioButton.ControlTemplate>
-            </RadioButton>
-
-        </HorizontalStackLayout>
-
-        <BlazorWebView x:Name="ChatBlazorWebView" Grid.Row="2" HostPage="wwwroot/chatContentPage.html">
-            <BlazorWebView.RootComponents>
-                <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:ViewChatDetailPage}" />
-            </BlazorWebView.RootComponents>
-        </BlazorWebView>
-        
-        <Grid x:Name="PromotionAreaStackLayout" Grid.Row="2" />
-
-        
-
-    </Grid>
+    </ContentPage.Content>
 </ContentPage>

@@ -70,11 +70,18 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("List Supplement Item Page", "ViewSupplementOnClickCallback is not been set", "OK");
+                ShowAlertBottomSheet("List Supplement Item Page", "ViewSupplementOnClickCallback is not been set", "OK");
             }
             
         }
 
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
+        }
 
         #endregion
 

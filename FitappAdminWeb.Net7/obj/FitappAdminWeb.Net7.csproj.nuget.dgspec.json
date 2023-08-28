@@ -88,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -170,7 +170,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -197,7 +197,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "C:\\Program Files\\dotnet\\sdk\\7.0.307\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
           "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
@@ -220,6 +220,9 @@
               },
               "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\LogHelper\\LogHelper.csproj": {
                 "projectPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\LogHelper\\LogHelper.csproj"
+              },
+              "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MessageApi.Net7\\MessageApi.Net7.csproj": {
+                "projectPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MessageApi.Net7\\MessageApi.Net7.csproj"
               },
               "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MuhdoApi.Net7\\MuhdoApi.Net7.csproj": {
                 "projectPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MuhdoApi.Net7\\MuhdoApi.Net7.csproj"
@@ -277,6 +280,10 @@
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.5, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[7.0.10, )"
             },
             "Microsoft.AspNetCore.Session": {
               "target": "Package",
@@ -344,7 +351,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -434,7 +441,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -522,7 +529,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -602,7 +609,98 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MessageApi.Net7\\MessageApi.Net7.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MessageApi.Net7\\MessageApi.Net7.csproj",
+        "projectName": "MessageApi.Net7",
+        "projectPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MessageApi.Net7\\MessageApi.Net7.csproj",
+        "packagesPath": "C:\\Users\\joseph.alulod\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MessageApi.Net7\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\joseph.alulod\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.devexpress.com/SWpbtZGlTt4fNnE7laHq2FscCs7PjDnKdqgeXAZieRMo2dmE7Y/api": {},
+          "https://pkgs.dev.azure.com/AgeInReverse/_packaging/AirPackages-Development/nuget/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\ChartApi.Net7\\ChartApi.Net7.csproj": {
+                "projectPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\ChartApi.Net7\\ChartApi.Net7.csproj"
+              },
+              "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\ParentMiddleWare\\ParentMiddleWare.csproj": {
+                "projectPath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\ParentMiddleWare\\ParentMiddleWare.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "AIR.Maui.FitnessData.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha35, )"
+            },
+            "AIR.Maui.SecurityServices.Client": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.Maui.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha08, )"
+            },
+            "AIR.NetCore.SecurityServices.Common": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            },
+            "AIR.NetCore.SecurityServices.Core": {
+              "target": "Package",
+              "version": "[1.0.0-alpha07, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -690,7 +788,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -782,7 +880,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -870,7 +968,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     },
@@ -958,7 +1056,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
         }
       }
     }

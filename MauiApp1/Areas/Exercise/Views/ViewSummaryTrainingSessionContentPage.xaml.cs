@@ -1,3 +1,4 @@
+using MauiApp1._Push;
 using MauiApp1.Areas.Exercise.ViewModels;
 using ParentMiddleWare.Models;
 using System.Collections.ObjectModel;
@@ -47,6 +48,13 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         await IntializeData();
     }
 
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        //InitializeConnectivityManager();
+    }
+
     #endregion
 
     #region [Methods :: EventHandlers :: Controls]
@@ -66,7 +74,6 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         double sliderValue = e.NewValue;
         SetRatingSelectedValueChange(sliderValue);
     }
-
 
     #endregion
 
@@ -90,8 +97,11 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
         }
         catch
         {
-            await DisplayAlert("Retrieve Training Session", "An error occured while retrieving the training session." +
+            //await DisplayAlert("Retrieve Training Session", "An error occured while retrieving the training session." +
+            //    " Please check the internet connection and try again.", "OK"); 
+            ShowAlertBottomSheet("Retrieve Training Session", "An error occured while retrieving the training session." +
                 " Please check the internet connection and try again.", "OK");
+
         }
         finally
         {
@@ -152,8 +162,9 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
 #endif
 
 #if IOS
-        this.RatingSlider.WidthRequest = 311;
+        this.RatingSlider.WidthRequest = 320;
 #endif
+
     }
 
     private void ComputeCollectionViewHeight()
@@ -396,12 +407,25 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
             }
             
             await ExerciseApi.Net7.ExerciseApi.SetFeedBack(_TrainingSessionID, rating, feedback);
-            await Navigation.PopToRootAsync();
+
+            try
+            {
+                await Navigation.PopToRootAsync();
+                //if (PushNavigationHelper.RootPage != null)
+                //{
+                //    await PushNavigationHelper.RootPage.RefreshPage();
+                //}
+            }
+            catch { }
+           
         }
         catch
         {
-            await DisplayAlert("Saving Feedback", "An error occured while saving feedback." +
+            //await DisplayAlert("Saving Feedback", "An error occured while saving feedback." +
+            //    " Please check the internet connection and try again.", "OK");
+            ShowAlertBottomSheet("Saving Feedback", "An error occured while saving feedback." +
                 " Please check the internet connection and try again.", "OK");
+
         }
         finally 
         { 
@@ -409,5 +433,14 @@ public partial class ViewSummaryTrainingSessionContentPage : ContentPage
 
         
     }
-    #endregion  
+
+    private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+    {
+        if (App.alertBottomSheetManager != null)
+        {
+            App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+        }
+    }
+
+    #endregion
 }

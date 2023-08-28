@@ -1,0 +1,163 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33801.468
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitappAdminWeb.Net7", "FitappAdminWeb.Net7\FitappAdminWeb.Net7.csproj", "{3D5ECBBF-CC13-4C47-8E94-BA784BAB596D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChartApi.Net7", "ChartApi.Net7\ChartApi.Net7.csproj", "{EF8B52F0-B273-4106-AAE8-805A9C7DDCFD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiLibraries", "ApiLibraries", "{368BFD86-8373-4F44-8454-EB96AF3F79C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DAOLayer.Net7", "DAOLayer.Net7\DAOLayer.Net7.csproj", "{CB5E1A64-51EE-4F46-A650-36017F4B7B0F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FitAppData.Net7", "FitAppData.Net7\FitAppData.Net7.csproj", "{19ABB6AA-F0FB-42AD-8082-13483BB39392}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogHelper", "LogHelper\LogHelper.csproj", "{1B7A149D-466C-4D94-BC0C-E24DEFE04148}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MuhdoApi.Net7", "MuhdoApi.Net7\MuhdoApi.Net7.csproj", "{60DA79A6-5BD3-4E75-8412-E950603645DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ParentMiddleWare", "ParentMiddleWare\ParentMiddleWare.csproj", "{9B0ED1E2-B753-4FCC-9B6E-EA3EA6DE09B1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SupplementApi.Net7", "SupplementApi.Net7\SupplementApi.Net7.csproj", "{24398DE6-9AFC-47D7-ABC2-D4D7C388ED31}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserApi.Net7", "UserApi.Net7\UserApi.Net7.csproj", "{DCF87537-DBFC-4450-B227-5E7A8BE6D0A4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NutritionApi.Net7", "ImageApi.Net7\NutritionApi.Net7.csproj", "{5C336BE5-9718-44F9-A292-B0801101C7DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MessageApi.Net7", "MessageApi.Net7\MessageApi.Net7.csproj", "{B95FA0AB-AAF7-4508-933A-7474BC9617B4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D5ECBBF-CC13-4C47-8E94-BA784BAB596D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D5ECBBF-CC13-4C47-8E94-BA784BAB596D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D5ECBBF-CC13-4C47-8E94-BA784BAB596D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D5ECBBF-CC13-4C47-8E94-BA784BAB596D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF8B52F0-B273-4106-AAE8-805A9C7DDCFD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF8B52F0-B273-4106-AAE8-805A9C7DDCFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF8B52F0-B273-4106-AAE8-805A9C7DDCFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF8B52F0-B273-4106-AAE8-805A9C7DDCFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB5E1A64-51EE-4F46-A650-36017F4B7B0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB5E1A64-51EE-4F46-A650-36017F4B7B0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB5E1A64-51EE-4F46-A650-36017F4B7B0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB5E1A64-51EE-4F46-A650-36017F4B7B0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19ABB6AA-F0FB-42AD-8082-13483BB39392}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19ABB6AA-F0FB-42AD-8082-13483BB39392}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19ABB6AA-F0FB-42AD-8082-13483BB39392}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19ABB6AA-F0FB-42AD-8082-13483BB39392}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B7A149D-466C-4D94-BC0C-E24DEFE04148}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B7A149D-466C-4D94-BC0C-E24DEFE04148}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B7A149D-466C-4D94-BC0C-E24DEFE04148}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B7A149D-466C-4D94-BC0C-E24DEFE04148}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60DA79A6-5BD3-4E75-8412-E950603645DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60DA79A6-5BD3-4E75-8412-E950603645DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60DA79A6-5BD3-4E75-8412-E950603645DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60DA79A6-5BD3-4E75-8412-E950603645DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9B0ED1E2-B753-4FCC-9B6E-EA3EA6DE09B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9B0ED1E2-B753-4FCC-9B6E-EA3EA6DE09B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9B0ED1E2-B753-4FCC-9B6E-EA3EA6DE09B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9B0ED1E2-B753-4FCC-9B6E-EA3EA6DE09B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24398DE6-9AFC-47D7-ABC2-D4D7C388ED31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24398DE6-9AFC-47D7-ABC2-D4D7C388ED31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24398DE6-9AFC-47D7-ABC2-D4D7C388ED31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24398DE6-9AFC-47D7-ABC2-D4D7C388ED31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCF87537-DBFC-4450-B227-5E7A8BE6D0A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCF87537-DBFC-4450-B227-5E7A8BE6D0A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCF87537-DBFC-4450-B227-5E7A8BE6D0A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCF87537-DBFC-4450-B227-5E7A8BE6D0A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C336BE5-9718-44F9-A292-B0801101C7DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C336BE5-9718-44F9-A292-B0801101C7DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C336BE5-9718-44F9-A292-B0801101C7DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C336BE5-9718-44F9-A292-B0801101C7DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B95FA0AB-AAF7-4508-933A-7474BC9617B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B95FA0AB-AAF7-4508-933A-7474BC9617B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B95FA0AB-AAF7-4508-933A-7474BC9617B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B95FA0AB-AAF7-4508-933A-7474BC9617B4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EF8B52F0-B273-4106-AAE8-805A9C7DDCFD} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+		{60DA79A6-5BD3-4E75-8412-E950603645DC} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+		{9B0ED1E2-B753-4FCC-9B6E-EA3EA6DE09B1} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+		{24398DE6-9AFC-47D7-ABC2-D4D7C388ED31} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+		{DCF87537-DBFC-4450-B227-5E7A8BE6D0A4} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+		{5C336BE5-9718-44F9-A292-B0801101C7DF} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+		{B95FA0AB-AAF7-4508-933A-7474BC9617B4} = {368BFD86-8373-4F44-8454-EB96AF3F79C8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5FED232F-617D-4612-B66C-35770AE44B00}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 11
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://compare88net.visualstudio.com/
+		SccProjectUniqueName0 = FitappAdminWeb.Net7\\FitappAdminWeb.Net7.csproj
+		SccProjectName0 = FitappAdminWeb.Net7
+		SccAuxPath0 = https://compare88net.visualstudio.com
+		SccLocalPath0 = FitappAdminWeb.Net7
+		SccProvider0 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName1 = ChartApi.Net7\\ChartApi.Net7.csproj
+		SccProjectTopLevelParentUniqueName1 = FitAppAdminWeb.sln
+		SccProjectName1 = ChartApi.Net7
+		SccAuxPath1 = https://compare88net.visualstudio.com
+		SccLocalPath1 = ChartApi.Net7
+		SccProvider1 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName2 = DAOLayer.Net7\\DAOLayer.Net7.csproj
+		SccProjectName2 = DAOLayer.Net7
+		SccAuxPath2 = https://compare88net.visualstudio.com
+		SccLocalPath2 = DAOLayer.Net7
+		SccProvider2 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName3 = FitAppData.Net7\\FitAppData.Net7.csproj
+		SccProjectName3 = FitAppData.Net7
+		SccAuxPath3 = https://compare88net.visualstudio.com
+		SccLocalPath3 = FitAppData.Net7
+		SccProvider3 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName4 = LogHelper\\LogHelper.csproj
+		SccProjectName4 = LogHelper
+		SccAuxPath4 = https://compare88net.visualstudio.com
+		SccLocalPath4 = LogHelper
+		SccProvider4 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName5 = MuhdoApi.Net7\\MuhdoApi.Net7.csproj
+		SccProjectTopLevelParentUniqueName5 = FitAppAdminWeb.sln
+		SccProjectName5 = MuhdoApi.Net7
+		SccAuxPath5 = https://compare88net.visualstudio.com
+		SccLocalPath5 = MuhdoApi.Net7
+		SccProvider5 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName6 = ParentMiddleWare\\ParentMiddleWare.csproj
+		SccProjectTopLevelParentUniqueName6 = FitAppAdminWeb.sln
+		SccProjectName6 = ParentMiddleWare
+		SccAuxPath6 = https://compare88net.visualstudio.com
+		SccLocalPath6 = ParentMiddleWare
+		SccProvider6 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName7 = SupplementApi.Net7\\SupplementApi.Net7.csproj
+		SccProjectTopLevelParentUniqueName7 = FitAppAdminWeb.sln
+		SccProjectName7 = SupplementApi.Net7
+		SccAuxPath7 = https://compare88net.visualstudio.com
+		SccLocalPath7 = SupplementApi.Net7
+		SccProvider7 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName8 = UserApi.Net7\\UserApi.Net7.csproj
+		SccProjectTopLevelParentUniqueName8 = FitAppAdminWeb.sln
+		SccProjectName8 = UserApi.Net7
+		SccAuxPath8 = https://compare88net.visualstudio.com
+		SccLocalPath8 = UserApi.Net7
+		SccProvider8 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName9 = ImageApi.Net7\\NutritionApi.Net7.csproj
+		SccProjectTopLevelParentUniqueName9 = FitAppAdminWeb.sln
+		SccProjectName9 = ImageApi.Net7
+		SccAuxPath9 = https://compare88net.visualstudio.com
+		SccLocalPath9 = ImageApi.Net7
+		SccProvider9 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccProjectUniqueName10 = MessageApi.Net7\\MessageApi.Net7.csproj
+		SccProjectTopLevelParentUniqueName10 = FitAppAdminWeb.sln
+		SccProjectName10 = MessageApi.Net7
+		SccAuxPath10 = https://compare88net.visualstudio.com
+		SccLocalPath10 = MessageApi.Net7
+		SccProvider10 = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+	EndGlobalSection
+EndGlobal

@@ -1,163 +1,170 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
-    <PropertyGroup Label="Globals">
-      <SccProjectName>SAK</SccProjectName>
-      <SccProvider>SAK</SccProvider>
-      <SccAuxPath>SAK</SccAuxPath>
-      <SccLocalPath>SAK</SccLocalPath>
-    </PropertyGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <TargetFrameworks>net7.0-ios;net7.0-android33.0</TargetFrameworks>
-        <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
-        <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
-        <OutputType>Exe</OutputType>
-        <RootNamespace>MauiApp1</RootNamespace>
-        <UseMaui>true</UseMaui>
-        <SingleProject>true</SingleProject>
-        <ImplicitUsings>enable</ImplicitUsings>
-        <EnableDefaultCssItems>false</EnableDefaultCssItems>
-         <DXVer>23.1.3</DXVer>
-        <!-- Display name -->
-        <ApplicationTitle>MauiApp1</ApplicationTitle>
+  <PropertyGroup>
+    <TargetFrameworks>net7.0-ios;net7.0-android33.0</TargetFrameworks>
+    <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
+    <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
+    <OutputType>Exe</OutputType>
+    <RootNamespace>MauiApp1</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <EnableDefaultCssItems>false</EnableDefaultCssItems>
+    <DXVer>23.1.3</DXVer>
+    <!-- Display name -->
+    <ApplicationTitle>MauiApp1</ApplicationTitle>
 
-        <!-- App Identifier -->
-        <ApplicationId>com.companyname.mauiapp1</ApplicationId>
-        <ApplicationIdGuid>2547BCB8-766D-437B-8EF0-F5709FDF729D</ApplicationIdGuid>
+    <!-- App Identifier -->
+    <ApplicationId>com.companyname.mauiapp1</ApplicationId>
+    <ApplicationIdGuid>2547BCB8-766D-437B-8EF0-F5709FDF729D</ApplicationIdGuid>
 
-        <!-- Versions -->
-        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-        <ApplicationVersion>1</ApplicationVersion>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
 
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
-        <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">29.0</SupportedOSPlatformVersion>
-      <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
-      <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
-        <DefaultLanguage>en</DefaultLanguage>
-    </PropertyGroup>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">15.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">29.0</SupportedOSPlatformVersion>
+    <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+    <TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</TargetPlatformMinVersion>
+    <DefaultLanguage>en</DefaultLanguage>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
-      <MtouchLink>SdkOnly</MtouchLink>
-      <EnableSGenConc>True</EnableSGenConc>
-      <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
-      <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
-      <ApplicationVersion>9</ApplicationVersion>
-      <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
-      <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
-      <OptimizePNGs>True</OptimizePNGs>
-      <MtouchUseLlvm>True</MtouchUseLlvm>
-      <MtouchDebug>True</MtouchDebug>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
+    <MtouchLink>SdkOnly</MtouchLink>
+    <EnableSGenConc>True</EnableSGenConc>
+    <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
+    <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
+    <ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
+    <CodesignEntitlements>Platforms\iOS\Entitlements.plist</CodesignEntitlements>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchUseLlvm>True</MtouchUseLlvm>
+    <MtouchDebug>True</MtouchDebug>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
-      <CodesignKey>Apple Development: Mario Baumann (MMYHLJ5WT5)</CodesignKey>
-      <CodesignProvision>tt-dev-tom</CodesignProvision>
-      <ProvisioningType>manual</ProvisioningType>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(TargetFramework)'=='net7.0-ios'">
+    <CodesignKey>Apple Development: sir heinrich tan (P356P6GWGV)</CodesignKey>
+    <CodesignProvision>VS: me.AgeInReverse.AIR Development</CodesignProvision>
+    <ProvisioningType>automatic</ProvisioningType>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
-      <EnableLLVM>True</EnableLLVM>
-      <AndroidEnableSGenConcurrent>True</AndroidEnableSGenConcurrent>
-      <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-      <AndroidLinkTool>r8</AndroidLinkTool>
-      <TrimMode>link</TrimMode>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+    <EnableLLVM>True</EnableLLVM>
+    <AndroidEnableSGenConcurrent>True</AndroidEnableSGenConcurrent>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <TrimMode>link</TrimMode>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
-      <EnableLLVM>True</EnableLLVM>
-      <AndroidEnableSGenConcurrent>True</AndroidEnableSGenConcurrent>
-      <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-      <AndroidLinkTool>r8</AndroidLinkTool>
-      <TrimMode>link</TrimMode>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android|AnyCPU'">
+    <EnableLLVM>True</EnableLLVM>
+    <AndroidEnableSGenConcurrent>True</AndroidEnableSGenConcurrent>
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <TrimMode>link</TrimMode>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
-      <MtouchLink>SdkOnly</MtouchLink>
-      <EnableSGenConc>True</EnableSGenConc>
-      <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
-      <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
-      <ApplicationVersion>9</ApplicationVersion>
-      <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
-      <CodesignEntitlements>Platforms\iOS\EntitlementsProd.plist</CodesignEntitlements>
-      <OptimizePNGs>True</OptimizePNGs>
-      <MtouchUseLlvm>True</MtouchUseLlvm>
-      <MtouchDebug>False</MtouchDebug>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+    <MtouchLink>SdkOnly</MtouchLink>
+    <EnableSGenConc>True</EnableSGenConc>
+    <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
+    <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
+    <ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <MtouchNoSymbolStrip>False</MtouchNoSymbolStrip>
+    <CodesignEntitlements>Platforms\iOS\EntitlementsProd.plist</CodesignEntitlements>
+    <OptimizePNGs>True</OptimizePNGs>
+    <MtouchUseLlvm>True</MtouchUseLlvm>
+    <MtouchDebug>False</MtouchDebug>
+  </PropertyGroup>
 
-    <PropertyGroup>
-      <PlatformTarget>AnyCPU</PlatformTarget>
-      <ProduceReferenceAssembly>False</ProduceReferenceAssembly>	
-    </PropertyGroup>
+  <PropertyGroup>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ProduceReferenceAssembly>False</ProduceReferenceAssembly>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
-      <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-      <EnableLLVM>False</EnableLLVM>
-      <AndroidUseAapt2>True</AndroidUseAapt2>
-      <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-      <RunAOTCompilation>False</RunAOTCompilation>
-      <TrimMode>link</TrimMode>
-      <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
-      <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
-      <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
-      <ApplicationVersion>9</ApplicationVersion>
-      <AndroidKeyStore>True</AndroidKeyStore>
-      <AndroidSigningKeyStore>filename.keystore</AndroidSigningKeyStore>
-      <AndroidSigningStorePass>Redneck12345!</AndroidSigningStorePass>
-      <AndroidSigningKeyAlias>keystore.alias1</AndroidSigningKeyAlias>
-      <AndroidSigningKeyPass>Redneck12345!</AndroidSigningKeyPass>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android33.0|AnyCPU'">
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableLLVM>False</EnableLLVM>
+    <AndroidUseAapt2>True</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <RunAOTCompilation>False</RunAOTCompilation>
+    <TrimMode>link</TrimMode>
+    <AndroidEnableProfiledAot>False</AndroidEnableProfiledAot>
+    <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
+    <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
+    <ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>filename.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Redneck12345!</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>keystore.alias1</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Redneck12345!</AndroidSigningKeyPass>
+    <EmbedAssembliesIntoApk>False</EmbedAssembliesIntoApk>
+  </PropertyGroup>
 
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
-      <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
-      <EnableLLVM>True</EnableLLVM>
-      <AndroidUseAapt2>False</AndroidUseAapt2>
-      <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
-      <PublishTrimmed>True</PublishTrimmed>
-      <RunAOTCompilation>True</RunAOTCompilation>
-      <TrimMode>partial</TrimMode>
-      <AndroidLinkTool>r8</AndroidLinkTool>
-      <AndroidEnableProfiledAot>True</AndroidEnableProfiledAot>
-      <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
-      <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>3.1.4</ApplicationDisplayVersion>
-      <ApplicationVersion>9</ApplicationVersion>
-      <AndroidKeyStore>True</AndroidKeyStore>
-      <AndroidSigningKeyStore>filename.keystore</AndroidSigningKeyStore>
-      <AndroidSigningStorePass>Redneck12345!</AndroidSigningStorePass>
-      <AndroidSigningKeyAlias>keystore.alias1</AndroidSigningKeyAlias>
-      <AndroidSigningKeyPass>Redneck12345!</AndroidSigningKeyPass>
-    </PropertyGroup>
-
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.22621.0|AnyCPU'">
-      <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
-      <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.8.6</ApplicationDisplayVersion>
-      <ApplicationVersion>2</ApplicationVersion>
-    </PropertyGroup>
-
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.22621.0|AnyCPU'">
-      <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
-      <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
-      <ApplicationDisplayVersion>2.8.6</ApplicationDisplayVersion>
-      <ApplicationVersion>2</ApplicationVersion>
-    </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-android33.0|AnyCPU'">
+    <AndroidEnableMultiDex>False</AndroidEnableMultiDex>
+    <EnableLLVM>True</EnableLLVM>
+    <AndroidUseAapt2>False</AndroidUseAapt2>
+    <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
+    <PublishTrimmed>True</PublishTrimmed>
+    <RunAOTCompilation>True</RunAOTCompilation>
+    <TrimMode>partial</TrimMode>
+    <AndroidLinkTool>r8</AndroidLinkTool>
+    <AndroidEnableProfiledAot>True</AndroidEnableProfiledAot>
+    <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
+    <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
+    <ApplicationDisplayVersion>1.0.9</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <AndroidKeyStore>True</AndroidKeyStore>
+    <AndroidSigningKeyStore>filename.keystore</AndroidSigningKeyStore>
+    <AndroidSigningStorePass>Redneck12345!</AndroidSigningStorePass>
+    <AndroidSigningKeyAlias>keystore.alias1</AndroidSigningKeyAlias>
+    <AndroidSigningKeyPass>Redneck12345!</AndroidSigningKeyPass>
+  </PropertyGroup>
 
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-windows10.0.22621.0|AnyCPU'">
+    <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
+    <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
+    <ApplicationDisplayVersion>2.8.6</ApplicationDisplayVersion>
+    <ApplicationVersion>2</ApplicationVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-windows10.0.22621.0|AnyCPU'">
+    <ApplicationId>me.AgeInReverse.AIR</ApplicationId>
+    <ApplicationTitle>Age In Reverse Longevity</ApplicationTitle>
+    <ApplicationDisplayVersion>2.8.6</ApplicationDisplayVersion>
+    <ApplicationVersion>2</ApplicationVersion>
+  </PropertyGroup>
+
+  <!--<ItemGroup>
+    <AndroidPackagingOptionsExclude Include="DebugProbesKt.bin" />
+    <AndroidPackagingOptionsExclude Include="$([MSBuild]::Escape('*.kotlin_*'))" />
+  </ItemGroup>-->
+
+  <ItemGroup>
+    <ProguardConfiguration Include="proguard.cfg" />
+  </ItemGroup>
 
 
+  <ItemGroup>
+    <TrimmerRootAssembly Include="System.Collections.Immutable" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<TrimmerRootAssembly Include="System.Collections.Immutable" />
-	</ItemGroup>
+  <ItemGroup>
+    <TrimmerRootAssembly Include="Newtonsoft.Json" />
+  </ItemGroup>
 
-	<ItemGroup>
-		<TrimmerRootAssembly Include="Newtonsoft.Json" />
-	</ItemGroup>
-  
   <ItemGroup>
     <TrimmerRootAssembly Include="FitnessData.Common" />
   </ItemGroup>
@@ -169,15 +176,15 @@
       </ResolvedFileToPublish>
     </ItemGroup>
   </Target>
- 
 
-		<Target Name="DisableTrimmerForCertainAssemblies" BeforeTargets="PrepareForPublish">
-		<ItemGroup>
-			<ResolvedFileToPublish Update="@(ResolvedFileToPublish)" Condition="'%(Filename)%(Extension)' == 'Newtonsoft.Json.dll'">
-				<IsTrimmable>false</IsTrimmable>
-			</ResolvedFileToPublish>
-		</ItemGroup>
-	</Target>
+
+  <Target Name="DisableTrimmerForCertainAssemblies" BeforeTargets="PrepareForPublish">
+    <ItemGroup>
+      <ResolvedFileToPublish Update="@(ResolvedFileToPublish)" Condition="'%(Filename)%(Extension)' == 'Newtonsoft.Json.dll'">
+        <IsTrimmable>false</IsTrimmable>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
   <!-- 
   This target ensures that iOS Frameworks and XCFrameworks are collected from NuGet packages when using Hot Restart.
   _UnpackHotRestartFrameworkAssemblies doesn't work for NuGet packages, because the frameworks aren't stored as embedded resources, but just files in the package. 
@@ -226,67 +233,68 @@
     </ItemGroup>
 
   </Target>
-    <ItemGroup>
-        <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#FFFFFF" />
+  <ItemGroup>
 
-        <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" BaseSize="128,128" TintColor="#FFFFFF" Color="#006272" />
+    <!-- Splash Screen -->
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Resize="false" BaseSize="224,35" TintColor="#FFFFFF" Color="#006272" />
 
-        <!-- Images -->
-        <MauiImage Include="Resources\Images\*" />
-        <MauiImage Include="Resources\Images\**\*" />
-        <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+    <!-- Images -->
+    <MauiImage Include="Resources\Images\*" />
+    <MauiImage Include="Resources\Images\**\*" />
+    <MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
 
-        <!-- Custom Fonts -->
-        <MauiFont Include="Resources\Fonts\*" />
+    <!-- Custom Fonts -->
+    <MauiFont Include="Resources\Fonts\*" />
 
-        <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
-        <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
-    </ItemGroup>
+    <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <AndroidResource Remove="Data\FeedItemManagement\**" />
-      <Compile Remove="Data\FeedItemManagement\**" />
-      <Content Remove="Data\FeedItemManagement\**" />
-      <EmbeddedResource Remove="Data\FeedItemManagement\**" />
-      <MauiXaml Remove="Data\FeedItemManagement\**" />
-      <None Remove="Data\FeedItemManagement\**" />
-    </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Remove="Data\FeedItemManagement\**" />
+    <Compile Remove="Data\FeedItemManagement\**" />
+    <Content Remove="Data\FeedItemManagement\**" />
+    <EmbeddedResource Remove="Data\FeedItemManagement\**" />
+    <MauiXaml Remove="Data\FeedItemManagement\**" />
+    <None Remove="Data\FeedItemManagement\**" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <Content Remove="google-services.json" />
-    </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\Dominick\.nuget\packages\air.maui.fitnessdata.common\1.0.0-alpha38\contentFiles\any\net7.0-ios16.1\Transactions\dummy.txt" />
+    <Content Remove="google-services.json" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <MauiFont Remove="Resources\Fonts\OpenSans-Regular.ttf" />
-    </ItemGroup>
+  <ItemGroup>
+    <MauiFont Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+  </ItemGroup>
 
-    <ItemGroup>
-      <None Remove="GoogleService-Info.plist" />
-      <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
-      <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
-      <None Remove="Resources\Images\air_icon_90x32.png" />
-      <None Remove="Resources\Images\air_icon_white_68x24.png" />
-      <None Remove="Resources\Images\Areas\Shared\BackIcon_20x10.png" />
-      <None Remove="Resources\Images\Areas\Shared\internet_lost.png" />
-      <None Remove="Resources\Images\Areas\Shared\location_black_24x24.png" />
-      <None Remove="Resources\Images\cancel.svg" />
-      <None Remove="Resources\Images\checkmark.png" />
-      <None Remove="Resources\Images\clock_black_14x14.png" />
-      <None Remove="Resources\Images\icon_32x32.png" />
-      <None Remove="Resources\Images\lightning.svg" />
-      <None Remove="Resources\Images\lightningoff.svg" />
-      <None Remove="Resources\Images\paperplane.svg" />
-      <None Remove="Resources\Images\paperplanecolored.svg" />
-      <None Remove="Resources\Images\play_24x24.png" />
-      <None Remove="Resources\Images\profile_24x24.png" />
-      <None Remove="Resources\Images\Trash_18x20.png" />
-      <None Remove="Resources\Images\vector_12x14.png" />
-    </ItemGroup>
-
+  <ItemGroup>
+    <None Remove="GoogleService-Info.plist" />
+    <None Remove="Resources\AppIcon\appicon.svg" />
+    <None Remove="Resources\AppIcon\appiconfgr.svg" />
+    <None Remove="Resources\Fonts\Montserrat-Bold.ttf" />
+    <None Remove="Resources\Fonts\OpenSans-Regular.ttf" />
+    <None Remove="Resources\Images\air_icon_90x32.png" />
+    <None Remove="Resources\Images\air_icon_white_68x24.png" />
+    <None Remove="Resources\Images\Areas\Shared\BackIcon_20x10.png" />
+    <None Remove="Resources\Images\Areas\Shared\internet_lost.png" />
+    <None Remove="Resources\Images\Areas\Shared\location_black_24x24.png" />
+    <None Remove="Resources\Images\cancel.svg" />
+    <None Remove="Resources\Images\checkmark.png" />
+    <None Remove="Resources\Images\clock_black_14x14.png" />
+    <None Remove="Resources\Images\icon_32x32.png" />
+    <None Remove="Resources\Images\lightning.svg" />
+    <None Remove="Resources\Images\lightningoff.svg" />
+    <None Remove="Resources\Images\paperplane.svg" />
+    <None Remove="Resources\Images\paperplanecolored.svg" />
+    <None Remove="Resources\Images\play_24x24.png" />
+    <None Remove="Resources\Images\profile_24x24.png" />
+    <None Remove="Resources\Images\Trash_18x20.png" />
+    <None Remove="Resources\Images\vector_12x14.png" />
+  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+
     <PackageReference Include="DevExpress.Maui.Controls">
       <Version>23.1.3</Version>
     </PackageReference>
@@ -299,10 +307,14 @@
     <PackageReference Include="Shiny.Extensions.Configuration">
       <Version>3.0.0-beta-0124</Version>
     </PackageReference>
+    <PackageReference Include="Shiny.Core" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Hosting.Maui" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Notifications" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Notifications.Common" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Push.AzureNotificationHubs" Version="3.0.0-beta-0124" />
   </ItemGroup>
 
 
-  
   <!--<ItemGroup>
     <BundleResource Include="google-services.json" />
     <BundleResource Include="GoogleService-Info.plist" />
@@ -320,358 +332,360 @@
     <BundleResource Include="google-services.json" />
     <BundleResource Include="GoogleService-Info.plist" />
   </ItemGroup>
-  
-  
-  
-    <ItemGroup>
-      <MauiImage Include="Resources\Images\Areas\Shared\backicon_20x10.png" />
-    </ItemGroup>
 
-    <ItemGroup>
-        <TrimmableAssembly Include="DevExpress.Data.v23.1" />
+  <ItemGroup>
+    <MauiImage Include="Resources\Images\Areas\Shared\backicon_20x10.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TrimmableAssembly Include="DevExpress.Data.v23.1" />
+
+    <TrimmerRootAssembly Include="DevExpress.Maui.CollectionView" />
+    <TrimmerRootAssembly Include="DevExpress.Maui.Controls" />
+    <TrimmerRootAssembly Include="DevExpress.Maui.Core" />
+    <TrimmerRootAssembly Include="DevExpress.Maui.Editors" />
+
+    <PackageReference Include="AIR.Maui.FitnessData.Client" Version="1.0.0-alpha38" />
+    <PackageReference Include="AIR.Maui.FitnessData.Common" Version="1.0.0-alpha38" />
+    <PackageReference Include="AIR.Maui.SecurityServices.Client" Version="1.0.0-alpha12" />
+    <PackageReference Include="AIR.Maui.SecurityServices.Common" Version="1.0.0-alpha12" />
+    <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
+    <PackageReference Include="CommunityToolkit.Maui.Core" Version="5.2.0" />
+    <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="2.0.0" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="InputKit.Maui" Version="4.3.3" />
+    <PackageReference Include="MetadataExtractor" Version="2.8.0" />
+    <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
+    <!--<PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />-->
+    <!--<PackageReference Include="Shiny.Core" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Hosting.Maui" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Notifications" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Notifications.Common" Version="3.0.0-beta-0124" />
+    <PackageReference Include="Shiny.Push.AzureNotificationHubs" Version="3.0.0-beta-0124" />-->
+    <PackageReference Include="Xamarin.MediaGallery" Version="2.2.1" />
+    <!--<PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />-->
+    <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
+    <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
+    <PackageReference Include="PureWeen.Maui.FixesAndWorkarounds" Version="1.4.9" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ExerciseApi.Net7\ExerciseApi.Net7.csproj" />
+    <ProjectReference Include="..\FeedApi.Net7\FeedApi.Net7.csproj" />
+    <ProjectReference Include="..\ImageApi.Net7\NutritionApi.Net7.csproj" />
+    <ProjectReference Include="..\MessageApi.Net7\MessageApi.Net7.csproj" />
+    <ProjectReference Include="..\Statics\Statics.csproj" />
+    <ProjectReference Include="..\SupplementApi.Net7\SupplementApi.Net7.csproj" />
+    <ProjectReference Include="..\UserApi.Net7\UserApi.Net7.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\external\jquery-ui\external\jquery\jquery-3.6.4.min.js" />
+    <None Include="wwwroot\resources\public\icons\communication\call.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\call1.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\call2.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\call3.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\callbounce.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\callcancel.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\callforward.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\callincoming.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\callnone.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\calloutgoing.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\callpause.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\computer.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\envelope.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\laptop.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\laptopconnection.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailadd.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailalert.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailapprove.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailblock.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailbookmark.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailbookmark1.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailbox.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailcancel.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailedit.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailfast.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailfast1.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailforward.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailhelp.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailinformation.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\maillike.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\maillock.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailopen.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailprotected.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailreceive.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailreceive1.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailrefresh.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailremove.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailreply.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mails.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailsearch.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailsend.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailsend1.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\mailshare.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\postbox.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\rss.svg" />
+    <None Include="wwwroot\resources\public\icons\communication\stamp.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\addbook.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\ambulance.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\bandage.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\ear.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\health.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\health1.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\hearingaid.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\heartbeat.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\heartrate.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medical.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medicalfile.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medicalkit.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medicalsignboard.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medicine.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medicine1.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\medicinebottle.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\pulse.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\stretcher.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\syringe.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\thermometer.svg" />
+    <None Include="wwwroot\resources\public\icons\medical\wheelchair.svg" />
+    <None Include="wwwroot\resources\public\icons\multimedia\stop.svg" />
+    <None Include="wwwroot\resources\public\icons\uniconsSolid\check.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Overview\ViewModels\" />
+    <Folder Include="Areas\Security\ViewModels\" />
+    <Folder Include="Areas\Shared\" />
+    <Folder Include="Areas\Test\ViewModels\" />
+    <Folder Include="Resources\private\" />
+    <Folder Include="wwwroot\external\scripts\" />
+    <Folder Include="wwwroot\resources\mipmap\" />
+    <Folder Include="wwwroot\resources\public\NewFolder\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Areas\Chat\Views\PromotionContentView.xaml.cs">
+      <DependentUpon>PromotionContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Dashboard\Views\ThirdMealContentView.xaml.cs">
+      <DependentUpon>ThirdMealContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Dashboard\Views\FirstMealContentView.xaml.cs">
+      <DependentUpon>FirstMealContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Dashboard\Views\SecondMealContentView.xaml.cs">
+      <DependentUpon>SecondMealContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Dashboard\Views\NutrientDashboardContentView.xaml.cs">
+      <DependentUpon>NutrientDashboardContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Exercise\Views\ViewTrainingSessionContentPage.xaml.cs">
+      <DependentUpon>ViewTrainingSessionContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Nutrient\Views\OverviewPage.xaml.cs">
+      <DependentUpon>OverviewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Nutrient\Views\SearchRecipesPage.xaml.cs">
+      <DependentUpon>SearchRecipesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Overview\Views\RazorHomeContentPage.xaml.cs">
+      <DependentUpon>RazorHomeContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Overview\Views\HomeContentPage.xaml.cs">
+      <DependentUpon>HomeContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Profile\Views\ViewProfileContentPage.xaml.cs">
+      <DependentUpon>ViewProfileContentPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Supplement\Views\AddSupplementFormContentView.xaml.cs">
+      <DependentUpon>AddSupplementFormContentView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Areas\Test\Views\TestContentPage.xaml.cs">
+      <DependentUpon>TestContentPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <MauiXaml Update="Areas\BarcodeScanning\Views\BarcodeScannerContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\BarcodeScanning\Views\BarcodeScanningResultContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Biodata\Views\OverviewBiodata.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Chat\Views\ChatContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Chat\Views\PromotionContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Chat\Views\ViewChatContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Chat\Views\ViewChatDetailPageVer2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Chat\Views\ViewHybridChatContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Chat\Views\ViewIOSChatContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\FirstMealContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\MealContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\ThirdMealContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\ExerciseDashboardContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\ExerciseDashboardContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\ExerciseFeedListContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\ExerciseStatsContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\SecondMealContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\NutrientDashboardContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\NutrientsDailyIntakeContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\OverviewDashboard.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\SleepDashboardContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Dashboard\Views\Version2\NutrientsDailyIntakeContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\DeviceIntegration\Views\ViewDeviceIntegration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Exercise\Views\AddExerciseContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Exercise\Views\SetPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Exercise\Views\ViewSummaryTrainingSessionContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Mindfulness\Views\SelectMeditationPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Nutrient\Views\OverviewPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Nutrient\Views\SearchRecipesPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Exercise\Views\ViewVideoContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Exercise\Views\ViewVideoPopup.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Overview\Views\RazorHomeContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Overview\Views\HomeContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Profile\Views\ViewProfileContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Security\Views\MVPLoginContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Supplement\Views\AddSupplementContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Supplement\Views\AddSupplementFormContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Supplement\Views\ListSupplements.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Supplement\Views\TabletCountContentView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Supplement\Views\ViewAddSupplementSuccessContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+    <MauiXaml Update="Areas\Test\Views\TestContentPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </MauiXaml>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
 
 
-      <!--<TrimmerRootAssembly Include="DevExpress.iOS.CollectionView" />
-      <TrimmerRootAssembly Include="DevExpress.iOS.Editors" />
-      <TrimmerRootAssembly Include="DevExpress.iOS.Navigation" />-->
-      <TrimmerRootAssembly Include="DevExpress.Maui.CollectionView" />
-      <TrimmerRootAssembly Include="DevExpress.Maui.Controls" />
-      <TrimmerRootAssembly Include="DevExpress.Maui.Core" />
-      <TrimmerRootAssembly Include="DevExpress.Maui.Editors" />
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-ios'">
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#006272" />
+
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android33.0'">
+
+    <MauiIcon Include="Resources\AppIcon\appiconfgr.svg" ForegroundScale="0.65" ForegroundFile="Resources\AppIcon\appicon.svg" Color="#006272" />
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#006272" />
+    <TrimmerRootAssembly Include="Xamarin.AndroidX.Security.SecurityCrypto" />
 
 
-      <!--<TrimmableAssembly Include="DevExpress.iOS.CollectionView.v23.1" />
-      <TrimmableAssembly Include="DevExpress.iOS.Editors.v23.1" />
-      <TrimmableAssembly Include="DevExpress.iOS.Navigation.v23.1" />
-      <TrimmableAssembly Include="DevExpress.Maui.CollectionView.v23.1" />
-      <TrimmableAssembly Include="DevExpress.Maui.Controls.v23.1" />
-      <TrimmableAssembly Include="DevExpress.Maui.Core.v23.1" />
-      <TrimmableAssembly Include="DevExpress.Maui.Editors.v23.1" />-->
-      
-        <PackageReference Include="AIR.Maui.FitnessData.Client" Version="1.0.0-alpha35" />
-        <PackageReference Include="AIR.Maui.FitnessData.Common" Version="1.0.0-alpha35" />
-        <PackageReference Include="AIR.Maui.SecurityServices.Client" Version="1.0.0-alpha09" />
-        <PackageReference Include="AIR.Maui.SecurityServices.Common" Version="1.0.0-alpha09" />
-        <PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
-        <PackageReference Include="CommunityToolkit.Maui.Core" Version="5.2.0" />
-        <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="2.0.0" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-        <PackageReference Include="InputKit.Maui" Version="4.3.3" />
-        <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.1.0" />
-        <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-        <!--<PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />-->
-        <PackageReference Include="Shiny.Core" Version="3.0.0-beta-0124" />
-        <PackageReference Include="Shiny.Hosting.Maui" Version="3.0.0-beta-0124" />
-        <PackageReference Include="Shiny.Notifications" Version="3.0.0-beta-0124" />
-        <PackageReference Include="Shiny.Notifications.Common" Version="3.0.0-beta-0124" />
-        <PackageReference Include="Shiny.Push.AzureNotificationHubs" Version="3.0.0-beta-0124" />
-        <!--<PackageReference Include="Xamarin.Firebase.iOS.CloudMessaging" Version="8.10.0.3" />-->
-        <PackageReference Include="ZXing.Net.Maui" Version="0.3.0-preview.1" />
-        <PackageReference Include="ZXing.Net.Maui.Controls" Version="0.3.0-preview.1" />
-        <PackageReference Include="PureWeen.Maui.FixesAndWorkarounds" Version="1.4.9" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\ExerciseApi.Net7\ExerciseApi.Net7.csproj" />
-      <ProjectReference Include="..\FeedApi.Net7\FeedApi.Net7.csproj" />
-      <ProjectReference Include="..\ImageApi.Net7\NutritionApi.Net7.csproj" />
-      <ProjectReference Include="..\MessageApi.Net7\MessageApi.Net7.csproj" />
-      <ProjectReference Include="..\Statics\Statics.csproj" />
-      <ProjectReference Include="..\SupplementApi.Net7\SupplementApi.Net7.csproj" />
-      <ProjectReference Include="..\UserApi.Net7\UserApi.Net7.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="wwwroot\external\jquery-ui\external\jquery\jquery-3.6.4.min.js" />
-      <None Include="wwwroot\resources\public\icons\communication\call.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\call1.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\call2.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\call3.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\callbounce.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\callcancel.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\callforward.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\callincoming.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\callnone.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\calloutgoing.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\callpause.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\computer.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\envelope.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\laptop.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\laptopconnection.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mail.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mail1.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailadd.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailalert.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailapprove.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailblock.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailbookmark.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailbookmark1.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailbox.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailcancel.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailedit.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailfast.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailfast1.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailforward.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailhelp.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailinformation.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\maillike.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\maillock.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailopen.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailprotected.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailreceive.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailreceive1.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailrefresh.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailremove.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailreply.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mails.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailsearch.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailsend.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailsend1.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\mailshare.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\postbox.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\rss.svg" />
-      <None Include="wwwroot\resources\public\icons\communication\stamp.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\addbook.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\ambulance.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\bandage.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\ear.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\health.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\health1.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\hearingaid.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\heartbeat.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\heartrate.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medical.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medicalfile.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medicalkit.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medicalsignboard.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medicine.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medicine1.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\medicinebottle.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\pulse.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\stretcher.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\syringe.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\thermometer.svg" />
-      <None Include="wwwroot\resources\public\icons\medical\wheelchair.svg" />
-      <None Include="wwwroot\resources\public\icons\multimedia\stop.svg" />
-      <None Include="wwwroot\resources\public\icons\uniconsSolid\check.svg" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Areas\Overview\ViewModels\" />
-      <Folder Include="Areas\Security\ViewModels\" />
-      <Folder Include="Areas\Shared\" />
-      <Folder Include="Areas\Test\ViewModels\" />
-      <Folder Include="Resources\private\" />
-      <Folder Include="wwwroot\external\scripts\" />
-      <Folder Include="wwwroot\resources\public\NewFolder\" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="Areas\Chat\Views\PromotionContentView.xaml.cs">
-        <DependentUpon>PromotionContentView.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Dashboard\Views\ThirdMealContentView.xaml.cs">
-        <DependentUpon>ThirdMealContentView.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Dashboard\Views\FirstMealContentView.xaml.cs">
-        <DependentUpon>FirstMealContentView.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Dashboard\Views\SecondMealContentView.xaml.cs">
-        <DependentUpon>SecondMealContentView.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Dashboard\Views\NutrientDashboardContentView.xaml.cs">
-        <DependentUpon>NutrientDashboardContentView.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Exercise\Views\ViewTrainingSessionContentPage.xaml.cs">
-        <DependentUpon>ViewTrainingSessionContentPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Nutrient\Views\OverviewPage.xaml.cs">
-        <DependentUpon>OverviewPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Nutrient\Views\SearchRecipesPage.xaml.cs">
-        <DependentUpon>SearchRecipesPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Overview\Views\RazorHomeContentPage.xaml.cs">
-        <DependentUpon>RazorHomeContentPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Overview\Views\HomeContentPage.xaml.cs">
-        <DependentUpon>HomeContentPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Profile\Views\ViewProfileContentPage.xaml.cs">
-        <DependentUpon>ViewProfileContentPage.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Supplement\Views\AddSupplementFormContentView.xaml.cs">
-        <DependentUpon>AddSupplementFormContentView.xaml</DependentUpon>
-      </Compile>
-      <Compile Update="Areas\Test\Views\TestContentPage.xaml.cs">
-        <DependentUpon>TestContentPage.xaml</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
-    <ItemGroup>
-      <MauiXaml Update="Areas\BarcodeScanning\Views\BarcodeScannerContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\BarcodeScanning\Views\BarcodeScanningResultContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Biodata\Views\OverviewBiodata.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Chat\Views\ChatContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Chat\Views\PromotionContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Chat\Views\ViewChatContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Chat\Views\ViewChatDetailPageVer2.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Chat\Views\ViewHybridChatContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Chat\Views\ViewIOSChatContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\FirstMealContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\ThirdMealContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\ExerciseDashboardContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\ExerciseDashboardContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\ExerciseFeedListContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\ExerciseStatsContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\SecondMealContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\NutrientDashboardContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\NutrientsDailyIntakeContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\OverviewDashboard.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Dashboard\Views\SleepDashboardContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\DeviceIntegration\Views\ViewDeviceIntegration.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Exercise\Views\AddExerciseContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Exercise\Views\SetPopup.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Exercise\Views\ViewSummaryTrainingSessionContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Mindfulness\Views\SelectMeditationPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Nutrient\Views\OverviewPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Nutrient\Views\SearchRecipesPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Exercise\Views\ViewVideoContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Exercise\Views\ViewVideoPopup.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Overview\Views\RazorHomeContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Overview\Views\HomeContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Profile\Views\ViewProfileContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Security\Views\MVPLoginContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Supplement\Views\AddSupplementContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Supplement\Views\AddSupplementFormContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Supplement\Views\ListSupplements.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Supplement\Views\TabletCountContentView.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Supplement\Views\ViewAddSupplementSuccessContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-      <MauiXaml Update="Areas\Test\Views\TestContentPage.xaml">
-        <Generator>MSBuild:Compile</Generator>
-      </MauiXaml>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
-    </ItemGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'net7.0-android33.0'">
-      <PackageReference Include="DevExpress.Maui.Controls">
-        <Version>23.1.3</Version>
-      </PackageReference>
-      <PackageReference Include="DevExpress.Maui.Core">
-        <Version>23.1.3</Version>
-      </PackageReference>
-      <PackageReference Include="DevExpress.Maui.Editors">
-        <Version>23.1.3</Version>
-      </PackageReference>
-      <PackageReference Include="Shiny.Extensions.Configuration">
-        <Version>3.0.0-beta-0124</Version>
-      </PackageReference>
-      <PackageReference Include="Xamarin.Azure.NotificationHubs.Android">
-        <Version>1.1.4.1</Version>
-      </PackageReference>
-      <PackageReference Include="Xamarin.Firebase.Common">
-        <Version>120.3.2.1</Version>
-      </PackageReference>
-      <!--<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="2.0.2" />-->
-      <PackageReference Include="Xamarin.Firebase.Iid">
-        <Version>121.1.0.9</Version>
-      </PackageReference>
-      <PackageReference Include="Xamarin.Firebase.Messaging">
-        <Version>123.1.2.1</Version>
-      </PackageReference>
-      <PackageReference Include="Xamarin.GooglePlayServices.Base">
-        <Version>118.2.0.1</Version>
-      </PackageReference>
-      <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
-      <PackageReference Include="Xamarin.AndroidX.Activity" Version="1.7.2" />
-      <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.7.2" />
-      <!--<PackageReference Include="Xamarin.GooglePlayServices.Basement">
+    <PackageReference Include="DevExpress.Maui.Controls">
+      <Version>23.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.Maui.Core">
+      <Version>23.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="DevExpress.Maui.Editors">
+      <Version>23.1.3</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Azure.NotificationHubs.Android">
+      <Version>1.1.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Common">
+      <Version>120.3.2.1</Version>
+    </PackageReference>
+    <!--<PackageReference Include="Plugin.Firebase.CloudMessaging" Version="2.0.2" />-->
+    <PackageReference Include="Xamarin.Firebase.Iid">
+      <Version>121.1.0.9</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.Firebase.Messaging">
+      <Version>123.1.2.1</Version>
+    </PackageReference>
+    <PackageReference Include="Xamarin.GooglePlayServices.Base">
+      <Version>118.2.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.FirebasePushNotification" Version="3.4.35" />
+    <PackageReference Include="Xamarin.AndroidX.Activity" Version="1.7.2" />
+    <PackageReference Include="Xamarin.AndroidX.Activity.Ktx" Version="1.7.2" />
+    <!--<PackageReference Include="Xamarin.AndroidX.Security.SecurityCrypto" Version="1.1.0-alpha03" />-->
+    <!--<PackageReference Include="Xamarin.GooglePlayServices.Basement">
         <Version>118.2.0.1</Version>
       </PackageReference>
       <PackageReference Include="Xamarin.GooglePlayServices.Tasks">
         <Version>118.0.2.2</Version>
       </PackageReference>-->
-    </ItemGroup>
-  
+  </ItemGroup>
+
 
 
   <Target Name="ConfigureTrimming" BeforeTargets="PrepareForILLink">
@@ -729,8 +743,6 @@
       </ManagedAssemblyToLink>
     </ItemGroup>
   </Target>
-  
-  
-  
-  
+
+
 </Project>

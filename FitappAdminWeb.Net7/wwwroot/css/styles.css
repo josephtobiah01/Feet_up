@@ -1,4 +1,7 @@
-﻿
+﻿.float-right{
+    float:right;
+}
+
 .supplement-card {
     position:relative;
     padding: 10px;

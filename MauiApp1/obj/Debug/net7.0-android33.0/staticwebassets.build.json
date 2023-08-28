@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ELNAi1E0HyL3h9CWzCg2VSAmhyAr/fQrPStYwVnQQqw=",
+  "Hash": "T81AUdunZbyR1EQ5QFU/onyQxH6vBBIRDZkaexIiREg=",
   "Source": "MauiApp1",
   "BasePath": "/",
   "Mode": "Root",
@@ -610,40 +610,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\NutrientsOverviewHostPage.html"
-    },
-    {
-      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\mipmap\\images.png",
-      "SourceId": "MauiApp1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "resources/mipmap/images.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\resources\\mipmap\\images.png"
-    },
-    {
-      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\mipmap\\tmpicon.svg",
-      "SourceId": "MauiApp1",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\",
-      "BasePath": "/",
-      "RelativePath": "resources/mipmap/tmpicon.svg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\resources\\mipmap\\tmpicon.svg"
     },
     {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\private\\icons\\error\\internet_lost.svg",
@@ -6630,6 +6596,23 @@
       "OriginalItemSpec": "wwwroot\\resources\\public\\icons\\userInterface\\calculation.svg"
     },
     {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\cameraSvg.svg",
+      "SourceId": "MauiApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "resources/public/icons/userInterface/cameraSvg.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resources\\public\\icons\\userInterface\\cameraSvg.svg"
+    },
+    {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\cancel.svg",
       "SourceId": "MauiApp1",
       "SourceType": "Discovered",
@@ -7684,6 +7667,23 @@
       "OriginalItemSpec": "wwwroot\\resources\\public\\icons\\userInterface\\menu1.svg"
     },
     {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\microphone.png",
+      "SourceId": "MauiApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "resources/public/icons/userInterface/microphone.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resources\\public\\icons\\userInterface\\microphone.png"
+    },
+    {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\microphone.svg",
       "SourceId": "MauiApp1",
       "SourceType": "Discovered",
@@ -8294,6 +8294,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\resources\\public\\icons\\userInterface\\pagecollection.svg"
+    },
+    {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\paper-airplane.png",
+      "SourceId": "MauiApp1",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "resources/public/icons/userInterface/paper-airplane.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\resources\\public\\icons\\userInterface\\paper-airplane.png"
     },
     {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\MauiApp1\\wwwroot\\resources\\public\\icons\\userInterface\\paperplane.svg",

@@ -424,7 +424,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-
+                ShowAlertBottomSheet("Error","Error loading supplements.", "OK");
             }
             finally
             {
@@ -486,7 +486,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Add Supplement Mark Done Status",
+                ShowAlertBottomSheet("Add Supplement Mark Done Status",
                     "An error occurred while adding done status in supplement.", "OK");
             }
             finally
@@ -648,7 +648,7 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Close Snooze Page", "OnCloseClickCallback is not been set", "OK");
+                ShowAlertBottomSheet("Close Snooze Page", "OnCloseClickCallback is not been set", "OK");
             }
         }
 
@@ -660,7 +660,7 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Reload Supplement Details Page", "ReloadFeedItemDetailsPageEventCallback is not been set", "OK");
+                ShowAlertBottomSheet("Reload Supplement Details Page", "ReloadFeedItemDetailsPageEventCallback is not been set", "OK");
             }
         }
 
@@ -718,6 +718,14 @@ namespace MauiApp1.Pages.Supplement
                    
                 }
             }            
+        }
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
         }
 
         #endregion

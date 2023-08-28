@@ -17,6 +17,12 @@ public partial class MsgMessage
 
     public long FkRoomId { get; set; }
 
+    public int NotSeenByUserNumber { get; set; }
+
+    public long? FkImageId { get; set; }
+
+    public virtual Image FkImage { get; set; }
+
     public virtual MsgRoom FkRoom { get; set; }
 
     public virtual User FkUserSenderNavigation { get; set; }

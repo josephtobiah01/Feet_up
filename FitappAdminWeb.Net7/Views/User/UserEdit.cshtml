@@ -94,21 +94,32 @@
             </select>
         </div>
     </div>
-    <h5 class="border-bottom mb-3 pb-2">Muhdo Registration Data</h5>
-    <div class="row mb-3">
-        <div class="col">
-            <label asp-for="BarcodeString" class="form-label">Muhdo Kit ID</label>
-            @if (Model.IsNewBarcode.HasValue && Model.IsNewBarcode.Value == false)
-            {
-                <input type="hidden" asp-for="BarcodeString" />
-                <span class="form-text text-muted">@Model.BarcodeString</span>
-            }
-            else
-            {
-                <input type="text" class="form-control" asp-for="BarcodeString"/>
-            }
+    <h5 class="border-bottom mb-3 pb-2">
+        <span>Muhdo Registration Data</span>
+    </h5>
+    @if (Model.IsNewBarcode.GetValueOrDefault(true))
+    {
+        <div class="row mb-3">
+            <div class="col">
+                <p>This customer has not registered his/her Muhdo Kit. You can register this customer <a asp-action="MuhdoRegister" asp-controller="Home" asp-route-id="@Model.Id">here</a>.</p>
+            </div>
         </div>
-    </div>
+    }
+    else
+    {
+        <input type="hidden" asp-for="BarcodeString" />
+        <input type="hidden" asp-for="MuhdoEmail" />
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label asp-for="BarcodeString" class="form-label">Muhdo Kit ID</label>
+                <input type="text" class="form-control" asp-for="BarcodeString" readonly />
+            </div>
+            <div class="col-md-6">
+                <label asp-for="MuhdoEmail" class="form-label">Email Registered with Muhdo</label>
+                <input type="text" class="form-control" asp-for="MuhdoEmail" readonly />
+            </div>
+        </div>
+    }
     <div class="row mb-3">
         <div class="col d-flex justify-content-end">
             <button type="submit" class="btn btn-primary">Update Information</button>

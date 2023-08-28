@@ -12,26 +12,32 @@
             <img class="icon-image white-icon" src="resources/public/icons/medical/medicine1.svg" />
         </div>
 
-        <label class="elapsed-label">@GetFormattedTimeElapsed(_feedItem.Date, _feedItem.Status)</label>
-        <label class="title-label">@_feedItem.Title</label>
+        @if (_feedItem != null)
+        {
+            <label class="elapsed-label">@GetFormattedTimeElapsed(_feedItem.Date, _feedItem.Status)</label>
+            <label class="title-label">@_feedItem.Title</label>
+        }
         
     </div>
 
     <hr class="header-dash-border-div">
 
-    <div class="tab-group-container-div">
-        <div class="tab-item-container-div tab-item-container-supplement-to-take-div">
-            <label for="tab-item-container-supplement-to-take-input">Supplements to take</label>
-            <input id="tab-item-container-supplement-to-take-input" name="tabs-two" type="radio" checked="@_supplementFeedItemViewModel.IsSupplementToTake" @onclick="SupplementToTakeTabItem_Click">
+    @if(_supplementFeedItemViewModel != null)
+    {
+        <div class="tab-group-container-div">
+            <div class="tab-item-container-div tab-item-container-supplement-to-take-div">
+                <label for="tab-item-container-supplement-to-take-input">Supplements to take</label>
+                <input id="tab-item-container-supplement-to-take-input" name="tabs-two" type="radio" checked="@_supplementFeedItemViewModel.IsSupplementToTake" @onclick="SupplementToTakeTabItem_Click">
 
 
+            </div>
+            <div class="tab-item-container-div tab-item-container-all-supplements-div">
+                <label for="tab-item-container-all-supplements-input">see all supplements</label>
+                <input id="tab-item-container-all-supplements-input" name="tabs-two" type="radio" checked="@_supplementFeedItemViewModel.IsAllSupplement" @onclick="AllSupplementTabItem_Click" />
+
+            </div>
         </div>
-        <div class="tab-item-container-div tab-item-container-all-supplements-div">
-            <label for="tab-item-container-all-supplements-input">see all supplements</label>
-            <input id="tab-item-container-all-supplements-input" name="tabs-two" type="radio" checked="@_supplementFeedItemViewModel.IsAllSupplement" @onclick="AllSupplementTabItem_Click" />
-
-        </div>
-    </div>
+    }  
 
 
     <div class="list-content-group-div" hidden="@_isSupplementsToTakeTabDiv">
@@ -44,11 +50,17 @@
                 </button>
         </div>
 
-
-        @foreach (SupplementPageViewModel supplementPageViewModel in _supplementFeedItemViewModel.supplements)
+        @if (_supplementFeedItemViewModel != null)
         {
-            <MauiApp1.Pages.Supplement.ListUpdateSupplementItem SupplementPageViewModel="supplementPageViewModel" OnCheckCallback="CheckboxEvent_CallBack" ViewSupplementOnClickCallback="()=>ViewSupplementItem_Click(supplementPageViewModel,false)" SnoozeButtonOnClickCallback="()=>SnoozeButton_Click(supplementPageViewModel)" />
+            if (_supplementFeedItemViewModel.supplements != null)
+            {
+                @foreach (SupplementPageViewModel supplementPageViewModel in _supplementFeedItemViewModel.supplements)
+                {
+                    <MauiApp1.Pages.Supplement.ListUpdateSupplementItem SupplementPageViewModel="supplementPageViewModel" OnCheckCallback="CheckboxEvent_CallBack" ViewSupplementOnClickCallback="()=>ViewSupplementItem_Click(supplementPageViewModel,false)" SnoozeButtonOnClickCallback="()=>SnoozeButton_Click(supplementPageViewModel)" />
+                }
+            }
         }
+       
 
         @*<div class="content-group-scroll-support-div" />*@
 
@@ -56,11 +68,16 @@
 
     <div class="list-content-all-supplements-group-div" hidden="@_isAllSupplementsTabDiv">
 
-        @foreach (SupplementPageViewModel supplementPageViewModel in _supplementFeedItemViewModel.allSupplements)
+        @if (_supplementFeedItemViewModel != null)
         {
-            <MauiApp1.Pages.Supplement.ListSupplementItem SupplementPageViewModel="supplementPageViewModel" ViewSupplementOnClickCallback="()=>ViewSupplementItem_Click(supplementPageViewModel,true)" />
+            if (_supplementFeedItemViewModel.allSupplements != null)
+            {
+                @foreach (SupplementPageViewModel supplementPageViewModel in _supplementFeedItemViewModel.allSupplements)
+                {
+                    <MauiApp1.Pages.Supplement.ListSupplementItem SupplementPageViewModel="supplementPageViewModel" ViewSupplementOnClickCallback="()=>ViewSupplementItem_Click(supplementPageViewModel,true)" />
+                }
+            }
         }
-
         @*<div class="content-group-scroll-support-div" />*@
 
     </div>

@@ -32,7 +32,7 @@ public partial class FirstMealContentView : ContentView
     {
         if(this.DishItemViewModels == null)
         {
-            this.DishItemViewModels = new List<DishItemViewModel>();
+            this.DishItemViewModels = new ObservableCollection<DishItemViewModel>();
         }
 
         if(_dishItemViewModels == null)
@@ -97,7 +97,7 @@ public partial class FirstMealContentView : ContentView
             this.LoadingActivityIndicator.IsVisible = true;
             _dishItemViewModels.Clear();
             await Task.Delay(2);
-            List<DishItemViewModel> dishDetails = this.DishItemViewModels;
+            ObservableCollection<DishItemViewModel> dishDetails = this.DishItemViewModels;
             foreach (DishItemViewModel dishDetail in dishDetails)
             {
 
@@ -217,7 +217,7 @@ public partial class FirstMealContentView : ContentView
 
     #region [Properties]
 
-    public List<DishItemViewModel> DishItemViewModels;
+    public ObservableCollection<DishItemViewModel> DishItemViewModels;
 
     public event EventHandler MealListDoneLoading;
 

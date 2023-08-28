@@ -102,6 +102,8 @@ namespace FitappAdminWeb.Net7.Models
 
         public string? Country { get; set; } //in ISO country string. eg. Philippines = "PH"
 
+        public string? MuhdoEmail { get; set; }
+
         public AddressModel ShippingAddress { get; set; } = new AddressModel();
 
         public List<SelectListItem> CountryList { get; set; } = new List<SelectListItem>();
@@ -117,6 +119,7 @@ namespace FitappAdminWeb.Net7.Models
         public Eds12weekPlan? CurrentTrainingPlan { get; set; }
         public NdsSupplementPlanWeekly? CurrentSupplementPlan { get; set; }
         public MsgRoom? Room { get; set; }
+        public string? Link_ViewQuestions { get; set; }
 
         public AddInternalNoteModel AddNote { get; set; } = new AddInternalNoteModel();
     }

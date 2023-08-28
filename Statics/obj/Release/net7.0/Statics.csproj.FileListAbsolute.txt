@@ -1,0 +1,12 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\bin\Release\net7.0\Statics.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\bin\Release\net7.0\Statics.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\bin\Release\net7.0\Statics.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\refint\Statics.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\Statics.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\Statics\obj\Release\net7.0\ref\Statics.dll

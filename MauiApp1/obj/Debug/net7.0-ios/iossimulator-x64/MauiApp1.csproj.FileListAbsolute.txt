@@ -21,6 +21,7 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\DevExpress.Maui.Core.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\DevExpress.Maui.Editors.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\InputKit.Maui.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\MetadataExtractor.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.AspNetCore.Authorization.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.AspNetCore.Components.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\Microsoft.AspNetCore.Components.Forms.dll
@@ -88,6 +89,9 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\System.Security.Cryptography.ProtectedData.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\System.Security.Permissions.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\System.Windows.Extensions.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\NativeMedia.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\NativeMedia.Permision.Maui.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\XmpCore.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\zxing.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\ZXing.Net.MAUI.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\bin\Debug\net7.0-ios\iossimulator-x64\ZXing.Net.MAUI.Controls.dll
@@ -667,10 +671,8 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\question_24x24.png
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\question_44x44.png
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\schedule_20x20.png
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\splash.png
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\Resources\trash_18x20.png
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash.png
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash@2x.png
-C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\r\splash@3x.png
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\mauiimage.stamp
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\resizetizer\f\MauiInfo.plist
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MauiApp1\obj\Debug\net7.0-ios\iossimulator-x64\mauifont.stamp

@@ -12,6 +12,7 @@ namespace MauiApp1.Pages.Supplement
         private bool _isBlackCoverDivHidden = true;
         private bool _isSnoozeSupplementPageHidden = true;
         private bool _isSnoozeButtonHidden = false;
+        private string _displaySkipPopup = "none";
 
 
         private bool _isSnoozeSuccess = false;
@@ -67,6 +68,11 @@ namespace MauiApp1.Pages.Supplement
             ViewSnoozePage(supplementPageViewModel);
         }
 
+        private void SkipButton_Click()
+        {
+            _displaySkipPopup = "inline";
+        }
+
         private void SnoozeDialogIsSuccess_EventCallback(int waitMinutes)
         {
             _isSnoozeSuccess = true;
@@ -95,7 +101,7 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Close Supplement Item Page", "OnCloseClickCallback is not been set", "OK");
+                ShowAlertBottomSheet("Close Supplement Item Page", "OnCloseClickCallback is not been set", "OK");
             }
         }
 
@@ -140,6 +146,14 @@ namespace MauiApp1.Pages.Supplement
             else
             {
 
+            }
+        }
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
             }
         }
 

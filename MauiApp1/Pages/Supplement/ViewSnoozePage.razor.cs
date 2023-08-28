@@ -78,7 +78,7 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("Close Snooze Page", "OnCloseClickCallback is not been set", "OK");
+                ShowAlertBottomSheet("Close Snooze Page", "OnCloseClickCallback is not been set", "OK");
             }
         }
 
@@ -118,12 +118,12 @@ namespace MauiApp1.Pages.Supplement
                 else
                 {
                     //Error
-                    await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "An error occurred while adding 30 minutes of time.", "OK");
+                    ShowAlertBottomSheet("Add 30 minutes Snooze", "An error occurred while adding 30 minutes of time.", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "An error occurred while adding 30 minutes of time.", "OK");
+                ShowAlertBottomSheet("Add 30 minutes Snooze", "An error occurred while adding 30 minutes of time.", "OK");
             }
             finally
             {
@@ -146,12 +146,12 @@ namespace MauiApp1.Pages.Supplement
                 else
                 {
                     //Error
-                    await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "An error occurred while adding 45 minutes of time.", "OK");
+                    ShowAlertBottomSheet("Add 45 minutes Snooze", "An error occurred while adding 45 minutes of time.", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "An error occurred while adding 45 minutes of time.", "OK");
+                ShowAlertBottomSheet("Add 45 minutes Snooze", "An error occurred while adding 45 minutes of time.", "OK");
             }
             finally
             {
@@ -174,12 +174,12 @@ namespace MauiApp1.Pages.Supplement
                 else
                 {
                     //Error
-                    await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "An error occurred while adding 1 hour of time.", "OK");
+                    ShowAlertBottomSheet("Add 1 hour Snooze", "An error occurred while adding 1 hour of time.", "OK");
                 }
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "An error occurred while adding 1 hour of time.", "OK");
+                ShowAlertBottomSheet("Add 1 hour Snooze", "An error occurred while adding 1 hour of time.", "OK");
             }
             finally
             {
@@ -213,13 +213,13 @@ namespace MauiApp1.Pages.Supplement
                         else
                         {
                             //Error
-                            await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
+                            ShowAlertBottomSheet("Add Custom Snooze",
                            string.Format("An error occurred while adding {0} hour of time.", hour), "OK");
                         }
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Add Custom Snooze", "Enter a valid number", "OK");
+                        ShowAlertBottomSheet("Add Custom Snooze", "Enter a valid number", "OK");
                     }
                 }
                 else
@@ -229,7 +229,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch(Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert(string.Format("Add Custom Snooze"),
+                ShowAlertBottomSheet(string.Format("Add Custom Snooze"),
                            string.Format("An error occurred while adding {0} hour of time.", hour), "OK");
             }
             finally
@@ -264,14 +264,14 @@ namespace MauiApp1.Pages.Supplement
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
+                    ShowAlertBottomSheet("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
                 }
 
                 ClosePage();
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
             }
             finally
             {
@@ -321,7 +321,7 @@ namespace MauiApp1.Pages.Supplement
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
+                        ShowAlertBottomSheet("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
                     }
                 }
 
@@ -329,7 +329,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add 30 minutes Snooze", "Failed to snooze for 30 minutes.", "OK");
             }
             finally
             {
@@ -362,7 +362,7 @@ namespace MauiApp1.Pages.Supplement
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "Failed to snooze for 45 minutes.", "OK");
+                    ShowAlertBottomSheet("Add 45 minutes Snooze", "Failed to snooze for 45 minutes.", "OK");
                 }
 
 
@@ -370,7 +370,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add 45 minutes Snooze", "Failed to snooze for 45 minutes.", "OK");
             }
             finally
             {
@@ -417,7 +417,7 @@ namespace MauiApp1.Pages.Supplement
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Add 45 minutes Snooze", "Failed to snooze for 45 minutes.", "OK");
+                        ShowAlertBottomSheet("Add 45 minutes Snooze", "Failed to snooze for 45 minutes.", "OK");
                     }
                 }
 
@@ -425,7 +425,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add 45 minutes Snooze", "Failed to snooze for 45 minutes.", "OK");
             }
             finally
             {
@@ -457,14 +457,14 @@ namespace MauiApp1.Pages.Supplement
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Failed to snooze for 1 hour.", "OK");
+                    ShowAlertBottomSheet("Add 1 hour Snooze", "Failed to snooze for 1 hour.", "OK");
                 }
 
                 ClosePage();
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add 1 hour Snooze", "Failed to snooze for 1 hour.", "OK");
             }
             finally
             {
@@ -511,7 +511,7 @@ namespace MauiApp1.Pages.Supplement
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Add 1 hour Snooze", "Failed to snooze for 1 hour", "OK");
+                        ShowAlertBottomSheet("Add 1 hour Snooze", "Failed to snooze for 1 hour", "OK");
                     }
                 }
 
@@ -519,7 +519,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add 1 hour Snooze", "Failed to snooze for 1 hour", "OK");
             }
             finally
             {
@@ -551,7 +551,7 @@ namespace MauiApp1.Pages.Supplement
                 }
                 else
                 {
-                    await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
+                    ShowAlertBottomSheet("Add Custom Snooze",
                 string.Format("Failed to snooze for {0} hour.", hour), "OK");
                 }
 
@@ -559,7 +559,8 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add Custom Snooze",
+                 string.Format("Failed to snooze for {0} hour.", hour), "OK");
             }
             finally
             {
@@ -606,7 +607,7 @@ namespace MauiApp1.Pages.Supplement
                     }
                     else
                     {
-                        await App.Current.MainPage.DisplayAlert("Add Custom Snooze",
+                        ShowAlertBottomSheet("Add Custom Snooze",
                string.Format("Failed to snooze for {0} hour.", hour), "OK");
                     }
                 }
@@ -615,7 +616,8 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw;
+                ShowAlertBottomSheet("Add Custom Snooze",
+               string.Format("Failed to snooze for {0} hour.", hour), "OK");
             }
             finally
             {
@@ -629,6 +631,14 @@ namespace MauiApp1.Pages.Supplement
             supplementPageViewModel.ScheduledTime = supplementPageViewModel.ScheduledTime.AddMinutes(snoozeInMinutes);
             supplementPageViewModel.IsSnoozed = true;
             supplementPageViewModel.SnoozedTimeMinutes = snoozeInMinutes;
+        }
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
         }
 
         #endregion

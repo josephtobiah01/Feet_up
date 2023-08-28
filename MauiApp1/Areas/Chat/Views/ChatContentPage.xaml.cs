@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using MessageApi.Net7;
+using MessageApi.Net7.Models;
 using ParentMiddleWare;
 using System;
 using System.Collections.Generic;
@@ -60,7 +61,7 @@ namespace MauiApp1.Areas.Chat.Views
 
 
 
-            foreach (var msg in await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddDays(-7)))
+            foreach (var msg in await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddDays(-7)))
             {
                 MessageList.Add(new IMessage(msg.TimeStamp.ToLocalTime(), msg.UserName, msg.IsUserMessage, msg.MessageContent));
             }
@@ -126,7 +127,7 @@ namespace MauiApp1.Areas.Chat.Views
         {
             if (!string.IsNullOrWhiteSpace(Text))
             {
-                var sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = Text });
+                var sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { FkFederatedUser = MiddleWare.FkFederatedUser, MessageContent = Text });
                 if (sentMessage != null)
                 {
                     MessageList.Add(new IMessage(sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, sentMessage.IsUserMessage, sentMessage.MessageContent));
@@ -155,7 +156,7 @@ namespace MauiApp1.Areas.Chat.Views
         private async void TimerTick()
         {
             //MessageList = new ObservableCollection<IMessage>();
-            foreach (var msg in await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddSeconds(-30)))
+            foreach (var msg in await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddSeconds(-30)))
             {
                 if (MessageList.Where(t => t.TimeStamp.Equals(msg.TimeStamp.ToLocalTime())).FirstOrDefault() != null)
                 {

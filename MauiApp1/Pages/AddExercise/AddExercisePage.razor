@@ -79,7 +79,18 @@
     <div class="filter-popup-background-dark-overlay"> </div>
     <div class="filter-popup-background">
         <div class="filter-popup-header">
-            <label class="filter-popup-header-title"> Filter by Equipment</label>
+            @if (filterdisplaycategory == 1)
+            {
+                <label class="filter-popup-header-title"> Filter by Equipment</label>
+            }
+            else if (filterdisplaycategory == 2)
+            {
+                <label class="filter-popup-header-title"> Filter by Muscle</label>
+            }
+            else
+            {
+                <label class="filter-popup-header-title"> Filter by None</label>
+            }
             <button class="filter-popup-header-close-button" @onclick="CloseAddExerciseFilterPopup"> <img class="filter-popup-header-close-button-icon" src="resources/public/icons/userInterface/close2.svg" /> close</button>
         </div>
         <div class="filter-popup-grid">

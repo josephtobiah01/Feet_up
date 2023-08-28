@@ -23,6 +23,10 @@ System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Configuration.AddJsonFile("appsettings.json", optional: true, reloadOnChange: true);
+builder.Configuration.AddEnvironmentVariables();
+
 // Add services to the container.
 builder.Services.AddControllersWithViews(options => {
     var policy = new AuthorizationPolicyBuilder()
@@ -37,7 +41,7 @@ builder.Services.AddControllersWithViews(options => {
     //options.JsonSerializerOptions.Converters.Add(new NullableTimeSpanJsonConverter());
     options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
 });
-builder.Services.AddRazorPages();
+builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
 
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>

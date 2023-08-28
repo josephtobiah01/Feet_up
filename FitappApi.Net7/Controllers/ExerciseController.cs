@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.CodeAnalysis;
 using Microsoft.EntityFrameworkCore;
 using ParentMiddleWare;
+using ParentMiddleWare.ApiModels;
 using ParentMiddleWare.Models;
 using System.Diagnostics;
 
@@ -26,27 +27,30 @@ namespace FitappApi.Net7.Controllers
         private readonly NutritionContext _nContext;
         private readonly SupplementContext _sContext;
         private readonly LogsContext _lContext;
+        private readonly UserContext _uContext;
 
-        public ExerciseController(ExerciseContext context, NutritionContext nContext, SupplementContext sContext, LogsContext lContext)
+        public ExerciseController(ExerciseContext context, NutritionContext nContext, SupplementContext sContext, LogsContext lContext, UserContext uContext)
         {
             _context = context;
             _nContext = nContext;
             _sContext = sContext;
             _lContext = lContext;
+            _uContext = uContext;
         }
 
 
         [HttpPost]
         [Route("SetFeedBack")]
-        public async Task<bool> SetFeedBack(long traningsessionId, float sliderFeedback, string Textfeedback)
+        //public async Task<bool> SetFeedBack(long traningsessionId, float sliderFeedback, string Textfeedback)
+        public async Task<bool> SetFeedBack([FromBody]GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
-                var session = await _context.EdsTrainingSession.Where(t => t.Id == traningsessionId).FirstOrDefaultAsync();
+                var session = await _context.EdsTrainingSession.Where(t => t.Id == model.longparam1).FirstOrDefaultAsync();
                 if (session == null) return false;
-                session.CustomerFedback = Textfeedback;
-                session.FloatFeedback = sliderFeedback;
+                session.CustomerFedback = model.param1;
+                session.FloatFeedback = model.floatparam1;
                 await _context.SaveChangesAsync();
                 return true;
             }
@@ -56,21 +60,24 @@ namespace FitappApi.Net7.Controllers
             }
         }
 
-            [HttpPost]
+        [HttpPost]
         [Route("CreateCustomExercise")]
-        public async Task<EmTrainingSession> CreateCustomExercise(long UserID, string startDatetime, string EndDatetime)
+        public async Task<EmTrainingSession> CreateCustomExercise([FromBody] GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
-                DateTime StartDate = DateTime.Parse(startDatetime, System.Globalization.CultureInfo.InvariantCulture);
-                DateTime EndDatet = DateTime.Parse(EndDatetime, System.Globalization.CultureInfo.InvariantCulture);
+                DateTime StartDate = DateTime.UtcNow;
+                DateTime EndDate = StartDate.AddMinutes(30);
 
-                var user = _context.User.Where(t => t.Id == UserID)
+                var user = _context.User.Where(t => t.FkFederatedUser == model.FkFederatedUser)
                     .Include(t => t.Eds12weekPlan)
                     .ThenInclude(t => t.EdsWeeklyPlan)
                     .ThenInclude(t => t.EdsDailyPlan).FirstOrDefault();
-
+                if (user == null)
+                {
+                    return null;
+                }
                 var _Eds12weekPlan = user.Eds12weekPlan.Where(t => t.StartDate <= StartDate && t.EndDate >= StartDate && t.IsCurrent == true).FirstOrDefault();
                 if (_Eds12weekPlan == null)
                 {
@@ -126,7 +133,7 @@ namespace FitappApi.Net7.Controllers
                 EdsTrainingSession _EdsTrainingSession = new EdsTrainingSession()
                 {
                     StartDateTime = StartDate,
-                    EndDateTime = EndDatet,
+                    EndDateTime = EndDate,
                     Name = "Custom TrainingSession",
                     Description = "Custom TrainingSession"
                 };
@@ -362,6 +369,8 @@ namespace FitappApi.Net7.Controllers
             session.ExerciseDuration = eds_session.ExerciseDuration;
             session.StartTimestamp = eds_session.StartTimestamp;
             session.TimeOffset = eds_session.TimeOffset;
+            session.CustomerFeedback = eds_session.CustomerFedback;
+            session.FloatFeedback = eds_session.FloatFeedback;
 
             if (eds_session.EdsExercise != null) session.emExercises = new List<EmExercise>();
             if (eds_session.EdsExercise == null) eds_session.EdsExercise = new List<EdsExercise>();
@@ -502,9 +511,9 @@ namespace FitappApi.Net7.Controllers
 
         [HttpGet]
         [Route("GetDailyFeed")]
-        public async Task<List<FeedItem>> GetDailyFeed(long PlanId, string Dateft, long UserId)
+        public async Task<List<FeedItem>> GetDailyFeed(long PlanId, string Dateft, string FkFederatedUser)
         {
-            if (!CheckAuth()) throw new Exception("Unauthorized");
+          //  if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 var sessions = await _context.EdsTrainingSession.Where(t => t.FkEdsDailyPlan == PlanId)
@@ -565,10 +574,12 @@ namespace FitappApi.Net7.Controllers
 
                 DateTime Date = DateTime.Parse(Dateft, System.Globalization.CultureInfo.InvariantCulture).Date;
                 //  var nday = await _nContext.FnsNutritionActualDay.Where(t => t.FkUserId == UserId && t.Date >= Date && t.Date < Date.AddDays(1))
-                   var nday = await _nContext.FnsNutritionActualDay.Where(t => t.FkUserId == UserId && t.Date == Date)
+                   var nday = await _nContext.FnsNutritionActualDay.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser && t.Date == Date)
               //  var nday = await _nContext.FnsNutritionActualDay.Where(t => t.FkUserId == UserId)
-                       .Include(t => t.FnsNutritionActualMeal)
+                    .Include(t => t.FnsNutritionActualMeal)
                     .ThenInclude(t => t.MealType)
+                    .Include(t => t.FnsNutritionActualMeal)
+                    .ThenInclude(t => t.FnsNutritionActualDish)
                     .AsNoTracking()
                     .FirstOrDefaultAsync();
 
@@ -576,48 +587,7 @@ namespace FitappApi.Net7.Controllers
                 {
                     foreach (var k in nday.FnsNutritionActualMeal)
                     {
-                        NutrientMeal meal = new NutrientMeal();
-                        meal.DayId = nday.Id;
-                        meal.MealId = k.Id;
-                        meal.TargetKiloCalories = k.MealCalorieTarget;
-                        meal.MealType = k.MealTypeId;
-
-                        FeedItem nutrition = new FeedItem();
-                        nutrition.ID = "ME" + k.Id;
-                        nutrition.ItemType = FeedItemType.NutrientsFeedItem;
-                        nutrition.NutrientsFeedItem = new NutrientsFeedItem();
-                        nutrition.NutrientsFeedItem.Meal = meal;
-                        nutrition.Title = k.MealType.Name;
-                        nutrition.Date = k.SnoozedTime.HasValue ? k.SnoozedTime.Value : GetDateFromMealName(k, nday);
-                        nutrition.Text = new List<TextPair>();
-                        nutrition.Text.Add(new TextPair(TextCategory.Description, "Log your " + k.MealType.Name + " to keep log of your nutrients"));
-                        nutrition.Text.Add(new TextPair(TextCategory.Nutrient_Calories, meal.TargetKiloCalories.ToString()));
-
-                        nutrition.Status = FeedItemStatus.Scheduled;
-                        if (k.IsSkipped)
-                        {
-                            nutrition.Text = new List<TextPair>();
-                            nutrition.Status = FeedItemStatus.Skipped;
-                        }
-                        if (k.IsSnoozed) nutrition.Status = FeedItemStatus.Snoozed;
-                        if (k.IsOngoing)
-                        {
-                            nutrition.Status = FeedItemStatus.Ongoing;
-                            nutrition.Text = new List<TextPair>();
-                            nutrition.Text.Add(new TextPair(TextCategory.Description, "Hold tight! We are checking and logging your nutrients. We will notify once we are done!"));
-                        }
-                        if (k.IsComplete)
-                        {
-                            nutrition.Status = FeedItemStatus.Completed;
-                        }
-                        if (k.MealTypeId == 4)
-                        {
-                            if (k.Timestamp.HasValue)
-                            {
-                                nutrition.Date = k.Timestamp.Value;
-                            }
-                        }
-                        mm.Add(nutrition);
+                        mm.Add(GetFeedItemFromNutritionActualMeal(k, nday));
                     }
                 }
 
@@ -627,7 +597,7 @@ namespace FitappApi.Net7.Controllers
                 // 
 
 
-                var s_schedule = await _sContext.NdsSupplementSchedulePerDate.Where(t => t.CustomerId == UserId && t.Date == Date.Date)
+                var s_schedule = await _sContext.NdsSupplementSchedulePerDate.Where(t => t.Customer.FkFederatedUser == FkFederatedUser && t.Date == Date.Date)
                     .Include(t => t.NdsSupplementSchedule)
                     .ThenInclude(t => t.NdsSupplementScheduleDose)
 
@@ -775,6 +745,109 @@ namespace FitappApi.Net7.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("GetFeedItem")]
+        public async Task<FeedItem> GetFeedItem(string feedItemId)
+        {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+
+            try
+            {
+                if (feedItemId.StartsWith("ME"))
+                {
+                    feedItemId = feedItemId.Remove(0, 2);
+                    var nutritionActualMeal = await _nContext.FnsNutritionActualMeal.Where(t => t.Id == int.Parse(feedItemId))
+                        .Include(t => t.FkNutritionActualDay)
+                        .Include(t => t.MealType)
+                        .Include(t => t.FnsNutritionActualDish)
+                        .AsNoTracking()
+                        .FirstAsync();
+
+                    return GetFeedItemFromNutritionActualMeal(nutritionActualMeal, nutritionActualMeal.FkNutritionActualDay);
+                }
+                else
+                {
+                    throw new Exception("Invalid Id");
+                }
+            }
+            catch { throw; }
+        }
+
+        private FeedItem GetFeedItemFromNutritionActualMeal(FnsNutritionActualMeal nutritionActualMeal, FnsNutritionActualDay nutritionActualDay)
+        {
+            NutrientMeal meal = new NutrientMeal();
+            meal.DayId = nutritionActualDay.Id;
+            meal.MealId = nutritionActualMeal.Id;
+            meal.TargetKiloCalories = nutritionActualMeal.MealCalorieTarget;
+            meal.MealType = nutritionActualMeal.MealTypeId;
+
+            FeedItem nutrition = new FeedItem();
+            nutrition.ID = "ME" + nutritionActualMeal.Id;
+            nutrition.ItemType = FeedItemType.NutrientsFeedItem;
+            nutrition.NutrientsFeedItem = new NutrientsFeedItem();
+            nutrition.NutrientsFeedItem.Meal = meal;
+            nutrition.Title = nutritionActualMeal.MealType.Name;
+            nutrition.Date = nutritionActualMeal.SnoozedTime.HasValue ? nutritionActualMeal.SnoozedTime.Value : GetDateFromMealName(nutritionActualMeal, nutritionActualDay);
+            nutrition.Text = new List<TextPair>();
+            nutrition.Text.Add(new TextPair(TextCategory.Description, "Log your " + nutritionActualMeal.MealType.Name + " to keep log of your nutrients"));
+            nutrition.Text.Add(new TextPair(TextCategory.Nutrient_Calories, meal.TargetKiloCalories.ToString()));
+
+            nutrition.Status = FeedItemStatus.Scheduled;
+            if (nutritionActualMeal.IsSkipped)
+            {
+                nutrition.Text = new List<TextPair>();
+                nutrition.Status = FeedItemStatus.Skipped;
+            }
+            if (nutritionActualMeal.IsSnoozed)
+            {
+                nutrition.Status = FeedItemStatus.Snoozed;
+            }
+            if (nutritionActualMeal.IsOngoing)
+            {
+                nutrition.Status = FeedItemStatus.Ongoing;
+                nutrition.Text = new List<TextPair>();
+                nutrition.Text.Add(new TextPair(TextCategory.Description, "Hold tight! We are checking and logging your nutrients. We will notify once we are done!"));
+            }
+            if (nutritionActualMeal.IsComplete)
+            {
+                nutrition.Status = FeedItemStatus.Completed;
+                nutrition.Text = new List<TextPair>();
+
+                string mmeals = string.Empty;
+                double kkal = 0;
+                try
+                {
+                    foreach (var ddish in nutritionActualMeal.FnsNutritionActualDish)
+                    {
+                        try
+                        {
+                            mmeals += ddish.Name + ", ";
+                            kkal += ddish.CalorieActual.HasValue ? (ddish.NumberOfServingsConsumed * ddish.ShareOfDishConsumed) * ddish.CalorieActual.Value : 0;
+                        }
+                        catch { }
+                    }
+                    mmeals = mmeals.Trim().Trim(',');
+                    if (mmeals.Length > 87) mmeals = mmeals.Substring(0, 86) + "...";
+                }
+                catch
+                {
+
+                }
+
+                nutrition.Text.Add(new TextPair(TextCategory.Description, mmeals));
+                nutrition.Text.Add(new TextPair(TextCategory.Nutrient_Calories, Math.Round(kkal, 0).ToString()));
+            }
+            if (nutritionActualMeal.MealTypeId == 4)
+            {
+                if (nutritionActualMeal.Timestamp.HasValue)
+                {
+                    nutrition.Date = nutritionActualMeal.Timestamp.Value;
+                }
+            }
+
+            return nutrition;
+        }
+
         public static DateTime GetDateFromMealName(FnsNutritionActualMeal meal, FnsNutritionActualDay day)
         {
             if (meal.ScheduledTime.HasValue)
@@ -803,13 +876,13 @@ namespace FitappApi.Net7.Controllers
 
         [HttpGet]
         [Route("GetDailyPlanId")]
-        public async Task<List<EmDailyPlan>> GetDailyPlanId(long UserId, string Dateft)
+        public async Task<List<EmDailyPlan>> GetDailyPlanId(string FkFederatedUser, string Dateft)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 DateTime Date = DateTime.Parse(Dateft, System.Globalization.CultureInfo.InvariantCulture);
-                var user2 = await _context.Eds12weekPlan.Where(t => t.FkCustomerId == UserId && t.IsCurrent == true)
+                var user2 = await _context.Eds12weekPlan.Where(t => t.FkCustomer.FkFederatedUser == FkFederatedUser && t.IsCurrent == true)
                     .Include(t => t.EdsWeeklyPlan)
                     .ThenInclude(t => t.EdsDailyPlan)
                     .FirstAsync();
@@ -835,7 +908,7 @@ namespace FitappApi.Net7.Controllers
         // Start Methods
         [HttpPost]
         [Route("StartTrainingSession")]
-        public async Task<bool> StartTrainingSession(long TrainingSessionID)
+        public async Task<bool> StartTrainingSession([FromBody]long TrainingSessionID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsTrainingSession.Where(t => t.Id == TrainingSessionID).FirstAsync();
@@ -850,12 +923,12 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("PauseTrainingSession")]
-        public async Task<bool> PauseTrainingSession(long TrainingSessionID, int Duration)
+        public async Task<bool> PauseTrainingSession([FromBody] GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsTrainingSession.Where(t => t.Id == TrainingSessionID).FirstAsync();
+            var x = await _context.EdsTrainingSession.Where(t => t.Id == model.TrainingSessionId).FirstAsync();
             if (x == null) return false;
-            x.ExerciseDuration = Duration;
+            x.ExerciseDuration = model.intparam1;
             // x.o
             await _context.SaveChangesAsync();
             return true;
@@ -863,7 +936,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("StartExercise")]
-        public async Task<bool> StartExercise(long ExerciseID)
+        public async Task<bool> StartExercise([FromBody]long ExerciseID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsExercise.Where(t => t.Id == ExerciseID).FirstAsync();
@@ -875,7 +948,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("StartSet")]
-        public async Task<bool> StartSet(long SetID)
+        public async Task<bool> StartSet([FromBody]long SetID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsSet.Where(t => t.Id == SetID).FirstAsync();
@@ -889,13 +962,14 @@ namespace FitappApi.Net7.Controllers
         // Skip Methods
         [HttpPost]
         [Route("SkipTrainingSession")]
-        public async Task<bool> SkipTrainingSession(long TrainingSessionID, string Reason4Skipping = "")
+        //public async Task<bool> SkipTrainingSession(long TrainingSessionID, string Reason4Skipping = "")
+        public async Task<bool> SkipTrainingSession([FromBody] GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsTrainingSession.Where(t => t.Id == TrainingSessionID).FirstAsync();
+            var x = await _context.EdsTrainingSession.Where(t => t.Id == model.TrainingSessionId).FirstAsync();
             if (x == null) return false;
             x.IsSkipped = true;
-            if (!String.IsNullOrEmpty(Reason4Skipping))
+            if (!String.IsNullOrEmpty(model.param1))
             {
                 //  x.ReadonForSkipping = Reason4Skipping;
             }
@@ -905,7 +979,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("SkipExercise")]
-        public async Task<bool> SkipExercise(long ExerciseID)
+        public async Task<bool> SkipExercise([FromBody]long ExerciseID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsExercise.Where(t => t.Id == ExerciseID).FirstAsync();
@@ -917,21 +991,21 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("RescheduleTrainingSession")]
-        public async Task<bool> RescheduleTrainingSession(long TrainingSessionID, int MinutesSnooze, string Reason4Rescheduling)
+        public async Task<bool> RescheduleTrainingSession([FromBody]GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsTrainingSession.Where(t => t.Id == TrainingSessionID).FirstAsync();
+            var x = await _context.EdsTrainingSession.Where(t => t.Id == model.TrainingSessionId).FirstAsync();
             if (x == null) return false;
             // x.ReasonForReschedule = DateTime.UtcNow;
             x.IsMoved = true;
 
             if (x.StartDateTime.HasValue)
             {
-                x.StartDateTime = x.StartDateTime.Value.AddMinutes(MinutesSnooze);
+                x.StartDateTime = x.StartDateTime.Value.AddMinutes(model.intparam1);
             }
             if (x.EndDateTime.HasValue)
             {
-                x.EndDateTime = x.EndDateTime.Value.AddMinutes(MinutesSnooze);
+                x.EndDateTime = x.EndDateTime.Value.AddMinutes(model.intparam1);
             }
 
             await _context.SaveChangesAsync();
@@ -941,7 +1015,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("SkipSet")]
-        public async Task<bool> SkipSet(long SetID)
+        public async Task<bool> SkipSet([FromBody]long SetID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsSet.Where(t => t.Id == SetID).FirstAsync();
@@ -954,26 +1028,26 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("ChangeSetMetrics")]
-        public async Task<bool> ChangeSetMetrics(long SetID, long SetMetricsId, double newalue)
+        public async Task<bool> ChangeSetMetrics([FromBody]GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsSet.Where(t => t.Id == SetID).Include(t => t.EdsSetMetrics).FirstAsync();
+            var x = await _context.EdsSet.Where(t => t.Id == model.longparam1).Include(t => t.EdsSetMetrics).FirstAsync();
             if (x == null) return false;
-            var metric = x.EdsSetMetrics.Where(t => t.Id == SetMetricsId).First();
+            var metric = x.EdsSetMetrics.Where(t => t.Id == model.longparam2).First();
             if (metric == null) return false;
-            metric.ActualCustomMetric = newalue;
+            metric.ActualCustomMetric = model.doubleparam1;
             await _context.SaveChangesAsync();
             return true;
         }
 
         [HttpPost]
         [Route("EndTrainingSession")]
-        public async Task<bool> EndTrainingSession(long TrainingSessionID, int Duration)
+        public async Task<bool> EndTrainingSession([FromBody]GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsTrainingSession.Where(t => t.Id == TrainingSessionID).FirstAsync();
+            var x = await _context.EdsTrainingSession.Where(t => t.Id == model.TrainingSessionId).FirstAsync();
             if (x == null) return false;
-            x.ExerciseDuration = Duration;
+            x.ExerciseDuration = model.intparam1;
             x.EndTimeStamp = DateTime.UtcNow;
             await _context.SaveChangesAsync();
             return true;
@@ -981,7 +1055,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("EndExercise")]
-        public async Task<bool> EndExercise(long ExerciseID)
+        public async Task<bool> EndExercise([FromBody] long ExerciseID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsExercise.Where(t => t.Id == ExerciseID).FirstAsync();
@@ -995,7 +1069,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("EndSet")]
-        public async Task<bool> EndSet(long SetID)
+        public async Task<bool> EndSet([FromBody]long SetID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsSet.Where(t => t.Id == SetID).FirstAsync();
@@ -1027,7 +1101,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("UndoEndSet")]
-        public async Task<bool> UndoEndSet(long SetID)
+        public async Task<bool> UndoEndSet([FromBody]long SetID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsSet.Where(t => t.Id == SetID).FirstAsync();
@@ -1041,30 +1115,30 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("UpdateSet")]
-        public async Task<bool> UpdateSet(long setMetricsId, double newValue)
+        public async Task<bool> UpdateSet([FromBody] GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsSetMetrics.Where(t => t.Id == setMetricsId).FirstAsync();
+            var x = await _context.EdsSetMetrics.Where(t => t.Id == model.longparam1).FirstAsync();
             if (x == null) return false;
-            x.ActualCustomMetric = newValue;
+            x.ActualCustomMetric = model.doubleparam1;
             await _context.SaveChangesAsync();
             return true;
         }
 
         [HttpPost]
         [Route("UndoSkipTrainingSeseesion")]
-        public async Task<bool> UndoSkipTrainingSeseesion(long SessionId, DateTime now)
+        public async Task<bool> UndoSkipTrainingSeseesion([FromBody] GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsTrainingSession.Where(t => t.Id == SessionId).FirstAsync();
+            var x = await _context.EdsTrainingSession.Where(t => t.Id == model.longparam1).FirstAsync();
             if (x == null) return false;
             x.IsMoved = true;
             x.IsSkipped = false;
             if (x.EndDateTime.HasValue && x.StartDateTime.HasValue)
             {
                 var lenght = x.EndDateTime.Value.Subtract(x.StartDateTime.Value);
-                x.EndDateTime = now.Add(lenght);
-                x.StartDateTime = now;
+                x.EndDateTime = model.datetimeparam1.Add(lenght);
+                x.StartDateTime = model.datetimeparam1;
             }
             await _context.SaveChangesAsync();
             return true;
@@ -1073,7 +1147,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("AddNewExercise")]
-        public async Task<EmExercise> AddNewExercise(long TrainingSessionId)
+        public async Task<EmExercise> AddNewExercise([FromBody]long TrainingSessionId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var x = await _context.EdsTrainingSession.Where(t => t.Id == TrainingSessionId)
@@ -1163,10 +1237,10 @@ namespace FitappApi.Net7.Controllers
         [Route("AddNewSet")]
         // ExerciseId -- the Id of the EmExercise where the set is added to
         // EmSetId  -- the ID of the set to use as a template:  this is always the ID of the last set of that exercise
-        public async Task<EmSet> AddNewSet(long ExerciseId, long EmSetId)
+        public async Task<EmSet> AddNewSet([FromBody]GeneralExerciseApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var x = await _context.EdsExercise.Where(t => t.Id == ExerciseId)
+            var x = await _context.EdsExercise.Where(t => t.Id == model.longparam1)
                 .Include(t => t.EdsSet)
                 .ThenInclude(t => t.EdsSetMetrics)
                 .ThenInclude(t => t.FkMetricsType)
@@ -1346,13 +1420,20 @@ namespace FitappApi.Net7.Controllers
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
-                EdsExerciseTypeUserHistory hhistory = await _context.EdsExerciseTypeUserHistory.Where(t => t.UserId == model.UserId && t.FkExerciseTypeId == model.ExerciseTypeId)
+                var user = _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return false;
+                }
+                long UserId = user.Id;
+                EdsExerciseTypeUserHistory hhistory = await _context.EdsExerciseTypeUserHistory.Where(t => t.UserId == UserId && t.FkExerciseTypeId == model.ExerciseTypeId)
                     .Include(t=>t.EdsExerciseTypeUserHistorySetHistory)
                     .FirstOrDefaultAsync();
+
                 if (hhistory == null)
                 {
                     hhistory = new EdsExerciseTypeUserHistory();
-                    hhistory.UserId = model.UserId;
+                    hhistory.UserId = UserId;
                     hhistory.FkExerciseTypeId = model.ExerciseTypeId;
                     hhistory.EdsExerciseTypeUserHistorySetHistory = new List<EdsExerciseTypeUserHistorySetHistory>();
                     _context.EdsExerciseTypeUserHistory.Add(hhistory);
@@ -1389,11 +1470,17 @@ namespace FitappApi.Net7.Controllers
 
         [HttpGet]
         [Route("GetSetHistory")]
-        public async Task<List<UserSetHistory>> GetSetHistory(long UserId)
+        public async Task<List<UserSetHistory>> GetSetHistory(string FkFederatedUser)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var user = _uContext.User.Where(t => t.FkFederatedUser == FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return null;
+                }
+                long UserId = user.Id;
                 List<UserSetHistory> userHistory = new List<UserSetHistory>();
 
                 var hhistory = await _context.EdsExerciseTypeUserHistory.Where(t => t.UserId == UserId)
@@ -1408,7 +1495,7 @@ namespace FitappApi.Net7.Controllers
                     {
                         userHistory.Add(new UserSetHistory()
                         {
-                            UserId = UserId,
+                            FkFederatedUser = FkFederatedUser,
                             ExerciseTypeId = history.FkExerciseTypeId,
                             SetNumber = sethistory.SetNumber,
                             SetString = sethistory.HistoryString

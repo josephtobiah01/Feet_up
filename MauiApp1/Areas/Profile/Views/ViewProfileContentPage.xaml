@@ -2,6 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxe="clr-namespace:DevExpress.Maui.Editors;assembly=DevExpress.Maui.Editors"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              xmlns:pages="clr-namespace:MauiApp1.Pages.Profile"
              x:Class="MauiApp1.Areas.Profile.Views.ViewProfileContentPage"             
              NavigationPage.HasNavigationBar="False"
@@ -24,6 +26,79 @@
                 </BlazorWebView>
 
 
+            <dxco:BottomSheet x:Name="CameraPermissionPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.7"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+                <!--#region BottomSheetContent-->
+                <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                    <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseCameraPermissionPopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                    <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Camera permission required" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                    <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="Camera access will help you to capture dish photos for nutrients breakdown." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                    <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Text="Sure" 
+                        Clicked="RequestCameraPermissions"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                    <dxco:SimpleButton 
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text="Not Now"
+                        Clicked="GoStraightToScanResult"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                </Grid>
+                <!--#endregion-->
+            </dxco:BottomSheet>
         </Grid>
     </ContentView>
 </ContentPage>

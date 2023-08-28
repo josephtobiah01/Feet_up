@@ -2,10 +2,10 @@
   "version": 3,
   "targets": {
     "net7.0-android33.0": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -19,8 +19,11 @@
           }
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
@@ -30,12 +33,19 @@
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
           }
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -49,7 +59,7 @@
           }
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-android33.0/SecurityServices.Common.dll": {
@@ -334,6 +344,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -1308,188 +1335,6 @@
           }
         }
       },
-      "Shiny.Core/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.Extensions.Logging": "7.0.0",
-          "System.Reactive": "6.0.0",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Common": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Shiny.Core.targets": {}
-        }
-      },
-      "Shiny.Extensions.Configuration/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Xamarin.AndroidX.Preference": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Hosting.Maui/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.GooglePlayServices.Location": "120.0.0"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Locations": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications.Common/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Xamarin.Firebase.Messaging": "123.0.8"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push.AzureNotificationHubs/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Azure.NotificationHubs": "4.1.0",
-          "Shiny.Push": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Repositories/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -1675,22 +1520,6 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
-        }
-      },
-      "System.Reactive/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {
@@ -2370,25 +2199,25 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Activity": "1.6.0.1",
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0.1",
-          "Xamarin.AndroidX.CursorAdapter": "1.0.0.15",
-          "Xamarin.AndroidX.DrawerLayout": "1.1.1.10",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1",
-          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0.1",
-          "Xamarin.AndroidX.Fragment": "1.5.3.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1.1",
-          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.3",
-          "Xamarin.AndroidX.SavedState": "1.2.0.1",
-          "Xamarin.Kotlin.StdLib": "1.7.20.1"
+          "Xamarin.AndroidX.Activity": "1.5.1",
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0",
+          "Xamarin.AndroidX.CursorAdapter": "1.0.0.14",
+          "Xamarin.AndroidX.DrawerLayout": "1.1.1.9",
+          "Xamarin.AndroidX.Emoji2": "1.2.0",
+          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0",
+          "Xamarin.AndroidX.Fragment": "1.5.2",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1",
+          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.2",
+          "Xamarin.AndroidX.SavedState": "1.2.0",
+          "Xamarin.Kotlin.StdLib": "1.7.10"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.dll": {
@@ -2404,14 +2233,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.AppCompat.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15",
-          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.15"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14",
+          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll": {
@@ -2917,14 +2746,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.DynamicAnimation.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll": {
@@ -2940,12 +2769,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Emoji2.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Emoji2": "1.2.0"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll": {
@@ -3216,12 +3045,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx.targets": {}
         }
       },
-      "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
+      "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.dll": {
@@ -3509,31 +3338,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Navigation.UI.targets": {}
         }
       },
-      "Xamarin.AndroidX.Preference/1.2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Fragment.Ktx": "1.5.3.1",
-          "Xamarin.AndroidX.RecyclerView": "1.2.1.8",
-          "Xamarin.AndroidX.SlidingPaneLayout": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets": {}
-        }
-      },
       "Xamarin.AndroidX.Print/1.0.0.16": {
         "type": "package",
         "dependencies": {
@@ -3575,13 +3379,13 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
         }
       },
-      "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
+      "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.CustomView": "1.1.0.14"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.CustomView": "1.1.0.13"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.dll": {
@@ -3597,10 +3401,10 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
-      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
+      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll": {
@@ -3784,12 +3588,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Transition.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll": {
@@ -3805,12 +3609,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Interpolator": "1.0.0.15",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.14",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.dll": {
@@ -4522,28 +4326,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.CloudMessaging.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/120.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Build.Download": "0.11.3",
-          "Xamarin.GooglePlayServices.Base": "118.1.0",
-          "Xamarin.GooglePlayServices.Basement": "118.1.0",
-          "Xamarin.GooglePlayServices.Tasks": "118.0.2"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets": {}
-        }
-      },
       "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
         "type": "package",
         "dependencies": {
@@ -4728,6 +4510,48 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.8": {
@@ -4938,10 +4762,10 @@
       }
     },
     "net7.0-android33.0/android-arm": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -4955,8 +4779,11 @@
           }
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
@@ -4966,12 +4793,19 @@
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
           }
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -4985,7 +4819,7 @@
           }
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-android33.0/SecurityServices.Common.dll": {
@@ -5270,6 +5104,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -6204,188 +6055,6 @@
           }
         }
       },
-      "Shiny.Core/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.Extensions.Logging": "7.0.0",
-          "System.Reactive": "6.0.0",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Common": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Shiny.Core.targets": {}
-        }
-      },
-      "Shiny.Extensions.Configuration/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Xamarin.AndroidX.Preference": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Hosting.Maui/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.GooglePlayServices.Location": "120.0.0"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Locations": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications.Common/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Xamarin.Firebase.Messaging": "123.0.8"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push.AzureNotificationHubs/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Azure.NotificationHubs": "4.1.0",
-          "Shiny.Push": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Repositories/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -6555,22 +6224,6 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
-        }
-      },
-      "System.Reactive/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {
@@ -7188,25 +6841,25 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Activity": "1.6.0.1",
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0.1",
-          "Xamarin.AndroidX.CursorAdapter": "1.0.0.15",
-          "Xamarin.AndroidX.DrawerLayout": "1.1.1.10",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1",
-          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0.1",
-          "Xamarin.AndroidX.Fragment": "1.5.3.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1.1",
-          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.3",
-          "Xamarin.AndroidX.SavedState": "1.2.0.1",
-          "Xamarin.Kotlin.StdLib": "1.7.20.1"
+          "Xamarin.AndroidX.Activity": "1.5.1",
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0",
+          "Xamarin.AndroidX.CursorAdapter": "1.0.0.14",
+          "Xamarin.AndroidX.DrawerLayout": "1.1.1.9",
+          "Xamarin.AndroidX.Emoji2": "1.2.0",
+          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0",
+          "Xamarin.AndroidX.Fragment": "1.5.2",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1",
+          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.2",
+          "Xamarin.AndroidX.SavedState": "1.2.0",
+          "Xamarin.Kotlin.StdLib": "1.7.10"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.dll": {
@@ -7222,14 +6875,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.AppCompat.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15",
-          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.15"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14",
+          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll": {
@@ -7735,14 +7388,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.DynamicAnimation.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll": {
@@ -7758,12 +7411,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Emoji2.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Emoji2": "1.2.0"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll": {
@@ -8034,12 +7687,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx.targets": {}
         }
       },
-      "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
+      "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.dll": {
@@ -8327,31 +7980,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Navigation.UI.targets": {}
         }
       },
-      "Xamarin.AndroidX.Preference/1.2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Fragment.Ktx": "1.5.3.1",
-          "Xamarin.AndroidX.RecyclerView": "1.2.1.8",
-          "Xamarin.AndroidX.SlidingPaneLayout": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets": {}
-        }
-      },
       "Xamarin.AndroidX.Print/1.0.0.16": {
         "type": "package",
         "dependencies": {
@@ -8393,13 +8021,13 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
         }
       },
-      "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
+      "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.CustomView": "1.1.0.14"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.CustomView": "1.1.0.13"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.dll": {
@@ -8415,10 +8043,10 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
-      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
+      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll": {
@@ -8602,12 +8230,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Transition.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll": {
@@ -8623,12 +8251,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Interpolator": "1.0.0.15",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.14",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.dll": {
@@ -9340,28 +8968,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.CloudMessaging.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/120.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Build.Download": "0.11.3",
-          "Xamarin.GooglePlayServices.Base": "118.1.0",
-          "Xamarin.GooglePlayServices.Basement": "118.1.0",
-          "Xamarin.GooglePlayServices.Tasks": "118.0.2"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets": {}
-        }
-      },
       "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
         "type": "package",
         "dependencies": {
@@ -9546,6 +9152,48 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.8": {
@@ -9756,10 +9404,10 @@
       }
     },
     "net7.0-android33.0/android-arm64": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -9773,8 +9421,11 @@
           }
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
@@ -9784,12 +9435,19 @@
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
           }
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -9803,7 +9461,7 @@
           }
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-android33.0/SecurityServices.Common.dll": {
@@ -10088,6 +9746,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -11022,188 +10697,6 @@
           }
         }
       },
-      "Shiny.Core/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.Extensions.Logging": "7.0.0",
-          "System.Reactive": "6.0.0",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Common": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Shiny.Core.targets": {}
-        }
-      },
-      "Shiny.Extensions.Configuration/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Xamarin.AndroidX.Preference": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Hosting.Maui/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.GooglePlayServices.Location": "120.0.0"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Locations": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications.Common/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Xamarin.Firebase.Messaging": "123.0.8"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push.AzureNotificationHubs/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Azure.NotificationHubs": "4.1.0",
-          "Shiny.Push": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Repositories/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -11373,22 +10866,6 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
-        }
-      },
-      "System.Reactive/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {
@@ -12006,25 +11483,25 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Activity": "1.6.0.1",
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0.1",
-          "Xamarin.AndroidX.CursorAdapter": "1.0.0.15",
-          "Xamarin.AndroidX.DrawerLayout": "1.1.1.10",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1",
-          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0.1",
-          "Xamarin.AndroidX.Fragment": "1.5.3.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1.1",
-          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.3",
-          "Xamarin.AndroidX.SavedState": "1.2.0.1",
-          "Xamarin.Kotlin.StdLib": "1.7.20.1"
+          "Xamarin.AndroidX.Activity": "1.5.1",
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0",
+          "Xamarin.AndroidX.CursorAdapter": "1.0.0.14",
+          "Xamarin.AndroidX.DrawerLayout": "1.1.1.9",
+          "Xamarin.AndroidX.Emoji2": "1.2.0",
+          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0",
+          "Xamarin.AndroidX.Fragment": "1.5.2",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1",
+          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.2",
+          "Xamarin.AndroidX.SavedState": "1.2.0",
+          "Xamarin.Kotlin.StdLib": "1.7.10"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.dll": {
@@ -12040,14 +11517,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.AppCompat.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15",
-          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.15"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14",
+          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll": {
@@ -12553,14 +12030,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.DynamicAnimation.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll": {
@@ -12576,12 +12053,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Emoji2.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Emoji2": "1.2.0"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll": {
@@ -12852,12 +12329,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx.targets": {}
         }
       },
-      "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
+      "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.dll": {
@@ -13145,31 +12622,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Navigation.UI.targets": {}
         }
       },
-      "Xamarin.AndroidX.Preference/1.2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Fragment.Ktx": "1.5.3.1",
-          "Xamarin.AndroidX.RecyclerView": "1.2.1.8",
-          "Xamarin.AndroidX.SlidingPaneLayout": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets": {}
-        }
-      },
       "Xamarin.AndroidX.Print/1.0.0.16": {
         "type": "package",
         "dependencies": {
@@ -13211,13 +12663,13 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
         }
       },
-      "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
+      "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.CustomView": "1.1.0.14"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.CustomView": "1.1.0.13"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.dll": {
@@ -13233,10 +12685,10 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
-      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
+      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll": {
@@ -13420,12 +12872,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Transition.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll": {
@@ -13441,12 +12893,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Interpolator": "1.0.0.15",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.14",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.dll": {
@@ -14158,28 +13610,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.CloudMessaging.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/120.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Build.Download": "0.11.3",
-          "Xamarin.GooglePlayServices.Base": "118.1.0",
-          "Xamarin.GooglePlayServices.Basement": "118.1.0",
-          "Xamarin.GooglePlayServices.Tasks": "118.0.2"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets": {}
-        }
-      },
       "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
         "type": "package",
         "dependencies": {
@@ -14364,6 +13794,48 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.8": {
@@ -14574,10 +14046,10 @@
       }
     },
     "net7.0-android33.0/android-x64": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -14591,8 +14063,11 @@
           }
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
@@ -14602,12 +14077,19 @@
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
           }
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -14621,7 +14103,7 @@
           }
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-android33.0/SecurityServices.Common.dll": {
@@ -14906,6 +14388,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -15840,188 +15339,6 @@
           }
         }
       },
-      "Shiny.Core/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.Extensions.Logging": "7.0.0",
-          "System.Reactive": "6.0.0",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Common": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Shiny.Core.targets": {}
-        }
-      },
-      "Shiny.Extensions.Configuration/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Xamarin.AndroidX.Preference": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Hosting.Maui/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.GooglePlayServices.Location": "120.0.0"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Locations": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications.Common/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Xamarin.Firebase.Messaging": "123.0.8"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push.AzureNotificationHubs/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Azure.NotificationHubs": "4.1.0",
-          "Shiny.Push": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Repositories/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -16191,22 +15508,6 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
-        }
-      },
-      "System.Reactive/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {
@@ -16824,25 +16125,25 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Activity": "1.6.0.1",
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0.1",
-          "Xamarin.AndroidX.CursorAdapter": "1.0.0.15",
-          "Xamarin.AndroidX.DrawerLayout": "1.1.1.10",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1",
-          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0.1",
-          "Xamarin.AndroidX.Fragment": "1.5.3.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1.1",
-          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.3",
-          "Xamarin.AndroidX.SavedState": "1.2.0.1",
-          "Xamarin.Kotlin.StdLib": "1.7.20.1"
+          "Xamarin.AndroidX.Activity": "1.5.1",
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0",
+          "Xamarin.AndroidX.CursorAdapter": "1.0.0.14",
+          "Xamarin.AndroidX.DrawerLayout": "1.1.1.9",
+          "Xamarin.AndroidX.Emoji2": "1.2.0",
+          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0",
+          "Xamarin.AndroidX.Fragment": "1.5.2",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1",
+          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.2",
+          "Xamarin.AndroidX.SavedState": "1.2.0",
+          "Xamarin.Kotlin.StdLib": "1.7.10"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.dll": {
@@ -16858,14 +16159,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.AppCompat.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15",
-          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.15"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14",
+          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll": {
@@ -17371,14 +16672,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.DynamicAnimation.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll": {
@@ -17394,12 +16695,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Emoji2.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Emoji2": "1.2.0"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll": {
@@ -17670,12 +16971,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx.targets": {}
         }
       },
-      "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
+      "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.dll": {
@@ -17963,31 +17264,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Navigation.UI.targets": {}
         }
       },
-      "Xamarin.AndroidX.Preference/1.2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Fragment.Ktx": "1.5.3.1",
-          "Xamarin.AndroidX.RecyclerView": "1.2.1.8",
-          "Xamarin.AndroidX.SlidingPaneLayout": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets": {}
-        }
-      },
       "Xamarin.AndroidX.Print/1.0.0.16": {
         "type": "package",
         "dependencies": {
@@ -18029,13 +17305,13 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
         }
       },
-      "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
+      "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.CustomView": "1.1.0.14"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.CustomView": "1.1.0.13"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.dll": {
@@ -18051,10 +17327,10 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
-      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
+      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll": {
@@ -18238,12 +17514,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Transition.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll": {
@@ -18259,12 +17535,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Interpolator": "1.0.0.15",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.14",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.dll": {
@@ -18976,28 +18252,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.CloudMessaging.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/120.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Build.Download": "0.11.3",
-          "Xamarin.GooglePlayServices.Base": "118.1.0",
-          "Xamarin.GooglePlayServices.Basement": "118.1.0",
-          "Xamarin.GooglePlayServices.Tasks": "118.0.2"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets": {}
-        }
-      },
       "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
         "type": "package",
         "dependencies": {
@@ -19182,6 +18436,48 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.8": {
@@ -19392,10 +18688,10 @@
       }
     },
     "net7.0-android33.0/android-x86": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -19409,8 +18705,11 @@
           }
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
@@ -19420,12 +18719,19 @@
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
           }
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -19439,7 +18745,7 @@
           }
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-android33.0/SecurityServices.Common.dll": {
@@ -19724,6 +19030,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -20658,188 +19981,6 @@
           }
         }
       },
-      "Shiny.Core/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.Extensions.Logging": "7.0.0",
-          "System.Reactive": "6.0.0",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Common": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Shiny.Core.targets": {}
-        }
-      },
-      "Shiny.Extensions.Configuration/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Xamarin.AndroidX.Preference": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Hosting.Maui/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.GooglePlayServices.Location": "120.0.0"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Locations": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications.Common/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Xamarin.Firebase.Messaging": "123.0.8"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push.AzureNotificationHubs/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Azure.NotificationHubs": "4.1.0",
-          "Shiny.Push": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Repositories/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -21009,22 +20150,6 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
-        }
-      },
-      "System.Reactive/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {
@@ -21642,25 +20767,25 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Activity": "1.6.0.1",
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0.1",
-          "Xamarin.AndroidX.CursorAdapter": "1.0.0.15",
-          "Xamarin.AndroidX.DrawerLayout": "1.1.1.10",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1",
-          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0.1",
-          "Xamarin.AndroidX.Fragment": "1.5.3.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1.1",
-          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.3",
-          "Xamarin.AndroidX.SavedState": "1.2.0.1",
-          "Xamarin.Kotlin.StdLib": "1.7.20.1"
+          "Xamarin.AndroidX.Activity": "1.5.1",
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0",
+          "Xamarin.AndroidX.CursorAdapter": "1.0.0.14",
+          "Xamarin.AndroidX.DrawerLayout": "1.1.1.9",
+          "Xamarin.AndroidX.Emoji2": "1.2.0",
+          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0",
+          "Xamarin.AndroidX.Fragment": "1.5.2",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1",
+          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.2",
+          "Xamarin.AndroidX.SavedState": "1.2.0",
+          "Xamarin.Kotlin.StdLib": "1.7.10"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.dll": {
@@ -21676,14 +20801,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.AppCompat.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15",
-          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.15"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14",
+          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll": {
@@ -22189,14 +21314,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.DynamicAnimation.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll": {
@@ -22212,12 +21337,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Emoji2.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Emoji2": "1.2.0"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll": {
@@ -22488,12 +21613,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx.targets": {}
         }
       },
-      "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
+      "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.dll": {
@@ -22781,31 +21906,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Navigation.UI.targets": {}
         }
       },
-      "Xamarin.AndroidX.Preference/1.2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Fragment.Ktx": "1.5.3.1",
-          "Xamarin.AndroidX.RecyclerView": "1.2.1.8",
-          "Xamarin.AndroidX.SlidingPaneLayout": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets": {}
-        }
-      },
       "Xamarin.AndroidX.Print/1.0.0.16": {
         "type": "package",
         "dependencies": {
@@ -22847,13 +21947,13 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
         }
       },
-      "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
+      "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.CustomView": "1.1.0.14"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.CustomView": "1.1.0.13"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.dll": {
@@ -22869,10 +21969,10 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
-      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
+      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll": {
@@ -23056,12 +22156,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Transition.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll": {
@@ -23077,12 +22177,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Interpolator": "1.0.0.15",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.14",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.dll": {
@@ -23794,28 +22894,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.CloudMessaging.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/120.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Build.Download": "0.11.3",
-          "Xamarin.GooglePlayServices.Base": "118.1.0",
-          "Xamarin.GooglePlayServices.Basement": "118.1.0",
-          "Xamarin.GooglePlayServices.Tasks": "118.0.2"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets": {}
-        }
-      },
       "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
         "type": "package",
         "dependencies": {
@@ -24000,6 +23078,48 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.8": {
@@ -24210,10 +23330,10 @@
       }
     },
     "net7.0-android33.0/iossimulator-x64": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -24227,8 +23347,11 @@
           }
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
@@ -24238,12 +23361,19 @@
           "lib/net7.0-android33.0/FitnessData.Common.dll": {
             "related": ".aar;.xml"
           }
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -24257,7 +23387,7 @@
           }
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-android33.0/SecurityServices.Common.dll": {
@@ -24542,6 +23672,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -25476,188 +24623,6 @@
           }
         }
       },
-      "Shiny.Core/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.DependencyInjection": "7.0.0",
-          "Microsoft.Extensions.Logging": "7.0.0",
-          "System.Reactive": "6.0.0",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Common": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Core.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/Shiny.Core.targets": {}
-        }
-      },
-      "Shiny.Extensions.Configuration/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Extensions.Configuration.Binder": "7.0.0",
-          "Microsoft.Extensions.Configuration.Json": "7.0.0",
-          "Xamarin.AndroidX.Preference": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Extensions.Configuration.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Hosting.Maui/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Hosting.Maui.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.GooglePlayServices.Location": "120.0.0"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Locations": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Shiny.Support.Locations": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Notifications.Common/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Support.Repositories": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Notifications.Common.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124",
-          "Shiny.Notifications.Common": "3.0.0-beta-0124",
-          "Xamarin.Firebase.Messaging": "123.0.8"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Push.AzureNotificationHubs/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Microsoft.Azure.NotificationHubs": "4.1.0",
-          "Shiny.Push": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Push.AzureNotificationHubs.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Locations/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Locations.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
-      "Shiny.Support.Repositories/3.0.0-beta-0124": {
-        "type": "package",
-        "dependencies": {
-          "Shiny.Core": "3.0.0-beta-0124"
-        },
-        "compile": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net7.0-android33.0/Shiny.Support.Repositories.dll": {
-            "related": ".aar;.xml"
-          }
-        }
-      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -25827,22 +24792,6 @@
         },
         "runtime": {
           "lib/MonoAndroid10/_._": {}
-        }
-      },
-      "System.Reactive/6.0.0": {
-        "type": "package",
-        "compile": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0/System.Reactive.dll": {
-            "related": ".xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0/_._": {}
         }
       },
       "System.Reflection.Emit/4.7.0": {
@@ -26460,25 +25409,25 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Annotation.Experimental.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Activity": "1.6.0.1",
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0.1",
-          "Xamarin.AndroidX.CursorAdapter": "1.0.0.15",
-          "Xamarin.AndroidX.DrawerLayout": "1.1.1.10",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1",
-          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0.1",
-          "Xamarin.AndroidX.Fragment": "1.5.3.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1.1",
-          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.3",
-          "Xamarin.AndroidX.SavedState": "1.2.0.1",
-          "Xamarin.Kotlin.StdLib": "1.7.20.1"
+          "Xamarin.AndroidX.Activity": "1.5.1",
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.AppCompat.AppCompatResources": "1.5.1",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.Core.Core.Ktx": "1.9.0",
+          "Xamarin.AndroidX.CursorAdapter": "1.0.0.14",
+          "Xamarin.AndroidX.DrawerLayout": "1.1.1.9",
+          "Xamarin.AndroidX.Emoji2": "1.2.0",
+          "Xamarin.AndroidX.Emoji2.ViewsHelper": "1.2.0",
+          "Xamarin.AndroidX.Fragment": "1.5.2",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Lifecycle.ViewModel": "2.5.1",
+          "Xamarin.AndroidX.ResourceInspection.Annotation": "1.0.1.2",
+          "Xamarin.AndroidX.SavedState": "1.2.0",
+          "Xamarin.Kotlin.StdLib": "1.7.10"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.dll": {
@@ -26494,14 +25443,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.AppCompat.targets": {}
         }
       },
-      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
+      "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15",
-          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.15"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.9.0",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14",
+          "Xamarin.AndroidX.VectorDrawable.Animated": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll": {
@@ -27007,14 +25956,14 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.DynamicAnimation.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Lifecycle.Process": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll": {
@@ -27030,12 +25979,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Emoji2.targets": {}
         }
       },
-      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
+      "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Emoji2": "1.2.0.1"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.Emoji2": "1.2.0"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll": {
@@ -27306,12 +26255,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.LiveData.Core.Ktx.targets": {}
         }
       },
-      "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
+      "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1.1",
-          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.3"
+          "Xamarin.AndroidX.Annotation": "1.4.0",
+          "Xamarin.AndroidX.Lifecycle.Runtime": "2.5.1",
+          "Xamarin.AndroidX.Startup.StartupRuntime": "1.1.1.2"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.dll": {
@@ -27599,31 +26548,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Navigation.UI.targets": {}
         }
       },
-      "Xamarin.AndroidX.Preference/1.2.0.3": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.AppCompat": "1.5.1.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.Fragment.Ktx": "1.5.3.1",
-          "Xamarin.AndroidX.RecyclerView": "1.2.1.8",
-          "Xamarin.AndroidX.SlidingPaneLayout": "1.2.0.3"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets": {}
-        }
-      },
       "Xamarin.AndroidX.Print/1.0.0.16": {
         "type": "package",
         "dependencies": {
@@ -27665,13 +26589,13 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.ProfileInstaller.ProfileInstaller.targets": {}
         }
       },
-      "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
+      "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1",
-          "Xamarin.AndroidX.CustomView": "1.1.0.14"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1",
+          "Xamarin.AndroidX.CustomView": "1.1.0.13"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.dll": {
@@ -27687,10 +26611,10 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.targets": {}
         }
       },
-      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
+      "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll": {
@@ -27874,12 +26798,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Transition.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Annotation": "1.5.0.1",
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Core": "1.9.0.1"
+          "Xamarin.AndroidX.Annotation": "1.3.0.4",
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Core": "1.8.0.1"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll": {
@@ -27895,12 +26819,12 @@
           "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.targets": {}
         }
       },
-      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
+      "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
         "type": "package",
         "dependencies": {
-          "Xamarin.AndroidX.Collection": "1.2.0.5",
-          "Xamarin.AndroidX.Interpolator": "1.0.0.15",
-          "Xamarin.AndroidX.VectorDrawable": "1.1.0.15"
+          "Xamarin.AndroidX.Collection": "1.2.0.4",
+          "Xamarin.AndroidX.Interpolator": "1.0.0.14",
+          "Xamarin.AndroidX.VectorDrawable": "1.1.0.14"
         },
         "compile": {
           "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.dll": {
@@ -28612,28 +27536,6 @@
           "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.CloudMessaging.targets": {}
         }
       },
-      "Xamarin.GooglePlayServices.Location/120.0.0": {
-        "type": "package",
-        "dependencies": {
-          "Xamarin.Build.Download": "0.11.3",
-          "Xamarin.GooglePlayServices.Base": "118.1.0",
-          "Xamarin.GooglePlayServices.Basement": "118.1.0",
-          "Xamarin.GooglePlayServices.Tasks": "118.0.2"
-        },
-        "compile": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "runtime": {
-          "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll": {
-            "related": ".pdb;.xml"
-          }
-        },
-        "build": {
-          "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets": {}
-        }
-      },
       "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
         "type": "package",
         "dependencies": {
@@ -28818,6 +27720,48 @@
         },
         "build": {
           "buildTransitive/net6.0-android31.0/Xamarin.KotlinX.Coroutines.Core.Jvm.targets": {}
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.dll": {
+            "related": ".aar;.xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
         }
       },
       "ZXing.Net/0.16.8": {
@@ -29028,10 +27972,10 @@
       }
     },
     "net7.0-ios16.1": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -29041,19 +27985,29 @@
           "lib/net7.0-ios16.1/FitnessData.Client.dll": {}
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
         },
         "runtime": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -29063,7 +28017,7 @@
           "lib/net7.0-ios16.1/SecurityServices.Client.dll": {}
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-ios16.1/SecurityServices.Common.dll": {}
@@ -29328,6 +28282,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -30768,6 +29739,14 @@
           }
         }
       },
+      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+        "type": "package",
+        "compile": {
+          "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -30997,6 +29976,52 @@
           }
         }
       },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1",
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "ZXing.Net/0.16.8": {
         "type": "package",
         "compile": {
@@ -31194,10 +30219,10 @@
       }
     },
     "net7.0-ios16.1/android-arm": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -31207,19 +30232,29 @@
           "lib/net7.0-ios16.1/FitnessData.Client.dll": {}
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
         },
         "runtime": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -31229,7 +30264,7 @@
           "lib/net7.0-ios16.1/SecurityServices.Client.dll": {}
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-ios16.1/SecurityServices.Common.dll": {}
@@ -31494,6 +30529,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -32989,6 +32041,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+        "type": "package",
+        "compile": {
+          "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -33170,6 +32230,52 @@
         },
         "runtime": {
           "lib/net7.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1",
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
             "related": ".xml"
           }
         }
@@ -33371,10 +32477,10 @@
       }
     },
     "net7.0-ios16.1/android-arm64": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -33384,19 +32490,29 @@
           "lib/net7.0-ios16.1/FitnessData.Client.dll": {}
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
         },
         "runtime": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -33406,7 +32522,7 @@
           "lib/net7.0-ios16.1/SecurityServices.Client.dll": {}
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-ios16.1/SecurityServices.Common.dll": {}
@@ -33671,6 +32787,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -35166,6 +34299,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+        "type": "package",
+        "compile": {
+          "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -35347,6 +34488,52 @@
         },
         "runtime": {
           "lib/net7.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1",
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
             "related": ".xml"
           }
         }
@@ -35548,10 +34735,10 @@
       }
     },
     "net7.0-ios16.1/android-x64": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -35561,19 +34748,29 @@
           "lib/net7.0-ios16.1/FitnessData.Client.dll": {}
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
         },
         "runtime": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -35583,7 +34780,7 @@
           "lib/net7.0-ios16.1/SecurityServices.Client.dll": {}
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-ios16.1/SecurityServices.Common.dll": {}
@@ -35848,6 +35045,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -37343,6 +36557,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+        "type": "package",
+        "compile": {
+          "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -37524,6 +36746,52 @@
         },
         "runtime": {
           "lib/net7.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1",
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
             "related": ".xml"
           }
         }
@@ -37725,10 +36993,10 @@
       }
     },
     "net7.0-ios16.1/android-x86": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -37738,19 +37006,29 @@
           "lib/net7.0-ios16.1/FitnessData.Client.dll": {}
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
         },
         "runtime": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -37760,7 +37038,7 @@
           "lib/net7.0-ios16.1/SecurityServices.Client.dll": {}
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-ios16.1/SecurityServices.Common.dll": {}
@@ -38025,6 +37303,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -39520,6 +38815,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+        "type": "package",
+        "compile": {
+          "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -39701,6 +39004,52 @@
         },
         "runtime": {
           "lib/net7.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1",
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
             "related": ".xml"
           }
         }
@@ -39902,10 +39251,10 @@
       }
     },
     "net7.0-ios16.1/iossimulator-x64": {
-      "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.FitnessData.Common": "1.0.0-alpha35",
+          "AIR.Maui.FitnessData.Common": "1.0.0-alpha38",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -39915,19 +39264,29 @@
           "lib/net7.0-ios16.1/FitnessData.Client.dll": {}
         }
       },
-      "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
+      "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
         "type": "package",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3"
+        },
         "compile": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
         },
         "runtime": {
           "lib/net7.0-ios16.1/FitnessData.Common.dll": {}
+        },
+        "contentFiles": {
+          "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
         }
       },
-      "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
         "type": "package",
         "dependencies": {
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha09",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha12",
           "Newtonsoft.Json": "13.0.3"
         },
         "compile": {
@@ -39937,7 +39296,7 @@
           "lib/net7.0-ios16.1/SecurityServices.Client.dll": {}
         }
       },
-      "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
+      "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
         "type": "package",
         "compile": {
           "lib/net7.0-ios16.1/SecurityServices.Common.dll": {}
@@ -40202,6 +39561,23 @@
             "buildAction": "None",
             "codeLanguage": "any",
             "copyToOutput": false
+          }
+        }
+      },
+      "MetadataExtractor/2.8.0": {
+        "type": "package",
+        "dependencies": {
+          "System.Text.Encoding.CodePages": "4.5.1",
+          "XmpCore": "6.1.10.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/MetadataExtractor.dll": {
+            "related": ".xml"
           }
         }
       },
@@ -41697,6 +41073,14 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
+      "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+        "type": "package",
+        "compile": {
+          "ref/net6.0/System.Runtime.InteropServices.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "System.Security.AccessControl/5.0.0": {
         "type": "package",
         "dependencies": {
@@ -41878,6 +41262,52 @@
         },
         "runtime": {
           "lib/net7.0/System.Windows.Extensions.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1",
+          "Xamarin.MediaGallery.Permision.Maui": "2.2.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+        "type": "package",
+        "dependencies": {
+          "System.Runtime.InteropServices.NFloat.Internal": "6.0.1"
+        },
+        "compile": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "XmpCore/6.1.10.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/XmpCore.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/XmpCore.dll": {
             "related": ".xml"
           }
         }
@@ -42080,13 +41510,13 @@
     }
   },
   "libraries": {
-    "AIR.Maui.FitnessData.Client/1.0.0-alpha35": {
-      "sha512": "PZUMov3SMph0oO+QhmCbbr65UZ9L9C4HFh8lzSsTTs6lkqbomOoyuUz/xwVVOkHqCGYmx8kG97P3ZfRdT1QFEA==",
+    "AIR.Maui.FitnessData.Client/1.0.0-alpha38": {
+      "sha512": "vl5OuPG3SKzPIeI/WNXEpvJZcwaf6Kaam/wFFP6ILR1iZipUm3G73HwlHWXHcRG0uGEUyebtrVukf7V1Dr7D2A==",
       "type": "package",
-      "path": "air.maui.fitnessdata.client/1.0.0-alpha35",
+      "path": "air.maui.fitnessdata.client/1.0.0-alpha38",
       "files": [
         ".nupkg.metadata",
-        "air.maui.fitnessdata.client.1.0.0-alpha35.nupkg.sha512",
+        "air.maui.fitnessdata.client.1.0.0-alpha38.nupkg.sha512",
         "air.maui.fitnessdata.client.nuspec",
         "lib/net7.0-android33.0/FitnessData.Client.aar",
         "lib/net7.0-android33.0/FitnessData.Client.dll",
@@ -42097,14 +41527,20 @@
         "lib/net7.0/FitnessData.Client.dll"
       ]
     },
-    "AIR.Maui.FitnessData.Common/1.0.0-alpha35": {
-      "sha512": "2vJgC4BgIJK6VIYcuEu4WeDQEMtkPFnkEyo8etVlIbInL0+RduR/vY6HF9nA12rRV6V9sFFcsegn6NHiSiHZ1g==",
+    "AIR.Maui.FitnessData.Common/1.0.0-alpha38": {
+      "sha512": "IboH7O4OeJ79xmzXM3KWZb7jAU1VLBYG1vwzgBTrS/R8ZYN+fzG5DKxcXbVsxPjOYXTGm+hVwKbOYyiwHX9Ebw==",
       "type": "package",
-      "path": "air.maui.fitnessdata.common/1.0.0-alpha35",
+      "path": "air.maui.fitnessdata.common/1.0.0-alpha38",
       "files": [
         ".nupkg.metadata",
-        "air.maui.fitnessdata.common.1.0.0-alpha35.nupkg.sha512",
+        "air.maui.fitnessdata.common.1.0.0-alpha38.nupkg.sha512",
         "air.maui.fitnessdata.common.nuspec",
+        "content/Transactions/dummy.txt",
+        "contentFiles/any/net7.0-android33.0/Transactions/dummy.txt",
+        "contentFiles/any/net7.0-ios16.1/Transactions/dummy.txt",
+        "contentFiles/any/net7.0-maccatalyst16.1/Transactions/dummy.txt",
+        "contentFiles/any/net7.0-windows10.0.19041/Transactions/dummy.txt",
+        "contentFiles/any/net7.0/Transactions/dummy.txt",
         "lib/net7.0-android33.0/FitnessData.Common.aar",
         "lib/net7.0-android33.0/FitnessData.Common.dll",
         "lib/net7.0-android33.0/FitnessData.Common.xml",
@@ -42114,13 +41550,13 @@
         "lib/net7.0/FitnessData.Common.dll"
       ]
     },
-    "AIR.Maui.SecurityServices.Client/1.0.0-alpha09": {
-      "sha512": "6wTbCvo8ND5loui5iMz2QtOdBeSK9AUXllbjaciLh5Jp69mlmF5F+wa8mO3o9/o6jXSA3IFQNCSbKWmUr52TRQ==",
+    "AIR.Maui.SecurityServices.Client/1.0.0-alpha12": {
+      "sha512": "Bbh3ihmaRZHtjGTof2ImF4gX0kJaLNBzlLOpPteHmlmIytCycKYU1oh72uB3gJQszCkXR2O95w9MRITZPq13JQ==",
       "type": "package",
-      "path": "air.maui.securityservices.client/1.0.0-alpha09",
+      "path": "air.maui.securityservices.client/1.0.0-alpha12",
       "files": [
         ".nupkg.metadata",
-        "air.maui.securityservices.client.1.0.0-alpha09.nupkg.sha512",
+        "air.maui.securityservices.client.1.0.0-alpha12.nupkg.sha512",
         "air.maui.securityservices.client.nuspec",
         "lib/net7.0-android33.0/SecurityServices.Client.aar",
         "lib/net7.0-android33.0/SecurityServices.Client.dll",
@@ -42131,13 +41567,13 @@
         "lib/net7.0/SecurityServices.Client.dll"
       ]
     },
-    "AIR.Maui.SecurityServices.Common/1.0.0-alpha09": {
-      "sha512": "NgAWUJ0IqPqBB6eav1nRd/oVpvFSot81dI4ZhKNYqm5HTnZEuV79UQSq+gFBlApcKHlcUndnOgCOhksDhm0kgQ==",
+    "AIR.Maui.SecurityServices.Common/1.0.0-alpha12": {
+      "sha512": "GzWl6zYnWjskXd24ATcc3M4dHos7QwgsvBKOsynj1z/LJ1hVpXTco8MlxGdnV/bV9tv3flZBaTiKyRr+FWru2w==",
       "type": "package",
-      "path": "air.maui.securityservices.common/1.0.0-alpha09",
+      "path": "air.maui.securityservices.common/1.0.0-alpha12",
       "files": [
         ".nupkg.metadata",
-        "air.maui.securityservices.common.1.0.0-alpha09.nupkg.sha512",
+        "air.maui.securityservices.common.1.0.0-alpha12.nupkg.sha512",
         "air.maui.securityservices.common.nuspec",
         "lib/net7.0-android33.0/SecurityServices.Common.aar",
         "lib/net7.0-android33.0/SecurityServices.Common.dll",
@@ -42715,6 +42151,27 @@
         "lib/net7.0/InputKit.Maui.dll",
         "lib/net7.0/InputKit.Maui.pdb",
         "lib/net7.0/InputKit.Maui.xml"
+      ]
+    },
+    "MetadataExtractor/2.8.0": {
+      "sha512": "p4sa1yRUZNU2S4febP3ewmM524QDZ7qSM+PamR7vKLThlEDM1Wz4VBxO48Nk31uakUVUQ7az0ULkOyt31i+q0Q==",
+      "type": "package",
+      "path": "metadataextractor/2.8.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net35/MetadataExtractor.dll",
+        "lib/net35/MetadataExtractor.xml",
+        "lib/net45/MetadataExtractor.dll",
+        "lib/net45/MetadataExtractor.xml",
+        "lib/netstandard1.3/MetadataExtractor.dll",
+        "lib/netstandard1.3/MetadataExtractor.xml",
+        "lib/netstandard2.0/MetadataExtractor.dll",
+        "lib/netstandard2.0/MetadataExtractor.xml",
+        "metadata-extractor-logo-128.png",
+        "metadataextractor.2.8.0.nupkg.sha512",
+        "metadataextractor.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Authorization/7.0.0": {
@@ -44572,35 +44029,6 @@
         "shiny.hosting.maui.nuspec"
       ]
     },
-    "Shiny.Locations/3.0.0-beta-0124": {
-      "sha512": "uNuY02CMtl3kA+aTreOLcv4/1we8z0uh9rFjQoSEf9DxqyKOqb78hGzACSTGnqeJyS2OftU6EnS/5WUNTWpQbQ==",
-      "type": "package",
-      "path": "shiny.locations/3.0.0-beta-0124",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "icon.png",
-        "lib/monoandroid12.0/Shiny.Locations.dll",
-        "lib/monoandroid12.0/Shiny.Locations.xml",
-        "lib/net7.0-android33.0/Shiny.Locations.aar",
-        "lib/net7.0-android33.0/Shiny.Locations.dll",
-        "lib/net7.0-android33.0/Shiny.Locations.xml",
-        "lib/net7.0-ios16.1/Shiny.Locations.dll",
-        "lib/net7.0-ios16.1/Shiny.Locations.xml",
-        "lib/net7.0-maccatalyst16.1/Shiny.Locations.dll",
-        "lib/net7.0-maccatalyst16.1/Shiny.Locations.xml",
-        "lib/net7.0/Shiny.Locations.dll",
-        "lib/net7.0/Shiny.Locations.xml",
-        "lib/netstandard2.1/Shiny.Locations.dll",
-        "lib/netstandard2.1/Shiny.Locations.xml",
-        "lib/xamarinios10/Shiny.Locations.dll",
-        "lib/xamarinios10/Shiny.Locations.xml",
-        "readme.md",
-        "readme.txt",
-        "shiny.locations.3.0.0-beta-0124.nupkg.sha512",
-        "shiny.locations.nuspec"
-      ]
-    },
     "Shiny.Notifications/3.0.0-beta-0124": {
       "sha512": "rgJRYlp23JGTgUo156ZqGydvtTiFLZHbB4NCWg15lSbkzTC71oPXIAhZU/PEH4WBP9IHylQsXEetW0s2diAJWw==",
       "type": "package",
@@ -45832,6 +45260,23 @@
         "version.txt"
       ]
     },
+    "System.Runtime.InteropServices.NFloat.Internal/6.0.1": {
+      "sha512": "vq+81ZqZz9oHV6iWgGXFnxHAyO5xA73nfvDNu5LwymIK294is5bRo3P063VToAbDRyyc0qq/YFRYjHmiD6Cv8Q==",
+      "type": "package",
+      "path": "system.runtime.interopservices.nfloat.internal/6.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "ref/net6.0/System.Runtime.InteropServices.dll",
+        "ref/net6.0/System.Runtime.InteropServices.xml",
+        "system.runtime.interopservices.nfloat.internal.6.0.1.nupkg.sha512",
+        "system.runtime.interopservices.nfloat.internal.nuspec",
+        "useSharedDesignerContext.txt"
+      ]
+    },
     "System.Security.AccessControl/5.0.0": {
       "sha512": "dagJ1mHZO3Ani8GH0PHpPEe/oYO+rVdbQjvjJkBRNQkX4t0r1iaeGn8+/ybkSLEan3/slM0t59SVdHzuHf2jmw==",
       "type": "package",
@@ -47020,10 +46465,10 @@
         "xamarin.androidx.annotation.experimental.nuspec"
       ]
     },
-    "Xamarin.AndroidX.AppCompat/1.5.1.1": {
-      "sha512": "P2HtXKLC+5rgBiACBijPQzYCshkPl07yTo+RarSpLnYSzHVlFVwK1oZtAjaNpJTna7mtH6vhjFZP4aIqHk3wdw==",
+    "Xamarin.AndroidX.AppCompat/1.5.1": {
+      "sha512": "XzRGd+pLFjMDgdeYVRGzMEEqz3ajAAyDVlUY3VIpTdqxdPrtd1DfS+mjH2EM+LPal9n7q1wYvki5NRcsSFx+MA==",
       "type": "package",
-      "path": "xamarin.androidx.appcompat/1.5.1.1",
+      "path": "xamarin.androidx.appcompat/1.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -47042,14 +46487,14 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.xml",
         "proguard/proguard.txt",
-        "xamarin.androidx.appcompat.1.5.1.1.nupkg.sha512",
+        "xamarin.androidx.appcompat.1.5.1.nupkg.sha512",
         "xamarin.androidx.appcompat.nuspec"
       ]
     },
-    "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1.1": {
-      "sha512": "8O8KXd6OypIocjNxnvkE0z54uIcb1CT0+cbnLkOQlQxsHUWJe3cqjbpUuPhQzSUm3o7JBx2iv/52rP1Tjtra2g==",
+    "Xamarin.AndroidX.AppCompat.AppCompatResources/1.5.1": {
+      "sha512": "qQ+TvlOjziPmyudq6NoDvQNvwA6LzRqnYS4eEnfTUCY6v+sNn7toJzqee9M58l6r6KVYP3nLKzXzNYkpHH2fbg==",
       "type": "package",
-      "path": "xamarin.androidx.appcompat.appcompatresources/1.5.1.1",
+      "path": "xamarin.androidx.appcompat.appcompatresources/1.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -47067,7 +46512,7 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.dll",
         "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.AppCompat.AppCompatResources.xml",
-        "xamarin.androidx.appcompat.appcompatresources.1.5.1.1.nupkg.sha512",
+        "xamarin.androidx.appcompat.appcompatresources.1.5.1.nupkg.sha512",
         "xamarin.androidx.appcompat.appcompatresources.nuspec"
       ]
     },
@@ -47649,10 +47094,10 @@
         "xamarin.androidx.dynamicanimation.nuspec"
       ]
     },
-    "Xamarin.AndroidX.Emoji2/1.2.0.1": {
-      "sha512": "kSBSg2wuK/NLljoAqE1QRzrrSVP0sv0YWzwAIg93AUIEd4kLDHq1uf8nfKsn4frL7qLKVDTjgyJyU01rvQYPow==",
+    "Xamarin.AndroidX.Emoji2/1.2.0": {
+      "sha512": "7lJxKgKoaBplWZqgiApCmGWdlA95PBKRL1i/NBaggDJ3PHaTfy0RpAk3yUeEu9iCeTK35g4JvM9miy0Xog4dJw==",
       "type": "package",
-      "path": "xamarin.androidx.emoji2/1.2.0.1",
+      "path": "xamarin.androidx.emoji2/1.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -47670,14 +47115,14 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.dll",
         "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.xml",
-        "xamarin.androidx.emoji2.1.2.0.1.nupkg.sha512",
+        "xamarin.androidx.emoji2.1.2.0.nupkg.sha512",
         "xamarin.androidx.emoji2.nuspec"
       ]
     },
-    "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0.1": {
-      "sha512": "iTIJKqaKUZ08pSi/i3sWRnPVvHQ/1jPVax2vehflEKkPEd8cppH8xzTSAoPgmavNptsMwQJHbdzWX3Trt3B0qQ==",
+    "Xamarin.AndroidX.Emoji2.ViewsHelper/1.2.0": {
+      "sha512": "wjBOrzCj5eOmsvSNdVZ/7ZgVp3puGR7wvsfjczUR3TKr1l1hIs0awSkl4lbAH5YzQ8p7ocYXGldhTLW2qQOzGg==",
       "type": "package",
-      "path": "xamarin.androidx.emoji2.viewshelper/1.2.0.1",
+      "path": "xamarin.androidx.emoji2.viewshelper/1.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -47695,7 +47140,7 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.dll",
         "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.Emoji2.ViewsHelper.xml",
-        "xamarin.androidx.emoji2.viewshelper.1.2.0.1.nupkg.sha512",
+        "xamarin.androidx.emoji2.viewshelper.1.2.0.nupkg.sha512",
         "xamarin.androidx.emoji2.viewshelper.nuspec"
       ]
     },
@@ -47975,10 +47420,10 @@
         "xamarin.androidx.lifecycle.livedata.core.ktx.nuspec"
       ]
     },
-    "Xamarin.AndroidX.Lifecycle.Process/2.5.1.1": {
-      "sha512": "nWRYhsR5FTctm+dMpF8vzSjTFux225nUXtwo+s8ha4hN5tlICNOTqSJB0Ruk3AUAdjM1MOuAr555LSEpQeGlSQ==",
+    "Xamarin.AndroidX.Lifecycle.Process/2.5.1": {
+      "sha512": "+TgKurFGiHMxs7UeAZA7HUKMlKa89IlQ/Ycxz6fdAofZ1icpumpuXh7/v1mue0krqopZBF4ETCoytDjWnBQu+Q==",
       "type": "package",
-      "path": "xamarin.androidx.lifecycle.process/2.5.1.1",
+      "path": "xamarin.androidx.lifecycle.process/2.5.1",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -47997,7 +47442,7 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.Lifecycle.Process.xml",
         "proguard/proguard.txt",
-        "xamarin.androidx.lifecycle.process.2.5.1.1.nupkg.sha512",
+        "xamarin.androidx.lifecycle.process.2.5.1.nupkg.sha512",
         "xamarin.androidx.lifecycle.process.nuspec"
       ]
     },
@@ -48307,32 +47752,6 @@
         "xamarin.androidx.navigation.ui.nuspec"
       ]
     },
-    "Xamarin.AndroidX.Preference/1.2.0.3": {
-      "sha512": "xHaOc84gz+3k+fgDyufUq2As99DwU7O/5hL8qkzWUubmEghrzn1M8hEqwy7Qmw6RXQhml0HERP8hSB+oTFcn8Q==",
-      "type": "package",
-      "path": "xamarin.androidx.preference/1.2.0.3",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "LICENSE.md",
-        "THIRD-PARTY-NOTICES.txt",
-        "aar/androidx.preference.preference.aar",
-        "build/monoandroid12.0/Xamarin.AndroidX.Preference.targets",
-        "build/net6.0-android31.0/Xamarin.AndroidX.Preference.targets",
-        "buildTransitive/monoandroid12.0/Xamarin.AndroidX.Preference.targets",
-        "buildTransitive/net6.0-android31.0/Xamarin.AndroidX.Preference.targets",
-        "icon.png",
-        "lib/monoandroid12.0/Xamarin.AndroidX.Preference.dll",
-        "lib/monoandroid12.0/Xamarin.AndroidX.Preference.pdb",
-        "lib/monoandroid12.0/Xamarin.AndroidX.Preference.xml",
-        "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.dll",
-        "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.pdb",
-        "lib/net6.0-android31.0/Xamarin.AndroidX.Preference.xml",
-        "proguard/proguard.txt",
-        "xamarin.androidx.preference.1.2.0.3.nupkg.sha512",
-        "xamarin.androidx.preference.nuspec"
-      ]
-    },
     "Xamarin.AndroidX.Print/1.0.0.16": {
       "sha512": "KTqxX9Cf9hz836tC+PSptcCVfN0Pc1kGdf+bsGRDDH4bxh8dgseLYxhRMy7QhE4JK7m9nsVocWleuQHBiNiSnA==",
       "type": "package",
@@ -48383,10 +47802,10 @@
         "xamarin.androidx.profileinstaller.profileinstaller.nuspec"
       ]
     },
-    "Xamarin.AndroidX.RecyclerView/1.2.1.8": {
-      "sha512": "AxXnuiSBahIwRJVhbjeLfOl1nY59Ftt+NDfvhRplLHewnf04qnTFCDHMb6X/xRsc69ogxvy6H5diAGAYzC2/JQ==",
+    "Xamarin.AndroidX.RecyclerView/1.2.1.7": {
+      "sha512": "k9du8OIurkBQy/t6Az0BvoY4gnlyOmUPYakU+WBBVWMoac8VjOQ6dNWDa9DCxgWo2QTtwJWXH91Rqtz7ADcChA==",
       "type": "package",
-      "path": "xamarin.androidx.recyclerview/1.2.1.8",
+      "path": "xamarin.androidx.recyclerview/1.2.1.7",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -48405,14 +47824,14 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.RecyclerView.xml",
         "proguard/proguard.txt",
-        "xamarin.androidx.recyclerview.1.2.1.8.nupkg.sha512",
+        "xamarin.androidx.recyclerview.1.2.1.7.nupkg.sha512",
         "xamarin.androidx.recyclerview.nuspec"
       ]
     },
-    "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.3": {
-      "sha512": "ssPvMwQrugWWpr/7e6KYUrAABSLCxtn0p0oSNNRVfoFAQtwr+lnbGwgPYSVYqvjQwojQN6oIADXW1BH9yTmzkQ==",
+    "Xamarin.AndroidX.ResourceInspection.Annotation/1.0.1.2": {
+      "sha512": "s+eh3sOtYpKzCskRjebTQOPHJrQkvhC90nfdyczxgoYZ7mYkFJ0y+J0F/KiYMaFYTHttAUf6wxsEdclzpMG7jg==",
       "type": "package",
-      "path": "xamarin.androidx.resourceinspection.annotation/1.0.1.3",
+      "path": "xamarin.androidx.resourceinspection.annotation/1.0.1.2",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -48430,7 +47849,7 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.dll",
         "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.ResourceInspection.Annotation.xml",
-        "xamarin.androidx.resourceinspection.annotation.1.0.1.3.nupkg.sha512",
+        "xamarin.androidx.resourceinspection.annotation.1.0.1.2.nupkg.sha512",
         "xamarin.androidx.resourceinspection.annotation.nuspec"
       ]
     },
@@ -48635,10 +48054,10 @@
         "xamarin.androidx.transition.nuspec"
       ]
     },
-    "Xamarin.AndroidX.VectorDrawable/1.1.0.15": {
-      "sha512": "S0zdiEz3C1EA+J69Z0e8e7p+oslrVUOGx54WDZGeeVx9G5ZYnZpW0z9Ca8NNdj/CgM9r9Ap0Ovxc0PojRARfaA==",
+    "Xamarin.AndroidX.VectorDrawable/1.1.0.14": {
+      "sha512": "b0X+bHeYDlEh4+/j4eNhPIDWaS6MH+dhduP2NfndIubX2Px89dhGnGWCzVU4kUQTZZ+N+zSGOMma+ht3gTGy7w==",
       "type": "package",
-      "path": "xamarin.androidx.vectordrawable/1.1.0.15",
+      "path": "xamarin.androidx.vectordrawable/1.1.0.14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -48656,14 +48075,14 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.dll",
         "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.xml",
-        "xamarin.androidx.vectordrawable.1.1.0.15.nupkg.sha512",
+        "xamarin.androidx.vectordrawable.1.1.0.14.nupkg.sha512",
         "xamarin.androidx.vectordrawable.nuspec"
       ]
     },
-    "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.15": {
-      "sha512": "rLsaukfodOmdZvW6ehYxJ/eA6205P8F2XYWwpwjPhT6mR7V9JFBlQpqzaz2PDVtydJptTovz6H0Y23mJTUcjLw==",
+    "Xamarin.AndroidX.VectorDrawable.Animated/1.1.0.14": {
+      "sha512": "H5lw8V9H1nEOfROs/36EvE5JPscshDmCjnRQZv2+vqlMP+S6PuqJdecRaR6q4BU0vR3h3PjOZrKB4B0aPtZ2aA==",
       "type": "package",
-      "path": "xamarin.androidx.vectordrawable.animated/1.1.0.15",
+      "path": "xamarin.androidx.vectordrawable.animated/1.1.0.14",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -48682,7 +48101,7 @@
         "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.pdb",
         "lib/net6.0-android31.0/Xamarin.AndroidX.VectorDrawable.Animated.xml",
         "proguard/proguard.txt",
-        "xamarin.androidx.vectordrawable.animated.1.1.0.15.nupkg.sha512",
+        "xamarin.androidx.vectordrawable.animated.1.1.0.14.nupkg.sha512",
         "xamarin.androidx.vectordrawable.animated.nuspec"
       ]
     },
@@ -49431,28 +48850,6 @@
         "xamarin.googleplayservices.cloudmessaging.nuspec"
       ]
     },
-    "Xamarin.GooglePlayServices.Location/120.0.0": {
-      "sha512": "m+jKygBRUFiHQgJi1VhWApRR/8f7V1Ahbw9IfQ0iDcv7Mx291JBtbz18cJdD/zL9vgy3qXhczW50tf1IQClbYg==",
-      "type": "package",
-      "path": "xamarin.googleplayservices.location/120.0.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "build/MonoAndroid12.0/Xamarin.GooglePlayServices.Location.targets",
-        "build/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets",
-        "buildTransitive/MonoAndroid12.0/Xamarin.GooglePlayServices.Location.targets",
-        "buildTransitive/net6.0-android31.0/Xamarin.GooglePlayServices.Location.targets",
-        "lib/monoandroid12.0/Xamarin.GooglePlayServices.Location.dll",
-        "lib/monoandroid12.0/Xamarin.GooglePlayServices.Location.pdb",
-        "lib/monoandroid12.0/Xamarin.GooglePlayServices.Location.xml",
-        "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.dll",
-        "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.pdb",
-        "lib/net6.0-android31.0/Xamarin.GooglePlayServices.Location.xml",
-        "lib/net6.0-android31.0/play-services-location.aar",
-        "xamarin.googleplayservices.location.120.0.0.nupkg.sha512",
-        "xamarin.googleplayservices.location.nuspec"
-      ]
-    },
     "Xamarin.GooglePlayServices.Stats/117.0.3.4": {
       "sha512": "8SKKOjJh7KlfIX0anYS6ACS+RIGXP7nhEoF5S+UtyCsMjFhSJ4eM2wa9+CTO6Ec+TE5PGLwKj70JRL9+0QUf0g==",
       "type": "package",
@@ -49670,6 +49067,92 @@
         "xamarin.kotlinx.coroutines.core.jvm.nuspec"
       ]
     },
+    "Xamarin.MediaGallery/2.2.1": {
+      "sha512": "uO/rpg83xu/J5p/oCTKdy2CFgwMjuEJfz8OkfgzhyGjQfxfBeJCvUp6CrJ2hYN56lx0H/ITuWKuMPjUvOWLJ7Q==",
+      "type": "package",
+      "path": "xamarin.mediagallery/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.nuget.md",
+        "icon.png",
+        "lib/monoandroid10.0/NativeMedia.dll",
+        "lib/monoandroid10.0/NativeMedia.xml",
+        "lib/monoandroid11.0/NativeMedia.dll",
+        "lib/monoandroid11.0/NativeMedia.xml",
+        "lib/monoandroid12.0/NativeMedia.dll",
+        "lib/monoandroid12.0/NativeMedia.xml",
+        "lib/monoandroid13.0/NativeMedia.dll",
+        "lib/monoandroid13.0/NativeMedia.xml",
+        "lib/net6.0-android31.0/NativeMedia.aar",
+        "lib/net6.0-android31.0/NativeMedia.dll",
+        "lib/net6.0-android31.0/NativeMedia.xml",
+        "lib/net6.0-android32.0/NativeMedia.aar",
+        "lib/net6.0-android32.0/NativeMedia.dll",
+        "lib/net6.0-android32.0/NativeMedia.xml",
+        "lib/net6.0-android33.0/NativeMedia.aar",
+        "lib/net6.0-android33.0/NativeMedia.dll",
+        "lib/net6.0-android33.0/NativeMedia.xml",
+        "lib/net6.0-ios16.1/NativeMedia.dll",
+        "lib/net6.0-ios16.1/NativeMedia.xml",
+        "lib/netstandard2.0/NativeMedia.dll",
+        "lib/netstandard2.0/NativeMedia.xml",
+        "lib/xamarinios10/NativeMedia.dll",
+        "lib/xamarinios10/NativeMedia.xml",
+        "xamarin.mediagallery.2.2.1.nupkg.sha512",
+        "xamarin.mediagallery.nuspec"
+      ]
+    },
+    "Xamarin.MediaGallery.Permision.Maui/2.2.1": {
+      "sha512": "hGk8Nlp7A8pNpzmJ0FHuvxX2x7E0JKXWKzn1miO10lfjR2hDgkVvIAZbY5VAhVFDEBmxS6WB1WGvbzKSEbVczg==",
+      "type": "package",
+      "path": "xamarin.mediagallery.permision.maui/2.2.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "README.nuget.md",
+        "icon.png",
+        "lib/monoandroid10.0/NativeMedia.Permision.Maui.dll",
+        "lib/monoandroid10.0/NativeMedia.Permision.Maui.xml",
+        "lib/monoandroid11.0/NativeMedia.Permision.Maui.dll",
+        "lib/monoandroid11.0/NativeMedia.Permision.Maui.xml",
+        "lib/monoandroid12.0/NativeMedia.Permision.Maui.dll",
+        "lib/monoandroid12.0/NativeMedia.Permision.Maui.xml",
+        "lib/monoandroid13.0/NativeMedia.Permision.Maui.dll",
+        "lib/monoandroid13.0/NativeMedia.Permision.Maui.xml",
+        "lib/net6.0-android31.0/NativeMedia.Permision.Maui.dll",
+        "lib/net6.0-android31.0/NativeMedia.Permision.Maui.xml",
+        "lib/net6.0-android32.0/NativeMedia.Permision.Maui.dll",
+        "lib/net6.0-android32.0/NativeMedia.Permision.Maui.xml",
+        "lib/net6.0-android33.0/NativeMedia.Permision.Maui.dll",
+        "lib/net6.0-android33.0/NativeMedia.Permision.Maui.xml",
+        "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.dll",
+        "lib/net6.0-ios16.1/NativeMedia.Permision.Maui.xml",
+        "lib/xamarinios10/NativeMedia.Permision.Maui.dll",
+        "lib/xamarinios10/NativeMedia.Permision.Maui.xml",
+        "xamarin.mediagallery.permision.maui.2.2.1.nupkg.sha512",
+        "xamarin.mediagallery.permision.maui.nuspec"
+      ]
+    },
+    "XmpCore/6.1.10.1": {
+      "sha512": "/Tp2/e39e7z8hLtS4TXt0FNNZHbf5yNFfHS0/59soXlgOzZlyRZivvzWpvujyaWkTWWgecp/1nHxkuc5vntn7A==",
+      "type": "package",
+      "path": "xmpcore/6.1.10.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net35/XmpCore.dll",
+        "lib/net35/XmpCore.xml",
+        "lib/netstandard1.0/XmpCore.dll",
+        "lib/netstandard1.0/XmpCore.xml",
+        "lib/netstandard2.0/XmpCore.dll",
+        "lib/netstandard2.0/XmpCore.xml",
+        "xmpcore.6.1.10.1.nupkg.sha512",
+        "xmpcore.nuspec"
+      ]
+    },
     "ZXing.Net/0.16.8": {
       "sha512": "Cbbe+x7I7E+VJ0VxU1fPc7AktIw/9xea/ZY/fh38sXqTQ75LJp9ooGUjpzFqfpPfIKozAoXgJ4yvY4GzKpPBzQ==",
       "type": "package",
@@ -49833,10 +49316,10 @@
   },
   "projectFileDependencyGroups": {
     "net7.0-android33.0": [
-      "AIR.Maui.FitnessData.Client >= 1.0.0-alpha35",
-      "AIR.Maui.FitnessData.Common >= 1.0.0-alpha35",
-      "AIR.Maui.SecurityServices.Client >= 1.0.0-alpha09",
-      "AIR.Maui.SecurityServices.Common >= 1.0.0-alpha09",
+      "AIR.Maui.FitnessData.Client >= 1.0.0-alpha38",
+      "AIR.Maui.FitnessData.Common >= 1.0.0-alpha38",
+      "AIR.Maui.SecurityServices.Client >= 1.0.0-alpha12",
+      "AIR.Maui.SecurityServices.Common >= 1.0.0-alpha12",
       "CommunityToolkit.Maui >= 5.2.0",
       "CommunityToolkit.Maui.Core >= 5.2.0",
       "CommunityToolkit.Maui.MediaElement >= 2.0.0",
@@ -49848,6 +49331,7 @@
       "FeedApi.Net7 >= 1.0.0",
       "InputKit.Maui >= 4.3.3",
       "MessageApi.Net7 >= 1.0.0",
+      "MetadataExtractor >= 2.8.0",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 7.0.86",
       "Microsoft.Azure.NotificationHubs >= 4.1.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -49859,12 +49343,6 @@
       "NutritionApi.Net7 >= 1.0.0",
       "Plugin.FirebasePushNotification >= 3.4.35",
       "PureWeen.Maui.FixesAndWorkarounds >= 1.4.9",
-      "Shiny.Core >= 3.0.0-beta-0124",
-      "Shiny.Extensions.Configuration >= 3.0.0-beta-0124",
-      "Shiny.Hosting.Maui >= 3.0.0-beta-0124",
-      "Shiny.Notifications >= 3.0.0-beta-0124",
-      "Shiny.Notifications.Common >= 3.0.0-beta-0124",
-      "Shiny.Push.AzureNotificationHubs >= 3.0.0-beta-0124",
       "Statics >= 1.0.0",
       "SupplementApi.Net7 >= 1.0.0",
       "UserApi.Net7 >= 1.0.0",
@@ -49886,14 +49364,15 @@
       "Xamarin.Google.Android.Material >= 1.7.0",
       "Xamarin.Google.Crypto.Tink.Android >= 1.7.0.1",
       "Xamarin.GooglePlayServices.Base >= 118.2.0.1",
+      "Xamarin.MediaGallery >= 2.2.1",
       "ZXing.Net.Maui >= 0.3.0-preview.1",
       "ZXing.Net.Maui.Controls >= 0.3.0-preview.1"
     ],
     "net7.0-ios16.1": [
-      "AIR.Maui.FitnessData.Client >= 1.0.0-alpha35",
-      "AIR.Maui.FitnessData.Common >= 1.0.0-alpha35",
-      "AIR.Maui.SecurityServices.Client >= 1.0.0-alpha09",
-      "AIR.Maui.SecurityServices.Common >= 1.0.0-alpha09",
+      "AIR.Maui.FitnessData.Client >= 1.0.0-alpha38",
+      "AIR.Maui.FitnessData.Common >= 1.0.0-alpha38",
+      "AIR.Maui.SecurityServices.Client >= 1.0.0-alpha12",
+      "AIR.Maui.SecurityServices.Common >= 1.0.0-alpha12",
       "CommunityToolkit.Maui >= 5.2.0",
       "CommunityToolkit.Maui.Core >= 5.2.0",
       "CommunityToolkit.Maui.MediaElement >= 2.0.0",
@@ -49905,6 +49384,7 @@
       "FeedApi.Net7 >= 1.0.0",
       "InputKit.Maui >= 4.3.3",
       "MessageApi.Net7 >= 1.0.0",
+      "MetadataExtractor >= 2.8.0",
       "Microsoft.AspNetCore.Components.WebView.Maui >= 7.0.86",
       "Microsoft.Azure.NotificationHubs >= 4.1.0",
       "Microsoft.Extensions.Configuration >= 7.0.0",
@@ -49924,6 +49404,7 @@
       "Statics >= 1.0.0",
       "SupplementApi.Net7 >= 1.0.0",
       "UserApi.Net7 >= 1.0.0",
+      "Xamarin.MediaGallery >= 2.2.1",
       "ZXing.Net.Maui >= 0.3.0-preview.1",
       "ZXing.Net.Maui.Controls >= 0.3.0-preview.1"
     ]
@@ -49933,7 +49414,7 @@
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
-    "version": "3.1.4",
+    "version": "1.0.9",
     "restore": {
       "projectUniqueName": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\MauiApp1\\MauiApp1.csproj",
       "projectName": "MauiApp1",
@@ -50027,19 +49508,19 @@
         "dependencies": {
           "AIR.Maui.FitnessData.Client": {
             "target": "Package",
-            "version": "[1.0.0-alpha35, )"
+            "version": "[1.0.0-alpha38, )"
           },
           "AIR.Maui.FitnessData.Common": {
             "target": "Package",
-            "version": "[1.0.0-alpha35, )"
+            "version": "[1.0.0-alpha38, )"
           },
           "AIR.Maui.SecurityServices.Client": {
             "target": "Package",
-            "version": "[1.0.0-alpha09, )"
+            "version": "[1.0.0-alpha12, )"
           },
           "AIR.Maui.SecurityServices.Common": {
             "target": "Package",
-            "version": "[1.0.0-alpha09, )"
+            "version": "[1.0.0-alpha12, )"
           },
           "CommunityToolkit.Maui": {
             "target": "Package",
@@ -50072,6 +49553,10 @@
           "InputKit.Maui": {
             "target": "Package",
             "version": "[4.3.3, )"
+          },
+          "MetadataExtractor": {
+            "target": "Package",
+            "version": "[2.8.0, )"
           },
           "Microsoft.AspNetCore.Components.WebView.Maui": {
             "target": "Package",
@@ -50118,30 +49603,6 @@
           "PureWeen.Maui.FixesAndWorkarounds": {
             "target": "Package",
             "version": "[1.4.9, )"
-          },
-          "Shiny.Core": {
-            "target": "Package",
-            "version": "[3.0.0-beta-0124, )"
-          },
-          "Shiny.Extensions.Configuration": {
-            "target": "Package",
-            "version": "[3.0.0-beta-0124, )"
-          },
-          "Shiny.Hosting.Maui": {
-            "target": "Package",
-            "version": "[3.0.0-beta-0124, )"
-          },
-          "Shiny.Notifications": {
-            "target": "Package",
-            "version": "[3.0.0-beta-0124, )"
-          },
-          "Shiny.Notifications.Common": {
-            "target": "Package",
-            "version": "[3.0.0-beta-0124, )"
-          },
-          "Shiny.Push.AzureNotificationHubs": {
-            "target": "Package",
-            "version": "[3.0.0-beta-0124, )"
           },
           "Xamarin.Android.Glide": {
             "target": "Package",
@@ -50226,6 +49687,10 @@
             "target": "Package",
             "version": "[118.2.0.1, )"
           },
+          "Xamarin.MediaGallery": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
           "ZXing.Net.Maui": {
             "target": "Package",
             "version": "[0.3.0-preview.1, )"
@@ -50263,26 +49728,26 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
       },
       "net7.0-ios16.1": {
         "targetAlias": "net7.0-ios",
         "dependencies": {
           "AIR.Maui.FitnessData.Client": {
             "target": "Package",
-            "version": "[1.0.0-alpha35, )"
+            "version": "[1.0.0-alpha38, )"
           },
           "AIR.Maui.FitnessData.Common": {
             "target": "Package",
-            "version": "[1.0.0-alpha35, )"
+            "version": "[1.0.0-alpha38, )"
           },
           "AIR.Maui.SecurityServices.Client": {
             "target": "Package",
-            "version": "[1.0.0-alpha09, )"
+            "version": "[1.0.0-alpha12, )"
           },
           "AIR.Maui.SecurityServices.Common": {
             "target": "Package",
-            "version": "[1.0.0-alpha09, )"
+            "version": "[1.0.0-alpha12, )"
           },
           "CommunityToolkit.Maui": {
             "target": "Package",
@@ -50315,6 +49780,10 @@
           "InputKit.Maui": {
             "target": "Package",
             "version": "[4.3.3, )"
+          },
+          "MetadataExtractor": {
+            "target": "Package",
+            "version": "[2.8.0, )"
           },
           "Microsoft.AspNetCore.Components.WebView.Maui": {
             "target": "Package",
@@ -50382,6 +49851,10 @@
             "target": "Package",
             "version": "[3.0.0-beta-0124, )"
           },
+          "Xamarin.MediaGallery": {
+            "target": "Package",
+            "version": "[2.2.1, )"
+          },
           "ZXing.Net.Maui": {
             "target": "Package",
             "version": "[0.3.0-preview.1, )"
@@ -50419,7 +49892,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.307\\RuntimeIdentifierGraph.json"
       }
     },
     "runtimes": {

@@ -19,6 +19,8 @@ public partial class ChatContext : DbContext
 
     public virtual DbSet<Country> Country { get; set; }
 
+    public virtual DbSet<Image> Image { get; set; }
+
     public virtual DbSet<MsgBroadcast> MsgBroadcast { get; set; }
 
     public virtual DbSet<MsgMessage> MsgMessage { get; set; }
@@ -38,6 +40,19 @@ public partial class ChatContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("name");
             entity.Property(e => e.TimeOffset).HasColumnName("time_offset");
+        });
+
+        modelBuilder.Entity<Image>(entity =>
+        {
+            entity.Property(e => e.RealImageUrl)
+                .IsRequired()
+                .HasMaxLength(320)
+                .IsUnicode(false)
+                .HasColumnName("real_image_url");
+            entity.Property(e => e.ThumbnailImageUrl)
+                .HasMaxLength(320)
+                .IsUnicode(false)
+                .HasColumnName("thumbnail_image_url");
         });
 
         modelBuilder.Entity<MsgBroadcast>(entity =>
@@ -72,15 +87,18 @@ public partial class ChatContext : DbContext
 
             entity.ToTable("msg_message");
 
+            entity.Property(e => e.FkImageId).HasColumnName("fk_image_id");
             entity.Property(e => e.FkRoomId).HasColumnName("fk_room_id");
             entity.Property(e => e.FkUserSender).HasColumnName("fk_user_sender");
-            entity.Property(e => e.MessageContent)
-                .IsRequired()
-                .HasMaxLength(512)
-                .HasColumnName("message_content");
+            entity.Property(e => e.MessageContent).HasColumnName("message_content");
+            entity.Property(e => e.NotSeenByUserNumber).HasColumnName("not_seen_by_user_number");
             entity.Property(e => e.Timestamp)
                 .HasColumnType("datetime")
                 .HasColumnName("timestamp");
+
+            entity.HasOne(d => d.FkImage).WithMany(p => p.MsgMessage)
+                .HasForeignKey(d => d.FkImageId)
+                .HasConstraintName("FK_msg_message_Image");
 
             entity.HasOne(d => d.FkRoom).WithMany(p => p.MsgMessage)
                 .HasForeignKey(d => d.FkRoomId)
@@ -130,7 +148,9 @@ public partial class ChatContext : DbContext
                 .IsRequired()
                 .HasMaxLength(450)
                 .HasColumnName("fk_federated_user");
+            entity.Property(e => e.FkGender).HasColumnName("fk_gender");
             entity.Property(e => e.FkInternalNotesId).HasColumnName("fk_internal_notes_id");
+            entity.Property(e => e.FkShippingAddress).HasColumnName("fk_shipping_address");
             entity.Property(e => e.Gender)
                 .HasMaxLength(10)
                 .IsFixedLength()
@@ -144,10 +164,17 @@ public partial class ChatContext : DbContext
             entity.Property(e => e.LastName)
                 .HasMaxLength(50)
                 .HasColumnName("last_name");
+            entity.Property(e => e.MiddleName)
+                .HasMaxLength(50)
+                .HasColumnName("middle_name");
             entity.Property(e => e.Mobile)
                 .HasMaxLength(50)
                 .HasColumnName("mobile");
+            entity.Property(e => e.MobileCountryCode)
+                .HasMaxLength(10)
+                .HasColumnName("mobile_country_code");
             entity.Property(e => e.SetTimeOffset).HasColumnName("set_time_offset");
+            entity.Property(e => e.Signupstatus).HasColumnName("signupstatus");
             entity.Property(e => e.UserLevel).HasColumnName("user_level");
             entity.Property(e => e.Weight).HasColumnName("weight");
         });

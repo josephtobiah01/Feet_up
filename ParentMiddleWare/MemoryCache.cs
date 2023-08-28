@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParentMiddleWare.ApiModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
@@ -15,13 +16,18 @@ namespace ParentMiddleWare
 
         public static void Set(string key, object _object)
         {
-            var cacheEntryOptions = new CacheItemPolicy();
-            cacheEntryOptions.SlidingExpiration = TimeSpan.FromMinutes(60);
-            cacheEntryOptions.Priority = System.Runtime.Caching.CacheItemPriority.NotRemovable;
+            try
+            {
+                if (_object == null) return;
+                var cacheEntryOptions = new CacheItemPolicy();
+                cacheEntryOptions.SlidingExpiration = TimeSpan.FromMinutes(120);
+                cacheEntryOptions.Priority = System.Runtime.Caching.CacheItemPriority.NotRemovable;
 
 
-            CacheItem cacheitem = new CacheItem(key, _object);
-            _memoryCache.Set(cacheitem, cacheEntryOptions);
+                CacheItem cacheitem = new CacheItem(key, _object);
+                _memoryCache.Set(cacheitem, cacheEntryOptions);
+            }
+            catch { }
         }
 
         public static object Get(string key)
@@ -38,13 +44,13 @@ namespace ParentMiddleWare
         {
             try
             {
-                if (_memoryCache.Get("SetHistory" + MiddleWare.UserID.ToString()) == null)
+                if (_memoryCache.Get("SetHistory" + MiddleWare.FkFederatedUser) == null)
                 {
                     var stats = await MiddleWare.GetSetHistory();
-                    Set("SetHistory" + MiddleWare.UserID.ToString(), stats);
+                    Set("SetHistory" + MiddleWare.FkFederatedUser, stats);
                 }
 
-                return _memoryCache.Get("SetHistory" + MiddleWare.UserID.ToString()) as List<UserSetHistory>;
+                return _memoryCache.Get("SetHistory" + MiddleWare.FkFederatedUser) as List<UserSetHistory>;
             }
             catch
             {
@@ -58,7 +64,7 @@ namespace ParentMiddleWare
             try
             {
                 var stats = await MiddleWare.GetSetHistory();
-                Set("SetHistory" + MiddleWare.UserID.ToString(), stats);
+                Set("SetHistory" + MiddleWare.FkFederatedUser, stats);
             }
             catch
             {
@@ -70,7 +76,7 @@ namespace ParentMiddleWare
 
     public class UserSetHistory
     {
-        public long UserId { get; set; }
+        public string FkFederatedUser { get; set; }
         public long ExerciseTypeId { get; set; }
         public short SetNumber { get; set; }
         public string SetString { get; set; }

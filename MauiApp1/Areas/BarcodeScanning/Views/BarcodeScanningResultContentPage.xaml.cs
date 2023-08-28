@@ -28,16 +28,23 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
         private async void SendButton_Clicked(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(CodeEntry.Text)) return;
-            
-            bool successful = await UserApi.Net7.UserMiddleware.SubmitBarcode(CodeEntry.Text.Trim());
+            try
+            {
+                bool successful = await UserApi.Net7.UserMiddleware.SubmitBarcode(CodeEntry.Text.Trim());
 
-            if (successful)
-            {
-                Close();
+                if (successful)
+                {
+                    Close();
+                }
+                else
+                {
+                    //await DisplayAlert("Error", "Error submitting barcode scan results. Please check your internet connection and try again.", "OK");
+                    ShowAlertBottomSheet("Error", "Error submitting barcode scan results. Please check your internet connection and try again.", "OK");
+                }
             }
-            else
+            catch
             {
-                await DisplayAlert("Error", "Error submitting barcode scan results. Please check your internet connection and try again.", "OK");
+                ShowAlertBottomSheet("Error", "Error submitting barcode scan results. Please check your internet connection and try again.", "OK");
             }
         }
         public async void Close()
@@ -73,5 +80,18 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
             }
 #endif
         }
+
+        #region [Methods :: Tasks]
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
+        }
+
+
+        #endregion
     }
 }

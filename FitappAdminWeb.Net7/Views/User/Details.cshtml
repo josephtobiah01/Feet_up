@@ -1,4 +1,5 @@
-﻿@model UserDetailViewModel
+﻿@using FitappAdminWeb.Net7.Classes.Constants;
+@model UserDetailViewModel
 @{
     var user = Model.CurrentUser;
     var username = Model.CurrentUser != null && !String.IsNullOrEmpty(Model.CurrentUser.FirstName) ?
@@ -6,9 +7,26 @@
         Model.UserIdentity != null ? Model.UserIdentity.UserName : String.Empty;
 }
 
+@if (ViewData["error"] != null)
+{
+    string error = ViewData["error"].ToString();
+
+    <div class="alert alert-danger d-flex align-items-center" role="alert">
+        <i data-feather="alert-circle"></i>
+        <div class="ms-2">
+            @if(error == "addnotefailed")
+            {
+                <span class="fw-bold">ERROR: </span>
+                <span>Add Internal Note Failed. Please try again.</span>
+            }
+        </div>
+    </div>
+}
 <h4>Customer Details</h4>
 <p>You can check a customer's details here, as well as a launching point for various actions.</p>
 
+<input type="hidden" id="uid" value="@user.Id" />
+<input type="hidden" id="fuid" value="@user.FkFederatedUser" />
 <div class="border p-3">
     <div class="row">
         <div class="col mb-3">
@@ -19,6 +37,18 @@
                     {
                         <span class="badge bg-danger fw-normal fs-6">Concern</span>
                     }
+                    @if (user.Signupstatus == (int) SignupStatus.INCOMPLETE)
+                    {
+                        <span class="badge bg-danger fw-normal fs-6">Signup Incomplete</span>
+                    }
+                    @if (user.Signupstatus == (int)SignupStatus.REVIEW_PENDING)
+                    {
+                        <span class="badge bg-warning fw-normal fs-6">Review Pending</span>
+                    }
+                    @if (user.IsNewBarcode.GetValueOrDefault(true) == true)
+                    {
+                        <span class="badge bg-warning fw-normal fs-6">No Muhdo Kit</span>
+                    }
                 </h4>
                 <div class="dropdown">
                     <button type="button" class="btn btn-primary dropdown-toggle" id="actions_dd" data-bs-toggle="dropdown" aria-expanded="false">
@@ -26,8 +56,20 @@
                     </button>
                     <ul class="dropdown-menu" aria-labelledby="actions_dd">
                         <li><a class="dropdown-item" asp-action="UserEdit" asp-route-id="@user.Id">Edit User Information</a></li>
+                        <li><a class="dropdown-item" id="genpassresetlink" data-bs-toggle="modal" data-bs-target="#prm" href="#">Generate Password Reset Link</a></li>
+                        <li><a class="dropdown-item" asp-action="MuhdoRegister" asp-controller="Home" asp-route-id="@user.Id">Register Muhdo</a></li>
                         <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#noteModal">Add Internal Note</a></li>
                         <li><a class="dropdown-item @(Model.Room.HasConcern ? "bg-warning" : "")" asp-action="Room" asp-controller="Chat" asp-route-id="@Model.Room.Id">Message User</a></li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li><a id="generatelink" class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#genlinkModal">Generate Customer Form Link</a></li>
+                        @if (!String.IsNullOrEmpty(Model.Link_ViewQuestions))
+                        {
+                            <li><a class="dropdown-item" target="_blank" href="@Model.Link_ViewQuestions">View Customer Form Answers</a></li>
+                        }
+                        @if (user.Signupstatus != (int) SignupStatus.COMPLETE)
+                        {
+                            <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#completeSignupModal">Complete SignUp</a></li>
+                        }
                         <li><hr class="dropdown-divider" /></li>
                         <li><a class="dropdown-item" asp-action="Index" asp-controller="Training" asp-route-id="@user.Id">Training</a></li>
                         <li><a class="dropdown-item" asp-action="Chart" asp-controller="Training" asp-route-userid="@user.Id">Training Charts</a></li>
@@ -93,6 +135,27 @@
         </div>
     </div>
     <div class="border-bottom mb-3">
+        <h5 id="muhdo_head" data-bs-toggle="collapse" data-bs-target="#muhdo_section">Muhdo Kit Information</h5>
+    </div>
+    <div class="row show mb-3" id="muhdo_section">
+        <div class="col-md-6">
+            @{
+                string muhdo_status_class = user.IsNewBarcode.GetValueOrDefault(true) ? "text-danger" : "text-success";
+                string muhdo_status_name = user.IsNewBarcode.GetValueOrDefault(true) ? "UNREGISTERED" : "REGISTERED";
+            }
+            <label class="form-label">Registration Status</label>
+            <span class="fw-bold me-2 @muhdo_status_class">@muhdo_status_name</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Muhdo Kit ID</label>
+            <span class="form-text">@(user.BarcodeString ?? "N/A")</span>
+        </div>
+        <div class="col-md-6">
+            <label class="form-label">Email Registered with Muhdo</label>
+            <span class="form-text">@(user.MuhdoEmail ?? "N/A")</span>
+        </div>
+    </div>
+    <div class="border-bottom mb-3">
         <h5 id="notes" class="fs-5">Notes</h5>
     </div>
     <div class="row" id="notes_section">
@@ -142,6 +205,7 @@
                         <label class="form-label" asp-for="AddNote.Note">Note</label>
                         <textarea row="5" class="form-control" asp-for="AddNote.Note"></textarea>
                     </div>
+                    <div id="AddNote_Count" class="float-right"><span></span> <span>characters left</span></div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -151,3 +215,88 @@
         </div>
     </form>   
 </div>
+
+<!-- Generate Password Reset Modal -->
+<div class="modal fade" id="prm" tabindex="-1" aria-labelledby="passresetModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="passresetModalLabel">Password Reset Link for Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This link is for resetting a customer's password. Note that this link will expire in a week.</p>
+                <div class="alert alert-secondary p-3 text-break" id="prm_linkdisplay">
+                    <span id="prm_linkdisplaytext">Loading..</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="text-success pe-2 d-none" id="prm_copylink_success">Copied To Clipboard</span>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="prm_copylink_button">Copy To Clipboard</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Generate Qtool Link Modal -->
+<div class="modal fade" id="genlinkModal" tabindex="-1" aria-labelledby="genlinkModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="genlinkModalLabel">Form Link for Customer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>This is a link for the customer to input data into the system. Note that this link will only last a week after generation. Additionally, a URL where the customer will be redirected to after filling up data can also be provided.</p>
+                <div class="mb-3" id="genLinkModalFormFields">
+                    <label for="genLinkModal_redirecturl">Redirect URL (Optional)</label>
+                    <input type="text" id="genLinkModal_redirecturl" class="form-control" />
+                </div>
+                <div class="d-flex justify-content-center" id="genlinkModal_loader">
+                    <div class="spinner-border" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+                <div class="alert alert-success p-3 text-break" id="genlinkModal_linkdisplay">
+                    <span id="linkdisplay">http://something.ageinreverse.me/qtool/forms/R%2FgLgagK%2FaZTsLT0dGpKzlxY3HxLNYCvDwiStHajfc8wHOJkBCMMipUySLENGqEhrNHDPEyNk84scO05UavJgllyfKXrOXM2O1ipueyxUm8%3D</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <span class="text-success pe-2 d-none" id="copylink_success">Copied To Clipboard</span>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="genLink_submit">Generate URL</button>
+                <button type="button" class="btn btn-primary" id="copylink_button">Copy To Clipboard</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- SignUp Complete Modal -->
+<div class="modal fade" id="completeSignupModal" tabindex="-1" aria-labelledby="completeSignupModelLabel" aria-hidden="true">
+    <form asp-action="CompleteSignUp" method="post">
+        <input type="hidden" name="userid" value="@user.Id" />
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="completeSignupModelLabel">Complete Customer Review</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Clicking "Complete Review" will set this customer's signup status to COMPLETE. This means that you have verified this customer's signup form is filled completely. This will also disable all already generated form links for this customer.</p>
+                    <a class="btn btn-primary mt-3" target="_blank" href="@Model.Link_ViewQuestions">
+                        View Customer Sign-up Form
+                    </a>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Complete Review</button>
+                </div>
+            </div>            
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script asp-src-include="~/lib/managed/userdetails.js"></script>
+}

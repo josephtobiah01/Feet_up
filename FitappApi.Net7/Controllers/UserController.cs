@@ -10,6 +10,7 @@ using NuGet.Packaging.Signing;
 using ParentMiddleWare.ApiModels;
 using System;
 using System.Net.Http.Json;
+using System.Web;
 using UserApi.Net7.Models;
 
 namespace FitappApi.Net7.Controllers
@@ -36,20 +37,27 @@ namespace FitappApi.Net7.Controllers
       
         [HttpPost]
         [Route("RegisterDevice")]
-        public async Task<bool> RegisterDevice(string RegistrationId, long UserId, string Platform)
+        //public async Task<bool> RegisterDevice(string RegistrationId, long UserId, string Platform)
+        public async Task<bool> RegisterDevice([FromBody] GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
-                var apnList = await _uContext.Apn.Where(t => t.FkUserId == UserId && t.DeviceId == RegistrationId && t.Platform == Platform).ToListAsync();
+                var user = _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return false;
+                }
+                long UserId = user.Id;
+                var apnList = await _uContext.Apn.Where(t => t.FkUserId == UserId && t.DeviceId == model.param1 && t.Platform == model.param2).ToListAsync();
                 if (apnList == null || apnList.Count < 1)
                 {
                     var apn = new Apn()
                     {
-                        DeviceId = RegistrationId,
+                        DeviceId = model.param1,
                         FkUserId = UserId,
                         IsActive = true,
-                        Platform = Platform,
+                        Platform = model.param2,
                         Timestamp = DateTime.UtcNow,
                         LastActive = DateTime.UtcNow,
                     };
@@ -104,12 +112,13 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("UnRegisterDevice")]
-        public async Task<bool> UnRegisterDevice(string RegistrationId, long UserId, string Platform)
+        //public async Task<bool> UnRegisterDevice(string RegistrationId, long UserId, string Platform)
+        public async Task<bool> UnRegisterDevice([FromBody] GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
-                var apn = await _uContext.Apn.Where(t => t.FkUserId == UserId && t.DeviceId == RegistrationId).FirstOrDefaultAsync();
+                var apn = await _uContext.Apn.Where(t => t.FkUser.FkFederatedUser == model.FkFederatedUser && t.DeviceId == model.param1).FirstOrDefaultAsync();
                 if (apn == null)
                 {
                     return true;
@@ -134,7 +143,7 @@ namespace FitappApi.Net7.Controllers
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
-                var user = await _uContext.User.Where(t => t.Id == model.UserId).FirstOrDefaultAsync();
+                var user = await _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefaultAsync();
                 if (user == null)
                 {
                     return false;
@@ -192,12 +201,45 @@ namespace FitappApi.Net7.Controllers
             return ret;
         }
 
+
+        [HttpPost]
+        [Route("ResetPassword")]
+        public async Task<bool> ResetPassword([FromBody] GeneralApiModel model)
+        {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+            long userId = long.Parse(model.param1);
+            var appuser = await _uContext.User.Where(t => t.Id == userId).FirstOrDefaultAsync();
+            if (appuser == null) return false;
+            var user = await _appContext.Users.Where(t=>t.Id == appuser.FkFederatedUser).FirstOrDefaultAsync();
+
+            if (user != null)
+            {
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, model.param2);
+
+                var lst = await _uContext.QtoolConnect.Where(t => t.FkUserId == userId).ToListAsync();
+                if(lst != null)
+                {
+                    foreach(var l in lst)
+                    {
+                        l.IsActive = false;
+                        l.Complete = true;
+                    }
+                }
+                appuser.Signupstatus = 1;
+                await _uContext.SaveChangesAsync();
+
+                return result.Succeeded;
+            }
+            return false;
+        }
+
         [HttpPost]
         [Route("UpdateOffset")]
         public async Task<bool> UpdateOffset([FromBody] SetOffsetModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var FitAppuser = await _uContext.User.Where(t => t.Id == model.UserId && t.IsActive == true).FirstOrDefaultAsync();
+            var FitAppuser = await _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser && t.IsActive == true).FirstOrDefaultAsync();
             if (FitAppuser == null)
             {
                 return false;
@@ -230,7 +272,7 @@ namespace FitappApi.Net7.Controllers
                     ret.isSuccess = false;
                     return ret;
                 }
-                ret.UserId = FitAppuser.Id;
+                ret.FkFederatedUser = FitAppuser.FkFederatedUser;
                 ret.UserName = model.Username;
               //  FitAppuser.LastKnownTimeOffset = model.Offset;
                // await _uContext.SaveChangesAsync();
@@ -256,7 +298,7 @@ namespace FitappApi.Net7.Controllers
             {
             };
 
-            var FitAppuser = await _uContext.User.Where(t => t.Id == model.UserId).FirstOrDefaultAsync();
+            var FitAppuser = await _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefaultAsync();
             if (FitAppuser == null)
             {
                 return ret;
@@ -305,6 +347,7 @@ namespace FitappApi.Net7.Controllers
                     return ret;
                 }
                 ret.UserId = FitAppuser.Id;
+                ret.FkFederatedUser = FitAppuser.FkFederatedUser;
                 ret.UserName = model.Username;
                 FitAppuser.LastKnownTimeOffset = model.Offset;
                 await _uContext.SaveChangesAsync();
@@ -339,20 +382,87 @@ namespace FitappApi.Net7.Controllers
 
 
         [HttpGet]
-        [Route("GetAll")]
-        public async Task<List<UserOpResult>> GetAll()
+        [Route("GetQtoolLinkForUser")]
+        public async Task<string> GetQtoolLinkForUser(long USERID)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            List<UserOpResult> ret = new List<UserOpResult>();
-            var appusers =  _appContext.Users.ToList();
+            string key = "2MpnRw7npg7rfARpQXfmeYPDXft5GrehyC62UB8S";
+            var secret = AESAgent.Encrypt(USERID.ToString(), key);
+            string URL = string.Format("{0}?formId={1}", "https://forms.ageinreverse.me/Onboarding/Start", HttpUtility.UrlEncode(secret));
 
-            foreach (var au in appusers)
-            {
-                var FitAppuser = _uContext.User.Where(t => t.FkFederatedUser == au.Id).First();
-                ret.Add(new UserOpResult() { UserId = FitAppuser.Id, UserName = FitAppuser.UserLevel.ToString() });
-            }
-            return ret;
+            _uContext.QtoolConnect.Add(new QtoolConnect() {  ExpiresUtc = DateTime.UtcNow.AddDays(7), FkUserId = USERID, IsActive = true, UrlKey = Guid.NewGuid(), Value = secret });
+            await _uContext.SaveChangesAsync();
 
+            return URL;
         }
+
+        [HttpGet]
+        [Route("GetQtoolLinkForUserQtool")]
+        public async Task<string> GetQtoolLinkForUserQtool(string Username)
+        {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+            string key = "2MpnRw7npg7rfARpQXfmeYPDXft5GrehyC62UB8S";
+
+
+     
+            var user = await _appContext.Users.Where(t => t.UserName == Username).FirstOrDefaultAsync();
+            if (user == null) return "error, cannot find user";
+            var appuser = await _uContext.User.Where(t => t.FkFederatedUser == user.Id).FirstOrDefaultAsync();
+            if (appuser == null) return "error, cannot find user";
+
+
+
+            var secret = AESAgent.Encrypt(appuser.Id.ToString(), key);
+            string URL = string.Format("{0}?formId={1}", "https://forms.ageinreverse.me/Onboarding/Start", HttpUtility.UrlEncode(secret));
+
+            _uContext.QtoolConnect.Add(new QtoolConnect() { ExpiresUtc = DateTime.UtcNow.AddDays(7), FkUserId = appuser.Id, IsActive = true, UrlKey = Guid.NewGuid(), Value = secret });
+            await _uContext.SaveChangesAsync();
+
+            return URL;
+        }
+
+
+        [HttpGet]
+        [Route("GetPasswordResetLinkForUserQtool")]
+        public async Task<string> GetPasswordResetLinkForUserQtool(string Username)
+        {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+            string key = "2MpnRw7npg7rfARpQXfmeYPDXft5GrehyC62UB8S";
+
+
+
+            var user = await _appContext.Users.Where(t => t.UserName == Username).FirstOrDefaultAsync();
+            if (user == null) return "error, cannot find user";
+            var appuser = await _uContext.User.Where(t => t.FkFederatedUser == user.Id).FirstOrDefaultAsync();
+            if (appuser == null) return "error, cannot find user";
+
+
+
+            var secret = AESAgent.Encrypt(appuser.Id.ToString(), key);
+            string URL = string.Format("{0}?formId={1}", "https://forms.ageinreverse.me/Onboarding/Resetpw", HttpUtility.UrlEncode(secret));
+
+            _uContext.QtoolConnect.Add(new QtoolConnect() { ExpiresUtc = DateTime.UtcNow.AddDays(7), FkUserId = appuser.Id, IsActive = true, UrlKey = Guid.NewGuid(), Value = secret });
+            await _uContext.SaveChangesAsync();
+
+            return URL;
+        }
+
+
+        //[HttpGet]
+        //[Route("GetAll")]
+        //public async Task<List<UserOpResult>> GetAll()
+        //{
+        //    if (!CheckAuth()) throw new Exception("Unauthorized");
+        //    List<UserOpResult> ret = new List<UserOpResult>();
+        //    var appusers =  _appContext.Users.ToList();
+
+        //    foreach (var au in appusers)
+        //    {
+        //        var FitAppuser = _uContext.User.Where(t => t.FkFederatedUser == au.Id).First();
+        //        ret.Add(new UserOpResult() { UserId = FitAppuser.Id, UserName = FitAppuser.UserLevel.ToString() });
+        //    }
+        //    return ret;
+
+        //}
     }
 }

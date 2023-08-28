@@ -18,6 +18,7 @@
           "DAOLayer.Net7": "1.0.0",
           "FitAppData.Net7": "1.0.0",
           "LogHelper": "1.0.0",
+          "MessageApi.Net7": "1.0.0",
           "Microsoft.AspNetCore.Authentication.OpenIdConnect": "7.0.8",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5",
           "Microsoft.AspNetCore.Session": "2.2.0",
@@ -1500,6 +1501,20 @@
           "LogHelper.dll": {}
         }
       },
+      "MessageApi.Net7/1.0.0": {
+        "dependencies": {
+          "AIR.Maui.FitnessData.Client": "1.0.0-alpha35",
+          "AIR.Maui.SecurityServices.Client": "1.0.0-alpha08",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha08",
+          "AIR.NetCore.SecurityServices.Common": "1.0.0-alpha07",
+          "AIR.NetCore.SecurityServices.Core": "1.0.0-alpha07",
+          "ChartApi.Net7": "1.0.0",
+          "ParentMiddleWare": "1.0.0"
+        },
+        "runtime": {
+          "MessageApi.Net7.dll": {}
+        }
+      },
       "MuhdoApi.Net7/1.0.0": {
         "dependencies": {
           "AIR.Maui.FitnessData.Client": "1.0.0-alpha35",
@@ -2514,6 +2529,11 @@
       "sha512": ""
     },
     "LogHelper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MessageApi.Net7/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -1,5 +1,9 @@
-﻿using System;
+﻿using QTool.DAL;
+using QTool.Main.Cache;
+using QTool.Main;
+using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -16,6 +20,11 @@ namespace AIRQtool
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            Statics.Setup(ConfigurationManager.AppSettings.Get("QToolConfig"), false);
+
+            BlobClient.Init(Statics.isDEV, Statics.isQA, Statics.isTEST, Statics.isPROD);
+            QToolCache.ReInitCache();
         }
     }
 }

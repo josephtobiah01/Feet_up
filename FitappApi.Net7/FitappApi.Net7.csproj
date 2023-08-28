@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup Label="Globals">
     <SccProjectName>SAK</SccProjectName>
@@ -14,15 +14,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AIR.Maui.FitnessData.Client" Version="1.0.0-alpha35" />
-    <PackageReference Include="AIR.Maui.SecurityServices.Client" Version="1.0.0-alpha08" />
-    <PackageReference Include="AIR.Maui.SecurityServices.Common" Version="1.0.0-alpha08" />
+    <_ContentIncludedByDefault Remove="appsettings.Test.json" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
     <PackageReference Include="Azure.Storage.Queues" Version="12.14.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="7.0.5" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="5.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.5" />
     <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.1.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.5" />
@@ -36,6 +38,7 @@
     <ProjectReference Include="..\DAOLayer.Net7\DAOLayer.Net7.csproj" />
     <ProjectReference Include="..\FeedApi.Net7\FeedApi.Net7.csproj" />
     <ProjectReference Include="..\LogHelper\LogHelper.csproj" />
+    <ProjectReference Include="..\MessageApi.Net7\MessageApi.Net7.csproj" />
     <ProjectReference Include="..\UserApi.Net7\UserApi.Net7.csproj" />
   </ItemGroup>
 

@@ -1,45 +1,77 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 //using Plugin.Firebase.CloudMessaging;
 using Plugin.FirebasePushNotification;
 using Intent = Android.Content.Intent;
-using NotificationManager = Android.App.NotificationManager;
 
 namespace MauiApp1
 {
+    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     //[Activity(
     //    Theme = "@style/Maui.SplashTheme",
-    //    MainLauncher = true,
-    //    ConfigurationChanges =
-    //        ConfigChanges.ScreenSize |
-    //        ConfigChanges.Orientation |
-    //        ConfigChanges.UiMode |
-    //        ConfigChanges.ScreenLayout |
-    //        ConfigChanges.SmallestScreenSize |
-    //        ConfigChanges.Density
-    //)]
-    //[IntentFilter(
-    //    new[] {
-    //    ShinyPushIntents.NotificationClickAction,
-    //    ShinyNotificationIntents.NotificationClickAction
-    //    }
-    //)]
-    [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize | ConfigChanges.Density | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
+    //    MainLauncher = true, 
+    //    ConfigurationChanges = ConfigChanges.ScreenSize 
+    //    | ConfigChanges.UiMode 
+    //    | ConfigChanges.ScreenLayout 
+    //    | ConfigChanges.SmallestScreenSize
+    //    | ConfigChanges.Density
+    //    | ConfigChanges.Orientation
+    //    )]
+
     public class MainActivity : MauiAppCompatActivity
     {
 
+        public static Context context;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            base.OnCreate(savedInstanceState);
+            //try
+            //{
+                base.OnCreate(savedInstanceState);
+                NativeMedia.Platform.Init(this, savedInstanceState);
+                //  FirebasePushNotificationManager.ProcessIntent(this, Intent, true);
+            //}
+            //catch(Exception e)
+            //{ 
+            
+            //}
+        }
+
+        protected override void OnActivityResult(int requestCode, Result resultCode, Intent intent)
+        {
+            if (NativeMedia.Platform.CheckCanProcessResult(requestCode, resultCode, intent))
+                NativeMedia.Platform.OnActivityResult(requestCode, resultCode, intent);
+
+            base.OnActivityResult(requestCode, resultCode, intent);
+        }
+
+        public override void OnLowMemory()
+        {
+            base.OnLowMemory();
+        }
+
+        protected override void OnStop()
+        {
+            base.OnStop();
+        }
+
+
+        protected override void OnRestart()
+        {
+            base.OnRestart();
+        }
+
+        protected override void OnResume()
+        {
             try
             {
+                base.OnResume();
 
-                FirebasePushNotificationManager.ProcessIntent(this, Intent, true);
+                //    FirebasePushNotificationManager.ProcessIntent(this, Intent, true);
+                FirebasePushNotificationManager.ProcessIntent(this, Intent);
             }
             catch { }
-            //HandleIntent(Intent);
-            // CreateNotificationChannelIfNeeded();
         }
 
         protected override void OnNewIntent(Intent intent)
@@ -47,46 +79,9 @@ namespace MauiApp1
             try
             {
                 base.OnNewIntent(intent);
-            FirebasePushNotificationManager.ProcessIntent(this, intent, true);
-                //   HandleIntent(intent);
+                FirebasePushNotificationManager.ProcessIntent(this, intent);
             }
             catch { }
-        }
-
-
-        private static void HandleIntent(Intent intent)
-        {
-         //   FirebaseCloudMessagingImplementation.OnNewIntent(intent);
-        }
-
-        private void CreateNotificationChannelIfNeeded()
-        {
-            if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
-            {
-                CreateNotificationChannel();
-            }
-        }
-
-        private void CreateNotificationChannel()
-        {
-          //  var channelId = $"{PackageName}.General";
-          //  var notificationManager = (NotificationManager)GetSystemService(NotificationService);
-        //    var channel = new NotificationChannel(channelId, "General", NotificationImportance.Max);
-          //  channel.EnableVibration(true);
-           // notificationManager.CreateNotificationChannel(channel);
-           
-            
-            
-            //FirebaseCloudMessagingImplementation.ChannelId = channelId;
-            //FirebaseCloudMessagingImplementation.SmallIconRef = Resource.Drawable.pushIcon;
-
-            //var channelId2 = $"{PackageName}.Notifications";
-            //var notificationManager2 = (NotificationManager)GetSystemService(NotificationService);
-            //var channel2 = new NotificationChannel(channelId2, "Notifications", NotificationImportance.Max);
-            //channel.EnableVibration(true);
-            //notificationManager.CreateNotificationChannel(channel2);
-            //FirebaseCloudMessagingImplementation.ChannelId = channelId2;
-            //FirebaseCloudMessagingImplementation.SmallIconRef = Resource.Drawable.pushIcon;
         }
 
         public override void OnBackPressed()

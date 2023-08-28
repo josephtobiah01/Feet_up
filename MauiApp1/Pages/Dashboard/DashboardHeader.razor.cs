@@ -33,7 +33,7 @@ namespace MauiApp1.Pages.Dashboard
         }
         private async Task DashboardButton_Click()
         {
-            await Callback.InvokeAsync("DASHBOARD");
+            //await Callback.InvokeAsync("DASHBOARD");
         }
         private async Task FeedButton_Click()
         {

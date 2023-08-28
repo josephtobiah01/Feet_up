@@ -20,6 +20,7 @@ namespace UserApi.Net7.Models
         public List<string> Errors { get; set; }
 
         public long UserId { get; set; }
+        public string FkFederatedUser { get; set; }
 
         public string UserName { get; set; }
 

@@ -26,4 +26,8 @@
     <ProjectReference Include="..\ParentMiddleWare\ParentMiddleWare.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
 </Project>

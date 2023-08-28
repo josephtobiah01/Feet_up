@@ -27,6 +27,10 @@ namespace MauiApp1.Business.DeviceServices
         public static BottomSheet CameraPermissionPopup { get; set; } 
         public static BottomSheet StoragePermissionPopup { get; set; } 
         public static BottomSheet NotificationPermissionPopup { get; set; } 
+        public static BottomSheet LostInternetPopup { get; set; } 
+        public static BottomSheet TemplateErrorPopup { get; set; }
+        public static Label TemplateErrorHeader { get; set; }
+        public static Label TemplateErrorLabel { get; set; }
 #endif
 
         public static double BrowserInnerHeight { get; set; }

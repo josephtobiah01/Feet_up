@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9Ky/aFAOncBoZvppK0CGGVc+tM6qk5jzoMBna9r29U4=",
+  "Hash": "94D/tMcpxGKZcWF1cE1orermXdylszivuIzRy9QWDWk=",
   "Source": "FitappAdminWeb.Net7",
   "BasePath": "_content/FitappAdminWeb.Net7",
   "Mode": "Default",
@@ -3468,6 +3468,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\managed\\promotion.js"
     },
     {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\singleroom.js",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/managed/singleroom.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\managed\\singleroom.js"
+    },
+    {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supp_weekly_edit.js",
       "SourceId": "FitappAdminWeb.Net7",
       "SourceType": "Discovered",
@@ -3568,6 +3585,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\managed\\trainingchart.js"
+    },
+    {
+      "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\userdetails.js",
+      "SourceId": "FitappAdminWeb.Net7",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\",
+      "BasePath": "_content/FitappAdminWeb.Net7",
+      "RelativePath": "lib/managed/userdetails.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\lib\\managed\\userdetails.js"
     },
     {
       "Identity": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\utilities.js",

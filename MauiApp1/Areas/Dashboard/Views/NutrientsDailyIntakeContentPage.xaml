@@ -661,7 +661,7 @@
                             />
                 <Button 
                                 x:Name="DatePickerButton"
-                                HeightRequest="36" 
+                                HeightRequest="54" 
                                 Text="You Should Not Be Seeing This"
                                 FontFamily="Montserrat-Regular"
                                 VerticalOptions="CenterAndExpand"

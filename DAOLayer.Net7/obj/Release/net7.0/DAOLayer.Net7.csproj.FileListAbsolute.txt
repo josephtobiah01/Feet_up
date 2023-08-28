@@ -1,0 +1,14 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\bin\Release\net7.0\DAOLayer.Net7.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\bin\Release\net7.0\DAOLayer.Net7.runtimeconfig.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\bin\Release\net7.0\DAOLayer.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\bin\Release\net7.0\DAOLayer.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\refint\DAOLayer.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\DAOLayer.Net7.genruntimeconfig.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\DAOLayer.Net7\obj\Release\net7.0\ref\DAOLayer.Net7.dll

@@ -809,6 +809,10 @@
       "PackagePath": "staticwebassets\\lib\\managed\\promotion.js"
     },
     {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\singleroom.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\singleroom.js"
+    },
+    {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\supp_weekly_edit.js",
       "PackagePath": "staticwebassets\\lib\\managed\\supp_weekly_edit.js"
     },
@@ -831,6 +835,10 @@
     {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\trainingchart.js",
       "PackagePath": "staticwebassets\\lib\\managed\\trainingchart.js"
+    },
+    {
+      "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\userdetails.js",
+      "PackagePath": "staticwebassets\\lib\\managed\\userdetails.js"
     },
     {
       "Id": "C:\\Users\\joseph.alulod\\source\\Workspaces\\FitApp\\FitApp\\FitappAdminWeb.Net7\\wwwroot\\lib\\managed\\utilities.js",

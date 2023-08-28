@@ -6,7 +6,21 @@ namespace MauiApp1.Areas.Exercise.ViewModels
 {
     public class ExercisePageViewModel : INotifyPropertyChanged
     {
+        private bool _weightHasValue = false;
+        private ColumnDefinition _weightColumnDefinition;
+
+        #region Interface
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+
+        #endregion Interface
         public ObservableCollection<SetPageViewModel> SetviewModel { get; set; }
+
         public long ExerciseId { get; set; }
 
         public long Exercise_type_id { get; set; }
@@ -25,6 +39,26 @@ namespace MauiApp1.Areas.Exercise.ViewModels
         //    }
         // }
 
+        public bool WeightHasValue
+        {
+            get { return _weightHasValue; }
+            set
+            {
+                _weightHasValue = value;
+                OnPropertyChanged(nameof(WeightHasValue));
+            }
+        }
+
+        public ColumnDefinition WeightColumnDefinition
+        {
+            get { return _weightColumnDefinition; }
+            set
+            {
+                _weightColumnDefinition = value;
+                OnPropertyChanged(nameof(WeightColumnDefinition));
+            }
+        }
+
         public string ExplainerText { get; set; }
 
         private bool isRecordExerciseTabContentVisible;
@@ -34,7 +68,7 @@ namespace MauiApp1.Areas.Exercise.ViewModels
             set
             {
                 isRecordExerciseTabContentVisible = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsRecordExerciseTabContentVisible));
             }
         }
 
@@ -46,7 +80,7 @@ namespace MauiApp1.Areas.Exercise.ViewModels
             set
             {
                 isSummaryTabContentVisible = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsSummaryTabContentVisible));
             }
         }
 
@@ -57,7 +91,7 @@ namespace MauiApp1.Areas.Exercise.ViewModels
             set
             {
                 isHistoryTabContentVisible = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsHistoryTabContentVisible));
             }
         }
 
@@ -68,7 +102,7 @@ namespace MauiApp1.Areas.Exercise.ViewModels
             set
             {
                 isSetContentVisible = value;
-                OnPropertyChanged();
+                OnPropertyChanged(nameof(IsSetContentVisible));
             }
         }
 
@@ -78,14 +112,6 @@ namespace MauiApp1.Areas.Exercise.ViewModels
         public bool IsExerciseComplete { get; internal set; }
         public bool IsExerciseSkipped { get; internal set; }
         public DateTime? ExerciseEndTimeStamp { get; internal set; }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
 
 
     }

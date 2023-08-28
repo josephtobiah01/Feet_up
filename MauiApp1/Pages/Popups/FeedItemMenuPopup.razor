@@ -66,6 +66,19 @@
                                 </div>
                             </div>
                             break;
+
+                        case FeedItemType.SupplementItem:
+                            <div class="popup-item-wrapper">
+                                <div class="popup-item" @onclick="async ()=> await OpenSkipPopup()">
+                                    <img class="popup-item-icon" src="resources/public/icons/multimedia/skipforward1.svg" />
+                                    <div class="popup-item-name-text">Skip this time</div>
+                                    <button class="popup-item-right-button">
+                                        <img class="popup-item-right-button-icon" src="resources/public/icons/arrows/arrow-right.svg" />
+                                    </button>
+                                </div>
+                            </div>
+                            break;
+
                         default:
                             break;
                     }

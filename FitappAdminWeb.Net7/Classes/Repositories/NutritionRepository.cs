@@ -19,7 +19,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
 
         const int ACTUALDAY_DEFAULT_DATERANGE = 7;
         const long TRANSCRIPTIONTYPEID_PHOTO = 1;
-        readonly string API_NOTIFYTRANSCRIPTIONCOMPLETE = "/api/Nutrition/NotifyTranscriptionComplete?MealId=";
+        readonly string API_NOTIFYTRANSCRIPTIONCOMPLETE = "/api/Nutrition/NotifyTranscriptionComplete";
         readonly string APPSETTINGKEY_MAINAPI_DOMAIN = "MainApi_Domain";
         readonly int CUSTOM_MEALTYPE_ID = 4;
 
@@ -161,16 +161,9 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     {
                         try
                         {
-                            string apiurl = API_NOTIFYTRANSCRIPTIONCOMPLETE + currDish.FkNutritionActualMeal.Id;
                             HttpClient client = _apiutil.GetHttpClient();
-                            var request = _apiutil.BuildRequest(apiurl, HttpMethod.Post);
+                            var request = _apiutil.BuildRequest(API_NOTIFYTRANSCRIPTIONCOMPLETE, HttpMethod.Post, currDish.FkNutritionActualMealId);
                             _ = Task.Run(() => client.SendAsync(request));
-
-                            //string apiurl = $"{_config[APPSETTINGKEY_MAINAPI_DOMAIN]}{API_NOTIFYTRANSCRIPTIONCOMPLETE}" + currDish.FkNutritionActualMeal.Id;
-                            //HttpClient client = _httpclientfactory.CreateClient();
-
-                            //do not await this result. Just call it then move on
-                            //_ = Task.Run(() => client.PostAsync(apiurl, null));
                         }
                         catch (Exception ex)
                         {
@@ -345,7 +338,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     foreach (var inputMeal in input.Meals)
                     {
                         var currMeal = currDay.FnsNutritionActualMeal.FirstOrDefault(r => r.Id == inputMeal.Id);
-                        if (currMeal != null)
+                        if ((currMeal != null) && (inputMeal.Id != 0))
                         {
                             //Edit the meal row
                             _mapper.Map(inputMeal, currMeal);

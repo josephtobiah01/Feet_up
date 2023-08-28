@@ -1,6 +1,9 @@
 ﻿using MauiApp1.Areas.Chat.Views;
 using MauiApp1.Business.DeviceServices;
+using MauiApp1.Interfaces;
 using MauiApp1.Pages;
+using MauiApp1.Pages.Chat;
+using MauiApp1.Services;
 using Statics;
 
 namespace MauiApp1._Push
@@ -8,7 +11,7 @@ namespace MauiApp1._Push
     public class PushNavigationHelper
     {
         public static MauiApp1.Pages.Index RootPage { get; set; }
-        public static async Task HandleNotificationTab(string aaction, string parameter)
+        public static async Task<bool> HandleNotificationTab(string aaction, string parameter)
         {
             try
             {
@@ -19,7 +22,9 @@ namespace MauiApp1._Push
                         {
                             if (App.Current.MainPage.Navigation.NavigationStack.Last().GetType().Name != "ViewHybridChatContentPage")
                             {
-                                await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
+                                ISelectedImageService selectedImageService = new SelectedImageService();
+                                ViewHybridChatContentPage viewHybridChatContentPage = new ViewHybridChatContentPage(selectedImageService);
+                                await Application.Current.MainPage.Navigation.PushAsync(viewHybridChatContentPage);
                             }
                             break;
                         }
@@ -29,7 +34,7 @@ namespace MauiApp1._Push
 
                             if (RootPage != null)
                             {
-                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                         //       await App.Current.MainPage.Navigation.PopToRootAsync();
                                 await Navigate_to_feed_item(intercept);
                             }
                             else
@@ -43,7 +48,7 @@ namespace MauiApp1._Push
                             HTMLBridge.RefreshData = null;
                             if (RootPage != null)
                             {
-                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                          //      await App.Current.MainPage.Navigation.PopToRootAsync();
                                 await Navigate_to_feed_item(intercept);
                             }
                             else
@@ -58,7 +63,7 @@ namespace MauiApp1._Push
 
                             if (RootPage != null)
                             {
-                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                           //     await App.Current.MainPage.Navigation.PopToRootAsync();
                                 await Navigate_to_feed_item(intercept);
                             }
                             else
@@ -73,7 +78,7 @@ namespace MauiApp1._Push
 
                             if (RootPage != null)
                             {
-                                await App.Current.MainPage.Navigation.PopToRootAsync();
+                             //   await App.Current.MainPage.Navigation.PopToRootAsync();
                                 await Navigate_to_feed_item(intercept);
                             }
                             else
@@ -88,8 +93,12 @@ namespace MauiApp1._Push
                             break;
                         }
                 }
+                return true;
             }
-            catch { }
+            catch(Exception e)
+            {
+                return false;
+            }
         }
 
         public static async Task DoIntercept(MauiApp1.Pages.NavigationIntercept intercept)
@@ -116,7 +125,10 @@ namespace MauiApp1._Push
                     await RootPage.DoNavigationIntercept(intercept.Action, intercept.Parameter1);
                 }
             }
-            catch { }
+            catch(Exception e)
+            {
+            
+            }
         }
     }
 }

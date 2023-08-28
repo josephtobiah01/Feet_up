@@ -144,23 +144,19 @@ public partial class NutrientDashboardContentView : ContentView, INotifyProperty
 
 
 
-    private async Task ShowAlertMessage(string title, string message)
-    {
-
-        await Application.Current.MainPage.DisplayAlert(title, message, "OK").ConfigureAwait(false);
-
-    }
-
-
 
     private async void NavigateTo2ndPageCommand()
     {
-        NutrientsDailyIntakeContentPage _nutrientsDailyIntakeContentPage = new NutrientsDailyIntakeContentPage(_nutrientsIntakeService);
-        _nutrientsDailyIntakeContentPage.SelectedDate = SelectedDate;
-        await _nutrientsDailyIntakeContentPage.LoadTotalNutrientsBarChart();
+        MauiApp1.Areas.Dashboard.Views.Version2.NutrientsDailyIntakeContentPage _nutrientsDailyIntakeContentPage = new MauiApp1.Areas.Dashboard.Views.Version2.NutrientsDailyIntakeContentPage();
+        _nutrientsDailyIntakeContentPage.RequestedDate = SelectedDate;
+        //await _nutrientsDailyIntakeContentPage.LoadTotalNutrientsBarChart();
         await Application.Current.MainPage.Navigation.PushAsync(_nutrientsDailyIntakeContentPage, true);
+        //NutrientsDailyIntakeContentPage _nutrientsDailyIntakeContentPage = new NutrientsDailyIntakeContentPage(_nutrientsIntakeService);
+        //_nutrientsDailyIntakeContentPage.SelectedDate = SelectedDate;
+        //await _nutrientsDailyIntakeContentPage.LoadTotalNutrientsBarChart();
+        //await Application.Current.MainPage.Navigation.PushAsync(_nutrientsDailyIntakeContentPage, true);
 
-        
+
     }
 
 

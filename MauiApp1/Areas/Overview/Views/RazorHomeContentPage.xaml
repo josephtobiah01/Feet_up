@@ -25,7 +25,7 @@
                 <RootComponent x:Name="rootComponent" Selector="#app" ComponentType="{x:Type pages:DashboardHeader}" />
             </BlazorWebView.RootComponents>
         </BlazorWebView>
-
+        <!--<Button x:Name="Feed" Text="Feed" Clicked="Feed_Clicked"></Button>-->
         <Rectangle Grid.Row="1" Grid.RowSpan="2"  BackgroundColor="White" Margin="0, 64, 0, 0"/>
 
         <Border Grid.Row="1" BackgroundColor="White" StrokeShape="RoundRectangle 16, 16, 0, 0"  Padding="0" Margin="0, 24, 0, 0">
@@ -146,7 +146,12 @@
             </dxe:DXCalendar>
         </dxco:DXPopup>
 
-        <Grid x:Name="LoaderGrid" Grid.Row="0" Grid.RowSpan="3" IsVisible="true" BackgroundColor="Black" Opacity="0.2"/>
-        <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="0" Grid.RowSpan="2" IsVisible="true" IsRunning="True" HeightRequest="50" Margin="0,16,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>
+        <Grid x:Name="LoaderRectangle" Grid.Row="0" Grid.RowSpan="3" IsVisible="true" BackgroundColor="Black" Opacity="0.3" >
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer x:Name="LoaderRectangleTapGestureRecognizer" Tapped ="LoaderRectangleTapGestureRecognizer_Tapped" NumberOfTapsRequired="1"
+            />
+            </Grid.GestureRecognizers>
+        </Grid>
+        <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="0" Grid.RowSpan="3" IsVisible="true" IsRunning="True" HeightRequest="50" Margin="0,16,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>
     </Grid>
 </ContentPage>

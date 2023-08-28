@@ -21,10 +21,7 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
         {
             InitializeComponent();
 
-        }
-        protected void ContentPage_Loaded(object sender, EventArgs e)
-        {
-            BarcodeReaderOptions bar = new BarcodeReaderOptions()
+            barcodeReader.Options = new BarcodeReaderOptions()
             {
                 //if barcode scans regardless of camera orientation
                 AutoRotate = true,
@@ -34,7 +31,11 @@ namespace MauiApp1.Areas.BarcodeScanning.Views
                 //Multiple to specify if multiple results are possible (will be saved in results collection list
                 //TryHarder will *really* try harder to see whether there's a barcode (might see barcode in white noise)
                 TryHarder = true,
+                TryInverted = true
             };
+        }
+        protected void ContentPage_Loaded(object sender, EventArgs e)
+        {
             barcodeReader.IsDetecting = true;
             barcodeReader.IsEnabled = true;
             flashToggle = false;

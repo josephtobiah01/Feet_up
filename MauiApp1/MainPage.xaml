@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MauiApp1"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiApp1.MainPage"
-             BackgroundColor="{DynamicResource PageBackgroundColor}" NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False">
+             BackgroundColor="{DynamicResource PageBackgroundColor}" NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
 
 
     <!--change status bar color (can be set per page)-->
@@ -274,7 +274,7 @@
             </Grid>
             <!--#endregion-->
         </dxco:BottomSheet>
-        <dxco:BottomSheet x:Name="LostInternetPopup"
+        <dxco:BottomSheet x:Name="LostInternetBottomSheet"
                          CornerRadius="30"
                          Grid.Row="0"
                          BackgroundColor="White"
@@ -286,6 +286,7 @@
             <!--#region BottomSheetContent-->
             <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
                 <dxco:SimpleButton 
+                     x:Name="CloseLostInternetErrorBottomSheetButton"
                         Grid.Row="0" 
                         Icon="close2.png"
                         Grid.Column="0"
@@ -323,11 +324,12 @@
                         FontSize="14"
                         />
                 <dxco:SimpleButton 
+                    x:Name="GoToSettingBottomSheetButton"
                         Grid.Row="4" 
                         Grid.Column="0" 
                         Grid.ColumnSpan="2"
                         Text="Go to settings" 
-                        Clicked="RequestStoragePermissions"
+                        Clicked="GoToSettingBottomSheetButton_Clicked"
                         BackgroundColor="#006272"
                         TextColor="White"
                         FontFamily="Montserrat-Bold"
@@ -336,7 +338,7 @@
             </Grid>
             <!--#endregion-->
         </dxco:BottomSheet>
-        <dxco:BottomSheet x:Name="InternalErrorPopup"
+        <dxco:BottomSheet x:Name="InternalErrorBottomSheet"
                          CornerRadius="30"
                          Grid.Row="0"
                          BackgroundColor="White"
@@ -348,12 +350,13 @@
             <!--#region BottomSheetContent-->
             <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
                 <dxco:SimpleButton 
+                     x:Name="CloseInternalServerErrorBottomSheetButton"
                         Grid.Row="0" 
                         Icon="close2.png"
                         Grid.Column="0"
                         Grid.ColumnSpan="2"
                         Text="Close" 
-                        Clicked="CloseInternalErrorPopup"
+                        Clicked="CloseInternalServerErrorBottomSheetButton_Clicked"
                         HorizontalOptions="End"
                         VerticalOptions="Start"
                         CornerRadius="25"
@@ -385,11 +388,79 @@
                         FontSize="14"
                         />
                 <dxco:SimpleButton 
+                    x:Name="GoBackInternalServerErrorBottomSheetButton"
                         Grid.Row="4" 
                         Grid.Column="0" 
                         Grid.ColumnSpan="2"
                         Text="Go Back"
-                        Clicked="CloseStoragePermissionPopup"
+                       Clicked="GoBackInternalServerErrorBottomSheetButton_Clicked"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+        <dxco:BottomSheet x:Name="TemplateErrorPopup"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.8"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseTemplatePopup"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        x:Name="TemplateErrorHeader"
+                        Text="Encountering an Internal Glitch" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        x:Name="TemplateErrorLabel"
+                        Text="Our sincerest apologies! We're facing some internal hiccups that we didn't foresee. Our team is already working hard to iron this out. If this problem persist. Reach out to us on Help@ageinreverse.me" 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                    x:Name="TemplateErrorButton"
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="2"
+                        Text="Go Back"
+                        Clicked="CloseTemplatePopup"
                         BorderColor="#006272"
                         BorderThickness="1"
                         BackgroundColor="White"
@@ -401,6 +472,85 @@
             <!--#endregion-->
         </dxco:BottomSheet>
 
+        <dxco:BottomSheet x:Name="CustomComfirmationBottomSheet"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.7"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+            <!--#region BottomSheetContent-->
+            <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                <dxco:SimpleButton 
+                    x:Name="CustomComfirmationCloseButton"
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CustomComfirmationCloseButton_Clicked"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                <Label 
+                    x:Name="CustomComfirmationTitle"
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                <Label 
+                    x:Name="CustomComfirmationMessage"
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="" 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                <dxco:SimpleButton 
+                    x:Name="CustomComfirmationAcceptButton"
+                        Grid.Row="4" 
+                        Grid.Column="1" 
+                        Text="" 
+                        Clicked="CustomComfirmationAcceptButton_Clicked"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                <dxco:SimpleButton 
+                    x:Name="CustomComfirmationCancelButton"
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Text=""
+                        Clicked="CustomComfirmationCancelButton_Clicked"
+                        BorderColor="#006272"
+                        BorderThickness="1"
+                        BackgroundColor="White"
+                        TextColor="#006272"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+            </Grid>
+            <!--#endregion-->
+        </dxco:BottomSheet>
+        
     </Grid>
 
 

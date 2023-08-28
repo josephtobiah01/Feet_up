@@ -3,13 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:drawables="clr-namespace:MauiApp1.Areas.Exercise.Resources"
-             x:Class="MauiApp1.Areas.Exercise.Views.ViewExerciseContentPage"
-                 xmlns:models    ="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
-                 xmlns:viewmodels="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
-                 x:DataType="viewmodels:ExercisePageViewModel"
+             x:Class="MauiApp1.Areas.Exercise.Views.ViewTrainingSessionContentPage"
+             xmlns:models="clr-namespace:MauiApp1.Areas.Exercise.ViewModels"
+             xmlns:cs="clr-namespace:MauiApp1.Areas.Exercise.Views"
+             x:DataType="cs:ViewTrainingSessionContentPage"             
              xmlns:input="clr-namespace:InputKit.Shared.Controls;assembly=InputKit.Maui"
              NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False"
-             Title="ViewExerciseContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
+             Title="ViewTrainingSessionContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded">
 
     <ContentPage.Resources>
         <ControlTemplate x:Key="RadioButtonTemplate">
@@ -275,10 +275,11 @@
 
             <ScrollView  Grid.Row="3"  Margin="20">
                 <VerticalStackLayout>
-                    <VerticalStackLayout CompressedLayout.IsHeadless="True" x:Name="ExerciseListView" Margin="16,0,16,0" >
+                    <VerticalStackLayout CompressedLayout.IsHeadless="True" x:Name="ExerciseListView" Margin="16,0,16,0" 
+                                         >
 
                         <BindableLayout.ItemTemplate>
-                            <DataTemplate x:DataType="models:ExercisePageViewModel" >
+                            <DataTemplate x:DataType="models:ExercisePageViewModel">
                                 <Frame Grid.Row="0"  CompressedLayout.IsHeadless="True"  BackgroundColor="#FFFFFF" Padding="0" Margin="0,0,0,24" WidthRequest="343"  CornerRadius="12" HasShadow="true">
                                     <VerticalStackLayout HorizontalOptions="Center"  VerticalOptions="Center" Margin="2,24,2,24" Padding="0">
 
@@ -300,57 +301,22 @@
                                         <Rectangle 
                                             Fill="#EEF0F2" 
                                             HorizontalOptions="FillAndExpand"
-                                            Margin="0"/>
-
-                                        <!--<HorizontalStackLayout HeightRequest="20" Margin="0,24,16,24" Padding="0">
-
-
-                                            <RadioButton WidthRequest="112" HeightRequest="30" MinimumWidthRequest="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="8,0,0,0" ControlTemplate="{StaticResource RadioButtonTemplate}" IsChecked="{Binding IsRecordExerciseTabContentVisible}">
-                                                <RadioButton.Content>
-                                                    <StackLayout>
-                                                        <Label VerticalTextAlignment="Center"  BackgroundColor="White" TextColor="#4D4D4D" FontSize="12" FontFamily="Montserrat-Regular" Text="Record exercise" />
-                                                        <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped" >
-                                                            </TapGestureRecognizer>
-                                                        </StackLayout.GestureRecognizers>
-                                                    </StackLayout>
-                                                </RadioButton.Content>
-                                            </RadioButton>
-
-
-                                            <RadioButton  WidthRequest="76" HeightRequest="30" MinimumWidthRequest="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Margin="8,0,0,0" ControlTemplate="{StaticResource RadioButtonTemplate}" IsChecked="{Binding IsSummaryTabContentVisible}">
-                                                <RadioButton.Content>
-                                                    <StackLayout>
-                                                        <Label VerticalTextAlignment="Center" BackgroundColor="White" TextColor="#4D4D4D" FontSize="12" FontFamily="Montserrat-Regular" Text="Summary"/>
-                                                        <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_1">
-                                                            </TapGestureRecognizer>
-                                                        </StackLayout.GestureRecognizers>
-                                                    </StackLayout>
-                                                </RadioButton.Content>
-                                            </RadioButton>
-
-
-                                            <RadioButton  WidthRequest="64" MinimumWidthRequest="0" HeightRequest="30" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"  Margin="8,0,0,0"  ControlTemplate="{StaticResource RadioButtonTemplate}" IsChecked="{Binding IsHistoryTabContentVisible}">
-                                                <RadioButton.Content>
-                                                    <StackLayout>
-                                                        <Label  VerticalTextAlignment="Center"  BackgroundColor="White" TextColor="#4D4D4D" FontSize="12" FontFamily="Montserrat-Regular" Text="History"/>
-                                                        <StackLayout.GestureRecognizers>
-                                                            <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="TapGestureRecognizer_Tapped_2">
-                                                            </TapGestureRecognizer>
-                                                        </StackLayout.GestureRecognizers>
-                                                    </StackLayout>
-                                                </RadioButton.Content>
-                                            </RadioButton>
-                                        </HorizontalStackLayout>-->
+                                            Margin="0"/>                                       
 
                                         <Grid
-                                            ColumnDefinitions="*,*,*,*,*"
+                                            x:Name="GridExerciseLabels"
                                             HorizontalOptions="FillAndExpand" 
                                             VerticalOptions="FillAndExpand" 
                                             Margin="3,15,3,5"
                                             ColumnSpacing="5"
                                             IsVisible="{Binding IsRecordExerciseTabContentVisible}">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="{Binding WeightColumnDefinition.Width}"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
 
                                             <Label 
                                                 Grid.Column="0"
@@ -368,8 +334,7 @@
                                                 Text="Previous"
                                                 FontSize="12" 
                                                 TextColor="#4D4D4D"  
-                                                FontFamily="Montserrat-Regular"  />
-
+                                                FontFamily="Montserrat-Regular"  />                                            
                                             <Label  
                                                 Grid.Column="2"
                                                 HorizontalOptions="CenterAndExpand" 
@@ -377,7 +342,8 @@
                                                 Text="Weight" 
                                                 TextColor="#4D4D4D" 
                                                 FontSize="12"
-                                                FontFamily="Montserrat-Regular" />
+                                                FontFamily="Montserrat-Regular" 
+                                                IsVisible="{Binding WeightHasValue}"/>
 
                                             <Label 
                                                 Grid.Column="3"
@@ -408,7 +374,7 @@
 
                                             <BindableLayout.ItemTemplate>
 
-                                                <DataTemplate x:DataType="models:SetPageViewModel" >
+                                                <DataTemplate x:DataType="models:SetPageViewModel">
 
                                                     <SwipeView>
                                                         <SwipeView.RightItems>
@@ -493,11 +459,19 @@
                                                         </HorizontalStackLayout>-->
 
                                                         <Grid
-                                                            ColumnDefinitions="*,1.1*,*,*,*"
+                                                            x:Name="GridLabelsValues"
+                                                            
                                                             HorizontalOptions="FillAndExpand" 
                                                             VerticalOptions="FillAndExpand" 
                                                             Margin="3,15,3,5"
                                                             ColumnSpacing="5">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="{Binding WeightColumnDefinition.Width}"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                                <ColumnDefinition Width="*"/>
+                                                            </Grid.ColumnDefinitions>
 
                                                             <Label 
                                                                 Grid.Column="0"
@@ -517,7 +491,6 @@
                                                                 TextColor="#4D4D4D"  
                                                                 FontFamily="Montserrat-Regular"  />
 
-
                                                             <Entry 
                                                                 Grid.Column="2"
                                                                 HorizontalOptions="CenterAndExpand" 
@@ -534,8 +507,7 @@
                                                                 TextColor="#4D4D4D"  
                                                                 FontSize="12" 
                                                                 FontFamily="Montserrat-Regular" 
-                                                                Margin="0,0,3,0"
-                                                                />
+                                                                IsVisible="{Binding WeightHasValue}"/>
 
                                                             <Entry 
                                                                    Grid.Column="3"
@@ -553,34 +525,8 @@
                                                                 TextColor="#4D4D4D"
                                                                 FontSize="12" 
                                                                 FontFamily="Montserrat-Regular" 
-                                                                Margin="0,0,4,0" />
-
-
-                                                            <!--<Label  
-                                                                Grid.Column="2"
-                                                                HorizontalOptions="CenterAndExpand" 
-                                                                VerticalOptions="CenterAndExpand" 
-                                                                TextColor="#4D4D4D" 
-                                                                FontSize="12"
-                                                                Margin="0,0,3,0"
-                                                                FontFamily="Montserrat-Regular" >
-                                                                <Label.FormattedText>
-                                                                    <FormattedString>
-                                                                        <Span Text="{Binding MetricsValue1} "/>
-                                                                        <Span Text="Kg"/>
-                                                                    </FormattedString>
-                                                                </Label.FormattedText>
-                                                            </Label>
-
-                                                            <Label 
-                                                                Grid.Column="3"
-                                                                HorizontalOptions="CenterAndExpand" 
-                                                                VerticalOptions="CenterAndExpand" 
-                                                                Text="{Binding MetricsValue2}" 
-                                                                TextColor="#4D4D4D"  
-                                                                FontSize="12" 
-                                                                Margin="0,0,4,0"
-                                                                FontFamily="Montserrat-Regular" />-->
+                                                                Margin="0,0,0,0" />
+                                                     
 
                                                             <input:CheckBox   
                                                           Type="Material"
@@ -606,35 +552,6 @@
                                             </BindableLayout.ItemTemplate>
                                         </VerticalStackLayout>
 
-
-
-
-                                        <!--<toolkit:MediaElement x:Name="MediaElement" Source="https://aiqtoolstoragedev.blob.core.windows.net/music/Sultans.mp4"
-              ShouldShowPlaybackControls="True" ShouldKeepScreenOn="True"  ShouldLoopPlayback="True"  ShouldAutoPlay="False"  IsVisible="{Binding IsSummaryTabContentVisible}" HeightRequest="132" Aspect="Fill" PropertyChanged="MediaElement_PropertyChanged"/>-->
-                                        <!--<VerticalStackLayout x:Name="SummaryGridView" IsVisible="{Binding IsSummaryTabContentVisible}" Margin="16,16,16,0">
-
-                                            <Border HeightRequest="132" BackgroundColor="Black" Margin="0,0,16,0">
-                                                <Border.StrokeShape>
-                                                    <RoundRectangle CornerRadius="12"/>
-                                                </Border.StrokeShape>
-                                                <ImageButton x:Name="PlayVideoButton" BackgroundColor="Transparent"  HeightRequest="24" WidthRequest="24" Source="play_24x24.png" VerticalOptions="Center" HorizontalOptions="Center" Clicked="PlayVideoButton_Clicked"/>
-                                            </Border>
-
-
-                                            <Label Text="How to do the exercise" Margin="0,16,0,0" FontAttributes="Bold" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" TextColor="#1A1A1A" FontSize="14" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
-
-                                            <Label LineBreakMode="CharacterWrap" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" TextColor="#1A1A1A" FontSize="12" Margin="0,8,0,0" Text="Equipment needed: bench angled down at 15 degrees. Trusted Source and dumbbells or a barbell 
-                                                    &#x0a;
-1. Slowly lie down on the decline bench, so your legs are higher than your head, keeping your back firmly planted into the back of the bench. Place your feet in provided stirrups.
-                                                    &#x0a;
-2. Have a spotter help you lift the bar off the rack or grip dumbbells, if using. Hold the weight directly over the shoulders, arms slightly wider than shoulder height...."/>
-
-
-                                        </VerticalStackLayout>
-
-                                        <VerticalStackLayout x:Name="History" IsVisible="{Binding IsHistoryTabContentVisible}">
-
-                                        </VerticalStackLayout>-->
 
                                         <Button IsVisible="{Binding IsRecordExerciseTabContentVisible}"  Grid.Row="5" HorizontalOptions="Center"   Text=" + Add more " Clicked="AddSetButton_Clicked" FontSize="16" FontAttributes="Bold" FontFamily="Montserrat-Regular" BackgroundColor="Transparent" Margin="0,8,24,0" BorderColor="Transparent" TextColor="#006272"/>
                                     </VerticalStackLayout>
@@ -696,6 +613,15 @@
 
             </Border>
         </Grid>
+
+        <Grid x:Name="LoaderRectangle" Grid.Row="0" IsVisible="true" BackgroundColor="Black" Opacity="0.3" >
+            <Grid.GestureRecognizers>
+                <TapGestureRecognizer x:Name="LoaderRectangleTapGestureRecognizer" Tapped ="LoaderRectangleTapGestureRecognizer_Tapped" NumberOfTapsRequired="1"
+            />
+            </Grid.GestureRecognizers>
+        </Grid>
+        <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="0" IsVisible="true" IsRunning="True" HeightRequest="50" Margin="0,16,0,0" VerticalOptions="Center" HorizontalOptions="Center"/>
+
     </Grid>
 
 </ContentPage>

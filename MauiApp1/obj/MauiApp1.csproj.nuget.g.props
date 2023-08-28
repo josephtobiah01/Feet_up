@@ -14,6 +14,16 @@
     <SourceRoot Include="C:\Program Files (x86)\Microsoft Visual Studio\Shared\NuGetPackages\" />
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0-android33.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)air.maui.fitnessdata.common\1.0.0-alpha38\contentFiles\any\net7.0-android33.0\Transactions\dummy.txt" Condition="Exists('$(NuGetPackageRoot)air.maui.fitnessdata.common\1.0.0-alpha38\contentFiles\any\net7.0-android33.0\Transactions\dummy.txt')">
+      <NuGetPackageId>AIR.Maui.FitnessData.Common</NuGetPackageId>
+      <NuGetPackageVersion>1.0.0-alpha38</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Transactions\dummy.txt</Link>
+    </Content>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0-android33.0' AND '$(ExcludeRestorePackageImports)' != 'true' ">
     <None Include="$(NuGetPackageRoot)inputkit.maui\4.3.3\contentFiles\any\net7.0-android33.0\icon512.png" Condition="Exists('$(NuGetPackageRoot)inputkit.maui\4.3.3\contentFiles\any\net7.0-android33.0\icon512.png')">
       <NuGetPackageId>InputKit.Maui</NuGetPackageId>
       <NuGetPackageVersion>4.3.3</NuGetPackageVersion>
@@ -22,6 +32,16 @@
       <Private>False</Private>
       <Link>icon512.png</Link>
     </None>
+  </ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0-ios' AND '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)air.maui.fitnessdata.common\1.0.0-alpha38\contentFiles\any\net7.0-ios16.1\Transactions\dummy.txt" Condition="Exists('$(NuGetPackageRoot)air.maui.fitnessdata.common\1.0.0-alpha38\contentFiles\any\net7.0-ios16.1\Transactions\dummy.txt')">
+      <NuGetPackageId>AIR.Maui.FitnessData.Common</NuGetPackageId>
+      <NuGetPackageVersion>1.0.0-alpha38</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <Private>False</Private>
+      <Link>Transactions\dummy.txt</Link>
+    </Content>
   </ItemGroup>
   <ItemGroup Condition=" '$(TargetFramework)' == 'net7.0-ios' AND '$(ExcludeRestorePackageImports)' != 'true' ">
     <None Include="$(NuGetPackageRoot)inputkit.maui\4.3.3\contentFiles\any\net7.0-ios16.1\icon512.png" Condition="Exists('$(NuGetPackageRoot)inputkit.maui\4.3.3\contentFiles\any\net7.0-ios16.1\icon512.png')">

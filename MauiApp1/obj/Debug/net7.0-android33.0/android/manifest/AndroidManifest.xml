@@ -5,7 +5,7 @@
     Changes to this file may cause incorrect behavior and will be lost if
     the contents are regenerated.
 -->
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="me.AgeInReverse.AIR" android:versionCode="57" android:versionName="internal-57">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="me.AgeInReverse.AIR" android:versionCode="6" android:versionName="6">
   <!-- Badges -->
   <!-- Apex -->
   <!-- Default -->
@@ -27,6 +27,7 @@
   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
   <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
   <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+  <uses-permission android:name="android.permission.RECORD_AUDIO" />
   <uses-permission android:name="com.sonymobile.home.permission.PROVIDER_INSERT_BADGE" />
   <uses-permission android:name="com.majeur.launcher.permission.UPDATE_BADGE" />
   <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE" />
@@ -60,7 +61,8 @@
   <uses-permission android:name="android.permission.WAKE_LOCK" />
   <!-- Required by older versions of Google Play services to create IID tokens -->
   <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-  <application android:name="crc64e632a077a20c694c.MainApplication" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:exported="false" android:extractNativeLibs="true" android:hardwareAccelerated="true" android:icon="@mipmap/appicon" android:label="Age In Reverse Longevity" android:persistent="true" android:supportsRtl="true">
+  <application android:name="crc64e632a077a20c694c.MainApplication" android:allowBackup="false" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:exported="false" android:extractNativeLibs="true" android:icon="@mipmap/appiconfgr" android:label="Age In Reverse Longevity" android:launchMode="singleTop" android:roundIcon="@mipmap/appicon">
+    <!-- <application android:allowBackup="true" android:debuggable="false" android:exported="false" android:persistent="true" android:icon="@mipmap/appicon"  android:label="Age In Reverse Longevity"> -->
     <meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@drawable/pushicon" />
     <!--
          Set color used with incoming notification messages. This is used when no color is set for the incoming
@@ -120,16 +122,10 @@
     <activity android:name="crc64ed1888fb4925e3b7.AuthenticationAgentActivity" android:configChanges="orientation|screenSize" />
     <receiver android:name="crc6494e14b9856016c30.PushNotificationActionReceiver" android:enabled="true" android:exported="false" />
     <receiver android:name="crc6494e14b9856016c30.PushNotificationDeletedReceiver" android:enabled="true" android:exported="false" />
-    <receiver android:name="crc643387a08acbe69b14.ActionBroadcastReceiver" android:enabled="true" android:exported="false" android:label="Shiny Broadcast Receiver" />
-    <receiver android:name="com.shiny.locations.GeofenceBroadcastReceiver" android:enabled="true" android:exported="true" />
-    <service android:name="crc6461f3faed59cf0423.ShinyGpsService" android:enabled="true" android:exported="true" android:foregroundServiceType="location" />
-    <receiver android:name="com.shiny.notifications.ShinyNotificationBroadcastReceiver" android:enabled="true" android:exported="false" />
-    <service android:name="crc6457fe0494698a4c27.ShinyFirebaseService" android:exported="true">
-      <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT" />
-      </intent-filter>
-    </service>
     <service android:name="crc64396a3fe5f8138e3f.KeepAliveService" />
+    <provider android:name="nativeMedia.fileProvider" android:authorities="me.AgeInReverse.AIR.mediaFileProvider" android:exported="false" android:grantUriPermissions="true">
+      <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_provider_paths" />
+    </provider>
     <provider android:name="mono.MonoRuntimeProvider" android:authorities="me.AgeInReverse.AIR.mono.MonoRuntimeProvider.__mono_init__" android:exported="false" android:initOrder="1999999999" />
     <service android:name="com.microsoft.windowsazure.messaging.notificationhubs.FirebaseReceiver" android:exported="false">
       <intent-filter>

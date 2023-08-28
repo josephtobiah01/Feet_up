@@ -9,9 +9,9 @@
             <VerticalStackLayout x:Name="DishDetailsVerticalStackLayout" VerticalOptions="Fill">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate x:DataType="models:DishItemViewModel">
-                        <Frame BorderColor="#E8E8E8" CornerRadius="8" HasShadow="False" Margin="8,8,8,0" Padding="0,0,0,0">
+                        <Frame BorderColor="#E8E8E8" BackgroundColor="White" CornerRadius="8" HasShadow="False" Margin="8,8,8,0" Padding="0,0,0,0">
                             <VerticalStackLayout VerticalOptions="FillAndExpand">
-                                <Grid VerticalOptions="FillAndExpand" BackgroundColor="Transparent" HeightRequest="56">
+                                <Grid VerticalOptions="FillAndExpand" BackgroundColor="Transparent" MinimumHeightRequest="56">
                                     <Grid.GestureRecognizers>
                                         <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
                                     </Grid.GestureRecognizers>

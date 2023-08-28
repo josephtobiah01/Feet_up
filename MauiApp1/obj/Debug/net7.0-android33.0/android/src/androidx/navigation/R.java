@@ -9,25 +9,25 @@ package androidx.navigation;
 public final class R {
 	public static final class attr {
 		public static final int action = 0x7f040002;
-		public static final int data = 0x7f04015d;
-		public static final int dataPattern = 0x7f04015e;
-		public static final int graph = 0x7f04020f;
-		public static final int navGraph = 0x7f040350;
-		public static final int targetPackage = 0x7f04046e;
+		public static final int data = 0x7f040158;
+		public static final int dataPattern = 0x7f040159;
+		public static final int graph = 0x7f0401fb;
+		public static final int navGraph = 0x7f040337;
+		public static final int targetPackage = 0x7f040439;
 	}
 	public static final class id {
-		public static final int nav_controller_view_tag = 0x7f0a0182;
+		public static final int nav_controller_view_tag = 0x7f0a0181;
 	}
 	public static final class styleable {
-		public static final int[] ActivityNavigator = new int[] { 0x01010003, 0x7f040002, 0x7f04015d, 0x7f04015e, 0x7f04046e };
+		public static final int[] ActivityNavigator = new int[] { 0x01010003, 0x7f040002, 0x7f040158, 0x7f040159, 0x7f040439 };
 		public static final int ActivityNavigator_action = 1;
 		public static final int ActivityNavigator_android_name = 0;
 		public static final int ActivityNavigator_data = 2;
 		public static final int ActivityNavigator_dataPattern = 3;
 		public static final int ActivityNavigator_targetPackage = 4;
-		public static final int[] NavHost = new int[] { 0x7f040350 };
+		public static final int[] NavHost = new int[] { 0x7f040337 };
 		public static final int NavHost_navGraph = 0;
-		public static final int[] NavInclude = new int[] { 0x7f04020f };
+		public static final int[] NavInclude = new int[] { 0x7f0401fb };
 		public static final int NavInclude_graph = 0;
 	}
 }

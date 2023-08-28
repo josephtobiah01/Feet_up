@@ -55,6 +55,8 @@ namespace AirApnFunctions
         public static string connectionString = "Data Source=air-sql-prod-sea.database.windows.net;Initial Catalog=FitApp-test;Persist Security Info=True;User ID=FitApp;Password=f^2kL$f78DFbjh79H$";
         public static bool TEST = true;
 
+
+
         // TEST
         //public static string PrimaryConnectionString = "Endpoint=sb://airnotif.servicebus.windows.net/;SharedAccessKeyName=DefaultFullSharedAccessSignature;SharedAccessKey=Ppu/iR2p2IizU13e17jUlolCyABSqcp1K5cf4Yt7ir0=";
         //public static string HubName = "airnotificationhub";

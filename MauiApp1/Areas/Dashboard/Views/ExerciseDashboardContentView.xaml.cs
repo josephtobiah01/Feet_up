@@ -5,7 +5,10 @@ using FitnessData.Client.Business.Data;
 using FitnessData.Common;
 using FitnessData.Common.Data;
 using MauiApp1.Areas.Dashboard.Resources.Drawables;
+using MauiApp1.Areas.Security.Views;
 using MauiApp1.Business;
+using MauiApp1.Business.DeviceServices;
+using MauiApp1.Exceptions;
 using MauiApp1.Pages.Profile;
 using Newtonsoft.Json;
 using ParentMiddleWare;
@@ -21,8 +24,6 @@ public partial class ExerciseDashboardContentView : ContentView
     private CaloriesBurnedPerDayBarChartDrawable _caloriesBurnedPerDayBarChartDrawable;
 
     private string _accessToken;
-    //private string _endpoint = "https://fitnessdata-development.ageinreverse.me/en-US/v1/REST";
-    private string _endpoint = "https://fitnessdata.ageinreverse.me/en-US/v1/REST";
 
     #endregion
 
@@ -43,44 +44,68 @@ public partial class ExerciseDashboardContentView : ContentView
     {
         string encryptedAccessToken = string.Empty;
 
-        encryptedAccessToken = Preferences.Default.Get(ConnectApplicationDeviceManager.ACCESS_TOKEN_STRING, string.Empty);
-        _accessToken = EncryptDecryptManager.EncryptDecrypt(encryptedAccessToken, 300);
-
-        _caloriesBurnedPerDayBarChartDrawable = new CaloriesBurnedPerDayBarChartDrawable();
-
-        if (string.IsNullOrWhiteSpace(_accessToken) == false)
+        try
         {
-            ConnectApplicationDeviceManager.mobileUserAccountTransactionManager =
-                          new SecurityServices.Client.Business.Transactions.MobileUserAccountTransactionManager(
-                              ConnectApplicationDeviceManager.APPCONNECTENDPOINT, _accessToken);
-
-            _caloriesBurnedDataManager = new CaloriesBurnedDataManager(_endpoint, _accessToken);
-            if (ConnectApplicationDeviceManager.mobileUserAccountTransactionManager.IsAlreadyConnected(MiddleWare.UserID) == true)
+            if (ConnectedDeviceDataStorageManager.googleFit != null)
             {
-                this.CaloriesBurnedPerDayFrame.IsVisible = true;
-                await LoadCaloriesExpendedPerDayStackedBarChart();
+                _accessToken = ConnectedDeviceDataStorageManager.googleFit.AccessToken;
+            }
+            else if(ConnectedDeviceDataStorageManager.appleHealthKit != null)
+            {
+                _accessToken = ConnectedDeviceDataStorageManager.appleHealthKit.AccessToken;
             }
             else
             {
-                if (this.CaloriesBurnedPerDayFrame != null)
-                {
-                    this.CaloriesBurnedPerDayFrame.IsVisible = false;
-                }               
+              
+            }
 
+            _caloriesBurnedPerDayBarChartDrawable = new CaloriesBurnedPerDayBarChartDrawable();
+
+            if (string.IsNullOrWhiteSpace(_accessToken) == false)
+            {
+                ConnectApplicationDeviceManager.mobileUserAccountAdministrator =
+                              new SecurityServices.Client.Business.MobileUserAccountAdministrator(
+                                  MiddleWare.AppConnectEndpoint, _accessToken);
+
+                _caloriesBurnedDataManager = new CaloriesBurnedDataManager(MiddleWare.FitnessDataEndpoint, _accessToken);
+                if (ConnectApplicationDeviceManager.mobileUserAccountAdministrator.IsAlreadyConnected(MiddleWare.FkFederatedUser) == true)
+                {
+                    this.CaloriesBurnedPerDayFrame.IsVisible = true;
+                    await LoadCaloriesExpendedPerDayStackedBarChart();
+                }
+                else
+                {
+                    if (this.CaloriesBurnedPerDayFrame != null)
+                    {
+                        this.CaloriesBurnedPerDayFrame.IsVisible = false;
+                    }
+
+                    if (this.LoadingActivityIndicator != null)
+                    {
+                        this.LoadingActivityIndicator.IsVisible = false;
+                    }
+                }
+            }
+            else
+            {
                 if (this.LoadingActivityIndicator != null)
                 {
                     this.LoadingActivityIndicator.IsVisible = false;
                 }
             }
         }
-        else
+        catch (DeviceStorageException deviceStorageException)
         {
-            if (this.LoadingActivityIndicator != null)
-            {
-                this.LoadingActivityIndicator.IsVisible = false;
-            }
+            await ForceSignOutUser();
         }
+        catch (Exception exception)
+        {
 
+        }
+        finally
+        {
+
+        }
     }
 
 
@@ -95,7 +120,7 @@ public partial class ExerciseDashboardContentView : ContentView
 
     private void ConnectToDeviceButton_Clicked(object sender, EventArgs e)
     {
-  //      ConnectApplicationToGoogleFit();
+        //      ConnectApplicationToGoogleFit();
     }
 
     #endregion
@@ -113,19 +138,19 @@ public partial class ExerciseDashboardContentView : ContentView
 
             await Task.Run(() =>
             {
-                
+
                 Dispatcher.Dispatch(() =>
                 {
                     if (this.LoadingActivityIndicator != null)
                     {
                         this.LoadingActivityIndicator.IsVisible = true;
                     }
-                    
+
                     if (this.DashboardScrollView != null)
                     {
                         this.DashboardScrollView.IsVisible = false;
                     }
-                    
+
                     if (this.DashboardVerticalStackLayout != null)
                     {
                         this.DashboardVerticalStackLayout.IsVisible = false;
@@ -134,7 +159,7 @@ public partial class ExerciseDashboardContentView : ContentView
                 });
 
                 List<CaloriesBurnedDataPointViewItem> caloriesBurnedPerDayDataPoints =
-                  _caloriesBurnedDataManager.GetTotalCaloriesBurnedPerDay(MiddleWare.UserID,
+                  _caloriesBurnedDataManager.GetTotalCaloriesBurnedPerDay(MiddleWare.FkFederatedUser,
                   ref totalRecords, 1, 500, "", "");
 
                 if (caloriesBurnedPerDayDataPoints != null)
@@ -193,16 +218,16 @@ public partial class ExerciseDashboardContentView : ContentView
                     {
                         this.DashboardVerticalStackLayout.IsVisible = true;
                     }
-                   
+
 
                 });
 
             });
 
-            
+
         }
         catch (UnauthorizedAccessException ex)
-        { 
+        {
             //if (string.IsNullOrWhiteSpace(_accessToken) == false)
             //{
             //    await App.Current.MainPage.DisplayAlert("Unauthorized Access", "Age In Reverse has been disconnected from Google Fit. Please reconnect the app through the profile menu.", "OK");
@@ -211,7 +236,7 @@ public partial class ExerciseDashboardContentView : ContentView
             //{
             //    await App.Current.MainPage.DisplayAlert("Unauthorized Access", "App is not connected to Google Fit. Please connect the app through the profile menu.", "OK");
             //}
-            ViewProfile.ClearFitnessServiceStorage();
+            ClearFitnessServiceData();
 
             if (this.DashboardScrollView != null)
             {
@@ -239,11 +264,13 @@ public partial class ExerciseDashboardContentView : ContentView
             //    await App.Current.MainPage.DisplayAlert("Unauthorized Access", "App is not connected to Google Fit. Please connect the app through the profile menu.", "OK");
             //}
 
-            Preferences.Default.Set(ConnectApplicationDeviceManager.ACCESS_TOKEN_STRING, string.Empty);
-            Preferences.Default.Set(ConnectApplicationDeviceManager.REFRESH_TOKEN_STRING, string.Empty);
-            Preferences.Default.Set(ConnectApplicationDeviceManager.EMAIL_ADDRESS_STRING, string.Empty);
-            Preferences.Default.Set(ConnectApplicationDeviceManager.EXPIRES_IN_STRING, string.Empty);
-            Preferences.Default.Set(ConnectApplicationDeviceManager.REFRESH_EXPIRES_IN_STRING, string.Empty);
+            ClearFitnessServiceData();
+
+            //Preferences.Default.Set(ConnectApplicationDeviceManager.ACCESS_TOKEN_STRING, string.Empty);
+            //Preferences.Default.Set(ConnectApplicationDeviceManager.REFRESH_TOKEN_STRING, string.Empty);
+            //Preferences.Default.Set(ConnectApplicationDeviceManager.EMAIL_ADDRESS_STRING, string.Empty);
+            //Preferences.Default.Set(ConnectApplicationDeviceManager.EXPIRES_IN_STRING, string.Empty);
+            //Preferences.Default.Set(ConnectApplicationDeviceManager.REFRESH_EXPIRES_IN_STRING, string.Empty);
 
             if (this.DashboardScrollView != null)
             {
@@ -263,9 +290,48 @@ public partial class ExerciseDashboardContentView : ContentView
                 this.LoadingActivityIndicator.IsVisible = false;
             }
 
-            
-        }
 
+        }
+         
+    }
+
+    private async void ClearFitnessServiceData()
+    {
+        try
+        {
+            DeviceStorageManager.ClearFitnessServiceStorage(MiddleWare.UseSecuredStorage);
+        }
+        catch (DeviceStorageException deviceStorageException)
+        {
+            await ForceSignOutUser();
+        }
+        catch (Exception ex)
+        {
+
+        }
+        finally
+        {
+
+        }
+    }
+
+    private async Task ForceSignOutUser()
+    {
+        await DeviceUserAccountManager.ForceUserSignOut();
+        if (App.Current.MainPage != null)
+        {
+            //await App.Current.MainPage.Navigation.PushAsync(new MVPLoginContentPage());
+            App.Current.MainPage = new NavigationPage(new MVPLoginContentPage());
+            await Application.Current.MainPage.Navigation.PopToRootAsync();
+        }
+    }
+
+    private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+    {
+        if (App.alertBottomSheetManager != null)
+        {
+            App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+        }
     }
 
     #endregion
@@ -280,13 +346,14 @@ public partial class ExerciseDashboardContentView : ContentView
         }
         catch (Exception ex)
         {
-            await App.Current.MainPage.DisplayAlert("Refresh Calories Chart", "The system encountered a problem while refreshing calories chart.", "OK");
+            ShowAlertBottomSheet("Refresh Calories Chart", "The system encountered a problem while refreshing calories chart.", "OK");
         }
         finally
         {
 
         }
     }
+
     #endregion
 
     #region [Methods :: Properties]

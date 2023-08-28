@@ -18,8 +18,8 @@ namespace MauiApp1.Areas.Chat.Models
         }
 
         
-        public string MessageImage { get; set; }
-        public string MessageText { get; set; }
+        public string? MessageImage { get; set; }
+        public string? MessageText { get; set; }
         public DateTime TimeStamp { get; set; }
         public string UserName { get; set; }   // name of the user who wrote  the message
         public bool IsUserMessage { get; set; }   // if true, then its a message the mobile user wrote, else its a message from backend

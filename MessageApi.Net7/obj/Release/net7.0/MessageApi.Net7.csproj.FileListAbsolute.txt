@@ -1,0 +1,17 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\MessageApi.Net7.deps.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\MessageApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\MessageApi.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\ChartApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\ParentMiddleWare.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\ChartApi.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\bin\Release\net7.0\ParentMiddleWare.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.csproj.AssemblyReference.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.AssemblyInfoInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.AssemblyInfo.cs
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.csproj.CoreCompileInputs.cache
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.csproj.CopyComplete
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\refint\MessageApi.Net7.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\MessageApi.Net7.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\MessageApi.Net7\obj\Release\net7.0\ref\MessageApi.Net7.dll

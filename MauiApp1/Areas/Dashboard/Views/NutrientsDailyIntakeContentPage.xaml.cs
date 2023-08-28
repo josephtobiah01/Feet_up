@@ -1,11 +1,12 @@
 using ImageApi.Net7;
 using MauiApp1.Areas.Dashboard.Resources.Drawables;
-using MauiApp1.Areas.Dashboard.TemporaryStubModel;
+using ParentMiddleWare.NutrientModels;
 using MauiApp1.Areas.Dashboard.ViewModel;
 using MauiApp1.Interfaces;
 using ParentMiddleWare.NutrientModels;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Collections.ObjectModel;
 
 namespace MauiApp1.Areas.Dashboard.Views;
 
@@ -540,19 +541,19 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
             {
                 if (_dailyNutrientDetailViewModel.MealDetails != null)
                 {
-                    if (_dailyNutrientDetailViewModel.MealDetails.Count > 0 && _dailyNutrientDetailViewModel.MealDetails[0].IsClickAble)
+                    if (_dailyNutrientDetailViewModel.MealDetails.Count > 0 && _dailyNutrientDetailViewModel.MealDetails[0].IsClickable)
                     {
                         LoadPerMealNutrientsBarChart(_dailyNutrientDetailViewModel.MealDetails[0]);
                     }
-                    else if (_dailyNutrientDetailViewModel.MealDetails.Count > 1 && _dailyNutrientDetailViewModel.MealDetails[1].IsClickAble)
+                    else if (_dailyNutrientDetailViewModel.MealDetails.Count > 1 && _dailyNutrientDetailViewModel.MealDetails[1].IsClickable)
                     {
                         LoadPerMealNutrientsBarChart(_dailyNutrientDetailViewModel.MealDetails[1]);
                     }
-                    else if (_dailyNutrientDetailViewModel.MealDetails.Count > 2 && _dailyNutrientDetailViewModel.MealDetails[2].IsClickAble)
+                    else if (_dailyNutrientDetailViewModel.MealDetails.Count > 2 && _dailyNutrientDetailViewModel.MealDetails[2].IsClickable)
                     {
                         LoadPerMealNutrientsBarChart(_dailyNutrientDetailViewModel.MealDetails[2]);
                     }
-                    else if (_dailyNutrientDetailViewModel.MealDetails.Count > 3 && _dailyNutrientDetailViewModel.MealDetails[3].IsClickAble)
+                    else if (_dailyNutrientDetailViewModel.MealDetails.Count > 3 && _dailyNutrientDetailViewModel.MealDetails[3].IsClickable)
                     {
                         LoadPerMealNutrientsBarChart(_dailyNutrientDetailViewModel.MealDetails[3]);
                     }
@@ -605,7 +606,7 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
                         case 0:
 
                             this.FirstMealLabel.Text = mealDetailViewModel.MealName;
-                            isFirstMealClickable = mealDetailViewModel.IsClickAble;
+                            isFirstMealClickable = mealDetailViewModel.IsClickable;
                             this.FirstMealLabel.IsVisible = true;
                             hasFirstMeal = true;
                             _firstMealContentView.DishItemViewModels = _dailyNutrientDetailViewModel.MealDetails[index].MealSpecificNutrientOverView;
@@ -614,7 +615,7 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
                         case 1:
 
                             this.SecondMealLabel.Text = mealDetailViewModel.MealName;
-                            isSecondMealClickable = mealDetailViewModel.IsClickAble;
+                            isSecondMealClickable = mealDetailViewModel.IsClickable;
                             this.SecondMealLabel.IsVisible = true;
                             hasSecondMeal = true;
                             _secondMealContentView.DishItemViewModels = _dailyNutrientDetailViewModel.MealDetails[index].MealSpecificNutrientOverView;
@@ -623,7 +624,7 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
                         case 2:
 
                             this.ThirdMealLabel.Text = mealDetailViewModel.MealName;
-                            isThirdMealClickable = mealDetailViewModel.IsClickAble;
+                            isThirdMealClickable = mealDetailViewModel.IsClickable;
                             this.ThirdMealLabel.IsVisible = true;
                             hasThirdMeal = true;
                             _thirdMealContentView.DishItemViewModels = _dailyNutrientDetailViewModel.MealDetails[index].MealSpecificNutrientOverView;
@@ -632,7 +633,7 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
                         case 3:
 
                             this.OtherMealLabel.Text = mealDetailViewModel.MealName;
-                            isOtherMealClickable = mealDetailViewModel.IsClickAble;
+                            isOtherMealClickable = mealDetailViewModel.IsClickable;
                             this.OtherMealLabel.IsVisible = true;
                             hasOtherMeal = true;
                             _otherMealContentView.DishItemViewModels = _dailyNutrientDetailViewModel.MealDetails[index].MealSpecificNutrientOverView;
@@ -920,7 +921,7 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
         }
         catch (Exception ex)
         {
-            App.Current.MainPage.DisplayAlert("Intialize Meal Tab", "An error occurred while initializing meal tab. please go back to previous page and try again.", "OK");
+            ShowAlertBottomSheet("Intialize Meal Tab", "An error occurred while initializing meal tab. please go back to previous page and try again.", "OK");
         }
         finally
         {
@@ -997,23 +998,23 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
             if (dailyNutrientDetails != null)
             {
                 _dailyNutrientDetailViewModel = new DailyNutrientDetailViewModel();
-                _dailyNutrientDetailViewModel.nutrientsIntakeViewItem = new NutrientsIntakeViewItem();
+                _dailyNutrientDetailViewModel.NutrientsIntakeViewItem = new NutrientsIntakeViewItem();
 
                 if (dailyNutrientDetails.DailyNutrientOverview != null)
                 {
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.TargetCalories = Convert.ToInt32(dailyNutrientDetails.DailyNutrientOverview.TargetCalories);
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.TotalCalories = dailyNutrientDetails.DailyNutrientOverview.CurrentCalories;
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CaloriesCarbs = dailyNutrientDetails.DailyNutrientOverview.CrabsGram;
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CaloriesProtein = dailyNutrientDetails.DailyNutrientOverview.ProteinGram;
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CaloriesFat = dailyNutrientDetails.DailyNutrientOverview.FatGram;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.TargetCalories = Convert.ToInt32(dailyNutrientDetails.DailyNutrientOverview.TargetCalories);
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.TotalCalories = dailyNutrientDetails.DailyNutrientOverview.CurrentCalories;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CaloriesCarbs = dailyNutrientDetails.DailyNutrientOverview.CrabsGram;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CaloriesProtein = dailyNutrientDetails.DailyNutrientOverview.ProteinGram;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CaloriesFat = dailyNutrientDetails.DailyNutrientOverview.FatGram;
 
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.ProteinPercentage = _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CaloriesProtein / _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.TotalCalories;
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CarbPercentage = _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CaloriesCarbs / _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.TotalCalories;
-                    _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.FatPercentage = _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.CaloriesFat / _dailyNutrientDetailViewModel.nutrientsIntakeViewItem.TotalCalories;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.ProteinPercentage = _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CaloriesProtein / _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.TotalCalories;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CarbPercentage = _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CaloriesCarbs / _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.TotalCalories;
+                    _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.FatPercentage = _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.CaloriesFat / _dailyNutrientDetailViewModel.NutrientsIntakeViewItem.TotalCalories;
 
                 }
 
-                _dailyNutrientDetailViewModel.MealDetails = new List<MealDetailViewModel>();
+                _dailyNutrientDetailViewModel.MealDetails = new ObservableCollection<MealDetailViewModel>();
 
                 if (dailyNutrientDetails.MealDetails != null)
                 {
@@ -1022,14 +1023,14 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
                         MealDetailViewModel mealDetailViewModel = new MealDetailViewModel();
 
                         mealDetailViewModel.MealName = mealDetails.MealName;
-                        mealDetailViewModel.IsClickAble = mealDetails.IsClickable;
+                        mealDetailViewModel.IsClickable = mealDetails.IsClickable;
                         mealDetailViewModel.TargetCalories = mealDetails.TargetCalories;
                         mealDetailViewModel.CurrentCalories = mealDetails.CurrentCalories;
                         mealDetailViewModel.ProteinGram = mealDetails.ProteinGram;
                         mealDetailViewModel.CarbsGram = mealDetails.CarbsGram;
                         mealDetailViewModel.FatGram = mealDetails.FatGram;
 
-                        mealDetailViewModel.MealSpecificNutrientOverView = new List<DishItemViewModel>();
+                        mealDetailViewModel.MealSpecificNutrientOverView = new ObservableCollection<DishItemViewModel>();
 
                         if (mealDetails.MealSpecificNutrientOverview != null)
                         {
@@ -1082,6 +1083,7 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
 
         }
     }
+
     /*
     private void SetSelectedDateLabel()
     {
@@ -1194,9 +1196,9 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
         RefreshData();
     }
 
+
+
     #endregion
-
-
 
     private async void GoBack()
     {
@@ -1279,11 +1281,20 @@ public partial class NutrientsDailyIntakeContentPage : ContentPage, INotifyPrope
         }
     }
 
+    private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+    {
+        if (App.alertBottomSheetManager != null)
+        {
+            App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+        }
+    }
+
     private void MealListChart_DoneLoading(object sender, EventArgs e)
     {
         CheckMealIsDoneLoading();
         EnableUI();
     }
+
 
     #endregion
 

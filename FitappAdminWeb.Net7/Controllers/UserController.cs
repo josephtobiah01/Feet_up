@@ -7,6 +7,7 @@ using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
 using UserApi.Net7.Models;
 
 namespace FitappAdminWeb.Net7.Controllers
@@ -65,6 +66,12 @@ namespace FitappAdminWeb.Net7.Controllers
         public async Task<IActionResult> Details(long id)
         {
             var vm = await GenerateUserViewModel(id);
+
+            if (Request.Query.ContainsKey("error"))
+            {
+                ViewData["error"] = Request.Query["error"];
+            }
+
             if (vm == null)
             {
                 return RedirectToAction("Index");
@@ -76,6 +83,10 @@ namespace FitappAdminWeb.Net7.Controllers
         [HttpPost]
         public async Task<IActionResult> AddInternalNote(AddInternalNoteModel AddNote)
         {
+            ModelState.Clear();
+            AddNote.Note = Regex.Replace(AddNote.Note, @"\r\n", " ");
+            TryValidateModel(AddNote);
+
             try
             {
                 if (ModelState.IsValid)
@@ -110,7 +121,7 @@ namespace FitappAdminWeb.Net7.Controllers
             vm.CurrentUser = user;
             vm.UserIdentity = await _clientrepo.GetIdentityUserById(user.FkFederatedUser);
             vm.AddNote.ForUserId = user.Id;
-
+            vm.Link_ViewQuestions = _clientrepo.GetQuestionViewLink(user.Id);
             vm.InternalNotes = await _clientrepo.GetInternalNotesForUserId(user.Id);
             vm.Room = await _messagerepo.EnsureChatRoomByUserId(user.Id);
 
@@ -157,6 +168,13 @@ namespace FitappAdminWeb.Net7.Controllers
                 _logger.LogError(ex, "Failed to update user id {id}", model.Id);
                 return View(model);
             }
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CompleteSignup(long userid)
+        {
+            await _clientrepo.CompleteSignupForUser(userid);
+            return RedirectToAction("Details", new { id = userid });
         }
 
         [HttpGet]

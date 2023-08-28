@@ -1,14 +1,15 @@
 ﻿using Azure.Storage.Blobs;
-using Azure.Storage.Blobs.Models;
 using Azure.Storage.Queues;
 using DAOLayer.Net7.Nutrition;
-using MauiApp1.Areas.Dashboard.TemporaryStubModel;
+using DAOLayer.Net7.User;
+using FitappApi.Net7.Util;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using ParentMiddleWare.ApiModels;
 using ParentMiddleWare.Models;
 using ParentMiddleWare.NutrientModels;
 using static ParentMiddleWare.Models.NutrientRecipeModel;
-
 
 namespace FitappApi.Net7.Controllers
 {
@@ -17,16 +18,24 @@ namespace FitappApi.Net7.Controllers
     //[Authorize]
     public class NutritionController : BaseController
     {
+        private readonly string _azureFunctionUrl;
+        private readonly string _azureBlobConnectionString;
         private readonly NutritionContext _context;
-        public NutritionController(NutritionContext context)
-        {
-            _context = context;
-        }
+        private readonly UserContext _uContext;
+        private readonly BlobManager _blobManager;
 
+        public NutritionController(IConfiguration configuration, NutritionContext context, UserContext uContext)
+        {
+            _azureFunctionUrl = configuration["AzureFunctionUrl"];
+            _azureBlobConnectionString = configuration["AzureBlobConnectionString"];
+            _context = context;
+            _uContext = uContext;
+            _blobManager = new BlobManager(configuration, "dishes");
+        }
 
         [HttpGet]
         [Route("GetDailyNutrientDetails")]
-        public async Task<DailyNutrientDetails> GetDailyNutrientDetails(long UserId, string Date)
+        public async Task<DailyNutrientDetails> GetDailyNutrientDetails(string FkFederatedUser, string Date)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             DailyNutrientDetails model = new DailyNutrientDetails();
@@ -37,7 +46,7 @@ namespace FitappApi.Net7.Controllers
             {
                 DateTime dDate = DateTime.Parse(Date, System.Globalization.CultureInfo.InvariantCulture).Date;
 
-                var dday = await _context.FnsNutritionActualDay.Where(t => t.FkUserId == UserId && t.Date == dDate)
+                var dday = await _context.FnsNutritionActualDay.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser && t.Date == dDate)
 
                     .Include(t => t.FnsNutritionActualMeal)
                     .ThenInclude(t => t.MealType)
@@ -172,7 +181,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpGet]
         [Route("GetNutrientsFirstPage")]
-        public async Task<NutrientsDataResponse> GetNutrientsFirstPage(long UserId, string Date)
+        public async Task<NutrientsDataResponse> GetNutrientsFirstPage(string FkFederatedUser, string Date)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             NutrientsDataResponse model = new NutrientsDataResponse();
@@ -185,7 +194,7 @@ namespace FitappApi.Net7.Controllers
             {
                 DateTime dDate = DateTime.Parse(Date, System.Globalization.CultureInfo.InvariantCulture).Date;
 
-                var dday = await _context.FnsNutritionActualDay.Where(t => t.FkUserId == UserId && t.Date == dDate)
+                var dday = await _context.FnsNutritionActualDay.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser && t.Date == dDate)
 
                     .Include(t => t.FnsNutritionActualMeal)
                     .ThenInclude(t => t.FnsNutritionActualDish)
@@ -249,18 +258,18 @@ namespace FitappApi.Net7.Controllers
 
         [HttpGet]
         [Route("GetFavoritesAndHistory")]
-        public async Task<NutrientrecipesForMeal> GetFavoritesAndHistory(long userId)
+        public async Task<NutrientrecipesForMeal> GetFavoritesAndHistory(string FkFederatedUser)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             NutrientrecipesForMeal mealList = new NutrientrecipesForMeal();
 
-            var nday = await _context.FnsNutritionActualDish.Where(t => t.FkUserId == userId)
+            var nday = await _context.FnsNutritionActualDish.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser)
                 .AsNoTracking()
                 .OrderByDescending(t => t.Id)
                 .Take(15)
                 .ToListAsync();
 
-            var fnday = await _context.FnsNutritionActualDish.Where(t => t.FkUserId == userId && t.IsFavorite)
+            var fnday = await _context.FnsNutritionActualDish.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser && t.IsFavorite)
                  .AsNoTracking()
                  .ToListAsync();
 
@@ -359,7 +368,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("FavoriteDish")]
-        public async Task<bool> FavoriteDish(long recipeId)
+        public async Task<bool> FavoriteDish([FromBody]long recipeId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
@@ -377,7 +386,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("UnFavoriteDish")]
-        public async Task<bool> UnFavoriteDish(long recipeId)
+        public async Task<bool> UnFavoriteDish([FromBody]long recipeId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
@@ -406,32 +415,41 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("AddDishByPhoto")]
-        public async Task<bool> AddDishByPhoto([FromQuery] string Name, [FromQuery] long MealId, [FromQuery] double share, [FromQuery] double portions, [FromQuery] string ContentType, [FromQuery] long userId, [FromQuery] bool FavoriteDish, [FromQuery] double offset, [FromQuery] string Note = "")
+        //public async Task<bool> AddDishByPhoto([FromQuery] string Name, [FromQuery] long MealId, [FromQuery] double share, [FromQuery] double portions, [FromQuery] string ContentType, [FromQuery] long userId, [FromQuery] bool FavoriteDish, [FromQuery] double offset, [FromQuery] string Note = "")
+        public async Task<bool> AddDishByPhoto([FromBody] GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var user = _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return false;
+                }
+                long UserId = user.Id;
+                string Name = model.param1;
+                long MealId = model.longparam1;
+                double share = model.doubleparam1;
+                double portions = model.doubleparam2;
+                string ContentType = model.param2;
+                string FkFederatedUser = model.FkFederatedUser;
+                bool FavoriteDish = model.boolparam1;
+                double offset = model.doubleparam3;
+                string Note = model.param3;
+                string ImageData = model.param4;
+                if (model.param3 == null)
+                {
+                    Note = "";
+                }
                 //Request.Body.Position = 0;
 
-                var rawRequestBody = await new StreamReader(Request.Body).ReadToEndAsync();
+                QueueClient queue = new QueueClient(_azureBlobConnectionString, "airusercontent");
 
-                QueueClient queue = new QueueClient(ParentMiddleWare.MiddleWare.QueueConnectionString, "airusercontent");
-
-                BlobServiceClient blobServiceClient = new BlobServiceClient(ParentMiddleWare.MiddleWare.QueueConnectionString);
-                BlobContainerClient blobContainerClient = blobServiceClient.GetBlobContainerClient("dishes");
-                await blobContainerClient.CreateIfNotExistsAsync();
-                BlobClient blobClent = blobContainerClient.GetBlobClient(Guid.NewGuid().ToString() + ContentType);
-                BlobHttpHeaders httpheaders = new BlobHttpHeaders()
-                {
-                    ContentType = ContentType
-                };
-
-                BinaryData data = new BinaryData(Convert.FromBase64String(rawRequestBody));
-                await blobClent.UploadAsync(data);
-
+                BinaryData data = new BinaryData(Convert.FromBase64String(ImageData));
+                string imageUrl = await _blobManager.UploadBlob(ContentType, new BinaryData(data));
 
                 FnsNutritionActualDish dish = new FnsNutritionActualDish();
-                dish.UploadPhotoReference = blobClent.Uri.ToString();
+                dish.UploadPhotoReference = imageUrl;
                 dish.FkNutritionActualMealId = MealId;
                 dish.FkDishTranscriptionTypeId = 1;
                 dish.IsComplete = false;
@@ -443,7 +461,7 @@ namespace FitappApi.Net7.Controllers
                 dish.ShareOfDishConsumed = share;
                 dish.NumberOfServingsConsumed = portions;
                 dish.FkDishTypeId = 7;
-                dish.FkUserId = userId;
+                dish.FkUserId = UserId;
                 dish.Remarks = Note;
 
                 if (FavoriteDish)
@@ -481,14 +499,35 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("AddDishByPhotoCustomMeal")]
-        public async Task<long> AddDishByPhotoCustomMeal([FromQuery] string Dateft, [FromQuery] string Name, [FromQuery] double share, [FromQuery] double portions, [FromQuery] string ContentType, [FromQuery] long userId, [FromQuery] bool FavoriteDish, [FromQuery] double offset, [FromQuery] string Note = "")
+        //public async Task<long> AddDishByPhotoCustomMeal([FromQuery] string Dateft, [FromQuery] string Name, [FromQuery] double share, [FromQuery] double portions, [FromQuery] string ContentType, [FromQuery] long userId, [FromQuery] bool FavoriteDish, [FromQuery] double offset, [FromQuery] string Note = "")
+        public async Task<long> AddDishByPhotoCustomMeal([FromBody]GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var user = _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return -1;
+                }
+                long UserId = user.Id;
+                string Dateft = model.param1;
+                string Name = model.param2;
+                double share = model.doubleparam1;
+                double portions = model.doubleparam2;
+                string ContentType = model.param3;
+                string FkFederatedUser = model.FkFederatedUser;
+                bool FavoriteDish = model.boolparam1;
+                double offset = model.doubleparam3;
+                string Note = model.param4;
+                string ImageData = model.param5;
+                if (Note == null)
+                {
+                    Note = "";
+                }
                 DateTime Date = DateTime.Parse(Dateft, System.Globalization.CultureInfo.InvariantCulture).Date;
 
-                var nday = await _context.FnsNutritionActualDay.Where(t => t.FkUserId == userId && t.Date == Date)
+                var nday = await _context.FnsNutritionActualDay.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser && t.Date == Date)
                     .FirstOrDefaultAsync();
 
                 // create new meal and attach it to that day
@@ -528,7 +567,7 @@ namespace FitappApi.Net7.Controllers
                         DayCalorieTargetMin = 0,
                         FatGramsTarget = 0,
                         FiberGramsTarget = 0,
-                        FkUserId = userId,
+                        FkUserId = UserId,
                         ProteinGramsTarget = 0,
                         SugarGramsTarget = 0,
                         UnsaturatedFatGramsTarget = 0,
@@ -543,25 +582,13 @@ namespace FitappApi.Net7.Controllers
                 nday.FnsNutritionActualMeal.Add(newMeal);
                 newMeal.FkNutritionActualDay = nday;
 
-                var rawRequestBody = await new StreamReader(Request.Body).ReadToEndAsync();
+                QueueClient queue = new QueueClient(_azureBlobConnectionString, "airusercontent");
 
-                QueueClient queue = new QueueClient(ParentMiddleWare.MiddleWare.QueueConnectionString, "airusercontent");
-
-                BlobServiceClient blobServiceClient = new BlobServiceClient(ParentMiddleWare.MiddleWare.QueueConnectionString);
-                BlobContainerClient blobContainerClient = blobServiceClient.GetBlobContainerClient("dishes");
-                await blobContainerClient.CreateIfNotExistsAsync();
-                BlobClient blobClent = blobContainerClient.GetBlobClient(Guid.NewGuid().ToString() + ContentType);
-                BlobHttpHeaders httpheaders = new BlobHttpHeaders()
-                {
-                    ContentType = ContentType
-                };
-
-                BinaryData data = new BinaryData(Convert.FromBase64String(rawRequestBody));
-                await blobClent.UploadAsync(data);
-
+                BinaryData data = new BinaryData(Convert.FromBase64String(ImageData));
+                string imageUrl = await _blobManager.UploadBlob(ContentType, new BinaryData(data));
 
                 FnsNutritionActualDish dish = new FnsNutritionActualDish();
-                dish.UploadPhotoReference = blobClent.Uri.ToString();
+                dish.UploadPhotoReference = imageUrl;
                 // dish.FkNutritionActualMealId = MealId;
                 dish.FkNutritionActualMeal = newMeal;
                 dish.FkDishTranscriptionTypeId = 1;
@@ -574,9 +601,9 @@ namespace FitappApi.Net7.Controllers
                 dish.ShareOfDishConsumed = share;
                 dish.NumberOfServingsConsumed = portions;
                 dish.FkDishTypeId = 9;
-                dish.FkUserId = userId;
+                dish.FkUserId = UserId;
                 dish.Remarks = Note;
-
+ 
                 if (FavoriteDish)
                 {
                     dish.IsFavorite = true;
@@ -616,14 +643,14 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("NotifyTranscriptionComplete")]
-        public async Task<bool> NotifyTranscriptionComplete(long MealId)
+        public async Task<bool> NotifyTranscriptionComplete([FromBody]long MealId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 #region  APN
                 HttpClient _httpClient = new HttpClient();
-                _httpClient.PostAsync(string.Format("{0}/api/SendTranscriptionComplete?MealId={1}", ChatController.AzureFunctionURL, MealId), null);
+                _httpClient.PostAsync(string.Format("{0}/api/SendTranscriptionComplete?MealId={1}", _azureFunctionUrl, MealId), null);
                 #endregion
                 return true;
             }
@@ -635,11 +662,30 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("AddDishByReference")]
-        public async Task<bool> AddDishByReference(long MealId, long recipId, double share, double portions, long userId, bool FavoriteDish, double offset, string Note = "")
+        //public async Task<bool> AddDishByReference(long MealId, long recipId, double share, double portions, long userId, bool FavoriteDish, double offset, string Note = "")
+        public async Task<bool> AddDishByReference([FromBody]GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var user = _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return false;
+                }
+                long UserId = user.Id;
+                long MealId = model.longparam2;
+                long recipId = model.longparam1;
+                double share = model.doubleparam1;
+                double portions = model.doubleparam2;
+                string FkFederatedUser = model.FkFederatedUser;
+                bool FavoriteDish = model.boolparam1;
+                double offset = model.doubleparam3;
+                string Note = model.param1;
+                if (Note.IsNullOrEmpty())
+                {
+                    Note = "";
+                }
                 var dayMeal = await _context.FnsNutritionActualMeal.Where(t => t.Id == MealId)
                 .Include(t => t.FnsNutritionActualDish)
                 .FirstAsync();
@@ -668,7 +714,7 @@ namespace FitappApi.Net7.Controllers
                 dish.ProteinActual = refdish.ProteinActual;
                 dish.SugarActual = refdish.SugarActual;
                 dish.UnsaturatedFatActual = refdish.UnsaturatedFatActual;
-                dish.FkUserId = userId;
+                dish.FkUserId = UserId;
                 dish.FkDishTranscriptionTypeId = 2;
                 dish.SaturatedFatGramsActual = refdish.SaturatedFatGramsActual;
                 dish.Remarks = Note;
@@ -710,15 +756,34 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("AddDishByReferenceCustomMeal")]
-        public async Task<long> AddDishByReferenceCustomMeal(string Dateft, long recipId, double share, double portions, long userId, bool FavoriteDish, double offset, string Note = "")
+        //public async Task<long> AddDishByReferenceCustomMeal(string Dateft, long recipId, double share, double portions, long userId, bool FavoriteDish, double offset, string Note = "")
+        public async Task<long> AddDishByReferenceCustomMeal([FromBody] GeneralApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var user = _uContext.User.Where(t => t.FkFederatedUser == model.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return -1;
+                }
+                long UserId = user.Id;
+                string Dateft = model.param1;
+                long recipId = model.longparam1;
+                double share = model.doubleparam1;
+                double portions = model.doubleparam2;
+                string FkFederatedUser = model.FkFederatedUser;
+                bool FavoriteDish = model.boolparam1;
+                double offset = model.doubleparam3;
+                string Note = model.param2;
+                if (Note == null)
+                {
+                    Note = "";
+                }
                 DateTime Date = DateTime.Parse(Dateft, System.Globalization.CultureInfo.InvariantCulture).Date;
                 // check if that day already has meals
               //  DateTime Date = DateTime.UtcNow.Date;
-                var dayMeal = await _context.FnsNutritionActualDay.Where(t => t.FkUserId == userId && t.Date == Date)
+                var dayMeal = await _context.FnsNutritionActualDay.Where(t => t.FkUser.FkFederatedUser == FkFederatedUser && t.Date == Date)
                     .FirstOrDefaultAsync();
 
                 // create new meal and attach it to that day
@@ -758,7 +823,7 @@ namespace FitappApi.Net7.Controllers
                         DayCalorieTargetMin = 0,
                         FatGramsTarget = 0,
                         FiberGramsTarget = 0,
-                        FkUserId = userId,
+                        FkUserId = UserId,
                         ProteinGramsTarget = 0,
                         SugarGramsTarget = 0,
                         UnsaturatedFatGramsTarget = 0,
@@ -797,7 +862,7 @@ namespace FitappApi.Net7.Controllers
                 dish.SugarActual = refdish.SugarActual;
                 dish.UnsaturatedFatActual = refdish.UnsaturatedFatActual;
                 dish.SaturatedFatGramsActual = refdish.SaturatedFatGramsActual;
-                dish.FkUserId = userId;
+                dish.FkUserId = UserId;
                 dish.FkDishTranscriptionTypeId = 2;
                 dish.Remarks = Note;
                 dish.IsComplete = true;
@@ -833,8 +898,11 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("SnoozeMeal")]
-        public async Task<bool> SnoozeMeal(long MealId, int snoozeTimeMinutes)
+        //public async Task<bool> SnoozeMeal(long MealId, int snoozeTimeMinutes)
+        public async Task<bool> SnoozeMeal([FromBody]GeneralApiModel model)
         {
+            long MealId = model.longparam1;
+            int snoozeTimeMinutes = model.intparam1;
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var meal = await _context.FnsNutritionActualMeal
                  .Include(t => t.FkNutritionActualDay)
@@ -858,7 +926,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("SnoozeMealUndo")]
-        public async Task<bool> SnoozeMealUndo(long MealId)
+        public async Task<bool> SnoozeMealUndo([FromBody]long MealId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var meal = await _context.FnsNutritionActualMeal
@@ -873,8 +941,24 @@ namespace FitappApi.Net7.Controllers
 
 
         [HttpPost]
+        [Route("SkipMeal")]
+        public async Task<bool> SkipMeal([FromBody] long mealId)
+        {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+            var meal = await _context.FnsNutritionActualMeal
+            .Where(t => t.Id == mealId).FirstOrDefaultAsync();
+
+            if (meal == null) return false;
+            meal.IsSkipped = true;
+            meal.IsSnoozed = false;
+            meal.SnoozedTime = null;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        [HttpPost]
         [Route("UndoSkip")]
-        public async Task<bool> UndoSkip(long MealId)
+        public async Task<bool> UndoSkip([FromBody]long MealId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var meal = await _context.FnsNutritionActualMeal

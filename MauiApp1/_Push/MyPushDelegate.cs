@@ -1,4 +1,5 @@
-﻿using MauiApp1._Push;
+﻿#if IOS
+using MauiApp1._Push;
 using MauiApp1.Areas.Chat.Views;
 using Shiny.Notifications;
 using Shiny.Push;
@@ -48,7 +49,7 @@ public class NewPushDelegate : IPushDelegate
 
             if (!String.IsNullOrEmpty(action))
             {
-                    PushNavigationHelper.HandleNotificationTab(action, param);
+                PushNavigationHelper.HandleNotificationTab(action, param);
             }
         }
         catch (Exception ex)
@@ -60,12 +61,12 @@ public class NewPushDelegate : IPushDelegate
     }
 
 
-    public Task OnReceived(PushNotification push)
+    public async Task OnReceived(PushNotification push)
     {
         try
         {
 #if IOS
-            if (UIApplication.SharedApplication.ApplicationState != UIApplicationState.Active) return Task.FromResult<object>(null); ;
+            if (UIApplication.SharedApplication.ApplicationState != UIApplicationState.Active) return;
             var apnstring = push.data.Values.FirstOrDefault();
             string title = parseAlert(apnstring);
             string body = parseBody(apnstring);
@@ -82,14 +83,14 @@ public class NewPushDelegate : IPushDelegate
             pl.Add("param1", param1);
 
 
-            this.CreateNotification(3, "Notifications", title, body, 0, pl);
+            await this.CreateNotification(3, "Notifications", title, body, 0, pl);
 #endif
         }
         catch (Exception ex)
         {
-            return Task.FromResult<object>(null);
+            return; // Task.FromResult<object>(null);
         }
-        return Task.FromResult<object>(null);
+        return;
     }
 
 
@@ -279,3 +280,5 @@ public class NewPushDelegate : IPushDelegate
 //        return null;
 //    }
 //}
+
+#endif

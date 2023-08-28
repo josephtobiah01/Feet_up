@@ -29,49 +29,40 @@
     justify-self: end;
     width: fit-content;
     height:fit-content;
-    max-width: 70vw;
+    max-width: 200px;
     float: right;
     background: #006272;
-    border-radius: 8px 0px 8px 8px;
+    border-radius: 5px;
     text-align: right;
     padding: 2px;
     margin-right: 8px;
+    display: flex;
+    flex-direction: column;
 }
 
-    .user-sent-message-div > .image-container[b-aukp499u09] {
+    /*.user-sent-message-div > .image-container {
         display: flex;
         flex-direction: column;
         align-items: stretch;
+        
+    }*/
 
+    .user-sent-message-div > .message-image[b-aukp499u09] {
+        flex-grow: 1;
+        object-fit: contain;
+        margin: 3px;
+        pointer-events: none;
+        border-radius: 5px;
+        max-height: 150px;
+        max-width: 200px;
     }
-
-        .user-sent-message-div > .image-container > .message-image[b-aukp499u09] {
-            flex-grow: 1;
-            object-fit: cover;
-            margin: 3px;
-            pointer-events: none;
-            border-radius: 5px;
-        }
-
-        .user-sent-message-div > .image-container > .message-text-label[b-aukp499u09] {
-            font-size: 14px;
-            font-family: 'Montserrat';
-            font-weight: 400;
-            font-style: normal;
-            margin-top: 5px;
-            color: white;
-            background-color: #006272;
-            border-radius: 5px;
-            padding: 5px 8px;
-            word-break: break-word;
-            white-space: pre-line;
-        }
 
     .user-sent-message-div > .message-text-label[b-aukp499u09] {
         font-size: 14px;
         font-family: 'Montserrat';
         font-weight: 400;
         font-style: normal;
+        margin-top: 5px;
         color: white;
         background-color: #006272;
         border-radius: 5px;
@@ -80,9 +71,14 @@
         white-space: pre-line;
     }
 
+    
+
 
     .user-sent-message-div > .time-stamp-container-div[b-aukp499u09] {
-        display: inline-block;
+        display: flex;
+        align-items: center;
+        justify-self: right;
+        margin: 5px;
     }
 
         .user-sent-message-div > .time-stamp-container-div > .user-message-check-image[b-aukp499u09] {
@@ -108,13 +104,23 @@
     justify-self: start;
     width: fit-content;
     height: fit-content;
-    max-width: 70vw;
+    max-width: 200px;
     float: left;
     background: #EEF0F2;
     border-radius: 0px 8px 8px 8px;
     padding: 8px;
     margin-left: 8px;
 }
+
+    .server-sent-message-div > .message-imahe[b-aukp499u09] {
+        flex-grow: 1;
+        object-fit: contain;
+        margin: 3px;
+        pointer-events: none;
+        border-radius: 5px;
+        max-height: 150px;
+        max-width: 200px;
+    }
 
     .server-sent-message-div > .username-label[b-aukp499u09] {
         font-size: 12px;
@@ -154,62 +160,48 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    padding: 15px;
 }
 
 .textarea-container[b-aukp499u09] {
     position: relative;
     display: flex;
     align-items: center;
+    flex-grow: 1;
+    max-width: 80%;
+    overflow: hidden;
+    height: fit-content;
+    margin: 0;
 }
-
-    .textarea-container > .imageMessage[b-aukp499u09] {
-        max-width: 50px;
-        max-height: 50px;
-        object-fit: contain;
-        margin: 3px;
-        pointer-events: none;
-        border-radius: 5px;
-    }
-
     .textarea-container > .chat-input[b-aukp499u09] {
         flex: 1;
-        margin: 4px;
-        height: 40px;
-        max-height: 150px;
+        height: 24px;
         border: none;
         outline: none;
-    }
-
-    .textarea-container > .cancel-button[b-aukp499u09] {
-        font-size: 15px;
-        font-family: 'Montserrat';
-        font-style: normal;
-        font-weight: 400;
-        color: black;
-        border: 1px solid #778899;
-        background-color: #C0C0C0;
-        margin-left: 5px;
-        padding: 3px;
-        border-radius: 5px;
+        transition: max-width 0.3s ease; 
+        width: 100%;
+        height: 24px;
+        padding: 0;
+        margin: 0;
+        vertical-align: central;
     }
 
 
-
-.buttonarea-container[b-aukp499u09]{
-    position: relative;
+.buttonarea-container[b-aukp499u09] {
     display: flex;
     align-items: center;
+    margin: 0px;
+    height: 24px;
 }
 
     .buttonarea-container > .send-button[b-aukp499u09] {
         border: transparent;
         background-color: transparent;
-        margin-left: 3px;
-        height: 43px;
-        width: 43px;
+        margin: 0px 8px 0px 8px;
+        height: 24px;
+        width: 24px;
+        vertical-align: central;
     }
-
-
 
 
 

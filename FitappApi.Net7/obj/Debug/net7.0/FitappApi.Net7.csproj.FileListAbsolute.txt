@@ -1,5 +1,7 @@
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\appsettings.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\appsettings.Production.json
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\appsettings.Test.json
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\FitappApi.Net7.staticwebassets.runtime.json
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\FitappApi.Net7.exe
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\FitappApi.Net7.deps.json
@@ -26,6 +28,8 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\Microsoft.Azure.NotificationHubs.dll
@@ -308,12 +312,14 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\DAOLayer.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\FeedApi.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\LogHelper.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\MessageApi.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\ParentMiddleWare.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\UserApi.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\ChartApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\DAOLayer.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\FeedApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\LogHelper.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\MessageApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\UserApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\bin\Debug\net7.0\ParentMiddleWare.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappApi.Net7\obj\Debug\net7.0\FitappApi.Net7.csproj.AssemblyReference.cache

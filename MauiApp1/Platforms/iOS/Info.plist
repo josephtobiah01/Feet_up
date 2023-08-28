@@ -16,6 +16,8 @@
 	<array>
 		<string>remote-notification</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>MauiSplash</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
 	<key>NSCameraUsageDescription</key>
@@ -30,8 +32,6 @@
 	<string>me.AgeInReverse.AIR</string>
 	<key>CFBundleDisplayName</key>
 	<string>Age In Reverse Longevity</string>
-	<key>CFBundleVersion</key>
-	<string>2</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -45,5 +45,7 @@
 			<string>Editor</string>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>2</string>
 </dict>
 </plist>

@@ -8,8 +8,8 @@ package androidx.camera.view;
 
 public final class R {
 	public static final class attr {
-		public static final int implementationMode = 0x7f04023b;
-		public static final int scaleType = 0x7f0403c7;
+		public static final int implementationMode = 0x7f040226;
+		public static final int scaleType = 0x7f04039f;
 	}
 	public static final class id {
 		public static final int compatible = 0x7f0a0089;
@@ -19,10 +19,10 @@ public final class R {
 		public static final int fitCenter = 0x7f0a0106;
 		public static final int fitEnd = 0x7f0a0107;
 		public static final int fitStart = 0x7f0a0108;
-		public static final int performance = 0x7f0a01ae;
+		public static final int performance = 0x7f0a01ad;
 	}
 	public static final class styleable {
-		public static final int[] PreviewView = new int[] { 0x7f04023b, 0x7f0403c7 };
+		public static final int[] PreviewView = new int[] { 0x7f040226, 0x7f04039f };
 		public static final int PreviewView_implementationMode = 0;
 		public static final int PreviewView_scaleType = 1;
 	}

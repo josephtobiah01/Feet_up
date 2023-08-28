@@ -4,8 +4,11 @@ using DAOLayer.Net7.Logs;
 using DAOLayer.Net7.Nutrition;
 using DAOLayer.Net7.Supplement;
 using DAOLayer.Net7.User;
+using FitappApi.Net7;
 using FitappApi.Net7.IdentityContext;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -145,32 +148,44 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.AddControllers();
 builder.Services.AddControllers().AddNewtonsoftJson();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-//builder.Services.AddSwaggerGen();
-
 builder.Services.AddSwaggerGen(options =>
 {
     options.CustomSchemaIds(type => type.FullName.ToString());
 });
+builder.Services.ConfigureOptions<ConfigureSwaggerOptions>();
 
-
+builder.Services.AddApiVersioning(options => {
+    options.ReportApiVersions = true;
+    options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ApiVersionReader = new HeaderApiVersionReader("x-api-version");
+});
+// Add ApiExplorer to discover versions
+builder.Services.AddVersionedApiExplorer(setup =>
+{
+    setup.GroupNameFormat = "'v'VVV";
+    setup.SubstituteApiVersionInUrl = true;
+});
 var app = builder.Build();
 
 app.UseResponseCompression();
+var apiVersionDescriptionProvider = app.Services.GetRequiredService<IApiVersionDescriptionProvider>();
 
-
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+//Configure the HTTP request pipeline.
+if (!app.Environment.IsProduction())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
-}
-else
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(options =>
+    {
+        foreach (var description in apiVersionDescriptionProvider.ApiVersionDescriptions.Reverse())
+        {
+            options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json",
+                description.GroupName.ToUpperInvariant());
+        }
+    });
 }
 
 app.UseHttpsRedirection();

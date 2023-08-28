@@ -29,7 +29,8 @@ namespace ParentMiddleWare.Models
         public int? ExerciseDuration { get; set; }
         public DateTime? StartTimestamp { get; set; }
         public DateTimeOffset? TimeOffset { get; set; }
-
+        public string CustomerFeedback { get; set; }
+        public double FloatFeedback { get; set; }
         public List<EmExercise> emExercises;
     }
 }

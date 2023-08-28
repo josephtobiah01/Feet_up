@@ -1,88 +1,144 @@
 ﻿using ChartApi.Net7;
 using DAOLayer.Net7.Chat;
-using DAOLayer.Net7.Chat.ApiModels;
 using DAOLayer.Net7.User;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParentMiddleWare.Models;
 using User = DAOLayer.Net7.Chat.User;
+using FitappApi.Net7.Util;
+using System.Drawing;
+using Microsoft.Extensions.Configuration.UserSecrets;
+using MessageApi.Net7.Models;
 
 namespace FitappApi.Net7.Controllers
 {
-
-
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize]
     public class ChatController : BaseController
     {
-
-        // PROD
-        //public static string AzureFunctionURL = "https://air-functions-prod.azurewebsites.net";
-
-        //TEST
-        public static string AzureFunctionURL = "https://air-functions-test.azurewebsites.net";
-
-
+        public readonly string AzureFunctionURL;
         private readonly ChatContext _context;
         private readonly UserContext _uContext;
-        public ChatController(ChatContext context, UserContext uContext)
+        private readonly BlobManager _blobManager;
+
+        public ChatController(IConfiguration configuration, ChatContext context, UserContext uContext)
         {
+            AzureFunctionURL = configuration["AzureFunctionUrl"];
             _context = context;
             _uContext = uContext;
+            _blobManager = new BlobManager(configuration, "chatfiles");
         }
-
 
         [HttpGet]
         [Route("GetMessages")]
-        public async Task<List<RecievedMessage>> GetMessages(long RoomId, DateTime fromDate)
+        public async Task<List<ReceivedMessage>> GetMessages(long RoomId, DateTime fromDate)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             return MapChatMessage(await _context.MsgMessage.Where(t => t.FkRoomId == RoomId && t.Timestamp >= fromDate)
                 .Include(t=>t.FkUserSenderNavigation)
                 .Include(t=>t.FkRoom)
+                .Include(t => t.FkImage)
                 .AsNoTracking()
                 .ToListAsync());
         }
 
         [HttpGet]
         [Route("GetMessagesFrontend")]
-        public async Task<List<RecievedMessage>> GetMessagesFrontend(long UserId, DateTime fromDate)
+        public async Task<List<ReceivedMessage>> GetMessagesFrontend(string FkFederatedUser, DateTime fromDate)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var room = await CreateRoom(UserId);
+            var user = _uContext.User.Where(t => t.FkFederatedUser == FkFederatedUser).FirstOrDefault();
+            if (user == null)
+            {
+                return null;
+            }
+            long UserId = user.Id;
+            var room = await CreateRoom(FkFederatedUser);
             return MapChatMessage(await _context.MsgMessage.Where(t => t.FkRoomId == room.Id && t.Timestamp >= fromDate)
                  .Include(t => t.FkUserSenderNavigation)
                  .Include(t => t.FkRoom)
+                 .Include(t => t.FkImage)
                  .AsNoTracking()
                  .ToListAsync());
         }
 
-
+        private byte[] CreateThumbnailImage(byte[] origImageData)
+        {
+            float scale = 1;
+            using (MemoryStream memoryStream = new MemoryStream(origImageData))
+            {
+                memoryStream.Position = 0;
+                var origImage = System.Drawing.Image.FromStream(memoryStream);
+                int origWidth = origImage.Width;
+                int origHeight = origImage.Height;
+                if (origWidth > origHeight)
+                {
+                    scale = (300f / origWidth);
+                }
+                else
+                {
+                    scale = 300f / origHeight;
+                }
+                float resizedWidth = origWidth * scale;
+                float resizedHeight = origHeight * scale;
+                Bitmap thumbnailImage = new Bitmap(origImage, new Size((int)(resizedWidth), (int)(resizedHeight)));
+                ImageConverter converter = new ImageConverter();
+                return (byte[])converter.ConvertTo(thumbnailImage, typeof(byte[]));
+            }
+        }
 
         [HttpPost]
         [Route("SendMessage")]
-        public async Task<RecievedMessage> SendMessage(BackendMessage message)
+        public async Task<ReceivedMessage> SendMessage([FromBody]BackendMessage message)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
                 MsgMessage msg = new MsgMessage();
-                msg.FkRoom = await CreateRoom(message.Fk_Reciever_Id);
+                msg.FkRoom = await CreateRoom(message.ReceiverFkFederatedUser);
                 msg.MessageContent = message.MessageContent;
-                msg.FkUserSender = message.Fk_Sender_Id;
+                var Sender = _uContext.User.Where(u => u.FkFederatedUser == message.SenderFkFederatedUser).FirstOrDefault();
+                if (Sender == null)
+                {
+                    return null;
+                }
+                msg.FkUserSender = Sender.Id;
                 msg.Timestamp = DateTime.UtcNow;
+
+                if (!string.IsNullOrEmpty(message.ImageFileContent) && !string.IsNullOrEmpty(message.ImageFileContentType))
+                {
+                    byte[] data = Convert.FromBase64String(message.ImageFileContent);
+                    byte[] thumbnailData = CreateThumbnailImage(data);
+
+                    var uploadOrigImageTask = _blobManager.UploadBlob(message.ImageFileContentType, new BinaryData(data));
+                    var uploadThumbnailImageTask = _blobManager.UploadBlob(message.ImageFileContentType, new BinaryData(thumbnailData));
+                    await Task.WhenAll(uploadOrigImageTask, uploadThumbnailImageTask);
+                    string imageUrl = uploadOrigImageTask.Result;
+                    string thumbnailImageUrl = uploadThumbnailImageTask.Result;
+
+                    msg.FkImage = new DAOLayer.Net7.Chat.Image();
+                    msg.FkImage.RealImageUrl = imageUrl;
+                    msg.FkImage.ThumbnailImageUrl = thumbnailImageUrl;
+                    await _context.Image.AddAsync(msg.FkImage);
+                }
 
                 await _context.MsgMessage.AddAsync(msg);
                 if (await _context.SaveChangesAsync() > 0)
                 {
                     #region  APN
+                    var Receiver = _uContext.User.Where(u => u.FkFederatedUser == message.ReceiverFkFederatedUser).FirstOrDefault();
+                    if (Receiver == null)
+                    {
+                        return null;
+                    }
                     HttpClient _httpClient = new HttpClient();
-                   _httpClient.PostAsync(string.Format("{0}/api/SendChat?userId={1}", AzureFunctionURL, message.Fk_Reciever_Id), null);
+                    _httpClient.PostAsync(string.Format("{0}/api/SendChat?userId={1}", AzureFunctionURL, Receiver.Id), null);
                     #endregion
                 }
                 msg.FkUserSenderNavigation = _context.User.Where(t => t.Id == msg.FkUserSender).First();
-                return MapChatMessage(msg);
+                string sasToken = _blobManager.GetSasToken();
+                return MapChatMessage(msg, sasToken);
             }          
             catch (Exception ex)
             {
@@ -92,25 +148,48 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("SendMessageFrontend")]
-        public async Task<RecievedMessage> SendMessageFrontend(FrontendMessage message)
+        public async Task<ReceivedMessage> SendMessageFrontend(FrontendMessage message)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var user = _uContext.User.Where(t => t.FkFederatedUser == message.FkFederatedUser).FirstOrDefault();
+                if (user == null)
+                {
+                    return null;
+                }
+                long UserId = user.Id;
                 MsgMessage msg = new MsgMessage();
               
-                msg.FkRoom = await CreateRoom(message.Fk_Sender_Id);
+                msg.FkRoom = await CreateRoom(message.FkFederatedUser);
                 msg.FkRoom.HasConcern = true;
                 msg.MessageContent = message.MessageContent;
-                msg.FkUserSender = message.Fk_Sender_Id;
+                msg.FkUserSender = UserId;
                 msg.Timestamp = DateTime.UtcNow;
-               
+
+                if (!string.IsNullOrEmpty(message.ImageFileContent) && !string.IsNullOrEmpty(message.ImageFileContentType))
+                {
+                    byte[] data = Convert.FromBase64String(message.ImageFileContent);
+                    byte[] thumbnailData = CreateThumbnailImage(data);
+
+                    var uploadOrigImageTask = _blobManager.UploadBlob(message.ImageFileContentType, new BinaryData(data));
+                    var uploadThumbnailImageTask = _blobManager.UploadBlob(message.ImageFileContentType, new BinaryData(thumbnailData));
+                    await Task.WhenAll(uploadOrigImageTask, uploadThumbnailImageTask);
+                    string imageUrl = uploadOrigImageTask.Result;
+                    string thumbnailImageUrl = uploadThumbnailImageTask.Result;
+
+                    msg.FkImage = new DAOLayer.Net7.Chat.Image();
+                    msg.FkImage.RealImageUrl = imageUrl;
+                    msg.FkImage.ThumbnailImageUrl = thumbnailImageUrl;
+                    await _context.Image.AddAsync(msg.FkImage);
+                }
 
                 await _context.MsgMessage.AddAsync(msg);
                 if (await _context.SaveChangesAsync() > 0)
                 {
                     msg.FkUserSenderNavigation = _context.User.Where(t => t.Id == msg.FkUserSender).First();
-                    return MapChatMessage(msg);
+                    string sasToken = _blobManager.GetSasToken();
+                    return MapChatMessage(msg, sasToken);
                 }
                 return null;
             }
@@ -122,11 +201,17 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("CreateRoom")]
-        public async Task<MsgRoom> CreateRoom(long userId)
+        public async Task<MsgRoom> CreateRoom(string FkFederatedUser)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
+                var User = _uContext.User.Where(u=>u.FkFederatedUser==FkFederatedUser).FirstOrDefault();
+                if (User == null)
+                {
+                    return null;
+                }
+                var userId = User.Id;
                 var existingRoom = await _context.MsgRoom.Where(t => t.FkUserId == userId).FirstOrDefaultAsync();
                 if (existingRoom == null)
                 {
@@ -148,7 +233,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("RemoveUnhandledFlag")]
-        public async Task RemoveUnhandledFlag(long RoomId)
+        public async Task RemoveUnhandledFlag([FromBody]long RoomId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             _context.MsgRoom.Where(t => t.Id == RoomId).First().HasConcern = false;
@@ -157,10 +242,16 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("AddUnhandledFlag")]
-        public async Task AddUnhandledFlag(long UserId)
+        public async Task AddUnhandledFlag([FromBody]string FkFederatedUser)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var room = await CreateRoom(UserId);
+            var user = _uContext.User.Where(t => t.FkFederatedUser == FkFederatedUser).FirstOrDefault();
+            if (user == null)
+            {
+                return;
+            }
+            long UserId = user.Id;
+            var room = await CreateRoom(FkFederatedUser);
             room.HasConcern = true;
             await _context.SaveChangesAsync();
         }
@@ -176,23 +267,31 @@ namespace FitappApi.Net7.Controllers
         }
 
 
-        public static List<RecievedMessage> MapChatMessage(List<MsgMessage> message)
+        private List<ReceivedMessage> MapChatMessage(List<MsgMessage> message)
         {
-            List<RecievedMessage> msgList = new List<RecievedMessage>();
+            string sasToken = _blobManager.GetSasToken();
+            List<ReceivedMessage> msgList = new List<ReceivedMessage>();
             foreach (MsgMessage msg in message)
             {
-                msgList.Add(MapChatMessage(msg));
+                msgList.Add(MapChatMessage(msg, sasToken));
             }
             return msgList;
         }
 
-        public static RecievedMessage MapChatMessage(MsgMessage message)
+        private ReceivedMessage MapChatMessage(MsgMessage message, string sasToken)
         {
-            RecievedMessage msg = new RecievedMessage();
+            ReceivedMessage msg = new ReceivedMessage();
             msg.MessageContent = message.MessageContent;
             msg.TimeStamp = message.Timestamp;
             msg.IsUserMessage = (message.FkRoom.FkUserId == message.FkUserSender);
             msg.UserName = (message.FkUserSenderNavigation.FirstName + " " + message.FkUserSenderNavigation.Email).Trim();
+
+            if(message.FkImage != null)
+            {
+                msg.ThumbnailImageUrl = message.FkImage.ThumbnailImageUrl + "?" + sasToken;
+                msg.RealImageUrl = message.FkImage.RealImageUrl + "?" + sasToken;
+            }
+
             return msg;
         }
 

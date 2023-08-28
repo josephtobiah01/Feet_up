@@ -5,6 +5,7 @@ using DAOLayer.Net7.Supplement;
 using LogHelper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ParentMiddleWare.ApiModels;
 
 namespace FitappApi.Net7.Controllers
 {
@@ -51,7 +52,8 @@ namespace FitappApi.Net7.Controllers
                 {
                     try
                     {
-                        await this.Supplements_Trigger_Schedule_Update(y.Id, start_date, force);
+                        //await this.Supplements_Trigger_Schedule_Update(y.Id, start_date, force);
+                        await this.Supplements_Trigger_Schedule_Update(new AutomationApiModel { supplement_plan_weekly_id=y.Id, datetimeparam1=start_date, boolparam1=force});
                     }
                     catch (Exception ex)
                     {
@@ -84,14 +86,15 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("Supplements_Trigger_Schedule_Update")]
-        public async Task<bool> Supplements_Trigger_Schedule_Update(long supplement_plan_weekly_id, DateTime start_date, bool force = false)
+        //public async Task<bool> Supplements_Trigger_Schedule_Update(long supplement_plan_weekly_id, DateTime start_date, bool force = false)
+        public async Task<bool> Supplements_Trigger_Schedule_Update([FromBody]AutomationApiModel model)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             try
             {
              //   DbContextOptionsBuilder.EnableSensitiveDataLogging;
 
-                var x = await _sContext.NdsSupplementPlanWeekly.Where(t => t.Id == supplement_plan_weekly_id)
+                var x = await _sContext.NdsSupplementPlanWeekly.Where(t => t.Id == model.supplement_plan_weekly_id)
                     .Include(t=>t.FkCustomer)
                     .Include(t => t.NdsSupplementPlanDaily)
                     .ThenInclude(t => t.NdsSupplementPlanSupplement)
@@ -106,12 +109,12 @@ namespace FitappApi.Net7.Controllers
 
                 foreach(var day in x.NdsSupplementPlanDaily)
                 {
-                    int DayOfWeek__start_date = netDayOfweek2DayOfweek(start_date.Date);
+                    int DayOfWeek__start_date = netDayOfweek2DayOfweek(model.datetimeparam1.Date);
                     int DayOfWeek__Plan = day.DayOfWeek;
 
 
 
-                    if (DayOfWeek__start_date == DayOfWeek__Plan && force == false)
+                    if (DayOfWeek__start_date == DayOfWeek__Plan && model.boolparam1 == false)
                     {
                         continue;
                     }
@@ -120,7 +123,7 @@ namespace FitappApi.Net7.Controllers
                         continue;
                     }
 
-                        DateTime targetDate = start_date.Date.AddDays(DayOfWeek__Plan - DayOfWeek__start_date);
+                        DateTime targetDate = model.datetimeparam1.Date.AddDays(DayOfWeek__Plan - DayOfWeek__start_date);
 
                     NdsSupplementSchedulePerDate s_date = await _sContext.NdsSupplementSchedulePerDate.Where(t => t.CustomerId == x.FkCustomerId && t.Date == targetDate)
                         .Include(t=>t.NdsSupplementSchedule)

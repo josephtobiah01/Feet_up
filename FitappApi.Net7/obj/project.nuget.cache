@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "RgfYhVNwoOfHsK9QO+OQgq4Gp6lpwLv8s8WfYOuJ8S3L0gngFhy2DSqD7/M6BdNtDUDtuAjlpd2c3Okk5xNyxg==",
+  "dgSpecHash": "QxG6dT6BUMOJIW4NzMNtnH3gmEn4D73TDu0wk/0fLjjWdtXCfQGN3Gimf7J3ShgWU0fOLP8EDxj+7+FUEduvgg==",
   "success": true,
   "projectFilePath": "C:\\Users\\joseph.alulod\\source\\repos\\Feet_up\\FitappApi.Net7\\FitappApi.Net7.csproj",
   "expectedPackageFiles": [
@@ -25,6 +25,8 @@
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.identity.ui\\7.0.5\\microsoft.aspnetcore.identity.ui.7.0.5.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\7.0.5\\microsoft.aspnetcore.jsonpatch.7.0.5.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\7.0.5\\microsoft.aspnetcore.mvc.newtonsoftjson.7.0.5.nupkg.sha512",
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.1.0\\microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512",
+    "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning.apiexplorer\\5.1.0\\microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\6.0.11\\microsoft.aspnetcore.razor.language.6.0.11.nupkg.sha512",
     "C:\\Users\\joseph.alulod\\.nuget\\packages\\microsoft.azure.notificationhubs\\4.1.0\\microsoft.azure.notificationhubs.4.1.0.nupkg.sha512",

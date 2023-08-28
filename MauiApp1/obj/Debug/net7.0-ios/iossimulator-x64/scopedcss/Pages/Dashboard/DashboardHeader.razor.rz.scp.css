@@ -23,13 +23,14 @@ body[b-7oqou9bazd] {
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
+    padding-left: 15px;
+    padding-right: 15px;
     line-height: 20px;
-    color: #FFFFFF;
+    color: #ffffff;
     outline: none;
     text-align: center;
-    background-color: rgba(0,0,0,0);
-    border-radius: 0px;
-    border-color: rgba(0,0,0,0);
+    border-color: transparent;
+    background: transparent;
 }
 
 .selected[b-7oqou9bazd] {
@@ -42,16 +43,9 @@ body[b-7oqou9bazd] {
     text-align: center;
 }
 /* header buttons animated underline */
-#underline[b-7oqou9bazd] {
-    content: "";
-    position: relative;
-    bottom: 0;
-    left: 0px;
-    width: 0px;
-    height: 2px;
-    border-radius: 10px;
-    background-color: white;
-    transition: left 0.2s ease, width 0.2s ease;
+#dashboardbutton[b-7oqou9bazd] {
+    border-radius: 20px;
+    box-shadow: rgba(255,255,255) 0px 13px 0px -10px;
 }
 /*#endregion*/
 

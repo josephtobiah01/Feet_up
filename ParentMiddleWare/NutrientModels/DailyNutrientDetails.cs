@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MauiApp1.Areas.Dashboard.TemporaryStubModel
+namespace ParentMiddleWare.NutrientModels
 {
     public class DailyNutrientDetails
     {

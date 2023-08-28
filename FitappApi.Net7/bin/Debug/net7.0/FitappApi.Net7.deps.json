@@ -8,19 +8,18 @@
     ".NETCoreApp,Version=v7.0": {
       "FitappApi.Net7/1.0.0": {
         "dependencies": {
-          "AIR.Maui.FitnessData.Client": "1.0.0-alpha35",
-          "AIR.Maui.SecurityServices.Client": "1.0.0-alpha08",
-          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha08",
           "Azure.Storage.Blobs": "12.16.0",
           "Azure.Storage.Queues": "12.14.0",
           "ChartApi.Net7": "1.0.0",
           "DAOLayer.Net7": "1.0.0",
           "FeedApi.Net7": "1.0.0",
           "LogHelper": "1.0.0",
+          "MessageApi.Net7": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.5",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.5",
           "Microsoft.AspNetCore.Identity.UI": "7.0.5",
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "7.0.5",
+          "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer": "5.1.0",
           "Microsoft.AspNetCore.OpenApi": "7.0.5",
           "Microsoft.Azure.NotificationHubs": "4.1.0",
           "Microsoft.EntityFrameworkCore.Proxies": "7.0.5",
@@ -278,6 +277,25 @@
           "lib/net7.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll": {
             "assemblyVersion": "7.0.5.0",
             "fileVersion": "7.0.523.17410"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.8270.41513"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Mvc.Versioning": "5.1.0"
+        },
+        "runtime": {
+          "lib/net6.0/Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer.dll": {
+            "assemblyVersion": "5.1.0.0",
+            "fileVersion": "5.1.8270.41534"
           }
         }
       },
@@ -2889,6 +2907,20 @@
           "LogHelper.dll": {}
         }
       },
+      "MessageApi.Net7/1.0.0": {
+        "dependencies": {
+          "AIR.Maui.FitnessData.Client": "1.0.0-alpha35",
+          "AIR.Maui.SecurityServices.Client": "1.0.0-alpha08",
+          "AIR.Maui.SecurityServices.Common": "1.0.0-alpha08",
+          "AIR.NetCore.SecurityServices.Common": "1.0.0-alpha07",
+          "AIR.NetCore.SecurityServices.Core": "1.0.0-alpha07",
+          "ChartApi.Net7": "1.0.0",
+          "ParentMiddleWare": "1.0.0"
+        },
+        "runtime": {
+          "MessageApi.Net7.dll": {}
+        }
+      },
       "ParentMiddleWare/1.0.0": {
         "dependencies": {
           "AIR.Maui.FitnessData.Client": "1.0.0-alpha35",
@@ -3070,6 +3102,20 @@
       "sha512": "sha512-zOhqXibiA14gy0rFkvvSp0BYnz3lsZ82R9vXJ3H+KCz+TXWIjP6wuqwc97bc00ppCB2oK4jQbii+q9phv18WAg==",
       "path": "microsoft.aspnetcore.mvc.newtonsoftjson/7.0.5",
       "hashPath": "microsoft.aspnetcore.mvc.newtonsoftjson.7.0.5.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-UX8w9BlCiZpr6Ox4YAve1w0CkI1CAovukGNzKd7v0+5pZc8lzuG5tRovucr1RWIKHs0E/Yx8563CN7KzaB3bpw==",
+      "path": "microsoft.aspnetcore.mvc.versioning/5.1.0",
+      "hashPath": "microsoft.aspnetcore.mvc.versioning.5.1.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer/5.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-p45pSXCJPbx+p9gFNNQPUC547KpqP5cRJke6aygq/M7UzCrJNmJNqD+65pIpY4muYbINqlgrC47h1oc0WbuP1g==",
+      "path": "microsoft.aspnetcore.mvc.versioning.apiexplorer/5.1.0",
+      "hashPath": "microsoft.aspnetcore.mvc.versioning.apiexplorer.5.1.0.nupkg.sha512"
     },
     "Microsoft.AspNetCore.OpenApi/7.0.5": {
       "type": "package",
@@ -4508,6 +4554,11 @@
       "sha512": ""
     },
     "LogHelper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MessageApi.Net7/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

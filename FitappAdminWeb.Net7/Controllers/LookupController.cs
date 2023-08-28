@@ -9,6 +9,7 @@ using FitappAdminWeb.Net7.Classes.Utilities;
 using FitappAdminWeb.Net7.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using System.Text.RegularExpressions;
 
 namespace FitappAdminWeb.Net7.Controllers
 {
@@ -200,44 +201,59 @@ namespace FitappAdminWeb.Net7.Controllers
                 }
             }
 
-            var unitmetric_list = await _supprep.GetUnitMetricList();
-            vm.UnitMetric_List = unitmetric_list.Select(r => new SelectListItem() {
-                Text = r.Name,
-                Value = r.Id.ToString()
-            }).ToList();
+            vm.UnitMetric_List = GetNdsUnitMetrics().Result;
 
             return View(vm);
         }
 
         [HttpPost]
-        public async Task<IActionResult> EditSupplementReference(SupplementReference_DTO Data)
+        public async Task<IActionResult> EditSupplementReference(SupplementReferenceEditViewModel model)
         {
             try
             {
+                model.UnitMetric_List = GetNdsUnitMetrics().Result;
+
+                var suppIns_desc = model.Data.SupplementInstruction.Description;
+                if (suppIns_desc != null)
+                {
+                    ModelState.Clear();
+                    model.Data.SupplementInstruction.Description = Regex.Replace(suppIns_desc, @"\r\n", " ");
+                    TryValidateModel(model);
+                }
+
                 if (ModelState.IsValid)
                 {
                     NdsSupplementReference suppRef = null;
-                    if (Data.Id == 0)
+                    if (model.Data.Id == 0)
                     {
-                        suppRef = await _supprep.AddSupplementReference(Data);
+                        suppRef = await _supprep.AddSupplementReference(model.Data);
                         return RedirectToAction("SupplementReference");
                     }
                     else
                     {
-                        suppRef = await _supprep.EditSupplementReference(Data);
+                        suppRef = await _supprep.EditSupplementReference(model.Data);
                         return RedirectToAction("SupplementReference");
                     }   
                 }
-                return RedirectToAction("EditSupplementReference", ModelState);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed Add/Edit Supplement Reference");
-                throw;
+                ModelState.AddModelError("", "Failed! Please Try Again.");
             }
+            return View(model);
         }
 
-        
+        [HttpGet]
+        public async Task<List<SelectListItem>> GetNdsUnitMetrics()
+        {
+            var unitmetric_list = await _supprep.GetUnitMetricList();
+            return unitmetric_list.Select(r => new SelectListItem()
+            {
+                Text = r.Name,
+                Value = r.Id.ToString()
+            }).ToList();
+        }
         [HttpGet]
         public async Task<IActionResult> EditLegalStatus()
         {

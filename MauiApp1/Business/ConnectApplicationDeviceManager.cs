@@ -1,37 +1,19 @@
-﻿using FitnessData.Common;
-using Newtonsoft.Json;
+﻿using SecurityServices.Client.Business;
 using SecurityServices.Client.Business.Transactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MauiApp1.Business
 {
     public static class ConnectApplicationDeviceManager
     {
+        #region [Fields]
 
         private static int _tryCount = 0;
 
-        //public const string URL = "https://security-development.ageinreverse.me/mobileauth/Google";
-        public const string URL = "https://security.ageinreverse.me/mobileauth/Google";
-        public const string PAST_ACCESS_TOKEN_STRING = "pastAccessToken";
-        public const string ACCESS_TOKEN_STRING = "accessToken";
-        public const string REFRESH_TOKEN_STRING = "refreshToken";
-        public const string EMAIL_ADDRESS_STRING = "emailAddress";
-        public const string EXPIRES_IN_STRING = "expiresIn";
-        public const string REFRESH_EXPIRES_IN_STRING = "refreshExpiresIn";
+        public static MobileUserAccountAdministrator mobileUserAccountAdministrator { get; set; }
 
-        //public const string APPCONNECTENDPOINT = "https://security-development.ageinreverse.me/en-US/v1/REST";
-        public const string APPCONNECTENDPOINT = "https://security.ageinreverse.me/en-US/v1/REST";
+        #endregion
 
-        public static MobileUserAccountTransactionManager mobileUserAccountTransactionManager { get; set; }
-
-        public static void ClearFitnessServiceStorage()
-        {
-            Preferences.Default.Set(ACCESS_TOKEN_STRING, string.Empty);
-        }
+        #region [Static Methods :: Tasks]
 
         public static DateTimeOffset? ExtractAccessTokenExpirationDate(WebAuthenticatorResult webAuthenticatorResult)
         {
@@ -118,11 +100,11 @@ namespace MauiApp1.Business
                 }
             }
         }
-    
+
         public static bool isUserEnteredConnectAppLoop(string previousAccessToken, string currentAccessToken)
         {
 
-            if(string.Equals(previousAccessToken,currentAccessToken) == true)
+            if (string.Equals(previousAccessToken, currentAccessToken) == true)
             {
                 _tryCount++;
                 if (_tryCount > 3)
@@ -132,9 +114,9 @@ namespace MauiApp1.Business
                 }
                 else
                 {
-                    _tryCount = 0; 
+                    _tryCount = 0;
                     return false;
-                }                
+                }
             }
             else
             {
@@ -142,5 +124,7 @@ namespace MauiApp1.Business
                 return false;
             }
         }
+
+        #endregion
     }
 }

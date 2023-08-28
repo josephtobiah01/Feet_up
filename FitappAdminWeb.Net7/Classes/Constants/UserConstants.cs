@@ -9,4 +9,11 @@
         public static readonly int EXTYPE_UPLOADIMAGE_MAX_HEIGHT = 121;
         public static readonly int EXTYPE_UPLOADIMAGE_SIZELIMIT = 4194304;
     }
+
+    public enum SignupStatus
+    {
+        INCOMPLETE = 0,
+        REVIEW_PENDING = 1,
+        COMPLETE = 2
+    }
 }

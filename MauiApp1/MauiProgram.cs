@@ -4,20 +4,19 @@ using InputKit.Handlers;
 using Firebase;
 #endif
 using Maui.FixesAndWorkarounds;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
-using ParentMiddleWare;
 using Sample;
 using ZXing.Net.Maui;
 using ZXing.Net.Maui.Controls;
-#if !WINDOWS
 using DevExpress.Maui;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
-using System.Runtime.CompilerServices;
+using Microsoft.Extensions.Logging;
+using MauiApp1.Business.DeviceServices;
+using ParentMiddleWare;
 using MauiApp1.Interfaces;
 using MauiApp1.Services;
-#endif
+using MauiApp1.Platforms.Services;
+
 namespace MauiApp1
 {
     public static class MauiProgram
@@ -27,14 +26,15 @@ namespace MauiApp1
         private static string ProjectId = "age-in-reverse-longevity";
         private static string ApiKey = "AIzaSyAkP7jzgygDHerCG7PVU5Lo3l-nhbLYrLk";
 
-
         public static MauiApp CreateMauiApp() => MauiApp
           .CreateBuilder()
               .UseMauiApp<App>()
+              .InitiliazeConnectApplicationData()
+#if IOS
               .UseShiny()
-#if !WINDOWS
-              .UseDevExpress(useLocalization: true)
 #endif
+              .SetupServices()
+              .UseDevExpress(useLocalization: true)
               .UseMauiCommunityToolkit()
               .UseMauiCommunityToolkitMediaElement()
               .UseBarcodeReader()
@@ -60,13 +60,21 @@ namespace MauiApp1
             .RegisterViews()
             .DevExpressInitialize()
             .Build();
-        
+
+        static MauiAppBuilder SetupServices(this MauiAppBuilder builder)
+        {
+            builder.Services.AddSingleton<ISelectedImageService, SelectedImageService>();
+
+#if ANDROID || IOS
+            //builder.Services.AddTransient<IAudioPlayerService, AudioPlayerService>();
+            builder.Services.AddTransient<IRecordAudioService, RecordAudioService>();
+#endif
+            return builder;
+        }
         static MauiAppBuilder DevExpressInitialize(this MauiAppBuilder builder)
         {
-#if !WINDOWS
             DevExpress.Maui.Controls.Initializer.Init();
             DevExpress.Maui.Editors.Initializer.Init();
-#endif
             return builder;
         }
         static MauiAppBuilder RegisterAppServices(this MauiAppBuilder builder)
@@ -84,6 +92,7 @@ namespace MauiApp1
 #if ANDROID
 builder.ConfigureEntryFocusOpensKeyboard();
 #endif
+
 #endif
 
 #if DEBUG
@@ -97,23 +106,23 @@ builder.ConfigureEntryFocusOpensKeyboard();
         static  MauiAppBuilder RegisterInfrastructure(this MauiAppBuilder builder)
         {
             var s = builder.Services;
-#if !WINDOWS
-            builder.Configuration.AddJsonPlatformBundle();
+
+            //   builder.Configuration.AddJsonPlatformBundle();
 #if DEBUG
             builder.Logging.SetMinimumLevel(LogLevel.Trace);
             builder.Logging.AddDebug();
 #endif
 
-            s.AddNotifications<Sample.Notifications.MyNotificationDelegate>();
 
-#if DEBUG
+
+
 
 #if ANDROID
-
-            s.AddPushAzureNotificationHubs<NewPushDelegate>(
-                           "Endpoint=sb://airnotif.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=nxTi2IJsFdJ6R6J9oZqX1HRounX8cwQ4O/VWoi0Zrio=",
-                            "airnotificationhub"
-                        );
+           // s.AddNotifications<Sample.Notifications.MyNotificationDelegate>();
+            //s.AddPushAzureNotificationHubs<NewPushDelegate>(
+            //               "Endpoint=sb://airnotif.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=nxTi2IJsFdJ6R6J9oZqX1HRounX8cwQ4O/VWoi0Zrio=",
+            //                "airnotificationhub"
+            //            );
 
             //            s.AddPushAzureNotificationHubs<NewPushDelegate>(
             //"Endpoint=sb://aitnotificationhubsandbox.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=znWm1i9w6J5CttUS5TIohh3iKKakb9DH68YATKDsWYU=",
@@ -124,28 +133,25 @@ builder.ConfigureEntryFocusOpensKeyboard();
 #if IOS
 
 #if !DEBUG
+            s.AddNotifications<Sample.Notifications.MyNotificationDelegate>();
+
             s.AddPushAzureNotificationHubs<NewPushDelegate>(
                            "Endpoint=sb://airnotif.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=nxTi2IJsFdJ6R6J9oZqX1HRounX8cwQ4O/VWoi0Zrio=",
                             "airnotificationhub"
                              );
 
 #elif DEBUG
+            s.AddNotifications<Sample.Notifications.MyNotificationDelegate>();
+
             s.AddPushAzureNotificationHubs<NewPushDelegate>(
             "Endpoint=sb://aitnotificationhubsandbox.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=znWm1i9w6J5CttUS5TIohh3iKKakb9DH68YATKDsWYU=",
                "aitnotificationhubsandbox");
 #endif
-#endif
 
 #endif
 
-#if !DEBUG
-            s.AddPushAzureNotificationHubs<MyPushDelegate>(
-                           "Endpoint=sb://airnotif.servicebus.windows.net/;SharedAccessKeyName=DefaultListenSharedAccessSignature;SharedAccessKey=nxTi2IJsFdJ6R6J9oZqX1HRounX8cwQ4O/VWoi0Zrio=",
-                            "airnotificationhub"
-                        );
 
-#endif
-#endif
+
 
 
             return builder;
@@ -160,6 +166,57 @@ builder.ConfigureEntryFocusOpensKeyboard();
                 handler.PlatformArrange(handler.PlatformView.Frame.ToRectangle());
             });
 #endif
+            return builder;
+        }
+
+        static MauiAppBuilder InitiliazeConnectApplicationData(this MauiAppBuilder builder)
+        {
+            Task.Run(() =>
+            {
+                MiddleWare.UseSecuredStorage = true;
+
+                try
+                {
+                    DeviceStorageManager.InitializeGoogleFitData();
+                    DeviceStorageManager.InitializeAppleHealthKitData();
+
+                    ConnectedDevices.GetConnectedDevice(MiddleWare.UserID + "");
+
+                    if (ConnectedDevices.isGoogleConnected == false)
+                    {
+
+                    }
+
+                    if (ConnectedDevices.isAppleConnected == false)
+                    {
+
+                    }
+                }
+                catch(Exception ex)
+                {
+
+                }
+                
+
+
+                //GoogleFit googleFit = (GoogleFit)ConnectedDevices.GetConnectedDevice(
+                //   ConnectedDevicesEnumeration.ConnectedDevice.Google_Fit, ConnectedDeviceDataStorageManager.googleFit);
+
+                //AppleHealthKit appleHealthKit = (AppleHealthKit)ConnectedDevices.GetConnectedDevice(
+                //    ConnectedDevicesEnumeration.ConnectedDevice.Apple_Health_Kit, ConnectedDeviceDataStorageManager.appleHealthKit);
+
+                //if(googleFit == null)
+                //{
+
+                //}
+
+                //if (appleHealthKit == null)
+                //{
+
+                //}
+            });
+           
+
             return builder;
         }
     }

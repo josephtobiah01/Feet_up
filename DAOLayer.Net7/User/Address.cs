@@ -21,5 +21,7 @@ public partial class Address
 
     public string AddressCountry { get; set; }
 
+    public string CommonAddressShippingComments { get; set; }
+
     public virtual ICollection<User> User { get; set; } = new List<User>();
 }

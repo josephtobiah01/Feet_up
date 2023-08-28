@@ -27,6 +27,10 @@ public partial class UserContext : DbContext
 
     public virtual DbSet<Gender> Gender { get; set; }
 
+    public virtual DbSet<QtoolConnect> QtoolConnect { get; set; }
+
+    public virtual DbSet<UGenericQuestions> UGenericQuestions { get; set; }
+
     public virtual DbSet<UInternalNotes> UInternalNotes { get; set; }
 
     public virtual DbSet<User> User { get; set; }
@@ -53,13 +57,16 @@ public partial class UserContext : DbContext
             entity.Property(e => e.AddressState)
                 .HasMaxLength(127)
                 .HasColumnName("address_state");
+            entity.Property(e => e.CommonAddressShippingComments)
+                .HasMaxLength(1024)
+                .HasColumnName("common_address_shipping_comments");
         });
 
         modelBuilder.Entity<Apn>(entity =>
         {
             entity.Property(e => e.DeviceId)
                 .IsRequired()
-                .HasMaxLength(128)
+                .HasMaxLength(256)
                 .IsUnicode(false);
             entity.Property(e => e.FkUserId).HasColumnName("fk_userId");
             entity.Property(e => e.IsActive)
@@ -102,7 +109,7 @@ public partial class UserContext : DbContext
                 .HasColumnName("category");
             entity.Property(e => e.Devicekey)
                 .IsRequired()
-                .HasMaxLength(128)
+                .HasMaxLength(256)
                 .IsUnicode(false)
                 .HasColumnName("devicekey");
             entity.Property(e => e.FkUserId).HasColumnName("fk_userId");
@@ -170,6 +177,40 @@ public partial class UserContext : DbContext
                 .IsRequired()
                 .HasMaxLength(50)
                 .HasColumnName("name");
+        });
+
+        modelBuilder.Entity<QtoolConnect>(entity =>
+        {
+            entity.Property(e => e.Complete).HasColumnName("complete");
+            entity.Property(e => e.ExpiresUtc)
+                .HasColumnType("datetime")
+                .HasColumnName("expires_utc");
+            entity.Property(e => e.FkUserId).HasColumnName("fk_user_id");
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
+            entity.Property(e => e.Value)
+                .IsRequired()
+                .HasMaxLength(1024);
+        });
+
+        modelBuilder.Entity<UGenericQuestions>(entity =>
+        {
+            entity.ToTable("u_generic_questions");
+
+            entity.Property(e => e.FkUserId).HasColumnName("fk_user_id");
+            entity.Property(e => e.QuestionAnswer)
+                .HasMaxLength(2048)
+                .HasColumnName("question_answer");
+            entity.Property(e => e.QuestionName)
+                .IsRequired()
+                .HasMaxLength(128)
+                .HasColumnName("question_name");
+            entity.Property(e => e.QuestionText)
+                .HasMaxLength(512)
+                .HasColumnName("question_text");
+
+            entity.HasOne(d => d.FkUser).WithMany(p => p.UGenericQuestions)
+                .HasForeignKey(d => d.FkUserId)
+                .HasConstraintName("FK_u_generic_questions_User");
         });
 
         modelBuilder.Entity<UInternalNotes>(entity =>
@@ -240,7 +281,11 @@ public partial class UserContext : DbContext
             entity.Property(e => e.MobileCountryCode)
                 .HasMaxLength(10)
                 .HasColumnName("mobile_country_code");
+            entity.Property(e => e.MuhdoEmail)
+                .HasMaxLength(50)
+                .HasColumnName("muhdo_email");
             entity.Property(e => e.SetTimeOffset).HasColumnName("set_time_offset");
+            entity.Property(e => e.Signupstatus).HasColumnName("signupstatus");
             entity.Property(e => e.UserLevel).HasColumnName("user_level");
             entity.Property(e => e.Weight).HasColumnName("weight");
 

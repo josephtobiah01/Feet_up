@@ -1,18 +1,20 @@
-﻿using MauiApp1.Areas.Chat.Models;
+﻿using DevExpress.Maui.Core.Internal;
+using MauiApp1.Areas.Chat.Models;
 using MauiApp1.Areas.Chat.ViewModels.DeviceServices;
-using MauiApp1.Helpers;
+using MauiApp1.Areas.Chat.Views;
+using MauiApp1.Interfaces;
 using MauiApp1.Models;
-using MessageApi.Net7;
+using MessageApi.Net7.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using ParentMiddleWare;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
-using Image = Microsoft.Maui.Controls.Image;
 
 namespace MauiApp1.Pages.Chat
 {
-    public partial class ViewChatDetailPage
+    public partial class ViewChatDetailPage : INotifyPropertyChanged
     {
 
         #region[Fields]
@@ -20,39 +22,118 @@ namespace MauiApp1.Pages.Chat
         [Inject]
         IJSRuntime JSRuntime { get; set; }
 
-        
-
-        private ObservableCollection<IMessage> _messageList = new ObservableCollection<IMessage>();
-        private List<RecievedMessage> _messageListReserve;
-        private List<string> _galleryImages = new List<string>();
-        
-
+        [Inject]
+        ISelectedImageService selectedImageService { get; set; }
         IDispatcherTimer _dispatcherTimer;
 
+
+
+        private ObservableCollection<IMessage> _messageList = new ObservableCollection<IMessage>();
+        private List<ReceivedMessage> _messageListReserve;
+        private List<string> _galleryImages = new List<string>();
+       
+
+        private string _selectedImage;
         private string _userMessageText = "";
-        private string _userMessageImage = "";
+        public static string _userMessageImage = "";
         private bool _isCancelButtonVisible = false;
-        
+        private double _previousScrollTop = 0;
+        private double _scrollPosition; 
+
+
 
         private bool _isUserScroll = false;
         private bool _isFirstLoad = true;
 
         private int _pageSize = 1;
 
-        
+        [Parameter]
+        public EventCallback OpenGalleryAndBottomSheet { get; set; }
+
+        //public delegate void MyMethodDelegate();
+
+        public event EventHandler SendMessageTrigger;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public string SelectedImage
+        {
+            get => _selectedImage;
+            set
+            {
+                if (_selectedImage != value)
+                {
+                    _selectedImage = value;
+                    OnPropertyChanged(nameof(SelectedImage));
+                }
+            }
+        }
+
+        public double PreviousScrollTop
+        {
+            get { return _previousScrollTop; }
+            set
+            {
+                _previousScrollTop = value;
+                OnPropertyChanged(nameof(PreviousScrollTop));
+            }
+        }
+
+        public bool IsFirstLoad
+        {
+            get { return _isFirstLoad; }
+            set
+            {
+                _isFirstLoad = value;
+                OnPropertyChanged(nameof(IsFirstLoad));
+            }
+        }
+
+        public bool IsUserScroll
+        {
+            get { return _isUserScroll; }
+            set
+            {
+                _isUserScroll = value;
+                OnPropertyChanged(nameof(IsUserScroll));
+            }
+        }
+
+        public double ScrollPosition
+        {
+            get { return _scrollPosition; }
+            set
+            {
+                _scrollPosition = value;
+                OnPropertyChanged(nameof(ScrollPosition));
+            }
+        }
 
         #endregion
 
         #region [Methods :: EventHandlers :: Class]
 
+        protected void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             await base.OnAfterRenderAsync(firstRender);
-            if (firstRender)
+            if (!firstRender)
             {
-                await ScrollDivToEnd();
-                await JSRuntime.InvokeVoidAsync("StartUp");
-            }           
+                try
+                {
+                    await Task.Delay(70);
+                    await ScrollDivToEnd();
+                }
+                catch(Exception ex)
+                {
+                    ShowAlertBottomSheet("Error", $"{ex.Message}", "Ok");
+                }
+                
+            }
         }
 
         protected override async Task OnInitializedAsync()
@@ -60,24 +141,110 @@ namespace MauiApp1.Pages.Chat
             await IntializeData();
             InitializeControl();
 
+            await ScrollDivToEnd();
+
+            selectedImageService.SelectedChatContentImageChanged += SelectedImageService_OnSelectedChatContentImageChanged;
+
+            MessagingCenter.Subscribe<ViewHybridChatContentPage>(this, "SendMessageTrigger", TriggerMethod);
+
         }
-        
+
+    
+        private async Task HandleScrollEvent()
+        {
+            try
+            {
+                bool isScrolledTop = await JSRuntime.InvokeAsync<bool>("GetIsScrolledTop");
+                if (isScrolledTop == true)
+                {
+                    await LoadPreviousMessages();
+                }
+            }
+            catch(Exception ex)
+            {
+                ShowAlertBottomSheet("Error", $"{ex.Message}", "Ok");
+            }
+            
+            
+        }
+
+        private async Task ScrollDivToPosition(double position)
+        {
+            await JSRuntime.InvokeVoidAsync("SetScrollPosition", position);
+        }
+
+        private async Task LoadPreviousMessages()
+        {
+            try
+            {
+                ScrollPosition = await JSRuntime.InvokeAsync<double>("GetScrollPosition");
+
+                IMessage message = null;
+
+                DateTime oldestMessageDate = _messageList.First().TimeStamp.Date.AddDays(-7);
+
+                DateTime lastMessageDate = _messageList.First().TimeStamp.Date;
+
+                _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, oldestMessageDate);
+                
+
+                if (_messageListReserve.Count > 0)
+                {
+                    foreach (ReceivedMessage receivedMessage in _messageListReserve)
+                    {
+                        if (receivedMessage.TimeStamp >= oldestMessageDate && receivedMessage.TimeStamp <= lastMessageDate)
+                        {
+                            message = new IMessage(
+                            receivedMessage.TimeStamp.ToLocalTime(),
+                            receivedMessage.UserName,
+                            receivedMessage.IsUserMessage,
+                            Linkify(receivedMessage.MessageContent),
+                            receivedMessage.ThumbnailImageUrl);
+
+                            _messageList.Insert(0, message);
+                        }
+                        
+                    }
+                    await JSRuntime.InvokeVoidAsync("SetScrollPosition", ScrollPosition);
+
+                }
+            }
+            catch (Exception ex)
+            {
+                ShowAlertBottomSheet("Retrieve Message", "An error occurred while retrieving the messages." +
+                                    " Please check the internet connection and try again.", "OK");
+            }
+            finally
+            {
+                StateHasChanged();
+            }
+        }
+
+        private async void TriggerMethod(ViewHybridChatContentPage sender)
+        {
+            await SendMessage(image: sender.SelectedImage);
+        }
+    
+        private void SelectedImageService_OnSelectedChatContentImageChanged(object sender, string image)
+        {
+            _userMessageImage = image.ToString();
+        }
 
         private async Task IntializeData()
         {
             try
             {
                 IMessage message = null;
-                _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddDays(-7));
+                _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddDays(-7));
 
-                int count = _messageListReserve.Count;
+                //int count = _messageListReserve.Count;
                 if (_messageListReserve.Count > 0)
                 {
                     for (int index = 0; index < _messageListReserve.Count; index++)
                     {
-                        RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
+                        ReceivedMessage recievedMessage = _messageListReserve.ElementAt(index);
                         
-                        message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, Linkify(recievedMessage.MessageContent));
+                        message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, Linkify(recievedMessage.MessageContent), recievedMessage.ThumbnailImageUrl);
                         _messageList.Add(message);
                     }
 
@@ -93,18 +260,18 @@ namespace MauiApp1.Pages.Chat
                     ChatHTMLBridge.StopTimerTick.Invoke(this, null);
                 }
                 //await App.Current.MainPage.DisplayAlert("Retrieve Message", ex.Message, "OK");
-                await App.Current.MainPage.DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+                ShowAlertBottomSheet("Retrieve Message", "An error occured while retrieving the messages." +
                                 " Please check the internet connection and try again.", "OK");
             }
             finally
             {
                 StateHasChanged();
-
-                await ScrollDivToEnd();
             }
         }
 
-        private void InitializeControl()
+
+
+        private async void InitializeControl()
         {
             if (ChatHTMLBridge.RefreshChatData != null)
             {
@@ -112,15 +279,16 @@ namespace MauiApp1.Pages.Chat
             }
 
             ChatHTMLBridge.RefreshChatData += RefreshData_OnRefresh;
+            await ScrollDivToEnd();
         }
 
         #endregion
 
         #region [Methods :: EventHandlers :: Controls]
 
-        private void SendButton_Clicked()
+        private async Task SendButton_Clicked()
         {
-            SendMessage(this._userMessageText, this._userMessageImage);
+            await SendMessage(this._userMessageText, _userMessageImage);
         }
 
         private void SendImage_Clicked()
@@ -138,8 +306,11 @@ namespace MauiApp1.Pages.Chat
             await RefreshPage();
         }
 
-        public string Linkify(string input)
+        public string Linkify(string? input)
         {
+            if (string.IsNullOrEmpty(input))
+                return string.Empty;
+
             MatchCollection matches = Regex.Matches(input, "(?i)\\b((?:[a-z][\\w-]+:(?:/{1,3}|[a-z0-9%])|www\\d{0,3}[.]|[a-z0-9.\\-]+[.][a-z]{2,4}/)(?:[^\\s()<>]+|\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\))+(?:\\(([^\\s()<>]+|(\\([^\\s()<>]+\\)))*\\)|[^\\s`!()\\[\\]{};:'\".,<>?«»“”‘’]))");
 
             foreach (Match match in matches)
@@ -159,9 +330,9 @@ namespace MauiApp1.Pages.Chat
             try
             {
                 IMessage message = null;
-                List<RecievedMessage> recievedMessages = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddSeconds(-30));
+                List<ReceivedMessage> recievedMessages = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddSeconds(-30));
 
-                foreach (RecievedMessage recievedMessage in recievedMessages)
+                foreach (ReceivedMessage recievedMessage in recievedMessages)
                 {
                     if (_messageList.Where(t => t.TimeStamp.Equals(recievedMessage.TimeStamp.ToLocalTime())).FirstOrDefault() != null)
                     {
@@ -171,8 +342,7 @@ namespace MauiApp1.Pages.Chat
                     {
                         if (recievedMessage.IsUserMessage == false)
                         {
-                            message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, Linkify(recievedMessage.MessageContent));
-
+                            message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, Linkify(recievedMessage.MessageContent), recievedMessage.ThumbnailImageUrl);
                             _messageList.Add(message);
                         }
                     }
@@ -195,7 +365,7 @@ namespace MauiApp1.Pages.Chat
                     ChatHTMLBridge.StopTimerTick.Invoke(this, null);
                 }
 
-                await App.Current.MainPage.DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+                ShowAlertBottomSheet("Retrieve Message", "An error occured while retrieving the messages." +
                                " Please check the internet connection and try again.", "OK");
             }
             finally
@@ -204,32 +374,45 @@ namespace MauiApp1.Pages.Chat
             }
         }
 
-        public async void SendMessage(string text, string image)
+
+        public async Task SendMessage(string text = "", string image = "")
         {
             try
-            {
-                if (string.IsNullOrWhiteSpace(text) == false && _userMessageImage != null)
-                {
+            {          
+                if (string.IsNullOrWhiteSpace(text) == false || string.IsNullOrWhiteSpace(image) == false)
+                {  
                     IMessage message = null;
-                    //RecievedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(
-                    //    new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = text});
+                    _userMessageImage = image;
+                    ReceivedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() 
+                        { FkFederatedUser = MiddleWare.FkFederatedUser, MessageContent = text, ImageFileContent = image, ImageFileContentType = "image/png" });
 
-                    MessageReceivedResponse sentMessage = await GetData(text, image);
+                    //MessageReceivedResponse sentMessage = await GetData(text, image);
 
                     if (sentMessage != null)
                     {
                         message = new IMessage(sentMessage.TimeStamp.ToLocalTime(), sentMessage.UserName, 
-                            sentMessage.IsUserMessage, Linkify(sentMessage.MessageContent), sentMessage.MessageImageContent);
+                            sentMessage.IsUserMessage, Linkify(sentMessage.MessageContent), sentMessage.ThumbnailImageUrl);
                         _messageList.Add(message);
                         _isUserScroll = false;
                     }
                 }
+                else
+                {
+                    await App.Current.MainPage.DisplayAlert("Sorry", "You cannot send an empty message", "Ok");
+                }
               
                 this._userMessageText = null;
-                this._userMessageImage = null;
+                _userMessageImage = null;
                 this._isCancelButtonVisible = false;
 
                 await JSRuntime.InvokeVoidAsync("ResetInputHeight");
+
+                if (JSRuntime == null)
+                {
+                    ShowAlertBottomSheet("JSRuntime Missing", "JSRuntime is not available.", "OK");
+                    return;
+                }
+
                 StateHasChanged();
 
                 await ScrollDivToEnd();
@@ -238,7 +421,7 @@ namespace MauiApp1.Pages.Chat
             {
                 //await DisplayAlert("Send Message", ex.Message, "OK");
 
-                await App.Current.MainPage.DisplayAlert("Send Message", "An error occured while sending the messages." +
+                ShowAlertBottomSheet("Send Message", "An error occured while sending the messages." +
                                 " Please check the internet connection and try again.", "OK");
             }
             finally
@@ -246,63 +429,17 @@ namespace MauiApp1.Pages.Chat
             }
         }
 
+        private async Task UploadRecording()
+        {
+
+        }
+        
         private async Task UploadPhoto()
-        {
-            string uploadImage = "";
-            PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.Media>();
-            if (status != PermissionStatus.Denied || status != PermissionStatus.Unknown || status != PermissionStatus.Disabled)
-            {
-                var result = await FilePicker.PickAsync(new PickOptions
-                {
-                    PickerTitle = "Select image(s) to send",
-                    FileTypes = FilePickerFileType.Images
-                });
-
-                if (result == null)
-                    return;
-
-                var stream = await result.OpenReadAsync();
-
-                uploadImage = await ConvertStreamToBase64Async(stream);
-
-                _userMessageImage += $"data:image/png;base64,{uploadImage}";
-                _isCancelButtonVisible = true;
-
-            }
-
-            else
-            {
-                var result = await Permissions.RequestAsync<Permissions.Media>();
-
-                if (result == PermissionStatus.Denied || result == PermissionStatus.Unknown || result != PermissionStatus.Disabled)
-                {
-                    await App.Current.MainPage.DisplayAlert("Required", "You must allow the permission to get your image", "Ok");
-                }
-            }
+        {          
+            await OpenGalleryAndBottomSheet.InvokeAsync();
         }
 
-        private async Task TakePhoto()
-        {
-            string takeImage = "";
-            var photo = await MediaPicker.CapturePhotoAsync();
-
-            var stream = await photo.OpenReadAsync();
-
-            takeImage = await ConvertStreamToBase64Async(stream);
-
-            _userMessageImage = $"data:image/png;base64,{takeImage}";
-
-        }
-
-        private async Task<string> ConvertStreamToBase64Async(Stream stream)
-        {
-            using (var memoryStream = new MemoryStream())
-            {
-                await stream.CopyToAsync(memoryStream);
-                byte[] bytes = memoryStream.ToArray();
-                return Convert.ToBase64String(bytes);
-            }
-        }
+       
 
         private void CancelButtonClick()
         {
@@ -323,7 +460,7 @@ namespace MauiApp1.Pages.Chat
         }
 
 
-        private async Task<MessageReceivedResponse> GetData(string text, string image)
+        private async Task<MessageReceivedResponse> GetData(string? text, string? image)
         {
             MessageReceivedResponse response = new MessageReceivedResponse();
 
@@ -339,12 +476,31 @@ namespace MauiApp1.Pages.Chat
 
         private async Task ScrollDivToEnd()
         {
-            await JSRuntime.InvokeVoidAsync("ScrollToEnd");
+            bool isScrollable = await JSRuntime.InvokeAsync<bool>("IsDivScrollable");
+
+            if (isScrollable)
+            {
+                await JSRuntime.InvokeVoidAsync("ScrollToEnd");
+            }
+            else
+            {
+                await Task.Delay(100);
+                await ScrollDivToEnd();
+            }
+            
         }
 
         private async Task ScrollHTMLToEnd()
         {
             await JSRuntime.InvokeVoidAsync("ScrollHTMLToEnd");
+        }
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
         }
 
         #endregion

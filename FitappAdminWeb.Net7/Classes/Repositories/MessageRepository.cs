@@ -1,8 +1,8 @@
 ﻿using DAOLayer.Net7.Chat;
-using DAOLayer.Net7.Chat.ApiModels;
 using FitappAdminWeb.Net7.Classes.Constants;
 using FitappAdminWeb.Net7.Classes.DTO;
 using FitappAdminWeb.Net7.Classes.Utilities;
+using MessageApi.Net7.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Identity.Web;
 using Newtonsoft.Json;
@@ -10,6 +10,7 @@ using System.Collections.Immutable;
 using System.Configuration;
 using System.Net;
 using System.Security.Claims;
+using System.Text.RegularExpressions;
 
 namespace FitappAdminWeb.Net7.Classes.Repositories
 {
@@ -26,8 +27,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         public static readonly string DOMAIN_APPSETTING_KEY = "MessageApi_Domain";
         public static readonly int DEFAULT_MESSAGEHISTORY_DAYS = 14; //2 weeks
 
-        string _apiDomain = String.Empty;
-        string _getMessages_Url = "/api/chat/getmessages";
+        string _getMessages_Url = "/api/chat/getmessages?roomid={0}&fromDate={1}";
         string _getRoomsWithConcerns_Url = "/api/chat/getroomswithconcerns";
         string _sendMessage_Url = "/api/chat/sendmessage";
         string _removeUnhandledFlag_Url = "/api/chat/removeunhandledflag";
@@ -37,21 +37,39 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
             _logger = logger;
             _config = config;
             _chatContext = chatContext;
-            _apiutil = apiutil;
+            _apiutil = apiutil;      
+        }
 
-            _apiDomain = _config.GetValue<string>(DOMAIN_APPSETTING_KEY);           
+        public async Task<List<ReceivedMessage>?> API_GetMessages(long roomId, DateTime? fromDate = null)
+        {
+            try
+            {
+                if (!fromDate.HasValue)
+                {
+                    fromDate = DateTime.Now.AddDays(DEFAULT_MESSAGEHISTORY_DAYS * -1);
+                }
+
+                var client = _apiutil.GetHttpClient();
+                string url = string.Format(_getMessages_Url, roomId, fromDate.Value.ToString("s"));
+                var request = _apiutil.BuildRequest(url, HttpMethod.Get);
+
+                var response = await client.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+
+                var message_result = JsonConvert.DeserializeObject<List<ReceivedMessage>>(await response.Content.ReadAsStringAsync());
+                return message_result;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to retrieve messages from FitApp API (RoomId {roomId}, fromDate {fromDate})", roomId, fromDate);
+                return null;
+            }
         }
 
         public async Task<List<MsgMessage>?> GetMessages(long roomId, DateTime fromDate, int numMessages = 10)
         {
             try
             {
-                /*HttpClient client = _httpclientfactory.CreateClient();
-                string url = $"{_apiDomain}{_getMessages_Url}?roomId={roomId}&fromDate={fromDate:s}";
-
-                string result = await client.GetStringAsync(url);
-                var messages = JsonConvert.DeserializeObject<List<RecievedMessage>>(result);*/
-
                 var query = _chatContext.MsgMessage.Where(r => r.FkRoomId == roomId && r.Timestamp >= fromDate)
                                 .OrderByDescending(r => r.Timestamp)
                                 .Take(numMessages)
@@ -63,6 +81,19 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Failed to get messages from room Id {0} with fromDate {1}", roomId, fromDate);
+                return null;
+            }
+        }
+
+        public async Task<MsgRoom?> GetRoomById(long roomId)
+        {
+            try
+            {
+                return await _chatContext.MsgRoom.FirstOrDefaultAsync(r => r.Id == roomId);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to find room id {0}", roomId);
                 return null;
             }
         }
@@ -161,40 +192,48 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
             }
         }
 
-        public async Task<bool> API_SendMessageToRoom(long roomId, long senderId, string messageContent, bool markAsHandled)
+        public async Task<bool> API_SendMessageToRoom(long roomId, string senderId, string? messageContent, bool markAsHandled, 
+            string? imageFileContentType = null, string? imageFileContent = null)
         {
             using (_logger.BeginScope("SendMessageToRoomV2"))
             {
                 try 
                 {
-                    var currentRoom = await _chatContext.MsgRoom.FirstOrDefaultAsync(r => r.Id == roomId);
-                    if (currentRoom == null)
+                    //var currentRoom = await _chatContext.MsgRoom.FirstOrDefaultAsync(r => r.Id == roomId);
+                    var currentRoom = await _chatContext.MsgRoom.Where(r => r.Id == roomId).Select(s => new
+                    {
+                        Room = s,
+                        RoomOwner = _chatContext.User.FirstOrDefault(t => t.Id == s.FkUserId)
+                    }).FirstOrDefaultAsync();
+
+                    if (currentRoom == null || currentRoom.Room == null || currentRoom.RoomOwner == null)
                     {
                         _logger.LogError("No room {roomId} exists.", roomId);
                         return false;
                     }
 
-                    #region Working API Call but with no security (Commented)
-                    //HttpClient client = _httpclientfactory.CreateClient();
-                    //string requestUrl = _apiDomain + _sendMessage_Url;
-                    //HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
+                    string base64imagebytes = null;
+                    //process image file strings if available
+                    if (!string.IsNullOrEmpty(imageFileContent) && !string.IsNullOrEmpty(imageFileContentType))
+                    {
+                        if (!imageFileContentType.ToLower().StartsWith("image"))
+                        {
+                            _logger.LogError("Cannot send message. Invalid File Type {ctype}", imageFileContentType);
+                        }
 
-                    //BackendMessage msg = new BackendMessage()
-                    //{
-                    //    MessageContent = messageContent,
-                    //    Fk_Sender_Id = senderId,
-                    //    Fk_Reciever_Id = currentRoom.FkUserId
-                    //};
-                    //request.Content = JsonContent.Create(msg);
-                    #endregion
+                        string pattern = @"^data:(\w+)\/(\w+);base64,";
+                        base64imagebytes = Regex.Replace(imageFileContent, pattern, string.Empty);
+                    }
 
                     //uses API util to build request message with prereq security headers
                     HttpClient client = _apiutil.GetHttpClient();
                     BackendMessage msg = new BackendMessage()
                     {
                         MessageContent = messageContent,
-                        Fk_Sender_Id = senderId,
-                        Fk_Reciever_Id = currentRoom.FkUserId
+                        SenderFkFederatedUser = senderId,
+                        ReceiverFkFederatedUser = currentRoom.RoomOwner.FkFederatedUser,
+                        ImageFileContent = base64imagebytes,
+                        ImageFileContentType = imageFileContentType
                     };
                     HttpRequestMessage request = _apiutil.BuildRequest(_sendMessage_Url, HttpMethod.Post, msg);
 
@@ -205,7 +244,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                     //update hasConcern based on markAsHandled
                     if (markAsHandled)
                     {
-                        currentRoom.HasConcern = false;
+                        currentRoom.Room.HasConcern = false;
                         await _chatContext.SaveChangesAsync();
                     }
 
@@ -284,7 +323,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
             }
         }
 
-        public async Task<RecievedMessage?> SendMessage(BackendMessage message)
+        public async Task<ReceivedMessage?> SendMessage(BackendMessage message)
         {
             try
             {
@@ -299,7 +338,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                 response.EnsureSuccessStatusCode();
 
                 var responseString = await response.Content.ReadAsStringAsync();
-                RecievedMessage postedMessage = JsonConvert.DeserializeObject<RecievedMessage>(responseString);
+                ReceivedMessage postedMessage = JsonConvert.DeserializeObject<ReceivedMessage>(responseString);
 
                 return postedMessage;
             }

@@ -45,5 +45,15 @@ public partial class User
 
     public long? FkInternalNotesId { get; set; }
 
+    public long? FkGender { get; set; }
+
+    public string MiddleName { get; set; }
+
+    public string MobileCountryCode { get; set; }
+
+    public long? FkShippingAddress { get; set; }
+
+    public int Signupstatus { get; set; }
+
     public virtual ICollection<MsgMessage> MsgMessage { get; set; } = new List<MsgMessage>();
 }

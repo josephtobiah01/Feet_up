@@ -1,10 +1,10 @@
 using MauiApp1.Areas.Chat.Models;
 using ParentMiddleWare;
 using System.Collections.ObjectModel;
-using MessageApi.Net7;
 //using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 using Application = Microsoft.Maui.Controls.Application;
 using CommunityToolkit.Maui.Core.Platform;
+using MessageApi.Net7.Models;
 #if IOS
 using Foundation;
 using UIKit;
@@ -19,7 +19,7 @@ public partial class ViewIOSChatContentPage : ContentPage
     #region[Fields]
 
     private ObservableCollection<ChatMessageViewModel> _messageList = new ObservableCollection<ChatMessageViewModel>();
-    private List<RecievedMessage> _messageListReserve;
+    private List<ReceivedMessage> _messageListReserve;
 
     IDispatcherTimer _dispatcherTimer;
 
@@ -56,7 +56,7 @@ public partial class ViewIOSChatContentPage : ContentPage
             this.MessageCollectionView.ItemsSource = _messageList;
             //BindableLayout.SetItemsSource(this.MessageVerticalStackLayout, _messageList);
             ChatMessageViewModel message = null;
-            _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddDays(-7));
+            _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddDays(-7));
 
             int count = _messageListReserve.Count;
             if (_messageListReserve.Count > 0)
@@ -64,7 +64,7 @@ public partial class ViewIOSChatContentPage : ContentPage
 
                 for (int index = 0; index < _messageListReserve.Count; index++)
                 {
-                    RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
+                    ReceivedMessage recievedMessage = _messageListReserve.ElementAt(index);
                     message = new ChatMessageViewModel(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
                     message.MessageTextLabelHeight = MeasureTextSize(message.MessageText, 243, 14);
                     _messageList.Add(message);
@@ -79,7 +79,7 @@ public partial class ViewIOSChatContentPage : ContentPage
         }
         catch (Exception ex)
         {
-            await DisplayAlert("Retrieve Message", ex.Message, "OK");
+            ShowAlertBottomSheet("Retrieve Message", ex.Message, "OK");
             //await DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
             //                " Please check the internet connection and try again.", "OK");
         }
@@ -184,7 +184,7 @@ public partial class ViewIOSChatContentPage : ContentPage
             if (string.IsNullOrWhiteSpace(Text) == false)
             {
                 ChatMessageViewModel message = null;
-                RecievedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = Text });
+                ReceivedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { FkFederatedUser = MiddleWare.FkFederatedUser, MessageContent = Text });
 
                 if (sentMessage != null)
                 {
@@ -203,7 +203,7 @@ public partial class ViewIOSChatContentPage : ContentPage
         {
             //await DisplayAlert("Send Message", ex.Message, "OK");
 
-            await DisplayAlert("Send Message", "An error occured while sending the messages." +
+            ShowAlertBottomSheet("Send Message", "An error occured while sending the messages." +
                             " Please check the internet connection and try again.", "OK");
         }
         finally
@@ -217,9 +217,9 @@ public partial class ViewIOSChatContentPage : ContentPage
         try
         {
             ChatMessageViewModel message = null;
-            List<RecievedMessage> recievedMessages = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddSeconds(-30));
+            List<ReceivedMessage> recievedMessages = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddSeconds(-30));
 
-            foreach (RecievedMessage recievedMessage in recievedMessages)
+            foreach (ReceivedMessage recievedMessage in recievedMessages)
             {
                 if (_messageList.Where(t => t.TimeStamp.Equals(recievedMessage.TimeStamp.ToLocalTime())).FirstOrDefault() != null)
                 {
@@ -256,7 +256,7 @@ public partial class ViewIOSChatContentPage : ContentPage
                 _dispatcherTimer.Stop();
             }
             //await DisplayAlert("Retrieve Message", ex.Message, "OK");
-            await DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+            ShowAlertBottomSheet("Retrieve Message", "An error occured while retrieving the messages." +
                            " Please check the internet connection and try again.", "OK");
         }
         finally
@@ -291,7 +291,7 @@ public partial class ViewIOSChatContentPage : ContentPage
         if (_pageSize == maxPageSize)
         {
             _messageList.Clear();
-            foreach (RecievedMessage recievedMessage in _messageListReserve)
+            foreach (ReceivedMessage recievedMessage in _messageListReserve)
             {
                 message = new ChatMessageViewModel(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
                 message.MessageTextLabelHeight = MeasureTextSize(message.MessageText, 243, 14);
@@ -304,7 +304,7 @@ public partial class ViewIOSChatContentPage : ContentPage
             startingIndex = _messageListReserve.Count - maxCounttoQuery;
             for (int index = startingIndex; index < _messageListReserve.Count; index++)
             {
-                RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
+                ReceivedMessage recievedMessage = _messageListReserve.ElementAt(index);
                 message = new ChatMessageViewModel(recievedMessage.MessageContent, recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage);
                 _messageList.Add(message);
             }
@@ -593,6 +593,14 @@ public partial class ViewIOSChatContentPage : ContentPage
 #else
   return -1;
 #endif
+    }
+
+    private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+    {
+        if (App.alertBottomSheetManager != null)
+        {
+            App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+        }
     }
 
     #endregion

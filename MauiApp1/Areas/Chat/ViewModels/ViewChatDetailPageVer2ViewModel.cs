@@ -2,7 +2,7 @@
 using MauiApp1.Areas.Chat.Models;
 using MauiApp1.Areas.Chat.ViewModels.DeviceServices;
 using MauiApp1.Helpers;
-using MessageApi.Net7;
+using MessageApi.Net7.Models;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 using ParentMiddleWare;
@@ -18,7 +18,7 @@ namespace MauiApp1.Areas.Chat.ViewModels
         IJSRuntime JSRuntime { get; set; }
 
         private List<IMessage> _messageList;
-        private List<RecievedMessage> _messageListReserve;
+        private List<ReceivedMessage> _messageListReserve;
 
         IDispatcherTimer _dispatcherTimer;
 
@@ -73,14 +73,14 @@ namespace MauiApp1.Areas.Chat.ViewModels
             try
             {
                 IMessage message = null;
-                _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddDays(-7));
+                _messageListReserve = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddDays(-7));
 
                 int count = _messageListReserve.Count;
                 if (_messageListReserve.Count > 0)
                 {
                     for (int index = 0; index < _messageListReserve.Count; index++)
                     {
-                        RecievedMessage recievedMessage = _messageListReserve.ElementAt(index);
+                        ReceivedMessage recievedMessage = _messageListReserve.ElementAt(index);
                         message = new IMessage(recievedMessage.TimeStamp.ToLocalTime(), recievedMessage.UserName, recievedMessage.IsUserMessage, recievedMessage.MessageContent);
                         MessageList.Add(message);
                     }
@@ -97,7 +97,9 @@ namespace MauiApp1.Areas.Chat.ViewModels
                     ChatHTMLBridge.StopTimerTick.Invoke(this, null);
                 }
                 //await App.Current.MainPage.DisplayAlert("Retrieve Message", ex.Message, "OK");
-                await App.Current.MainPage.DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+                //await App.Current.MainPage.DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+                //                " Please check the internet connection and try again.", "OK");
+                ShowAlertBottomSheet("Retrieve Message", "An error occured while retrieving the messages." +
                                 " Please check the internet connection and try again.", "OK");
             }
             finally
@@ -159,9 +161,9 @@ namespace MauiApp1.Areas.Chat.ViewModels
             try
             {
                 IMessage message = null;
-                List<RecievedMessage> recievedMessages = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.UserID, DateTime.UtcNow.AddSeconds(-30));
+                List<ReceivedMessage> recievedMessages = await MessageApi.Net7.MessageApi.GetMessages(MiddleWare.FkFederatedUser, DateTime.UtcNow.AddSeconds(-30));
 
-                foreach (RecievedMessage recievedMessage in recievedMessages)
+                foreach (ReceivedMessage recievedMessage in recievedMessages)
                 {
                     if (MessageList.Where(t => t.TimeStamp.Equals(recievedMessage.TimeStamp.ToLocalTime())).FirstOrDefault() != null)
                     {
@@ -195,7 +197,9 @@ namespace MauiApp1.Areas.Chat.ViewModels
                     ChatHTMLBridge.StopTimerTick.Invoke(this, null);
                 }
 
-                await App.Current.MainPage.DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+                //await App.Current.MainPage.DisplayAlert("Retrieve Message", "An error occured while retrieving the messages." +
+                //               " Please check the internet connection and try again.", "OK");
+                ShowAlertBottomSheet("Retrieve Message", "An error occured while retrieving the messages." +
                                " Please check the internet connection and try again.", "OK");
             }
             finally
@@ -211,7 +215,7 @@ namespace MauiApp1.Areas.Chat.ViewModels
                 if (string.IsNullOrWhiteSpace(text) == false)
                 {
                     IMessage message = null;
-                    RecievedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { Fk_Sender_Id = MiddleWare.UserID, MessageContent = text });
+                    ReceivedMessage sentMessage = await MessageApi.Net7.MessageApi.SendMessage(new FrontendMessage() { FkFederatedUser = MiddleWare.FkFederatedUser, MessageContent = text });
 
                     if (sentMessage != null)
                     {
@@ -230,7 +234,9 @@ namespace MauiApp1.Areas.Chat.ViewModels
             {
                 //await DisplayAlert("Send Message", ex.Message, "OK");
 
-                await App.Current.MainPage.DisplayAlert("Send Message", "An error occured while sending the messages." +
+                //await App.Current.MainPage.DisplayAlert("Send Message", "An error occured while sending the messages." +
+                //                " Please check the internet connection and try again.", "OK");
+                ShowAlertBottomSheet("Send Message", "An error occured while sending the messages." +
                                 " Please check the internet connection and try again.", "OK");
             }
             finally
@@ -254,6 +260,14 @@ namespace MauiApp1.Areas.Chat.ViewModels
         private async Task ScrollHTMLToEnd()
         {
             await JSRuntime.InvokeVoidAsync("ScrollHTMLToEnd");
+        }
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
         }
 
         #endregion

@@ -112,10 +112,12 @@
 
             self.Meals.push(meal);
             scrollAndHighlightLastMealItem();
+            addMealButtonEnableDisable();
         }
 
         self.RemoveMeal = function (meal) {
             self.Meals.remove(meal);
+            addMealButtonEnableDisable();
         }
 
         self.CloneMeal = function (meal) {
@@ -136,6 +138,7 @@
             newMeal.MealTypes = meal.MealTypes;
             self.Meals.push(newMeal);
             scrollAndHighlightLastMealItem();
+            addMealButtonEnableDisable();
         }
 
         self.SubmitModel = function () {
@@ -179,6 +182,10 @@
             }
         }
 
+        self.EnableDisableAddMeal = function () {
+            addMealButtonEnableDisable();
+        }
+
         function mealPropertySummate(mealProp, mealList) {
             var total = 0;
 
@@ -200,6 +207,15 @@
             targetElem.scrollIntoView();
 
             $(targetElem).delay(500).fadeOut().fadeIn().fadeOut().fadeIn();
+        }
+
+        function addMealButtonEnableDisable() {
+            var mealCount = self.Meals().length;
+
+            $("#addmeal").prop('disabled', true);
+            if (mealCount < 6) {
+                $("#addmeal").prop('disabled', false);
+            }
         }
     }
 
@@ -246,8 +262,10 @@
                         newMeal.ScheduledTime_TimeSpan(truncateTime(meal.scheduledTime_TimeSpan));
                         newMeal.IsOngoing(meal.isOngoing);
                         newMeal.MealTypes = vm.MealTypes;
-
-                        vm.Meals.push(newMeal);
+                        if (meal.mealTypeId != 4) {
+                            vm.Meals.push(newMeal);
+                            vm.EnableDisableAddMeal();
+                        }
                     })
                 });
 

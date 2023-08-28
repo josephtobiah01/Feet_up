@@ -48,12 +48,18 @@ namespace FitappAdminWeb.Net7.Controllers
         public async Task<IActionResult> Room(long id)
         {
             SpecificUserChatViewModel vm = new SpecificUserChatViewModel();
-            vm.CurrentRoom = await _messagerepo.GetRoomByRoomId(id);
+            vm.CurrentRoom = await _messagerepo.GetRoomById(id); //await _messagerepo.GetRoomByRoomId(id);
+
+            if (Request.Query.ContainsKey("error"))
+            {
+                ViewData["error"] = Request.Query["error"];
+            }
 
             if (vm.CurrentRoom != null) 
             {
                 vm.LoggedInUser = await _messagerepo.GetUserByLoggedInUserName(User);
                 vm.RoomOwner = await _messagerepo.GetUserById(vm.CurrentRoom.FkUserId);
+                vm.Messages = await _messagerepo.API_GetMessages(vm.CurrentRoom.Id);
                 vm.Data.RoomId = vm.CurrentRoom.Id;
             }
             
@@ -67,10 +73,10 @@ namespace FitappAdminWeb.Net7.Controllers
             {
                 var currentUser = await _messagerepo.GetUserByLoggedInUserName(User);
 
-                if (ModelState.IsValid)
+                if (ModelState.IsValid && currentUser != null)
                 {
-                    //await _messagerepo.SendMessageToRoom(Data.RoomId, currentUser.Id, Data.Message, Data.MarkAsHandled);
-                    await _messagerepo.API_SendMessageToRoom(Data.RoomId, currentUser.Id, Data.Message, Data.MarkAsHandled);
+                    await _messagerepo.API_SendMessageToRoom(Data.RoomId, currentUser.FkFederatedUser, Data.Message, Data.MarkAsHandled, Data.ImageContentType, Data.ImageContent);
+                    return RedirectToAction("Room", new { id = Data.RoomId });
                 }
             }
             catch (Exception ex)
@@ -78,7 +84,7 @@ namespace FitappAdminWeb.Net7.Controllers
                 _logger.LogError(ex, "Failed to send message");
             }
 
-            return RedirectToAction("Room", new { id = Data.RoomId });
+            return RedirectToAction("Room", new { id = Data.RoomId, error = "chatfailed"});
         }
     }
 }

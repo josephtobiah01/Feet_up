@@ -64,27 +64,34 @@ namespace MauiApp1.Pages.Nutrient
         }
         public async Task RefreshList()
         {
-            NutrientrecipesForMeal NutrientPopupRecipesObject = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
-            if (status == 1)
+            try
             {
-                HeaderText = "Search Recipes";
-                DisplaySearchBar = "inline";
-                NutrientPopupRecipesDisplayed = NutrientPopupRecipesObject.History;
-                NutrientPopupRecipesDisplayedStaticCopy = NutrientPopupRecipesObject.History;
+                NutrientrecipesForMeal NutrientPopupRecipesObject = await ImageApi.Net7.NutritionApi.GetFavoritesAndHistory();
+                if (status == 1)
+                {
+                    HeaderText = "Search Recipes";
+                    DisplaySearchBar = "inline";
+                    NutrientPopupRecipesDisplayed = NutrientPopupRecipesObject.History;
+                    NutrientPopupRecipesDisplayedStaticCopy = NutrientPopupRecipesObject.History;
+                }
+                else if (status == 2)
+                {
+                    HeaderText = "Favourites";
+                    DisplaySearchBar = "inline";
+                    NutrientPopupRecipesDisplayed = NutrientPopupRecipesObject.Favorite;
+                    NutrientPopupRecipesDisplayedStaticCopy = NutrientPopupRecipesObject.Favorite;
+                }
+                else if (status == 3)
+                {
+                    HeaderText = "History";
+                    DisplaySearchBar = "inline";
+                    NutrientPopupRecipesDisplayed = NutrientPopupRecipesObject.History;
+                    NutrientPopupRecipesDisplayedStaticCopy = NutrientPopupRecipesObject.History;
+                }
             }
-            else if (status == 2)
+            catch
             {
-                HeaderText = "Favourites";
-                DisplaySearchBar = "inline";
-                NutrientPopupRecipesDisplayed = NutrientPopupRecipesObject.Favorite;
-                NutrientPopupRecipesDisplayedStaticCopy = NutrientPopupRecipesObject.Favorite;
-            }
-            else if (status == 3)
-            {
-                HeaderText = "History";
-                DisplaySearchBar = "inline";
-                NutrientPopupRecipesDisplayed = NutrientPopupRecipesObject.History;
-                NutrientPopupRecipesDisplayedStaticCopy = NutrientPopupRecipesObject.History;
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Error getting dishes.", "OK");
             }
         }
         public async void GoToOverviewPage()
@@ -160,35 +167,42 @@ namespace MauiApp1.Pages.Nutrient
         }
         public async Task AddDish(bool image = false, NutrientRecipeModel recipe = null)
         {
-            NutrientDish dishAdded = new NutrientDish();
-            dishAdded.NumberOfServings = NutrientServings;
-            dishAdded.PercentageEaten = NutrientPortion;
-            dishAdded.Notes = NutrientNotes;
+            try
+            {
+                NutrientDish dishAdded = new NutrientDish();
+                dishAdded.NumberOfServings = NutrientServings;
+                dishAdded.PercentageEaten = NutrientPortion;
+                dishAdded.Notes = NutrientNotes;
 
-            NutritionUploadModel uploadModel = new NutritionUploadModel();
-            if (image == false && recipe != null)
-            {
-                uploadModel.IsFavorite = NutrientIsFavorite;
-                dishAdded.Recipe = recipe;
-                uploadModel.MealId = Index.NutrientPopupCurrentFeedItem.NutrientsFeedItem.Meal.MealId;
-                uploadModel.RecipeId = recipe.RecipeID;
-                uploadModel.NumberOfServings = NutrientServings;
-                uploadModel.NutrientPortion = NutrientPortion;
-                uploadModel.UploadType = NutritionUploadModel_Type.ByRecipe;
-                Index.NutritionUploadModel.Add(uploadModel);
+                NutritionUploadModel uploadModel = new NutritionUploadModel();
+                if (image == false && recipe != null)
+                {
+                    uploadModel.IsFavorite = NutrientIsFavorite;
+                    dishAdded.Recipe = recipe;
+                    uploadModel.MealId = Index.NutrientPopupCurrentFeedItem.NutrientsFeedItem.Meal.MealId;
+                    uploadModel.RecipeId = recipe.RecipeID;
+                    uploadModel.NumberOfServings = NutrientServings;
+                    uploadModel.NutrientPortion = NutrientPortion;
+                    uploadModel.UploadType = NutritionUploadModel_Type.ByRecipe;
+                    Index.NutritionUploadModel.Add(uploadModel);
+                }
+                else
+                {
+                    //imageupload should not happen in this page
+                }
+                if (feedItem.NutrientsFeedItem.Meal.DishesEaten == null)
+                {
+                    feedItem.NutrientsFeedItem.Meal.DishesEaten = new List<NutrientDish>();
+                }
+                feedItem.NutrientsFeedItem.Meal.DishesEaten.Add(dishAdded);
+                //go to overview
+                GoToOverviewPage();
+                await CloseAddDishPopup();
             }
-            else
+            catch
             {
-                //imageupload should not happen in this page
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Error adding dish.", "OK");
             }
-            if (feedItem.NutrientsFeedItem.Meal.DishesEaten == null)
-            {
-                feedItem.NutrientsFeedItem.Meal.DishesEaten = new List<NutrientDish>();
-            }
-            feedItem.NutrientsFeedItem.Meal.DishesEaten.Add(dishAdded);
-            //go to overview
-            GoToOverviewPage();
-            CloseAddDishPopup();
         }
 
         public async Task FavoriteDish()
@@ -197,12 +211,26 @@ namespace MauiApp1.Pages.Nutrient
 
             if (NutrientIsFavorite && NutrientRecipe != null)
             {
-                bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
+                try
+                {
+                    bool IsSuccessful = await ImageApi.Net7.NutritionApi.FavoriteDish(NutrientRecipe.RecipeID);
+                }
+                catch
+                {
+                    App.alertBottomSheetManager.ShowAlertMessage("Error", "Error favoriting dish.", "OK");
+                }
                 StateHasChanged();
             }
             else if (NutrientRecipe != null)
             {
-                await ImageApi.Net7.NutritionApi.UnFavoriteDish(NutrientRecipe.RecipeID);
+                try
+                {
+                    await ImageApi.Net7.NutritionApi.UnFavoriteDish(NutrientRecipe.RecipeID);
+                }
+                catch
+                {
+                    App.alertBottomSheetManager.ShowAlertMessage("Error", "Error unfavoriting dish.", "OK");
+                }
                 StateHasChanged();
             }
             else

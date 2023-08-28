@@ -2,6 +2,7 @@
 using DAOLayer.Net7.Supplement;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using ParentMiddleWare.ApiModels;
 using ParentMiddleWare.Models;
 
 
@@ -25,8 +26,15 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("TakeDose")]
-        public async Task<bool> TakeDose(long UserId,  long DoseId, float UnitCountActual, bool isCustomerAdded = false, bool isFreeEntry = false, string FreeEntryName = "")
+        //public async Task<bool> TakeDose(long UserId,  long DoseId, float UnitCountActual, bool isCustomerAdded = false, bool isFreeEntry = false, string FreeEntryName = "")
+        public async Task<bool> TakeDose([FromBody] GeneralApiModel model)
         {
+            string FkFederatedUser = model.FkFederatedUser;
+            long DoseId = model.longparam1;
+            float UnitCountActual = model.floatparam1;
+            bool isCustomerAdded = false;
+            bool isFreeEntry = false;
+            string FreeEntryName = "";
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
             if (dose == null) return false;
@@ -39,7 +47,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("TakeDoseUndo")]
-        public async Task<bool> TakeDoseUndo(long DoseId)
+        public async Task<bool> TakeDoseUndo([FromBody]long DoseId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
@@ -53,8 +61,10 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("SnoozeDose")]
-        public async Task<bool> SnoozeDose(long DoseId, int MinutesSnoozed)
+        public async Task<bool> SnoozeDose([FromBody] GeneralApiModel model)
         {
+            long DoseId = model.longparam1;
+            int MinutesSnoozed = model.intparam1;
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
             if (dose == null) return false;
@@ -74,7 +84,7 @@ namespace FitappApi.Net7.Controllers
 
         [HttpPost]
         [Route("UndoSnooze")]
-        public async Task<bool> UndoSnooze(long DoseId)
+        public async Task<bool> UndoSnooze([FromBody]long DoseId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
@@ -87,8 +97,24 @@ namespace FitappApi.Net7.Controllers
 
 
         [HttpPost]
+        [Route("SkipSupplement")]
+        public async Task<bool> SkipSupplement([FromBody] long DoseId)
+        {
+            if (!CheckAuth()) throw new Exception("Unauthorized");
+            var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
+            if (dose == null) return false;
+            dose.IsSnoozed = false;
+            dose.SnoozedTime = null;
+            dose.IsSkipped = true;
+            await _sContext.SaveChangesAsync();
+            return true;
+        }
+
+
+        [HttpPost]
         [Route("UndoSkipSupplement")]
-        public async Task<bool> UndoSkipSupplement(long DoseId, int MinutesSnoozed)
+        //public async Task<bool> UndoSkipSupplement(long DoseId, int MinutesSnoozed)
+        public async Task<bool> UndoSkipSupplement([FromBody] long DoseId)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
             var dose = await _sContext.NdsSupplementScheduleDose.Where(t => t.Id == DoseId).FirstOrDefaultAsync();
@@ -102,10 +128,10 @@ namespace FitappApi.Net7.Controllers
 
         [HttpGet]
         [Route("GetAllSupplments")]
-        public async Task<List<NdSupplementList>> GetAllSupplments(long UserId)
+        public async Task<List<NdSupplementList>> GetAllSupplments(string FkFederatedUser)
         {
             if (!CheckAuth()) throw new Exception("Unauthorized");
-            var supp = await _sContext.NdsSupplementPlanWeekly.Where(t => t.FkCustomerId == UserId && t.IsActive == true)
+            var supp = await _sContext.NdsSupplementPlanWeekly.Where(t => t.FkCustomer.FkFederatedUser == FkFederatedUser && t.IsActive == true)
                 .Include(t => t.NdsSupplementPlanDaily)
                 .ThenInclude(t => t.NdsSupplementPlanSupplement)
                 .ThenInclude(t => t.FkSupplementReferenceNavigation)

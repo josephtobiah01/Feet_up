@@ -10,9 +10,13 @@ namespace MauiApp1.Areas.Exercise.ViewModels
 {
     public class SetPageViewModel : INotifyPropertyChanged
     {
+        private bool _weightHasValue = false;
+        private ColumnDefinition _weightColumnDefinition;
+
+
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected virtual void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
@@ -41,6 +45,26 @@ namespace MauiApp1.Areas.Exercise.ViewModels
 
         public string MetricsValue1 { get; set; }
         public string MetricsValue2 { get; set; }
+
+        public bool WeightHasValue
+        {
+            get { return _weightHasValue; }
+            set
+            {
+                _weightHasValue = value;
+                OnPropertyChanged(nameof(WeightHasValue));
+            }
+        }
+
+        public ColumnDefinition WeightColumnDefinition
+        {
+            get { return _weightColumnDefinition; }
+            set
+            {
+                _weightColumnDefinition = value;
+                OnPropertyChanged(nameof(WeightColumnDefinition));
+            }
+        }
     }
 
 }

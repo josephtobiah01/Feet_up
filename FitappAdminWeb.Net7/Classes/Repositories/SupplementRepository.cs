@@ -4,6 +4,7 @@ using FitappAdminWeb.Net7.Classes.DTO;
 using FitappAdminWeb.Net7.Classes.Utilities;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using ParentMiddleWare.ApiModels;
 using System.Net;
 
 namespace FitappAdminWeb.Net7.Classes.Repositories
@@ -17,6 +18,8 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         FitAppAPIUtil _apiutil;
         IConfiguration _config;
         IMapper _mapper;
+
+        readonly string API_SUPP_SCHEDULE_UPDATE_TRIGGER = "/api/Automation/Supplements_Trigger_Schedule_Update";
 
         readonly string APPSETTINGKEY_MAINAPI_DOMAIN = "MainApi_Domain";
         readonly string MAINAPI_DOMAIN_DEFAULT = "https://fitapp-mainapi-test.azurewebsites.net";
@@ -204,7 +207,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Failed AddSupplementReference");
-                    return null;
+                    throw new Exception();
                 }
             }
         }
@@ -270,7 +273,7 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Failed EditSupplementReference");
-                    throw;
+                    throw new Exception();
                 }
             }
         }
@@ -438,17 +441,15 @@ namespace FitappAdminWeb.Net7.Classes.Repositories
         {
             try
             {
-                //string domain = _config.GetValue<string>(APPSETTINGKEY_MAINAPI_DOMAIN) ?? MAINAPI_DOMAIN_DEFAULT;
-                //string dateString = WebUtility.UrlEncode(startDate.ToString("s"));
-                //string post_url = $"{domain}/api/Automation/Supplements_Trigger_Schedule_Update?supplement_plan_weekly_id={planId}&start_date={dateString}&force={force}";
-
-                //var httpClient = _httpClientFactory.CreateClient();
-                //var httpRequestMessage = new HttpRequestMessage(HttpMethod.Post, post_url);
-
+                AutomationApiModel data = new AutomationApiModel()
+                {
+                    supplement_plan_weekly_id = planId,
+                    datetimeparam1 = startDate,
+                    boolparam1 = force
+                };
                 string dateString = WebUtility.UrlEncode(startDate.ToString("s"));
-                string post_url = $"/api/Automation/Supplements_Trigger_Schedule_Update?supplement_plan_weekly_id={planId}&start_date={dateString}&force={force}";
                 var httpClient = _apiutil.GetHttpClient();
-                var httpRequestMessage = _apiutil.BuildRequest(post_url, HttpMethod.Post);
+                var httpRequestMessage = _apiutil.BuildRequest(API_SUPP_SCHEDULE_UPDATE_TRIGGER, HttpMethod.Post, data);
 
                 var response = await httpClient.SendAsync(httpRequestMessage);
 

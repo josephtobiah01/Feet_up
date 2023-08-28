@@ -1,8 +1,7 @@
 ﻿using ChartApi.Net7;
+using MessageApi.Net7.Models;
 using Newtonsoft.Json;
 using ParentMiddleWare;
-using ParentMiddleWare.Models;
-using System.Net.Http;
 using System.Net.Http.Json;
 
 namespace MessageApi.Net7
@@ -23,31 +22,31 @@ namespace MessageApi.Net7
             }
         }
 
-        public static async Task<List<RecievedMessage>> GetMessages(long UserId, DateTime fromDate)
+        public static async Task<List<ReceivedMessage>> GetMessages(string FkFederatedUser, DateTime fromDate)
         {
             string dateString = string.Format("{0}/{1}/{2} {3}:{4}:{5}", fromDate.Month, fromDate.Day, fromDate.Year, fromDate.Hour, fromDate.Minute, fromDate.Second);
-            using (var response = await _httpClient.GetAsync(string.Format("{0}/api/Chat/GetMessagesFrontend?UserId={1}&fromDate={2}", BaseUrl, UserId, dateString)))
+            using (var response = await _httpClient.GetAsync(string.Format("{0}/api/Chat/GetMessagesFrontend?FkFederatedUser={1}&fromDate={2}", BaseUrl, FkFederatedUser, dateString)))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 if (!String.IsNullOrEmpty(apiResponse))
                 {
-                    return JsonConvert.DeserializeObject<List<RecievedMessage>>(apiResponse);
+                    return JsonConvert.DeserializeObject<List<ReceivedMessage>>(apiResponse);
                 }
                 return null;
             }
         }
 
-        public static async Task<RecievedMessage> SendMessage(FrontendMessage message)
+        public static async Task<ReceivedMessage> SendMessage(FrontendMessage message)
         {
             try
             {
                 using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/Chat/SendMessageFrontend", BaseUrl), message))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    var _result = JsonConvert.DeserializeObject<RecievedMessage>(apiResponse);
+                    var _result = JsonConvert.DeserializeObject<ReceivedMessage>(apiResponse);
                     if (_result != null)
                     {
-                        await AddUnhandledFlag(message.Fk_Sender_Id);
+                        await AddUnhandledFlag(message.FkFederatedUser);
                     }
                     return _result;
                 }
@@ -58,11 +57,12 @@ namespace MessageApi.Net7
             }
         }
 
-        private static async Task AddUnhandledFlag(long userId)
+        private static async Task AddUnhandledFlag(string FkFederatedUser)
         {
             try
             {
-                using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Chat/AddUnhandledFlag?UserId={1}", BaseUrl, userId), null))
+                //using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Chat/AddUnhandledFlag?UserId={1}", BaseUrl, userId), null))
+                using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/Chat/AddUnhandledFlag", BaseUrl), FkFederatedUser))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                 }

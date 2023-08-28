@@ -230,13 +230,11 @@ public partial class SupplementContext : DbContext
 
             entity.Property(e => e.FkSupplementInstruction).HasColumnName("fk_supplement_instruction");
             entity.Property(e => e.FkUnitMetric).HasColumnName("fk_unit_metric");
-            entity.Property(e => e.InstructionText)
-                .HasMaxLength(250)
-                .HasColumnName("instruction_text");
+            entity.Property(e => e.InstructionText).HasColumnName("instruction_text");
             entity.Property(e => e.IsDeleted).HasColumnName("is_deleted");
             entity.Property(e => e.Name)
                 .IsRequired()
-                .HasMaxLength(50)
+                .HasMaxLength(255)
                 .HasColumnName("name");
 
             entity.HasOne(d => d.FkSupplementInstructionNavigation).WithMany(p => p.NdsSupplementReference)

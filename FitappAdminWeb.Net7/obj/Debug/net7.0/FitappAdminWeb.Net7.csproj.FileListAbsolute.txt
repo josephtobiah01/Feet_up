@@ -1,3 +1,4 @@
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\Web.config
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\appsettings.json
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\libman.json
@@ -127,6 +128,7 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\D
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\DAOLayer.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\FitAppData.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\LogHelper.dll
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\MessageApi.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\MuhdoApi.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\NutritionApi.Net7.dll
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\ParentMiddleWare.dll
@@ -137,6 +139,7 @@ C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\D
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\FitAppData.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\NutritionApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\LogHelper.pdb
+C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\MessageApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\MuhdoApi.Net7.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\ParentMiddleWare.pdb
 C:\Users\joseph.alulod\source\Workspaces\FitApp\FitApp\FitappAdminWeb.Net7\bin\Debug\net7.0\SupplementApi.Net7.pdb

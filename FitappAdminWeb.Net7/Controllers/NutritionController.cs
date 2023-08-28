@@ -69,6 +69,7 @@ namespace FitappAdminWeb.Net7.Controllers
             vm.CurrentUser = user;
 
             var mealtypes = await _nutrepo.GetMealTypes();
+            mealtypes.RemoveAll(x => x.Id == 4);
             vm.MealTypeList = new SelectList(mealtypes, "Id", "Name").ToList();
 
             return View(vm);
@@ -84,6 +85,7 @@ namespace FitappAdminWeb.Net7.Controllers
             }
             vm.Day = start.Value;
 
+            var s = new string("papa");
             var user = await _nutrepo.GetUserById(userId);
             if (user == null)
             {

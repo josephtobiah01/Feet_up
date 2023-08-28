@@ -1,10 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
+using ParentMiddleWare.ApiModels;
 
 namespace FitappApi.Net7.Controllers
 {
     public class BaseController : ControllerBase
     {
+
         [NonAction]
         public bool CheckAuth()
         {

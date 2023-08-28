@@ -1,7 +1,3 @@
-using FitnessData.Common;
-using Newtonsoft.Json;
-using System.Text;
-
 namespace MauiApp1.Areas.DeviceIntegration;
 
 public partial class ViewDeviceIntegration : ContentPage
@@ -47,25 +43,6 @@ public partial class ViewDeviceIntegration : ContentPage
 
     #region [Methods :: Tasks]
 
-//    private void InitializeData()
-//    {
-//        string fitnessServiceToken = EncryptDecrypt(Preferences.Default.Get("fitness_service", string.Empty), 200);
-
-//        if (string.IsNullOrWhiteSpace(fitnessServiceToken) == true)
-//        {
-
-//#if ANDROID
-//            _fitnessService = JsonConvert.DeserializeObject<FitnessService>(fitnessServiceToken);
-//#endif
-//        }
-//        else
-//        {
-
-//        }
-
-//        RefreshControls();
-//    }
-
     private void InitializeControls()
     {
 
@@ -78,22 +55,10 @@ public partial class ViewDeviceIntegration : ContentPage
 
     private void DissconnectApplication()
     {
-        //Preferences.Default.Set("fitness_service", string.Empty);
+        
     }
 
-    //public static string EncryptDecrypt(string szPlainText, int szEncryptionKey)
-    //{
-    //    StringBuilder szInputStringBuild = new StringBuilder(szPlainText);
-    //    StringBuilder szOutStringBuild = new StringBuilder(szPlainText.Length);
-    //    char Textch;
-    //    for (int iCount = 0; iCount < szPlainText.Length; iCount++)
-    //    {
-    //        Textch = szInputStringBuild[iCount];
-    //        Textch = (char)(Textch ^ szEncryptionKey);
-    //        szOutStringBuild.Append(Textch);
-    //    }
-    //    return szOutStringBuild.ToString();
-    //}
+    
 
     #endregion
 

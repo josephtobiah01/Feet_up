@@ -28,6 +28,10 @@
 
 .title-label {
     grid-area: title;
+    max-width: 60vw;
+    white-space: nowrap;
+    overflow-y: auto;
+    text-overflow: ellipsis;
 }
 
 .daysbutton-content-group-div {

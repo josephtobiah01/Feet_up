@@ -102,7 +102,7 @@ public partial class PromotionContentView : ContentView
         }
         catch (Exception ex)
         {
-            await App.Current.MainPage.DisplayAlert("Retrieve Promotional Message", "An error occured while retrieving promotion messages." +
+            ShowAlertBottomSheet("Retrieve Promotional Message", "An error occured while retrieving promotion messages." +
                            " Please check the internet connection and try again.", "OK");
             return;
         }
@@ -244,7 +244,7 @@ public partial class PromotionContentView : ContentView
         }
         catch
         {
-            await App.Current.MainPage.DisplayAlert("Retrieve Image Size", "An error occured while retrieving image size.", "OK");
+            ShowAlertBottomSheet("Retrieve Image Size", "An error occured while retrieving image size.", "OK");
             return size;
         }
         finally
@@ -267,7 +267,7 @@ public partial class PromotionContentView : ContentView
         }
         catch (Exception ex)
         {
-            await App.Current.MainPage.DisplayAlert("Open Browser", "An error occured while opening the browser." +
+            ShowAlertBottomSheet("Open Browser", "An error occured while opening the browser." +
                            " Please check the internet connection and try again.", "OK");
         }
         finally
@@ -290,6 +290,14 @@ public partial class PromotionContentView : ContentView
         if (_promotionViewModel != null)
         {
             _promotionViewModel.Clear();
+        }
+    }
+
+    private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+    {
+        if (App.alertBottomSheetManager != null)
+        {
+            App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
         }
     }
 

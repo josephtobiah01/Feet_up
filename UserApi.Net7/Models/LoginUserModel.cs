@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParentMiddleWare.ApiModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,9 +14,10 @@ namespace UserApi.Net7.Models
         public DateTimeOffset Offset { get; set; }
     }
 
-    public class SetOffsetModel
+    public class SetOffsetModel 
     {
         public DateTimeOffset Offset { get; set; }
         public long UserId { get; set; }
+        public string FkFederatedUser { get; set; }
     }
 }

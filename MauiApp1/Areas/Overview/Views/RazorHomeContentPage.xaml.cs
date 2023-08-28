@@ -14,11 +14,13 @@ public partial class RazorHomeContentPage
     #region [Fields]
 
     INutrientsIntakeService _nutrientsIntakeService;
-    NutrientDashboardContentView _nutrientDashboardContentView;
-    ExerciseStatsContentView _exerciseStatsContentView;
+    private NutrientDashboardContentView _nutrientDashboardContentView;
+    private ExerciseStatsContentView _exerciseStatsContentView;
     public DateTime _dateSelected = DateTime.Now;
 
     private bool _isLoading = false;
+
+    private IDispatcherTimer _dispatcherTimer;
 
     #endregion
 
@@ -27,18 +29,8 @@ public partial class RazorHomeContentPage
     public RazorHomeContentPage()
     {
         InitializeComponent();
-
-        HandleDashboardButtonClick();
-
-
-        rootComponent.Parameters =
-        new Dictionary<string, object>
-        {
-            { "Callback", new EventCallback<string>(null, HandleHeaderButtonClick) }
-        };
-
-        InitializeSelectDate();
     }
+
     public void HandleHeaderButtonClick(string input)
     {
         if (input == "DASHBOARD")
@@ -59,19 +51,62 @@ public partial class RazorHomeContentPage
 
     private void ContentPage_Loaded(object sender, EventArgs e)
     {
+        if (_exerciseStatsContentView == null)
+        {
+            _exerciseStatsContentView = new ExerciseStatsContentView();
+        }
+
+        if (_exerciseStatsContentView == null)
+        {
+            _exerciseStatsContentView.SelectedDateTime = _dateSelected;
+        }
+
+        if (_nutrientsIntakeService == null)
+        {
+            _nutrientsIntakeService = new NutrientsIntakeService();
+        }
+
+        if (_nutrientDashboardContentView == null)
+        {
+            _nutrientDashboardContentView = new NutrientDashboardContentView(_nutrientsIntakeService);
+        }
+
+        CheckContentViewLoaded();
+
+        //rootComponent.Parameters =
+        //new Dictionary<string, object>
+        //{
+        //    { "Callback", new EventCallback<string>(null, HandleHeaderButtonClick) }
+        //};
+
         InitializeData();
-        CheckBlazorLoaded();
+        InitializeControls();
+        InitializeSelectDate();
     }
 
     private void ContentPage_Unloaded(object sender, EventArgs e)
     {
         UnloadPage();
+        DisposeControls();
     }
 
     private void InitializeData()
     {
+
+    }
+
+    private void InitializeControls()
+    {
         RazorHomeViewModel.isFromRazorHomeContentPage = true;
         RazorHomeViewModel.isNavigatedToProfilePage = false;
+
+        _dispatcherTimer = Dispatcher.CreateTimer();
+        _dispatcherTimer.Interval = TimeSpan.FromMilliseconds(1000);
+        _dispatcherTimer.Tick += Timer_Tick;
+        _dispatcherTimer.Start();
+
+        //LoadNutrientsDashboard();
+        //LoadExerciseStats();
     }
 
     #region Datepicker
@@ -97,7 +132,7 @@ public partial class RazorHomeContentPage
 
             //do other stuff with _dateSelected as the selected Date
             //@joseph, do ur stuff here.
-            await UpdateExerciseStatsView();
+            UpdateExerciseStatsView();
             await UpdateNutrientsBarChart();
         }
     }
@@ -124,14 +159,7 @@ public partial class RazorHomeContentPage
                 return "th";
         }
     }
-    #endregion
-
-    private void Initialize()
-    {
-        _nutrientsIntakeService = new NutrientsIntakeService();
-        _nutrientDashboardContentView = new NutrientDashboardContentView(_nutrientsIntakeService);
-        _exerciseStatsContentView = new ExerciseStatsContentView();
-    }
+    #endregion   
 
     #endregion
 
@@ -141,49 +169,65 @@ public partial class RazorHomeContentPage
     {
         this.CalendarDXPopup.IsOpen = true;
     }
+
     private async void DatePickerLeft_Clicked(object sender, EventArgs e)
     {
         _dateSelected = _dateSelected.AddDays(-1);
         this.Calendar.SelectedDate = _dateSelected;
         await SetDate(_dateSelected);
     }
+
     private async void DatePickerRight_Clicked(object sender, EventArgs e)
     {
         _dateSelected = _dateSelected.AddDays(1);
         this.Calendar.SelectedDate = _dateSelected;
         await SetDate(_dateSelected);
     }
+
     public async void DateSelected(object sender, EventArgs e)
     {
         this.CalendarDXPopup.IsOpen = false;
         await SetDate(this.Calendar.SelectedDate);
     }
+
+    private void LoaderRectangleTapGestureRecognizer_Tapped(object sender, TappedEventArgs e)
+    {
+        return;
+    }
+
+    private void Timer_Tick(object sender, EventArgs e)
+    {
+        TimerTick();
+    }
+
     #endregion
 
     #region [Methods :: Tasks]
 
     private void HandleDashboardButtonClick()
     {
-        _nutrientsIntakeService = new NutrientsIntakeService();
-        _nutrientDashboardContentView = new NutrientDashboardContentView(_nutrientsIntakeService);
-        _exerciseStatsContentView = new ExerciseStatsContentView();
-        _exerciseStatsContentView.SelectedDateTime = _dateSelected;
+        LoadNutrientsDashboard();
+        LoadExerciseStats();
+        //_nutrientsIntakeService = new NutrientsIntakeService();
+        //_nutrientDashboardContentView = new NutrientDashboardContentView(_nutrientsIntakeService);
+        //_exerciseStatsContentView = new ExerciseStatsContentView();
+        //_exerciseStatsContentView.SelectedDateTime = _dateSelected;
 
-        if (this.NutrientsBarChartLayout != null)
-        {
-            if (this.NutrientsBarChartLayout.Children.Count <= 0)
-            {
-                this.NutrientsBarChartLayout.Add(_nutrientDashboardContentView);
-            }
-        }
+        //if (this.NutrientsBarChartLayout != null)
+        //{
+        //    if (this.NutrientsBarChartLayout.Children.Count <= 0)
+        //    {
+        //        this.NutrientsBarChartLayout.Add(_nutrientDashboardContentView);
+        //    }
+        //}
 
-        if (this.ExerciseBarChartLayout != null)
-        {
-            if (this.ExerciseBarChartLayout.Children.Count <= 0)
-            {
-                this.ExerciseBarChartLayout.Add(_exerciseStatsContentView);
-            }
-        }
+        //if (this.ExerciseBarChartLayout != null)
+        //{
+        //    if (this.ExerciseBarChartLayout.Children.Count <= 0)
+        //    {
+        //        this.ExerciseBarChartLayout.Add(_exerciseStatsContentView);
+        //    }
+        //}
 
         //if (this.BiodataContentStackLayout != null)
         //{
@@ -207,12 +251,36 @@ public partial class RazorHomeContentPage
         //}
     }
 
-    private async Task UpdateExerciseStatsView()
+    private void LoadNutrientsDashboard()
     {
-        if(_exerciseStatsContentView != null)
+
+        if (this.NutrientsBarChartLayout != null)
+        {
+            if (this.NutrientsBarChartLayout.Children.Count <= 0)
+            {
+                this.NutrientsBarChartLayout.Add(_nutrientDashboardContentView);
+            }
+        }
+
+    }
+
+    private void LoadExerciseStats()
+    {
+        if (this.ExerciseBarChartLayout != null)
+        {
+            if (this.ExerciseBarChartLayout.Children.Count <= 0)
+            {
+                this.ExerciseBarChartLayout.Add(_exerciseStatsContentView);
+            }
+        }
+    }
+
+    private void UpdateExerciseStatsView()
+    {
+        if (_exerciseStatsContentView != null)
         {
             _exerciseStatsContentView.SelectedDateTime = _dateSelected;
-           await _exerciseStatsContentView.RefreshData();
+            _exerciseStatsContentView.RefreshData();
         }
     }
 
@@ -225,29 +293,56 @@ public partial class RazorHomeContentPage
         }
     }
 
-    private async void CheckBlazorLoaded()
+    private void CheckContentViewLoaded()
     {
-        bool blazorWebViewLoaded = false;
-        await Task.Run(() =>
-        {
-            while(blazorWebViewLoaded == false)
-            {
-                Dispatcher.Dispatch(() =>
-                {
-                    blazorWebViewLoaded = this.BlazorWebView.IsLoaded;
-                    this.LoaderGrid.IsVisible = true;
-                    this.LoadingActivityIndicator.IsVisible = true;
+        //bool blazorWebViewLoaded = true;
+        //bool exerciseContentViewLoaded = false;
+        //bool nutrientsDashboardContentViewLoaded = false;
 
-                });                
-            }
+        //try
+        //{
+        //    while (blazorWebViewLoaded == false &&
+        //   exerciseContentViewLoaded == false &&
+        //   nutrientsDashboardContentViewLoaded == false)
+        //    {
+        //        blazorWebViewLoaded = this.BlazorWebView.IsLoaded;
+        //        exerciseContentViewLoaded = this._exerciseStatsContentView.IsLoaded;
+        //        nutrientsDashboardContentViewLoaded = this._nutrientDashboardContentView.IsLoaded;
+        //        this.LoaderGrid.IsVisible = true;
+        //        this.LoadingActivityIndicator.IsVisible = true;
+        //        //await Task.Delay(1);
+        //    }
 
-            Dispatcher.Dispatch(() =>
-            {
-                this.LoaderGrid.IsVisible = false;
-                this.LoadingActivityIndicator.IsVisible = false;
+        //    this.LoaderGrid.IsVisible = false;
+        //    this.LoadingActivityIndicator.IsVisible = false;
+        //}
+        //catch (Exception ex)
+        //{
 
-            });
-        });
+        //}
+
+
+        //bool blazorWebViewLoaded = false;
+        //await Task.Run(() =>
+        //{
+        //    while(blazorWebViewLoaded == false)
+        //    {
+        //        Dispatcher.Dispatch(() =>
+        //        {
+        //            blazorWebViewLoaded = this.BlazorWebView.IsLoaded;
+        //            this.LoaderGrid.IsVisible = true;
+        //            this.LoadingActivityIndicator.IsVisible = true;
+
+        //        });                
+        //    }
+
+        //    Dispatcher.Dispatch(() =>
+        //    {
+        //        this.LoaderGrid.IsVisible = false;
+        //        this.LoadingActivityIndicator.IsVisible = false;
+
+        //    });
+        //});
     }
 
     private void UnloadPage()
@@ -257,21 +352,87 @@ public partial class RazorHomeContentPage
     }
 
     private async void ReloadPage(NavigatedToEventArgs navigatedToEventArgs)
-    {        
+    {
 
         if (RazorHomeViewModel.isFromRazorHomeContentPage == true &&
             RazorHomeViewModel.isNavigatedToProfilePage == true)
         {
             await UpdateNutrientsBarChart();
-            await UpdateExerciseStatsView();
+            UpdateExerciseStatsView();
 
             RazorHomeViewModel.isFromRazorHomeContentPage = true;
             RazorHomeViewModel.isNavigatedToProfilePage = false;
         }
-        
+
+    }
+
+    private void TimerTick()
+    {
+        try
+        {
+            this.LoaderRectangle.IsVisible = true;
+            this.LoadingActivityIndicator.IsVisible = true;
+            if (this.BlazorWebView != null)
+            {
+                if(this.BlazorWebView.IsLoaded == true)
+                {
+                    LoadExerciseStats();
+                    if(_exerciseStatsContentView != null)
+                    {
+                        if(_exerciseStatsContentView._isLoading == false)
+                        {
+                            LoadNutrientsDashboard();
+                            if(_nutrientDashboardContentView != null)
+                            {
+                                if(_nutrientDashboardContentView.IsLoaded == true)
+                                {
+                                    this.LoaderRectangle.IsVisible = false;
+                                    this.LoadingActivityIndicator.IsVisible = false;
+                                    StopTimer();
+                                }
+                            }                            
+                        }
+                    }     
+                }
+            }
+        }
+        catch (Exception ex)
+        {
+            this.LoaderRectangle.IsVisible = false;
+            this.LoadingActivityIndicator.IsVisible = false;
+            if (_dispatcherTimer != null)
+            {
+                _dispatcherTimer.Stop();
+            }
+
+        }
+        finally
+        {
+        }
+    }
+
+    private void StopTimer()
+    {
+        if (_dispatcherTimer != null)
+        {
+            _dispatcherTimer.Stop();
+        }
+    }
+
+    private void DisposeControls()
+    {
+        if (_dispatcherTimer != null)
+        {
+            _dispatcherTimer.Stop();
+            _dispatcherTimer = null;
+        }
     }
 
     #endregion
+    private async void Feed_Clicked(object sender, EventArgs e)
+    {
+        await Navigation.PopAsync();
+    }
 
-
+   
 }

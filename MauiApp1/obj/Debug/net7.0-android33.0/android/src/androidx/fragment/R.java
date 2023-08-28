@@ -20,8 +20,8 @@ public final class R {
 	}
 	public static final class id {
 		public static final int fragment_container_view_tag = 0x7f0a0112;
-		public static final int special_effects_controller_view_tag = 0x7f0a01f3;
-		public static final int visible_removing_fragment_view_tag = 0x7f0a024c;
+		public static final int special_effects_controller_view_tag = 0x7f0a01ec;
+		public static final int visible_removing_fragment_view_tag = 0x7f0a0243;
 	}
 	public static final class styleable {
 		public static final int[] Fragment = new int[] { 0x01010003, 0x010100d0, 0x010100d1 };

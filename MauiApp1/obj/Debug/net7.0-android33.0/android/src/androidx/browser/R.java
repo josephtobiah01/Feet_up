@@ -29,12 +29,12 @@ public final class R {
 		public static final int browser_actions_context_menu_row = 0x7f0d001e;
 	}
 	public static final class string {
-		public static final int copy_toast_msg = 0x7f120043;
-		public static final int fallback_menu_item_copy_link = 0x7f120081;
-		public static final int fallback_menu_item_open_in_browser = 0x7f120082;
-		public static final int fallback_menu_item_share_link = 0x7f120083;
+		public static final int copy_toast_msg = 0x7f120042;
+		public static final int fallback_menu_item_copy_link = 0x7f12007f;
+		public static final int fallback_menu_item_open_in_browser = 0x7f120080;
+		public static final int fallback_menu_item_share_link = 0x7f120081;
 	}
 	public static final class xml {
-		public static final int image_share_filepaths = 0x7f150000;
+		public static final int image_share_filepaths = 0x7f150001;
 	}
 }

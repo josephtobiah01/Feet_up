@@ -1,0 +1,484 @@
+﻿<!DOCTYPE html>
+@using QTool.Main.Models.QTool
+@model Form
+@{
+    Layout = null;
+    string DynamicHeader = (ViewBag != null && ViewBag.DynamicHeader != null ? ViewBag.DynamicHeader : null);
+    string DynamicFooter = (ViewBag != null && ViewBag.DynamicFooter != null ? ViewBag.DynamicFooter : null);
+    string DynamicHeadScripts = (ViewBag != null && ViewBag.DynamicHeadScripts != null ? ViewBag.DynamicHeadScripts : null);
+    string DynamicBodyScripts = (ViewBag != null && ViewBag.DynamicBodyScripts != null ? ViewBag.DynamicBodyScripts : null);
+    string DynamicStyles = (ViewBag != null && ViewBag.DynamicStyles != null ? ViewBag.DynamicStyles : null);
+    bool DynamicTemplateEnabled = false;
+    var parentUrl = ViewContext.HttpContext.Request.Url.ToString();
+    var Culture = Model.Culture;
+    var storageURL = ViewBag.AZURE_STORAGE_URL;
+    var calcerURL = ViewBag.CalcerURL;
+    var CompanyPrefillPrefix = ViewBag.CompanyPrefillPrefix;
+    bool isProductPrefill_Eligible = ViewBag.isProductPrefill_Eligible != null ? bool.Parse(ViewBag.isProductPrefill_Eligible.ToString()) : false;
+    Html.EnableClientValidation(true);
+    @*START Dynamic Layout*@
+    if (ViewBag != null && ViewBag.DynamicTemplateEnabled != null)
+    {
+        bool.TryParse(ViewBag.DynamicTemplateEnabled.ToString(), out DynamicTemplateEnabled);
+    }
+    @*END Dynamic Layout*@
+
+    @functions{
+        public static IDictionary<string, object> GetHtmlAttributes(object fixedHtmlAttributes = null, List<QTool.Main.Models.QtoolInputAttribute> HtmlAttributes = null)
+        {
+            var rvd = (fixedHtmlAttributes == null)
+                ? new RouteValueDictionary()
+                : HtmlHelper.AnonymousObjectToHtmlAttributes(fixedHtmlAttributes);
+            if (HtmlAttributes != null)
+            {
+                foreach (var attribute in HtmlAttributes)
+                    rvd[attribute.HTMLAttribute] = attribute.HTMLAttribute_Value;
+            }
+            return rvd;
+        }
+    }
+}
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="msapplication-TileImage" content="windows-tile-icon.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="">
+    <title>@Model.Channel</title>
+    @* required by qtool, do not change *@
+    <link href='@string.Format("{0}/scripts/{1}?v=6", storageURL, Model.z_CssFile)' rel="stylesheet" type="text/css" />
+    @* required *@
+    @if (!string.IsNullOrEmpty(DynamicStyles))
+    {
+        @Html.Raw(DynamicStyles)
+    }
+    <script src="~/Content/jquery-3.6.4.min.js"></script>
+    <script src="~/Content/jquery-ui.min.js"></script>
+    <link href="~/Content/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/Content/jquery.validate.min.js"></script>
+    <link href="~/Content/base.css?v=6" rel="stylesheet" />
+    <link href="~/Content/wizard.css?v=6" rel="stylesheet" />
+
+    @*<script src='@(calcerURL + "/bundles/qtool-libraries")'></script>*@
+    <script src='@(storageURL + "/scripts/globalize.js")'></script>
+    <script src='@(storageURL + "/scripts/globalize.cultures.js")'></script>
+    <script>
+        var isAdmintool = @Json.Encode(QTool.Main.Statics.isAdmintool);
+        var isAgentMode = @Json.Encode(@ViewBag.isAgentMode);
+        var _CompanyPrefillPrefix = "@CompanyPrefillPrefix";
+        var _clickBackGA = "@Model.Name&@Model.CurrentPage&Back";
+        var _loc = "@Culture";
+        var rawSessionData = '@(Html.Raw(Model.SessionData))';
+        Globalize.culture(_loc.substring(0, 2));
+    </script>
+    @if (!string.IsNullOrEmpty(DynamicHeadScripts))
+    {
+        @Html.Raw(DynamicHeadScripts)
+    }
+
+</head>
+<body @(!String.IsNullOrEmpty(Model.FormAction) && (Model.FormAction.Contains("ShowOTP") || Model.FormAction.Contains("HasDuplicateOrder")) ? "class=modal-open overflow" : "")>
+    <div class="layout-wizard">
+
+        @if (!string.IsNullOrEmpty(DynamicHeader))
+        {
+            @Html.Raw(DynamicHeader)
+        }
+
+        @if (ViewBag.ShowPWerror != null)
+        {
+            <asp:div class="layout-output show" id="pwLabel">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    @Html.ValidationMessage(String.Empty)
+                    <button class="close" type="button"><span>×</span></button>
+                </div>
+            </asp:div>
+        }
+
+        <main class="wizard-main">
+            <div class="container">
+                @using (Html.BeginForm("RenderVIEW", "Onboarding", FormMethod.Post, new { id = "qtoolform" }))
+                {
+                    @Html.HiddenFor(t => t.MaxPage)
+                    @Html.HiddenFor(t => t.CurrentPage)
+                    @Html.HiddenFor(t => t.Channel)
+                    @Html.HiddenFor(t => t.Vertical)
+                    @Html.HiddenFor(t => t.z_CssFile)
+                    @Html.HiddenFor(t => t.z_HtmlFile)
+                    @Html.HiddenFor(t => t.z_ScriptFile)
+                    @Html.HiddenFor(t => t.Culture)
+                    @Html.HiddenFor(t => t.SessionData)
+                    @Html.HiddenFor(t => t.Name)
+                    @Html.HiddenFor(t => t.FormID)
+
+                    for (int i = 0; i < Model.FormQuestions.Count; i++)
+                    {
+                        if (Model.FormQuestions.ElementAt(i).page != Model.CurrentPage)
+                        {
+                            continue;
+                        }
+                        @Html.HiddenFor(t => t.FormQuestions[i].ExportField)
+                        @Html.HiddenFor(t => t.FormQuestions[i].ImportField)
+                        @Html.HiddenFor(t => t.FormQuestions[i].order)
+                        @Html.HiddenFor(t => t.FormQuestions[i].page)
+                        @Html.HiddenFor(t => t.FormQuestions[i].qType)
+                        @Html.HiddenFor(t => t.FormQuestions[i].questionName)
+                        @Html.HiddenFor(t => t.FormQuestions[i].questionText)
+                        @Html.HiddenFor(t => t.FormQuestions[i].LiveScript)
+                        @Html.HiddenFor(t => t.FormQuestions[i].questionID)
+                    }
+
+                    for (int i = 0; i < Model.FormQuestions.Count; i++)
+                    {
+                        if (Model.FormQuestions.ElementAt(i).page != Model.CurrentPage)
+                        {
+                            continue;
+                        }
+
+                        string display = Model.FormQuestions.ElementAt(i).Visisble ? null : "display:none;";
+                        switch (Model.FormQuestions[i].qType)
+                        {
+                            case "ScriptTextBox":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass field form-voucher">
+                                    <label for="@String.Format("FormQuestions[{0}].Answer", i)">@Model.FormQuestions.ElementAt(i).questionText</label>
+                                    <div class="input-addon">
+                                        <i class="icon i-display-coupon" aria-hidden="true"></i>
+                                        @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control" }, Model.FormQuestions[i].Html_Input_Attribute))
+                                        <button type="button" name="apply" class="btn btn-secondary btn-addon" hidden="hidden">Apply</button>
+                                        <button type="button" name="clear" class="btn-clear" hidden="hidden"><i class="icon i-toggle-clear">Clear field</i></button>
+                                    </div>
+                                    <div class="alert alert-status alert-danger" role="alert" hidden="hidden"><i class="icon i-alert-error-outline"></i>Kode voucher Anda salah, silakan masukkan kode voucher yang valid. Anda dapat melanjutkan aplikasi tetapi voucher yang tidak valid tidak akan diterapkan.</div>
+                                    <div class="alert alert-status alert-info" role="alert" hidden="hidden"><i class="icon i-alert-info-outline"></i></div>
+                                </div>
+                                break;
+                            case "OTPTextBox":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass field-input otp-input" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+                                    <label for="@String.Format("FormQuestions[{0}].Answer", i)">
+                                        @Model.FormQuestions.ElementAt(i).questionText
+                                    </label>
+                                    @if (!String.IsNullOrEmpty(Model.FormQuestions.ElementAt(i).InputAddOn))
+                                    {
+                                        <div class="input-addon">
+                                            @Html.Raw(@Model.FormQuestions.ElementAt(i).InputAddOn)
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, onblur = @Model.FormQuestions[i].onChange, @class = "form-control", @type = @Model.FormQuestions[i].Html_Input_Type, }, Model.FormQuestions[i].Html_Input_Attribute))
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-group">
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, onblur = @Model.FormQuestions[i].onChange, @class = "form-control", @type = @Model.FormQuestions[i].Html_Input_Type, }, Model.FormQuestions[i].Html_Input_Attribute))
+                                        </div>
+                                    }
+
+                                </div>
+                                break;
+                            case "TextArea":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass field-input" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+
+                                    <label for="@String.Format("FormQuestions[{0}].Answer", i)">
+                                        @Model.FormQuestions.ElementAt(i).questionText
+                                    </label>
+                                    @Html.TextArea(string.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control" }, Model.FormQuestions[i].Html_Input_Attribute))
+
+                                </div>
+                                break;
+                            case "HiddenInput":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+                                    @Html.HiddenFor(model => Model.FormQuestions[i].Answer, String.Format("FormQuestions[{0}].Answer", i))
+                                </div>
+                                break;
+                            case "TextBox":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass field-input" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+                                    <label for="@String.Format("FormQuestions[{0}].Answer", i)">
+                                        @Model.FormQuestions.ElementAt(i).questionText
+                                    </label>
+                                    @if (!String.IsNullOrEmpty(Model.FormQuestions.ElementAt(i).InputAddOn))
+                                    {
+                                        <div class="input-addon">
+                                            @Html.Raw(@Model.FormQuestions.ElementAt(i).InputAddOn)
+                                            @if (!Model.FormQuestions.ElementAt(i).Editable)
+                                            {
+                                                @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, new { @size = @Model.FormQuestions[i].Size, @readonly = "readonly", disabled = "true", @class = "form-control", @type = @Model.FormQuestions[i].Html_Input_Type, })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control", @type = @Model.FormQuestions[i].Html_Input_Type }, Model.FormQuestions[i].Html_Input_Attribute))
+                                            }
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        if (!Model.FormQuestions.ElementAt(i).Editable)
+                                        {
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, new { @size = @Model.FormQuestions[i].Size, @readonly = "readonly", disabled = "true", @class = "form-control", @type = @Model.FormQuestions[i].Html_Input_Type, })
+                                        }
+                                        else
+                                        {
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control", @type = @Model.FormQuestions[i].Html_Input_Type }, Model.FormQuestions[i].Html_Input_Attribute))
+                                        }
+                                    }
+                                </div>
+                                break;
+
+                            case "BirthDate":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass field-input" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+                                    <div class="form-date is-long-date">
+                                        <div class="labels">
+                                            <label for="@String.Format("FormQuestions_{0}__Answer", i)_day">Day</label>
+                                            <label for="@String.Format("FormQuestions_{0}__Answer", i)_month">Month</label>
+                                            <label for="@String.Format("FormQuestions_{0}__Answer", i)_year">Year</label>
+                                        </div>
+                                        <div class="controls">
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer_day", i), null, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control is-day", placeholder = "DD", maxlength = "2" }))
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer_month", i), null, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control is-month", placeholder = "MM", maxlength = "2" }))
+                                            @Html.TextBox(String.Format("FormQuestions[{0}].Answer_year", i), null, GetHtmlAttributes(new { @size = @Model.FormQuestions[i].Size, @class = "form-control is-year", placeholder = "YYYY", maxlength = "4" }))
+                                        </div>
+                                        @Html.HiddenFor(model => Model.FormQuestions[i].Answer, String.Format("FormQuestions[{0}].Answer", i))
+                                    </div>
+                                </div>
+                                break;
+                            case "NonEdit":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass none-edit text" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+                                    <div class="text-label">
+                                        @Model.FormQuestions.ElementAt(i).questionText
+                                    </div>
+                                    <div class="text-answer">
+                                        @Model.FormQuestions.ElementAt(i).Answer
+                                    </div>
+                                    @*@Html.Label(String.Format("FormQuestions[{0}].Answer", i), Model.FormQuestions.ElementAt(i).Answer, new { @class = "field-text" })*@
+                                </div>
+                                break;
+                            case "Checkbox":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass" style="@display">
+                                    <label for="@String.Format("FormQuestions[{0}].Answer", i)">
+                                        @Model.FormQuestions.ElementAt(i).questionText
+                                    </label>
+                                    <div class="checkbox-button">
+                                        @for (int j = 0; j < Model.FormQuestions[i].QuestionAnswerChoice.Count(); j++)
+                                        {
+                                            <div class="checkbox-container form-group">
+                                                <label>
+                                                    <span class="field-input" id="@Model.FormQuestions.ElementAt(i).questionName">
+                                                        <input type="checkbox" name='@String.Format("FormQuestions[{0}].Answer", i)' value="@Model.FormQuestions[i].QuestionAnswerChoice[0].Value" @(String.IsNullOrEmpty(Model.FormAction) ? "" : "checked") data-valdef="@Json.Encode(Model.FormQuestions.ElementAt(i).ValidationDefinition)" />
+
+                                                        <span class="checkbox-status"></span>
+                                                    </span>
+                                                    <span class="checkbox-label">@Html.Raw(Model.FormQuestions[i].QuestionAnswerChoice[j].Text)</span>
+                                                </label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                break;
+                            case "Consent":
+                                <div class="form-section form-grid" aria-labelledby="consent-message" role="group">
+                                    <h2 id="consent-message">@Model.FormQuestions.ElementAt(i).questionText</h2>
+                                    <div class="form-consent" id="form-consent">
+                                        <ul>
+                                            @for (int j = 0; j < Model.FormQuestions[i].QuestionAnswerChoice.Count(); j++)
+                                            {
+                                                <li>@Html.Raw(Model.FormQuestions[i].QuestionAnswerChoice[j].Text)</li>
+                                            }
+                                        </ul>
+                                    </div>
+                                    <div class="form-group" id="@Model.FormQuestions.ElementAt(i).questionName">
+                                        <div class="checkbox field-input" role="radiogroup">
+                                            <div class="option">
+                                                <input type="checkbox" name='@String.Format("FormQuestions[{0}].Answer", i)' id="@String.Format("FormQuestions[{0}].Answer", i)" @(String.IsNullOrEmpty(Model.FormAction) ? "" : "checked") value="@Model.FormQuestions[i].QuestionAnswerChoice[0].Value" data-valdef="@Json.Encode(Model.FormQuestions.ElementAt(i).ValidationDefinition)" /><label for="@String.Format("FormQuestions[{0}].Answer", i)">@Model.FormQuestions.ElementAt(i).HelpText</label>
+                                            </div>
+                                        </div>
+                                        @*@if (!String.IsNullOrEmpty(Model.FormQuestions.ElementAt(i).InputAddOn) && Model.FormQuestions.ElementAt(i).InputAddOn.StartsWith("Subscribe"))
+                                            {
+                                                <div class="checkbox" aria-required="false" role="radiogroup">
+                                                    <div class="option">
+                                                        <input type="checkbox" name="IsSubscribeConsentCheck" id="IsSubscribeConsentCheck" @(Model.IsSubscribeConsentCheck == null || (Model.IsSubscribeConsentCheck.HasValue && bool.Parse(Model.IsSubscribeConsentCheck.ToString())) ? "checked" : "") aria-describedby="subscibenewstterconsent" value="true">
+                                                        <label for="IsSubscribeConsentCheck">
+                                                            @Model.FormQuestions.ElementAt(i).InputAddOn.Split('[', ']')[1]
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            }*@
+                                    </div>
+                                </div>
+                                break;
+                            case "Radiobutton":
+                                var RadioIndex = 0;
+                                <div class="form-group field-input" id="@Model.FormQuestions.ElementAt(i).questionName">
+                                    <label>@Model.FormQuestions.ElementAt(i).questionText</label>
+                                    <div class="@Model.FormQuestions.ElementAt(i).CssClass field-input" id="@Model.FormQuestions.ElementAt(i).questionName" role="radiogroup" style="@display">
+                                        @for (int j = 0; j < Model.FormQuestions[i].QuestionAnswerChoice.Count(); j++)
+                                        {
+                                            RadioIndex++;
+                                            <div class="option">
+                                                @Html.RadioButtonFor(m => m.FormQuestions[i].Answer, Model.FormQuestions[i].QuestionAnswerChoice[j].Value, new { id = String.Format("FormQuestions_{0}__Answer_rb{1}", i, RadioIndex), onchange = @Model.FormQuestions[i].onChange })
+                                                <label for="@String.Format("FormQuestions_{0}__Answer_rb{1}", i,RadioIndex)">@Html.Raw(Model.FormQuestions[i].QuestionAnswerChoice[j].Text)</label>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                                break;
+                            case "Dropdown":
+                                <div class="@Model.FormQuestions.ElementAt(i).CssClass field-input" id="@Model.FormQuestions.ElementAt(i).questionName" style="@display">
+                                    <label for="@String.Format("FormQuestions[{0}].Answer", i)">
+                                        @Model.FormQuestions.ElementAt(i).questionText
+                                    </label>
+                                    @if (!Model.FormQuestions.ElementAt(i).Editable)
+                                    {
+                                        <div class="form-group read-only">
+                                            @Html.DropDownListFor(m => m.FormQuestions[i].Answer, Model.FormQuestions[i].QuestionAnswerChoice, new { @size = @Model.FormQuestions[i].Size, onChange = @Model.FormQuestions[i].onChange, @readonly = "readonly", disabled = "true", @class = "form-control select" })
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        @Html.DropDownListFor(m => m.FormQuestions[i].Answer, Model.FormQuestions[i].QuestionAnswerChoice, new { onChange = @Model.FormQuestions[i].onChange, @class = "form-control select" })
+                                        @Html.HiddenFor(m => m.FormQuestions[i].tempAnswer)
+                                    }
+                                </div>
+                                break;
+                            case "Image":
+                                if (Model.FormQuestions.ElementAt(i).DefaultValue != null)
+                                {
+                                    <img class="lazyload" id="@Model.FormQuestions.ElementAt(i).questionName" src="https://cdn-vz-main.cekaja.com/media/Default/Cekaja/img-loader.png" srcset="https://cdn-vz-main.cekaja.com/media/Default/Cekaja/img-loader.png" data-srcset="@Model.FormQuestions.ElementAt(i).DefaultValue">
+                                }
+                                else
+                                {
+                                    var attributes = "";
+                                    var currdata = Model.FormQuestions.ElementAt(i);
+                                    foreach (var attribute in Model.FormQuestions.ElementAt(i).Html_Input_Attribute)
+                                    {
+                                        attributes += string.Format("{0}={1} ", attribute.HTMLAttribute, attribute.HTMLAttribute_Value);
+                                    }
+                                    <img class="lazyload" id="@Model.FormQuestions.ElementAt(i).questionName" src="https://cdn-vz-main.cekaja.com/media/Default/Cekaja/img-loader.png" srcset="https://cdn-vz-main.cekaja.com/media/Default/Cekaja/img-loader.png" data-srcset="@Model.FormQuestions.ElementAt(i).Answer" @attributes>
+                                }
+                                break;
+                            case "Info":
+                                if (Model.FormQuestions.ElementAt(i).DefaultValue != null)
+                                {
+                                    @Model.FormQuestions.ElementAt(i).DefaultValue
+                                }
+                                else
+                                {
+                                    @Model.FormQuestions.ElementAt(i).Answer
+                                }
+                                break;
+                            case "InfoCurrency":
+                                if (Model.FormQuestions.ElementAt(i).Answer != null)
+                                {
+                                    decimal d = decimal.Parse(Model.FormQuestions.ElementAt(i).Answer);
+                                    @String.Format("{0:N2}", d);
+                                }
+                                break;
+                            case "HTML":
+                                @Html.Raw(Model.FormQuestions.ElementAt(i).questionText)
+                                break;
+                            case "PageNextButton":
+                                <div class="PageButton" data-formname="@Model.FormQuestions.ElementAt(i).TargetForm" data-buttontext="@Model.FormQuestions.ElementAt(i).TargetName">
+                                </div>
+                                break;
+                        }
+                        if (Model.FormQuestions[i].ValidationDefinition != null)
+                        {
+                            for (int j = 0; j < Model.FormQuestions[i].ValidationDefinition.Count; j++)
+                            {
+                                @Html.HiddenFor(t => t.FormQuestions[i].ValidationDefinition[j].Name)
+                                @Html.HiddenFor(t => t.FormQuestions[i].ValidationDefinition[j].ErrorMessage)
+                                if (Model.FormQuestions[i].ValidationDefinition[j].Data != null)
+                                {
+                                    for (int k = 0; k < Model.FormQuestions[i].ValidationDefinition[j].Data.Length; k++)
+                                    {
+                                        @Html.Hidden(String.Format("FormQuestions[{0}].ValidationDefinition[{1}].Data[{2}]", i, j, k), Model.FormQuestions[i].ValidationDefinition[j].Data[k])
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    <div class="form-button">
+                        <button type="submit" class="btn btn-primary" name="submitAction" value="Next">Next</button>
+                        <button type="submit" class="btn btn-link cancel" name="submitAction" value="Back">Back</button>
+                    </div>
+
+                }
+            </div>
+        </main>
+
+        <div class="layout-modal layout-transition hidden" id="layout-modal" aria-hidden="true">
+            <!-- modal starts -->
+            <div class="modal modal-sm" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">ID Card (front side)</h5>
+                            <button type="button" class="toggle toggle-button modal-close" name="close" data-toggle="modal" data-target="modal" aria-controls="layout-modal"><i class="icon i-toggle-close">Close Dialog</i></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- preview starts -->
+                            <div class="file-preview">
+                                <!-- editor starts -->
+                                <div class="file-editor">
+                                    <ol id="upload-type-pdf" class="list list-unstyled list-nowrap"></ol>
+                                    <div id="upload-type-image" class="file-media is-landscape"><img id="file-display" width="390" height="260" alt=""></div>
+                                </div>
+                                <!-- editor ends -->
+                            </div>
+                            <!-- preview ends -->
+                        </div>
+                        <div class="modal-buttons">
+                            <button type="button" class="btn btn-ghost-primary" name="cancel" data-toggle="modal" data-target="modal" aria-controls="layout-modal">Discard</button>
+                            <button type="button" class="btn btn-primary" name="accept" data-toggle="modal" data-target="modal" aria-controls="layout-modal">Accept</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- modal ends -->
+
+        </div>
+        <div class="layout-backdrop hidden" id="layout-backdrop" aria-hidden="true"></div>
+        <div class="layout-output" id="layout-output">
+            <div class="alert alert-danger alert-dismissible" role="alert"><button class="close" type="button"><span>×</span></button></div>
+        </div>
+    </div>
+
+    @* tracking view*@
+
+    <script>
+
+    </script>
+    <script>
+        var _vertical = '@Model.Vertical.ToUpperInvariant()';
+        var FormName = "@Model.Name";
+        function ga_trackEvent(action, label, value) {
+
+        }
+
+
+    </script>
+    @*required by qtool, do not change*@
+    @if (Model.z_ScriptFile != null && Model.z_ScriptFile.Contains(";"))
+    {
+        var scripts = Model.z_ScriptFile.Split(';');
+        foreach (var script in scripts)
+        {
+            <script src='@string.Format("{0}/scripts/{1}?v=6", storageURL, script)'></script>
+        }
+    }
+    else
+    {
+        <script src='@string.Format("{0}/scripts/{1}?v=6", storageURL, Model.z_ScriptFile)'></script>
+    }
+    @*<script src="~/Scripts/popper.js"></script>*@
+    @*required*@
+    <script>
+        $(document).ready(function () {
+
+            @(Html.Raw(Model.LiveScript))
+        });
+    </script>
+    @if (!string.IsNullOrEmpty(DynamicBodyScripts))
+    {
+        @Html.Raw(DynamicBodyScripts)
+    }
+</body>
+</html>

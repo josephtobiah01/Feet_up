@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:dxco="clr-namespace:DevExpress.Maui.Controls;assembly=DevExpress.Maui.Controls"
              x:Class="MauiApp1.Areas.Security.Views.MVPLoginContentPage"
              NavigationPage.HasNavigationBar="False" NavigationPage.HasBackButton="False"
              Title="MVPLoginContentPage" Loaded="ContentPage_Loaded" Unloaded="ContentPage_Unloaded"
@@ -78,6 +79,71 @@
                     <ActivityIndicator x:Name="LoadingActivityIndicator" Grid.Row="1" IsRunning="True" HeightRequest="50" WidthRequest="50" Color="White" ZIndex="4"/>
                 </Grid>
             </Frame>
+
+            <dxco:BottomSheet x:Name="LostInternetBottomSheet"
+                         CornerRadius="30"
+                         Grid.Row="0"
+                         BackgroundColor="White"
+                         HalfExpandedRatio="0.8"
+                         AllowedState="HalfExpanded"
+                         AllowDismiss="False"
+                         ShowGrabber="False"
+                         IsModal="True">
+                <!--#region BottomSheetContent-->
+                <Grid Padding="16,0,16,16" ColumnDefinitions="*, *" RowDefinitions="auto, auto, auto, auto, auto" RowSpacing="16" ColumnSpacing="16">
+                    <dxco:SimpleButton 
+                     x:Name="CloseLostInternetErrorBottomSheetButton"
+                        Grid.Row="0" 
+                        Icon="close2.png"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="2"
+                        Text="Close" 
+                        Clicked="CloseLostInternetErrorBottomSheetButton_Clicked"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        CornerRadius="25"
+                        HeightRequest="50"
+                        WidthRequest="100"
+                        BackgroundColor="White"
+                        BorderColor="#EEF0F2"
+                        BorderThickness="1"
+                        TextColor="Black"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="12"
+                        />
+                    <dxco:DXImage 
+                        Grid.Row="1"
+                        Source="internet_lost.png"  
+                        Grid.ColumnSpan="2"/>
+                    <Label 
+                        Grid.Row="2"
+                        Grid.ColumnSpan="2"
+                        Text="Looks like you are offline!" 
+                        FontFamily="Montserrat-Bold"
+                        FontSize="18"
+                        />
+                    <Label 
+                        Grid.Row="3"
+                        Grid.ColumnSpan="2"
+                        Text="We're sorry, but it seems that you're currently not connected to the internet. Our app requires an active internet connection to function properly and provide you with the best experience." 
+                        FontFamily="Montserrat-Regular"   
+                        FontSize="14"
+                        />
+                    <dxco:SimpleButton 
+                       x:Name="GoToSettingBottomSheetButton"
+                        Grid.Row="4" 
+                        Grid.Column="0" 
+                        Grid.ColumnSpan="2"
+                        Text="Go to settings" 
+                        Clicked="GoToSettingBottomSheetButton_Clicked"
+                        BackgroundColor="#006272"
+                        TextColor="White"
+                        FontFamily="Montserrat-Bold"
+                        FontSize="16"
+                        />
+                </Grid>
+                <!--#endregion-->
+            </dxco:BottomSheet>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using FeedApi.Net7.Models;
 using MauiApp1.Areas.Supplement.ViewModels;
+using MauiApp1.Business;
 using Microsoft.AspNetCore.Components;
 using ParentMiddleWare;
 using System;
@@ -47,6 +48,7 @@ namespace MauiApp1.Pages.Supplement
         private void Checkbox_Click()
         {
             _isCheckBoxClick = true;
+            HandleCheckboxOnChange();
         }
 
         private void Checkbox_OnChanged()
@@ -165,7 +167,7 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("View Supplement Page", "ViewSupplementOnClickCallback is not been set", "OK");
+                ShowAlertBottomSheet("View Supplement Page", "ViewSupplementOnClickCallback is not been set", "OK");
             }
 
         }
@@ -196,7 +198,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Add Supplement Mark Done Status",
+                ShowAlertBottomSheet("Add Supplement Mark Done Status",
                    "An error occurred while adding done status in supplement.", "OK");
             }
             finally
@@ -230,7 +232,7 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw ex;
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Failed to complete the status of the supplement.", "OK");
             }
             finally
             {
@@ -261,7 +263,8 @@ namespace MauiApp1.Pages.Supplement
             }
             catch (Exception ex)
             {
-                throw ex;
+
+                App.alertBottomSheetManager.ShowAlertMessage("Error", "Failed to undo the status of the supplement", "OK");
             }
             finally
             {
@@ -278,9 +281,17 @@ namespace MauiApp1.Pages.Supplement
             }
             else
             {
-                await App.Current.MainPage.DisplayAlert("View Snooze Page", "SnoozeButtonOnClickCallback is not been set", "OK");
+                ShowAlertBottomSheet("View Snooze Page", "SnoozeButtonOnClickCallback is not been set", "OK");
             }
 
+        }
+
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
+        {
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
         }
 
         #endregion

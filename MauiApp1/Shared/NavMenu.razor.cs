@@ -1,21 +1,14 @@
-﻿using FeedApi.Net7.Models;
+﻿using MauiApp1._Push;
 using MauiApp1.Areas.BarcodeScanning.Views;
-using MauiApp1.Areas.Security.Views;
 using MauiApp1.Areas.Chat.Views;
 using MauiApp1.Areas.Profile.Views;
-using MauiApp1.Business.DeviceServices;
-using MauiApp1._Push;
-using ParentMiddleWare;
-using UserApi.Net7;
 using MauiApp1.Areas.Test.Views;
-using MauiApp1.Areas.Overview.Views;
-using FitnessData.Client.Business;
-using FitnessData.Common;
-using Newtonsoft.Json;
-using System.Text;
-using MauiApp1.Business;
-using MauiApp1.Helpers;
+using MauiApp1.Business.DeviceServices;
+using MauiApp1.Interfaces;
+using MauiApp1.Pages.Chat;
+using MauiApp1.Services;
 using Microsoft.AspNetCore.Components;
+using ParentMiddleWare;
 
 namespace MauiApp1.Shared
 {
@@ -45,7 +38,7 @@ namespace MauiApp1.Shared
 #if IOS || ANDROID
                 //NotificationCounter.Default.SetNotificationCount(0);
 #endif
-                bool IssignedInUser = MiddleWare.UserID > 0;
+                bool IssignedInUser = MiddleWare.FkFederatedUser != string.Empty;
               if (IssignedInUser)
                 {
                     LoginLogout = "Logout";
@@ -88,9 +81,7 @@ namespace MauiApp1.Shared
 
         #endregion
 
-        #region [Methods :: Tasks]
-
-        
+        #region [Methods :: Tasks]        
 
         private void ToggleNavMenu()
         {
@@ -99,18 +90,19 @@ namespace MauiApp1.Shared
 
         public async void GoToChatPage()
         {
-            bool userSignedIn = MiddleWare.UserID > 0;
+            bool userSignedIn = MiddleWare.FkFederatedUser != string.Empty;
 
             switch (userSignedIn)
             {
                 case true:
-
-                    await Application.Current.MainPage.Navigation.PushAsync(new ViewHybridChatContentPage());
+                    ISelectedImageService selectedImageService = new SelectedImageService();
+                    ViewHybridChatContentPage viewHybridChatContentPage = new ViewHybridChatContentPage(selectedImageService);
+                    await Application.Current.MainPage.Navigation.PushAsync(viewHybridChatContentPage);
                     break;
 
                 case false:
 
-                    await App.Current.MainPage.DisplayAlert("Access Denied", "You do not have access to this page. Please log in to access this page.", "OK");
+                    ShowAlertBottomSheet("Access Denied", "You do not have access to this page. Please log in to access this page.", "OK");
                     break;
             }
 
@@ -126,10 +118,6 @@ namespace MauiApp1.Shared
         public async Task GoToProfilePage()
         {
             await App.Current.MainPage.Navigation.PushAsync(new ViewProfileContentPage());
-        }
-        private async void GotoScanPage()
-        {
-            await Application.Current.MainPage.Navigation.PushAsync(new BarcodeScannerContentPage());
         }
 
         private void ShowLoadingActivityIndicator()
@@ -159,7 +147,7 @@ namespace MauiApp1.Shared
 
         private void RefreshMenu()
         {
-            bool userSignedIn = MiddleWare.UserID > 0;
+            bool userSignedIn = MiddleWare.FkFederatedUser != string.Empty;
             if (userSignedIn == true)
             {
                 _hideMessageButton = false;
@@ -178,11 +166,13 @@ namespace MauiApp1.Shared
             StateHasChanged();
         }
 
-        private void ClearFitnessServiceStorage()
+        private void ShowAlertBottomSheet(string title, string message, string cancelMessage)
         {
-            Preferences.Default.Set("fitness_service", string.Empty);
+            if (App.alertBottomSheetManager != null)
+            {
+                App.alertBottomSheetManager.ShowAlertMessage(title, message, cancelMessage);
+            }
         }
-
 
         #endregion
 

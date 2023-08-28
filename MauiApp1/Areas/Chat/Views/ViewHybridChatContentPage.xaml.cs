@@ -1,25 +1,77 @@
-using MauiApp1.Areas.Chat.Models;
-using ParentMiddleWare;
-using System.Collections.ObjectModel;
-using MessageApi.Net7;
-using Microsoft.Maui.Dispatching;
+using DevExpress.Maui.Controls;
 using MauiApp1.Areas.Chat.ViewModels.DeviceServices;
+using MauiApp1.Business;
+using MauiApp1.Business.UserServices;
+using MauiApp1.Interfaces;
+using MauiApp1.Pages.Chat;
+using Microsoft.AspNetCore.Components;
+using System.ComponentModel;
+using static MauiApp1.Pages.Chat.ViewChatDetailPage;
 
 namespace MauiApp1.Areas.Chat.Views;
 
-public partial class ViewHybridChatContentPage : ContentPage
+public partial class ViewHybridChatContentPage : ContentPage, INotifyPropertyChanged
 {
-    #region[Fields]
+    #region Fields
+
 
     IDispatcherTimer _dispatcherTimer;
+    private readonly ISelectedImageService _selectedImageService;
+   
 
-    #endregion
+    private string _selectedImage;
+
+
+
+    #endregion Fields
+
+
+
+    #region Properties
+
+
+
+
+
+    public event EventHandler SendMessageTrigger;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public string SelectedImage
+    {
+        get => _selectedImage;
+        set
+        {
+            if (_selectedImage != value)
+            {
+                _selectedImage = value;
+                OnPropertyChanged(nameof(SelectedImage));
+            }
+        }
+    }
+
+    #endregion Properties
 
     #region [Methods :: EventHandlers :: Class]
 
-    public ViewHybridChatContentPage()
+    #region Constructor
+
+    public ViewHybridChatContentPage(ISelectedImageService selectedImageService)
     {
         InitializeComponent();
+
+        _selectedImageService = selectedImageService ?? throw new ArgumentNullException(nameof(selectedImageService));
+        
+
+        this.rootComponent.Parameters = new Dictionary<string, object>
+        {
+            {"OpenGalleryAndBottomSheet", new EventCallback(null, OpenGalleryBottomSheet) }
+        };
+
+        
+      //  _selectedImageService.SelectedBottomSheetImageChanged += SelectedImage_SelectedBottomSheetChanged;
+
+ 
     }
 
     private void ContentPage_Loaded(object sender, EventArgs e)
@@ -28,14 +80,111 @@ public partial class ViewHybridChatContentPage : ContentPage
         InitializeControl();
     }
 
+
+    #endregion Constructor
+
+
+    private void SelectedImage_SelectedBottomSheetChanged(object sender, string image)
+    {
+        this.UserSelectedImage.Source = ImageSource.FromUri(new Uri(image));
+        SelectedImage = image.ToString();
+        _selectedImageService.SelectedChatContentImage = SelectedImage;
+        
+    }
+
+    protected override void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    public async Task OpenGalleryBottomSheet()
+    {
+        try
+        {
+            var result = await _selectedImageService.UploadPhoto();
+
+            if (result != null)
+            {
+                SelectedImage = result;
+#if ANDROID
+                this.UserSelectedImage.Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(SelectedImage)));
+                this.UserSelectedImage.Aspect = Aspect.AspectFit;
+
+                OpenSelectedImageBottomSheet();
+#endif
+            }
+            else
+            {
+                CloseSelectedImageBottomSheet();
+            }
+#if IOS
+            this.UserSelectedImage.Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(SelectedImage)));
+            this.UserSelectedImage.Aspect = Aspect.AspectFit;
+
+            await Task.Delay(500);
+            OpenSelectedImageBottomSheet();
+
+#endif
+        }
+        catch (Exception ex)
+        {
+            await Application.Current.MainPage.DisplayAlert("Error", "There was a problem selecting an image", "Ok");
+        }
+        finally
+        {
+
+        }
+        //try
+        //{
+        //    var result = await _selectedImageService.UploadPhoto();
+
+        //    if (result != null)
+        //    {
+        //        SelectedImage = result;
+        //        this.UserSelectedImage.Source = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(SelectedImage)));
+        //        this.UserSelectedImage.Aspect = Aspect.AspectFit;
+        //        OpenSelectedImageBottomSheet();
+        //    }
+        //    else
+        //    {
+        //        await Application.Current.MainPage.DisplayAlert("Error", "There was a problem selecting an image", "Ok");
+        //    }
+
+            
+        //}
+        //catch(Exception ex)
+        //{
+
+        //}
+        //finally
+        //{
+
+        //}        
+    }
+
+    private void SendButton_Clicked(object sender, EventArgs e)
+    {
+        _selectedImageService.SelectedChatContentImage = SelectedImage;
+        MessagingCenter.Send(this, "SendMessageTrigger");
+        SendPhotoBottomSheet.State = BottomSheetState.Hidden;
+        this.UserSelectedImage.Source = "";
+    }
+
+    private void CancelButton_Clicked(object sender, EventArgs e)
+    {
+        this.UserSelectedImage.Source = "";
+        CloseSelectedImageBottomSheet();
+    }
+    
+
     private void ContentPage_Unloaded(object sender, EventArgs e)
     {
-        UnloadControl();
+        DisposeControls();
     }
 
     public async void InitializeData()
     {
-        await MauiApp1.Pages.Index.SetupUser();
+        await UserHandler.SetupUser();
     }
 
     private void InitializeControl()
@@ -52,16 +201,26 @@ public partial class ViewHybridChatContentPage : ContentPage
         {
             ChatHTMLBridge.StopTimerTick -= Stop_Timer;
         }
-
         ChatHTMLBridge.StopTimerTick += Stop_Timer;
     }
 
-    private void UnloadControl()
+    private void OpenSelectedImageBottomSheet()
     {
-        DisposeControls();
+        if(this.SendPhotoBottomSheet != null)
+        {
+            this.SendPhotoBottomSheet.State = BottomSheetState.HalfExpanded;
+        }        
     }
 
-    #endregion
+    private void CloseSelectedImageBottomSheet()
+    {
+        if (this.SendPhotoBottomSheet != null)
+        {
+            this.SendPhotoBottomSheet.State = BottomSheetState.Hidden;
+        }
+    }
+
+#endregion
 
     #region [Methods :: EventHandlers :: Controls]
 
@@ -98,8 +257,7 @@ public partial class ViewHybridChatContentPage : ContentPage
 
     private async void Close()
     {
-        await Navigation.PopAsync();
-        
+        await Navigation.PopAsync();     
     }
 
     private void DisposeControls()
@@ -268,4 +426,6 @@ public partial class ViewHybridChatContentPage : ContentPage
 
 
     #endregion
+
+    
 }

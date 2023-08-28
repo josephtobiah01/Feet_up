@@ -468,5 +468,17 @@ namespace FitappAdminWeb.Net7.Controllers.API
             return await _nutrepo.GetMealTypes();
         }
         #endregion
+
+        [HttpGet("getqtoollink")]
+        public async Task<ActionResult<string?>> GetQtoolLink([FromQuery] long userid, [FromQuery] string? url = null)
+        {
+            return await _clientrepo.GetQtoolLink(userid, url);
+        }
+
+        [HttpGet("getpasswordresetlink")]
+        public async Task<ActionResult<string?>> GetPasswordResetLink([FromQuery] string userid)
+        {
+            return await _clientrepo.GetPasswordResetLink(userid);
+        }
     }
 }

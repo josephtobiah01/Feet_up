@@ -16,12 +16,9 @@ namespace UserApi.Net7
         {
             try
             {
-                DateTime date = DateTime.Now;
-                DateTime edate = date.AddMinutes(30);
-                string sString = string.Format("{0}/{1}/{2} {3}:{4}:{5}", date.Month, date.Day, date.Year, date.Hour, date.Minute, date.Second);
-                string eString = string.Format("{0}/{1}/{2} {3}:{4}:{5}", edate.Month, edate.Day, edate.Year, edate.Hour, edate.Minute, edate.Second);
                 //CreateCustomExercise
-                using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Exercise/CreateCustomExercise?UserID={1}&startDatetime={2}&EndDatetime={3}", BaseUrl, UserID, sString, eString), null))
+                //using (var response = await _httpClient.PostAsync(string.Format("{0}/api/Exercise/CreateCustomExercise?UserID={1}&startDatetime={2}&EndDatetime={3}", BaseUrl, UserID, sString, eString), null))
+                using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/Exercise/CreateCustomExercise", BaseUrl), new GeneralApiModel { FkFederatedUser = FkFederatedUser} ))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
                     var _result = JsonConvert.DeserializeObject<EmTrainingSession>(apiResponse);
@@ -38,7 +35,7 @@ namespace UserApi.Net7
 
         public static async Task<bool> UpdateOffset()
         {
-            using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/UpdateOffset", BaseUrl), new SetOffsetModel { Offset = DateTimeOffset.Now, UserId = UserID }))
+            using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/UpdateOffset", BaseUrl), new SetOffsetModel { Offset = DateTimeOffset.Now, FkFederatedUser = FkFederatedUser }))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 var _result = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -48,8 +45,10 @@ namespace UserApi.Net7
 
         public static async Task<bool> RegisterDevice(string RegistrationId, string Platform)
         {
+            if (String.IsNullOrEmpty(RegistrationId)) return false;
             if (Platform == "U") return true;
-            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/User/RegisterDevice?RegistrationId={1}&UserId={2}&Platform={3}", BaseUrl, RegistrationId, UserID, Platform), null))
+           // using (var response = await _httpClient.PostAsync(string.Format("{0}/api/User/RegisterDevice?RegistrationId={1}&UserId={2}&Platform={3}", BaseUrl, RegistrationId, UserID, Platform), null))
+            using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/RegisterDevice", BaseUrl), new GeneralApiModel {FkFederatedUser=FkFederatedUser, param1 = RegistrationId, param2 = Platform}))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 var _result = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -57,10 +56,11 @@ namespace UserApi.Net7
             }
         }
 
-        public static async Task<bool> UnRegisterDevice(string RegistrationId, long UId, string Platform)
+        public static async Task<bool> UnRegisterDevice(string RegistrationId, string FkFederatedUser, string Platform)
         {
             if (Platform == "U") return true;
-            using (var response = await _httpClient.PostAsync(string.Format("{0}/api/User/UnRegisterDevice?RegistrationId={1}&UserId={2}&Platform={3}", BaseUrl, RegistrationId, UId, Platform), null))
+            //using (var response = await _httpClient.PostAsync(string.Format("{0}/api/User/UnRegisterDevice?RegistrationId={1}&UserId={2}&Platform={3}", BaseUrl, RegistrationId, UId, Platform), null))
+            using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/UnRegisterDevice", BaseUrl), new GeneralApiModel { param1 = RegistrationId, param2 = Platform, FkFederatedUser = FkFederatedUser }))
             {
                 string apiResponse = await response.Content.ReadAsStringAsync();
                 var _result = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -115,7 +115,7 @@ namespace UserApi.Net7
         {
             try
             {
-                using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/GetUserInfo", BaseUrl), new GeneralApiModel { UserId = UserID }))
+                using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/GetUserInfo", BaseUrl), new GeneralApiModel { FkFederatedUser = FkFederatedUser }))
                 {
                     var apiResponse = await response.Content.ReadAsStringAsync();
                     var _result = JsonConvert.DeserializeObject<UserOpResult>(apiResponse);
@@ -149,7 +149,7 @@ namespace UserApi.Net7
         {
             try
             {
-                using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/RegisterBarcode", BaseUrl), new GeneralApiModel { UserId = UserID, param1 = BarcodeContents }))
+                using (var response = await _httpClient.PostAsJsonAsync(string.Format("{0}/api/User/RegisterBarcode", BaseUrl), new GeneralApiModel { FkFederatedUser = FkFederatedUser, param1 = BarcodeContents }))
                 {
                     var apiResponse = await response.Content.ReadAsStringAsync();
                     var _result = JsonConvert.DeserializeObject<bool>(apiResponse);
